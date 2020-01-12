@@ -1,0 +1,7 @@
+Issues encountered:
+
+Had to use "mvn clean install" to package a library project.
+Had to use "mvn package" to package a java project into a runnable jar file.
+
+mongodb is refusing connections:
+go to AWS security group and open up port 27107 (port range 0 - 65535)
