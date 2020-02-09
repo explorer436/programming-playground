@@ -9,7 +9,8 @@ Write a function:
 
     class Solution { public int solution(int[] A); }
 
-that, given an array A of N integers, returns the smallest positive integer (greater than 0) that does not occur in A.
+that, given an array A of N integers, returns the smallest positive integer 
+(greater than 0) that does not occur in A.
 
 For example, given A = [1, 3, 6, 4, 1, 2], the function should return 5.
 
@@ -62,19 +63,16 @@ public class MissingInteger
 		}
 		else
 		{
-			// Arrays.sort(A);
-
+			// remove duplicates
 			Set<Integer> set = new HashSet<Integer>();
 			for (int i = 0; i < A.length; i++)
 			{
 				set.add(A[i]);
 			}
 
-			// System.out.println("A.length : " + A.length);
+			// loop through them starting from the number 1.
 			for (int i = 0; i <= A.length; i++)
 			{
-				// System.out.println("i : " + i);
-				// System.out.println("A[i] : " + A[i]);
 				if (!set.contains((i + 1)))
 				{
 					result = i + 1;
