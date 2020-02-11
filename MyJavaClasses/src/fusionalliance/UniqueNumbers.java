@@ -5,6 +5,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Arrays;
 
+/*
+ * Find the unique numbers in an array
+ */
 public class UniqueNumbers {    
 
     public static void main(String[] args) {
@@ -35,8 +38,4 @@ public class UniqueNumbers {
 
         return mySet;
     }
-	
-	/* public static Collection<Integer> findUniqueNumbers(Collection<Integer> numbers) {
-        throw new UnsupportedOperationException("Waiting to be implemented.");
-    } */
 }

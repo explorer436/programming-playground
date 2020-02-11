@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+/*
+ * Calculate the ratio of each crop - based on the values being added in the main method.
+ */
 public class CropRatio
 {
     private int totalWeight;
@@ -12,9 +15,9 @@ public class CropRatio
 
     public void add(String name, int cropWeight)
     {
-        System.out.println(">>> add - name : " + name + " and cropWeight : " + cropWeight);
+        // System.out.println(">>> add - name : " + name + " and cropWeight : " + cropWeight);
         Integer currentCropWeight = (Integer) crops.get(name);
-        System.out.println("currentCropWeight : " + currentCropWeight);
+        // System.out.println("currentCropWeight : " + currentCropWeight);
 
         if (currentCropWeight == null)
         {
@@ -29,14 +32,14 @@ public class CropRatio
         printMap(crops);
 
         totalWeight = totalWeight + cropWeight;
-        System.out.println("<<< add - totalWeight : " + totalWeight);
+        // System.out.println("<<< add - totalWeight : " + totalWeight);
     }
 
     public double proportion(String name)
     {
-        System.out.println(">>> proportion");
-        System.out.println("crops.get(name) : " + (Integer) crops.get(name));
-        System.out.println("totalWeight : " + totalWeight);
+        // System.out.println(">>> proportion - name : " + name);
+        // System.out.println("crops.get(name) : " + (Integer) crops.get(name));
+        // System.out.println("totalWeight : " + totalWeight);
         return ((double) crops.get(name)) / totalWeight;
     }
 
@@ -49,11 +52,12 @@ public class CropRatio
         cropRatio.add("Rice", 1);
 
         System.out.println("Fraction of wheat: " + cropRatio.proportion("Wheat"));
+        System.out.println("Fraction of rice: " + cropRatio.proportion("Rice"));
     }
 
     public static void printMap(Map mp)
     {
-        System.out.println(">>>>>> printMap");
+        // System.out.println(">>>>>> printMap");
         Iterator it = mp.entrySet().iterator();
         while (it.hasNext())
         {
@@ -61,6 +65,6 @@ public class CropRatio
             System.out.println(pair.getKey() + " = " + pair.getValue());
             // it.remove(); // avoids a ConcurrentModificationException
         }
-        System.out.println("<<<<<< printMap");
+        // System.out.println("<<<<<< printMap");
     }
 }
