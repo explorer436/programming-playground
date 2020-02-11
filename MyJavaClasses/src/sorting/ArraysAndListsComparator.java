@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /*
- * Suppose we want sort fruits by their name and quantity also. 
+ * Suppose we want sort fruits by their name and quantity also (RatingAndNameCompare).
  * When we make a collection element comparable(by having it implement Comparable), 
  * we get only one chance to implement the compareTo() method. 
  * The solution is using Comparator.
@@ -17,19 +17,20 @@ public class ArraysAndListsComparator
 
 	public static void main(String[] args)
 	{
-		Fruit[] fruitsArray = new Fruit[5];
-
 		Fruit pineappale = new Fruit("Pineapple", "Pineapple description", 60, 4);
 		Fruit apple = new Fruit("Apple", "Apple description", 100, 1);
 		Fruit orange = new Fruit("Orange", "Orange description", 70, 2);
 		Fruit banana = new Fruit("Banana", "Banana description", 90, 3);
-		Fruit cranberry = new Fruit("cranberry", "cranberry description", 80, 5);
+		Fruit cranberry = new Fruit("Cranberry", "Cranberry description", 80, 5);
+		Fruit blueberry = new Fruit("Blueberry", "Blueberry description", 50, 5);
 
+		Fruit[] fruitsArray = new Fruit[6];
 		fruitsArray[0] = pineappale;
 		fruitsArray[1] = apple;
 		fruitsArray[2] = orange;
 		fruitsArray[3] = banana;
 		fruitsArray[4] = cranberry;
+		fruitsArray[5] = blueberry;
 
 		List<Fruit> fruitsList = new ArrayList<Fruit>();
 		fruitsList.add(pineappale);
@@ -37,8 +38,12 @@ public class ArraysAndListsComparator
 		fruitsList.add(orange);
 		fruitsList.add(banana);
 		fruitsList.add(cranberry);
+		fruitsList.add(blueberry);
 
 		System.out.println("call sort");
+		// Why is this sorting by quantity?
+		// Instead of using any other parameter?
+		// This is because the compareTo() in Fruit is using quantity
 		Arrays.sort(fruitsArray);
 		for (Fruit f : fruitsArray)
 		{
@@ -54,6 +59,9 @@ public class ArraysAndListsComparator
 
 		System.out.println("sorting the list");
 		Collections.sort(fruitsList);
+		// Why is this sorting by quantity?
+		// Instead of using any other parameter?
+		// This is because the compareTo() in Fruit is using quantity
 		for (Fruit f : fruitsList)
 		{
 			printFruit(f);
@@ -82,6 +90,13 @@ public class ArraysAndListsComparator
 
 		System.out.println("sorting the list by quantity using comparator");
 		Collections.sort(fruitsList, new QuantityCompare());
+		for (Fruit f : fruitsList)
+		{
+			printFruit(f);
+		}
+		
+		System.out.println("sorting the list by rating and name simultaneously");
+		Collections.sort(fruitsList, new RatingAndNameCompare());
 		for (Fruit f : fruitsList)
 		{
 			printFruit(f);
@@ -236,6 +251,38 @@ public class ArraysAndListsComparator
 				return 1;
 			else
 				return 0;
+		}
+	}
+	
+	static class RatingAndNameCompare implements Comparator<Fruit>
+	{		
+		public int compare(Fruit f1, Fruit f2)
+		{
+			// sort the fruits by rating first.
+			int ratingComparisonResult = 0;
+			if (f1.getRating() < f2.getRating()) {
+				ratingComparisonResult = -1;
+			}
+			else if (f1.getRating() > f2.getRating()) {
+				ratingComparisonResult = 1;
+			}
+			else {
+				// sort the fruits by name.
+				String fruitName1 = f1.getFruitName().toUpperCase();
+				String fruitName2 = f2.getFruitName().toUpperCase();
+				
+				// ascending order
+				if (fruitName1.compareTo(fruitName2) > 0) {
+					ratingComparisonResult = 1;
+				}
+				else if (fruitName1.compareTo(fruitName2) < 0) {
+					ratingComparisonResult = -1;
+				}
+				else {
+					ratingComparisonResult = 0;
+				}
+			}
+			return ratingComparisonResult;
 		}
 	}
 
