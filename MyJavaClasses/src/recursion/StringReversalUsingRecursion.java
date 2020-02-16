@@ -1,13 +1,13 @@
 package recursion;
 
-public class StringReversal {
+public class StringReversalUsingRecursion {
 
 	public static void main(String[] args) {
-		System.out.println("reverse of cat : " + StringReversal.reverseString("cat"));
+		System.out.println("reverse of cat : " + StringReversalUsingRecursion.reverseString("cat"));
 		
-		System.out.println("reverse of damage : " + StringReversal.reverseString("damage"));
+		System.out.println("reverse of damage : " + StringReversalUsingRecursion.reverseString("damage"));
 		
-		System.out.println("reverse of empty string : " + StringReversal.reverseString(""));
+		System.out.println("reverse of empty string : " + StringReversalUsingRecursion.reverseString(""));
 
 	}
 	
