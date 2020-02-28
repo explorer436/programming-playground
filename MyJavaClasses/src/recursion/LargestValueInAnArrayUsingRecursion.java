@@ -1,5 +1,7 @@
 package recursion;
 
+import java.util.Arrays;
+
 /*
  * if (anArray has only one entry) maxArray(anArray) is the entry in anArray
  * else if (anArray has more than one entry) 
@@ -22,5 +24,40 @@ package recursion;
  * it must ﬁnd the maximum of the two maximums.
  */
 public class LargestValueInAnArrayUsingRecursion {
+
+	public static void main(String[] args) {
+
+        Integer[] anArray = new Integer[]{5, 2, 10, 1, 9, 3, 8, 4, 6, 7, 0};
+        System.out.println("largestValue of anArray : " + LargestValueInAnArrayUsingRecursion.largestValue(anArray));
+        
+        anArray = new Integer[]{5, 2, 1, 9, 3, 8, 4, 6, 7, 0};
+        System.out.println("largestValue of anArray : " + LargestValueInAnArrayUsingRecursion.largestValue(anArray));
+        
+        anArray = new Integer[]{5};
+        System.out.println("largestValue of anArray : " + LargestValueInAnArrayUsingRecursion.largestValue(anArray));
+    }
+
+    public static int largestValue(Integer[] anArray) {
+        
+        int result = 0;
+
+        if (null != anArray && anArray.length != 0)
+        {
+            if (anArray.length == 1)
+            {
+                result = anArray[0];
+            }
+            else
+            {
+                int midPoint = (anArray.length + 1)/2;
+                Integer[] firstHalf = Arrays.copyOfRange(anArray, 0, midPoint);
+                Integer[] secondHalf = Arrays.copyOfRange(anArray, midPoint, anArray.length);
+
+                result = largestValue(firstHalf) > largestValue(secondHalf) ? largestValue(firstHalf) : largestValue(secondHalf);
+            }
+        }
+
+        return result;
+    }
 
 }
