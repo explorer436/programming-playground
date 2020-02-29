@@ -12,13 +12,13 @@ public class ProductOfIntegersInArrayUsingRecursion {
 	public static void main(String[] args) {
 
         Integer[] anArray = new Integer[]{5, 2, 10};
-        System.out.println("productOfElements of anArray : " + ProductOfFirstIntegersInArrayUsingRecursion.productOfElements(anArray));
+        System.out.println("productOfElements of anArray : " + ProductOfIntegersInArrayUsingRecursion.productOfElements(anArray));
         
         anArray = new Integer[]{5};
-        System.out.println("productOfElements of anArray : " + ProductOfFirstIntegersInArrayUsingRecursion.productOfElements(anArray));
+        System.out.println("productOfElements of anArray : " + ProductOfIntegersInArrayUsingRecursion.productOfElements(anArray));
         
         anArray = new Integer[]{5, 2, 10, 0};
-        System.out.println("productOfElements of anArray : " + ProductOfFirstIntegersInArrayUsingRecursion.productOfElements(anArray));
+        System.out.println("productOfElements of anArray : " + ProductOfIntegersInArrayUsingRecursion.productOfElements(anArray));
     }
 
     public static int productOfElements(Integer[] anArray) {
