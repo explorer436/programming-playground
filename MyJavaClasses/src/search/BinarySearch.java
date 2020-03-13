@@ -46,6 +46,7 @@ public class BinarySearch {
 
 	}
 	
+	// A prerequisite is the array has to be ordered.
 	public static int position(int key, int[] a)
 	{
 		int lo = 0;		
