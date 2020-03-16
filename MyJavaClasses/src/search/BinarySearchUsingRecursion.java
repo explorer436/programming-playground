@@ -34,37 +34,40 @@ int binarySearch(const int anArray[], int ﬁrst, int last, int target)
 // end binarySearch
 
  */
-
-public class BinarySearch {
+public class BinarySearchUsingRecursion {
 
 	public static void main(String[] args) {
 		int[] anArray = new int[] {1,2,3,4,5,6,7,8,9,10};
 		
-		System.out.println("position of 4 is : " + BinarySearch.position(4, anArray));
-		System.out.println("position of 10 is : " + BinarySearch.position(10, anArray));
-		System.out.println("position of 15 is : " + BinarySearch.position(15, anArray));
+		System.out.println("position of 4 is : " + BinarySearchUsingRecursion.position(4, anArray, 0, anArray.length));
+		System.out.println("position of 10 is : " + BinarySearchUsingRecursion.position(10, anArray, 0, anArray.length));
+		System.out.println("position of 15 is : " + BinarySearchUsingRecursion.position(15, anArray, 0, anArray.length));
 
 	}
 	
-	// A prerequisite is the array has to be ordered.
-	public static int position(int key, int[] a)
-	{
-		int lo = 0;		
-		int hi = a.length - 1;
-		while (lo <= hi)
-		{
-			int mid = lo + (hi - lo) / 2;
-			if (key < a[mid]) {
-				hi = mid - 1;
+	// A prerequisite is, the array has to be ordered.
+		public static int position(int key, int[] a, int lo, int hi)
+		{		
+			if (lo > hi)
+			{
+				return -1;
 			}
-			else if (key > a[mid]) {
-				lo = mid + 1;
-			}
-			else {
-				return mid;
+			
+			try {
+				int mid = lo + (hi - lo) / 2;
+				if (key < a[mid]) {
+					return position(key, a, lo, mid - 1);
+				}
+				else if (key > a[mid]) {
+					return position(key, a, mid +1 , hi);
+				}
+				else 
+				{
+					return mid;
+				}
+			} catch (java.lang.ArrayIndexOutOfBoundsException e) {
+				return -1;
 			}
 		}
-		return -1;
-	}
 
 }
