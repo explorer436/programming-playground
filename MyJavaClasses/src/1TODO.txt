@@ -1,7 +1,5 @@
 Codility classes.
 
-AWS certification.
-
 Implement the logic for the problems specified in the "to_be_implemented" folder.
 
 Write your own logic for MooshakCatchingCheese.java
