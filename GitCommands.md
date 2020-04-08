@@ -13,6 +13,7 @@ git config --global core.autocrlf true
 CREATE REPOSITORIES :
 
 `git init (project name)` - Creates a new local repository with the specified name
+
 `git clone (url)` - downloads a project and its entire version history
 
 --------------------------------------------
