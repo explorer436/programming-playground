@@ -1,3 +1,4 @@
+
 --  Open terminal and type ghci to launch ghci to go into GHCI!
 --  The prompt here is Prelude> and that will work for minor functions.
 --  If you want to write your functions in a file, write them in a file called 'baby.hs'.
@@ -105,3 +106,15 @@ rangesExample7 = [20,19..1]
 -- Because they are not completely precise (by definition), their use in ranges can yield some pretty funky results.
 -- My advice is not to use them in list ranges.
 rangesExample8 = [0.1, 0.3 .. 1]  
+
+-- producing infinite lists
+
+-- cycle takes a list and cycles it into an infinite list. If you just try to display the result, it will go on forever so you have to slice it off somewhere.
+cycleExample1 = take 10 (cycle [1,2,3])
+cycleExample2 = take 12 (cycle "LOL ")
+
+-- repeat takes an element and produces an infinite list of just that element. It's like cycling a list with only one element.
+repeatExample1 = take 10 (repeat 5) 
+
+-- use the replicate function if you want a number of the same elements in a list. 
+replicateExample = replicate 3 10
