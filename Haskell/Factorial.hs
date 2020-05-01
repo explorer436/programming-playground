@@ -1,4 +1,5 @@
--- To run this, load tthis into Prelude (:l Factorial.hs) and call the fac function with a parameter.
+-- To run this, load this into Prelude (:l Factorial.hs) and 
+-- call the fac function with a parameter.
 -- fac 5
 
 fac 0 = 1

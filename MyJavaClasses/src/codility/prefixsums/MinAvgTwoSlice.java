@@ -56,8 +56,6 @@ Write an efficient algorithm for the following assumptions:
  */
 public class MinAvgTwoSlice {
 
-	
-
     public static void main(String[] args)
     {
         int[] A = new int[] { 4, 2, 2, 5, 1, 5, 8 };

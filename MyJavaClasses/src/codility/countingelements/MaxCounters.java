@@ -37,7 +37,8 @@ Write a function:
 
     class Solution { public int[] solution(int N, int[] A); }
 
-that, given an integer N and a non-empty array A consisting of M integers, returns a sequence of integers representing the values of the counters.
+that, given an integer N and a non-empty array A consisting of M integers, 
+returns a sequence of integers representing the values of the counters.
 
 Result array should be returned as an array of integers.
 

@@ -47,7 +47,8 @@ each element of array A is an integer within the range [1..1,000,000,000].
 Complexity:
 
 expected worst-case time complexity is O(N);
-expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).*/
+expected worst-case space complexity is O(N), 
+beyond input storage (not counting the storage required for input arguments).*/
 
 import java.util.Arrays;
 

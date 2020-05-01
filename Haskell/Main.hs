@@ -6,7 +6,8 @@
 --  The prompt here is Prelude> and that will work for minor functions.
 --  If you want to write your functions in a file, write them in a file called 'baby.hs'.
 --  To load this file into ghci, type `:l baby`
---  If you change the .hs script, just run :l myfunctions again or do :r, which is equivalent because it reloads the current script.
+--  If you change the .hs script, just run :l myfunctions again or do :r, 
+-- which is equivalent because it reloads the current script.
 --  To unload this file from ghci, type `:m` (short for module)
 
 square x = x * x
@@ -28,17 +29,22 @@ printHelloWorld = "hello" ++ " " ++ "world!"
 
 printWoot = ['w','o'] ++ ['o','t']
 
--- When you put together two lists (even if you append a singleton list to a list, for instance: [1,2,3] ++ [4]), 
+-- When you put together two lists (even if you append a singleton list to a list, 
+-- for instance: [1,2,3] ++ [4]), 
 -- internally, Haskell has to walk through the whole list on the left side of ++. 
 -- That's not a problem when dealing with lists that aren't too big. 
 -- But putting something at the end of a list that's fifty million entries long is going to take a while. 
--- However, putting something at the beginning of a list using the : operator (also called the cons operator - short for construct) is instantaneous. 
+-- However, putting something at the beginning of a list using the : operator 
+-- (also called the cons operator - short for construct) is instantaneous. 
 
 consOperatorFirstSample = 'A':" small cat"
 consOperatorSecondSample = 5:[1,2,3,4,5]
 
--- The difference between ++ and the cons operator is, ++ operates on lists and cons operator operates on a single number (or character) and a list of numbers (or characters).
--- You might be tempted to try writing [1,2]:3 to add an element to the end of a list, but ghci will reject this with an error message, because the first argument of (:) must be an element, and the second must be a list.
+-- The difference between ++ and the cons operator is, 
+-- ++ operates on lists and cons operator operates on a single number (or character) and a list of numbers (or characters).
+-- You might be tempted to try writing [1,2]:3 to add an element to the end of a list, 
+-- but ghci will reject this with an error message, because the first argument of (:) must be an element, 
+-- and the second must be a list.
 -- How to append an element at the end of a list in Haskell?
 
 getElementOutOfAListByIndex = "Steve Buschmi" !! 6
@@ -95,7 +101,8 @@ elemOrInfixExample3 = 10 `elem` sampleList
 rangesExample1 = [1..20]  
 rangesExample2 = ['a'..'z']  
 rangesExample3 = ['K'..'Z']  
--- Ranges are cool because you can also specify a step. What if we want all even numbers between 1 and 20? Or every third number between 1 and 20?
+-- Ranges are cool because you can also specify a step. 
+-- What if we want all even numbers between 1 and 20? Or every third number between 1 and 20?
 rangesExample4 = [2,4..20]  
 rangesExample5 = [3,6..20]  
 -- It's simply a matter of separating the first two elements with a comma and then specifying what the upper limit is. 
@@ -114,7 +121,8 @@ rangesExample8 = [0.1, 0.3 .. 1]
 
 -- producing infinite lists
 
--- cycle takes a list and cycles it into an infinite list. If you just try to display the result, it will go on forever so you have to slice it off somewhere.
+-- cycle takes a list and cycles it into an infinite list. 
+-- If you just try to display the result, it will go on forever so you have to slice it off somewhere.
 cycleExample1 = take 10 (cycle [1,2,3])
 cycleExample2 = take 12 (cycle "LOL ")
 
@@ -200,15 +208,20 @@ listComprehensionExample13 = [ [ x | x <- xs, even x ] | xs <- xxs]
 -- They seem very similar to lists - with a few important differences.
 -- A list of numbers is a list of numbers. 
 -- That's its type and it doesn't matter if it has only one number in it or an infinite amount of numbers.
--- However, tuples are used when you know exactly how many values you want to combine and its type depends on how many components it has and the types of the components. 
+-- However, tuples are used when you know exactly how many values you want to combine and 
+-- its type depends on how many components it has and the types of the components. 
 -- They are denoted with parentheses and their components are separated by commas.
 -- Unlike lists, they don't have to be homogenous. Unlike a list, a tuple can contain a combination of several types.
 -- Think about how we'd represent a two-dimensional vector in Haskell. 
 -- One way would be to use a list. 
 -- That would kind of work. 
--- So what if we wanted to put a couple of vectors in a list to represent points of a shape on a two-dimensional plane? We could do something like [[1,2],[8,11],[4,5]]. 
--- The problem with that method is that we could also do stuff like [[1,2],[8,11,5],[4,5]], which Haskell has no problem with since it's still a list of lists with numbers but it kind of doesn't make sense. 
--- But a tuple of size two (also called a pair) is its own type, which means that a list can't have a couple of pairs in it and then a triple (a tuple of size three), so let's use that instead. 
+-- So what if we wanted to put a couple of vectors in a list to represent points of a shape on a two-dimensional plane? 
+-- We could do something like [[1,2],[8,11],[4,5]]. 
+-- The problem with that method is that we could also do stuff like [[1,2],[8,11,5],[4,5]], 
+-- which Haskell has no problem with since it's still a list of lists with numbers but it kind of doesn't make sense. 
+-- But a tuple of size two (also called a pair) is its own type, 
+-- which means that a list can't have a couple of pairs in it and then a triple (a tuple of size three), 
+-- so let's use that instead. 
 -- Instead of surrounding the vectors with square brackets, we use parentheses: [(1,2),(8,11),(4,5)].
 tupleExample1 = [(1,2),(8,11),(4,5)]
 
@@ -231,7 +244,8 @@ tupleExample3 = [("Christopher", "Walken", 55), ("John", "Rambo", 58)]
 -- It doesn't really make much sense when you think about it. 
 -- A singleton tuple would just be the value it contains and as such would have no benefit to us.
 
--- Collections.singletonList() in Java - "Returns an immutable list containing only the specified object. The returned list is serializable."
+-- Collections.singletonList() in Java - "Returns an immutable list containing only the specified object. 
+-- The returned list is serializable."
 -- Why have a separate method to do it? Why would I want to have a separate method to do that?
 -- Primarily as a convenience ... to save you having to write a sequence of statements to:
 --    1. create an empty list object
@@ -336,4 +350,5 @@ tupleRigtTriangleWithPerimeter24 = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [
 -- "foobarbaz"
 -- it :: [Char]
 -- 
--- When we couple it with liberal use of the arrow keys to recall and edit the last expression we typed, we gain a decent way to experiment interactively: the cost of mistakes is very low.
+-- When we couple it with liberal use of the arrow keys to recall and edit the last expression we typed, 
+-- we gain a decent way to experiment interactively: the cost of mistakes is very low.
