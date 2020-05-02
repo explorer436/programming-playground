@@ -176,14 +176,12 @@ adjectives = ["smart","hard-working","patient"]
 listComprehensionExample9 = [adjective ++ " " ++ noun | adjective <- adjectives, noun <- nouns] 
 
 -- Let's write our own version of length! We'll call it length'.
-
-length' xs = sum [1 | _ <- xs]   
-
+customImplementationForLengthUsingListComprehension xs = sum [1 | _ <- xs]   
+customImplementationForLengthUsingListComprehensionTest1 = customImplementationForLengthUsingListComprehension [1..9]
 -- "_" means that we don't care what we'll draw from the list anyway.
 -- So instead of writing a variable name that we'll never use, we just write _. 
 -- This function replaces every element of a list with 1 and then sums that up.
 -- This means that the resulting sum will be the length of our list.
-listComprehensionExample10 = length' [1..9]
 
 -- because strings are lists, we can use list comprehensions to process and produce strings. 
 -- Here's a function that takes a string and removes everything except uppercase letters from it.
