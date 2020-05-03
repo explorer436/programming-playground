@@ -7,6 +7,12 @@
 -}
 
 {- |
+  When you have to look at the input parameters (or properties of input paremeters) 
+  and evaluate them to true or false, 
+  use guards instead of pattern matching.
+-}
+
+{- |
  We're going to make a simple function that berates you differently depending on your BMI (body mass index). 
  Your BMI equals your weight divided by your height squared. 
  If your BMI is less than 18.5, you're considered underweight. 
