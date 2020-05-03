@@ -10,6 +10,7 @@
   When you have to look at the input parameters (or properties of input paremeters) 
   and evaluate them to true or false, 
   use guards instead of pattern matching.
+  Guards and pattern matching work together with each other. Not one instead of another.
 -}
 
 {- |

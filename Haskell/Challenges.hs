@@ -23,7 +23,26 @@
 
 -- firstFunction abc = show $ sum $ ((map read $ words abc) :: [Int])
 --  since sum returns an Integer, we don't have to specify that the output of the map should be an Integer array. It is automatically inferred.
+readAListOfNumbersAsStringsAndPrintTheirSumAsString :: String -> String
 readAListOfNumbersAsStringsAndPrintTheirSumAsString inputStringArray = show $ sum $ map read $ words inputStringArray
+-- This can also be written as follows
+-- readAListOfNumbersAsStringsAndPrintTheirSumAsString inputStringArray = show $ sum $ map (read) $ words inputStringArray
+
+{- |
+f1 :: String -> [String]
+f1 inputStringArray = words inputStringArray
+
+f2 :: [String] -> [Int]
+f2 input = [read n | n <- input] :: [Int]
+
+f3 :: (Foldable t, Num a) => t a -> a
+f3 abc = sum abc
+
+readAListOfNumbersAsStringsAndPrintTheirSumAsString :: String -> String
+readAListOfNumbersAsStringsAndPrintTheirSumAsString inputStringArray = show $ f3 $ f2  $ f1 inputStringArray
+-}
+
+
 -- words is to split the incoming strings into separate parts and insert them in an array
 -- read is to convert an element into a specifid Datatype - in this scenario, we want to convert the elements into integers.
 --     Usually, it's syntax is like this : read "5" :: Int
@@ -107,3 +126,17 @@ Difference: |4 - 19| = 15
 Note: |x| is the absolute value of x-
 -
 -}
+
+------------------------------------------------------------
+-- checkIfInputIsPalindrome :: [a] -> Boolean  
+checkIfInputIsPalindrome [] = False
+checkIfInputIsPalindrome [x] = True
+checkIfInputIsPalindrome xs 
+    | xs == reverse xs = True
+    | otherwise        = False
+checkIfInputIsPalindromeTest1 = checkIfInputIsPalindrome ""
+checkIfInputIsPalindromeTest2 = checkIfInputIsPalindrome "abc"
+checkIfInputIsPalindromeTest3 = checkIfInputIsPalindrome "deleveled"
+checkIfInputIsPalindromeTest4 = checkIfInputIsPalindrome "Deleveled"
+-- TODO how to convert strings to lower case in Haskell?
+------------------------------------------------------------

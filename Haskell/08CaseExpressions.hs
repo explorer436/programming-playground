@@ -19,11 +19,13 @@ These two pieces of code do the same thing and are interchangeable:
 -}
 
 {- |
+Implementation for head using Pattern Matching : 
 head' :: [a] -> a  
 head' [] = error "No head for empty lists!"  
 head' (x:_) = x  
 -}
 
+-- Implementation for head using case expressions : 
 head' :: [a] -> a  
 head' xs = case xs of [] -> error "No head for empty lists!"  
                       (x:_) -> x  
@@ -60,7 +62,7 @@ we could have also defined this like so:
 -}
 
 describeList :: [a] -> String  
-describeList xs = "The list is " ++ what xs  
-    where what [] = "empty."  
-          what [x] = "a singleton list."  
-          what xs = "a longer list." 
+describeList xs = "The list is " ++ describe xs  
+    where describe [] = "empty."  
+          describe [x] = "a singleton list."  
+          describe xs = "a longer list." 
