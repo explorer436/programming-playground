@@ -1,3 +1,5 @@
+import Data.List
+
 -- list comprehensions
 -- A basic comprehension for a set that contains the first ten even natural numbers is S = {2.x | x (- N, x = 10 )}
 listComprehensionExample1 = take 10 [2,4..]
@@ -110,3 +112,8 @@ countOccurancesInAnArrayUsingRecursionTest3 = countOccurancesInAnArrayUsingRecur
 removeDuplicateEntriesFromList inputList = [x | x <- inputList, countOccurancesInAnArrayUsingRecursion inputList x == 1]
 removeDuplicateEntriesFromListTest1 = removeDuplicateEntriesFromList [1,2,3,4,5,1,2]
 removeDuplicateEntriesFromListTest2 = removeDuplicateEntriesFromList [1,2,1,3]
+
+-- This is not the same as nub.
+-- nub just removes the duplicates from a list.
+-- It would still keep one copy of the duplicate elements in the list.
+nubTest3 = nub [1,2,3,4,5,1,2]
