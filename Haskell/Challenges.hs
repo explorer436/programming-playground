@@ -154,7 +154,8 @@ caseInsensitivePalindrome [x] = True
 caseInsensitivePalindrome xs 
     | lowerCasedString == reverse lowerCasedString = True
     | otherwise                                      = False
-    where lowerCasedString = [ toLower c | c <- xs ]
+    where lowerCasedString = map toLower xs
+--    where lowerCasedString = [ toLower c | c <- xs ]
 caseInsensitivePalindromeTest1 = caseInsensitivePalindrome ""
 caseInsensitivePalindromeTest2 = caseInsensitivePalindrome "a"
 caseInsensitivePalindromeTest3 = caseInsensitivePalindrome "abc"
