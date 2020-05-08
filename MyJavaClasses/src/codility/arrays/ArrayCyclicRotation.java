@@ -1,5 +1,7 @@
 package codility.arrays;
 
+import java.util.Arrays;
+
 /*
 * 
 
@@ -53,47 +55,32 @@ public class ArrayCyclicRotation
 {
 	public static void main(String[] args)
 	{
-		ArrayCyclicRotation solution = new ArrayCyclicRotation();
+		ArrayCyclicRotation classUnderTest = new ArrayCyclicRotation();
 
-		for (int i : solution.solution(new int[] { 1, 5, 2, 1, 4, 0 }, 2))
-		{
-			System.out.print(i + " - ");
-		}
+		System.out.println("result for input " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " and K = 2 is " + Arrays.toString(classUnderTest.solution(new int[] { 1, 5, 2, 1, 4, 0 }, 2)));
+		
 		System.out.println();
-		System.out.println("------------------------------------------------");
-
-		for (int i : solution.solution(new int[] { 1, 5, 2, 1, 4, 0 }, 6))
-		{
-			System.out.print(i + " - ");
-		}
+		
+		System.out.println("result for input " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " and K = 6 is " + Arrays.toString(classUnderTest.solution(new int[] { 1, 5, 2, 1, 4, 0 }, 6)));
 		System.out.println();
-		System.out.println("------------------------------------------------");
-
-		for (int i : solution.solution(new int[] { 1, 5, 2, 1, 4, 0 }, 10))
-		{
-			System.out.print(i + " - ");
-		}
+		
+		System.out.println("result for input " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " and K = 10 is " + Arrays.toString(classUnderTest.solution(new int[] { 1, 5, 2, 1, 4, 0 }, 10)));
 		System.out.println();
-		System.out.println("------------------------------------------------");
-
-		for (int i : solution.solution(new int[] {}, 2))
-		{
-			System.out.print(i + " - ");
-		}
+		
+		System.out.println("result for input " + Arrays.toString(new int[] { }) + " and K = 2 is " + Arrays.toString(classUnderTest.solution(new int[] { }, 2)));
 		System.out.println();
-		System.out.println("------------------------------------------------");
-
-		for (int i : solution.solution(new int[] {}, -2))
-		{
-			System.out.print(i + " - ");
-		}
+		
+		System.out.println("result for input " + Arrays.toString(new int[] { }) + " and K = -2 is " + Arrays.toString(classUnderTest.solution(new int[] { }, -2)));
 		System.out.println();
-		System.out.println("------------------------------------------------");
 	}
 
+	/*
+	 * This can be written more elegantly using System.arraycopy( result, 0, A, 0, A.length ) or Arrays.copyOfRange()
+	 * TODO implement it using the two methods mentioned above.
+	 */
 	public int[] solution(int[] A, int K)
 	{
-		System.out.println("A.length : " + A.length + " and K : " + K);
+		// System.out.println("A.length : " + A.length + " and K : " + K);
 
 		if (0 == A.length || K == A.length)
 		{
@@ -103,7 +90,6 @@ public class ArrayCyclicRotation
 		if (K > A.length)
 		{
 			K = K % A.length;
-			System.out.println("K : " + K);
 		}
 
 		int[] result = new int[A.length];
@@ -119,8 +105,6 @@ public class ArrayCyclicRotation
 			result[i] = A[j];
 			j++;
 		}
-
-		// System.arraycopy( result, 0, A, 0, A.length );
 
 		return result;
 	}
