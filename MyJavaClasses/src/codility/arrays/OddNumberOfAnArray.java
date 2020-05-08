@@ -52,11 +52,19 @@ public class OddNumberOfAnArray
 
 		OddNumberOfAnArray classUnderTest = new OddNumberOfAnArray();
 
-		System.out.println("result for input { 9, 3, 9, 3, 9, 7, 9 }) : " + classUnderTest.solution(new int[] { 9, 3, 9, 3, 9, 7, 9 }));
+		System.out.println("The odd number in the array { 9, 3, 9, 3, 9, 7, 9 } is : " + classUnderTest.findOddNumberInTheArray(new int[] { 9, 3, 9, 3, 9, 7, 9 }));
 
-		System.out.println("result for input { 1 } : " + classUnderTest.solution(new int[] { 1 }));
+		System.out.println("The odd number in the array { 1 } is : " + classUnderTest.findOddNumberInTheArray(new int[] { 1 }));
 		
-		System.out.println("result for input { } : " + classUnderTest.solution(new int[] { }));
+		System.out.println("The odd number in the array { } is : " + classUnderTest.findOddNumberInTheArray(new int[] { }));
+		
+		System.out.println("Is there an odd number in the array { 9, 3, 9, 3, 9, 7, 9 }) : " + classUnderTest.isThereAnOddNumberInTheArray(new int[] { 9, 3, 9, 3, 9, 7, 9 }));
+
+		System.out.println("Is there an odd number in the array { 1 } : " + classUnderTest.isThereAnOddNumberInTheArray(new int[] { 1 }));
+		
+		System.out.println("Is there an odd number in the array { 1, 2, 1, 2 } : " + classUnderTest.isThereAnOddNumberInTheArray(new int[] { 1, 2, 1, 2 }));
+		
+		System.out.println("Is there an odd number in the array { } : " + classUnderTest.isThereAnOddNumberInTheArray(new int[] { }));
 
 	}
 
@@ -113,7 +121,7 @@ public class OddNumberOfAnArray
 	 *                      0111   - this evaluates to 7                                                           
 	 */
 	
-	public int solution(int[] A)
+	public int findOddNumberInTheArray(int[] A)
 	{
 		int result = 0;
 		for (int x : A)
@@ -121,6 +129,17 @@ public class OddNumberOfAnArray
 			result ^= x;
 		}
 		return result;
+	}
+	
+	public boolean isThereAnOddNumberInTheArray(int[] A)
+	{
+		int xorResult = 0;
+		for (int x : A)
+		{
+			xorResult ^= x;
+		}
+		
+		return xorResult != 0;
 	}
 
 }
