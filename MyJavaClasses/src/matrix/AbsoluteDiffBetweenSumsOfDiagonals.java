@@ -1,6 +1,7 @@
 package matrix;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Given a square matrix, calculate the absolute difference between the sums of its diagonals.
@@ -104,6 +105,20 @@ public class AbsoluteDiffBetweenSumsOfDiagonals {
 		
 		int alternateSolutionForB = Math.abs(classUnderTest.sumOfElementsOfPrimaryDiagonal(b) - classUnderTest.sumOfElementsOfSecondaryDiagonal(b));
 		System.out.println("alternateSolution for array " + Arrays.deepToString(b) + " is " + alternateSolutionForB);
+	}
+	
+	// if the input is a list of lists instead of a two dimensional array
+	public static int diagonalDifference(List<List<Integer>> arr) {
+		int result = 0;
+		
+		for (int i = 0; i < arr.size(); i++)
+		{
+			int differenceBetweenElementsOfPrimaryAndSecondaryDiagonals = arr.get(i).get(i) - arr.get(i).get((arr.size() -1) - i);
+			result = result + differenceBetweenElementsOfPrimaryAndSecondaryDiagonals;
+		}
+		
+		return Math.abs(result);
+
 	}
 	
 	private int absoluteDiffBetweenSumsOfDiagonals(int[][] array)
