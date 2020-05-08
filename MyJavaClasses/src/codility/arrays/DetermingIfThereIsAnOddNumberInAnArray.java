@@ -126,7 +126,5 @@ public class DetermingIfThereIsAnOddNumberInAnArray
 		
 		return xorResult != 0;
 	}
-	
-	// modify this to tell if there is/are an odd number in the array. return true or false.
 
 }
