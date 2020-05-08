@@ -15,9 +15,7 @@ public class CropRatio
 
     public void add(String name, int cropWeight)
     {
-        // System.out.println(">>> add - name : " + name + " and cropWeight : " + cropWeight);
         Integer currentCropWeight = (Integer) crops.get(name);
-        // System.out.println("currentCropWeight : " + currentCropWeight);
 
         if (currentCropWeight == null)
         {
@@ -32,7 +30,6 @@ public class CropRatio
         printMap(crops);
 
         totalWeight = totalWeight + cropWeight;
-        // System.out.println("<<< add - totalWeight : " + totalWeight);
     }
 
     public double proportion(String name)
@@ -57,14 +54,11 @@ public class CropRatio
 
     public static void printMap(Map mp)
     {
-        // System.out.println(">>>>>> printMap");
         Iterator it = mp.entrySet().iterator();
         while (it.hasNext())
         {
             Map.Entry pair = (Map.Entry) it.next();
             System.out.println(pair.getKey() + " = " + pair.getValue());
-            // it.remove(); // avoids a ConcurrentModificationException
         }
-        // System.out.println("<<<<<< printMap");
     }
 }
