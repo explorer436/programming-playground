@@ -12,6 +12,8 @@ public class Palindrome {
         // test cases including spaces
         System.out.println(p.isPalindrome_caseSensitive("Dele eled"));
         System.out.println(p.isPalindrome_caseInsensitive("Dele eled"));
+        
+        System.out.println(p.isPalindrome_caseInsensitive("Dele ele eled"));
     }
     
     public boolean isPalindrome_caseSensitive(String word) {
