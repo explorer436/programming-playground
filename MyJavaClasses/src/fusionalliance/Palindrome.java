@@ -3,21 +3,69 @@ package fusionalliance;
 public class Palindrome {    
    
     public static void main(String[] args) {
-        System.out.println(Palindrome.isPalindrome("Deleveled"));
+    	Palindrome p = new Palindrome();
+    	
+    	// simple test cases
+        System.out.println(p.isPalindrome_caseSensitive("Deleveled"));
+        System.out.println(p.isPalindrome_caseInsensitive("Deleveled"));
+        
+        // test cases including spaces
+        System.out.println(p.isPalindrome_caseSensitive("Dele eled"));
+        System.out.println(p.isPalindrome_caseInsensitive("Dele eled"));
     }
-	
-	public static boolean isPalindrome(String word) {
-        StringBuilder reversedString = new StringBuilder();
+    
+    public boolean isPalindrome_caseSensitive(String word) {
+        
+    	boolean result = true;
+    	
+    	for (int i = 0; i < word.length(); i++)
+    	{
+    		int oppositeIndex = word.length() - (i + 1);
+    		
+    		char a = word.charAt(i);
+    		char b = word.charAt(oppositeIndex);
+    		
+    		if (a == b)
+    		{
+    			continue;
+    		}
+    		else
+    		{
+    			result = false;
+    			break;
+    		}
+    	}
+    	
+    	return result;
 
-        String orig = word.replaceAll("\\s+", "").toLowerCase();
-
-        char[] plain = orig.toCharArray();
-
-        for (int i = plain.length - 1; i  >= 0; i--) {
-        	reversedString.append(plain[i]);
-        }
-
-        return (reversedString.toString().equals(orig));
+    }
+    
+    public boolean isPalindrome_caseInsensitive(String word) {
+        
+    	boolean result = true;
+    	
+    	for (int i = 0; i < word.length(); i++)
+    	{
+    		int oppositeIndex = word.length() - (i + 1);
+    		
+    		char a = word.charAt(i);
+    		char b = word.charAt(oppositeIndex);
+    		
+    		a = Character.toLowerCase(a);
+    		b = Character.toLowerCase(b);
+    		
+    		if (a == b)
+    		{
+    			continue;
+    		}
+    		else
+    		{
+    			result = false;
+    			break;
+    		}
+    	}
+    	
+    	return result;
 
     }
 }
