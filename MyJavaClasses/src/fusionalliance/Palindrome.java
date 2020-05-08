@@ -25,11 +25,7 @@ public class Palindrome {
     		char a = word.charAt(i);
     		char b = word.charAt(oppositeIndex);
     		
-    		if (a == b)
-    		{
-    			continue;
-    		}
-    		else
+    		if (a != b)
     		{
     			result = false;
     			break;
@@ -54,11 +50,7 @@ public class Palindrome {
     		a = Character.toLowerCase(a);
     		b = Character.toLowerCase(b);
     		
-    		if (a == b)
-    		{
-    			continue;
-    		}
-    		else
+    		if (a != b)
     		{
     			result = false;
     			break;
