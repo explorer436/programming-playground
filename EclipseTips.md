@@ -6,3 +6,6 @@ To open the command prompt (shell or terminal) using the path of a project direc
 
 
 Use CTRL-ALT-SHIFT-T to choose which type of Terminal to run.
+
+How do you get Eclipse to auto-generate a main method in a new Java class?
+Type `main` and press `ctrl+space`.
