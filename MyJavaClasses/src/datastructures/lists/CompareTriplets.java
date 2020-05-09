@@ -1,4 +1,4 @@
-package hackerrank;
+package datastructures.lists;
 
 import java.util.List;
 import java.util.LinkedList;

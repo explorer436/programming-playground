@@ -1,4 +1,4 @@
-package hackerrank;
+package strings;
 
 /**
  * Consider a staircase of size n = 4 :

@@ -89,7 +89,6 @@ public class SearchTextInFile
         }
         catch (Exception e)
         {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         finally
@@ -102,7 +101,6 @@ public class SearchTextInFile
                 }
                 catch (IOException e)
                 {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }

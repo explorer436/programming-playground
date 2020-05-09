@@ -1,4 +1,4 @@
-package hackerrank;
+package fractions;
 
 /**
 Given an array of integers, calculate the fractions of its elements that are 

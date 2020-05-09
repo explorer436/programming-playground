@@ -59,7 +59,6 @@ public class PrintFileNamesInAFolder
 					}
 					catch (Exception e)
 					{
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					

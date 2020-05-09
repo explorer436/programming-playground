@@ -1,4 +1,4 @@
-package fusionalliance;
+package fractions;
 
 import java.util.HashMap;
 import java.util.Iterator;

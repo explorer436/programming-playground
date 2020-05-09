@@ -1,6 +1,6 @@
 package codility.timecomplexity;
 
-/*
+/**
  * 
 
 A non-empty array A consisting of N integers is given. 

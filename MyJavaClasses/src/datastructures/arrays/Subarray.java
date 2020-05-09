@@ -1,6 +1,6 @@
 package datastructures.arrays;
 
-/*
+/**
  * We define the following:
 
 A subarray of an n-element array is an array composed from a contiguous block of the original array's elements. 
@@ -47,6 +47,10 @@ Thus, we print 9 on a new line.
 
  */
 public class Subarray {
-  // TODO
-
+	
+	// TODO
+	
+	public static void main(String[] args) {
+		
+	}
 }
