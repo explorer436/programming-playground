@@ -34,10 +34,10 @@ public class ToCamelCase {
 	}
 	
 	// Convert the initial string into a StringBuffer and manipulate the StringBuffer.
-	static String toCamelCase(String s){
+	static String toCamelCase2(String s){
 		StringBuffer sb = new StringBuffer(s);
 			for (int i = 0; i < sb.length(); i++) {
-				if ((sb.charAt(i)=='_')||(sb.charAt(i)=='-'))
+				if ((sb.charAt(i)=='_') || (sb.charAt(i)=='-'))
 				{   
 					sb.setCharAt(i+1, Character.toUpperCase((sb.charAt(i+1))));
 					sb.deleteCharAt(i);
@@ -48,34 +48,14 @@ public class ToCamelCase {
 	
 	// Trying functional programming approach.
 	// Apply a series of functions to get the final result.
-	static String toCamelCase2(String s){
-	    return replaceHyphens(replaceUnderscores(s));
+	static String toCamelCase(String s){
+	    return replaceByDelimiters(replaceByDelimiters(s, "_"), "-");
 	}
 
-	private static String replaceUnderscores(String s) {
-		if (s.contains("_"))
+	private static String replaceByDelimiters(String s, String stringToBeReplaced) {
+		if (s.contains(stringToBeReplaced))
 		{
-			String[] values = s.split("_");
-			
-			StringBuffer sb = new StringBuffer();
-			sb.append(values[0]);
-			for (int i = 1; i < values.length; i++)
-			{
-				sb.append(values[i].substring(0, 1).toUpperCase() + values[i].substring(1));
-			}
-			
-			return sb.toString();
-		}
-		else
-		{
-			return s;
-		}
-	}
-
-	private static String replaceHyphens(String s) {
-		if (s.contains("-"))
-		{
-			String[] values = s.split("-");
+			String[] values = s.split(stringToBeReplaced);
 			
 			StringBuffer sb = new StringBuffer();
 			sb.append(values[0]);
