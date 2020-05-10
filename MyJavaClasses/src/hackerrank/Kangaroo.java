@@ -1,4 +1,4 @@
-package numbers;
+package hackerrank;
 
 public class Kangaroo {
 	

@@ -1,3 +1,5 @@
+package numbers;
+
 /** 
 we'll be dealing with Collatz sequences. 
 We take a natural number. 
@@ -22,3 +24,11 @@ for all starting numbers between 1 and 100, how many chains have a length greate
     ghci> chain 30  
     [30,15,46,23,70,35,106,53,160,80,40,20,10,5,16,8,4,2,1]  
 */
+public class CollatzSequences {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
