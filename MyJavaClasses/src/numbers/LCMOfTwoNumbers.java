@@ -1,5 +1,6 @@
 package numbers;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -42,6 +43,10 @@ public class LCMOfTwoNumbers {
 		System.out.println();
 		
 		System.out.println("LCM of 12 and 18 using EuclideanAlgorithm is : " + lcmUsingEuclideanAlgorithm(12, 18));
+		
+		System.out.println();
+		
+		System.out.println("LCM of BigIntegers 12 and 18 is : " + lcmOfBigIntegers(new BigInteger("12"), new BigInteger("18")));
 	}
 	
 	/**
@@ -181,6 +186,15 @@ public class LCMOfTwoNumbers {
 	        lcm += absHigherNumber;
 	    }
 	    return lcm;
+	}
+	
+	public static BigInteger lcmOfBigIntegers(BigInteger number1, BigInteger number2) {
+		
+		// See GCDOfTwoNumbersUsingEuclideanAlgorithm.gcdOfBigIntegers()
+	    BigInteger gcd = number1.gcd(number2);
+	    
+	    BigInteger absProduct = number1.multiply(number2).abs();
+	    return absProduct.divide(gcd);
 	}
 	
 	private static void printMap(Map<Integer, Integer> mp)
