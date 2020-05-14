@@ -2,21 +2,15 @@ package collections;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.function.IntConsumer;
 import java.util.stream.Collectors;
 
 public class StreamAPI {
 
 	public static void main(String[] args) {
-		
-		List<String> numbers = Arrays.asList("1", "2", "3", "4", "5", "6");
-	    System.out.println("original list: " + numbers);	    
-		System.out.print("Filter for even numbers : ");
-		List<Integer> result = returnEvenNumbersFromAList_Collect(numbers);		
-		System.out.println(Arrays.toString(result.toArray()));
-		
-		System.out.println();
 		
 		List<Person> people = new ArrayList<Person>();
 		people.add(new Person("1John", 15, "male"));
@@ -49,6 +43,27 @@ public class StreamAPI {
 		System.out.println();
 		
 		System.out.println("names of men : " + Arrays.toString(getNamesOfMen_Collect(people).toArray()));
+		
+		System.out.println();
+		
+		System.out.println("printing people grouped by gender : ");
+		MapUtils.printMap(groupPeopleByGender(people));
+		
+		System.out.println();
+		
+		System.out.println("printing people names by gender : ");
+		MapUtils.printMap(groupPersonNamesByGender(people));
+		
+		System.out.println();
+		
+		System.out.println("printing total age by gender : ");
+		MapUtils.printMap(groupTotalAgeByGender(people));
+		
+		System.out.println();
+		
+		System.out.println("printing average age by gender : ");
+		MapUtils.printMap(getAverageAgeByGender(people));
+		
 	}
 	
 	/**
@@ -307,16 +322,108 @@ public class StreamAPI {
 	}
 	
 	/**
-	 * Return only even numbers
+	 * The groupingBy operation returns a map whose keys are the values that result from applying the lambda expression specified as its parameter (which is called a classification function).
+	 * 
+	 * GroupingBy collector is used for grouping objects by some property and storing results in a Map instance.
 	 */
-	private static List<Integer> returnEvenNumbersFromAList_Collect(List<String> numbers)
+	
+	/**
+	 * The following example groups members of the collection people by gender.
+	 */
+	private static Map<String, List<Person>> groupPeopleByGender(List<Person> people)
 	{
-		List<Integer> even = numbers.stream()
-                .map(s -> Integer.valueOf(s))
-                .filter(number -> number % 2 == 0)
-                .collect(Collectors.toList());
 		
-		return even;
+		/**
+		 * In this example, the returned map contains two keys, Person.Sex.MALE and Person.Sex.FEMALE. 
+		 * The keys' corresponding values are instances of List that contain the stream elements that, when processed by the classification function, correspond to the key value. 
+		 * For example, the value that corresponds to key Person.Sex.MALE is an instance of List that contains all male members.
+		 */
+		
+		Map<String, List<Person>> byGender =
+				people
+			        .stream()
+			        .collect(
+			            Collectors.groupingBy(Person::getGender));
+		
+		return byGender;
+	}
+	
+	/**
+	 * The following example retrieves the names of each member in the collection people and groups them by gender.
+	 */
+	private static Map<String, List<String>> groupPersonNamesByGender(List<Person> people)
+	{
+		
+		/**
+		 * The groupingBy operation in this example takes two parameters, a classification function and an instance of Collector. 
+		 * The Collector parameter is called a downstream collector. 
+		 * This is a collector that the Java runtime applies to the results of another collector. 
+		 * Consequently, this groupingBy operation enables you to apply a collect method to the List values created by the groupingBy operator. 
+		 * This example applies the collector mapping, which applies the mapping function Person::getName to each element of the stream. 
+		 * Consequently, the resulting stream consists of only the names of members. 
+		 * A pipeline that contains one or more downstream collectors, like this example, is called a multilevel reduction.
+		 */
+		Map<String, List<String>> namesByGender =
+				people
+			        .stream()
+			        .collect(
+			            Collectors.groupingBy(
+			            	Person::getGender,
+			            	Collectors.mapping(Person::getName, Collectors.toList())));
+		
+		return namesByGender;
+	}
+	
+	/**
+	 * The following example retrieves the total age of members of each gender.
+	 * @return 
+	 */
+	private static Map<String, Integer> groupTotalAgeByGender(List<Person> people)
+	{
+		/**
+		 * The reducing operation takes three parameters:
+		 * 
+		 * 1. identity: 
+		 *    Like the Stream.reduce operation, the identity element is both the initial value of the reduction and the default result if there are no elements in the stream. 
+		 *    In this example, the identity element is 0; 
+		 *    this is the initial value of the sum of ages and the default value if no members exist.
+		 * 
+		 * 2. mapper: 
+		 *    The reducing operation applies this mapper function to all stream elements. 
+		 *    In this example, the mapper retrieves the age of each member.
+		 * 
+		 * 3. operation: 
+		 *    The operation function is used to reduce the mapped values. 
+		 *    In this example, the operation function adds Integer values.
+		 */
+		
+		Map<String, Integer> totalAgeByGender =
+				people
+			        .stream()
+			        .collect(
+			            Collectors.groupingBy(
+			                Person::getGender,                      
+			                Collectors.reducing(
+			                    0,
+			                    Person::getAge,
+			                    Integer::sum)));
+		
+		return totalAgeByGender;
+	}
+	
+	/**
+	 *  The following example retrieves the average age of members of each gender.
+	 */
+	private static Map<String, Double> getAverageAgeByGender(List<Person> people)
+	{
+		Map<String, Double> averageAgeByGender = people
+			    .stream()
+			    .collect(
+			        Collectors.groupingBy(
+			            Person::getGender,                      
+			            Collectors.averagingInt(Person::getAge)));
+		
+		return averageAgeByGender;
 	}
 	
 	private static class Averager implements IntConsumer
@@ -364,6 +471,13 @@ public class StreamAPI {
 	    public String getGender() {
 	        return gender;
 	    }
+
+		@Override
+		public String toString() {
+			return "Person [name=" + name + ", age=" + age + ", gender=" + gender + "]";
+		}
 	}
+	
+	
 
 }
