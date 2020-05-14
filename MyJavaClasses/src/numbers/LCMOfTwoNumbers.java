@@ -7,6 +7,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import collections.MapUtils;
+
 /**
  * 
  * In arithmetic and number theory, 
@@ -28,13 +30,13 @@ public class LCMOfTwoNumbers {
 		
 		Map<Integer, Integer> primeFactorsMapFor12 = getPrimeFactors(12);
 		System.out.println("prime factors for 12");
-		printMap(primeFactorsMapFor12);
+		MapUtils.printMap(primeFactorsMapFor12);
 		
 		System.out.println();
 		
 		Map<Integer, Integer> primeFactorsMapFor18 = getPrimeFactors(18);
 		System.out.println("prime factors for 18");
-		printMap(primeFactorsMapFor18);
+		MapUtils.printMap(primeFactorsMapFor18);
 		
 		System.out.println();
 		
@@ -197,15 +199,6 @@ public class LCMOfTwoNumbers {
 	    return absProduct.divide(gcd);
 	}
 	
-	private static void printMap(Map<Integer, Integer> mp)
-    {
-        Iterator it = mp.entrySet().iterator();
-        while (it.hasNext())
-        {
-            Map.Entry pair = (Map.Entry) it.next();
-            System.out.println("key - " + pair.getKey() + " = value - " + pair.getValue());
-        }
-    }
 	
 	
 }

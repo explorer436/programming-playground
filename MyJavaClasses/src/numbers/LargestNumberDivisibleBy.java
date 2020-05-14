@@ -1,12 +1,20 @@
 package numbers;
 
 /** 
-find the largest number under 100,000 that's divisible by 3829.
+* Find the largest number under 100,000 that's divisible by 3829.
 */
 public class LargestNumberDivisibleBy {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		for (int i = 99999; i > 0; i--) 
+		{
+			if (i % 3829 == 0)
+			{
+				System.out.println("the answer is " + i);
+				break;
+			}
+		}
 
 	}
 

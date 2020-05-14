@@ -1,13 +1,11 @@
 package numbers;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /*
  * 
- * MissingInteger.java
+ * Print all the odd numbers between a lower limit and an upper limit
  * 
  */
 public class PrintOddNumbersBetweenLAndR
@@ -15,25 +13,11 @@ public class PrintOddNumbersBetweenLAndR
 
 	public static void main(String[] args)
 	{
-		for (int i : solution(2, 5))
-		{
-			System.out.println("i : " + i);
-		}
-
-		/*
-		 * int[] A2 = {3, 2, 3, 1, 3}; System.out.println("result : " + solution(A2,
-		 * 5));
-		 * 
-		 * int[] A3 = {-1, -3}; System.out.println("result : " + solution(A3));
-		 * 
-		 * int[] A4 = {3}; System.out.println("result : " + solution(A4));
-		 * 
-		 * int[] A5 = {2, 2, 2, 2, 2}; System.out.println("result : " + solution(A5));
-		 * 
-		 * int[] A6 = {}; System.out.println("result : " + solution(A6));
-		 * 
-		 * System.out.println("result : " + solution(null, 4));
-		 */
+		System.out.println(Arrays.toString(solution(2, 5)));
+		
+		System.out.println();
+		
+		System.out.println(Arrays.toString(solution(-5, 5)));
 	}
 
 	public static int[] solution(int l, int r)

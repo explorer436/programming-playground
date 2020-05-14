@@ -34,7 +34,7 @@ public class ToCamelCase {
 	}
 	
 	// Convert the initial string into a StringBuffer and manipulate the StringBuffer.
-	static String toCamelCase2(String s){
+	static String toCamelCase(String s){
 		StringBuffer sb = new StringBuffer(s);
 			for (int i = 0; i < sb.length(); i++) {
 				if ((sb.charAt(i)=='_') || (sb.charAt(i)=='-'))
@@ -48,7 +48,7 @@ public class ToCamelCase {
 	
 	// Trying functional programming approach.
 	// Apply a series of functions to get the final result.
-	static String toCamelCase(String s){
+	static String toCamelCase2(String s){
 	    return replaceByDelimiters(replaceByDelimiters(s, "_"), "-");
 	}
 

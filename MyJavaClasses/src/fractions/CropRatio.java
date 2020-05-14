@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import collections.MapUtils;
+
 /*
  * Calculate the ratio of each crop - based on the values being added in the main method.
  */
@@ -27,7 +29,7 @@ public class CropRatio
             crops.put(name, (Integer) currentCropWeight);
         }
 
-        printMap(crops);
+        MapUtils.printMap(crops);
 
         totalWeight = totalWeight + cropWeight;
     }
@@ -52,13 +54,4 @@ public class CropRatio
         System.out.println("Fraction of rice: " + cropRatio.proportion("Rice"));
     }
 
-    public static void printMap(Map mp)
-    {
-        Iterator it = mp.entrySet().iterator();
-        while (it.hasNext())
-        {
-            Map.Entry pair = (Map.Entry) it.next();
-            System.out.println(pair.getKey() + " = " + pair.getValue());
-        }
-    }
 }
