@@ -21,31 +21,51 @@ public static void main(String[] args) {
 		people.add(new Person("7Mary", 35, "female"));
 		people.add(new Person("8Sophie", 45, "female"));
 		
-		System.out.println("average age of men : " + getAverageAgeOfMen_Collect(people));
+		System.out.println("average age of men : " + getAverageAgeOfMen_Collect(people)); // 30.0
 		
 		System.out.println();
 		
-		System.out.println("names of men : " + Arrays.toString(getNamesOfMen_Collect(people).toArray()));
+		System.out.println("names of men using standard collector to list : " + Arrays.toString(getNamesOfMen_Collect_UsingStandardCollector(people).toArray())); // [1John, 2Rob, 3Clark, 4Trevor]
+		
+		System.out.println();
+		
+		System.out.println("names of men using ArrayList and accumulator function : " + Arrays.toString(getNamesOfMen_Collect_UsingArrayList(people).toArray())); // [1John, 2Rob, 3Clark, 4Trevor]
 		
 		System.out.println();
 		
 		System.out.println("printing people grouped by gender : ");
 		MapUtils.printMap(groupPeopleByGender(people));
+		/*
+		 * female = [Person [name=5Jane, age=15, gender=female], Person [name=6Gayle, age=25, gender=female], Person [name=7Mary, age=35, gender=female], Person [name=8Sophie, age=45, gender=female]]
+		 * male = [Person [name=1John, age=15, gender=male], Person [name=2Rob, age=25, gender=male], Person [name=3Clark, age=35, gender=male], Person [name=4Trevor, age=45, gender=male]]
+		 */
 		
 		System.out.println();
 		
 		System.out.println("printing people names by gender : ");
 		MapUtils.printMap(groupPersonNamesByGender(people));
+		/*
+		 * female = [5Jane, 6Gayle, 7Mary, 8Sophie]
+		 * male = [1John, 2Rob, 3Clark, 4Trevor]
+		 */
 		
 		System.out.println();
 		
 		System.out.println("printing total age by gender : ");
 		MapUtils.printMap(groupTotalAgeByGender(people));
+		/*
+		 * female = 120
+		 * male = 120
+		 */
 		
 		System.out.println();
 		
 		System.out.println("printing average age by gender : ");
 		MapUtils.printMap(getAverageAgeByGender(people));
+		/*
+		 * female = 30.0
+		 * male = 30.0
+		 */
 		
 	}
 
@@ -70,8 +90,6 @@ public static void main(String[] args) {
 									.filter(p -> p.getGender().equals("male"))
 									.map(Person::getAge)
 									.collect(Averager::new, Averager::accept, Averager::combine);
-			                   
-		System.out.println("Average age of male members: " + averageCollect.average());
 		
 		/**
 		 * The collect operation in this example takes three arguments:
@@ -127,10 +145,39 @@ public static void main(String[] args) {
 	
 	/**
 	 * The collect operation is best suited for collections. The following example puts the names of the male members in a collection with the collect operation.
-	 * @return 
+	 * 
+	 *   <R> R collect(Supplier<R> supplier,
+               BiConsumer<R, ? super T> accumulator,
+               BiConsumer<R, R> combiner);
 	 * 
 	 */
-	private static List<String> getNamesOfMen_Collect(List<Person> people)
+	private static List<String> getNamesOfMen_Collect_UsingArrayList(List<Person> people)
+	{
+		/**
+		 * Here, 
+		 * our supplier is just the ArrayList constructor, 
+		 * the accumulator adds the stringified element (name) to an ArrayList, 
+		 * and the combiner simply uses addAll to copy the strings from one container into the other.
+		 * 
+		 */
+		List<String> namesOfMaleMembersCollect = people
+			    .stream()
+			    .filter(p -> p.getGender().equals("male"))
+			    .map(p -> p.getName())
+			    .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+		
+		return namesOfMaleMembersCollect;
+	}
+	
+	/**
+	 * The collect operation is best suited for collections. The following example puts the names of the male members in a collection with the collect operation.
+	 * 
+	 *  The three aspects of collect -- supplier, accumulator, and combiner -- are tightly coupled. 
+	 *  We can use the abstraction of a Collector to capture all three aspects. 
+	 *  The above example (getNamesOfMen_Collect_UsingArrayList) for collecting strings into a List can be rewritten using a standard Collector as shown here.
+	 * 
+	 */
+	private static List<String> getNamesOfMen_Collect_UsingStandardCollector(List<Person> people)
 	{
 		/**
 		 * This version of the collect operation takes one parameter of type Collector. 
