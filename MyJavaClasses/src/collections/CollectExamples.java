@@ -20,27 +20,27 @@ public class CollectExamples {
 		List<String> numbers = Arrays.asList("1", "2", "3", "4", "5", "6");
 	    System.out.println("original list: " + numbers);	    
 		System.out.print("Filter for even numbers : ");
-		List<Integer> evenNumbers = returnEvenNumbersFromAList_Collect(numbers);		
+		List<Integer> evenNumbers = mapAndFilterAndCollectToList(numbers);		
 		System.out.println(Arrays.toString(evenNumbers.toArray())); // [2, 4, 6]
 		
 		System.out.println();
 		
 		List<String> givenList = Arrays.asList("a", "bb", "ccc", "dd");
 		
-		System.out.println("givenList converted to List : " + Arrays.toString(collectToList(givenList).toArray())); // [a, bb, ccc, dd]
+		System.out.println("givenList converted to List : " + Arrays.toString(collectToListWithoutMapOrFilter(givenList).toArray())); // [a, bb, ccc, dd]
 		
 		System.out.println();
 		
-		System.out.println("givenList converted to Set : " + Arrays.toString(collectToSet(givenList).toArray())); // [bb, dd, a, ccc]
+		System.out.println("givenList converted to Set : " + Arrays.toString(collectToSetWithoutMapOrFilter(givenList).toArray())); // [bb, dd, a, ccc]
 		
 		System.out.println();
 		
-		System.out.println("givenList converted to LinkedList : " + Arrays.toString(collectToLinkedList(givenList).toArray())); // [a, bb, ccc, dd]
+		System.out.println("givenList converted to LinkedList : " + Arrays.toString(collectToLinkedListWithoutMapOrFilter(givenList).toArray())); // [a, bb, ccc, dd]
 		
 		System.out.println();
 		
-		System.out.println("givenList converted to Map : " + collectToMap(givenList));		// {dd=2, bb=2, a=1, ccc=3}
-		System.out.println("givenList converted to Map - result class : " + collectToMap(givenList).getClass()); // class java.util.HashMap
+		System.out.println("givenList converted to Map : " + collectToMap_HandleKeyCollisions(givenList));		// {dd=2, bb=2, a=1, ccc=3}
+		System.out.println("givenList converted to Map - result class : " + collectToMap_HandleKeyCollisions(givenList).getClass()); // class java.util.HashMap
 		
 		System.out.println();
 		
@@ -130,7 +130,7 @@ public class CollectExamples {
 	/**
 	 * Return only even numbers
 	 */
-	private static List<Integer> returnEvenNumbersFromAList_Collect(List<String> numbers)
+	private static List<Integer> mapAndFilterAndCollectToList(List<String> numbers)
 	{
 		List<Integer> even = numbers.stream()
                 .map(s -> Integer.valueOf(s))
@@ -146,7 +146,7 @@ public class CollectExamples {
 	 * If you want to have more control over this, use toCollection instead.
 	 * 
 	 */
-	private static List collectToList(List<String> givenList)
+	private static List collectToListWithoutMapOrFilter(List<String> givenList)
 	{
 		List<String> result = givenList.stream().collect(Collectors.toList());
 		
@@ -160,7 +160,7 @@ public class CollectExamples {
 	 * If we want to have more control over this, we can use toCollection instead.
 	 * 
 	 */
-	private static Set collectToSet(List<String> givenList)
+	private static Set collectToSetWithoutMapOrFilter(List<String> givenList)
 	{
 		Set<String> result = givenList.stream().collect(Collectors.toSet());
 		
@@ -168,12 +168,14 @@ public class CollectExamples {
 		
 	}
 	
+	// TODO write an ArrayList implementation here.
+	
 	/**
 	 * As you probably already noticed, when using toSet and toList collectors, you can't make any assumptions of their implementations. 
 	 * If you want to use a custom implementation, you will need to use the toCollection collector with a provided collection of your choice.
 	 * 
 	 */
-	private static List<String> collectToLinkedList(List<String> givenList)
+	private static List<String> collectToLinkedListWithoutMapOrFilter(List<String> givenList)
 	{
 		List<String> result = givenList.stream()
 				  .collect(Collectors.toCollection(LinkedList::new));
@@ -200,7 +202,7 @@ public class CollectExamples {
 	 * By default, a toMap() method will return a HashMap.
 	 * 
 	 */
-	private static Map<String, Integer> collectToMap(List<String> givenList)
+	private static Map<String, Integer> collectToMap_HandleKeyCollisions(List<String> givenList)
 	{
 		/* Map<String, Integer> result = givenList.stream()
 				  .collect(Collectors.toMap(Function.identity(), String::length));*/
@@ -214,6 +216,8 @@ public class CollectExamples {
 		 */
 		Map<String, Integer> result = givenList.stream()
 				  .collect(Collectors.toMap(Function.identity(), String::length, (item, identicalItem) -> item));
+		
+		// TODO write a custom implementation for this instead of using just picking the first element that matches the criteria.
 		
 		return result;
 		
