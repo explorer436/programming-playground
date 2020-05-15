@@ -17,6 +17,8 @@ public class ArraysAndListsComparator
 
 	public static void main(String[] args)
 	{
+		System.out.println(" --- comparators and sorting on arrays --- ");
+		
 		Fruit pineappale = new Fruit("Pineapple", "Pineapple description", 60, 4);
 		Fruit apple = new Fruit("Apple", "Apple description", 100, 1);
 		Fruit orange = new Fruit("Orange", "Orange description", 70, 2);
@@ -32,14 +34,6 @@ public class ArraysAndListsComparator
 		fruitsArray[4] = cranberry;
 		fruitsArray[5] = blueberry;
 
-		List<Fruit> fruitsList = new ArrayList<Fruit>();
-		fruitsList.add(pineappale);
-		fruitsList.add(apple);
-		fruitsList.add(orange);
-		fruitsList.add(banana);
-		fruitsList.add(cranberry);
-		fruitsList.add(blueberry);
-
 		System.out.println("call sort");
 		// Why is this sorting by quantity?
 		// Instead of using any other parameter?
@@ -50,12 +44,23 @@ public class ArraysAndListsComparator
 			printFruit(f);
 		}
 
+		// If you don't want to use the default comparison method provided in the class's compareTo(), write a custom comparator.
 		System.out.println("using the name of the comparator");
 		Arrays.sort(fruitsArray, Fruit.FruitNameComparator);
 		for (Fruit f : fruitsArray)
 		{
 			printFruit(f);
 		}
+		
+		System.out.println(" --- comparators and sorting on lists --- ");
+		
+		List<Fruit> fruitsList = new ArrayList<Fruit>();
+		fruitsList.add(pineappale);
+		fruitsList.add(apple);
+		fruitsList.add(orange);
+		fruitsList.add(banana);
+		fruitsList.add(cranberry);
+		fruitsList.add(blueberry);
 
 		System.out.println("sorting the list");
 		Collections.sort(fruitsList);
@@ -82,7 +87,7 @@ public class ArraysAndListsComparator
 		}
 
 		System.out.println("sorting the list by rating using comparator");
-		Collections.sort(fruitsList, new RatingCompare());
+		Collections.sort(fruitsList, Fruit.RatingComparator);
 		for (Fruit f : fruitsList)
 		{
 			printFruit(f);
@@ -211,7 +216,7 @@ public class ArraysAndListsComparator
 	}
 
 	// Class to compare Fruits by ratiing
-	static class RatingCompare implements Comparator<Fruit>
+	/* static class RatingCompare implements Comparator<Fruit>
 	{
 		public int compare(Fruit f1, Fruit f2)
 		{
@@ -222,7 +227,7 @@ public class ArraysAndListsComparator
 			else
 				return 0;
 		}
-	}
+	}*/
 
 	// Class to compare Fruits by name
 	static class NameCompare implements Comparator<Fruit>
@@ -241,6 +246,8 @@ public class ArraysAndListsComparator
 	}
 
 	// Class to compare Fruits by rating
+	// This comparator doesn't have to be in the client class.
+	// This method can be written in the class Fruit.
 	static class QuantityCompare implements Comparator<Fruit>
 	{
 		public int compare(Fruit f1, Fruit f2)
@@ -254,6 +261,9 @@ public class ArraysAndListsComparator
 		}
 	}
 	
+	// Class to compare Fruits by rating and name simultaneously.
+	// This comparator doesn't have to be in the client class.
+	// This method can be written in the class Fruit.
 	static class RatingAndNameCompare implements Comparator<Fruit>
 	{		
 		public int compare(Fruit f1, Fruit f2)
