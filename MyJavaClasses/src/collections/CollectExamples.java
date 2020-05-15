@@ -20,77 +20,77 @@ public class CollectExamples {
 		List<String> numbers = Arrays.asList("1", "2", "3", "4", "5", "6");
 	    System.out.println("original list: " + numbers);	    
 		System.out.print("Filter for even numbers : ");
-		List<Integer> result = returnEvenNumbersFromAList_Collect(numbers);		
-		System.out.println(Arrays.toString(result.toArray()));
+		List<Integer> evenNumbers = returnEvenNumbersFromAList_Collect(numbers);		
+		System.out.println(Arrays.toString(evenNumbers.toArray())); // [2, 4, 6]
 		
 		System.out.println();
 		
 		List<String> givenList = Arrays.asList("a", "bb", "ccc", "dd");
 		
-		System.out.println("givenList converted to List : " + Arrays.toString(collectToList(givenList).toArray()));
+		System.out.println("givenList converted to List : " + Arrays.toString(collectToList(givenList).toArray())); // [a, bb, ccc, dd]
 		
 		System.out.println();
 		
-		System.out.println("givenList converted to Set : " + Arrays.toString(collectToSet(givenList).toArray()));
+		System.out.println("givenList converted to Set : " + Arrays.toString(collectToSet(givenList).toArray())); // [bb, dd, a, ccc]
 		
 		System.out.println();
 		
-		System.out.println("givenList converted to LinkedList : " + Arrays.toString(collectToLinkedList(givenList).toArray()));
+		System.out.println("givenList converted to LinkedList : " + Arrays.toString(collectToLinkedList(givenList).toArray())); // [a, bb, ccc, dd]
 		
 		System.out.println();
 		
-		System.out.println("givenList converted to Map : " + collectToMap(givenList));		
-		System.out.println("givenList converted to Map - result class : " + collectToMap(givenList).getClass());
+		System.out.println("givenList converted to Map : " + collectToMap(givenList));		// {dd=2, bb=2, a=1, ccc=3}
+		System.out.println("givenList converted to Map - result class : " + collectToMap(givenList).getClass()); // class java.util.HashMap
 		
 		System.out.println();
 		
-		System.out.println("givenList converted to ConcurrentHashMap : " + collectToMap_ConcurrentHashMap(givenList));		
-		System.out.println("givenList converted to ConcurrentHashMap - result class : " + collectToMap_ConcurrentHashMap(givenList).getClass());
+		System.out.println("givenList converted to ConcurrentHashMap : " + collectToMap_ConcurrentHashMap(givenList));		// {bb=2, dd=2, a=1, ccc=3}
+		System.out.println("givenList converted to ConcurrentHashMap - result class : " + collectToMap_ConcurrentHashMap(givenList).getClass()); // class java.util.concurrent.ConcurrentHashMap
 		
 		System.out.println();
 		
-		System.out.println("givenList converted to SortedMap : " + collectToMap_sortedMap(givenList));		
-		System.out.println("givenList converted to SortedMap - result class : " + collectToMap_sortedMap(givenList).getClass());
+		System.out.println("givenList converted to SortedMap : " + collectToMap_sortedMap(givenList));		// {a=1, bb=2, ccc=3, dd=2}
+		System.out.println("givenList converted to SortedMap - result class : " + collectToMap_sortedMap(givenList).getClass()); // class java.util.TreeMap
 		
 		System.out.println();
 		
-		System.out.println("result of joining : " + collectAndJoin(givenList));
+		System.out.println("result of joining : " + collectAndJoin(givenList)); // abbcccdd
 		
 		System.out.println();
 		
-		System.out.println("result of joining with custom separators : " + collectAndJoinUsingCustomSeparators(givenList));
+		System.out.println("result of joining with custom separators : " + collectAndJoinUsingCustomSeparators(givenList)); // a bb ccc dd
 		
 		System.out.println();
 		
-		System.out.println("result of joining with pre and post : " + collectAndJoinWithPreAndPost(givenList));
+		System.out.println("result of joining with pre and post : " + collectAndJoinWithPreAndPost(givenList)); // PRE-a bb ccc dd-POST
 		
 		System.out.println();
 		
-		System.out.println("result of collect and count : " + collectAndCount(givenList));
+		System.out.println("result of collect and count : " + collectAndCount(givenList)); // 4
 		
 		System.out.println();
 		
 		DoubleSummaryStatistics summaryStatistics = collectAndSummarize(givenList);
-		System.out.println("result of collect and summarize - average : " + summaryStatistics.getAverage());
-		System.out.println("result of collect and summarize - count : " + summaryStatistics.getCount());
-		System.out.println("result of collect and summarize - max : " + summaryStatistics.getMax());
-		System.out.println("result of collect and summarize - min : " + summaryStatistics.getMin());
-		System.out.println("result of collect and summarize - sum : " + summaryStatistics.getSum());
+		System.out.println("result of collect and summarize - average : " + summaryStatistics.getAverage()); // 2.0
+		System.out.println("result of collect and summarize - count : " + summaryStatistics.getCount()); // 4
+		System.out.println("result of collect and summarize - max : " + summaryStatistics.getMax()); // 3.0
+		System.out.println("result of collect and summarize - min : " + summaryStatistics.getMin()); // 1.0 
+		System.out.println("result of collect and summarize - sum : " + summaryStatistics.getSum()); // 8.0
 		
 		System.out.println();
 		
-		System.out.println("result of collect and average double : " + collectAndAveragingDouble(givenList));
+		System.out.println("result of collect and average double : " + collectAndAveragingDouble(givenList)); // 2.0
 		
 		System.out.println();
 		
-		System.out.println("result of collect and summing double : " + collectAndSummingDouble(givenList));
+		System.out.println("result of collect and summing double : " + collectAndSummingDouble(givenList)); // 8.0
 		
 		System.out.println();
 		
 		Optional<String> maxBy = collectAndMaxBy(givenList);
 		if (maxBy.isPresent())
 		{
-			System.out.println("result of collect and max by : " + maxBy.toString());
+			System.out.println("result of collect and max by : " + maxBy.toString()); // Optional[dd]
 		}
 		
 		System.out.println();
@@ -98,7 +98,7 @@ public class CollectExamples {
 		Optional<String> minBy = collectAndMinBy(givenList);
 		if (minBy.isPresent())
 		{
-			System.out.println("result of collect and max by : " + minBy.toString());
+			System.out.println("result of collect and max by : " + minBy.toString()); // Optional[a]
 		}
 		
 		System.out.println();
@@ -106,11 +106,22 @@ public class CollectExamples {
 		Map<Integer, Set<String>> stringLengthsGroupedByLength = storeStringLengthGroupingResulsInASet(givenList);
 		MapUtils.printMap(stringLengthsGroupedByLength);
 		
+		/*
+		 * 1 = [a]
+		 * 2 = [bb, dd]
+		 * 3 = [ccc]
+		 */
+		
 		System.out.println();
 		
 		Map<Boolean, List<String>> partitionByStringLength = partitionByStringLength(givenList);
 		System.out.println("partitionByStringLength : ");
 		MapUtils.printMap(partitionByStringLength);
+		
+		/*
+		 * false = [a, bb, dd]
+		 * true = [ccc]
+		 */
 		
 		
 		
