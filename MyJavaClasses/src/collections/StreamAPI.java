@@ -85,8 +85,9 @@ public class StreamAPI {
 	 * 
 	 * The filter operation returns a new stream that contains elements that match its predicate (this operation's parameter).
 	 * 
-	 * The terminal operaion is supposed to produce a non-stream result, 
+	 * The terminal operation is supposed to produce a non-stream result, 
 	 * such as a primitive value (like a double value), a collection, or in the case of forEach, no value at all.
+	 * 
 	 * In this example, the parameter of the forEach operation is the lambda expression e -> System.out.println(e.getName()), 
 	 * which invokes the method getName on the object e. 
 	 * (The Java runtime and compiler infer that the type of the object e is Person.)
@@ -105,7 +106,7 @@ public class StreamAPI {
 	 */
 	private static double getAverageAgeOfMen_TerminalOperator(List<Person> people)
 	{
-		/*
+		/**
 		The mapToInt operation returns a new stream of type IntStream (which is a stream that contains only integer values). 
 		The operation applies the function specified in its parameter to each element in a particular stream. 
 		In this example, the function is Person::getAge, which is a method reference that returns the age of the member. 
@@ -113,7 +114,7 @@ public class StreamAPI {
 		The mapToInt operation in this example returns a stream that contains the ages of all male members in the collection people.
 		*/
 		
-		/*
+		/**
 		The average operation calculates the average value of the elements contained in a stream of type IntStream. 
 		It returns an object of type OptionalDouble. 
 		If the stream contains no elements, then the average operation returns an empty instance of OptionalDouble, 
@@ -122,9 +123,12 @@ public class StreamAPI {
 		These operations are called reduction operations; see the section Reduction for more information.
 		*/
 		
-		/*
+		/**
 		The JDK contains many terminal operations (such as average, sum, min, max, and count) that return one value by combining the contents of a stream. 
 		These operations are called reduction operations. 
+		Sum, min, max, and average are all special cases of reduction.
+		It is not necessary to remember these special cases and implement our own implemetations using reduce function. However, these are handy for simple operations.
+		
 		The JDK also contains reduction operations that return a collection instead of a single value. 
 		Many reduction operations perform a specific task, such as finding the average of values or grouping elements into categories. 
 		However, the JDK provides you with the general-purpose reduction operations reduce and collect - which we can use to write custom code.
