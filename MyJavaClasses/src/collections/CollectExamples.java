@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -37,7 +39,18 @@ public class CollectExamples {
 		
 		System.out.println();
 		
-		System.out.println("givenList converted to Map : " + collectToMap(givenList));
+		System.out.println("givenList converted to Map : " + collectToMap(givenList));		
+		System.out.println("givenList converted to Map - result class : " + collectToMap(givenList).getClass());
+		
+		System.out.println();
+		
+		System.out.println("givenList converted to ConcurrentHashMap : " + collectToMap_ConcurrentHashMap(givenList));		
+		System.out.println("givenList converted to ConcurrentHashMap - result class : " + collectToMap_ConcurrentHashMap(givenList).getClass());
+		
+		System.out.println();
+		
+		System.out.println("givenList converted to SortedMap : " + collectToMap_sortedMap(givenList));		
+		System.out.println("givenList converted to SortedMap - result class : " + collectToMap_sortedMap(givenList).getClass());
 		
 		System.out.println();
 		
@@ -173,6 +186,8 @@ public class CollectExamples {
 	 * What happens if our collection contains duplicate elements?
 	 * If it sees duplicate keys, it immediately throws an IllegalStateException.
 	 * 
+	 * By default, a toMap() method will return a HashMap.
+	 * 
 	 */
 	private static Map<String, Integer> collectToMap(List<String> givenList)
 	{
@@ -188,6 +203,43 @@ public class CollectExamples {
 		 */
 		Map<String, Integer> result = givenList.stream()
 				  .collect(Collectors.toMap(Function.identity(), String::length, (item, identicalItem) -> item));
+		
+		return result;
+		
+	}
+	
+	/**
+	 * Collector<T, ?, M> toMap(Function<? super T, ? extends K> keyMapper,
+	 * Function<? super T, ? extends U> valueMapper,
+	 * BinaryOperator<U> mergeFunction,
+	 * Supplier<M> mapSupplier)
+	 * 
+	 */
+	private static Map<String, Integer> collectToMap_ConcurrentHashMap(List<String> givenList)
+	{
+		/**
+		 * The fourth parameter, the mapSupplier is a function that returns a new, empty Map with the results.
+		 */
+		
+		Map<String, Integer> result = givenList.stream()
+				  .collect(Collectors.toMap(
+						  Function.identity(), String::length, (item, identicalItem) -> item, ConcurrentHashMap::new));
+		
+		return result;
+		
+	}
+	
+	private static Map<String, Integer> collectToMap_sortedMap(List<String> givenList)
+	{
+		/**
+		 * Using a sorted map.
+		 * 
+		 * In this instance, TreeMap.
+		 */
+		
+		Map<String, Integer> result = givenList.stream()
+				  .collect(Collectors.toMap(
+						  Function.identity(), String::length, (item, identicalItem) -> item, TreeMap::new));
 		
 		return result;
 		
@@ -320,8 +372,8 @@ public class CollectExamples {
 	/**
 	 * PartitioningBy is a specialized case of groupingBy that accepts a Predicate instance and 
 	 * collects Stream elements into a Map instance that stores Boolean values as keys and collections as values. 
-	 * Under the “true” key, you can find a collection of elements matching the given Predicate, 
-	 * and under the “false” key, you can find a collection of elements not matching the given Predicate.
+	 * Under the "true" key, you can find a collection of elements matching the given Predicate, 
+	 * and under the "false" key, you can find a collection of elements not matching the given Predicate.
 	 * @return 
 	 * 
 	 */
