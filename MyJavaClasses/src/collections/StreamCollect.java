@@ -86,8 +86,8 @@ public static void main(String[] args) {
 		 *    The accumulator function incorporates a stream element into a result container. 
 		 *    In this example, it modifies the Averager result container by incrementing the count variable by one and 
 		 *    adding to the total member variable the value of the stream element, which is an integer representing the age of a male member.
-		 *    Accumulating the elements - We need to create a function that defines how we’ll add an element to the result container.
-		 *    It doesn’t return anything. It just updates the result container (in this case, Averager) in a mutable way.
+		 *    Accumulating the elements - We need to create a function that defines how weâ€™ll add an element to the result container.
+		 *    It doesnâ€™t return anything. It just updates the result container (in this case, Averager) in a mutable way.
 		 * 
 		 * 3. combiner: 
 		 *    The combiner function takes two result containers and merges their contents. 
@@ -269,8 +269,8 @@ public static void main(String[] args) {
 	        
 	    public void accept(int i) 
 	    { 
-	    	total += i; 
-	    	count++; 
+	    	total = total + i; 
+	    	count = count + 1; 
 	    }
 	    
 	    public void combine(Averager other) 
