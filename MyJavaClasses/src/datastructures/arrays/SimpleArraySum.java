@@ -49,6 +49,8 @@ public class SimpleArraySum {
 		System.out.println("result for input " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " is " + simpleArraySum(new int[] { 1, 5, 2, 1, 4, 0 }));
 
 	}
+
+	// TODO write this using Stream API
 	
 	static int simpleArraySum(int[] ar) {
         int result = 0;
@@ -56,7 +58,9 @@ public class SimpleArraySum {
         if (ar.length > 0)
         {
         	for (int i : ar)
-            result = result + i;	
+        	{
+        		result = result + i;
+        	}
         }
         
         return result;

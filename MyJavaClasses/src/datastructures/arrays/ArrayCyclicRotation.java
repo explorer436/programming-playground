@@ -1,6 +1,10 @@
 package datastructures.arrays;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /*
 * 
@@ -72,10 +76,17 @@ public class ArrayCyclicRotation
 		
 		System.out.println("result for input " + Arrays.toString(new int[] { }) + " and K = -2 is " + Arrays.toString(classUnderTest.solution(new int[] { }, -2)));
 		System.out.println();
+		
+		System.out.println("--------");
+		
+		System.out.println("result for skipping " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " and K = 2 is "); classUnderTest.skipFirstKElementsOfArray(new int[] { 1, 5, 2, 1, 4, 0 }, 2);
+
 	}
 
 	/*
-	 * This can be written more elegantly using System.arraycopy( result, 0, A, 0, A.length ) or Arrays.copyOfRange()
+	 * This can also be written using System.arraycopy( result, 0, A, 0, A.length ) or Arrays.copyOfRange().
+	 * But the disadvantage of that approach is that it creates an extra array - not good when space complexity is considered. 
+	 * 
 	 * TODO implement it using the two methods mentioned above.
 	 */
 	public int[] solution(int[] A, int K)
@@ -107,6 +118,38 @@ public class ArrayCyclicRotation
 		}
 
 		return result;
+	}
+	
+	/**
+	 * Use collection streams (skip method) to get a specific part of the array.
+	 */
+	private void skipFirstKElementsOfArray(int[] A, int K)
+	{
+		if (0 == A.length || K == A.length)
+		{
+			System.out.println(Arrays.toString(A));
+		}
+
+		if (K > A.length)
+		{
+			K = K % A.length;
+		}
+		
+		List<int[]> a = Arrays.asList(A);
+		
+		/**
+		 * skip
+		 * Stream<T> skip(long n)
+		 * Returns a stream consisting of the remaining elements of this stream after discarding the first n elements of the stream. 
+		 * If this stream contains fewer than n elements then an empty stream will be returned.
+		 */
+		List<Integer> result = Arrays.stream(A)
+				.boxed()
+				.skip(K)
+				  .collect(Collectors.toList());
+		
+		System.out.println("initial array : " + Arrays.toString(A));
+		System.out.println("result after skipping " + K + " elements : " + Arrays.toString(result.toArray()));
 	}
 
 }

@@ -6,6 +6,14 @@ package strings;
  */
 public class Permutations {
 	
+	/**
+	 * The second method is preferred because 
+	 *  solution that converts to a char array and swaps to generate the permutations will require much less copying and generate much less garbage.
+	 *  
+	 *  TODO
+	 *  Does this solution take repeated characters into account?
+	 */
+	
 	public static void main(String[] args) 
 	{
         int n = 3;
@@ -13,7 +21,7 @@ public class Permutations {
         String elements = alphabet.substring(0, n);
         perm1(elements);
         System.out.println();
-        // perm2(elements);
+        perm2(elements);
     }
 
     // print n! permutation of the characters of the string s (in order)
@@ -23,8 +31,6 @@ public class Permutations {
     
     private static void perm1(String prefix, String s) 
     {
-    	System.out.println(">>> perm1 - prefix : " + prefix + " - s : " + s);
-    	
         int n = s.length();
         if (n == 0) 
         {
@@ -34,12 +40,9 @@ public class Permutations {
         {
             for (int i = 0; i < n; i++)
             {
-            	System.out.println("in the for loop s.charAt(i) : " + s.charAt(i));
             	perm1(prefix + s.charAt(i), s.substring(0, i) + s.substring(i+1, n));
             } 
         }
-        
-        System.out.println();
     }
 
     // print n! permutation of the elements of array a (not in order)

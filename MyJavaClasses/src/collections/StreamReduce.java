@@ -1,6 +1,7 @@
 package collections;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class StreamReduce {
@@ -74,4 +75,137 @@ public static void main(String[] args) {
 		
 		return totalAgeCalculatedUsingReduce;
 	}
+	
+	/**
+	 * Note : Look at GCDOfNumbersInAnArray.getGcd()
+	 * Note : Look at LCMOfNumbersInAnArray.getLcm()
+	 */
+	
+	/**
+	 * Question about Java 8 Streams - collect vs reduce
+	 * 
+	 * When would you use collect() vs reduce()? Does anyone have good, concrete examples of when it's definitely better to go one way or the other?
+	 * Javadoc mentions that collect() is a mutable reduction.
+	 * Given that it's a mutable reduction, I assume it requires synchronization (internally) which, in turn, can be detrimental to performance. 
+	 * Presumably reduce() is more readily parallelizable at the cost of having to create a new data structure for return after every step in the reduce.
+	 * The above statements are guesswork however and I'd love an expert to chime in here.
+	 * 
+	 * Answer : 
+	 * "reduce" is a "fold" operation, it applies a binary operator to each element in the stream where 
+	 * the first argument to the operator is the return value of the previous application and 
+	 * the second argument is the current stream element.
+	 * 
+	 * "collect" is an aggregation operation where a "collection" is created and 
+	 * each element is "added" to that collection. 
+	 * Collections in different parts of the stream are then added together.
+	 * 
+	 * The document you linked (https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#Reduction) gives the reason for having two different approaches:
+	 * 
+	 * If we wanted to take a stream of strings and concatenate them into a single long string, we could achieve this with ordinary reduction:
+	 * 
+	 * String concatenated = strings.reduce("", String::concat)  
+	 * We would get the desired result, and it would even work in parallel. 
+	 * However, we might not be happy about the performance! 
+	 * Such an implementation would do a great deal of string copying, and the run time would be O(n^2) in the number of characters. 
+	 * A more performant approach would be to accumulate the results into a StringBuilder, 
+	 * which is a mutable container for accumulating strings. 
+	 * We can use the same technique to parallelize mutable reduction as we do with ordinary reduction.
+	 * 
+	 * 
+	 * So the point is that the parallelisation is the same in both cases but in the reduce case we apply the function to the stream elements themselves. 
+	 * In the collect case we apply the function to a mutable container.
+	 * 
+	 * 
+	 * Another answer :
+	 * The reason is simply that:
+	 * collect() can only work with mutable result objects.
+	 * reduce() is designed to work with immutable result objects.
+	 * 
+	 * 
+	 * Another explanation :
+	 * Let the stream be a <- b <- c <- d
+	 * In reduction, you will have ((a # b) # c) # d
+	 * where # is that interesting operation that you would like to do.
+	 * 
+	 * In collection, your collector will have some kind of collecting structure K.
+	 * K consumes a. K then consumes b. K then consumes c. K then consumes d.
+	 * At the end, you ask K what the final result is.
+	 * K then gives it to you.
+	 * 
+	 */
+	
+	/**
+	 * Another example showing the difference between reduce and collect.
+	 */
+	
+	/*private static void getSalariesSumUsingReduce()
+	{
+		List<EmployeeForReduce> list = new LinkedList<>();
+		  list.add(new EmployeeForReduce("1"));
+		  list.add(new EmployeeForReduce("2"));
+		  list.add(new EmployeeForReduce("3"));
+
+		  Integer sum = list
+		  .stream()
+		  .map(EmployeeForReduce::getSalary)
+		  .reduce(0, (Integer a, Integer b) -> Integer.sum(a, b));
+
+		  // This would give 6 as the result.
+		  // assertEquals(Integer.valueOf(6), sum);
+	}*/
+	
+	/**
+	 * This works because the accumulator container.add(employee.getSalary().intValue()); 
+	 * is not supposed to return a new object with the result but to change the state of the mutable container of type MutableInt.
+	 * 
+	 * If you would like to use BigDecimal instead for the container you could not use the collect() method 
+	 * as container.add(employee.getSalary()); 
+	 * would not change the container because BigDecimal it is immutable. 
+	 * (Apart from this BigDecimal::new would not work as BigDecimal has no empty constructor)
+	 */
+	/*private static void getSalariesUsingCollect()
+	{
+		List<Employee> list = new LinkedList<>();
+		  list.add(new Employee("1"));
+		  list.add(new Employee("2"));
+
+		  MutableInt sum = list.stream().collect(
+		    MutableInt::new, 
+		    (MutableInt container, Employee employee) -> 
+		      	container.add(employee.getSalary().intValue()), 
+		    MutableInt::add);
+		  assertEquals(new MutableInt(3), sum);
+	}*/
+	
+	/*private static class EmployeeForReduce {
+		
+		public EmployeeForReduce(Integer salary) {
+			super();
+			this.salary = salary;
+		}
+
+		private Integer salary;
+		  
+		public EmployeeForReduce(String aSalary){
+			this.salary = new Integer(aSalary);
+		}
+		  
+		public Integer getSalary(){
+		    return this.salary;
+		}
+	}*/
+	
+	/*public class Employee {
+		
+		  private MutableInt salary;
+		  
+		  public Employee(String aSalary){
+		    this.salary = new MutableInt(aSalary);
+		  }
+		  
+		  public MutableInt getSalary(){
+		    return this.salary;
+		  }
+		}*/
+
 }

@@ -22,18 +22,23 @@ public class SmallestIndexInAnArrayThatHasAllTheElements
 	public int coveringPrefixIndex(final int[] A)
 	{
 		Map<Integer, Integer> indexesMap = new HashMap<Integer, Integer>();
+		
 		// start from the back
 		for (int i = A.length - 1; i >= 0; i--)
 		{
 			indexesMap.put(A[i], i);
 		}
+		
 		// now find the highest value in the map
 		int highestIndex = 0;
 		for (Integer i : indexesMap.values())
 		{
 			if (highestIndex < i.intValue())
+			{
 				highestIndex = i.intValue();
+			}	
 		}
+		
 		return highestIndex;
 	}
 }

@@ -83,14 +83,6 @@ public static void main(String[] args) {
 	 */
 	private static double getAverageAgeOfMen_Collect(List<Person> people)
 	{
-		// The following pipeline uses the Averager class and the collect method to calculate the average age of all male members:
-
-		Averager averageCollect = people
-									.stream()
-									.filter(p -> p.getGender().equals("male"))
-									.map(Person::getAge)
-									.collect(Averager::new, Averager::accept, Averager::combine);
-		
 		/**
 		 * The collect operation in this example takes three arguments:
 		 * 
@@ -139,6 +131,14 @@ public static void main(String[] args) {
 		 * Although the JDK provides you with the average operation to calculate the average value of elements in a stream, 
 		 * you can use the collect operation and a custom class if you need to calculate several values from the elements of a stream.
 		 */
+		
+		// The following pipeline uses the Averager class and the collect method to calculate the average age of all male members:
+
+				Averager averageCollect = people
+											.stream()
+											.filter(p -> p.getGender().equals("male"))
+											.map(Person::getAge)
+											.collect(Averager::new, Averager::accept, Averager::combine);
 			
 		return averageCollect.average();
 	}
