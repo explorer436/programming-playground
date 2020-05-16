@@ -1,5 +1,6 @@
 package collections;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.DoubleSummaryStatistics;
@@ -36,6 +37,10 @@ public class CollectExamples {
 		System.out.println();
 		
 		System.out.println("givenList converted to LinkedList : " + Arrays.toString(collectToLinkedListWithoutMapOrFilter(givenList).toArray())); // [a, bb, ccc, dd]
+		
+		System.out.println();
+		
+		System.out.println("givenList converted to ArrayList : " + Arrays.toString(collectToArrayListWithoutMapOrFilter(givenList).toArray())); // [a, bb, ccc, dd]
 		
 		System.out.println();
 		
@@ -168,7 +173,19 @@ public class CollectExamples {
 		
 	}
 	
-	// TODO write an ArrayList implementation here.
+	/**
+	 * As you probably already noticed, when using toSet and toList collectors, you can't make any assumptions of their implementations. 
+	 * If you want to use a custom implementation, you will need to use the toCollection collector with a provided collection of your choice.
+	 * 
+	 */
+	private static List<String> collectToArrayListWithoutMapOrFilter(List<String> givenList)
+	{
+		List<String> result = givenList.stream()
+				  .collect(Collectors.toCollection(ArrayList::new));
+		
+		return result;
+		
+	}
 	
 	/**
 	 * As you probably already noticed, when using toSet and toList collectors, you can't make any assumptions of their implementations. 
