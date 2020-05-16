@@ -1,6 +1,7 @@
 package numbers;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class GCDOfNumbersInAnArray {
 
@@ -12,6 +13,16 @@ public class GCDOfNumbersInAnArray {
 		
 		System.out.println("GCD of all elements of the array " + Arrays.toString(nums) + " calculated using stream reduce is " + getGcd(nums));
 		
+	}
+	
+	public static int getGcd(List<Integer> inputList)
+	{
+		Integer gcdOfAllElementsOfAnArrayCalculatedUsingStreamReduce = inputList.stream()
+				   .reduce(
+				       0,
+				       (a, b) -> GCDOfTwoNumbersUsingEuclideanAlgorithm.gcd(a, b));
+		
+		return gcdOfAllElementsOfAnArrayCalculatedUsingStreamReduce;
 	}
 	
 	public static int getGcd(int[] A)

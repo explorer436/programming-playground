@@ -1,8 +1,6 @@
 package datastructures.arrays;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -138,6 +136,12 @@ public class ArrayCyclicRotation
 		List<int[]> a = Arrays.asList(A);
 		
 		/**
+		 * boxed
+		 * Stream<Integer> boxed()
+		 * Returns a Stream consisting of the elements of this stream, each boxed to an Integer.
+		 * This is an intermediate operation.
+		 * 
+		 * 
 		 * skip
 		 * Stream<T> skip(long n)
 		 * Returns a stream consisting of the remaining elements of this stream after discarding the first n elements of the stream. 
