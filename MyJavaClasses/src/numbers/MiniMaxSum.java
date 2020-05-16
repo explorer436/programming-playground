@@ -125,7 +125,7 @@ public class MiniMaxSum {
 
     }
 	
-	// LESSONSLEARNED
+	// REMEMBER
 	// Started out solving for this using integers. That blew up as the ranges of the numbers in the test cases kept growing bigger.
 	// When doing operations with BigInteger, do not try to convert the result back into int using BigInteger.intValue(). 
 	// Not sure what that is doing but it was giving negative values for large BigDecimal values.

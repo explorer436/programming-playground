@@ -60,7 +60,7 @@ public class TwoSumInputArrayIsSorted {
 	}
 	
 	/**
-	 * Lesson learned : always consider "0" when writing edge cases with addition, subtraction, multiplication and division.
+	 * REMEMBER - always consider "0" when writing edge cases with addition, subtraction, multiplication and division.
 	 */
 	
 	/**

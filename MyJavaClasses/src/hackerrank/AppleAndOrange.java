@@ -14,7 +14,7 @@ public class AppleAndOrange {
 		countApplesAndOranges(-4, -3, -5, -2, apples2, oranges2);	
 	}
 	
-	// Lessons learned :
+	// REMEMBER : :
 	// The test data they provide might be simple and stupid and it may not test all the edge cases.
 	// In this scenario, the coordinates being negative is an edge case.
 	// Build additional test cases yourself and make sure you test for them.

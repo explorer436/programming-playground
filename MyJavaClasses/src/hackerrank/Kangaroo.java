@@ -14,7 +14,7 @@ public class Kangaroo {
 		System.out.println(kangaroo(0, 2, 0, 2));
 	}
 	
-	// Lessons learned:
+	// REMEMBER :
 	// Do not forget about errors when dividing by zero.
 	
 	// For a successful scenario,
