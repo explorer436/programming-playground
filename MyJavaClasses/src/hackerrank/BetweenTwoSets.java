@@ -6,6 +6,14 @@ import java.util.List;
 import numbers.GCDOfNumbersInAnArray;
 import numbers.LCMOfNumbersInAnArray;
 
+/**
+ * This is an interesting problem that introduces us to 
+ * many concepts like LCM, GCD,
+ * calculating LCM of two numbers, calculating LCM of an array or numbers,
+ * calculating GCD of two numbers, calculating GCD of an array or numbers, 
+ * (using Stream API in java).
+ *
+ */
 public class BetweenTwoSets {
 
 	public static void main(String[] args) {
