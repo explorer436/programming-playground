@@ -12,6 +12,8 @@ public class GCDOfTwoNumbersUsingEuclideanAlgorithm {
 
 	public static void main(String[] args) {
 		System.out.println("GCD of 12 and 18 is : " + gcd(12, 18));
+
+		System.out.println("GCD of 12 and 0 is : " + gcd(12, 0));
 		
 		System.out.println("GCD of 8 and 12 is : " + gcd(8, 12));
 		
@@ -19,7 +21,13 @@ public class GCDOfTwoNumbersUsingEuclideanAlgorithm {
 	}
 	
 	/**
-	 * Recursive implementation of the Euclidean algorithm:
+	 * Euclidean algorithm:
+	 * 
+	 * This uses a recursive implementation based on the fact that the gcd of two numbers also divides their difference.
+	 * 
+	 * Algorithm : 
+	 * gcd(a,0) = a
+	 * gcd ( a , b ) = gcd ( b , a mod b ) 
 	 */
 	public static int gcd(int number1, int number2) {
 	    if (number1 == 0 || number2 == 0) {
