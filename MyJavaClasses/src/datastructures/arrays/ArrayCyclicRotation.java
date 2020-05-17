@@ -78,7 +78,13 @@ public class ArrayCyclicRotation
 		System.out.println("--------");
 		
 		System.out.println("result for skipping " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " and K = 2 is "); classUnderTest.skipFirstKElementsOfArray(new int[] { 1, 5, 2, 1, 4, 0 }, 2);
-
+		
+		System.out.println("--------");
+		
+		System.out.println("result for input " + Arrays.toString(new int[] { 1, 2, 3 }) + " and K = 2 is " + Arrays.toString(classUnderTest.circularArrayRotation(new int[] { 1, 2, 3 }, 2, new int[] { 0, 1, 2 })));
+		
+		System.out.println("result for input " + Arrays.toString(new int[] { }) + " and K = 2 is " + Arrays.toString(classUnderTest.circularArrayRotation(new int[] { }, 2, new int[] { })));
+		
 	}
 
 	/*
@@ -87,7 +93,7 @@ public class ArrayCyclicRotation
 	 * 
 	 * TODO implement it using the two methods mentioned above.
 	 */
-	public int[] solution(int[] A, int K)
+	public static int[] solution(int[] A, int K)
 	{
 		// System.out.println("A.length : " + A.length + " and K : " + K);
 
@@ -117,6 +123,25 @@ public class ArrayCyclicRotation
 
 		return result;
 	}
+	
+	static int[] circularArrayRotation(int[] a, int k, int[] queries) {
+		
+		int[] rotatedArray = solution(a, k);
+		System.out.println("rotatedArray : " + Arrays.toString(rotatedArray));
+		System.out.println("queries.length : " + queries.length);
+		
+		int[] result = new int[queries.length];
+		for (int i = 0; i < queries.length; i++)
+		{
+			System.out.println("i : " + i);
+			System.out.println("queries[i] : " + queries[i]);
+			result[i] = rotatedArray[queries[i]];
+			System.out.println("result : " + Arrays.toString(result));
+		}
+		
+		return result;
+		
+    }
 	
 	/**
 	 * Use collection streams (skip method) to get a specific part of the array.
