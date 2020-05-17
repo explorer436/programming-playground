@@ -1,7 +1,7 @@
 package collections;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.List;
 
 public class StreamReduce {
@@ -19,6 +19,10 @@ public static void main(String[] args) {
 		people.add(new Person("8Sophie", 45, "female"));
 		
 		System.out.println("sum of ages of males : " + returnSumOfAgesOfMales_Reduce(people));
+		
+		int[] A = new int[] { 1, 2, 3, 4, 5 };
+		System.out.println("sum of all elements of the array " + Arrays.toString(A) + " is : " + getSumOfAllElementsOfArray(A));
+		System.out.println("product of all elements of the array " + Arrays.toString(A) + " is : " + getProductOfAllElementsOfArray(A));
 		
 	}
 
@@ -74,6 +78,28 @@ public static void main(String[] args) {
 				       (a, b) -> a + b);
 		
 		return totalAgeCalculatedUsingReduce;
+	}
+	
+	public static int getSumOfAllElementsOfArray(int[] A)
+	{
+		Integer sumOfAllElementsOfArray = Arrays.stream(A)
+				.boxed()
+				.reduce(
+						0,
+						(a, b) -> a + b);
+		
+		return sumOfAllElementsOfArray;
+	}
+	
+	public static int getProductOfAllElementsOfArray(int[] A)
+	{
+		Integer sumOfAllElementsOfArray = Arrays.stream(A)
+				.boxed()
+				.reduce(
+						1,
+						(a, b) -> a * b);
+		
+		return sumOfAllElementsOfArray;
 	}
 	
 	/**

@@ -14,6 +14,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import utility.MapUtils;
+
 public class CollectExamples {
 
 	public static void main(String[] args) {

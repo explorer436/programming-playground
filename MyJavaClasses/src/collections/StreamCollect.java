@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.function.IntConsumer;
 import java.util.stream.Collectors;
 
+import utility.MapUtils;
+
 public class StreamCollect {
 	
 public static void main(String[] args) {
@@ -254,7 +256,6 @@ public static void main(String[] args) {
 	
 	/**
 	 * The following example retrieves the total age of members of each gender.
-	 * @return 
 	 */
 	private static Map<String, Integer> groupTotalAgeByGender(List<Person> people)
 	{
@@ -275,6 +276,8 @@ public static void main(String[] args) {
 		 *    In this example, the operation function adds Integer values.
 		 */
 		
+		// NOTE : This is not the same is simple reducing.
+		// We want to collect the sum of ages of all the genders from the list.
 		Map<String, Integer> totalAgeByGender =
 				people
 			        .stream()

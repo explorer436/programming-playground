@@ -1,5 +1,7 @@
 package sorting;
 
+import utility.ArrayUtils;
+
 /*
  * Example:   
  * The following table shows the sorting steps for sorting the sequence 5 7 0 3 4 2 6 1.
@@ -34,7 +36,7 @@ public class Insertion
 				if (isTheFirstGreaterThanTheSecond)
 				{
 					System.out.println(", need to exchange");
-					exch(a, j - 1, j);
+					ArrayUtils.exch(a, j - 1, j);
 				}
 				else
 				{
@@ -48,13 +50,7 @@ public class Insertion
 		}
 	}
 
-	// exchange a[i] and a[j]
-	private static void exch(Comparable[] a, int i, int j)
-	{
-		Comparable swap = a[i];
-		a[i] = a[j];
-		a[j] = swap;
-	}
+	
 
 	// read in a sequence of words from standard input and print
 	// them out in sorted order

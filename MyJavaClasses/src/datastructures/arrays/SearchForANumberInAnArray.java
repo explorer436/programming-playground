@@ -5,7 +5,7 @@ package datastructures.arrays;
 
 Write a function:
 
-    class Solution { public int solution(int[] A); }
+    class Solution { public int solution(int[] A, int K); }
 
 that, given an array A of N integers, returns the smallest positive integer 
 (greater than 0) that does not occur in A.
@@ -25,7 +25,7 @@ Write an efficient algorithm for the following assumptions:
 
 
  */
-public class MissingInteger2
+public class SearchForANumberInAnArray
 {
 
 	public static void main(String[] args)
@@ -35,6 +35,8 @@ public class MissingInteger2
 
 		int[] A2 = { 3, 2, 3, 1, 3 };
 		System.out.println("result : " + solution(A2, 5));
+		System.out.println("result : " + solution(A2, 4));
+		System.out.println("result : " + solution(A2, 3));
 
 		/*
 		 * int[] A3 = {-1, -3}; System.out.println("result : " + solution(A3));
@@ -49,37 +51,50 @@ public class MissingInteger2
 		System.out.println("result : " + solution(null, 4));
 	}
 
-	public static String solution(int[] arr, int k)
+	
+	/**
+	 * Why does it have to be this complicated?
+	 *  
+	 * Can't we just run a for loop on the array,
+	 * and return YES or NO based on whether or not a match is found?
+	 */
+	public static String solution(int[] arr, int numberWeAreLookingFor)
 	{
 		if (null != arr)
 		{
-			int n = arr.length;
-			// 1st comparison
-			if (arr[n - 1] == k)
-				return "YES";
+			int arrayLength = arr.length;
 
-			int backup = arr[n - 1];
-			arr[n - 1] = k;
+			// 1st comparison
+			if (arr[arrayLength - 1] == numberWeAreLookingFor)
+			{
+				return "YES";
+			}
+
+			int backup = arr[arrayLength - 1];
+			arr[arrayLength - 1] = numberWeAreLookingFor;
 
 			// no termination condition and thus
 			// no comparison
-			for (int i = 0;; i++)
+			for (int index = 0;; index++)
 			{
 				// this would be executed at-most n times
 				// and therefore at-most n comparisons
-				if (arr[i] == k)
+				if (arr[index] == numberWeAreLookingFor)
 				{
 					// replace arr[n-1] with its actual element
 					// as in original 'arr[]'
-					arr[n - 1] = backup;
+					arr[arrayLength - 1] = backup;
 
-					// if 'x' is found before the '(n-1)th'
+					// if 'numberWeAreLookingFor' is found before the '(n-1)th'
 					// index, then it is present in the array
+					
 					// final comparison
-					if (i < n - 1)
+					if (index < arrayLength - 1)
+					{
 						return "YES";
+					}	
 
-					// else not present in the array
+					// else "numberWeAreLookingFor" is not present in the array
 					return "NO";
 				}
 			}

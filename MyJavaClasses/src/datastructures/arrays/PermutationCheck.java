@@ -52,7 +52,7 @@ beyond input storage (not counting the storage required for input arguments).*/
 
 import java.util.Arrays;
 
-public class PermCheck
+public class PermutationCheck
 {
 
 	public static void main(String[] args)

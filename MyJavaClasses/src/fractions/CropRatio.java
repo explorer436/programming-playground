@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import collections.MapUtils;
+import utility.MapUtils;
 
 /*
  * Calculate the ratio of each crop - based on the values being added in the main method.

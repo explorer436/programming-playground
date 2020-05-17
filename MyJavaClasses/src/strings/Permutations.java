@@ -1,5 +1,7 @@
 package strings;
 
+import utility.ArrayUtils;
+
 /**
  * https://introcs.cs.princeton.edu/java/23recursion/Permutations.java.html
  *
@@ -68,18 +70,12 @@ public class Permutations {
         
         for (int i = 0; i < n; i++) 
         {
-            swap(a, i, n-1);
+            ArrayUtils.swap(a, i, n-1);
             perm2(a, n-1);
-            swap(a, i, n-1);
+            ArrayUtils.swap(a, i, n-1);
         }
     }  
 
-    // swap the characters at indices i and j
-    private static void swap(char[] a, int i, int j) 
-    {
-        char c = a[i];
-        a[i] = a[j];
-        a[j] = c;
-    }
+    
     
 }
