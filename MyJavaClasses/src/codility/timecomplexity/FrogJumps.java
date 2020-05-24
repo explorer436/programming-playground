@@ -3,48 +3,35 @@ package codility.timecomplexity;
 /**
  * 
 
-An array A consisting of N integers is given. 
-Rotation of the array means that each element is shifted right by one index, 
-and the last element of the array is moved to the first place. 
-For example, the rotation of array A = [3, 8, 9, 7, 6] is [6, 3, 8, 9, 7] 
-(elements are shifted right by one index and 6 is moved to the first place).
+A small frog wants to get to the other side of the road. 
+The frog is currently located at position X and wants to get to a position greater than or equal to Y. 
+The small frog always jumps a fixed distance, D.
 
-The goal is to rotate array A K times; that is, each element of A will be shifted to the right K times.
+Count the minimal number of jumps that the small frog must perform to reach its target.
 
 Write a function:
 
-    class Solution { public int[] solution(int[] A, int K); }
+    class Solution { public int solution(int X, int Y, int D); }
 
-that, given an array A consisting of N integers and an integer K, returns the array A rotated K times.
+that, given three integers X, Y and D, returns the minimal number of jumps from position X to a position equal to or greater than Y.
 
-For example, given
-    A = [3, 8, 9, 7, 6]
-    K = 3
+For example, given:
+  X = 10
+  Y = 85
+  D = 30
 
-the function should return [9, 7, 6, 3, 8]. Three rotations were made:
-    [3, 8, 9, 7, 6] -> [6, 3, 8, 9, 7]
-    [6, 3, 8, 9, 7] -> [7, 6, 3, 8, 9]
-    [7, 6, 3, 8, 9] -> [9, 7, 6, 3, 8]
+the function should return 3, because the frog will be positioned as follows:
 
-For another example, given
-    A = [0, 0, 0]
-    K = 1
+        after the first jump, at position 10 + 30 = 40
+        after the second jump, at position 10 + 30 + 30 = 70
+        after the third jump, at position 10 + 30 + 30 + 30 = 100
 
-the function should return [0, 0, 0]
+Write an efficient algorithm for the following assumptions:
 
-Given
-    A = [1, 2, 3, 4]
-    K = 4
+        X, Y and D are integers within the range [1..1,000,000,000];
+        X ≤ Y.
 
-the function should return [1, 2, 3, 4]
 
-Assume that:
-
-        N and K are integers within the range [0..100];
-        each element of array A is an integer within the range [−1,000..1,000].
-
-In your solution, focus on correctness. 
-The performance of your solution will not be the focus of the assessment.
 
  */
 public class FrogJumps
@@ -52,7 +39,6 @@ public class FrogJumps
 
 	public static void main(String[] args)
 	{
-		// TODO Auto-generated method stub
 		int result1 = solution(10, 85, 30);
 		System.out.println("result1 : " + result1);
 

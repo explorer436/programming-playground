@@ -82,9 +82,6 @@ public class PermutationCheck
 			boolean found = false;
 			for (int i = 0; i < A.length; i++)
 			{
-				/*
-				 * System.out.println("i : " + i); System.out.println("A[i] : " + A[i]);
-				 */
 				if ((i + 1) == A[i])
 				{
 					found = true;
