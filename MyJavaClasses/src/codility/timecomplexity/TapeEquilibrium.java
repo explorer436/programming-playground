@@ -62,6 +62,13 @@ public class TapeEquilibrium
 
 	}
 
+	/**
+	 * 	A			|	3	1	2	4	3
+	 *  iteration 1	|	3	10
+	 *  iteration 2	|		4	9
+	 *  iteration 3	|			6	7
+	 *  iteration 4	|				10	3
+	 */
 	public static int solution(int[] A)
 	{
 		int N = A.length;
@@ -70,18 +77,21 @@ public class TapeEquilibrium
 		{
 			return Math.abs(A[0] - A[1]);
 		}
+		
+		/**
+		 * we will build two arrays.
+		 * put the possible values for the first part of the sum in the first array.
+		 * put the possible values for the second part of the sum in the second array.
+		 * loop through the indexes of the two arrays and calculate the difference and find the minimum possible difference.
+		 */
 
 		int[] firstArray = new int[N - 1];
 		firstArray[0] = A[0];
 		for (int i = 1; i < N; i++)
 		{
-			// firstArray[1] = firstArray[0] + A[1];
-			// firstArray[2] = firstArray[1] + A[2];
-			// firstArray[3] = firstArray[2] + A[3];
-			// firstArray[4] = firstArray[3] + A[4];
 			if (i < N - 1)
 			{
-				firstArray[i] = firstArray[i - 1] + A[i];
+				firstArray[i] = firstArray[i - 1] + A[i]; // 3, 4, 6, 10
 			}
 		}
 
@@ -89,20 +99,21 @@ public class TapeEquilibrium
 		secondArray[N - 2] = A[N - 1];
 		for (int i = N - 3; i >= 0; i--)
 		{
-			secondArray[i] = secondArray[i + 1] + A[i + 1];
+			secondArray[i] = secondArray[i + 1] + A[i + 1]; // 10, 9, 7, 3
 		}
 
-		/* public static final int MAX_VALUE = 2147483647; */
-		int result = Integer.MAX_VALUE;
-
+		// firstArray.length or secondArray.length - doesn't matter.
+		// the two arrays are of equal length.
+		int minimalDifference = Integer.MAX_VALUE;
 		for (int j = 0; j < firstArray.length; j++)
 		{
-			int sum = Math.abs(firstArray[j] - secondArray[j]);
-			if (sum < result)
+			int difference = Math.abs(firstArray[j] - secondArray[j]); // 3 - 10, 4 - 9, 6 - 7, 10 - 3
+			if (difference < minimalDifference)
 			{
-				result = sum;
+				minimalDifference = difference;
 			}
 		}
-		return result;
+		
+		return minimalDifference;
 	}
 }

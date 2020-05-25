@@ -1,4 +1,4 @@
-package datastructures.arrays;
+package codility.timecomplexity;
 
 import java.util.Arrays;
 
@@ -59,12 +59,14 @@ public class PermMissingElem
 		int result = 0;
 		if (A.length > 0)
 		{
+			// O(N*log(N))
 			Arrays.sort(A);
-			for (int i = 0; i < A.length; i++)
+			
+			for (int aIndex = 0; aIndex < A.length; aIndex++)
 			{
-				if ((i + 1) != A[i])
+				if ((aIndex + 1) != A[aIndex])
 				{
-					result = i + 1;
+					result = aIndex + 1;
 					break;
 				}
 			}

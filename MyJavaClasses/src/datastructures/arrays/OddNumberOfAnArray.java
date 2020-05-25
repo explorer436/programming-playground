@@ -121,6 +121,9 @@ public class OddNumberOfAnArray
 	 *                      0111   - this evaluates to 7                                                           
 	 */
 	
+	/*
+	 * return the odd number
+	 */
 	public int findOddNumberInTheArray(int[] A)
 	{
 		int result = 0;
@@ -131,6 +134,9 @@ public class OddNumberOfAnArray
 		return result;
 	}
 	
+	/*
+	 * return true or false
+	 */
 	public boolean isThereAnOddNumberInTheArray(int[] A)
 	{
 		int xorResult = 0;
