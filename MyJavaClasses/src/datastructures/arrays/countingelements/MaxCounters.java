@@ -1,5 +1,7 @@
 package datastructures.arrays.countingelements;
 
+import java.util.Arrays;
+
 /**
  * 
 
@@ -66,10 +68,9 @@ public class MaxCounters
 	public static void main(String[] args)
 	{
 		int[] A = { 3, 4, 4, 6, 1, 4, 4 };
-		for (int i : solution(5, A))
-		{
-			System.out.println("counter : " + i);
-		}
+		System.out.println("bruteForceSolution_slow : " + Arrays.toString(bruteForceSolution_slow(5, A)));
+		
+		System.out.println("solution : " + Arrays.toString(solution(5, A)));
 
 		/*
 		 * int[] A2 = {3}; System.out.println("result : " + solution(5, A2));
@@ -84,73 +85,106 @@ public class MaxCounters
 		 * A5));
 		 */
 	}
+	
+	/**
+	 * 
+	 * java - Arrays.fill()
+	 * public static void fill(Object[] a, Object val) {
+	 *     for (int i = 0, len = a.length; i < len; i++) //this loop will continues to the length of a.
+	 *         a[i] = val;
+	 * }
+	 * So, Complexity for this method would be O(n).
+	 */
+	public static int[] bruteForceSolution_slow(int N, int[] A) { 
+		int[] counterArray = new int[N];
+		System.out.println(Arrays.toString(counterArray)); 
+		// [0, 0, 0, 0, 0]
+	  
+		int maxElementInCounterArray = 0;
+		for(int arrAIndex = 0; arrAIndex < A.length; arrAIndex++) 
+		{
+			  if(A[arrAIndex] == N + 1) 
+			  { 
+				  Arrays.fill(counterArray, maxElementInCounterArray); 
+			  }
+			  else if(1<= A[arrAIndex] && A[arrAIndex] <= N) 
+			  { 
+				  counterArray[A[arrAIndex] - 1] = counterArray[A[arrAIndex] - 1] + 1;
+				  if (counterArray[A[arrAIndex] - 1] > maxElementInCounterArray)
+				  {
+					  maxElementInCounterArray = counterArray[A[arrAIndex] - 1];
+				  }
+			  }
+		}
+		  
+		return counterArray; 
+	}
 
+	// O(N + M)
 	public static int[] solution(int N, int[] A)
 	{
 		int counter[] = new int[N];
 		int current_max = -1;
-		int min_counter_value = 0;
+		int leastPossibleCounterValue = 0;
 
-		for (int K = 0; K < A.length; K++)
+		for (int currentIndex = 0; currentIndex < A.length; currentIndex++)
 		{
-			int currentArrayValue = A[K];
-			System.out.println("K : " + K + " - currentArrayValue : " + currentArrayValue + " - N : " + N);
-			if (1 <= currentArrayValue && currentArrayValue <= N)
+			int currentAElement = A[currentIndex];
+			
+			// check if currentAElement is between 1 and N.
+			if (1 <= currentAElement && currentAElement <= N)
 			{
-				int c_num = counter[currentArrayValue - 1];
-				System.out.println("counter" + (currentArrayValue - 1) + " : " + c_num + " - min_counter_value : "
-						+ min_counter_value);
-				// before incrementing c_num, make sure c_num value is above min_counter_value
-				if (c_num < min_counter_value)
+				int currentCounterElement = counter[currentAElement - 1];
+				
+				/**
+				 * check the value of currentCounterElement is less than leastPossibleCounterValue.
+				 * 
+				 * this tells us whether the value of currentCounterElement should be incremented or 
+				 * if it should be first set to leastPossibleCounterValue and then incremented.
+				 */
+				
+				if (currentCounterElement < leastPossibleCounterValue)
 				{
-					c_num = min_counter_value;
+					currentCounterElement = leastPossibleCounterValue;
 				}
-				c_num = c_num + 1;
-				if (c_num > current_max)
+				
+				// increment currentCounterElement
+				currentCounterElement = currentCounterElement + 1;
+				
+				// make sure the value of current_max is accurate. if it needs to be changed, change it.
+				if (currentCounterElement > current_max)
 				{
-					current_max = c_num;
+					current_max = currentCounterElement;
 				}
+				
+				// set the value of currentCounterElement in counter array.
+				counter[currentAElement - 1] = currentCounterElement;
 			}
-			else if (currentArrayValue == N + 1)
+			else if (currentAElement == N + 1)
 			{
-				min_counter_value = current_max;
+				/**
+				 * this is the crucial difference between bruteForceSolution_slow() and this solution.
+				 * instead of changing the values of the elements in the entire counter array, 
+				 * we are maintaining the value for leastPossibleCounterValue.
+				 * 
+				 */
+				
+				leastPossibleCounterValue = current_max;
 			}
 		}
-		System.out.println("current_min : " + min_counter_value);
+		
+		// there might be some orphan counter elements whose value might be smaller than leastPossibleCounterValue.
+		// for elements like that, set them to leastPossibleCounterValue.
 		for (int i = 0; i < N; i++)
 		{
-			System.out.println("i : " + i + " - counter[i] : " + counter[i]);
-			if (counter[i] < min_counter_value)
+			if (counter[i] < leastPossibleCounterValue)
 			{
-				counter[i] = min_counter_value;
+				counter[i] = leastPossibleCounterValue;
 			}
 		}
+		
 		return counter;
 	}
-
-	/*
-	 * public static int[] solution(int N, int[] A) { int[] counterArray = new
-	 * int[N];
-	 * 
-	 * for(int K=0; K<A.length; K++) { //System.out.println("A[K] : " + A[K]); if(1
-	 * <= A[K] && A[K] <= N) { counterArray[A[K] - 1] = increase(counterArray[A[K] -
-	 * 1]); } else if(A[K] == N + 1) { //get max counter and put it in every
-	 * location of counterArray int maxCounterVal =
-	 * getMaxCounterValue(counterArray); //System.out.println("maxCounterVal : " +
-	 * maxCounterVal);
-	 * 
-	 * Arrays.fill(counterArray, maxCounterVal); }
-	 * System.out.println("at the end of for loop : "); for(int i : counterArray) {
-	 * System.out.println("counter : " + i); } }
-	 * 
-	 * //System.out.println("==========="); return counterArray; }
-	 * 
-	 * private static int increase(int X) { return X + 1; }
-	 * 
-	 * private static int getMaxCounterValue(int[] counterArray) {
-	 * Arrays.sort(counterArray);
-	 * 
-	 * return counterArray[counterArray.length - 1]; }
-	 */
+	 
 
 }

@@ -1,4 +1,4 @@
-package datastructures.arrays;
+package datastructures.arrays.countingelements;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -91,12 +91,13 @@ public class FirstMissingPositiveInteger
 			Integer result = null;
 			Map<Integer, Integer> mp = new HashMap<Integer, Integer>();
 			
+			// loop through them starting from index = 0.
 			for (int i = 0; i < A.length; i++)
 			{
 				mp.put(A[i], i);
 			}
 
-			// loop through them starting from the number 1.
+			// loop through numbers starting from 1 and check the map for each number.
 			for (int i = 1; i <= A.length; i++)
 			{
 				if (!mp.containsKey(i))

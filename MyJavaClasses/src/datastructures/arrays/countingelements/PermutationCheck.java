@@ -1,6 +1,8 @@
-package datastructures.arrays;
+package datastructures.arrays.countingelements;
 
-/*A non-empty zero-indexed array A consisting of N integers is given.
+/**
+ * 
+A non-empty zero-indexed array A consisting of N integers is given.
 
 A permutation is a sequence containing each element from 1 to N once, and only once.
 
@@ -58,19 +60,19 @@ public class PermutationCheck
 	public static void main(String[] args)
 	{
 		int[] A = { 4, 1, 3, 2 };
-		System.out.println("result : " + solution(A));
+		System.out.println("result : " + solution(A)); // 1
 
 		int[] A2 = { 4, 1, 3 };
-		System.out.println("result : " + solution(A2));
+		System.out.println("result : " + solution(A2)); // 0
 
 		int[] A3 = { 1 };
-		System.out.println("result : " + solution(A3));
+		System.out.println("result : " + solution(A3)); // 1
 
 		int[] A4 = { 2 };
-		System.out.println("result : " + solution(A4));
+		System.out.println("result : " + solution(A4));// 0
 
 		int[] A5 = {};
-		System.out.println("result : " + solution(A5));
+		System.out.println("result : " + solution(A5)); // 0
 	}
 
 	public static int solution(int[] A)
@@ -79,21 +81,24 @@ public class PermutationCheck
 		if (A.length > 0)
 		{
 			Arrays.sort(A);
-			boolean found = false;
+			
+			boolean allNumbersInThePermutationExist = false;
+			
+			// check for the existence of each number starting from 1 in the sorted array.
 			for (int i = 0; i < A.length; i++)
 			{
 				if ((i + 1) == A[i])
 				{
-					found = true;
+					allNumbersInThePermutationExist = true;
 				}
 				else
 				{
-					found = false;
+					allNumbersInThePermutationExist = false;
 					break;
 				}
 			}
 
-			if (found)
+			if (allNumbersInThePermutationExist)
 			{
 				result = 1;
 			}

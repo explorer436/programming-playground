@@ -68,6 +68,8 @@ public class MinAvgTwoSlice {
 
     private static void printStartingPositionOfMinimumSlice(int[] A)
     {
+    	// TODO this is only 60% done
+    	
         int n = A.length;
         // square array with size A.length + 1
         int[][] cumulativeElementsOfTheArray = new int[n][n];
