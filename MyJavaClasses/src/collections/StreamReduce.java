@@ -82,6 +82,11 @@ public static void main(String[] args) {
 	
 	public static int getSumOfAllElementsOfArray(int[] A)
 	{
+		/*
+		 * boxed - 
+		 * Returns a Stream consisting of the elements of this stream, each boxed to an Integer.
+		 * This is an intermediate operation.
+		 */
 		Integer sumOfAllElementsOfArray = Arrays.stream(A)
 				.boxed()
 				.reduce(

@@ -2,6 +2,8 @@ package datastructures.arrays;
 
 import java.util.Arrays;
 
+import collections.StreamReduce;
+
 /**
  * 
  * Given an array of integers, find the sum of its elements.
@@ -46,13 +48,14 @@ We print the sum of the array's elements:
 public class SimpleArraySum {
 
 	public static void main(String[] args) {
-		System.out.println("result for input " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " is " + simpleArraySum(new int[] { 1, 5, 2, 1, 4, 0 }));
-
+		int[] inputArray = new int[] { 1, 5, 2, 1, 4, 0 };
+		System.out.println("result for input " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " is " + simpleArraySum(inputArray));
+		// 13
+		
+		System.out.println("using stream API : " + StreamReduce.getSumOfAllElementsOfArray(inputArray));
 	}
-
-	// TODO write this using Stream API
 	
-	static int simpleArraySum(int[] ar) {
+	public static int simpleArraySum(int[] ar) {
         int result = 0;
         
         if (ar.length > 0)
