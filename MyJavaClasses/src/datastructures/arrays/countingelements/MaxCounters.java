@@ -93,7 +93,7 @@ public class MaxCounters
 	 *     for (int i = 0, len = a.length; i < len; i++) //this loop will continues to the length of a.
 	 *         a[i] = val;
 	 * }
-	 * So, Complexity for this method would be O(n).
+	 * So, Complexity for this method would be O(n power 2).
 	 */
 	public static int[] bruteForceSolution_slow(int N, int[] A) { 
 		int[] counterArray = new int[N];
@@ -105,7 +105,8 @@ public class MaxCounters
 		{
 			  if(A[arrAIndex] == N + 1) 
 			  { 
-				  Arrays.fill(counterArray, maxElementInCounterArray); 
+				  // O(n)
+				  Arrays.fill(counterArray, maxElementInCounterArray);
 			  }
 			  else if(1<= A[arrAIndex] && A[arrAIndex] <= N) 
 			  { 

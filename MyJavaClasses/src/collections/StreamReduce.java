@@ -91,6 +91,16 @@ public static void main(String[] args) {
 		return sumOfAllElementsOfArray;
 	}
 	
+	public static int getMaxElementInIntArray(int[] A)
+	{
+		return Arrays.stream(A).max().getAsInt();
+	}
+	
+	public static int getMinElementInIntArray(int[] A)
+	{
+		return Arrays.stream(A).min().getAsInt();
+	}
+	
 	public static int getProductOfAllElementsOfArray(int[] A)
 	{
 		Integer sumOfAllElementsOfArray = Arrays.stream(A)
