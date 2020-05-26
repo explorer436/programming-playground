@@ -17,6 +17,7 @@ public class MushroomPicker
     {
     	int A[] = new int[] {};
       
+    	/*
     	A = new int[]{2,3,7,5,1,3,9};
     	System.out.println("maximum number of mushrooms picked from the array " + Arrays.toString(A) + 
     		" when current position is 4 and maximum moves allowed is 6 is " + solution1_incorrectSolution(A, 4, 6));
@@ -39,6 +40,8 @@ public class MushroomPicker
     	System.out.println("maximum number of mushrooms picked from the array " + Arrays.toString(A) + 
         	" when current position is 8 and maximum moves allowed is 2 is " + solution1_incorrectSolution(A, 2, 3));
     	// expected 27
+    	 * 
+    	 */
     	
     	System.out.println();
     	
@@ -69,6 +72,11 @@ public class MushroomPicker
     	System.out.println("maximum number of mushrooms picked from the array " + Arrays.toString(A) + 
         	" when current position is 2 and maximum moves allowed is 15 is " + solution2(A, 2, 15));
     	// expected 27
+    	
+    	A = new int[]{10, 9, 8, 7};
+    	System.out.println("maximum number of mushrooms picked from the array " + Arrays.toString(A) + 
+        	" when current position is 2 and maximum moves allowed is 15 is " + solution2(A, 2, 15));
+    	// expected 34
     }
     
     private static int solution2(int A[], int currentPosition, int maxMovesAllowed)
@@ -84,11 +92,9 @@ public class MushroomPicker
     		int leftPosition = currentPosition - i;
     		
     		int calculatedRightPosition = currentPosition + (maxMovesAllowed - (i * 2));
-    		
     		// we have to keep count of all the mushrooms picked up beginning at currentPosition.
     		// so, even if calculatedRightPosition is less than currentPosition, we need to retain the count till currentPosition.
     		int practicalRightPosition = calculatedRightPosition > currentPosition ? calculatedRightPosition : currentPosition;
-    		
     		// if calculatedRightPosition is greater than the length of the array, calculate the result using the last element of the array.
     		practicalRightPosition = calculatedRightPosition >= A.length ? A.length - 1 : practicalRightPosition;
     		
@@ -112,11 +118,9 @@ public class MushroomPicker
     		int practicalRightPosition = rightPosition > A.length ? A.length : rightPosition;
     		
     		int calculatedLeftPosition = currentPosition - (maxMovesAllowed - (i * 2));
-    		
     		// we have to keep count of all the mushrooms picked up beginning at currentPosition.
     		// so, even if calculatedLeftPosition is less than currentPosition, we need to retain the count till currentPosition.
     		int practicalLeftPosition = calculatedLeftPosition < currentPosition ? calculatedLeftPosition : currentPosition;
-    		
     		// if calculatedLeftPosition is less than zero, calculate the result using the first element of the array.
     		practicalLeftPosition = calculatedLeftPosition <= 0 ? 0 : practicalLeftPosition;
     		
