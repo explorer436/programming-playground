@@ -66,6 +66,10 @@ public class PassingCars
 
 	/*
 	 * assuming 0 represents cars going in the right direction and 1 represents cars going in the left direction.
+	 * 
+	 *  ->      ->
+	 * 	0,	1,	0,	1,	1
+	 *     <-      <-   <-
 	 */
 	public static int solution(int[] A)
 	{
