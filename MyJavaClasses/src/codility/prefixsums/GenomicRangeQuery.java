@@ -2,6 +2,8 @@ package codility.prefixsums;
 
 import java.util.Arrays;
 
+import utility.PrintUtils;
+
 /**
  * A DNA sequence can be represented as a string consisting of the letters A, C,
  * G and T, which correspond to the types of successive nucleotides in the
@@ -110,14 +112,14 @@ public class GenomicRangeQuery
                 copyRowToNextRow(cumulativeAnswers, location_in_s_array);
 
                 System.out.println("cumulativeAnswers : ");
-                System.out.println(print2DArray(cumulativeAnswers));
+                System.out.println(PrintUtils.print2DArray(cumulativeAnswers));
             }
 
             incrementCountBasedOnLetterAtCurrentPostition(chars_from_s_array, cumulativeAnswers, location_in_s_array);
 
             // printing
             System.out.println("after incrementing the letter count for location " + location_in_s_array + " - ");
-            System.out.println(print2DArray(cumulativeAnswers));
+            System.out.println(PrintUtils.print2DArray(cumulativeAnswers));
         }
         // end of the for loop for each letter in the string S
 
@@ -178,10 +180,5 @@ public class GenomicRangeQuery
             cumulativeAnswers[location_in_s_array
                 + 1][eachLettersInDnaSequence] = cumulativeAnswers[location_in_s_array][eachLettersInDnaSequence];
         }
-    }
-
-    private static String print2DArray(int[][] array)
-    {
-        return Arrays.deepToString(array).replace("], ", "]\n").replace("[[", "[").replace("]]", "]");
     }
 }

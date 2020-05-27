@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.function.IntConsumer;
 import java.util.stream.Collectors;
 
-import utility.MapUtils;
+import utility.PrintUtils;
 
 public class StreamCollect {
 	
@@ -36,7 +36,7 @@ public static void main(String[] args) {
 		System.out.println();
 		
 		System.out.println("printing people grouped by gender : ");
-		MapUtils.printMap(groupPeopleByGender(people));
+		PrintUtils.printMap(groupPeopleByGender(people));
 		/*
 		 * female = [Person [name=5Jane, age=15, gender=female], Person [name=6Gayle, age=25, gender=female], Person [name=7Mary, age=35, gender=female], Person [name=8Sophie, age=45, gender=female]]
 		 * male = [Person [name=1John, age=15, gender=male], Person [name=2Rob, age=25, gender=male], Person [name=3Clark, age=35, gender=male], Person [name=4Trevor, age=45, gender=male]]
@@ -45,7 +45,7 @@ public static void main(String[] args) {
 		System.out.println();
 		
 		System.out.println("printing people names by gender : ");
-		MapUtils.printMap(groupPersonNamesByGender(people));
+		PrintUtils.printMap(groupPersonNamesByGender(people));
 		/*
 		 * female = [5Jane, 6Gayle, 7Mary, 8Sophie]
 		 * male = [1John, 2Rob, 3Clark, 4Trevor]
@@ -54,7 +54,7 @@ public static void main(String[] args) {
 		System.out.println();
 		
 		System.out.println("printing total age by gender : ");
-		MapUtils.printMap(groupTotalAgeByGender(people));
+		PrintUtils.printMap(groupTotalAgeByGender(people));
 		/*
 		 * female = 120
 		 * male = 120
@@ -63,7 +63,7 @@ public static void main(String[] args) {
 		System.out.println();
 		
 		System.out.println("printing average age by gender : ");
-		MapUtils.printMap(getAverageAgeByGender(people));
+		PrintUtils.printMap(getAverageAgeByGender(people));
 		/*
 		 * female = 30.0
 		 * male = 30.0

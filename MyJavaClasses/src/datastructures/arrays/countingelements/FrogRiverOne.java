@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import utility.MapUtils;
+import utility.PrintUtils;
 
 /**
  * 
@@ -109,7 +109,7 @@ public class FrogRiverOne
 			indexesMap.put(A[i], i);
 		}
 		
-		MapUtils.printMap(indexesMap);
+		PrintUtils.printMap(indexesMap);
 		// indexedMap key - value pairs
 		// 1 = 0
 		// 2 = 4

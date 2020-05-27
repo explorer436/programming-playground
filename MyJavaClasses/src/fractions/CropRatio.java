@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import utility.MapUtils;
+import utility.PrintUtils;
 
 /*
  * Calculate the ratio of each crop - based on the values being added in the main method.
@@ -29,7 +29,7 @@ public class CropRatio
             crops.put(name, (Integer) currentCropWeight);
         }
 
-        MapUtils.printMap(crops);
+        PrintUtils.printMap(crops);
 
         totalWeight = totalWeight + cropWeight;
     }

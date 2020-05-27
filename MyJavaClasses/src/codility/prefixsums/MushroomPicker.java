@@ -47,17 +47,17 @@ public class MushroomPicker
     	
     	A = new int[]{2,3,7,5,1,3,9};
     	System.out.println("maximum number of mushrooms picked from the array " + Arrays.toString(A) + 
-    		" when current position is 4 and maximum moves allowed is 6 is " + solution2(A, 4, 6));
+    		" when current position is 4 and maximum moves allowed is 6 is " + solution(A, 4, 6));
     	// expected 25
     	
     	A = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     	System.out.println("maximum number of mushrooms picked from the array " + Arrays.toString(A) + 
-        	" when current position is 5 and maximum moves allowed is 3 is " + solution2(A, 5, 3));
+        	" when current position is 5 and maximum moves allowed is 3 is " + solution(A, 5, 3));
     	// expected 6 + 7 + 8 + 9 = 30
     	
     	A = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     	System.out.println("maximum number of mushrooms picked from the array " + Arrays.toString(A) + 
-        	" when current position is 8 and maximum moves allowed is 3 is " + solution2(A, 8, 3));
+        	" when current position is 8 and maximum moves allowed is 3 is " + solution(A, 8, 3));
     	// there are two possible solutions to this.
     	// 1. A[8] -> A[9], A[9] -> A[8], A[8] -> A[7] = 9 + 10 + 8 = 27
     	// 2. A[8] -> A[7], A[7] -> A[8], A[8] -> A[9] = 9 + 8 + 10 = 27
@@ -65,21 +65,21 @@ public class MushroomPicker
     	
     	A = new int[]{10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
     	System.out.println("maximum number of mushrooms picked from the array " + Arrays.toString(A) + 
-        	" when current position is 8 and maximum moves allowed is 2 is " + solution2(A, 2, 3));
+        	" when current position is 8 and maximum moves allowed is 2 is " + solution(A, 2, 3));
     	// expected 27
     	
     	A = new int[]{10, 9, 8};
     	System.out.println("maximum number of mushrooms picked from the array " + Arrays.toString(A) + 
-        	" when current position is 2 and maximum moves allowed is 15 is " + solution2(A, 2, 15));
+        	" when current position is 2 and maximum moves allowed is 15 is " + solution(A, 2, 15));
     	// expected 27
     	
     	A = new int[]{10, 9, 8, 7};
     	System.out.println("maximum number of mushrooms picked from the array " + Arrays.toString(A) + 
-        	" when current position is 2 and maximum moves allowed is 15 is " + solution2(A, 2, 15));
+        	" when current position is 2 and maximum moves allowed is 15 is " + solution(A, 2, 15));
     	// expected 34
     }
     
-    private static int solution2(int A[], int currentPosition, int maxMovesAllowed)
+    private static int solution(int A[], int currentPosition, int maxMovesAllowed)
     {
     	int[] prefixSumsOfA = prefixSumsOfAnArray(A);
     	

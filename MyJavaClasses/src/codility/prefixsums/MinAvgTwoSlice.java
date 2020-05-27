@@ -1,5 +1,7 @@
 package codility.prefixsums;
 
+import utility.PrintUtils;
+
 /**
  * 
 
@@ -66,10 +68,11 @@ public class MinAvgTwoSlice {
 
     static int indexWithMinimumAverage = 0;
 
+    // TODO this is only 60% done
+    // correctness 100%
+    // performance 20%
     private static void printStartingPositionOfMinimumSlice(int[] A)
     {
-    	// TODO this is only 60% done
-    	
         int n = A.length;
         // square array with size A.length + 1
         int[][] cumulativeElementsOfTheArray = new int[n][n];
@@ -121,7 +124,7 @@ public class MinAvgTwoSlice {
 
         // printing
         System.out.println("after setting the current value for the position");
-        System.out.println(print2DArray(cumulativeElementsOfTheArray));
+        System.out.println(PrintUtils.print2DArray(cumulativeElementsOfTheArray));
 
         return indexWithMinimumAverage;
     }
@@ -133,11 +136,6 @@ public class MinAvgTwoSlice {
             cumulativeElementsOfTheArray[i][eachPositionInTheRow] = cumulativeElementsOfTheArray[i
                 - 1][eachPositionInTheRow];
         }
-    }
-
-    private static String print2DArray(int[][] array)
-    {
-        return java.util.Arrays.deepToString(array).replace("], ", "]\n").replace("[[", "[").replace("]]", "]");
     }
 
 }

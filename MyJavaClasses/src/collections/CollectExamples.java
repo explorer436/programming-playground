@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import utility.MapUtils;
+import utility.PrintUtils;
 
 public class CollectExamples {
 
@@ -111,7 +111,7 @@ public class CollectExamples {
 		System.out.println();
 		
 		Map<Integer, Set<String>> stringLengthsGroupedByLength = storeStringLengthGroupingResulsInASet(givenList);
-		MapUtils.printMap(stringLengthsGroupedByLength);
+		PrintUtils.printMap(stringLengthsGroupedByLength);
 		
 		/*
 		 * 1 = [a]
@@ -123,7 +123,7 @@ public class CollectExamples {
 		
 		Map<Boolean, List<String>> partitionByStringLength = partitionByStringLength(givenList);
 		System.out.println("partitionByStringLength : ");
-		MapUtils.printMap(partitionByStringLength);
+		PrintUtils.printMap(partitionByStringLength);
 		
 		/*
 		 * false = [a, bb, dd]

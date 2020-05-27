@@ -1,6 +1,5 @@
 package datastructures.arrays.countingelements;
 
-import java.util.Arrays;
 import collections.StreamReduce;
 
 /**

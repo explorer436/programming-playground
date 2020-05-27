@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class MapUtils {
+public class PrintUtils {
 	
 	public static void printMap(Map mp)
     {
@@ -23,5 +23,10 @@ public class MapUtils {
             }
             
         }
+    }
+	
+	public static String print2DArray(int[][] array)
+    {
+        return java.util.Arrays.deepToString(array).replace("], ", "]\n").replace("[[", "[").replace("]]", "]");
     }
 }

@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import utility.MapUtils;
+import utility.PrintUtils;
 
 /**
  * 
@@ -29,13 +29,13 @@ public class LCMOfTwoNumbers {
 		
 		Map<Integer, Integer> primeFactorsMapFor12 = getPrimeFactors(12);
 		System.out.println("prime factors for 12");
-		MapUtils.printMap(primeFactorsMapFor12);
+		PrintUtils.printMap(primeFactorsMapFor12);
 		
 		System.out.println();
 		
 		Map<Integer, Integer> primeFactorsMapFor18 = getPrimeFactors(18);
 		System.out.println("prime factors for 18");
-		MapUtils.printMap(primeFactorsMapFor18);
+		PrintUtils.printMap(primeFactorsMapFor18);
 		
 		System.out.println();
 		
