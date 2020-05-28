@@ -43,12 +43,17 @@ There are nine negative subarrays of A = [1,-2,4,-5,1]:
 7. [0:3] => 1 + -2 + 4 + -5 = -2
 8. [1:1] => -2 + 4 + -5 + 1 = -2
 9. [1:1] => 1 + -2 + 4 + -5 + 1 = -1
+
 Thus, we print 9 on a new line.
 
  */
 public class Subarray {
 	
 	// TODO
+	
+	// this can be solved in a way that is very similar to the implementation in MinAvgTwoSlice2.
+	// multiple traversals throught the array with fixed sizes of 1, 2, 3, .. A.length
+	// is there a better way to do it?
 	
 	public static void main(String[] args) {
 		

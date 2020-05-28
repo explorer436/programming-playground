@@ -32,6 +32,7 @@ public class SumOfNaturalNumbersUptoN {
     }
 	
 	// O(1)
+	// Read TimeComplexity.pdf
 	public static int sumOfNaturalNumbersUptoN_fast(int n) {
 		int result = 0;
 		

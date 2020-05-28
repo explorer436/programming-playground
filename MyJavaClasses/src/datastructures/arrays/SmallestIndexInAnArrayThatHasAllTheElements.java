@@ -16,7 +16,7 @@ public class SmallestIndexInAnArrayThatHasAllTheElements
 
 		int finalResult = sol.coveringPrefixIndex(A);
 
-		System.out.println("finalResult : " + finalResult);
+		System.out.println("finalResult : " + finalResult); // 5
 	}
 
 	/**

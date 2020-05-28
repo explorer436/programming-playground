@@ -81,7 +81,7 @@ public class MushroomPicker
     
     private static int solution(int A[], int currentPosition, int maxMovesAllowed)
     {
-    	int[] prefixSumsOfA = prefixSumsOfAnArray(A);
+    	int[] prefixSumsOfA = PrefixSums.prefixSumsOfAnArray(A);
     	
     	int currentMaxMushroomsPickedUp = 0;
     	
@@ -143,7 +143,7 @@ public class MushroomPicker
      */
     private static int solution1_incorrectSolution(int A[], int currentPosition, int maxMovesAllowed)
     {
-    	int[] prefixSumsOfA = prefixSumsOfAnArray(A);
+    	int[] prefixSumsOfA = PrefixSums.prefixSumsOfAnArray(A);
     	// System.out.println("prefixSumsOfA : " + Arrays.toString(prefixSumsOfA));
     	// [2, 5, 12, 17, 18, 21, 30]
     	
