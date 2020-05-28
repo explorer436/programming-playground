@@ -1,5 +1,13 @@
 https://www.geeksforgeeks.org/find-the-smallest-positive-number-missing-from-an-unsorted-array/
 
+https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
+
+https://www.geeksforgeeks.org/find-subarray-least-average/
+
+https://www.geeksforgeeks.org/find-maximum-average-subarray-of-k-length/?ref=rp
+
+https://www.geeksforgeeks.org/maximum-and-minimum-in-an-array/
+
 Write your own logic for MooshakCatchingCheese.java
 
 Codility classes.
