@@ -19,6 +19,21 @@ public class SmallestIndexInAnArrayThatHasAllTheElements
 		System.out.println("finalResult : " + finalResult);
 	}
 
+	/**
+	 * 	|	0		1		2		3		4		5	|
+	 *  |-----------------------------------------------|
+	 *  |	A[0]										|
+	 *  |			A[1]								|
+	 *  |					A[2]						|
+	 *  |							A[3]				|
+	 *  |									A[4]		|
+	 *  |											A[5]|
+	 *  |		  						  A[6]			|
+	 *  |		  				  A[7] 					|
+	 *  |					A[8]						|
+	 *  |			A[9]								|
+	 *  |	A[10]										|
+	 */
 	public int coveringPrefixIndex(final int[] A)
 	{
 		Map<Integer, Integer> indexesMap = new HashMap<Integer, Integer>();
