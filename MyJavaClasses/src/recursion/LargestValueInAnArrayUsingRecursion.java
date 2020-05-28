@@ -37,6 +37,26 @@ public class LargestValueInAnArrayUsingRecursion {
         System.out.println("largestValue of anArray : " + LargestValueInAnArrayUsingRecursion.largestValue(anArray));
     }
 
+	/**
+	 * 
+	(Tournament Method)
+	Divide the array into two parts and compare the maximums and minimums of the two parts to get the maximum and the minimum of the whole array.
+
+	Pair MaxMin(array, array_size)
+   	if array_size = 1
+      return element as both max and min
+   	else if arry_size = 2
+      one comparison to determine max and min
+      return that pair
+   	else    (array_size  > 2)
+      recur for max and min of left half
+      recur for max and min of right half
+      one comparison determines true max of the two candidates
+      one comparison determines true min of the two candidates
+      return the pair of max and min
+      
+	 */
+	
     public static int largestValue(Integer[] anArray) {
         
         int result = 0;
