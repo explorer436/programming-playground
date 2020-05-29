@@ -50,6 +50,15 @@ public class SearchForANumberInAnArray
 
 		System.out.println("result : " + solution(null, 4));
 	}
+	
+	/*
+	 * TODO
+	 * This can probable be implemented efficiently using divide and conquer method.
+	 * divide the array into two sub-arrays. and recursion.
+	 * return isNumberFound(subarray1) || isNumberFound(subarray2) 
+	 * 
+	 * look at LargestValueInAnArrayUsingRecursion.java
+	 */
 
 	
 	/**
@@ -60,6 +69,8 @@ public class SearchForANumberInAnArray
 	 */
 	public static String solution(int[] arr, int numberWeAreLookingFor)
 	{
+		String result = "NO";
+		
 		if (null != arr)
 		{
 			int arrayLength = arr.length;
@@ -67,7 +78,7 @@ public class SearchForANumberInAnArray
 			// 1st comparison
 			if (arr[arrayLength - 1] == numberWeAreLookingFor)
 			{
-				return "YES";
+				result = "YES";
 			}
 
 			int backup = arr[arrayLength - 1];
@@ -91,18 +102,14 @@ public class SearchForANumberInAnArray
 					// final comparison
 					if (index < arrayLength - 1)
 					{
-						return "YES";
+						result = "YES";
 					}	
 
 					// else "numberWeAreLookingFor" is not present in the array
-					return "NO";
 				}
 			}
 		}
-		else
-		{
-			return "NO";
-		}
-
+		
+		return result;
 	}
 }

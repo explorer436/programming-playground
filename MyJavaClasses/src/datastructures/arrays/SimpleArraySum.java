@@ -52,6 +52,7 @@ public class SimpleArraySum {
 		System.out.println("result for input " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " is " + simpleArraySum(inputArray));
 		// 13
 		
+		// Using streams
 		System.out.println("using stream API : " + StreamReduce.getSumOfAllElementsOfArray(inputArray));
 	}
 	
