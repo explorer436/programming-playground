@@ -77,6 +77,33 @@ public class MinAvgTwoSlice2 {
     // correctness 100%
     // performance 20%
     // Detected time complexity: O(N ** 2) 
+
+    /**
+     *
+     	4,  2,  2,  5,  1,  5,  8
+     	|___|
+     	    |___|
+     	        |___|
+     	            |___|
+     	                |___|
+     	                    |___|
+     	|_______|
+     	    |_______|
+     	        |_______|
+     	            |_______|
+     	                |_______|
+     	|___________|
+     	    |___________|
+     	        |___________|
+     	            |___________|
+     	|_______________|
+     	    |_______________|
+     	        |_______________|
+     	|___________________|
+     	    |___________________|
+     	|_______________________|
+     *
+     */
     public void solution(int[] A)
     {
     	// return either the minimum average or the starting index of the slice with the minimum average based on the requirement.
