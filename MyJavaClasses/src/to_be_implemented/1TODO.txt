@@ -1,12 +1,33 @@
+Try to go with topic in geeks for geeks instead of picking problems from all over the place and many websites at random.
+
 https://www.geeksforgeeks.org/find-the-smallest-positive-number-missing-from-an-unsorted-array/
 
 https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
 
-https://www.geeksforgeeks.org/find-subarray-least-average/
-
-https://www.geeksforgeeks.org/find-maximum-average-subarray-of-k-length/?ref=rp
-
 https://www.geeksforgeeks.org/maximum-and-minimum-in-an-array/
+
+// Self-Balancing Binary Search Tree
+https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/
+
+https://www.geeksforgeeks.org/sum-of-all-subsequences-of-length-k/?ref=leftbar-rightbar
+
+https://www.geeksforgeeks.org/minimum-group-flips-to-make-binary-array-elements-same/?ref=leftbar-rightbar
+
+https://www.geeksforgeeks.org/longest-sub-array-with-maximum-gcd/?ref=leftbar-rightbar
+
+https://www.geeksforgeeks.org/check-if-an-array-is-sorted-and-rotated-using-binary-search/?ref=leftbar-rightbar
+
+https://www.geeksforgeeks.org/split-the-given-string-into-primes-digit-dp/?ref=leftbar-rightbar
+
+https://www.geeksforgeeks.org/efficiently-merging-two-sorted-arrays-with-o1-extra-space-and-onlogn-mlogm/?ref=leftbar-rightbar
+
+https://www.geeksforgeeks.org/minimum-number-of-swaps-required-to-sort-an-array-of-first-n-number/?ref=leftbar-rightbar
+
+https://www.geeksforgeeks.org/minimize-the-maximum-difference-between-adjacent-elements-in-an-array/?ref=leftbar-rightbar
+
+https://www.geeksforgeeks.org/calculate-the-sum-of-gcd-over-all-subarrays/?ref=leftbar-rightbar
+
+https://www.geeksforgeeks.org/eggs-dropping-puzzle-set-2/?ref=leftbar-rightbar
 
 Write your own logic for MooshakCatchingCheese.java
 

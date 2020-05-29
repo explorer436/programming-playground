@@ -66,9 +66,15 @@ public class MaxOrMinAvgSubArrayOfSpecifiedSize {
         classUnderTest.maxAvgOfGivenSize_constantSpace(A, 2); // 12.5 starting at index 2
     }
     
-    /*
+    /**
      * Time complexity is O(n) but it requires O(n) auxiliary space.
      * In this scenario, using prefix sums may not be the best approach. 
+     * 
+     * Create an auxiliary array of size n. 
+     * Store cumulative sum of elements in this array. 
+     * Let the array be prefixSums[]. 
+     * prefixSums[i] stores sum of elements from arr[0] to arr[i]. 
+     * Once we have prefixSums[] array with us, we can compute sum between two indexes in O(1) time.
      */
     
     public void minAvgOfGivenSize(int[] A, int k)
@@ -157,6 +163,21 @@ public class MaxOrMinAvgSubArrayOfSpecifiedSize {
 
     }
     
+    /**
+     * 
+     * 	1) Initialize indexOfGlobalMinAvg = 0 // Beginning of result index
+		2) Find sum of first k elements. Let this sum be 'currentSubArrSum'
+		3) Initialize min_sum = sum
+		4) Iterate from (k+1)'th to n'th element, do following
+		   for every element arr[i]
+		      a) currentSubArrSum = currentSubArrSum + arr[i] - arr[i-k]
+		      b) If currentSubArrSum < min_sum
+		           indexOfGlobalMinAvg = (i-k+1)
+		5) Print indexOfGlobalMinAvg and indexOfGlobalMinAvg+k-1 as beginning and ending
+		   indexes of resultant subarray.
+     * 
+     */
+    
     public void maxAvgOfGivenSize_constantSpace(int[] A, int k)
     {
     	int length = A.length;
@@ -177,8 +198,8 @@ public class MaxOrMinAvgSubArrayOfSpecifiedSize {
     		
     		for (int j = k; j < length; j++)
             {
+    			// these two steps can be joined into one.
         		int sumWithNextElementAdded = currentSubArrSum + A[j];
-        		
             	currentSubArrSum = sumWithNextElementAdded - A[j - k];
             	
             	float currentSubArrAvg = (float) currentSubArrSum / k;
@@ -219,8 +240,8 @@ public class MaxOrMinAvgSubArrayOfSpecifiedSize {
     		
     		for (int j = k; j < length; j++)
             {
-        		int sumWithNextElementAdded = currentSubArrSum + A[j];
-        		
+    			// these two steps can be joined into one.
+        		int sumWithNextElementAdded = currentSubArrSum + A[j];        		
             	currentSubArrSum = sumWithNextElementAdded - A[j - k];
             	
             	float currentSubArrAvg = (float) currentSubArrSum / k;
