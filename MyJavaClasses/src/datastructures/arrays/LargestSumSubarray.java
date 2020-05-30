@@ -5,7 +5,12 @@ package datastructures.arrays;
 	Largest Sum Contiguous Subarray
 
 	Write an efficient program to find the sum of contiguous subarray 
-	within a one-dimensional array of numbers which has the largest sum. 
+	within a one-dimensional array of numbers which has the largest sum.
+	
+	This includes single element arrays - in other words, 
+	if there is one element in the array that is 
+	greater than the sum of all the other elements combined, 
+	that element is the result.
  *
  */
 public class LargestSumSubarray {
@@ -13,18 +18,39 @@ public class LargestSumSubarray {
 	public static void main(String[] args) {
 		
 		int[] A;
-				
-		A = new int[] {	-2, -3, 4, -1, -2, 1, 5, -3	};		
-		solution(A); // 7
+		
+		A = new int[] {	-2, -3, 4, -1, -2, 1, 5, -3	};
+		//                      |_____________|
+		solution_noNeedToPrintIndices(A); // 7
+		solution_printIndices(A); // 7, [startingIndex, endingIndex] = [2, 6] 
+		
+		System.out.println();
 		
 		A = new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
-		solution(A); // 6
+		//                         |_________|
+		solution_noNeedToPrintIndices(A); // 6
+		solution_printIndices(A); // 6, [startingIndex, endingIndex] = [3, 6]
+		
+		System.out.println();
+		
+		A = new int[] { 1, 1, -2, -3, 5 }; 
+		//                            |
+		solution_noNeedToPrintIndices(A); // 5
+		solution_printIndices(A); // 5, [startingIndex, endingIndex] = [4, 4]
+		
+		System.out.println();
 		
 		// all negative numbers
-		A = new int[] {-2, -3, -1, -1, -2, -3}; // TODO incorrect answer
-		solution(A);
+		A = new int[] {-2, -3, -1, -1, -2, -3};
+		//                      |
+		solution_noNeedToPrintIndices(A); // expected -1
+		solution_printIndices(A); // -1, [startingIndex, endingIndex] = [2, 2]
 
 	}
+	
+	/*
+	 * REMEMBER - always build a test case with all negative numbers.
+	 */
 	
 	/*
 	 * Brute force approach will be similar to the one implemented in MinAvgTwoSlice2.java
@@ -52,24 +78,21 @@ public class LargestSumSubarray {
 	 * Time Complexity: O(n)
 	 * Algorithmic Paradigm: Dynamic Programming
 	 */
-	private static void solution(int[] A)
+	private static void solution_noNeedToPrintIndices(int[] A)
 	{
 		if (A.length > 0)
 		{
 			int currentMaxSum = A[0];
 			int globalMax = A[0];
+			
 			for (int index = 1; index < A.length; index++)
 			{
-				int prevMaxPlusCurrElement = currentMaxSum + A[index];
+				int prevMaxSum = currentMaxSum;
 				
-				if (A[index] != prevMaxPlusCurrElement) 
-				{
-					currentMaxSum = A[index] > prevMaxPlusCurrElement ? A[index] : prevMaxPlusCurrElement;
-				}
-				else
-				{
-					currentMaxSum = A[index] + prevMaxPlusCurrElement;
-				}
+				int prevMaxSumPlusCurrElement = prevMaxSum + A[index];
+				
+				currentMaxSum = A[index] > prevMaxSumPlusCurrElement ? A[index] : prevMaxSumPlusCurrElement; 
+				// same as - currentMaxSum = Math.max(A[index], prevMaxSumPlusCurrElement);
 				
 				if (currentMaxSum > globalMax)
 				{
@@ -78,6 +101,48 @@ public class LargestSumSubarray {
 			}
 			
 			System.out.println("globalMax : " + globalMax);
+		}
+	}
+	
+	private static void solution_printIndices(int[] A)
+	{
+		if (A.length > 0)
+		{
+			int currentMaxSum = A[0];
+			int globalMax = A[0];
+			
+			int startingIndex = 0;
+			int globalMaxEndingIndex = 0;
+			int globalMaxStartingPositionIndex = 0;
+			
+			for (int index = 1; index < A.length; index++)
+			{
+				int prevMaxSum = currentMaxSum;
+				
+				int prevMaxSumPlusCurrElement = prevMaxSum + A[index];
+
+				if (A[index] != prevMaxSum)
+				{
+					if (A[index] > prevMaxSumPlusCurrElement)
+					{
+						currentMaxSum = A[index];
+						startingIndex = index;
+					}
+					else
+					{
+						currentMaxSum = prevMaxSumPlusCurrElement;
+					}
+				}
+				
+				if (currentMaxSum > globalMax)
+				{
+					globalMax = currentMaxSum;
+					globalMaxEndingIndex = index;
+					globalMaxStartingPositionIndex = startingIndex;
+				}
+			}
+			
+			System.out.println("globalMax : " + globalMax + ", [startingIndex, endingIndex] = [" + globalMaxStartingPositionIndex + ", " + globalMaxEndingIndex + "]");
 		}
 	}
 }
