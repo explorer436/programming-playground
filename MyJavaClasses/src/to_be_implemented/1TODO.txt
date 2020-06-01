@@ -1,10 +1,14 @@
+When it comes to solving problems, what is the endgoal here? Is it the endgoal? Or, is it the means to something else?
+
+When looking at new problems online, resist the urge to solve them right away. Instead, focus more on where the question is coming from. Are there more questions there? Do you have an in-depth understanding of the topic? If not, spend time on it.
+
 Try to go with topic in geeks for geeks instead of picking problems from all over the place and many websites at random.
 
 // Self-Balancing Binary Search Tree
 https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/
 
 https://www.geeksforgeeks.org/sum-of-all-subsequences-of-length-k/?ref=leftbar-rightbar
-
+ 
 https://www.geeksforgeeks.org/minimum-group-flips-to-make-binary-array-elements-same/?ref=leftbar-rightbar
 
 https://www.geeksforgeeks.org/longest-sub-array-with-maximum-gcd/?ref=leftbar-rightbar

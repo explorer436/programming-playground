@@ -29,4 +29,16 @@ public class PrintUtils {
     {
         return java.util.Arrays.deepToString(array).replace("], ", "]\n").replace("[[", "[").replace("]]", "]");
     }
+	
+	public static void printArray(Comparable[] array)
+	{
+		/*
+		for (int i = 0; i < intArray.length; i++)
+		{
+			System.out.print(intArray[i] + "\t");
+		}
+		*/
+		
+		System.out.println(Arrays.toString(array));
+	}
 }
