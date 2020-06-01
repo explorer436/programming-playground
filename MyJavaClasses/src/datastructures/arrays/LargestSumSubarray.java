@@ -6,11 +6,6 @@ package datastructures.arrays;
 
 	Write an efficient program to find the sum of contiguous subarray 
 	within a one-dimensional array of numbers which has the largest sum.
-	
-	This includes single element arrays - in other words, 
-	if there is one element in the array that is 
-	greater than the sum of all the other elements combined, 
-	that element is the result.
  *
  */
 public class LargestSumSubarray {
@@ -73,6 +68,13 @@ public class LargestSumSubarray {
 	 * 
 	 * Keep track of currentMaxSum with every iteration and update globalMax when necessary.
 	 */	
+	
+	/*
+		This includes single element arrays - in other words, 
+		if there is one element in the array that is 
+		greater than the sum of all the other elements combined, 
+		that element is the result.
+	*/
 	
 	/*
 	 * Time Complexity: O(n)

@@ -68,9 +68,15 @@ public class MinAvgTwoSlice {
 
     static int indexWithMinimumAverage = 0;
 
-    // TODO this is only 60% done
+    /*
+     * This is overkill.
+     * See MinAvgTwoSlice3.java for the most correct answer to the problem.
+     */
+    
+    // This solution got only 60% score.
     // correctness 100%
     // performance 20%
+    
     private static void printStartingPositionOfMinimumSlice(int[] A)
     {
         int n = A.length;

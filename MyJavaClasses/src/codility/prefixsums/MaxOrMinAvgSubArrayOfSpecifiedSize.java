@@ -1,5 +1,7 @@
 package codility.prefixsums;
 
+import java.util.Arrays;
+
 /**
  * 
 Find maximum average subarray of k length
@@ -45,6 +47,7 @@ public class MaxOrMinAvgSubArrayOfSpecifiedSize {
     	
     	A = new int[] { 1, 12, -5, -6, 50, 3 };        
         classUnderTest.minAvgOfGivenSize(A, 4); // 0.5 starting at index 0
+        /*
         classUnderTest.minAvgOfGivenSize_constantSpace(A, 4); // 0.5 starting at index 0
         classUnderTest.maxAvgOfGivenSize(A, 4); // 12.75 starting at index 1
         classUnderTest.maxAvgOfGivenSize_constantSpace(A, 4); // 12.75 starting at index 1
@@ -64,6 +67,7 @@ public class MaxOrMinAvgSubArrayOfSpecifiedSize {
         classUnderTest.minAvgOfGivenSize_constantSpace(A, 2); // -5 starting at position 4
         classUnderTest.maxAvgOfGivenSize(A, 2); // 12.5 starting at index 2
         classUnderTest.maxAvgOfGivenSize_constantSpace(A, 2); // 12.5 starting at index 2
+        */
     }
     
     /**
@@ -75,6 +79,14 @@ public class MaxOrMinAvgSubArrayOfSpecifiedSize {
      * Let the array be prefixSums[]. 
      * prefixSums[i] stores sum of elements from arr[0] to arr[i]. 
      * Once we have prefixSums[] array with us, we can compute sum between two indexes in O(1) time.
+     */
+    
+    /*
+     * A = [1, 12, -5, -6, 50, 3], k = 4
+     * prefixSums : [	1	13	8	2	52	55	]
+     *                  |___________| 
+     *                       |___________| prefixSums[j] - prefixSums[j - k]
+     *                          |___________|
      */
     
     public void minAvgOfGivenSize(int[] A, int k)
@@ -176,6 +188,14 @@ public class MaxOrMinAvgSubArrayOfSpecifiedSize {
 		5) Print indexOfGlobalMinAvg and indexOfGlobalMinAvg+k-1 as beginning and ending
 		   indexes of resultant subarray.
      * 
+     */
+    
+    /*
+     * A = [1, 12, -5, -6, 50, 3], k = 4
+     * prefixSums : [	1	13	8	2	52	55	]
+     *                  |___________| 
+     *                       |___________| currentSubArrSum + A[j] - A[j - k];
+     *                          |___________|
      */
     
     public void maxAvgOfGivenSize_constantSpace(int[] A, int k)

@@ -73,7 +73,8 @@ public class PassingCars
 	 */
 	public static int solution(int[] A)
 	{
-		int right_count = 0, passingCars = 0;
+		int right_count = 0;
+		int passingCars = 0;
 
 		for (int i = 0; i < A.length; i++)
 		{

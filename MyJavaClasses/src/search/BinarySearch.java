@@ -54,49 +54,56 @@ public class BinarySearch {
 	}
 	
 	// A prerequisite is, the array has to be ordered.
-		public static int binarySearchUsingRecursion(int key, int[] a, int lo, int hi)
-		{		
-			if (lo > hi)
-			{
-				return -1;
-			}
-			
-			try {
-				int mid = lo + (hi - lo) / 2;
-				if (key < a[mid]) {
-					return binarySearchUsingRecursion(key, a, lo, mid - 1);
-				}
-				else if (key > a[mid]) {
-					return binarySearchUsingRecursion(key, a, mid +1 , hi);
-				}
-				else 
-				{
-					return mid;
-				}
-			} catch (java.lang.ArrayIndexOutOfBoundsException e) {
-				return -1;
-			}
-		}
-		
-		// A prerequisite is, the array has to be ordered.
-		public static int binarySearchUsingIteration(int key, int[] a)
+	public static int binarySearchUsingRecursion(int key, int[] a, int lo, int hi)
+	{		
+		if (lo > hi)
 		{
-			int lo = 0;		
-			int hi = a.length - 1;
-			while (lo <= hi)
-			{
-				int mid = lo + (hi - lo) / 2;
-				if (key < a[mid]) {
-					hi = mid - 1;
-				}
-				else if (key > a[mid]) {
-					lo = mid + 1;
-				}
-				else {
-					return mid;
-				}
-			}
 			return -1;
 		}
+		
+		try 
+		{
+			int mid = lo + (hi - lo) / 2;
+			if (key < a[mid]) 
+			{
+				return binarySearchUsingRecursion(key, a, lo, mid - 1);
+			}
+			else if (key > a[mid]) 
+			{
+				return binarySearchUsingRecursion(key, a, mid +1 , hi);
+			}
+			else 
+			{
+				return mid;
+			}
+		} catch (java.lang.ArrayIndexOutOfBoundsException e) {
+			return -1;
+		}
+	}
+	
+	// A prerequisite is, the array has to be ordered.
+	public static int binarySearchUsingIteration(int key, int[] a)
+	{
+		int lo = 0;		
+		int hi = a.length - 1;
+		while (lo <= hi)
+		{
+			int mid = lo + (hi - lo) / 2;
+			
+			if (key < a[mid]) 
+			{
+				hi = mid - 1;
+			}
+			else if (key > a[mid]) 
+			{
+				lo = mid + 1;
+			}
+			else 
+			{
+				return mid;
+			}
+		}
+		return -1;
+	}
 
 }

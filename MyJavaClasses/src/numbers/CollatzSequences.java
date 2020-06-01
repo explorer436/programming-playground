@@ -27,7 +27,7 @@ for all starting numbers between 1 and 100, how many chains have a length greate
 public class CollatzSequences {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO
 
 	}
 

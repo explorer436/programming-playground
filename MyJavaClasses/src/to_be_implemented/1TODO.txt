@@ -1,11 +1,5 @@
 Try to go with topic in geeks for geeks instead of picking problems from all over the place and many websites at random.
 
-https://www.geeksforgeeks.org/find-the-smallest-positive-number-missing-from-an-unsorted-array/
-
-https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
-
-https://www.geeksforgeeks.org/maximum-and-minimum-in-an-array/
-
 // Self-Balancing Binary Search Tree
 https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/
 
@@ -27,7 +21,10 @@ https://www.geeksforgeeks.org/minimize-the-maximum-difference-between-adjacent-e
 
 https://www.geeksforgeeks.org/calculate-the-sum-of-gcd-over-all-subarrays/?ref=leftbar-rightbar
 
-https://www.geeksforgeeks.org/eggs-dropping-puzzle-set-2/?ref=leftbar-rightbar
+https://www.geeksforgeeks.org/egg-dropping-puzzle-dp-11/
+https://www.geeksforgeeks.org/eggs-dropping-puzzle-binomial-coefficient-and-binary-search-solution/
+
+https://www.geeksforgeeks.org/program-print-array-pendulum-arrangement/
 
 Write your own logic for MooshakCatchingCheese.java
 
@@ -39,3 +36,5 @@ Write an application to send an email in java (pure java and spring email)
  - build on it later to use custom templates etc.
 
 Understand how CustomHashCreatorUtil.java is working.
+
+move solutions from the recursion package into the corresponding packages and find alternate solutions for each of them.

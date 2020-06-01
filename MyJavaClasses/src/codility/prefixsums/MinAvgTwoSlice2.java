@@ -60,23 +60,31 @@ public class MinAvgTwoSlice2 {
     {
     	MinAvgTwoSlice2 classUnderTest = new MinAvgTwoSlice2();
         int[] A = new int[] { 4, 2, 2, 5, 1, 5, 8 };
-        classUnderTest.solution(A);
+        classUnderTest.solution(A); // globalMinAvg : 2.0, indexOfGlobalMinAvg : 1
         
         A = new int[] { 4, 2, 2, 5, 1, 5, 8, 1, 3, 9, 1, 1, 7 };
-        classUnderTest.solution(A);
+        classUnderTest.solution(A); // globalMinAvg : 1.0, indexOfGlobalMinAvg : 10
         
         A = new int[] { 9 };
-        classUnderTest.solution(A);
+        classUnderTest.solution(A); // globalMinAvg : 9.0, indexOfGlobalMinAvg : 0
         
         A = new int[] { };
-        classUnderTest.solution(A);
+        classUnderTest.solution(A); // globalMinAvg : 0.0, indexOfGlobalMinAvg : 0
         
     }
     
-    // TODO this is only 60% done
-    // correctness 100%
-    // performance 20%
-    // Detected time complexity: O(N ** 2) 
+    /*
+	    This solution is only 60% correct.
+	    correctness 100%
+	    performance 20%
+	    
+	    Detected time complexity: O(N ** 2)
+	    
+	    This is on the right path to solving it. But the time complexity is bad.
+	    It turns out that it is not necessary to traverse through the array for each length starting from 2 to n.
+	    It is enough to traverse through the array for lengths 2 and 3 only.
+	    See MinAvgTwoSlice3.java for the most correct answer to the problem.
+    */
 
     /**
      *
@@ -153,8 +161,7 @@ public class MinAvgTwoSlice2 {
             	}
         	}
     	}
-    	System.out.println("globalMinAvg : " + globalMinAvg);
-    	System.out.println("indexOfGlobalMinAvg : " + indexOfGlobalMinAvg);
+    	System.out.println("globalMinAvg : " + globalMinAvg + ", indexOfGlobalMinAvg : " + indexOfGlobalMinAvg);
     }
 
 }

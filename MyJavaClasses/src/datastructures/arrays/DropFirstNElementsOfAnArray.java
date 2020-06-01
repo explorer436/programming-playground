@@ -62,8 +62,7 @@ public class DropFirstNElementsOfAnArray
 				.skip(K)
 				  .collect(Collectors.toList());
 		
-		System.out.println("initial array : " + Arrays.toString(A));
-		System.out.println("initial array after skipping " + K + " elements : " + Arrays.toString(A));
+		System.out.println("initial array before skipping " + K + " elements : " + Arrays.toString(A));
 		System.out.println("new array after skipping " + K + " elements : " + Arrays.toString(result.toArray()));
 	}
 
