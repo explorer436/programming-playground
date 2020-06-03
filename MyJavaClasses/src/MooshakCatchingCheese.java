@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 /**
  * Mooshak the mouse has been placed in a maze. There is a huge chunk of cheese

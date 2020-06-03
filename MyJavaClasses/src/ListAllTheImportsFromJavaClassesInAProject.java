@@ -1,9 +1,6 @@
 // import com.thoughtworks.qdox.JavaDocBuilder;
 // import com.thoughtworks.qdox.model.JavaSource;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 
 public class ListAllTheImportsFromJavaClassesInAProject
 {

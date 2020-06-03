@@ -133,7 +133,7 @@ public class InsertionSort
 		
 		j = 2	[0	3	2	4	5	7	6	1]
 						j
-		compare A[j] with A[j - 1].. A[2] with A[1] and since A[j] > A[j - 1], no need to exchange them.
+		compare A[j] with A[j - 1].. A[2] with A[1] and exchange them.
 		
 		j = 1	[0	2	3	4	5	7	6	1]
 					j
@@ -184,19 +184,19 @@ public class InsertionSort
 		
 		j = 5	[0	2	3	4	5	1	6	7]
 									j
-		compare A[j] with A[j - 1].. A[5] with A[4] and since A[j] > A[j - 1], no need to exchange them.
+		compare A[j] with A[j - 1].. A[5] with A[4] and exchange them.
 		
 		j = 4	[0	2	3	4	1	5	6	7]
 								j
-		compare A[j] with A[j - 1].. A[4] with A[3] and since A[j] > A[j - 1], no need to exchange them.
+		compare A[j] with A[j - 1].. A[4] with A[3] and exchange them.
 		
 		j = 3	[0	2	3	1	4	5	6	7]
 							j
-		compare A[j] with A[j - 1].. A[3] with A[2] and since A[j] > A[j - 1], no need to exchange them.
+		compare A[j] with A[j - 1].. A[3] with A[2] and exchange them.
 		
 		j = 2	[0	2	1	3	4	5	6	7]
 						j
-		compare A[j] with A[j - 1].. A[2] with A[1] and since A[j] > A[j - 1], no need to exchange them.
+		compare A[j] with A[j - 1].. A[2] with A[1] and exchange them.
 		
 		j = 1	[0	1	2	3	4	5	6	7]
 					j

@@ -1,7 +1,5 @@
 package codility.prefixsums;
 
-import java.util.Arrays;
-
 import utility.PrintUtils;
 
 /**

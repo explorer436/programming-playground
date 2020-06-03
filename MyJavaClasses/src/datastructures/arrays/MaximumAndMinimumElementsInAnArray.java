@@ -49,6 +49,23 @@ public class MaximumAndMinimumElementsInAnArray {
         System.out.println(Arrays.toString(anArray));
         System.out.println("largestValue : " + MaximumAndMinimumElementsInAnArray.largestValue_recursion(anArray));
         System.out.println("smallest : " + MaximumAndMinimumElementsInAnArray.smallestValue_recursion(anArray));
+
+        System.out.println();
+
+        Integer[] anArray2;
+        		
+        anArray2 = new Integer[]{ -1, 0, -2 };
+        System.out.println(Arrays.toString(anArray));
+        // System.out.println("largestValue : " + MaximumAndMinimumElementsInAnArray.largestValue_recursion(anArray));
+        System.out.println("smallest of Integers : " + MaximumAndMinimumElementsInAnArray.smallestValue_comparable(anArray2));
+        System.out.println("index of smallest of Integers : " + MaximumAndMinimumElementsInAnArray.indexOfSmallestValue_comparable(anArray2));
+
+        Integer[] anArray3 = new Integer[]{ -1 };
+        System.out.println(Arrays.toString(anArray3));
+        // System.out.println("largestValue : " + MaximumAndMinimumElementsInAnArray.largestValue_recursion(anArray));
+        System.out.println("smallest of Integers : " + MaximumAndMinimumElementsInAnArray.smallestValue_comparable(anArray3));
+        System.out.println("index of smallest of Integers : " + MaximumAndMinimumElementsInAnArray.indexOfSmallestValue_comparable(anArray3));
+
     }
 
 	/**
@@ -111,6 +128,64 @@ public class MaximumAndMinimumElementsInAnArray {
                 int[] secondHalf = Arrays.copyOfRange(anArray, midPoint, anArray.length);
 
                 result = smallestValue_recursion(firstHalf) < smallestValue_recursion(secondHalf) ? smallestValue_recursion(firstHalf) : smallestValue_recursion(secondHalf);
+            }
+        }
+
+        return result;
+    }
+
+    public static Comparable smallestValue_comparable(Comparable[] anArray) {
+        
+        Comparable result = 0;
+
+        if (null != anArray && anArray.length != 0)
+        {
+            if (anArray.length == 1)
+            {
+                result = anArray[0];
+            }
+            else
+            {
+                int midPoint = (anArray.length + 1)/2;
+                Comparable[] firstHalf = Arrays.copyOfRange(anArray, 0, midPoint);
+                Comparable[] secondHalf = Arrays.copyOfRange(anArray, midPoint, anArray.length);
+
+                int comparisonResult = smallestValue_comparable(firstHalf).compareTo(smallestValue_comparable(secondHalf));
+                result =  comparisonResult < 0 ? smallestValue_comparable(firstHalf) : smallestValue_comparable(secondHalf);
+            }
+        }
+
+        return result;
+    }
+
+
+    /*
+    * TODO
+    * These methods are not useful for SelectionSort.
+    * SelectionSort needs the index of the current smallest element in the array.
+    * We need a method to return the index of the current smallest element in the array instead of
+    * returning the smallest element in the array.
+    */
+
+    public static int indexOfSmallestValue_comparable(Comparable[] anArray) {
+        
+        int result = 0;
+
+        if (null != anArray && anArray.length != 0)
+        {
+            if (anArray.length == 1)
+            {
+                result = 0;
+            }
+            else
+            {
+                for (int index = 0; index < anArray.length; index++)
+                {
+                    if (anArray[result].compareTo(anArray[index]) > 0)
+                    {
+                        result = index;
+                    }
+                }
             }
         }
 

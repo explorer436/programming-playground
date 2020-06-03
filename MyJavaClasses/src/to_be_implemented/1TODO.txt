@@ -30,6 +30,12 @@ https://www.geeksforgeeks.org/eggs-dropping-puzzle-binomial-coefficient-and-bina
 
 https://www.geeksforgeeks.org/program-print-array-pendulum-arrangement/
 
+geeksforgeeks - Towers of Hanoi concept
+
+geeksforgeeks - Tree traversals.
+
+http://www-igm.univ-mlv.fr/~lecroq/string/ - EXACT STRING MATCHING ALGORITHMS
+
 Write your own logic for MooshakCatchingCheese.java
 
 Codility classes.

@@ -1,8 +1,6 @@
 package datastructures.arrays;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /*
 * 
@@ -57,22 +55,30 @@ public class ArrayCyclicRotation
 {
 	public static void main(String[] args)
 	{
-		ArrayCyclicRotation classUnderTest = new ArrayCyclicRotation();
 
-		System.out.println("result for input " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " and K = 2 is " + Arrays.toString(classUnderTest.solution(new int[] { 1, 5, 2, 1, 4, 0 }, 2)));
+		System.out.println("result for input " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " and K = 2 is " + Arrays.toString(
+				ArrayCyclicRotation.solution(new int[] { 1, 5, 2, 1, 4, 0 }, 2)));
 		
 		System.out.println();
 		
-		System.out.println("result for input " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " and K = 6 is " + Arrays.toString(classUnderTest.solution(new int[] { 1, 5, 2, 1, 4, 0 }, 6)));
+		System.out.println("result for input " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " and K = 6 is " + Arrays.toString(
+				ArrayCyclicRotation.solution(new int[] { 1, 5, 2, 1, 4, 0 }, 6)));
+				
 		System.out.println();
 		
-		System.out.println("result for input " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " and K = 10 is " + Arrays.toString(classUnderTest.solution(new int[] { 1, 5, 2, 1, 4, 0 }, 10)));
+		System.out.println("result for input " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " and K = 10 is " + Arrays.toString(
+				ArrayCyclicRotation.solution(new int[] { 1, 5, 2, 1, 4, 0 }, 10)));
+				
 		System.out.println();
 		
-		System.out.println("result for input " + Arrays.toString(new int[] { }) + " and K = 2 is " + Arrays.toString(classUnderTest.solution(new int[] { }, 2)));
+		System.out.println("result for input " + Arrays.toString(new int[] { }) + " and K = 2 is " + Arrays.toString(
+				ArrayCyclicRotation.solution(new int[] {}, 2)));
+				
 		System.out.println();
 		
-		System.out.println("result for input " + Arrays.toString(new int[] { }) + " and K = -2 is " + Arrays.toString(classUnderTest.solution(new int[] { }, -2)));
+		System.out.println("result for input " + Arrays.toString(new int[] { }) + " and K = -2 is " + Arrays.toString(
+				ArrayCyclicRotation.solution(new int[] {}, -2)));
+				
 		System.out.println();
 		
 		System.out.println("--------");
@@ -84,9 +90,11 @@ public class ArrayCyclicRotation
 		
 		System.out.println("--------");
 		
-		System.out.println("result for input " + Arrays.toString(new int[] { 1, 2, 3 }) + " and K = 2 is " + Arrays.toString(classUnderTest.circularArrayRotation(new int[] { 1, 2, 3 }, 2, new int[] { 0, 1, 2 })));
+		System.out.println("result for input " + Arrays.toString(new int[] { 1, 2, 3 }) + " and K = 2 is " + Arrays.toString(
+				ArrayCyclicRotation.circularArrayRotation(new int[] { 1, 2, 3 }, 2, new int[] { 0, 1, 2 })));
 		
-		System.out.println("result for input " + Arrays.toString(new int[] { }) + " and K = 2 is " + Arrays.toString(classUnderTest.circularArrayRotation(new int[] { }, 2, new int[] { })));
+		System.out.println("result for input " + Arrays.toString(new int[] { }) + " and K = 2 is " + Arrays.toString(
+				ArrayCyclicRotation.circularArrayRotation(new int[] {}, 2, new int[] {})));
 		
 	}
 
