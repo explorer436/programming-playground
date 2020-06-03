@@ -4,6 +4,8 @@ import utility.ArrayUtils;
 import utility.PrintUtils;
 
 /**
+ * Selection sort uses ~n2/2 compares and n exchanges to sort an array of length n. 
+ * 
  * Selection sort: 
  * One of the simplest sorting algorithms works as follows:
  * 
@@ -55,13 +57,14 @@ public class SelectionSort {
         {
             for (int index = 0; index < A.length; index++)
             {
-                // grab the first element from the subarray
+                // grab the index of the first element from the subarray A[index..length]
                 int min = index;
 
                 for (int j = min + 1; j < A.length; j++)
                 {
-                    // starting with the next element, compare each element and if it is smaller, exchange them.
-                    if (A[index].compareTo(A[j]) > 0)
+                    // starting with the next element from min, compare each element with the element at min 
+                    // and if it is smaller, exchange them.
+                    if (A[min].compareTo(A[j]) > 0)
                     {
                         ArrayUtils.exch(A, index, j);
                     }

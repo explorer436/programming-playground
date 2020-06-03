@@ -4,21 +4,26 @@ import utility.ArrayUtils;
 import utility.PrintUtils;
 
 /*
- * Example:   
- * The following table shows the sorting steps for sorting the sequence 5 7 0 3 4 2 6 1.
- * On the left side, in green, is the already sorted part of the sequence. 
- * On the far right is the number of positions in parentheses around which 
- * the inserted element has moved to the left.
+ *
+	Insertion sort is an elementary sorting algorithm. 
+	It has a time complexity of Θ(n2), thus being slower than heapsort, merge sort and also shellsort. 
+	Insertion sort is well suited for sorting small data sets or for the insertion of new elements into a sorted sequence. 
 
-5	7	0	3	4	2	6	1	 	(0)
-5	7	0	3	4	2	6	1	 	(0)
-0	5	7	3	4	2	6	1	 	(2)
-0	3	5	7	4	2	6	1	 	(2)
-0	3	4	5	7	2	6	1	 	(2)
-0	2	3	4	5	7	6	1	 	(4)
-0	2	3	4	5	6	7	1	 	(1)
-0	1	2	3	4	5	6	7	 	(6)
+	Idea :
 
+	Let a0, ..., an-1 be the sequence to be sorted. 
+	At the beginning and after each iteration of the algorithm the sequence consists of two parts: 
+	the first part a0, ..., ai-1 is already sorted, 
+	the second part ai, ..., an-1 is still unsorted (i element 0, ..., n).
+
+	In order to insert element ai into the sorted part, it is compared with ai-1, ai-2 etc. 
+	When an element aj with ajless or equalai is found, ai is inserted behind it. 
+	If no such element is found, then ai is inserted at the beginning of the sequence.
+
+	After inserting element ai the length of the sorted part has increased by one. 
+	In the next iteration, ai+1 is inserted into the sorted part etc. 
+	While at the beginning the sorted part consists of element a0 only, at the end it consists of all elements a0, ..., an-1. 
+ * 
  */
 public class InsertionSort
 {
