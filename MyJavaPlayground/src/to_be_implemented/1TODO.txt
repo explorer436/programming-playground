@@ -36,6 +36,8 @@ geeksforgeeks - Tree traversals.
 
 http://www-igm.univ-mlv.fr/~lecroq/string/ - EXACT STRING MATCHING ALGORITHMS
 
+staircase problem - make it generic. any combination of steps that can be taken to get to the top.
+
 Write your own logic for MooshakCatchingCheese.java
 
 Codility classes.
