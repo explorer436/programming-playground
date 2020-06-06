@@ -62,7 +62,7 @@ trivial amount of work.
 
 However, do not conclude that the recurrence relation is of no use. One way to solve the rabbit
 problem is to construct an iterative solution based on this same recurrence relation. The iterative
-solution goes forward instead of backward and computes each value only once. Look at MultiplyingRabbits.iterativeRabbit()
+solution goes forward instead of backward and computes each value only once. Look at MultiplyingRabbits.multiplyingRabbits_iterative()
 Use the iterative function to compute rabbit ( n ) even for very large values of n.
 
 Thus, an iterative solution can be more effi cient than a recursive solution. In certain cases, how-
@@ -91,7 +91,7 @@ mechanical, some compilers automatically replace tail recursion with iteration. 
 other forms of recursion is usually more complex and is a task that we would need to undertake, if
 necessary.
 
-Some recursive algorithms, such as MultiplyingRabbits.iterativeRabbit() , are inherently inefficient, while other recursive algo-
+Some recursive algorithms, such as MultiplyingRabbits.multiplyingRabbits_iterative() , are inherently inefficient, while other recursive algo-
 rithms, such as the binary search, are extremely efficient. 
 
 You will learn how to determine the relative efficiency of a recursive algorithm in more advanced courses 

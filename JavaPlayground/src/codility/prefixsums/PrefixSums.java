@@ -1,9 +1,7 @@
 package codility.prefixsums;
 
 /**
- * 
- * See PrefixSums.pdf
- * 
+   See PrefixSums.pdf
  */
 public class PrefixSums
 {

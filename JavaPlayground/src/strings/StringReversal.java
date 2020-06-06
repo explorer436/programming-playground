@@ -16,6 +16,12 @@ public class StringReversal {
 		
 		// Note : Apache Commons has a helper method for this as well. StringUtils.reverse()
 		
+		System.out.println("reverse of cat : " + StringReversal.reverseString("cat"));
+		System.out.println("reverse of damage : " + StringReversal.reverseString("damage"));
+		System.out.println("reverse of empty string : " + StringReversal.reverseString(""));
+		
+		System.out.println();
+		
 		System.out.println("writeBackward_recursive - input is Testing");writeBackward_recursive("Testing");
 		System.out.println("writeBackward_recursive - input is \"\"");writeBackward_recursive("");
 		System.out.println("writeBackward_recursive - input is null");writeBackward_recursive(null);
@@ -77,6 +83,21 @@ public class StringReversal {
 			} // end if
 		}
 	}
+	
+	public static String reverseString(String str) {
+        String result = null;
+        
+        if (null != str && str.length() > 1)
+        {
+        	result = str.substring(str.length() -1, str.length()) + reverseString(str.substring(0, str.length() -1));
+        }
+        else if(str.length() == 1)
+        {
+        	return str;
+        }
+
+        return result;
+    }
 
 	public static void reverseStringUsingWhileLoop(String input) 
     {

@@ -1,23 +1,9 @@
 package datastructures.arrays;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 
-/*
- * if (anArray has only one entry) maxArray(anArray) is the entry in anArray
- * else if (anArray has more than one entry) 
- * maxArray(anArray) is the maximum of maxArray(left half of anArray) 
- * 		and maxArray(right half of anArray) 
- * 
- * Notice that this strategy ﬁts the divide-and-conquer model that the binary search algorithm uses. 
- * That is, we proceed by dividing the problem and conquering the subproblems. 
- * However, there is a difference between this algorithm and the binary search algorithm. 
- * Although the binary search algorithm conquers 
- * only one of its subproblems at each step, maxArray conquers both. 
- * Because both subproblems are solved recursively, this approach is called multipath recursion. 
- * After maxArray conquers the subproblems, 
- * it must reconcile the two solutions—that is, 
- * it must ﬁnd the maximum of the two maximums.
- */
 public class MaximumAndMinimumElementsInAnArray {
 
 	public static void main(String[] args) {
@@ -60,13 +46,38 @@ public class MaximumAndMinimumElementsInAnArray {
         System.out.println("smallest of Integers : " + MaximumAndMinimumElementsInAnArray.smallestValue_comparable(anArray2));
         System.out.println("index of smallest of Integers : " + MaximumAndMinimumElementsInAnArray.indexOfSmallestValue_comparable(anArray2));
 
+        System.out.println();
+        
         Integer[] anArray3 = new Integer[]{ -1 };
         System.out.println(Arrays.toString(anArray3));
         // System.out.println("largestValue : " + MaximumAndMinimumElementsInAnArray.largestValue_recursion(anArray));
         System.out.println("smallest of Integers : " + MaximumAndMinimumElementsInAnArray.smallestValue_comparable(anArray3));
         System.out.println("index of smallest of Integers : " + MaximumAndMinimumElementsInAnArray.indexOfSmallestValue_comparable(anArray3));
+        
+        System.out.println();
+        
+        
+        System.out.println(Arrays.toString(anArray));
+        System.out.println("largestValue using openjdk's max method : " + MaximumAndMinimumElementsInAnArray.max(Arrays.asList(anArray2)));
 
     }
+	
+	/**
+	 * if (anArray has only one entry) maxArray(anArray) is the entry in anArray
+	 * else if (anArray has more than one entry) 
+	 * maxArray(anArray) is the maximum of maxArray(left half of anArray) 
+	 * 		and maxArray(right half of anArray) 
+	 * 
+	 * Notice that this strategy ﬁts the divide-and-conquer model that the binary search algorithm uses. 
+	 * That is, we proceed by dividing the problem and conquering the subproblems. 
+	 * However, there is a difference between this algorithm and the binary search algorithm. 
+	 * Although the binary search algorithm conquers 
+	 * only one of its subproblems at each step, maxArray conquers both. 
+	 * Because both subproblems are solved recursively, this approach is called multipath recursion. 
+	 * After maxArray conquers the subproblems, 
+	 * it must reconcile the two solutions—that is, 
+	 * it must ﬁnd the maximum of the two maximums.
+	 */
 
 	/**
 	 * 
@@ -160,7 +171,6 @@ public class MaximumAndMinimumElementsInAnArray {
 
 
     /*
-    * TODO
     * These methods are not useful for SelectionSort.
     * SelectionSort needs the index of the current smallest element in the array.
     * We need a method to return the index of the current smallest element in the array instead of
@@ -190,6 +200,25 @@ public class MaximumAndMinimumElementsInAnArray {
         }
 
         return result;
+    }
+    
+	// TODO understand the implementation below.
+    
+    /**
+     * Take a look at OpenJDK's collection implementations here.
+     * https://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/util/Collections.java
+     */
+    public static <T extends Object & Comparable<? super T>> T max(Collection<? extends T> coll) {
+        Iterator<? extends T> i = coll.iterator();
+        T candidate = i.next();
+
+        while (i.hasNext()) {
+            T next = i.next();
+            if (next.compareTo(candidate) > 0)
+                candidate = next;
+        }
+
+        return candidate;
     }
 
 }

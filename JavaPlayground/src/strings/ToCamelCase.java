@@ -33,22 +33,28 @@ public class ToCamelCase {
 
 	}
 	
+	// This approach needs just one pass through the entire string.
 	// Convert the initial string into a StringBuffer and manipulate the StringBuffer.
-	static String toCamelCase(String s){
+	public static String toCamelCase(String s)
+	{
 		StringBuffer sb = new StringBuffer(s);
-			for (int i = 0; i < sb.length(); i++) {
-				if ((sb.charAt(i)=='_') || (sb.charAt(i)=='-'))
-				{   
-					sb.setCharAt(i+1, Character.toUpperCase((sb.charAt(i+1))));
-					sb.deleteCharAt(i);
-				}
+		for (int i = 0; i < sb.length(); i++) 
+		{
+			if ((sb.charAt(i)=='_') || (sb.charAt(i)=='-'))
+			{   
+				sb.setCharAt(i+1, Character.toUpperCase((sb.charAt(i+1))));
+				sb.deleteCharAt(i);
 			}
+		}
 		return sb.toString();
 	}
 	
 	// Trying functional programming approach.
 	// Apply a series of functions to get the final result.
-	static String toCamelCase2(String s){
+	
+	// This approach needs multiple passes through the entire string - so it will be slower compared to toCamelCase().
+	public static String toCamelCase2(String s)
+	{
 	    return replaceByDelimiters(replaceByDelimiters(s, "_"), "-");
 	}
 

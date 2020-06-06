@@ -4,11 +4,11 @@ public class Factorial {
 	
 	public static void main(String[] args) {
 
-        System.out.println("factorial of 4 : " + Factorial.factorialUsingRecursion(4));
-        System.out.println("factorial of -1 : " + Factorial.factorialUsingRecursion(-1));
-        System.out.println("factorial of 0 : " + Factorial.factorialUsingRecursion(0));
-        System.out.println("factorial of 1 : " + Factorial.factorialUsingRecursion(1));
-        System.out.println("factorial of 10 : " + Factorial.factorialUsingRecursion(10));
+        System.out.println("factorial of 4 : " + Factorial.factorial_recursive(4));
+        System.out.println("factorial of -1 : " + Factorial.factorial_recursive(-1));
+        System.out.println("factorial of 0 : " + Factorial.factorial_recursive(0));
+        System.out.println("factorial of 1 : " + Factorial.factorial_recursive(1));
+        System.out.println("factorial of 10 : " + Factorial.factorial_recursive(10));
 
         System.out.println();
 
@@ -20,7 +20,7 @@ public class Factorial {
 
     }
 	
-	public static int factorialUsingRecursion(int number) {
+	public static int factorial_recursive(int number) {
         int result = 0;
         
         if (number < 0)
@@ -33,7 +33,7 @@ public class Factorial {
         }
         else
         {
-        	result = number * factorialUsingRecursion(number - 1);
+        	result = number * factorial_recursive(number - 1);
         }
 
         return result;

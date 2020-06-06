@@ -1,0 +1,18 @@
+ Hi, 
+
+Thanks for signing up to Daily Interview Pro.
+
+We are thrilled to have you join us in practicing daily interview problems. Daily, consistent practice is one of the best investments you can make for your technical career.  It will help you pass coding interviews with more ease, negotiate higher compensation, and provide you flexibility in your career choices.  We consider it a life-long skill, that continues even for those with full-time jobs.
+
+Every day, we'll send you one real, actual programming interview question that tech companies have asked.  With our industry experience, we make sure that these questions are actually real ones -- not too hard/obscure, and not too easy.
+
+In the solutions, we'll provide you a comprehensive description of the algorithm and any alternative approaches worth mentioning. We'll also explain the time-space (Big O) complexity for you, which is absolutely essential to know.
+
+This'll be fun.  And educational.  We're excited to have you with us on the ride.
+
+Your first problem will come in at 8:00AM PST.
+
+Cheers,
+
+TechLead and Joma
+

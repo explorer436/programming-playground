@@ -13,7 +13,7 @@ public class CropRatio
 
     private HashMap<String, Integer> crops = new HashMap<String, Integer>();
 
-    public void add(String name, int cropWeight)
+    public void addToHashMap(String name, int cropWeight)
     {
         Integer currentCropWeight = (Integer) crops.get(name);
 
@@ -44,9 +44,9 @@ public class CropRatio
     {
         CropRatio cropRatio = new CropRatio();
 
-        cropRatio.add("Wheat", 4);
-        cropRatio.add("Wheat", 5);
-        cropRatio.add("Rice", 1);
+        cropRatio.addToHashMap("Wheat", 4);
+        cropRatio.addToHashMap("Wheat", 5);
+        cropRatio.addToHashMap("Rice", 1);
 
         System.out.println("Fraction of wheat: " + cropRatio.proportion("Wheat"));
         System.out.println("Fraction of rice: " + cropRatio.proportion("Rice"));

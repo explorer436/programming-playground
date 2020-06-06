@@ -1,6 +1,9 @@
 package datastructures.arrays;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /*
 * 
@@ -96,6 +99,11 @@ public class ArrayCyclicRotation
 		System.out.println("result for input " + Arrays.toString(new int[] { }) + " and K = 2 is " + Arrays.toString(
 				ArrayCyclicRotation.circularArrayRotation(new int[] {}, 2, new int[] {})));
 		
+		System.out.println();
+		
+		System.out.println("result for input usingCollectionsRotateMethod");
+		ArrayCyclicRotation.usingCollectionsRotateMethod();
+		
 	}
 
 	/*
@@ -138,20 +146,81 @@ public class ArrayCyclicRotation
 	static int[] circularArrayRotation(int[] a, int k, int[] queries) {
 		
 		int[] rotatedArray = solution(a, k);
-		System.out.println("rotatedArray : " + Arrays.toString(rotatedArray));
-		System.out.println("queries.length : " + queries.length);
+		// System.out.println("rotatedArray : " + Arrays.toString(rotatedArray));
+		// System.out.println("queries.length : " + queries.length);
 		
 		int[] result = new int[queries.length];
 		for (int i = 0; i < queries.length; i++)
 		{
-			System.out.println("i : " + i);
-			System.out.println("queries[i] : " + queries[i]);
+			// System.out.println("i : " + i);
+			// System.out.println("queries[i] : " + queries[i]);
 			result[i] = rotatedArray[queries[i]];
-			System.out.println("result : " + Arrays.toString(result));
+			// System.out.println("result : " + Arrays.toString(result));
 		}
 		
 		return result;
 		
+    } 
+	
+	/**
+	 * Take a look at OpenJDK's implementation here :
+	 * https://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/util/Collections.java
+	 */
+	public static void usingCollectionsRotateMethod()
+	{
+		
+		// { 1, 5, 2, 1, 4, 0 }
+		List<Integer> l = new ArrayList<Integer>();
+		l.add(1);
+		l.add(5);
+		l.add(2);
+		l.add(1);
+		l.add(4);
+		l.add(0);
+		
+		System.out.println("before rotationg " + Arrays.deepToString(l.toArray()));
+		
+		// Collections.rotate(l, 2);
+		rotate2(l, 2);
+		
+		System.out.println("after rotationg " + Arrays.deepToString(l.toArray()));
+	}
+	
+	// TODO understand the implementation below.
+	
+	/**
+	 * OpenJDK's rotate2 implementation : 
+	 * https://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/util/Collections.java
+	 */
+	private static void rotate2(List<?> list, int distance) {
+
+        int size = list.size();
+
+        if (size == 0)
+
+            return;
+
+        int mid =  -distance % size;
+        System.out.println("mid : " + mid);
+
+        if (mid < 0)
+
+            mid += size;
+
+        if (mid == 0)
+
+            return;
+
+        System.out.println("mid : " + mid);
+
+        System.out.println("line 210 " + Arrays.deepToString(list.toArray()));
+        Collections.reverse(list.subList(0, mid));
+        System.out.println("line 212 " + Arrays.deepToString(list.toArray()));
+        Collections.reverse(list.subList(mid, size));
+        System.out.println("line 214 " + Arrays.deepToString(list.toArray()));
+        Collections.reverse(list);
+        System.out.println("line 216 " + Arrays.deepToString(list.toArray()));
+
     }
 	
 	

@@ -1,0 +1,3 @@
+Why Python? 
+
+We recommend using Python as a generalist language for interviewing, as it is well-regarded in the tech industry and used across Google/YouTube, Facebook/Instagram, Netflix, Uber, Dropbox, Pinterest, Spotify, etc., It is easy to learn with readable syntax, and very similar in structure to other popular languages like Java, C/C++, Javascript, PHP, Ruby, etc. Python is generally faster to read/write though, which makes it ideal for interviews. You can, of course, use any language you like!

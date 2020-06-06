@@ -2,35 +2,35 @@ package codility.prefixsums;
 
 /**
  * 
-Find maximum average subarray of k length
-
-Given an array with positive and negative numbers, find the maximum average subarray of given length.
-
-Example:
-
-Input:  arr[] = {1, 12, -5, -6, 50, 3}, k = 4
-Output: Maximum average subarray of length 4 begins
-        at index 1.
-Maximum average is (12 - 5 - 6 + 50)/4 = 51/4
-
- */
-
-/**
- * 
-
-Find the subarray with least average
-
-Given an array arr[] of size n and integer k such that k <= n.
-
-Examples :
-
-Input:  arr[] = {3, 7, 90, 20, 10, 50, 40}, k = 3
-Output: Subarray between indexes 3 and 5
-The subarray {20, 10, 50} has the least average 
-among all subarrays of size 3.
-
-Input:  arr[] = {3, 7, 5, 20, -10, 0, 12}, k = 2
-Output: Subarray between [4, 5] has minimum average
+    Find maximum average subarray of k length
+    
+    Given an array with positive and negative numbers, find the maximum average subarray of given length.
+    
+    Example:
+    
+    Input:  arr[] = {1, 12, -5, -6, 50, 3}, k = 4
+    Output: Maximum average subarray of length 4 begins
+            at index 1.
+    Maximum average is (12 - 5 - 6 + 50)/4 = 51/4
+    
+     */
+    
+    /**
+     * 
+    
+    Find the subarray with least average
+    
+    Given an array arr[] of size n and integer k such that k <= n.
+    
+    Examples :
+    
+    Input:  arr[] = {3, 7, 90, 20, 10, 50, 40}, k = 3
+    Output: Subarray between indexes 3 and 5
+    The subarray {20, 10, 50} has the least average 
+    among all subarrays of size 3.
+    
+    Input:  arr[] = {3, 7, 5, 20, -10, 0, 12}, k = 2
+    Output: Subarray between [4, 5] has minimum average
 
 
  */
