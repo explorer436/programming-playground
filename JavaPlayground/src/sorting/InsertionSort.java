@@ -5,7 +5,12 @@ import utility.PrintUtils;
 
 /*
  *
-	Insertion sort is an elementary sorting algorithm. 
+	See insertion-sort.png
+	Assuming that the entire array is divided into sorted and unsorted parts,
+	each of the elements from the unsorted part is inserted into the correct position in the sorted part.
+	Hence the name, Insertion sort.
+
+ 	Insertion sort is an elementary sorting algorithm. 
 	It has a time complexity of Θ(n2), thus being slower than heapsort, merge sort and also shellsort. 
 	Insertion sort is well suited for sorting small data sets or for the insertion of new elements into a sorted sequence. 
 

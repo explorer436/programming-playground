@@ -51,6 +51,41 @@ public class SelectionSort {
 
    } 
 
+
+   /*   
+        Animation of selection sort in action:
+
+        In each step, the smallest element in the unsorted section is highlighted. 
+        That element is swapped with the first element in the unsorted section.
+
+        S    E   L   E   |C|   T   I   O   N   S   O   R   T
+        --|             
+        C | |E|  L   E    S    T   I   O   N   S   O   R   T
+          -----|
+        C    E | L  |E|   S    T   I   O   N   S   O   R   T
+               -----|
+        C    E   E  |L    S    T  |I|  O   N   S   O   R   T
+                    ----|
+        C    E   E   I  | S    T  |L|  O   N   S   O   R   T
+                        ----|
+        C    E   E   I    L |  T   S   O  |N|  S   O   R   T
+                            -----|
+        C    E   E   I    S    N | S  |O|  T   S   O   R   T
+                                 ----|
+        C    E   E   I    S    N   O | S   T   S  |O|  R   T
+                                     ----|
+        C    E   E   I    S    N   O   O | T   S   S  |R|  T
+                                         ----|
+        C    E   E   I    S    N   O   O   R ||S|  S   T   T
+                                             ----|
+        C    E   E   I    S    N   O   O   R   S ||S|  T   T
+                                                 ----|
+        C    E   E   I    S    N   O   O   R   S   S ||T|  T
+                                                     ----|
+        C    E   E   I    S    N   O   O   R   S   S   T ||T|
+                                                         ----|
+        C    E   E   I    S    N   O   O   R   S   S   T   T |
+   */
     public static void sort(Comparable[] A)
     {
         if (null != A)

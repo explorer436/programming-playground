@@ -22,7 +22,8 @@ public class WriteArrayBackwardsUsingRecursion {
         {
         	System.out.print(strArray[strArray.length -1]);
         	printArrayInReverse(Arrays.copyOfRange(strArray, 0, strArray.length - 1));
-        }
+		}
+		// base condition
         else if (strArray.length == 1)
         {
         	System.out.println(strArray[0]);
