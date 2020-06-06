@@ -5,7 +5,7 @@ import utility.PrintUtils;
 
 /*
  *
-	See insertion-sort.png
+	See InsertionSort.png
 	Assuming that the entire array is divided into sorted and unsorted parts,
 	each of the elements from the unsorted part is inserted into the correct position in the sorted part.
 	Hence the name, Insertion sort.
@@ -56,6 +56,9 @@ public class InsertionSort
 
 	/**
 	 * 
+		Initially, A[0] is considered to be a sorted part of size = 1.
+		And the algorith starts evaluating the initial array starting from the second position (i = 1).
+		
 		A = [5, 7, 0, 3, 4, 2, 6, 1]
 		--------------------------------------------------------------------------------------------------------
 		i = 1	[5	7	0	3	4	2	6	1]

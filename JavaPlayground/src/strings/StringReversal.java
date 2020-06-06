@@ -16,6 +16,18 @@ public class StringReversal {
 		
 		// Note : Apache Commons has a helper method for this as well. StringUtils.reverse()
 		
+		System.out.println("writeBackward_recursive - input is Testing");writeBackward_recursive("Testing");
+		System.out.println("writeBackward_recursive - input is \"\"");writeBackward_recursive("");
+		System.out.println("writeBackward_recursive - input is null");writeBackward_recursive(null);
+		
+		System.out.println();
+
+		System.out.println("reverseStringUsingWhileLoop - input is Testing");reverseStringUsingWhileLoop("Testing");
+		System.out.println("reverseStringUsingWhileLoop - input is \"\"");reverseStringUsingWhileLoop("");
+		System.out.println("reverseStringUsingWhileLoop - input is null");reverseStringUsingWhileLoop(null);
+		
+		System.out.println();
+
 		System.out.println("reverseStringUsingByteArray - input is Testing");reverseStringUsingByteArray("Testing");
 		System.out.println("reverseStringUsingByteArray - input is \"\"");reverseStringUsingByteArray("");
 		System.out.println("reverseStringUsingByteArray - input is null");reverseStringUsingByteArray(null);
@@ -51,6 +63,32 @@ public class StringReversal {
 		System.out.println("reverseStringUsingForLoop - input is null");reverseStringUsingForLoop(null);
 
 	}
+
+	public static void writeBackward_recursive(String s)
+	{
+		if (null != s)
+		{
+			int length = s.length();
+			if (length > 0)
+			{
+				// Write last character
+				System.out.println(s.substring(length - 1, length));
+				writeBackward_recursive(s.substring(0, length - 1)); // Write rest
+			} // end if
+		}
+	}
+
+	public static void reverseStringUsingWhileLoop(String input) 
+    {
+		if (input != null) {
+			int length = input.length();
+			while (length > 0)
+			{
+				System.out.println(input.substring(length - 1, length));
+				length = length - 1;
+			}
+	    }
+    }
 	
 	/**
 	 * Using a for loop
@@ -60,7 +98,8 @@ public class StringReversal {
 		String output = null;
 		if (input != null) {
 			output = "";
-		    for (int i = input.length() - 1; i >= 0; i--) {
+			for (int i = input.length() - 1; i >= 0; i--) 
+			{
 		        output = output + input.charAt(i);
 		    }
 		    System.out.println(output);
