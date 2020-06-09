@@ -10,3 +10,7 @@ This will give an overview of the practicality of the language.
 1. Verify concurrency
 1. Implement a few database operations.
 
+Look into the following :
+
+SmallTalk programming language
+
