@@ -3,7 +3,7 @@ package numbers;
 /** 
 * Find the largest number under 100,000 that's divisible by 3829.
 */
-public class LargestNumberDivisibleBy {
+public class LargestNumberUnderNDivisibleByAGivenNumber {
 
 	public static void main(String[] args) {
 		

@@ -8,7 +8,7 @@ import java.util.List;
  * Print all the odd numbers between a lower limit and an upper limit
  * 
  */
-public class PrintOddNumbersBetweenLAndR
+public class FindOddNumbersBetweenLAndR
 {
 
 	public static void main(String[] args)
@@ -30,6 +30,8 @@ public class PrintOddNumbersBetweenLAndR
 				result.add(i);
 			}
 		}
+		
+		// alternative to using result.toArray();
 
 		int[] series = {};
 		for (int i : result)

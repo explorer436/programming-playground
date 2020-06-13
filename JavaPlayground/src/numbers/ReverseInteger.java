@@ -64,9 +64,12 @@ public class ReverseInteger {
 		
 		String reversed = reverseStringUsingByteArray(initialString);
 		
-		try {
+		try 
+		{
 			reverse = Integer.parseInt(reversed);
-		} catch (NumberFormatException e) {
+		} 
+		catch (NumberFormatException e) 
+		{
 		}
 		
 		if (isNegative)

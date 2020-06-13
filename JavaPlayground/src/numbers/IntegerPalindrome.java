@@ -30,13 +30,12 @@ Coud you solve it without converting the integer to a string?
 public class IntegerPalindrome {
 
 	public static void main(String[] args) {
-		System.out.println((new IntegerPalindrome()).isPalindrome(121));
-		System.out.println((new IntegerPalindrome()).isPalindrome(-121));
-		System.out.println((new IntegerPalindrome()).isPalindrome(10));
-
+		System.out.println("is 121 an integer palindrome : " + isPalindrome(121));
+		System.out.println("is -121 an integer palindrome : " + isPalindrome(-121));
+		System.out.println("is 10 an integer palindrome : " + isPalindrome(10));
 	}
 	
-	public boolean isPalindrome(int x) {
+	public static boolean isPalindrome(int x) {
 		
 		if (x < 0)
 		{
