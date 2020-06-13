@@ -1,5 +1,7 @@
 A vector is a generic extensible array type.
 
+TODO : Are they used extensively today? This may not be worth too much attention.
+
 #### What Are Vectors?
 
 A vector is a type-safe, dynamic collection class similar to an array with advanced
