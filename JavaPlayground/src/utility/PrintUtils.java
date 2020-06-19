@@ -41,4 +41,16 @@ public class PrintUtils {
 		
 		System.out.println(Arrays.toString(array));
 	}
+	
+	public static void printArray(int[] array)
+	{
+		/*
+		for (int i = 0; i < intArray.length; i++)
+		{
+			System.out.print(intArray[i] + "\t");
+		}
+		*/
+		
+		System.out.println(Arrays.toString(array));
+	}
 }

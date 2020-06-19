@@ -1,4 +1,4 @@
-When it comes to solving problems, what is the endgoal here? Is it the endgoal? Or, is it the means to something else?
+When it comes to solving problems, what is the endgoal here? Is it the endgoal? Or, is it the means to something else? Getting a job at a good company.
 
 When looking at new problems online, resist the urge to solve them right away. Instead, focus more on where the question is coming from. Are there more questions there? Do you have an in-depth understanding of the topic? If not, spend time on it.
 
@@ -42,7 +42,7 @@ Write your own logic for MooshakCatchingCheese.java
 
 Codility classes.
 
-Implement the logic for the problems specified in the "to_be_implemented" folder.
+Implement the logic for the problems specified in the "preparation" folder.
 
 Understand how CustomHashCreatorUtil.java is working.
 
@@ -60,3 +60,5 @@ method to collect the words in the sentence.
 4. Write a class MutableInteger similar to the Java core class Integer but with the
 capability to change the value of the integer. (The Integer class, like the String class, is
 immutable after it is initialized.)
+
+What the heck is the Hungarian algorithm?

@@ -11,7 +11,7 @@ import utility.PrintUtils;
 	Hence the name, Insertion sort.
 
  	Insertion sort is an elementary sorting algorithm. 
-	It has a time complexity of Θ(n2), thus being slower than heapsort, merge sort and also shellsort. 
+	It has a time complexity of Θ(n ^ 2), thus being slower than heapsort, merge sort and also shellsort. 
 	Insertion sort is well suited for sorting small data sets or for the insertion of new elements into a sorted sequence. 
 
 	Idea :
@@ -25,7 +25,7 @@ import utility.PrintUtils;
 	When an element aj with ajless or equalai is found, ai is inserted behind it. 
 	If no such element is found, then ai is inserted at the beginning of the sequence.
 
-	After inserting element ai the length of the sorted part has increased by one. 
+	After inserting element ai, the length of the sorted part has increased by one. 
 	In the next iteration, ai+1 is inserted into the sorted part etc. 
 	While at the beginning the sorted part consists of element a0 only, at the end it consists of all elements a0, ..., an-1. 
  * 
@@ -38,8 +38,11 @@ public class InsertionSort
 		Integer[] intArray = new Integer[] { 5, 7, 0, 3, 4, 2, 6, 1 };
 		System.out.println("--------before sorting-----------");
 		PrintUtils.printArray(intArray);
-		sort(intArray);
-		System.out.println("---------printing the sorted list------------");
+		System.out.println("---------printing the sorted list using iteration------------");
+		insertionSort_iterative(intArray);
+		PrintUtils.printArray(intArray);
+		System.out.println("---------printing the sorted list using recursion------------");
+		insertionSort_recursive(intArray, intArray.length);
 		PrintUtils.printArray(intArray);
 		
 		
@@ -49,8 +52,11 @@ public class InsertionSort
 		String[] strArray = new String[] { "ghi", "abc", "def" };		
 		System.out.println("--------before sorting-----------");
 		PrintUtils.printArray(strArray);
-		sort(strArray);
-		System.out.println("---------printing the sorted list------------");
+		System.out.println("---------printing the sorted list using iteration------------");
+		insertionSort_iterative(strArray);
+		PrintUtils.printArray(strArray);
+		System.out.println("---------printing the sorted list using recursion------------");
+		insertionSort_recursive(strArray, strArray.length);
 		PrintUtils.printArray(strArray);
 	}
 
@@ -219,7 +225,7 @@ public class InsertionSort
 
 	 * 
 	 */
-	public static void sort(Comparable[] a)
+	public static void insertionSort_iterative(Comparable[] a)
 	{
 		int length = a.length;
 		
@@ -239,6 +245,41 @@ public class InsertionSort
 			}
 		}
 	}
+	
+	/**
+	 * writing an recursive solution for this:
+	 * step 1 : 
+	 * write a method that accepts the input array and 
+	 * an extra parameter that tells the method about the number of elements that should be sorted.
+	 * 
+	 * step 2 : breaking condition
+	 */
+	public static void insertionSort_recursive(Comparable[] a, int numberOfElementsToBeSorted)
+	{
+		if (numberOfElementsToBeSorted == 1)
+		{
+			return;
+		}
+		
+		// we are replacing the outer for loop with a recursive call.
+		insertionSort_recursive(a, numberOfElementsToBeSorted - 1);
+		
+		int length = a.length;
+		
+
+			for (int j = numberOfElementsToBeSorted - 1; j > 0; j--)
+			{
+				boolean isTheFirstGreaterThanTheSecond = a[j - 1].compareTo(a[j]) > 0;
+				if (isTheFirstGreaterThanTheSecond)
+				{
+					ArrayUtils.exch(a, j - 1, j);
+				}
+				else
+				{
+					break;
+				}
+			}
+		}
 	
 	
 }
