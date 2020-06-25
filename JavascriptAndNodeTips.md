@@ -16,3 +16,4 @@ To get a list of config settings in your computer for your application, use this
 
 https://node.green/
 
+Reinstalling a package after just deleting the node module works with: yarn install --check-files
