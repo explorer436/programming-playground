@@ -135,6 +135,9 @@ items into the sequence and to remove items from the sequence with linked lists.
 we consider code to accomplish these tasks.
 	
 #### Insert at the beginning
+
+In Linked lists, new Nodes are inserted at the beginning of the linked lists. This is done in constant time since there is no overhead of reshuffling any other nodes. If we want to insert nodes at some position that is not the beginning of the linked list, the time it takes is not linear. Instead, it will get linear depending upon the position at which the node is to be inserted/removed/updated.
+
 First, suppose that you want to insert a new node into a linked list. 
 The easiest place to do so is at the beginning of the list. For example, to insert the
 string "not" at the beginning of a given linked list whose first node is "first" , we save
@@ -186,6 +189,7 @@ the item (by assigning it to some variable of type Item ) before doing this assi
 ment system eventually reclaims the memory it occupies.
 Again, this operation just involves one assignment statement, so its running time is
 independent of the length of the list.
+If we want to insert nodes at some position that is not the beginning of the linked list, the time it takes is not linear. Instead, it will get linear depending upon the position at which the node is to be inserted/removed/updated.
 
 #### Insert at the end
 How do we add a node to the end of a linked list? To do so, we need
@@ -314,3 +318,6 @@ meets the specification in the API.
 * Describe algorithms (approaches to implementing the set of operations) that
 can serve as the basis for implementing the instance methods in the class.
 * Analyze the performance characteristics of the algorithms.
+
+The difference between Single linked lists and double linked lists is, with double linked lists,
+insertion at the beginning or at the end will take constant time. Removing elements from the beginning or from the end will take linear time. We don't have to traverse through the entire linked list because the Node has references to both 'next' and 'previous' nodes.

@@ -29,7 +29,7 @@ public class QueueImplementationUsingLinkedList<Item> {
 		Node next;
 	}
 	
-	private Node currentFirstNodeInTheQueue;
+	private Node currentFirstNodeInTheQueue;  // Sometimes, this is named head.
 	private Node currentLastNodeInTheQueue;
 	private int n;
 	

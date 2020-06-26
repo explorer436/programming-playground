@@ -48,7 +48,7 @@ public class BagImplementationUsingLinkedList<Item> {
 		Node next;
 	}
 	
-	private Node currentFirstNodeInTheBag;
+	private Node currentFirstNodeInTheBag;  // Sometimes, this is named head.
 	
 	public void add(Item item)
 	{

@@ -1,3 +1,10 @@
+The vector class is a thread-safe array list.
+
+Vectors were a part of JDK since 1.0. ArrayLists were introduced only in JDK 1.2.
+What was the need to introduce ArrayLists? ArrayLists are not synchronized. Vectors are synchronized.
+Synchronization has an overhead.
+
+
 A vector is a generic extensible array type.
 
 TODO : Are they used extensively today? This may not be worth too much attention.

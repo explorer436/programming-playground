@@ -40,9 +40,10 @@ package datastructures.linkedlist;
 	To support iteration, add the highlighted code described 
 	for Bag on page 155.
  */
-public class StackImplementationUsingLinkedList<Item> {
+public class StackImplementationUsingDoubleLinkedList<Item> {
 	
 	private Node firstNodeInTheStack; // Sometimes, this is named head.
+	private Node lastNodeInTheStack; // Sometimes, this is named tail.
 	private int n;
 	
 	/*
@@ -51,6 +52,7 @@ public class StackImplementationUsingLinkedList<Item> {
 	private class Node {
 		Item item;
 		Node next;
+		Node previous;
 	}
 	
 	public boolean isEmpty()
@@ -65,20 +67,48 @@ public class StackImplementationUsingLinkedList<Item> {
 	}
 	
 	// See LinkedList.md - "Insert at the beginning"
-	public void push(Item item)
+	public void pushToTheBeginning(Item newItem)
 	{
 		Node oldFirst = firstNodeInTheStack;
 		
 		firstNodeInTheStack = new Node();
-		firstNodeInTheStack.item = item;
+		firstNodeInTheStack.item = newItem;
 		firstNodeInTheStack.next = oldFirst;
+		firstNodeInTheStack.previous = null;
+		
+		if (null != oldFirst)
+		{
+			oldFirst.previous = firstNodeInTheStack;
+		}
+		else
+		{
+			lastNodeInTheStack = firstNodeInTheStack;
+		}
+		
+		// This is because we have to keep track of size ourselves.
+		n = n + 1;
+	}
+	
+	public void pushToTheEnding(Item newItem)
+	{	
+		Node oldLast = lastNodeInTheStack;
+		
+		lastNodeInTheStack = new Node();
+		lastNodeInTheStack.item = newItem;
+		lastNodeInTheStack.next = null;
+		lastNodeInTheStack.previous = oldLast;
+		
+		if (null == oldLast)
+		{
+			firstNodeInTheStack = lastNodeInTheStack;
+		}
 		
 		// This is because we have to keep track of size ourselves.
 		n = n + 1;
 	}
 	
 	// See LinkedList.md - "Remove from the beginning"
-	public Item pop()
+	public Item popFromTheBeginning()
 	{
 		if (isEmpty())
 		{
@@ -95,19 +125,47 @@ public class StackImplementationUsingLinkedList<Item> {
 		
 		Item theItemThatIsBeingRemoved = firstNodeInTheStack.item;
 		
-		firstNodeInTheStack = firstNodeInTheStack.next;
+		if (null != firstNodeInTheStack.next)
+		{
+			firstNodeInTheStack = firstNodeInTheStack.next;
+			firstNodeInTheStack.previous = null;
+		}
+		
 		
 		return theItemThatIsBeingRemoved;
 		
 	}
 	
-	public void printStack()
+	public Item popFromTheEnding()
 	{
-		System.out.println(">>> printStack");
+		if (isEmpty())
+		{
+			return null;
+		}
+		
+		// This is because we have to keep track of size ourselves.
+		n = n - 1;
+		
+		/*
+		 *  we would retrieve the value of the item from the node that is being removed 
+		 *  (by assigning it to a variable of type Item ) before assigning to "first" the value of "first.next"
+		 */
+		
+		Item theItemThatIsBeingRemoved = lastNodeInTheStack.item;
+		
+		lastNodeInTheStack = lastNodeInTheStack.previous;
+		
+		return theItemThatIsBeingRemoved;
+		
+	}
+	
+	public void printStackStartingAtTheBeginning()
+	{
+		System.out.println(">>> printStackStartingAtTheBeginning");
 		if (!isEmpty())
 		{
 			System.out.println(firstNodeInTheStack.item.toString());
-			
+						
 			Node nextNode = firstNodeInTheStack.next;
 			while (null != nextNode)
 			{
@@ -115,14 +173,35 @@ public class StackImplementationUsingLinkedList<Item> {
 				nextNode = nextNode.next;
 			}
 		}
-		System.out.println("<<< printStack");
+		// System.out.println("firstNodeInTheStack : " + firstNodeInTheStack);
+		// System.out.println("lastNodeInTheStack : " + lastNodeInTheStack);
+		System.out.println("<<< printStackStartingAtTheBeginning");
+	}
+
+	public void printStackStartingAtTheEnding()
+	{
+		System.out.println(">>> printStackStartingAtTheEnding");
+		if (!isEmpty())
+		{
+			System.out.println(lastNodeInTheStack.item.toString());
+						
+			Node previousNode = lastNodeInTheStack.previous;
+			while (null != previousNode)
+			{
+				System.out.println(previousNode.item);
+				previousNode = previousNode.next;
+			}
+		}
+		// System.out.println("firstNodeInTheStack : " + firstNodeInTheStack);
+		// System.out.println("lastNodeInTheStack : " + lastNodeInTheStack);
+		System.out.println("<<< printStackStartingAtTheEnding");
 	}
 	
 	// Test client for StackImplementationUsingLinkedList for item type "String"
 	public static void main(String[] args)
 	{ 
 		// Create a stack and push/pop strings as directed on StdIn.
-		StackImplementationUsingLinkedList<String> s = new StackImplementationUsingLinkedList<String>();
+		StackImplementationUsingDoubleLinkedList<String> s = new StackImplementationUsingDoubleLinkedList<String>();
 		
 		String[] inputStrList = new String[] { "to", "be", "or", "not", "to", "be" };
 		
@@ -132,19 +211,38 @@ public class StackImplementationUsingLinkedList<Item> {
 		{
 			if (!item.equals("-"))
 			{
-				s.push(item);
+				s.pushToTheBeginning(item);
 			}			
 		}
 		
 		System.out.println("number of items on the stack with all items in it : " + s.size());
-		
-		s.printStack();
+		s.printStackStartingAtTheBeginning();
+		s.printStackStartingAtTheEnding();
 		
 		for (int i = s.size(); i > 0; i--)
 		{
-			System.out.println("string popped from the stack : " + s.pop());
+			System.out.println("string popped from the beginning of the stack : " + s.popFromTheBeginning());
 		}
 		
-		System.out.println("number of items on the stack after popping all items from it : " + s.size());
+		System.out.println("number of items on the stack after popping all items from it starting at the beginning : " + s.size());
+		s.printStackStartingAtTheBeginning();
+		
+		for (String item : inputStrList)
+		{
+			if (!item.equals("-"))
+			{
+				s.pushToTheEnding(item);
+			}					
+		}
+		
+		System.out.println("number of items on the stack with all items in it : " + s.size());
+		s.printStackStartingAtTheBeginning();
+		
+		for (int i = s.size(); i > 0; i--)
+		{
+			System.out.println("string popped from the ending of the stack : " + s.popFromTheEnding());
+		}
+		
+		System.out.println("number of items on the stack after popping all items from it starting at the ending : " + s.size());
 	}
 }

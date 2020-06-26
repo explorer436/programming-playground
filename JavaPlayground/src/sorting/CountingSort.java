@@ -60,5 +60,7 @@ public class CountingSort {
 		}
 		
 	}
+	
+	// TODO is there a way to make this work with arrays that contain negative numbers?
 
 }
