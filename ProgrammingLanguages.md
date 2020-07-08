@@ -11,5 +11,5 @@ This will give an overview of the practicality of the language.
 
 Look into the following :
 
-SmallTalk programming language.
-Web services (soap and rest services) using Haskell.
+1. SmallTalk programming language.
+1. Web services (soap and rest services) using Haskell.
