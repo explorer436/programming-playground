@@ -24,12 +24,132 @@ public class GCDOfTwoNumbersUsingEuclideanAlgorithm {
 	   REMEMBER
 	   
 	   Euclidean algorithm:
+	   Discovered by Euclid in the mid 4th century BC, it is referred to as the world's oldest algorithm.
 	   
 	   This uses a recursive implementation based on the fact that the gcd of two numbers also divides their difference.
 	   
 	   Algorithm : 
 	   gcd(a,0) = a
 	   gcd ( a , b ) = gcd ( b , a mod b ) 
+	   
+	   Example :
+	   Consider the two numbers : 1112 and 695
+	   
+	   With the usual method, we factorize the two numbers into prime numbers and find the greatest common divisor from the prime numbers they share.
+	   1112 = 139 * 2 * 2 * 2
+	   695  = 139 * 5
+	   ----------------------
+	   GCD  = 139
+	   ----------------------
+	   However, with this method, the larger the two numbers get, the more difficult the prime factorization becomes.
+	   
+	   With Euclidean algorithm, it is easier to find the GCD more efficiently.
+	   
+	   step 1 : find the remainder of the larger number divided by the smaller number.
+	   1112 mod 695 = 417
+	   
+	   step 2 : do a mod operation with the previous divisor, 695, and the previous remainder, 417.
+	   695 mod 417 = 278
+	   
+	   step 3 : repeat the same operation, carrying out a mod operation with 417 and 278.
+	   417 mod 278 = 139
+	   
+	   step 4 : repeat the same operation, carrying out a mod operation with 278 and 139.
+	   278 mod 139 = 0
+	   In other words, 278 is divisibly by 139.
+	   When the remainder is 0, the divisor of the last operation, 139, is the GCD of 1112 and 695.
+	   
+	   Expressing this in terms of bar length : 
+	   
+	   -
+	   |
+	   |
+	   |            -
+	   |            |
+	   |            |
+	   |            |
+	   |            |
+	   |            |
+	   -            -
+	   1112         695
+
+	   We will add segments in increments of n, the GCD. Since we already know that 139 is the GCD for these two numbers, for convenience, 1112 was given 8 segments and 695 was given 5 segments. However, if we do not know the GCD before, we do not know how many segments each of these numbers will have. However, we do know that both 1112 and 695 are multiples of GCD.
+
+	   -
+	   |
+	   -
+	   |
+	   -
+	   |
+	   -            -
+	   |            |
+	   -            -
+	   |            |
+	   -            -
+	   |            |
+	   -            -
+	   |            |
+	   -            -                -------------
+	   |            |                segment = GCD
+	   -            -                -------------
+	   1112         695
+
+	   Here, we will find the remainder of the larger number divided by the smaller number.
+
+	   -                                             -
+	   |                                             |
+	   -                                             -
+	   |                     remainder =>            |    (the remainder is 417)
+	   -                                             -
+	   |                                             |
+	   -            -                                -
+	   |            |
+	   -            -
+	   |            |
+	   -            -        
+	   |            |
+	   -            -
+	   |            |
+	   -            -
+	   |            |
+	   -            -
+	   1112         695
+
+	   Repeat the mod operation : 
+	   -                                -
+	   |
+	   -
+	   |
+	   -                -
+	   |                |
+	   -                -                              -
+	   |       mod      |          remainder =>        |
+	   -                -                              -
+	   |                |                              |
+	   -                -                              -
+	   695             417                            278
+
+	   Repeat the mod operation : 
+	   -
+	   |
+	   -                -                              
+	   |                |
+	   -                -                              -
+	   |       mod      |          remainder =>        |
+	   -                -                              -
+	   417             278                            139
+
+	   Repeat the mod operation : 
+	   -                                              
+	   |                
+	   -                -
+	   |       mod      |          remainder =>        0    -> It is here that we learn that GCD = 139.
+	   -                -
+	  278             139
+
+	  This is how Euclidean algorithm is able to find the GCD by simply repeating divisions.
+	  A big advantage is that even if the two target numbers are huge, the algorithm is able to find the GCD with the standard procedure.
+
 	 */
 	public static int gcd(int number1, int number2) {
 	    if (number1 == 0 || number2 == 0) {
@@ -45,7 +165,7 @@ public class GCDOfTwoNumbersUsingEuclideanAlgorithm {
 	
 	/**
 	   The binary GCD algorithm, also known as Stein's algorithm, 
-	   is an algorithm that computes the greatest common divisor of two nonnegative integers. 
+	   is an algorithm that computes the greatest common divisor of two non negative integers. 
 	   Stein's algorithm uses simpler arithmetic operations than the conventional Euclidean algorithm; 
 	   it replaces division with arithmetic shifts, comparisons, and subtraction. 
 	   Although the algorithm was first published by the Israeli physicist and programmer Josef Stein in 1967, it may have been known in 1st-century China.
