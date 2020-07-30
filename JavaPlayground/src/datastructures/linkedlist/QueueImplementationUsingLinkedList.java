@@ -101,8 +101,7 @@ public class QueueImplementationUsingLinkedList<Item> {
 			if (!item.equals("-"))
 			{
 				q.enqueue(item);
-			}			
-			
+			}						
 		}
 		
 		System.out.println("number of items on the queue with all items in it : " + q.size());

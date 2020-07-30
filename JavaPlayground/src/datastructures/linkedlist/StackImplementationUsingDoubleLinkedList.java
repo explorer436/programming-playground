@@ -272,6 +272,7 @@ public class StackImplementationUsingDoubleLinkedList<Item> {
 		
 		// ------------------------------------------------
 		
+		// re-populate the stack again
 		for (String item : inputStrList)
 		{
 			stack.pushToTheTop(item);
