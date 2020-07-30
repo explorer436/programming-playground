@@ -1,5 +1,7 @@
 package datastructures.linkedlist;
 
+import java.util.Iterator;
+
 /**
  * 
 	See LinkedList.md
@@ -147,4 +149,36 @@ public class StackImplementationUsingLinkedList<Item> {
 		
 		System.out.println("number of items on the stack after popping all items from it : " + s.size());
 	}
+	
+	/*private static void printStack(StackImplementationUsingLinkedList<String> stack) {
+		Iterator<String> stackIterator = stack.iterator();
+		while (stackIterator.hasNext())
+		{
+			String a = stackIterator.next();
+			System.out.println("a : " + a);
+		}
+	}
+	
+	private class ListIterator implements Iterator<Item>
+	{
+		private Node firstNode = firstNodeInTheStack;
+		
+		public boolean hasNext()
+		{
+			return (firstNode != null);
+		}
+		
+		public Item next()
+		{
+			Item item = firstNode.item;
+			firstNode = firstNode.next;
+			
+			return item;
+		}
+	}
+	
+	public Iterator<Item> iterator()
+	{
+		return new ListIterator();
+	}*/
 }
