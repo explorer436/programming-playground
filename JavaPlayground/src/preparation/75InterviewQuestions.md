@@ -273,28 +273,8 @@ That's all about some of the essential Programming and Coding Interview question
 
 Once you have gone through all these coding questions, you can not only solve them when you see them in the interview but also develop the coding sense and problem-solving ability which will help you to solve new and slightly modified versions of these questions on real programming interview.
 
-Though, if you are not in a rush and want to hone your coding skill further, here are some more resources to practice questions
 
-Some Useful Resources for Coding Interviews
+AnonymousJuly 26, 2020 at 1:22 AM
 
-    Data Structures in Java: An Interview Refresher (https://www.educative.io/courses/data-structures-coding-interviews-java?affiliate_id=5073518643380224)
-    10 Data Structure, Algorithms, and Programming Courses to Crack Interviews (https://dev.to/javinpaul/10-data-structure-algorithms-sql-and-java-courses-to-crack-any-programming-job-interview-11f6)
-    10 Algorithms Books Every Programmer should Read (https://www.java67.com/2015/09/top-10-algorithm-books-every-programmer-read-learn.html)
-    10 Free Courses to Learn Data Structure and Algorithms in Depth
-    LeetCode - The Programming Interview Platform
-    20+ binary tree-based problems for interviews (https://medium.com/javarevisited/20-binary-tree-algorithms-problems-from-coding-interviews-c5e5a384df30)
-    10 Courses to Prepare for Programming Job Interviews (https://javarevisited.blogspot.com/2018/02/10-courses-to-prepare-for-programming-job-interviews.html)
-    50+ Data Structure and Algorithms Problems from Interviews (https://dev.to/javinpaul/50-data-structure-and-algorithms-problems-from-coding-interviews-4lh2)
-    How to design Vending Machine in Java (https://javarevisited.blogspot.com/2016/06/design-vending-machine-in-java.html)
-    100+ Coding Interview Questions for Programmers (https://www.java67.com/2018/06/data-structure-and-algorithm-interview-questions-programmers.html)
-    21 String Programming Interview Questions (https://medium.com/javarevisited/top-21-string-programming-interview-questions-for-beginners-and-experienced-developers-56037048de45)
-    5 Free Courses to Learn Algorithms for Interviews (https://javarevisited.blogspot.com/2018/01/top-5-free-data-structure-and-algorithm-courses-java--c-programmers.html)
-    10 Books to Prepare Technical Programming/Coding Job Interviews (https://www.java67.com/2017/06/10-books-to-prepare-technical-coding-job-interviews.html)
-
-
-P.S. - As I have said before, good knowledge of data structure and algorithms is the most important thing to do well on interviews and if you feel that you have forgotten those concepts or want to fill gaps in your understanding, here are some useful list of books and courses to learn Data Structure and Algorithms.
-
-    AnonymousJuly 26, 2020 at 1:22 AM
-
-    This is a great list of problems, but I believe readers should look elsewhere for correct solutions. I haven't opened all of them, but some of them (e.g. "remove duplicate chars from string", "find square root of a number") have some pretty bizarre solutions.
+This is a great list of problems, but I believe readers should look elsewhere for correct solutions. I haven't opened all of them, but some of them (e.g. "remove duplicate chars from string", "find square root of a number") have some pretty bizarre solutions.
 

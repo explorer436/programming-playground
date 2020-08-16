@@ -2,8 +2,8 @@ Are people that work at Google just those that did hundreds of LeetCode question
 
 Let’s answer the real question first, as it’s more interesting:
 
-    Is the Google engineering recruitment process something that you can cheat by practicing algorithmic puzzle questions?
-    Are Google engineers any good as engineers? (maybe not, since they are only the folks who just spent a lot of time practicing algorithmic puzzle questions?)
+Is the Google engineering recruitment process something that you can cheat by practicing algorithmic puzzle questions?
+Are Google engineers any good as engineers? (maybe not, since they are only the folks who just spent a lot of time practicing algorithmic puzzle questions?)
 
 To the first answer, the question is “somewhat”. Google engineering interviews, especially for the lower-level positions, focus quite a lot on algorithmic puzzle solving skills (together with the accompanying implementation). It’s not the only thing tested, but it’s a major one. So, sure, practicing algorithmic puzzles will help you get hired.
 
@@ -16,6 +16,3 @@ And, just in case the typed question was really what was asked: Nope. At least I
 Edit: A bunch of people in the comments ask why I consider practicing on LeetCode to be “cheating”. I don’t, but I tried to intuit the questioner’s intention. And the idea here is that solving LeetCode questions (or, in general, rote-memory knowledge of algorithms like Find-Union or Dinic or the Hungarian) is not very related to your actual skills and performance as a software engineer. And the interview system should, of course, aim to uncover the best software engineers. So, by focusing on LeetCode, you cheat the system - not necessarily by doing something unethical, but by subverting the interview system and causing it to return incorrect answers.
 
 And, as I tried to explain in the answer, this is somewhat true - it is possible that a person who is, by most reasonable criteria, a better software engineer will be judged worse on the interview process than a person who spent a lot of time practicing on LeetCode. Which means that LeetCode is a way to cheat (in the meaning of “deceive”, “mislead”) the interviewing system. Only somewhat, but still.
-
-----------------------------------------------------------------
-

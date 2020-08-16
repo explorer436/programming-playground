@@ -1,6 +1,5 @@
 How should I prepare for the Amazon online coding interview?
-
--------------------------------------------------------------------------
+------------------------------------------------------------
 
 Janko Jerinic, former Senior Software Development Engineer at Amazon (2015-2017)
 
@@ -38,7 +37,7 @@ Why do engineers in these companies get paid higher (and much higher in some cou
 
 Yes, engineers in these companies and other companies write code as well. The main difference comes in terms of day to day responsibilities and ownership.
 
-In these companies, you own your module completely and you have to come up with the design of the piece of software you will be writing to solve a problem. Coding part is just the implementation and roughly takes 20-30% of the time allotted to a project. Most of the time goes into designing things with the best and optimum algorithms to save on company’s resources(servers, computation power etc). This is the main reason why interviews in these companies are focused on algorithms as they want people who can think out of the box to design algorithms which can save the company thousands of dollars.
+In these companies, you own your module completely and you have to come up with the design of the piece of software you will be writing to solve a problem. Coding part is just the implementation and roughly takes 20-30% of the time allotted to a project. Most of the time goes into designing things with the best and optimum algorithms to save on companyï¿½s resources(servers, computation power etc). This is the main reason why interviews in these companies are focused on algorithms as they want people who can think out of the box to design algorithms which can save the company thousands of dollars.
 
 So the bottomline is that you have to be good at Data Structures and Algorithms to get into these. There is no other alternative to it.
 
@@ -49,11 +48,11 @@ Use the time to prepare well for Tree and Graph Algorithms, Dynamic Programming,
 Some common problems asked in Amazon Interviews(both online and F2F) :
 
     Save all leaf nodes of a Binary tree in a Doubly Linked List by using Right node as Next node and Left Node as Previous Node.
-    Given an array,find the maximum j – i such that arr[j] > arr[i]
+    Given an array,find the maximum j ï¿½ i such that arr[j] > arr[i]
     Remove Alternate Duplicate characters from a char array you have to do it in Place.Like keeping only the odd occurences of each character.
 
-    Example: Input: “you got beautiful eyes”
-    Output: ”you gtbeaiful es”
+    Example: Input: ï¿½you got beautiful eyesï¿½
+    Output: ï¿½you gtbeaiful esï¿½
     Allowed Time Complexity was O(n) 
     and Space Complexity was O(1)
 
@@ -65,7 +64,7 @@ Some common problems asked in Amazon Interviews(both online and F2F) :
     Return a tree such that each internal node stores sum of all its child nodes. Each leaf node stores zero.
     How will you implement linked list with 1 million nodes? How will you access 999999 th node? Give some optimal design strategy and implementation.
     Reversal of Linked List in groups of K.
-    Given a positive integer N, count all possible distinct binary strings of length N such that there are no consecutive 1’s.
+    Given a positive integer N, count all possible distinct binary strings of length N such that there are no consecutive 1ï¿½s.
     Check whether given binary tree is balanced or not. Definition was no two leaves should have height difference of greater than one.
     Remove duplicates from string in place in O(n).
     Connect nodes on same level in a binary tree.
@@ -83,7 +82,7 @@ Some common problems asked in Amazon Interviews(both online and F2F) :
     Find an element in a rotated array
     Given two linked lists both represent a number. Create a linked list that contains its sum.
     Given a binary search tree , print the path which has the sum equal to k and has minimum hops. i.e if there are multiple paths with the sum equal to k then print the path with minimum number of nodes.
-    A MxN matrix containing integers (positive, negative and zero’s). For every position containing 0, mark the corresponding row and column as 0.
+    A MxN matrix containing integers (positive, negative and zeroï¿½s). For every position containing 0, mark the corresponding row and column as 0.
     Rotate MxN matrix by 90 degress.
     Find the nth number that contains the digit k or is divisible by k. (2 <= k <= 9)
     Write a program to connect next left node in a binary tree. Also first node of each level should be pointing to last node of next level? (Without using Queue)
@@ -107,17 +106,17 @@ Some common problems asked in Amazon Interviews(both online and F2F) :
 
     Given an array which is first strictly increasing and then strictly decreasing. Find an element in this array.
     Given a string example : shoppingwithflipkartiseasy, Now we are given this string and a dictionary containing valid words , now we need to break the sentence into words separated by space. Output : shopping with flipkart is easy
-    Given a series 2,3,4,5,6,8,9,10,……, here in this series all the numbers are present which have factors only and only either 2,3 or 5. Need to write a node to generate nth number for the series . With best approach and complexity
+    Given a series 2,3,4,5,6,8,9,10,ï¿½ï¿½, here in this series all the numbers are present which have factors only and only either 2,3 or 5. Need to write a node to generate nth number for the series . With best approach and complexity
     Given a tree with edge weights, find any path in the tree with maximum sum of edges.
     Merge k sorted arrays.
     Given a maze, a start point and end point find the shortest path to reach the end point from the starting point.
     Given a sentence and a set of characters. Find the minimum window within which the set of characters can be found in the sentence in any order.
-    You are given a string of 0’s and 1’s you have to find the number of substrings in the string which starts and end with a 1.
+    You are given a string of 0ï¿½s and 1ï¿½s you have to find the number of substrings in the string which starts and end with a 1.
 
     eg : input : 0010110010
     output : 6
 
-    You are given a mapping like a -> 1, b-> 2… z-> 26. You have to print all possible combinations of a given number using the above information.
+    You are given a mapping like a -> 1, b-> 2ï¿½ z-> 26. You have to print all possible combinations of a given number using the above information.
 
     eg : input : 121
     output : aba,la,au
@@ -163,13 +162,13 @@ Mohan Gupta's answer to How can I prepare for interviews in any big software com
 
 Now let's discuss specific challenges for online coding rounds.
 
-Here you need to write the code on a shared screen/Google Doc and the interviewer can see in real time as you type. So you don’t want to write, delete, modify continuously and not want to come across as someone who jumps to solutions and doesn’t have a clear mind.
+Here you need to write the code on a shared screen/Google Doc and the interviewer can see in real time as you type. So you donï¿½t want to write, delete, modify continuously and not want to come across as someone who jumps to solutions and doesnï¿½t have a clear mind.
 
 Understand the problem
 
 A better approach is to talk to your interviewer, do not make unilateral assumptions, ask questions to clarify your doubts about the question setting and make explicit all your assumptions.
 
-After the problem is clear to you, take 2–3 minutes to think deeply about it and possible solutions and then enunciate (so that the interviewer can understand your thought process) what you are thinking. Formulate a couple of solutions and discuss the merits/demerits of the solutions you are proposing.
+After the problem is clear to you, take 2ï¿½3 minutes to think deeply about it and possible solutions and then enunciate (so that the interviewer can understand your thought process) what you are thinking. Formulate a couple of solutions and discuss the merits/demerits of the solutions you are proposing.
 
 Your interviewer would be happy to drop hints to guide you to the right path, so keep listening intently and once both you have agreed on one solution, he will ask you to code up the solution.
 
@@ -231,7 +230,7 @@ So, be prepared to talk about your more impressive accomplishments and how long 
 
 Abu Bakkar, Designer (2012-present)
 
-Amazon is one of the top IT/technology company in the world. It is huge. Many excellent software engineers want to work for Amazon and so do I. I applied to Amazon three times in total. THe first two times were not successful and at http://amazon.jobs it says “was not selected”.
+Amazon is one of the top IT/technology company in the world. It is huge. Many excellent software engineers want to work for Amazon and so do I. I applied to Amazon three times in total. THe first two times were not successful and at http://amazon.jobs it says ï¿½was not selectedï¿½.
 
 MY AMAZON INTERVIEW EXPERIENCE
 
@@ -239,9 +238,9 @@ I found the Amazon jobs advertisements on LinkedIn, and the first two were based
 
 Luckily the third time, Amazon emailed me Saturday midnight (it was from Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more USA technical recruitment team), in the email, I was asked to do an online coding exercise within 7 days.
 
-There were two puzzles/problems to solve. Once started, you can’t pause it, so be prepared to find a 2 hour slot that you are free from disturb so that you can focus on solving them.
+There were two puzzles/problems to solve. Once started, you canï¿½t pause it, so be prepared to find a 2 hour slot that you are free from disturb so that you can focus on solving them.
 
-These two problems are real world problems i.e. you don’t expect straight text-book questions e.g how to do a quick sort. Instead, you need to read and understand the problem and solve them using proper algorithms.
+These two problems are real world problems i.e. you donï¿½t expect straight text-book questions e.g how to do a quick sort. Instead, you need to read and understand the problem and solve them using proper algorithms.
 
 For each problem, two sample inputs and corresponding outputs are given. You can choose any programming language as you wish. You type in your solution in the browser (coding editor). You will need to compile your code and submit your solution once you are happy with. However, once compiled and run in the browser, your solution will be submitted for a complete set of test cases around 30. And you will be notified if your solution passes all of them or fail at one of them.
 
@@ -255,13 +254,13 @@ The technical recruiter sent me a few interview tips and advised which Computer 
 
 I prepared for two weeks and went to London for the Amazon interview which took place from 2PM to 7PM (they also had morning sessions from 8 to 1PM).
 
-On the day, I was invited to a small meeting room and on the door, it says “Welcome, [My Name]”. One of the interviewer says “you are going to stay in this room for the rest of the day and you are free to get a drink or food/fruits in the kitchen…”. Amazon has provided free food/fruit/drinks but I didn’t take a chance I guess I was a bit nervous.
+On the day, I was invited to a small meeting room and on the door, it says ï¿½Welcome, [My Name]ï¿½. One of the interviewer says ï¿½you are going to stay in this room for the rest of the day and you are free to get a drink or food/fruits in the kitchenï¿½ï¿½. Amazon has provided free food/fruit/drinks but I didnï¿½t take a chance I guess I was a bit nervous.
 
-Each interview took around 40 minutes followed by 10 minutes question time and 10 minutes break. The first around, there were two interviewers one of them was like getting familiar with the interviewing process. The last round was the manager you might work with if you are successful. The second round, it was basically all the behaviour questions where the interviewer asked you all the stories to see if you are a culture fit e.g. describe a time that you don’t agree with your manager and how did you cope with that. There are no right/wrong answers but you have to prepare at least 10 stories beforehand – you don’t want to tell a same story to all interviewers (I guess they will meet later and share the answers).
+Each interview took around 40 minutes followed by 10 minutes question time and 10 minutes break. The first around, there were two interviewers one of them was like getting familiar with the interviewing process. The last round was the manager you might work with if you are successful. The second round, it was basically all the behaviour questions where the interviewer asked you all the stories to see if you are a culture fit e.g. describe a time that you donï¿½t agree with your manager and how did you cope with that. There are no right/wrong answers but you have to prepare at least 10 stories beforehand ï¿½ you donï¿½t want to tell a same story to all interviewers (I guess they will meet later and share the answers).
 
 I was asked to write the code on the paper and the interviewers will meantime type on their laptop. And they took away your answer sheets at the end of the interview.
 
-Before you arrive at Interview, you need to print out and sign a NDA agreement. But I think it would be OK if you don’t because they will give you a copy to sign onsite.
+Before you arrive at Interview, you need to print out and sign a NDA agreement. But I think it would be OK if you donï¿½t because they will give you a copy to sign onsite.
 
 Each interview will ask you behaviour questions apart from technical questions but each will focus on different aspects. In general, you need to be very familiar with data structures e.g. trees, hash tables, queue etc. You also need to design some prototypes that can be scalable (Amazon deals with huge amount of data every day and being scalable is something they are very interested in).
 
@@ -273,7 +272,7 @@ Mark Ali, Interned at Google, Facebook and got my full-time offer
 
 To be honest, I don't see much difference between preparing general coding interviews from Amazon online coding interviews. At its core, this type of interviews are all about your coding skills and understanding of basic data structures/algorithms.
 
-It's worth noting that you certainly need to practice a lot of coding questions before you can easily pass the interview. However, this doesn't mean you should randomly select and solve programming questions without thinking. I would highly recommend you read Practice Coding Questions – The Complete Guide to Google Interview Preparation
+It's worth noting that you certainly need to practice a lot of coding questions before you can easily pass the interview. However, this doesn't mean you should randomly select and solve programming questions without thinking. I would highly recommend you read Practice Coding Questions ï¿½ The Complete Guide to Google Interview Preparation
 as it has tons of tips about how to prepare smartly.
 
 To highlight few points here, the best tip I got is to track your time. To be honest with you, I think people in general are terrible at estimating time. Previously, I never realized how slow I was in coding. It's not about typing speed, but everything from thinking to finalizing the code. Part of the reason is that sometimes I would start coding without a clear mind, which turns out to be a waste of time. Plus I definitely needed more practice at that time.

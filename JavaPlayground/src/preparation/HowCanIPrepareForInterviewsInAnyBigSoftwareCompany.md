@@ -1,9 +1,7 @@
 How can I prepare for interviews in any big software company?
 
 This question previously had details. They are now in a comment.
-Mohan Gupta
-·
-Amazon, Microsoft, Flipkart, Cisco
+Mohan Gupta - Amazon, Microsoft, Flipkart, Cisco
 
 A little bit about me: Have taken 100s of coding interviews at Amazon, Microsoft, and Flipkart. And got offers from most of the big technology companies. (not bragging just establishing credibility).
 
@@ -31,7 +29,7 @@ Principles of interviewing:
 
 a) Its never about the right answer, its always about the approach you take, the clarity of thought and the methodology of the process you employ to *try* to solve the problem.
 
-b) Start from the naive solution, and then incrementally try to get to a better solution, ex, how can you remove that log(n) to search inside that O(n) loop, use a hashtable perhaps? but won't that increase the memory required? Is that OK with the given problem size?Ask the interviewer.
+b) Start from the naive solution, and then incrementally try to get to a better solution, ex, how can you remove that log(n) to search inside that O(n) loop, use a hashtable perhaps? but won't that increase the memory required? Is that OK with the given problem size? Ask the interviewer.
 
 c) Listen to the question properly, a lot of hints are hidden in the question itself. Once you are done with (a)/(b), now try to see, if you can use some property of the input to get a better solution, perhaps the input is characters from a to z, characters AHA? Can I now use that hashtable which will just have size O(26)?
 
@@ -39,8 +37,7 @@ d) Also, the expectations vary from company to company. ex, Amazon might focus m
 
 Getting ready for the perfect interview :
 
-a) Practice questions from Carrercup
-and Geeksforgeek
+a) Practice questions from Carrercup and Geeksforgeek
 
 . What you want to learn is not the solution to the problem but *HOW* to solve such problems, how to approach and how to arrive at the solution. Try to solve it yourself first and if you get stuck, look just at the minimal hits and try again.
 
@@ -54,6 +51,6 @@ c) Hacking the coding interview course:
 
 d) Practice, practice, practice ...
 
-Also rem, those interviews are just a means to land a job, they are not the ends in themselves. What you want to do is to learn, learn why something works, learn how to solve complicated problems.
+Also remember, those interviews are just a means to land a job, they are not the ends in themselves. What you want to do is to learn, learn why something works, learn how to solve complicated problems.
 
 Best of luck.
