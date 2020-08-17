@@ -1,9 +1,9 @@
 package strings;
 
-public class Palindrome {    
+public class StringPalindrome {    
    
     public static void main(String[] args) {
-    	Palindrome p = new Palindrome();
+    	StringPalindrome p = new StringPalindrome();
     	
     	// simple test cases
         System.out.println(p.isPalindrome_caseSensitive("Deleveled"));

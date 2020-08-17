@@ -1,8 +1,6 @@
 package numbers;
 
 public class SwapIntegersWithoutUsingATempVariable {
-	
-	
 
 	public static void main(String[] args) throws Exception {
 		
@@ -110,9 +108,15 @@ public class SwapIntegersWithoutUsingATempVariable {
 	
 	/**
 	 * 
+	    REMEMBER : wherever possible, always prefer bit manipulation to other techniques.
+
 		The beauty of this method is, we do not have to worry about the datatype of the input variables. Or, their limits.
 		We don't have to worry about overflows.
 		This will work any language, including the ones that do not support overflows.
+		
+		"^" - bitwise exclusive OR
+	        - bitwise XOR
+
 	 * 
 	 */
 	private static Pair swapUsingBitwiseManipulation(Pair pair)

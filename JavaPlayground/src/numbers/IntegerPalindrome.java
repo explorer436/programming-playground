@@ -22,20 +22,95 @@ Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 
 Follow up:
 
-TODO
 Coud you solve it without converting the integer to a string?
 
  *
  */
 public class IntegerPalindrome {
 
-	public static void main(String[] args) {
-		System.out.println("is 121 an integer palindrome : " + isPalindrome(121));
-		System.out.println("is -121 an integer palindrome : " + isPalindrome(-121));
-		System.out.println("is 10 an integer palindrome : " + isPalindrome(10));
+	public static void main(String[] args) throws Exception {
+		boolean result;
+		
+		result = isPalindrome(121);
+		if (!result)
+		{
+			throw new Exception("wrong answer - expected true but received " + result);
+		}
+		
+		result = isPalindrome(-121);
+		if (result)
+		{
+			throw new Exception("wrong answer - expected false but received " + result);
+		}
+		
+		result = isPalindrome(10);
+		if (result)
+		{
+			throw new Exception("wrong answer - expected false but received " + result);
+		}
+		
+		//----------------------------------------------------------
+		
+		result = isPalindrome_UsingStringConversion(121);
+		if (!result)
+		{
+			throw new Exception("wrong answer - expected true but received " + result);
+		}
+		
+		result = isPalindrome_UsingStringConversion(-121);
+		if (result)
+		{
+			throw new Exception("wrong answer - expected false but received " + result);
+		}
+		
+		result = isPalindrome_UsingStringConversion(10);
+		if (result)
+		{
+			throw new Exception("wrong answer - expected false but received " + result);
+		}
+		
+		System.out.println("done");
 	}
 	
-	public static boolean isPalindrome(int x) {
+	/**
+	 * 
+	 	REMEMBER : do not try to do it all in one method. Break it down into smaller methods wherever necessary.
+	 * 
+	 */
+	public static boolean isPalindrome(int x)
+	{
+		boolean result = false;
+		
+		if (x >= 0)
+		{
+			result = x == reverse(x) ? true : false;
+		}
+		
+		return result;
+	}
+	
+	public static int reverse(int number)
+	{
+		int reverse = 0;
+		
+		while (number != 0)
+		{	
+			reverse = (reverse * 10) + (number % 10);
+			
+			// Divide the number by 10 to get closer to the break-out condition.
+			number = number / 10;
+		}
+		
+		return reverse;
+	}
+	
+	/**
+	 * 
+	 	This method is not incorrect. We are not using String's native operations like StringBuffer.reverse() for reversing the string.
+ 		But, it would be nice to do it without converting the integer into a String in the first place.
+	 * 
+	 */
+	public static boolean isPalindrome_UsingStringConversion(int x) {
 		
 		if (x < 0)
 		{
@@ -56,7 +131,9 @@ public class IntegerPalindrome {
     }
 	
 	/**
-	 * Take a look at StringReversal.java
+	 *
+ 		Take a look at StringReversal.java
+	 * 
 	 */
 	public static String reverseStringUsingByteArray(String input) 
     { 

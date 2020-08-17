@@ -24,7 +24,7 @@
 
 1. How is a radix sort algorithm implemented? (http://www.java67.com/2018/03/how-to-implement-radix-sort-in-java.html)
 
-1. How do you swap two numbers without using the third variable? (http://www.java67.com/2015/08/how-to-swap-two-integers-without-using.html)
+1. How do you swap two numbers without using the third variable? See SwapIntegersWithoutUsingATempVariable.java
 
 1. How do you check if two rectangles overlap with each other? (http://javarevisited.blogspot.sg/2016/10/how-to-check-if-two-rectangle-overlap-in-java-algorithm.html)
 

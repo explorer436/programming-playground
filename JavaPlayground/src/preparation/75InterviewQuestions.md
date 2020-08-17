@@ -208,7 +208,7 @@ In this list below, you will find most of the common searching and sort question
 
 46. How to implement Radix Sort Algorithm? (https://www.java67.com/2018/03/how-to-implement-radix-sort-in-java.html)
 
-47. How to swap two numbers without using the third variable? (https://www.java67.com/2015/08/how-to-swap-two-integers-without-using.html)
+47. How to swap two numbers without using the third variable? See SwapIntegersWithoutUsingATempVariable.java
 
 48. How to check if two rectangles overlap with each other? (https://javarevisited.blogspot.com/2016/10/how-to-check-if-two-rectangle-overlap-in-java-algorithm.html)
 
@@ -216,7 +216,7 @@ In this list below, you will find most of the common searching and sort question
 
 50. How to implement an LRU Cache in your favorite programming language? (https://javarevisited.blogspot.com/2017/07/top-10-linked-list-coding-questions-and.html#axzz5ArdIFI7y)
 
-51. How to check if a given number is a Palindrome? (https://javarevisited.blogspot.com/2012/12/how-to-check-if-number-is-palindrome-or-not-example.html)
+51. How to check if a given number is a Palindrome? See IntegerPalindrome.java (http://javarevisited.blogspot.sg/2012/12/how-to-check-if-number-is-palindrome-or-not-example.html)
 
 52. How do you check if a given number is an Armstrong number? (https://www.java67.com/2012/07/java-program-to-find-armstrong-numbers.html)
 
