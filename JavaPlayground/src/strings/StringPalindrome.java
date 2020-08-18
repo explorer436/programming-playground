@@ -2,18 +2,45 @@ package strings;
 
 public class StringPalindrome {    
    
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
     	StringPalindrome p = new StringPalindrome();
     	
+    	boolean result;
+    	
     	// simple test cases
-        System.out.println(p.isPalindrome_caseSensitive("Deleveled"));
-        System.out.println(p.isPalindrome_caseInsensitive("Deleveled"));
+    	result = p.isPalindrome_caseSensitive("Deleveled");
+    	if (result)
+		{
+			throw new Exception("wrong answer - expected " + false + " but received " + result);
+		}
+    	
+    	result = p.isPalindrome_caseInsensitive("Deleveled");
+    	if (!result)
+		{
+			throw new Exception("wrong answer - expected " + true + " but received " + result);
+		}
         
         // test cases including spaces
-        System.out.println(p.isPalindrome_caseSensitive("Dele eled"));
-        System.out.println(p.isPalindrome_caseInsensitive("Dele eled"));
         
-        System.out.println(p.isPalindrome_caseInsensitive("Dele ele eled"));
+        result = p.isPalindrome_caseSensitive("Dele eled");
+    	if (result)
+		{
+			throw new Exception("wrong answer - expected " + false + " but received " + result);
+		}
+        
+        result = p.isPalindrome_caseInsensitive("Dele eled");
+    	if (!result)
+		{
+			throw new Exception("wrong answer - expected " + true + " but received " + result);
+		}
+        
+        result = p.isPalindrome_caseInsensitive("Dele ele eled");
+        if (!result)
+		{
+			throw new Exception("wrong answer - expected " + true + " but received " + result);
+		}
+        
+        System.out.println("done");
     }
     
     public boolean isPalindrome_caseSensitive(String word) {

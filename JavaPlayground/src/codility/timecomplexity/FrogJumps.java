@@ -37,13 +37,23 @@ package codility.timecomplexity;
 public class FrogJumps
 {
 
-	public static void main(String[] args)
+	public static void main(String[] args) throws Exception
 	{
-		int result1 = solution(10, 85, 30);
-		System.out.println("result1 : " + result1);
+		int result;
+		
+		result = solution(10, 85, 30);
+		if (result != 3)
+		{
+			throw new Exception("wrong answer - expected " + 3 + " but received " + result);
+		}
 
-		int result2 = solution(10, 70, 30);
-		System.out.println("result2 : " + result2);
+		result = solution(10, 70, 30);
+		if (result != 2)
+		{
+			throw new Exception("wrong answer - expected " + 2 + " but received " + result);
+		}
+		
+		System.out.println("done");
 	}
 
 	public static int solution(int X, int Y, int D)

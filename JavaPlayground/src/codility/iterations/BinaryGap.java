@@ -33,18 +33,29 @@ package codility.iterations;
  */
 public class BinaryGap
 {
-	public static void main(String[] args)
+	public static void main(String[] args) throws Exception
 	{
-		System.out.println("starting test class");
-
-		int finalResult = (new BinaryGap()).solution(1041);
-		System.out.println("finalResult : " + finalResult);
+		int finalResult;
+		
+		finalResult = (new BinaryGap()).solution(1041);
+		if (finalResult != 5)
+		{
+			throw new Exception("wrong answer - expected " + 5 + " but received " + finalResult);
+		}
 
 		finalResult = (new BinaryGap()).solution(328);
-		System.out.println("finalResult : " + finalResult);
+		if (finalResult != 2)
+		{
+			throw new Exception("wrong answer - expected " + 2 + " but received " + finalResult);
+		}
 
 		finalResult = (new BinaryGap()).solution(1024);
-		System.out.println("finalResult : " + finalResult);
+		if (finalResult != 0)
+		{
+			throw new Exception("wrong answer - expected " + 0 + " but received " + finalResult);
+		}
+		
+		System.out.println("done");
 	}
 
 	public int solution(int N)
@@ -58,7 +69,7 @@ public class BinaryGap
 
 		while (N > 0)
 		{
-			System.out.print("N : " + N);
+			// System.out.print("N : " + N);
 			if (N % 2 == 0)
 			{
 				if (openedGate)
@@ -76,8 +87,8 @@ public class BinaryGap
 
 			N = N / 2;
 
-			System.out.print(" - N : " + N + " - max : " + max + " - current : " + current);
-			System.out.println();
+			// System.out.print(" - N : " + N + " - max : " + max + " - current : " + current);
+			// System.out.println();
 		}
 
 		return max;

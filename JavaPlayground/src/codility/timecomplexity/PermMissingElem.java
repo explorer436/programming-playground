@@ -36,22 +36,46 @@ import java.util.Arrays;
 public class PermMissingElem
 {
 
-	public static void main(String[] args)
+	public static void main(String[] args) throws Exception
 	{
+		int result;
+		
 		int[] A = { 2, 3, 1, 5 };
-		System.out.println("result : " + solution(A));
+		result = solution(A);
+		if (result != 4)
+		{
+			throw new Exception("wrong answer - expected " + 4 + " but received " + result);
+		}
 
 		int[] A2 = { 1 };
-		System.out.println("result : " + solution(A2));
+		result = solution(A2);
+		if (result != 2)
+		{
+			throw new Exception("wrong answer - expected " + 2 + " but received " + result);
+		}
 
 		int[] A3 = { 1, 2, 3 };
-		System.out.println("result : " + solution(A3));
+		result = solution(A3);
+		if (result != 4)
+		{
+			throw new Exception("wrong answer - expected " + 4 + " but received " + result);
+		}
 
 		int[] A4 = { 2, 3, 4 };
-		System.out.println("result : " + solution(A4));
+		result = solution(A4);
+		if (result != 1)
+		{
+			throw new Exception("wrong answer - expected " + 1 + " but received " + result);
+		}
 
 		int[] A5 = {};
-		System.out.println("result : " + solution(A5));
+		result = solution(A5);
+		if (result != 1)
+		{
+			throw new Exception("wrong answer - expected " + 1 + " but received " + result);
+		}
+		
+		System.out.println("done");
 	}
 
 	public static int solution(int[] A)

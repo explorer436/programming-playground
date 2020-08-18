@@ -61,7 +61,7 @@ public class PassingCars
 			throw new Exception("wrong answer");
 		}
 
-		System.out.println("all good");
+		System.out.println("done");
 	}
 
 	/*

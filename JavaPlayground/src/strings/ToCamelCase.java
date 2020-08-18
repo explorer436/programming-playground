@@ -15,22 +15,35 @@ toCamelCase("The_Stealth_Warrior"); // returns "TheStealthWarrior"
  */
 public class ToCamelCase {
 
-	public static void main(String[] args) {
-		System.out.println(toCamelCase("the-stealth-warrior"));
+	public static void main(String[] args) throws Exception {
 		
-		System.out.println();
+		String result;
 		
-		System.out.println(toCamelCase("The_Stealth_Warrior"));
+		result = toCamelCase("the-stealth-warrior");
+		if (!result.equals("theStealthWarrior"))
+		{
+			throw new Exception("wrong answer - expected " + "theStealthWarrior" + " but received " + result);
+		}
 		
-		System.out.println();
+		result = toCamelCase("The_Stealth_Warrior");
+		if (!result.equals("TheStealthWarrior"))
+		{
+			throw new Exception("wrong answer - expected " + "TheStealthWarrior" + " but received " + result);
+		}
 		
-		System.out.println(toCamelCase("The-Stealth_Warrior"));
+		result = toCamelCase("The-Stealth_Warrior");
+		if (!result.equals("TheStealthWarrior"))
+		{
+			throw new Exception("wrong answer - expected " + "TheStealthWarrior" + " but received " + result);
+		}
 		
-		System.out.println();
+		result = toCamelCase("theStealthWarrior");
+		if (!result.equals("theStealthWarrior"))
+		{
+			throw new Exception("wrong answer - expected " + "TheStealthWarrior" + " but received " + result);
+		}
 		
-		System.out.println(toCamelCase("theStealthWarrior"));
-		
-
+		System.out.println("done");
 	}
 	
 	// This approach needs just one pass through the entire string.

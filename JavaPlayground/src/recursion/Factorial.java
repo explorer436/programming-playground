@@ -2,21 +2,73 @@ package recursion;
 
 public class Factorial {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
+		
+		int result;
+		
+		result = Factorial.factorial_recursive(4);
+		if (result != 24)
+		{
+			throw new Exception("wrong answer - expected " + 24 + " but received " + result);
+		}
+		
+		result = Factorial.factorial_recursive(-1);
+		if (result != 0)
+		{
+			throw new Exception("wrong answer - expected " + 0 + " but received " + result);
+		}
+		
+		result = Factorial.factorial_recursive(0);
+		if (result != 1)
+		{
+			throw new Exception("wrong answer - expected " + 1 + " but received " + result);
+		}
+		
+		result = Factorial.factorial_recursive(1);
+		if (result != 1)
+		{
+			throw new Exception("wrong answer - expected " + 1 + " but received " + result);
+		}
+		
+		result = Factorial.factorial_recursive(10);
+		if (result != 3628800)
+		{
+			throw new Exception("wrong answer - expected " + 3628800 + " but received " + result);
+		}
 
-        System.out.println("factorial of 4 : " + Factorial.factorial_recursive(4));
-        System.out.println("factorial of -1 : " + Factorial.factorial_recursive(-1));
-        System.out.println("factorial of 0 : " + Factorial.factorial_recursive(0));
-        System.out.println("factorial of 1 : " + Factorial.factorial_recursive(1));
-        System.out.println("factorial of 10 : " + Factorial.factorial_recursive(10));
-
-        System.out.println();
-
-        System.out.println("factorial of 4 : " + Factorial.factorial_iteration(4));
-        System.out.println("factorial of -1 : " + Factorial.factorial_iteration(-1));
-        System.out.println("factorial of 0 : " + Factorial.factorial_iteration(0));
-        System.out.println("factorial of 1 : " + Factorial.factorial_iteration(1));
-        System.out.println("factorial of 10 : " + Factorial.factorial_iteration(10));
+        //------------------------------
+        
+        result = Factorial.factorial_iteration(4);
+        if (result != 24)
+		{
+			throw new Exception("wrong answer - expected " + 24 + " but received " + result);
+		}
+        
+        result = Factorial.factorial_iteration(-1);
+		if (result != 0)
+		{
+			throw new Exception("wrong answer - expected " + 0 + " but received " + result);
+		}
+		
+		result = Factorial.factorial_iteration(0);
+		if (result != 1)
+		{
+			throw new Exception("wrong answer - expected " + 1 + " but received " + result);
+		}
+		
+		result = Factorial.factorial_iteration(1);
+		if (result != 1)
+		{
+			throw new Exception("wrong answer - expected " + 1 + " but received " + result);
+		}
+		
+		result = Factorial.factorial_iteration(10);
+		if (result != 3628800)
+		{
+			throw new Exception("wrong answer - expected " + 3628800 + " but received " + result);
+		}
+		
+		System.out.println("done");
 
     }
 	

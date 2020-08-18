@@ -9,11 +9,25 @@ package datastructures.arrays;
  */
 public class SumOfNaturalNumbersUptoN {
 
-	public static void main(String[] args) {
-		System.out.println("result for input = 5 is : " + sumOfNaturalNumbersUptoN_slow(5));
-		// 1 + 2 + 3 + 4 + 5 = 15
+	public static void main(String[] args) throws Exception {
 		
-		System.out.println("result for input = 5 is : " + sumOfNaturalNumbersUptoN_fast(5));
+		int result;
+		
+		result = sumOfNaturalNumbersUptoN_slow(5);
+		// 1 + 2 + 3 + 4 + 5 = 15
+		if (result != 15)
+		{
+			throw new Exception("wrong answer - expected " + 15 + " but received " + result);
+		}
+		
+		
+		result = sumOfNaturalNumbersUptoN_fast(5);
+		if (result != 15)
+		{
+			throw new Exception("wrong answer - expected " + 15 + " but received " + result);
+		}
+		
+		System.out.println("done");
 	}
 	
 	// O(n)

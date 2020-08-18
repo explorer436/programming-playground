@@ -57,22 +57,47 @@ import java.util.Arrays;
 public class PermutationCheck
 {
 
-	public static void main(String[] args)
+	public static void main(String[] args) throws Exception
 	{
 		int[] A = { 4, 1, 3, 2 };
-		System.out.println("result : " + solution(A)); // 1
+		
+		int result;
+		
+		result = solution(A);
+		if (result != 1)
+		{
+			throw new Exception("wrong answer - expected " + 1 + " but received " + result);
+		}
 
 		int[] A2 = { 4, 1, 3 };
-		System.out.println("result : " + solution(A2)); // 0
+		result = solution(A2);
+		if (result != 0)
+		{
+			throw new Exception("wrong answer - expected " + 0 + " but received " + result);
+		}
 
 		int[] A3 = { 1 };
-		System.out.println("result : " + solution(A3)); // 1
+		result = solution(A3);
+		if (result != 1)
+		{
+			throw new Exception("wrong answer - expected " + 1 + " but received " + result);
+		}
 
 		int[] A4 = { 2 };
-		System.out.println("result : " + solution(A4));// 0
+		result = solution(A4);
+		if (result != 0)
+		{
+			throw new Exception("wrong answer - expected " + 0 + " but received " + result);
+		}
 
 		int[] A5 = {};
-		System.out.println("result : " + solution(A5)); // 0
+		result = solution(A5);
+		if (result != 0)
+		{
+			throw new Exception("wrong answer - expected " + 0 + " but received " + result);
+		}
+		
+		System.out.println("done");
 	}
 
 	public static int solution(int[] A)

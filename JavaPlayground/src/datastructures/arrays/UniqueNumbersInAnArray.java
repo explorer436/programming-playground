@@ -13,7 +13,9 @@ public class UniqueNumbersInAnArray {
     public static void main(String[] args) {
         Collection<Integer> numbers = Arrays.asList(1, 2, 1, 3);
         for (int number : findUniqueNumbers(numbers))
-            System.out.println(number);
+        {
+        	System.out.println(number); // expected 2, 3
+        } 
     }
 	
 	public static Collection<Integer> findUniqueNumbers(Collection<Integer> numbers) {
