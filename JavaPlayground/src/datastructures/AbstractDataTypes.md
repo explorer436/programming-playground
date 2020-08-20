@@ -349,7 +349,7 @@ computing is fundamental and profound,
 as indicated in the detailed example that we
 consider next.
 
-See ArithmeticExpressionEvaluation.java
+See FullyParenthesizedArithmeticExpressionEvaluation.java
 
 Implementing collections To address the issue of implementing Bag , Stack and
 Queue , we begin with a simple classic implementation, then address improvements that

@@ -14,3 +14,8 @@ Look into the following :
 1. SmallTalk programming language.
 1. Web services (soap and rest services) using Haskell.
 1. How hard it easy is it to write a web service produce (soap and rest) using vanilla java?
+
+Haskell + Java : 
+	https://github.com/Frege/frege
+	https://github.com/Frege/frege/wiki/Getting-Started
+

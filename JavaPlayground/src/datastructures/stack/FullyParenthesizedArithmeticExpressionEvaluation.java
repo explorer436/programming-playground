@@ -1,7 +1,11 @@
 package datastructures.stack;
 
+import datastructures.linkedlist.StackImplementationUsingLinkedList;
+
 /**
  * 
+	Reference : Algorithhms by Robert Sedgewick, Kevin Wayne
+	
 	Arithmetic expression evaluation:
 	
 	As another example of a stack client, we consider
@@ -10,8 +14,8 @@ package datastructures.stack;
 	expressions like this one:
 	( 1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) )
 	
-	If you multiply 4 by 5 , add 3 to 2 , multiply the result, and then add 1 , you get the value
-	101 . But how does the Java system do this calculation? Without going into the details of
+	If you multiply 4 by 5 , add 3 to 2 , multiply the result, and then add 1 , you get the value 101.
+	But how does the Java system do this calculation? Without going into the details of
 	how the Java system is built, we can address the essential ideas by writing a Java program
 	that can take a string as input (the expression) and produce the number represented by
 	the expression as output. For simplicity, we begin with the following explicit recursive
@@ -58,23 +62,23 @@ package datastructures.stack;
 	( 1 + 100 )
 	101
 	
-	ArithmeticExpressionEvaluation.java is an implementation of this algorithm. This code is a
+	FullyParenthesizedArithmeticExpressionEvaluation.java is an implementation of this algorithm. This code is a
 	simple example of an interpreter: a program that interprets the computation specified
 	by a given string and performs the computation to arrive at the result.
 	
  *
  */
-public class ArithmeticExpressionEvaluation {
+public class FullyParenthesizedArithmeticExpressionEvaluation {
 
-	/*
+	/**
 	 * 
-	 	This Stack client uses two stacks to evaluate arithmetic expressions, illustrating an essential compu-
-		tational process: interpreting a string as a program and executing that program to compute the de-
-		sired result. With generics, we can use the code in a single Stack implementation to implement one
-		stack of String values and another stack of Double
-		values. For simplicity, this code assumes that the expres-		
-		sion is fully parenthesized, with numbers and characters
-		separated by whitespace.
+	 	This Stack client uses two stacks to evaluate arithmetic expressions, 
+	 	illustrating an essential computational process: interpreting a string as a program and 
+	 	executing that program to compute the desired result.
+	 	With generics, we can use the code in a single Stack implementation to implement one
+		stack of String values and another stack of Double values.
+		For simplicity, this code assumes that the expression is fully parenthesized, 
+		with numbers and characters separated by whitespace.
 		
 		% java Evaluate
 		( 1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) )
@@ -83,15 +87,79 @@ public class ArithmeticExpressionEvaluation {
 		% java Evaluate
 		( ( 1 + sqrt ( 5.0 ) ) / 2.0 )
 		1.618033988749895
+		
 	 */
-	public static void main(String[] args) {
-		// TODO 
+	public static void main(String[] args) throws Exception {
+		int result;
 		
-		// Stack<String> operators = new Stack<String>();
-		// Stack<Integer> values = new Stack<Integer>();
+		result = evaluateExpression("( 1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) )");
+		if (result != 101)
+		{
+			throw new Exception("wrong answer - expected " + 101 + " but received " + result);
+		}
 		
+		// This is not going to work for partially paranthesized expressions
+		/*result = evaluateExpression("5 * ( 6 + 2 ) - 12 / 4");
+		if (result != 37)
+		{
+			throw new Exception("wrong answer - expected " + 37 + " but received " + result);
+		}*/
 		
-
+		System.out.println("done");
+	}
+	
+	public static int evaluateExpression(String str)
+	{
+		StackImplementationUsingLinkedList<Character> operators = new StackImplementationUsingLinkedList<Character>();
+		StackImplementationUsingLinkedList<Integer> values = new StackImplementationUsingLinkedList<Integer>();
+		
+		char[] charArray = str.toCharArray();
+		
+		for (char ch : charArray)
+		{
+			if ('(' == ch || ' ' == ch)
+			{
+				// ignore
+				continue;
+			}
+			else if ( ch == '+' || ch == '-' || ch == '/' || ch == '*')
+			{
+				operators.push(ch);
+			}
+			else if (')' == ch)
+			{
+				Integer op2 = values.pop();
+				Integer op1 = values.pop();
+				char operator = operators.pop();
+				
+				int result = 0;
+				if ('+' == operator)
+				{
+					result = op1 + op2;
+				}
+				else if ('-' == operator)
+				{
+					result = op1 - op2;
+				}
+				else if ('*' == operator)
+				{
+					result = op1 * op2;
+				}
+				else if ('/' == operator)
+				{
+					result = op1 / op2;
+				}
+				
+				values.push(result);
+			}
+			else
+			{
+				// REMEMBER : converting char to Integer. Integer.parseInt() is not going to work.
+				values.push(Character.getNumericValue(ch));
+			}
+		}
+		
+		return values.pop();
 	}
 
 }
