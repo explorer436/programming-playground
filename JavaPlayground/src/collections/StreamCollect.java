@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 import utility.PrintUtils;
 
 public class StreamCollect {
-	
-public static void main(String[] args) {
+
+	public static void main(String[] args) {
 		
 		List<Person> people = new ArrayList<Person>();
 		people.add(new Person("1John", 15, "male"));

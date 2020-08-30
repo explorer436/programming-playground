@@ -83,25 +83,10 @@ public class IntegerPalindrome {
 		
 		if (x >= 0)
 		{
-			result = x == reverse(x) ? true : false;
+			result = x == new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(x) ? true : false;
 		}
 		
 		return result;
-	}
-	
-	public static int reverse(int number)
-	{
-		int reverse = 0;
-		
-		while (number != 0)
-		{	
-			reverse = (reverse * 10) + (number % 10);
-			
-			// Divide the number by 10 to get closer to the break-out condition.
-			number = number / 10;
-		}
-		
-		return reverse;
 	}
 	
 	/**

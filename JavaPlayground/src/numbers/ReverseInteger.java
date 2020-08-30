@@ -28,29 +28,7 @@ For the purpose of this problem, assume that your function returns 0 when the re
  */
 public class ReverseInteger {
 
-	public static void main(String[] args) {
-		System.out.println("input is 123 : " + new ReverseInteger().reverse(123)); // 321 	
-		System.out.println("input is -123 : " + new ReverseInteger().reverse(-123)); // -321
-		System.out.println("input is 120 : " + new ReverseInteger().reverse(120)); //21
-		System.out.println("input is Integer.MAX_VALUE : " + new ReverseInteger().reverse(Integer.MAX_VALUE)); //0
-		System.out.println("input is Integer.MIN_VALUE : " + new ReverseInteger().reverse(Integer.MIN_VALUE)); //0
-		System.out.println("input is 964632435 : " + new ReverseInteger().reverse(964632435)); // 534236469
-		System.out.println("input is Integer.MAX_VALUE + 1 : " + new ReverseInteger().reverse(Integer.MAX_VALUE + 1)); // 0
-		System.out.println("input is 2147483646 : " + new ReverseInteger().reverse(2147483646)); // 534236469
-		
-		System.out.println("----------------");
-		
-		System.out.println("input is 123 : " + new ReverseInteger().reverse2(123)); // 321 	
-		System.out.println("input is -123 : " + new ReverseInteger().reverse2(-123)); // -321
-		System.out.println("input is 120 : " + new ReverseInteger().reverse2(120)); //21
-		System.out.println("input is Integer.MAX_VALUE : " + new ReverseInteger().reverse2(Integer.MAX_VALUE)); //0
-		System.out.println("input is Integer.MIN_VALUE : " + new ReverseInteger().reverse2(Integer.MIN_VALUE)); //0
-		System.out.println("input is 964632435 : " + new ReverseInteger().reverse2(964632435)); // 534236469
-		System.out.println("input is Integer.MAX_VALUE + 1 : " + new ReverseInteger().reverse2(Integer.MAX_VALUE + 1)); // 0
-		System.out.println("input is 2147483646 : " + new ReverseInteger().reverse2(2147483646)); // 534236469
-	}
-
-	public int reverse(int x) {
+	public int reverseUsingStringByteArray(int x) {
 		
 		int reverse = 0;
 		
@@ -106,12 +84,9 @@ public class ReverseInteger {
     }
 	
 	/*
-	 * This is the solution provided by Leetcode but it looks overly complicated.
-	 * If they are returning 0 in overflow and underflow scenarios, why check for all the minute details like unitsPlace?
-	 * 
-	 * This may be an attempt to solve it without converting the integer to string.
+	 * Solve it without converting the integer to string.
 	 */
-	public int reverse2(int x) {
+	public int reverseWithoutConvertingTheIntegerIntoString(int x) {
 		
 		int reverse = 0;
 		
@@ -134,5 +109,112 @@ public class ReverseInteger {
 		
 		return reverse;
     }
+	
+	public static void main(String[] args) throws Exception {
+		
+		int result;
+		
+		result =  new ReverseInteger().reverseUsingStringByteArray(123);
+		if (result != 321)
+		{
+			throw new Exception("wrong answer - expected" +  321 + " but received " + result);
+		}
+		
+		result =  new ReverseInteger().reverseUsingStringByteArray(-123);
+		if (result != -321)
+		{
+			throw new Exception("wrong answer - expected" +  -321 + " but received " + result);
+		}
+		
+		result =  new ReverseInteger().reverseUsingStringByteArray(120);
+		if (result != 21)
+		{
+			throw new Exception("wrong answer - expected" +  -321 + " but received " + result);
+		}
+		
+		// input is 2147483647
+		result =  new ReverseInteger().reverseUsingStringByteArray(Integer.MAX_VALUE);
+		if (result != 0)
+		{
+			throw new Exception("wrong answer - expected" +  0 + " but received " + result);
+		}
+		
+		result =  new ReverseInteger().reverseUsingStringByteArray(Integer.MIN_VALUE);
+		if (result != 0)
+		{
+			throw new Exception("wrong answer - expected" +  0 + " but received " + result);
+		}
+		
+		result =  new ReverseInteger().reverseUsingStringByteArray(964632435);
+		if (result != 534236469)
+		{
+			throw new Exception("wrong answer - expected" +  534236469 + " but received " + result);
+		}
+		
+		result =  new ReverseInteger().reverseUsingStringByteArray(Integer.MAX_VALUE + 1);
+		if (result != 0)
+		{
+			throw new Exception("wrong answer - expected" +  0 + " but received " + result);
+		}
+		
+		result =  new ReverseInteger().reverseUsingStringByteArray(2147483646);
+		if (result != 0)
+		{
+			throw new Exception("wrong answer - expected" +  0 + " but received " + result);
+		}
+		
+		System.out.println("----------------");
+				
+		result =  new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(123);
+		if (result != 321)
+		{
+			throw new Exception("wrong answer - expected" +  321 + " but received " + result);
+		}
+		
+		result =  new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(-123);
+		if (result != -321)
+		{
+			throw new Exception("wrong answer - expected" +  -321 + " but received " + result);
+		}
+		
+		result =  new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(120);
+		if (result != 21)
+		{
+			throw new Exception("wrong answer - expected" +  -321 + " but received " + result);
+		}
+		
+		// input is 2147483647
+		result =  new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(Integer.MAX_VALUE);
+		if (result != 0)
+		{
+			throw new Exception("wrong answer - expected" +  0 + " but received " + result);
+		}
+		
+		result =  new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(Integer.MIN_VALUE);
+		if (result != 0)
+		{
+			throw new Exception("wrong answer - expected" +  0 + " but received " + result);
+		}
+		
+		result =  new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(964632435);
+		if (result != 534236469)
+		{
+			throw new Exception("wrong answer - expected" +  534236469 + " but received " + result);
+		}
+		
+		result =  new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(Integer.MAX_VALUE + 1);
+		if (result != 0)
+		{
+			throw new Exception("wrong answer - expected" +  0 + " but received " + result);
+		}
+		
+		result =  new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(2147483646);
+		if (result != 0)
+		{
+			throw new Exception("wrong answer - expected" +  0 + " but received " + result);
+		}
+		
+		System.out.println("done");
+	}
 
 }
