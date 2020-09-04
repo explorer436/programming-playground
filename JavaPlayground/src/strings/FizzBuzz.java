@@ -50,10 +50,7 @@ public class FizzBuzz {
 	
 	public List<String> fizzBuzz(int n) {
 		
-		// TODO should we use ArrayList vs LinkedList here?
-		// if we use an ArrayList, is the order of the elements preserved properly?
-		
-		List<String> result = new LinkedList<String>();
+		List<String> result = new LinkedList<>();
 		
 		for (int i = 1; i <= n; i++)
 		{
