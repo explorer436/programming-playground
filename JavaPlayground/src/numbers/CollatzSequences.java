@@ -43,7 +43,9 @@ public class CollatzSequences {
 			throw new Exception("wrong answer - expected " + "19" + " but received " + result);
 		}
 
-		System.out.println(countOfIntegersForWhichChainLengthIsGreaterThan15());
+		System.out.println("countOfIntegersForWhichChainLengthIsGreaterThan15 : " + countOfIntegersForWhichChainLengthIsGreaterThan15());
+
+		printCollatzSequence(13);
 
 		System.out.println("done");
 	}
@@ -63,7 +65,6 @@ public class CollatzSequences {
 		return result;
 	}
 
-	// TODO write another method to print the chain.
 	private static int getCollatzSequenceLength(int number)
 	{
 		int chainLength = 1;
@@ -82,6 +83,30 @@ public class CollatzSequences {
 		}
 
 		return chainLength;
+	}
+
+	private static void printCollatzSequence(int number)
+	{
+		if (number <= 0)
+		{
+			System.out.println("Input is invalid.");
+		}
+
+		while(number > 1)
+		{
+			System.out.print(number + " - ");
+			if (number % 2 == 0)
+			{
+				number = number / 2;
+			}
+			else
+			{
+				number = (number * 3) + 1;
+			}
+		}
+		System.out.print("1");
+
+		System.out.println("");
 	}
 
 }
