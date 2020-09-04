@@ -17,7 +17,8 @@ public class ReverseNumbersInAnArray {
 	 */
 	public static void reverseUsingStack(int[] a)
 	{
-		StackImplementationUsingLinkedList<Integer> integerStack = new StackImplementationUsingLinkedList<Integer>(); 
+		// Java's native stack implementation can also be used.
+		StackImplementationUsingLinkedList<Integer> integerStack = new StackImplementationUsingLinkedList<>();
 		
 		for (int i : a)
 		{

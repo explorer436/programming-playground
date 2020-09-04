@@ -66,14 +66,14 @@ public class MostCommonCharacterInString {
 	 */
 	public static void solution_printAllAnswers(String str)
 	{
-		HashMap<Character, Integer> letterCountMap = new HashMap<Character, Integer>();
+		HashMap<Character, Integer> letterCountMap = new HashMap<>();
 		
 		Integer currentCount;
 		if (null != str)
 		{
 			for (char c : str.toCharArray())
 			{
-				currentCount = (Integer) letterCountMap.get(c);
+				currentCount = letterCountMap.get(c);
 
 		        if (currentCount == null)
 		        {
@@ -82,11 +82,10 @@ public class MostCommonCharacterInString {
 		        else
 		        {
 		            currentCount = currentCount + 1;
-		            letterCountMap.put(c, (Integer) currentCount);
+		            letterCountMap.put(c, currentCount);
 		        }
 			}
 		}
-		
 
 		// PrintUtils.printMap(letterCountMap);
 		
@@ -117,14 +116,14 @@ public class MostCommonCharacterInString {
 	
 	public static void solution_printFirstAnswer(String str)
 	{
-		HashMap<Character, Integer> letterCountMap = new HashMap<Character, Integer>();
+		HashMap<Character, Integer> letterCountMap = new HashMap<>();
 		
 		Integer currentCount;
 		if (null != str)
 		{
 			for (char c : str.toCharArray())
 			{
-				currentCount = (Integer) letterCountMap.get(c);
+				currentCount = letterCountMap.get(c);
 
 		        if (currentCount == null)
 		        {
@@ -133,7 +132,7 @@ public class MostCommonCharacterInString {
 		        else
 		        {
 		            currentCount = currentCount + 1;
-		            letterCountMap.put(c, (Integer) currentCount);
+		            letterCountMap.put(c, currentCount);
 		        }
 			}
 		}
