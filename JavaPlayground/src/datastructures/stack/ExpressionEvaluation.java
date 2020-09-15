@@ -10,6 +10,13 @@ import java.util.Stack;
 
 
 /**
+ * This is the equivalent of two algorithms put together.
+ * 1. TransformAnInfixExpressionToPostfixNotation.java
+ * 2. EvaluatePostfixExpression
+ */
+
+
+/**
    A Java program to evaluate a given expression where tokens are separated  
    by space. 
    Test Cases: 
@@ -17,7 +24,7 @@ import java.util.Stack;
      "100 * 2 + 12"          ---> 212 
      "100 * ( 2 + 12 )"      ---> 1400 
      "100 * ( 2 + 12 ) / 14" ---> 100     
-*/ 
+*/
 public class ExpressionEvaluation 
 { 
     public static void main(String[] args) throws Exception 
@@ -54,99 +61,130 @@ public class ExpressionEvaluation
 			throw new Exception("wrong answer - expected " + "5" + " but received " + result);
 		}
         
+        result = ExpressionEvaluation.evaluate("1 + 4 * 2 / 3");
+        if (3 != result)
+		{
+			throw new Exception("wrong answer - expected " + "3" + " but received " + result);
+		}
+        
+        /*
+        result = ExpressionEvaluation.evaluate("10 * (2 + 3 - 1) / 4");
+        if (10 != result)
+		{
+			throw new Exception("wrong answer - expected " + "10" + " but received " + result);
+		}
+		*/
+        
         System.out.println("done");
     }
     
     public static int evaluate(String expression) 
     { 
-        char[] tokens = expression.toCharArray(); 
+        char[] expressionCharArray = expression.toCharArray(); 
   
-         // Stack for numbers: 'values' 
-        Stack<Integer> values = new Stack<Integer>(); 
+         // Stack for numbers: 'numbersStack' 
+        Stack<Integer> numbersStack = new Stack<>();
   
-        // Stack for Operators: 'operators' 
-        Stack<Character> operators = new Stack<Character>(); 
+        // Stack for Operators: 'operatorsStack' 
+        Stack<Character> operatorsStack = new Stack<>();
   
-        for (int i = 0; i < tokens.length; i++) 
+        for (int i = 0; i < expressionCharArray.length; i++) 
         { 
              // Current token is a whitespace, skip it 
-            if (tokens[i] == ' ') 
+            if (expressionCharArray[i] == ' ') 
             {
             	continue;
-            } 
+            }
   
             // Current token is a number, push it to stack for numbers 
-            if (tokens[i] >= '0' && tokens[i] <= '9') 
-            { 
+            if (expressionCharArray[i] >= '0' && expressionCharArray[i] <= '9') 
+            {
                 StringBuffer sbuf = new StringBuffer(); 
                 
                 // There may be more than one digit in number.
-                while (i < tokens.length && tokens[i] >= '0' && tokens[i] <= '9') 
+                while (i < expressionCharArray.length && expressionCharArray[i] >= '0' && expressionCharArray[i] <= '9') 
                 {
-                	sbuf.append(tokens[i++]); 
+                	sbuf.append(expressionCharArray[i++]); 
                 }
 
-                values.push(Integer.parseInt(sbuf.toString())); 
+                numbersStack.push(Integer.parseInt(sbuf.toString())); 
             } 
   
-            // Current token is an opening brace, push it to 'operators' 
-            else if (tokens[i] == '(') 
+            // Current token is an opening brace, push it to 'operatorsStack' 
+            else if (expressionCharArray[i] == '(') 
             {
-            	operators.push(tokens[i]); 
+            	operatorsStack.push(expressionCharArray[i]); 
             } 
   
             // Closing brace encountered, solve entire brace 
-            else if (tokens[i] == ')') 
+            else if (expressionCharArray[i] == ')') 
             { 
-                while (operators.peek() != '(') 
+                while (operatorsStack.peek() != '(') 
                 {
-                	values.push(applyOp(operators.pop(), values.pop(), values.pop())); 
+                	int b = numbersStack.pop();
+                	int a = numbersStack.pop();
+                	int resultFromTheBraces = applyOp(operatorsStack.pop(), b, a);
+                	numbersStack.push(resultFromTheBraces); 
                 }
-                operators.pop(); 
+
+                // pop the corresponding closing brace and ignore it.
+                operatorsStack.pop(); 
             }
   
             // Current token is an operator. 
-            else if (tokens[i] == '+' || tokens[i] == '-' || tokens[i] == '*' || tokens[i] == '/') 
+            else if (expressionCharArray[i] == '+' || expressionCharArray[i] == '-' || expressionCharArray[i] == '*' || expressionCharArray[i] == '/') 
             { 
-                // While top of 'operators' has same or greater precedence to current token, which is an operator. 
-            	// Apply operator on top of 'operators' to top two elements in values stack.
-                while (!operators.empty() && hasPrecedence(tokens[i], operators.peek())) 
+            	char currentOperator = expressionCharArray[i];
+                // While top of 'operatorsStack' has same or greater precedence to current operator. 
+            	// Apply operator on top of 'operatorsStack' to top two elements in numbersStack stack.
+                while (!operatorsStack.empty() && currentOperatorsPrecedenceIsLessThanThoseFromTheStack(currentOperator, operatorsStack.peek())) 
                 {
-                	values.push(applyOp(operators.pop(), values.pop(), values.pop())); 
+                	numbersStack.push(applyOp(operatorsStack.pop(), numbersStack.pop(), numbersStack.pop())); 
                 }
   
-                // Push current token to 'operators'. 
-                operators.push(tokens[i]); 
+                // Push current token to 'operatorsStack'.
+                operatorsStack.push(currentOperator); 
             } 
-        } 
-  
-        // Entire expression has been parsed at this point, apply remaining 
-        // operators to remaining values 
-        while (!operators.empty()) 
-        {
-        	values.push(applyOp(operators.pop(), values.pop(), values.pop())); 
         }
   
-        // Top of 'values' contains result, return it 
-        return values.pop(); 
-    } 
+        // Entire expression has been parsed at this point, apply remaining operatorsStack to remaining numbersStack.
+        while (!operatorsStack.empty()) 
+        {
+        	numbersStack.push(applyOp(operatorsStack.pop(), numbersStack.pop(), numbersStack.pop())); 
+        }
   
-    // Returns true if 'op2' has higher or same precedence as 'op1', otherwise returns false. 
-    public static boolean hasPrecedence(char op1, char op2) 
-    { 
-        if (op2 == '(' || op2 == ')') 
+        // Top of 'numbersStack' contains result, return it.
+        return numbersStack.pop(); 
+    } 
+
+    /**
+     * 
+     	B
+		Brackets first
+		O
+		Orders (ie Powers and Square Roots, etc.)
+		DM
+		Division and Multiplication
+		AS
+		Addition and Subtraction
+     * 
+     */
+    // Returns true if 'operatorAtTheTopOfTheStack' has higher or same precedence as 'currentOperator', otherwise returns false.
+    public static boolean currentOperatorsPrecedenceIsLessThanThoseFromTheStack(char currentOperator, char operatorAtTheTopOfTheStack) 
+    {
+        if (operatorAtTheTopOfTheStack == '(' || operatorAtTheTopOfTheStack == ')') 
         {
         	return false; 
         }
             
-        if ((op1 == '*' || op1 == '/') && (op2 == '+' || op2 == '-')) 
+        if ((currentOperator == '*' || currentOperator == '/') && (operatorAtTheTopOfTheStack == '+' || operatorAtTheTopOfTheStack == '-')) 
         {
         	return false; 
         }
             
         return true; 
     } 
-  
+
     // A utility method to apply an operator 'op' on operands 'a' and 'b'.
     public static int applyOp(char op, int b, int a) 
     { 

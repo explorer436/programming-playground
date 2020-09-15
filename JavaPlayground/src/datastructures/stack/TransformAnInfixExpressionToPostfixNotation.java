@@ -4,6 +4,8 @@ import java.util.Stack;
 
 // http://faculty.cs.niu.edu/~hutchins/csci241/eval.htm
 
+// https://en.wikipedia.org/wiki/Shunting-yard_algorithm
+
 /**
  * 
 	We often deal with arithmetic expressions written in what is called infix notation: (Operand1 op Operand2)
@@ -33,11 +35,13 @@ public class TransformAnInfixExpressionToPostfixNotation {
 	public static void main(String[] args) throws Exception {
 		String result = null;
 		
-		result = transformInfixToPostfix("5 * ( 6 + 2 ) - 12 / 4	");
+		result = transformInfixToPostfix("5 * ( 6 + 2 ) - 12 / 4");
 		if (!result.equals("5 6 2 + * 12 4 / -"))
 		{
 			throw new Exception("wrong answer - expected " + "5 6 2 + * 12 4 / -" + " but received " + result);
 		}
+		
+		System.out.println("done");
 	}
 	
 	/**
@@ -87,10 +91,110 @@ public class TransformAnInfixExpressionToPostfixNotation {
 		    then I contained unbalanced parentheses and is in error. 
 	 * 
 	 */
-	public static String transformInfixToPostfix(String q)
-	{
-		return null;
-	}
+	public static String transformInfixToPostfix(String expression) 
+    { 
+        char[] expressionCharArray = expression.toCharArray(); 
+  
+         // Stack for the postfix expression: 'postfixStack' 
+        Stack postfixStack = new Stack<>();
+  
+        // Stack for Operators: 'operatorsStack' 
+        Stack<Character> operatorsStack = new Stack<>();
+  
+        for (int i = 0; i < expressionCharArray.length; i++) 
+        { 
+             // Current token is a whitespace, skip it 
+            if (expressionCharArray[i] == ' ') 
+            {
+            	continue;
+            }
+  
+            // Current token is a number, push it to stack for numbers 
+            if (expressionCharArray[i] >= '0' && expressionCharArray[i] <= '9') 
+            {
+                StringBuffer sbuf = new StringBuffer(); 
+                
+                // There may be more than one digit in number.
+                while (i < expressionCharArray.length && expressionCharArray[i] >= '0' && expressionCharArray[i] <= '9') 
+                {
+                	sbuf.append(expressionCharArray[i++]); 
+                }
+
+                postfixStack.push(Integer.parseInt(sbuf.toString())); 
+            } 
+  
+            // Current token is an opening brace, push it to 'operatorsStack' 
+            else if (expressionCharArray[i] == '(') 
+            {
+            	operatorsStack.push(expressionCharArray[i]); 
+            } 
+  
+            // Closing brace encountered, solve entire brace 
+            else if (expressionCharArray[i] == ')') 
+            { 
+                while (operatorsStack.peek() != '(') 
+                {
+                	Character operator = operatorsStack.pop();
+                	postfixStack.push(operator);
+                }
+
+                // pop the corresponding closing brace and ignore it.
+                operatorsStack.pop(); 
+            }
+  
+            // Current token is an operator. 
+            else if (expressionCharArray[i] == '+' || expressionCharArray[i] == '-' || expressionCharArray[i] == '*' || expressionCharArray[i] == '/') 
+            { 
+            	char currentOperator = expressionCharArray[i];
+                // While top of 'operatorsStack' has same or greater precedence to current operator. 
+            	// Apply operator on top of 'operatorsStack' to top two elements in postfixStack stack.
+                while (!operatorsStack.empty() && currentOperatorsPrecedenceIsLessThanThoseFromTheStack(currentOperator, operatorsStack.peek())) 
+                {
+                	postfixStack.push(operatorsStack.pop()); 
+                }
+  
+                // Push current token to 'operatorsStack'.
+                operatorsStack.push(currentOperator); 
+            } 
+        }
+  
+        // Entire expression has been parsed at this point, apply remaining operatorsStack to remaining postfixStack.
+        while (!operatorsStack.empty()) 
+        {
+        	postfixStack.push(operatorsStack.pop()); 
+        }
+  
+        
+        return ReverseAGivenStack.reverseUsingTempStack(postfixStack);
+    } 
+
+    /**
+     * 
+     	B
+		Brackets first
+		O
+		Orders (ie Powers and Square Roots, etc.)
+		DM
+		Division and Multiplication
+		AS
+		Addition and Subtraction
+     * 
+     */
+    // Returns true if 'operatorAtTheTopOfTheStack' has higher or same precedence as 'currentOperator', otherwise returns false.
+    public static boolean currentOperatorsPrecedenceIsLessThanThoseFromTheStack(char currentOperator, char operatorAtTheTopOfTheStack) 
+    {
+        if (operatorAtTheTopOfTheStack == '(' || operatorAtTheTopOfTheStack == ')') 
+        {
+        	return false; 
+        }
+            
+        if ((currentOperator == '*' || currentOperator == '/') && (operatorAtTheTopOfTheStack == '+' || operatorAtTheTopOfTheStack == '-')) 
+        {
+        	return false; 
+        }
+            
+        return true; 
+    } 
 	
 }
 

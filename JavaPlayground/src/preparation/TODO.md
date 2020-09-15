@@ -61,4 +61,18 @@ method to collect the words in the sentence.
 capability to change the value of the integer. (The Integer class, like the String class, is
 immutable after it is initialized.)
 
-What the heck is the Hungarian algorithm?
+What is the Hungarian algorithm?
+
+https://algorithms.tutorialhorizon.com/
+https://algorithms.tutorialhorizon.com/reverse-a-stack-using-recursion-in-place-without-using-extra-memory/
+https://algorithms.tutorialhorizon.com/sort-a-given-stack-using-temporary-stack/
+https://algorithms.tutorialhorizon.com/sort-a-given-stack-using-recursion/
+https://algorithms.tutorialhorizon.com/depth-first-search-dfs-in-2d-matrix-2d-array-iterative-solution/
+https://algorithms.tutorialhorizon.com/depth-first-search-dfs-in-2d-matrix-2d-array-recursive-solution/
+https://algorithms.tutorialhorizon.com/smallest-number-after-removing-k-digits/
+https://algorithms.tutorialhorizon.com/topological-sort/
+https://algorithms.tutorialhorizon.com/valid-brackets-part-2-stack-method/
+https://algorithms.tutorialhorizon.com/convert-prefix-to-infix-expression/
+https://algorithms.tutorialhorizon.com/convert-infix-to-postfix-expression/
+https://algorithms.tutorialhorizon.com/valid-multiple-parentheses/
+

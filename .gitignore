@@ -1,2 +1,17 @@
 /bin/
 *.class
+.idea/.gitignore
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+Haskell/.idea/.gitignore
+Haskell/.idea/Haskell.iml
+Haskell/.idea/misc.xml
+Haskell/.idea/modules.xml
+Haskell/.idea/vcs.xml
+.idea/programming-playground.iml
+JavaPlayground/src/preparation/.idea/.gitignore
+JavaPlayground/src/preparation/.idea/misc.xml
+JavaPlayground/src/preparation/.idea/modules.xml
+JavaPlayground/src/preparation/.idea/preparation.iml
+JavaPlayground/src/preparation/.idea/vcs.xml

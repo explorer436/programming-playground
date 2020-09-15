@@ -98,6 +98,20 @@ public class FullyParenthesizedArithmeticExpressionEvaluation {
 			throw new Exception("wrong answer - expected " + 101 + " but received " + result);
 		}
 		
+		result = evaluateExpression("( 1 + ( 2 + 3 ) )");
+		if (result != 6)
+		{
+			throw new Exception("wrong answer - expected " + 6 + " but received " + result);
+		}
+		
+		/*
+		result = evaluateExpression("( 1 + ( 12 + 3 ) )");
+		if (result != 16)
+		{
+			throw new Exception("wrong answer - expected " + 16 + " but received " + result);
+		}
+		*/
+		
 		// This is not going to work for partially paranthesized expressions
 		/*result = evaluateExpression("5 * ( 6 + 2 ) - 12 / 4");
 		if (result != 37)
@@ -108,6 +122,12 @@ public class FullyParenthesizedArithmeticExpressionEvaluation {
 		System.out.println("done");
 	}
 	
+	/**
+	 * 
+	 	FIXME This is not working with two digit numbers.
+		This was probably written to read input using Scanner - which takes care of reading numbers with more than one digits.
+	 *
+	 */
 	public static int evaluateExpression(String str)
 	{
 		StackImplementationUsingLinkedList<Character> operators = new StackImplementationUsingLinkedList<Character>();
