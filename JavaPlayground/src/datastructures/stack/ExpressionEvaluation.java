@@ -159,6 +159,8 @@ public class ExpressionEvaluation
 
     /**
      * 
+     	REMEMBER: This is the key for Dijkstra's Shunting-yard algorithm.
+     	
      	B
 		Brackets first
 		O

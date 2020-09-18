@@ -68,6 +68,8 @@ public class ReverseAGivenStack {
 
 	protected static String reverseUsingRecursion(String str, Stack stack) {
 		
+		// NOTE : The originalStack is not going to be preserved.
+		// If the original stack needs to be preserved, this approach may not work.
 		while (!stack.isEmpty())
 		{
 			str = reverseUsingRecursion(stack.pop() + " " + str, stack);

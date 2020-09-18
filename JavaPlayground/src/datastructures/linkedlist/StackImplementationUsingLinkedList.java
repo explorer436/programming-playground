@@ -1,7 +1,5 @@
 package datastructures.linkedlist;
 
-import java.util.Iterator;
-
 /**
  * 
 	See LinkedList.md

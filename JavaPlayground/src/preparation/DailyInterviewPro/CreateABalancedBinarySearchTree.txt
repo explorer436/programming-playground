@@ -1,6 +1,7 @@
 Hi, here's your problem today. This problem was recently asked by LinkedIn:
 
-Given a sorted list of numbers, change it into a balanced binary search tree. You can assume there will be no duplicate numbers in the list.
+Given a sorted list of numbers, change it into a balanced binary search tree.
+You can assume there will be no duplicate numbers in the list.
 
 Here's a starting point:
 

@@ -148,7 +148,7 @@ public class TransformAnInfixExpressionToPostfixNotation {
             	char currentOperator = expressionCharArray[i];
                 // While top of 'operatorsStack' has same or greater precedence to current operator. 
             	// Apply operator on top of 'operatorsStack' to top two elements in postfixStack stack.
-                while (!operatorsStack.empty() && currentOperatorsPrecedenceIsLessThanThoseFromTheStack(currentOperator, operatorsStack.peek())) 
+                while (!operatorsStack.empty() && ExpressionEvaluation.currentOperatorsPrecedenceIsLessThanThoseFromTheStack(currentOperator, operatorsStack.peek())) 
                 {
                 	postfixStack.push(operatorsStack.pop()); 
                 }
@@ -166,35 +166,7 @@ public class TransformAnInfixExpressionToPostfixNotation {
   
         
         return ReverseAGivenStack.reverseUsingTempStack(postfixStack);
-    } 
-
-    /**
-     * 
-     	B
-		Brackets first
-		O
-		Orders (ie Powers and Square Roots, etc.)
-		DM
-		Division and Multiplication
-		AS
-		Addition and Subtraction
-     * 
-     */
-    // Returns true if 'operatorAtTheTopOfTheStack' has higher or same precedence as 'currentOperator', otherwise returns false.
-    public static boolean currentOperatorsPrecedenceIsLessThanThoseFromTheStack(char currentOperator, char operatorAtTheTopOfTheStack) 
-    {
-        if (operatorAtTheTopOfTheStack == '(' || operatorAtTheTopOfTheStack == ')') 
-        {
-        	return false; 
-        }
-            
-        if ((currentOperator == '*' || currentOperator == '/') && (operatorAtTheTopOfTheStack == '+' || operatorAtTheTopOfTheStack == '-')) 
-        {
-        	return false; 
-        }
-            
-        return true; 
-    } 
+    }
 	
 }
 

@@ -1,6 +1,8 @@
 Hi, here's your problem today. This problem was recently asked by Facebook:
 
-You are given the root of a binary tree. Find the path between 2 nodes that maximizes the sum of all the nodes in the path, and return the sum. The path does not necessarily need to go through the root.
+You are given the root of a binary tree.
+Find the path between 2 nodes that maximizes the sum of all the nodes in the path, and return the sum.
+The path does not necessarily need to go through the root.
 
 class Node:
   def __init__(self, val):

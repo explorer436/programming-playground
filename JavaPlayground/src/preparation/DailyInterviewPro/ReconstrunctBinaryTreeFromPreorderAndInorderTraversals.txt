@@ -1,6 +1,7 @@
 Hi, here's your problem today. This problem was recently asked by Microsoft:
 
-You are given the preorder and inorder traversals of a binary tree in the form of arrays. Write a function that reconstructs the tree represented by these traversals.
+You are given the preorder and inorder traversals of a binary tree in the form of arrays.
+Write a function that reconstructs the tree represented by these traversals.
 
 Example:
 Preorder: [a, b, d, e, c, f, g]
