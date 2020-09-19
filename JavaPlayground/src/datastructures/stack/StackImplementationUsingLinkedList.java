@@ -1,4 +1,4 @@
-package datastructures.linkedlist;
+package datastructures.stack;
 
 /**
  * 
@@ -101,6 +101,21 @@ public class StackImplementationUsingLinkedList<Item> {
 		
 	}
 	
+	public Item peek()
+	{
+		if (isEmpty())
+		{
+			return null;
+		}
+		
+		/*
+		 *  we would retrieve the value of the item from the node that is at the top of the stack.
+		 */
+		
+		return firstNodeInTheStack.item;
+		
+	}
+	
 	public void printStack()
 	{
 		System.out.println(">>> printStack");
@@ -148,7 +163,12 @@ public class StackImplementationUsingLinkedList<Item> {
 		System.out.println("number of items on the stack after popping all items from it : " + s.size());
 	}
 	
-	/*private static void printStack(StackImplementationUsingLinkedList<String> stack) {
+	/*
+	 * 
+	
+	Look at the alternative implementation in printStack().
+	
+	private static void printStack(StackImplementationUsingLinkedList<String> stack) {
 		Iterator<String> stackIterator = stack.iterator();
 		while (stackIterator.hasNext())
 		{

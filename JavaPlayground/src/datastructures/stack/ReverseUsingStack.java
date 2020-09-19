@@ -2,8 +2,6 @@ package datastructures.stack;
 
 import java.util.Stack;
 
-import datastructures.linkedlist.StackImplementationUsingLinkedList;
-
 public class ReverseUsingStack {
 
 	public static void main(String[] args) throws Exception {

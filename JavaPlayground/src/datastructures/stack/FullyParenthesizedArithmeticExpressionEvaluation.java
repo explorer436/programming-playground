@@ -1,7 +1,5 @@
 package datastructures.stack;
 
-import datastructures.linkedlist.StackImplementationUsingLinkedList;
-
 /**
  * 
 	Reference : Algorithhms by Robert Sedgewick, Kevin Wayne

@@ -1,6 +1,4 @@
-package datastructures.linkedlist;
-
-import java.util.Iterator;
+package datastructures.queues;
 
 /**
  * 
@@ -114,7 +112,10 @@ public class QueueImplementationUsingLinkedList<Item> {
 		System.out.println("number of items on the queue after popping all items from it : " + q.size());
 	}
 	
-	/*private static void printStack(QueueImplementationUsingLinkedList<String> stack) {
+	/*
+	 * 
+	
+	private static void printStack(QueueImplementationUsingLinkedList<String> stack) {
 		Iterator<String> stackIterator = stack.iterator();
 		while (stackIterator.hasNext())
 		{

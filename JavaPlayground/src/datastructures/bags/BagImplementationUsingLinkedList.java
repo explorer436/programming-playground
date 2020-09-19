@@ -1,4 +1,4 @@
-package datastructures.linkedlist;
+package datastructures.bags;
 
 import java.util.Iterator;
 

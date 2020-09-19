@@ -5,7 +5,7 @@ import java.util.Stack;
 public class ReverseAGivenStack {
 
 	public static void main(String[] args) throws Exception {
-		Stack integerStack = new Stack<>();
+		Stack<Integer> integerStack = new Stack<>();
         integerStack.add(4);
         integerStack.add(9);
         integerStack.add(6);
@@ -33,7 +33,7 @@ public class ReverseAGivenStack {
 			throw new Exception("wrong answer - expected " + "T e s t i n g" + " but received " + integerStackReversedUsingRecursion);
 		}
         
-        Stack stringStack = new Stack<>();
+        Stack<String> stringStack = new Stack<>();
         stringStack.add("T");
         stringStack.add("e");
         stringStack.add("s");

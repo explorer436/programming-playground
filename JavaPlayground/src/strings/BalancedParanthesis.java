@@ -1,7 +1,7 @@
 package strings;
 
-import datastructures.linkedlist.StackImplementationUsingDoubleLinkedList;
-import datastructures.linkedlist.StackImplementationUsingLinkedList;
+import datastructures.stack.StackImplementationUsingDoubleLinkedList;
+import datastructures.stack.StackImplementationUsingLinkedList;
 
 /**
  * 
