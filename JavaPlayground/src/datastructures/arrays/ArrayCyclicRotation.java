@@ -5,7 +5,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/*
+import utility.PrintUtils;
+
+/**
 * 
 
 An array A consisting of N integers is given. 
@@ -59,58 +61,68 @@ public class ArrayCyclicRotation
 	public static void main(String[] args)
 	{
 
-		System.out.println("result for input " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " and K = 2 is " + Arrays.toString(
+		System.out.println("result of rotating  " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " 2 times is " + Arrays.toString(
 				ArrayCyclicRotation.solution(new int[] { 1, 5, 2, 1, 4, 0 }, 2)));
 		
-		System.out.println();
-		
-		System.out.println("result for input " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " and K = 6 is " + Arrays.toString(
+		System.out.println("result of rotating  " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " 6 times is " + Arrays.toString(
 				ArrayCyclicRotation.solution(new int[] { 1, 5, 2, 1, 4, 0 }, 6)));
-				
-		System.out.println();
 		
-		System.out.println("result for input " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " and K = 10 is " + Arrays.toString(
+		System.out.println("result of rotating  " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " 10 times is " + Arrays.toString(
 				ArrayCyclicRotation.solution(new int[] { 1, 5, 2, 1, 4, 0 }, 10)));
-				
-		System.out.println();
 		
-		System.out.println("result for input " + Arrays.toString(new int[] { }) + " and K = 2 is " + Arrays.toString(
+		System.out.println("result of rotating  " + Arrays.toString(new int[] { }) + " 2 times is " + Arrays.toString(
 				ArrayCyclicRotation.solution(new int[] {}, 2)));
-				
-		System.out.println();
 		
-		System.out.println("result for input " + Arrays.toString(new int[] { }) + " and K = -2 is " + Arrays.toString(
+		System.out.println("result of rotating  " + Arrays.toString(new int[] { }) + " -2 times is " + Arrays.toString(
 				ArrayCyclicRotation.solution(new int[] {}, -2)));
-				
-		System.out.println();
 		
 		System.out.println("--------");
 		
-		/**
-		 * Take a look at DropFirstNElementsOfAnArray.skipFirstKElementsOfArray() for an example to skip x number of elements from the beginning of an array.
-		 */
-		System.out.println("result for skipping " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " and K = 2 is "); DropFirstNElementsOfAnArray.skipFirstKElementsOfArray(new int[] { 1, 5, 2, 1, 4, 0 }, 2);
+		System.out.println("result of rotating  " + Arrays.toString(new int[] { 1, 2, 3 }) + " 2 times is " + Arrays.toString(
+				ArrayCyclicRotation.getQueriedPositionsAfterCyclicArrayRotation(new int[] { 1, 2, 3 }, 2, new int[] { 0, 1, 2 })));
+		
+		System.out.println("result of rotating  " + Arrays.toString(new int[] { 1, 5, 2, 1, 4, 0 }) + " 2 times is " + Arrays.toString(
+				ArrayCyclicRotation.getQueriedPositionsAfterCyclicArrayRotation(new int[] { 1, 5, 2, 1, 4, 0 }, 2, new int[] { 0, 1, 2 })));
+		
+		System.out.println("result of rotating  " + Arrays.toString(new int[] { }) + " 2 times is " + Arrays.toString(
+				ArrayCyclicRotation.getQueriedPositionsAfterCyclicArrayRotation(new int[] {}, 2, new int[] {})));
 		
 		System.out.println("--------");
 		
-		System.out.println("result for input " + Arrays.toString(new int[] { 1, 2, 3 }) + " and K = 2 is " + Arrays.toString(
-				ArrayCyclicRotation.circularArrayRotation(new int[] { 1, 2, 3 }, 2, new int[] { 0, 1, 2 })));
-		
-		System.out.println("result for input " + Arrays.toString(new int[] { }) + " and K = 2 is " + Arrays.toString(
-				ArrayCyclicRotation.circularArrayRotation(new int[] {}, 2, new int[] {})));
-		
-		System.out.println();
-		
-		System.out.println("result for input usingCollectionsRotateMethod");
+		/*
+		System.out.println("result of rotating using CollectionsRotateMethod");
 		ArrayCyclicRotation.usingCollectionsRotateMethod();
+		*/
+		
+		
+		System.out.print("result of rotating  ");
+		Integer[] sourceArray = { 1, 5, 2, 1, 4, 0 };
+		PrintUtils.printArray(sourceArray);
+		System.out.print(" 2 times usingCollectionsRotateMethod is ");
+		List result = rotate2(Arrays.asList(sourceArray), 2);
+		PrintUtils.printList(result);
 		
 	}
 
-	/*
+	/**
 	 * This can also be written using System.arraycopy( result, 0, A, 0, A.length ) or Arrays.copyOfRange().
-	 * But the disadvantage of that approach is that it creates an extra array - not good when space complexity is considered. 
 	 * 
-	 * TODO implement it using the two methods mentioned above.
+	 * int[] newArray = Arrays.copyOfRange(oldArray, startIndex, endIndex);
+	 * 
+	 * public static void arraycopy(Object src,
+             int srcPos,
+             Object dest,
+             int destPos,
+             int length)
+             Copies an array from the specified source array, 
+             beginning at the specified position, to the specified position of the destination array.
+             A subsequence of array components are copied from the source array referenced by src 
+             to the destination array referenced by dest.
+             The number of components copied is equal to the length argument.
+             The components at positions srcPos through srcPos+length-1 in the source array 
+             are copied into positions destPos through destPos+length-1, respectively, of the destination array.
+
+	 * But the disadvantage of that approach is that it creates an extra array - not good when space complexity is considered. 
 	 */
 	public static int[] solution(int[] A, int K)
 	{
@@ -126,6 +138,11 @@ public class ArrayCyclicRotation
 			K = K % A.length;
 		}
 
+		// using an intermediate array to hold the results.
+		// not an in-place solution.
+		
+		// for an in-place solution, look at rotate2()
+		
 		int[] result = new int[A.length];
 
 		for (int i = 0; i < K; i++)
@@ -143,86 +160,60 @@ public class ArrayCyclicRotation
 		return result;
 	}
 	
-	static int[] circularArrayRotation(int[] a, int k, int[] queries) {
+	/**
+	 * 
+	 	Return elements at only specific positions after cyclic rotation instead of returning the entire rotated array. 
+	 * 
+	 */
+	static int[] getQueriedPositionsAfterCyclicArrayRotation(int[] a, int k, int[] queries) {
 		
 		int[] rotatedArray = solution(a, k);
-		// System.out.println("rotatedArray : " + Arrays.toString(rotatedArray));
-		// System.out.println("queries.length : " + queries.length);
 		
 		int[] result = new int[queries.length];
 		for (int i = 0; i < queries.length; i++)
 		{
-			// System.out.println("i : " + i);
-			// System.out.println("queries[i] : " + queries[i]);
 			result[i] = rotatedArray[queries[i]];
-			// System.out.println("result : " + Arrays.toString(result));
 		}
 		
 		return result;
-		
-    } 
+    }
 	
 	/**
 	 * Take a look at OpenJDK's implementation here :
+	 * OpenJDK's rotate implementation : 
 	 * https://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/util/Collections.java
 	 */
-	public static void usingCollectionsRotateMethod()
-	{
-		
-		// { 1, 5, 2, 1, 4, 0 }
-		List<Integer> l = new ArrayList<Integer>();
-		l.add(1);
-		l.add(5);
-		l.add(2);
-		l.add(1);
-		l.add(4);
-		l.add(0);
-		
-		System.out.println("before rotationg " + Arrays.deepToString(l.toArray()));
-		
-		// Collections.rotate(l, 2);
-		rotate2(l, 2);
-		
-		System.out.println("after rotationg " + Arrays.deepToString(l.toArray()));
-	}
-	
-	// TODO understand the implementation below.
-	
-	/**
-	 * OpenJDK's rotate2 implementation : 
-	 * https://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/util/Collections.java
-	 */
-	private static void rotate2(List<?> list, int distance) {
+	private static List<?> rotate2(List<?> list, int distance) {
 
         int size = list.size();
 
         if (size == 0)
-
-            return;
+        {
+        	return list;
+        }
 
         int mid =  -distance % size;
-        System.out.println("mid : " + mid);
 
         if (mid < 0)
-
-            mid += size;
+        {
+        	mid += size;
+        }
 
         if (mid == 0)
+        {
+        	return list;
+        } 
 
-            return;
-
-        System.out.println("mid : " + mid);
-
-        System.out.println("line 210 " + Arrays.deepToString(list.toArray()));
+        /*
+        	OpenJDK's reverse implementation : 
+   	 		https://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/util/Collections.java
+   	 	*/
         Collections.reverse(list.subList(0, mid));
-        System.out.println("line 212 " + Arrays.deepToString(list.toArray()));
         Collections.reverse(list.subList(mid, size));
-        System.out.println("line 214 " + Arrays.deepToString(list.toArray()));
         Collections.reverse(list);
-        System.out.println("line 216 " + Arrays.deepToString(list.toArray()));
+        
+        return list;
 
     }
-	
-	
 
 }

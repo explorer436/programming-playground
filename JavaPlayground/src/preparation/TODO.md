@@ -76,3 +76,16 @@ https://algorithms.tutorialhorizon.com/convert-prefix-to-infix-expression/
 https://algorithms.tutorialhorizon.com/convert-infix-to-postfix-expression/
 https://algorithms.tutorialhorizon.com/valid-multiple-parentheses/
 
+Research the following topics (read on wikipedia):
+1. Birthday problem
+2. Self-organizing list
+3. Self-balancing binary search tree
+4. Locality of reference
+5. CPU Cache
+6. Dynamic perfect hashing
+7. Fusion tree
+
+Declarative vs Imperative programming - get a deeper understanding of this.
+What is MonteCarlo simulation?
+
+

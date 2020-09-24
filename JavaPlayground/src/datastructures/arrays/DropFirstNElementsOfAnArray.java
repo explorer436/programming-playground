@@ -45,6 +45,10 @@ public class DropFirstNElementsOfAnArray
 			System.out.println(Arrays.toString(A));
 		}
 		
+		// An alternative is to use List's list.subList(a, b) method.
+		// If we want to do it only using arrays, use int[] newArray = Arrays.copyOfRange(oldArray, startIndex, endIndex);
+		// But the disadvantage of that approach is that it creates an extra array - not good when space complexity is considered.
+		
 		/**
 		 * boxed
 		 * Stream<Integer> boxed()
