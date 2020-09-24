@@ -1,3 +1,5 @@
+%% 7
+
 -module(cardealer).
 
 %% API
@@ -7,11 +9,12 @@ listPrices(Currency) ->
   CarList = getCarList(),
   printPrice(CarList, Currency).
 
+%% Currency needs to be a parameter because the function needs two parameters.
 printPrice([], Currency) ->
   true;
 printPrice([Car | Rest], Currency) ->
-  CarMap = getCarMap(),
-  Price = maps:get(Car, CarMap),
+  CarPricesMap = getCarPricesMap(),
+  Price = maps:get(Car, CarPricesMap),
   ConvertedPrice = convertPrice(Price, Currency),
   io:fwrite("The price for " ++ Car ++ " is " ++ integer_to_list(ConvertedPrice) ++ "\n"),
   printPrice(Rest, Currency).
@@ -26,5 +29,5 @@ convertPrice(Price, Currency) ->
 getCarList() ->
   ["BMW i8", "Laborghini Huracan", "Ferrari f12"].
 
-getCarMap() ->
+getCarPricesMap() ->
   #{"BMW i8" => 150000, "Laborghini Huracan" => 500000, "Ferrari f12" => 700000}.

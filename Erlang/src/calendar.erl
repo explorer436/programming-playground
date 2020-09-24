@@ -1,7 +1,11 @@
--module(cal).
+%% 5
+
+-module(calendar).
 
 %% API
 -export([leap/1, day/2]).
+
+%% demonstrates if-else and switch statements.
 
 leap(Year) ->
   if
@@ -11,6 +15,7 @@ leap(Year) ->
     true -> non_leap
   end.
 
+%% Gives the number of days in a month of a year.
 day(Month, Year) ->
   Leap = leap(Year),
   case Month of
@@ -28,3 +33,9 @@ day(Month, Year) ->
     nov -> 30;
     dec -> 31
   end.
+
+
+%% To compile the file, in erlang shell, type "c(calendar)."
+%% To run it, type "calendar:leap(2000)."
+%% To run it, type "calendar:leap(2019)."
+%% To run it, type "calendar:leap(0)."

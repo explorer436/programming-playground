@@ -1,4 +1,6 @@
--module(hof).
+%% 9
+
+-module(higherorderfunction).
 
 %% API
 -export([double/0]).
