@@ -1,37 +1,77 @@
 import Data.List
 
+-----------------------------------------------------------------------------------------
 -- list comprehensions
--- A basic comprehension for a set that contains the first ten even natural numbers is S = {2.x | x (- N, x = 10 )}
-listComprehensionExample1 = take 10 [2,4..]
+
+{- |
+ https://en.wikipedia.org/wiki/List_comprehension
+
+     A list comprehension is a syntactic construct available in 
+     some programming languages for creating a list based on existing lists. 
+     It follows the form of the mathematical set-builder notation (set comprehension)
+     as distinct from the use of map and filter functions.
+-}
+
+{- |
+ https://en.wikipedia.org/wiki/Set-builder_notation
+
+     In set theory and its applications to logic, mathematics, and computer science,
+     set-builder notation is a mathematical notation for 
+     describing a set by enumerating its elements, 
+     or stating the properties that its members must satisfy.
+
+     Defining sets by properties is also known as set comprehension, 
+     set abstraction or as defining a set's intension.
+-}
+
+-- set comprehensions are usually used for building more specific sets out of general sets.
+-- A basic comprehension for a set that contains the first ten even natural numbers is S = {2.x | x (belongs to) N, x <= 10 )}
+-- The part before the pipe is called the output function,
+-- x is the variable,
+-- N is the input set,
+-- and `x <= 10` is the predicate.
+-- In Haskell, it can be represented like this.
+setComprehensionExample1 = take 10 [2,4..]
+
 {- |
  But what if we didn't want doubles of the first 10 natural numbers but some kind of more complex function applied on them? 
  We could use a list comprehension for that. 
  List comprehensions are very similar to set comprehensions.
+ The same condition from above can be represented with list comprehensions like this.
+ Every element in [1..10] is bound to the variable x.
+ Do the operation on x and return the list after doing the operation on all the elements in it.
 -}
 listComprehensionExample2 = [x*2 | x <- [1..10]]
+
 {- |
  Now let's add a condition (or a predicate) to that comprehension.
  Predicates go after the binding parts and are separated from them by a comma. 
  Let's say we want only the elements which, doubled, are greater than or equal to 12. 
 -}
 listComprehensionExample3 = [x*2 | x <- [1..10], x*2 >= 12]
+
 -- How about if we wanted all numbers from 50 to 100 whose remainder when divided with the number 7 is 3?
 listComprehensionExample4 = [x | x <- [50..100], x `mod` 7 == 3]
--- Weeding out lists by predicates is also called filtering. We took a list of numbers and we filtered them by the predicate.
+
+-- Filtering : Weeding out lists by predicates is also called filtering.
+-- The predicates do all the work when it comes to filtering.
+-- We took a list of numbers and we filtered them by the predicate.
 
 {- |
  Let's say we want a comprehension that replaces each odd number greater than 10 with "BANG!" 
  and each odd number that's less than 10 with "BOOM!". 
- If a number isn't odd, we throw it out of our list. 
+ If a number isn't odd, we throw it out of our list. (filtering)
 -}
-listComprehensionExample5 = [ if x < 5 then "BOOM!" else "BANG!" | x <- [1..10], odd x]   
+boomBangs xs = [ if x < 10 then "BOOM!" else "BANG!" | x <- xs, odd x]   
+listComprehensionExample5 = boomBangs [3..22]
 {- |
  The last part of the comprehension is the predicate. 
  The function odd returns True on an odd number and False on an even one. 
  The element is included in the list only if all the predicates evaluate to True. 
 -}
 
--- We can include several predicates. If we wanted all numbers from 10 to 20 that are not 13, 15 or 19, we'd do:
+-- We can include several predicates. 
+-- If we wanted all numbers from 10 to 20 that are not 13, 15 or 19, we'd do:
 listComprehensionExample6 = [ x | x <- [10..20], x /= 13, x /= 15, x /= 19]  
 
 {- |
@@ -46,16 +86,24 @@ listComprehensionExample6 = [ x | x <- [10..20], x /= 13, x /= 15, x /= 19]
  we want to get the products of all the possible combinations between numbers in those lists : 
 -}
 listComprehensionExample7 = [ x*y | x <- [10,20,30], y <- [3,4,6]]  
--- As expected, the length of the new list is 9. What if we wanted all possible products that are more than 50?
+-- As expected, the length of the new list is 9. 
+
+-- What if we wanted all possible products that are more than 50?
 listComprehensionExample8 = [ x*y | x <- [10,20,30], y <- [3,4,6], x*y > 50]  
+
 -- How about a list comprehension that combines a list of adjectives and a list of nouns?
 nouns = ["bruce","arun","explorer"]  
 adjectives = ["smart","hard-working","patient"]  
 listComprehensionExample9 = [adjective ++ " " ++ noun | adjective <- adjectives, noun <- nouns] 
 
+
 -- Let's write our own version of length! We'll call it length'.
 customImplementationForLengthUsingListComprehension xs = sum [1 | _ <- xs]   
 customImplementationForLengthUsingListComprehensionTest1 = customImplementationForLengthUsingListComprehension [1..9]
+-- 9
+customImplementationForLengthUsingListComprehensionTest2 = customImplementationForLengthUsingListComprehension "bruce wayne"
+-- 11
+
 {- |
  "_" means that we don't care what we'll draw from the list anyway.
  So instead of writing a variable name that we'll never use, we just write _. 
@@ -63,8 +111,9 @@ customImplementationForLengthUsingListComprehensionTest1 = customImplementationF
  This means that the resulting sum will be the length of our list.
 -}
 
+
 {- |
- because strings are lists, we can use list comprehensions to process and produce strings. 
+ Since strings are lists, we can use list comprehensions to process and produce strings. 
  Here's a function that takes a string and removes everything except uppercase letters from it.
  The word "string" in the line below can also be called "characterList"
 -}
@@ -83,35 +132,11 @@ listComprehensionExample13 = [ [ x | x <- xs, even x ] | xs <- xxs]
 
 {- |
  You can write list comprehensions across several lines. 
- So if you're not in GHCI, it's better to split longer list comprehensions across multiple lines, especially if they're nested.
+ So if you're not in GHCI, 
+     it is better to split longer list comprehensions across multiple lines,
+     especially if they're nested.
  This is where linters and syntax highlighters for the language might help.
 -}
-
--- How to count the number of occurances of an element in a list using List Comprehension?
-countOccurancesInAnArrayUsingListComprehension :: Eq a => [a] -> a -> Int 
-countOccurancesInAnArrayUsingListComprehension [] elementToBeFound = 0
-countOccurancesInAnArrayUsingListComprehension inputList elementToBeFound = length xs
-    where xs = [xs | xs <- inputList, xs == elementToBeFound]    
-countOccurancesInAnArrayUsingListComprehensionTest1 = countOccurancesInAnArrayUsingListComprehension [1,2,3,1] 2
-countOccurancesInAnArrayUsingListComprehensionTest2 = countOccurancesInAnArrayUsingListComprehension [1,2,3,1] 5
-countOccurancesInAnArrayUsingListComprehensionTest3 = countOccurancesInAnArrayUsingListComprehension [1,2,3,1] 1
-countOccurancesInAnArrayUsingListComprehensionTest4 = countOccurancesInAnArrayUsingListComprehension "bruce" 'b'
-
--- How to count the number of occurances of an element in a list using Recursion?
-countOccurancesInAnArrayUsingRecursion :: Eq a => [a] -> a -> Int
-countOccurancesInAnArrayUsingRecursion [] elementToBeFound = 0
-countOccurancesInAnArrayUsingRecursion (x:xs) elementToBeFound 
-    | elementToBeFound == x = 1 + (countOccurancesInAnArrayUsingRecursion xs elementToBeFound)
-    | otherwise = countOccurancesInAnArrayUsingRecursion xs elementToBeFound    
-countOccurancesInAnArrayUsingRecursionTest1 = countOccurancesInAnArrayUsingRecursion [1,2,3,1] 2
-countOccurancesInAnArrayUsingRecursionTest2 = countOccurancesInAnArrayUsingRecursion [1,2,3,1] 5
-countOccurancesInAnArrayUsingRecursionTest3 = countOccurancesInAnArrayUsingRecursion [1,2,3,1] 1
-
--- How to find the unique numbers in an array
--- e.g. input [1, 2, 1, 3], the result should be [2, 3]
-removeDuplicateEntriesFromList inputList = [x | x <- inputList, countOccurancesInAnArrayUsingRecursion inputList x == 1]
-removeDuplicateEntriesFromListTest1 = removeDuplicateEntriesFromList [1,2,3,4,5,1,2]
-removeDuplicateEntriesFromListTest2 = removeDuplicateEntriesFromList [1,2,1,3]
 
 -- This is not the same as nub.
 -- nub just removes the duplicates from a list.

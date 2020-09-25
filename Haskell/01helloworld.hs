@@ -18,4 +18,4 @@
 helloworld = "hello" ++ " " ++ "world!"
 
 -- After loading the file into ghci, just call the name of the method (and pass in arguments if necessary).
--- helloworld
+-- > helloworld
