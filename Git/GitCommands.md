@@ -8,7 +8,6 @@ git config --system core.longpaths true
 git config --global color.ui auto
 git config --global core.autocrlf true
 ```
-
 --------------------------------------------
 CREATE REPOSITORIES :
 
@@ -20,13 +19,32 @@ CREATE REPOSITORIES :
 CREATE FEATURE BRANCH FROM COMMAND LINE : 
 
 To start a feature branch from command line, simply create a new branch from remotes/origin/develop:
-
 `git checkout -b feature/testFeatureBranch remotes/origin/develop`
 
---------------------------------------------
-`git branch (local branch name) -u (remote branch name)` : To point local branch to a different remote branch
+Find out which remote branch yout local branch is tracking : 
+`git branch -vv` : command to give tracking branch
+`git status -sb` : command to give tracking branch
 
 `git branch -m <newname>`  : command to rename the current local branch
+
+`git branch (local branch name) -u (remote branch name)` : To point local branch to a different remote branch
+
+`git stash -u` : command to undo all changes
+
+`git diff file_name.txt`  : command to show changes in a specific file
+
+`git remote update` : command to update remote branches
+`git remote update --prune` : command to update remote branches. This will remove all remote branches which you have a local record of, but are no longer actually present on the remote.
+
+`git branch -a` : command to list all branches
+`git branch -r` - Remote branches only.
+`git branch -l` or `git branch` - Local branches only.
+
+If you have two local branches and if you want to checkout one local branch instead of another one:
+git checkout localBranch1
+git checkout localBranch2
+
+--------------------------------------------
 
 Git - Use these comments for check in :
 
@@ -35,9 +53,7 @@ Git - Use these comments for check in :
 `git diff myfile.txt` : command to see what you haven't "git add"ed yet
 
 Instead of showing you two lines for each change, Git allows you to highlight changes in a line explicitly:
-
 `git diff --word-diff myfile.txt`
-
 (The result is usually colored nicely, the removed part being red and the added text green.)
 
 When doing a diff on a long line, this can be very helpful but you'll still get a less-like scrolling output that can be unhandy to use. You maybe just want the diff put into your terminal:
@@ -46,9 +62,8 @@ When doing a diff on a long line, this can be very helpful but you'll still get 
 
 `git diff --cached myfile.txt` : command to see already "-add" ed changes
 
-`git add -A` : To add all changed files
-
-`git add (fileName)` : To add individual changed files
+`git add -A` or `git add .` : To stage all changed files
+`git add (fileName)` : To stage individual changed files
 
 `git commit -m "comments - include JIRA id in comments"`
 
@@ -99,47 +114,19 @@ You rolled back to before you ran all your git adds AND git commit.)
 ---------------------------------------------------
 
 If the names of your local branch and the remote branch are different, you will see this message.
-
 fatal: The upstream branch of your current branch does not match the name of your current branch.
-
 To push to the upstream branch on the remote, use "git push origin HEAD:feature/LifeEventObjectLocks"
-
-To push to the branch of the same name on the remote, 
-    use "git push origin feature/SavePropertyQuoteFailureLifeEventObjectLocks"
+To push to the branch of the same name on the remote, use "git push origin feature/SavePropertyQuoteFailureLifeEventObjectLocks"
     
----------------------------------------------------
-
-`git stash -u` : command to undo all changes
-
-`git diff file_name.txt`  : command to show changes in a specific file
-
-`git remote update` : command to update remote branches
-
-`git remote update --prune` : command to update remote branches. This will remove all remote branches which you have a local record of, but are no longer actually present on the remote.
-
-`git branch -a` : command to list all branches
-
-Find out which remote branch a local branch is tracking : 
-
-`git branch -vv` : command to give tracking branch
-
-`git status -sb` : command to give tracking branch
-
-
 --------------------------------------------
 $ git pull
 
 Permission denied (publickey).
-
 fatal: Could not read from remote repository.
-
-Please make sure you have the correct access rights
-and the repository exists.
-
+Please make sure you have the correct access rights and the repository exists.
 A "Permission denied" error means that the server rejected your connection. 
 
 Resolution 1 : 
-
 `git remote set-url origin https://n0281526@git.forge.lmig.com/scm/uscm-esales/services-policywriting.git`
 
 Resolution 2 : 
@@ -208,6 +195,8 @@ $ git commit -c ORIG_HEAD                                   (5)
 
 ------------------------------------------------
 
+CLEAN LOCAL UNTRACKED FILES:
+
 How to remove local untracked files from the current Git branch?
 
 Well, the short answer as per the Git Documents is `git clean`
@@ -226,7 +215,8 @@ Note the case difference on the X for the two latter commands.
 
 -------------------------------------------------------
 
-Git: See all unpushed commits or commits that are not in another branch
+GIT: SEE ALL UNPUSHED COMMITS OR COMMITS THAT ARE NOT IN ANOTHER BRANCH
+
 If you need to find out which of your local commits are not on the remote server do this:
 
 `git cherry -v`
@@ -243,7 +233,7 @@ Once you have the list, use this to see the files that changed in each commit : 
 
 -------------------------------------------------------
 
-To view recent commit messages : `git log --oneline`
+TO VIEW RECENT COMMIT MESSAGES : `GIT LOG --ONELINE`
 
 If the commit you want to fix isn’t the most recent one:
 
@@ -265,3 +255,4 @@ Most of this sequence will be explained to you by the output of the various comm
 -----------------------------------------------------------
 
 https://www.atlassian.com/git/tutorials/merging-vs-rebasing 
+
