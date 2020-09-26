@@ -1,34 +1,47 @@
+-----------------------------------------------------------------------------------------
 -- Tuples
 {- |
  Look into the topic called tuples. They seem analogous to Enums in Java.
+
+ Tuples are like lists - they are a way to store several values into a single value.
  They seem very similar to lists - with a few important differences.
+ 
  A list of numbers is a list of numbers. 
  That's its type and it doesn't matter if it has only one number in it or an infinite amount of numbers.
+
  However, tuples are used when you know exactly how many values you want to combine and 
- its type depends on how many components it has and the types of the components. 
- They are denoted with parentheses and their components are separated by commas.
- Unlike lists, they don't have to be homogenous. Unlike a list, a tuple can contain a combination of several types.
+   its type depends on how many components it has and the types of the components. 
+They are denoted with parentheses and their components are separated by commas.
+
+ Unlike lists, they don't have to be homogenous. 
+ Unlike a list, a tuple can contain a combination of several types.
+
  Think about how we'd represent a two-dimensional vector in Haskell. 
  One way would be to use a list. 
  That would kind of work. 
- So what if we wanted to put a couple of vectors in a list to represent points of a shape on a two-dimensional plane? 
+ So what if we wanted to put a couple of vectors in a list 
+    to represent points of a shape on a two-dimensional plane? 
  We could do something like [[1,2],[8,11],[4,5]]. 
+ 
  The problem with that method is that we could also do stuff like [[1,2],[8,11,5],[4,5]], 
- which Haskell has no problem with since it's still a list of lists with numbers but it kind of doesn't make sense. 
+ which Haskell has no problem with since it's still a list of lists 
+   with numbers but it kind of doesn't make sense. 
+ 
  But a tuple of size two (also called a pair) is its own type, 
- which means that a list can't have a couple of pairs in it and then a triple (a tuple of size three), 
- so let's use that instead. 
+   which means that a list can't have a couple of pairs in it and 
+   then a triple (a tuple of size three).. 
  Instead of surrounding the vectors with square brackets, we use parentheses: [(1,2),(8,11),(4,5)].
+
+ As seen in this example, tuples can also contain lists.
 -}
 tupleExample1 = [(1,2),(8,11),(4,5)]
 
 -- Using this, we cannot make a shape like this : [(1,2),(8,11,5),(4,5)]
 
 {- |
- Tuples can also be used to represent a wide variety of data. 
+ Tuples can be used to represent a wide variety of data. 
  For instance, if we wanted to represent someone's name and age in Haskell, 
  we could use a triple: ("Christopher", "Walken", 55). 
- As seen in this example, tuples can also contain lists.
 -}
 tupleExample2 = ("Christopher", "Walken", 55)
 tupleExample3 = [("Christopher", "Walken", 55), ("John", "Rambo", 58)]
@@ -45,27 +58,27 @@ tupleExample3 = [("Christopher", "Walken", 55), ("John", "Rambo", 58)]
  While there are singleton lists, there's no such thing as a singleton tuple. 
  It doesn't really make much sense when you think about it. 
  A singleton tuple would just be the value it contains and as such would have no benefit to us.
--}
 
-{- |
- Collections.singletonList() in Java - "Returns an immutable list containing only the specified object. 
- The returned list is serializable."
- Why have a separate method to do it? Why would I want to have a separate method to do that?
- Primarily as a convenience ... to save you having to write a sequence of statements to:
-    1. create an empty list object
-    2. add an element to it, and
-    3. wrap it with an immutable wrapper.
- Collections.singletonList will create an immutable List. 
- An immutable List (also referred to as an unmodifiable List) cannot have it's contents changed. 
- The methods to add or remove items will throw exceptions if you try to alter the contents.
- A singleton List contains only that item and cannot be altered.
+ Notes about singleton lists:
+   Collections.singletonList() in Java - "Returns an immutable list containing only the specified object. 
+   The returned list is serializable."
+   Why have a separate method to do it? Why would I want to have a separate method to do that?
+   Primarily as a convenience ... to save you having to write a sequence of statements to:
+      1. create an empty list object
+      2. add an element to it, and
+      3. wrap it with an immutable wrapper.
+   Collections.singletonList() will create an immutable List. 
+   An immutable List (also referred to as an unmodifiable List) cannot have it's contents changed. 
+   The methods to add or remove items will throw exceptions if you try to alter the contents.
+   A singleton List contains only that item and cannot be altered.
 -}
 
 {- |
  Like lists, tuples can be compared with each other if their components can be compared. 
  Only you can't compare two tuples of different sizes, whereas you can compare two lists of different sizes. 
- Two useful functions that operate on pairs:
 -}
+
+-- Two useful functions that operate on pairs:
 
 -- fst takes a pair and returns its first component.
 tupleExample4 = fst (8,11)  

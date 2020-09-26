@@ -1,5 +1,7 @@
 -- To run this, load this into Prelude (:l Factorial.hs) and 
--- call the fac function with a parameter.
+-- call the customFactorialFunctionUsingRecursion function with a parameter.
+
+
 
 -- using pattern matching
 customFactorialFunctionUsingRecursion :: (Integral a) => a -> a  
@@ -9,8 +11,10 @@ customFactorialFunctionUsingRecursion n = n * customFactorialFunctionUsingRecurs
 customFactorialFunctionUsingRecursionTest1 = customFactorialFunctionUsingRecursion 3  
 customFactorialFunctionUsingRecursionTest2 = customFactorialFunctionUsingRecursion 5
 
-customFactorialFunctionWithoutUsingRecursion :: (Integral a) => a -> a  
+
+
 -- using Haskell's native product function
+customFactorialFunctionWithoutUsingRecursion :: (Integral a) => a -> a  
 customFactorialFunctionWithoutUsingRecursion n = product [1..n]  
 -- test cases
 customFactorialFunctionWithoutUsingRecursionTest1 = customFactorialFunctionWithoutUsingRecursion 4  

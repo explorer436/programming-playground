@@ -1,11 +1,26 @@
+-----------------------------------------------------------------------------------------
 -- PATTERN MATCHING : 
 
 {- |
+ Pattern matching consists of specifying patterns to which some data should conform and 
+  then checking to see if it does and deconstructing the data according to those patterns.
+
+ When defining functions, you can define separate function bodies for different patterns.
+ This leads to really neat code that is simple and readable.
+ You can pattern match on any data type - numbers, characters, lists, tuples, etc.
+ 
  The patterns will be checked from top to bottom and when it conforms to a pattern, 
- the corresponding function body will be used.
+  the corresponding function body will be used.
+
+ If the first pattern is not matched, it falls through to the second pattern.
 -}
 
+
+-- Do not use if statements. Use pattern matching instead.
+
+
 -- 1. Write a function that checks if the number that is supplied to it is a seven or not.
+-- The second pattern matches anything and binds it to `x`
 checkIfTheNumberIsSevenOrNot :: (Integral a) => a -> String  
 checkIfTheNumberIsSevenOrNot 7 = "LUCKY NUMBER SEVEN!"  
 checkIfTheNumberIsSevenOrNot x = "Sorry, you're out of luck, pal!" 
@@ -27,9 +42,9 @@ isTheNumberBetweenOneAndFiveTest2 = isTheNumberBetweenOneAndFive 8
 
 {- |
   Note that if we moved the last pattern (the catch-all one) to the top, 
-  it would always say "Not between 1 and 5", 
-  because it would catch all the numbers and 
-  they wouldn't have a chance to fall through and be checked for any other patterns.
+    it would always say "Not between 1 and 5", 
+    because it would catch all the numbers and 
+    they wouldn't have a chance to fall through and be checked for any other patterns.
 -}
 
 
@@ -42,9 +57,10 @@ customFactorialFunctionTest1 = customFactorialFunction 3
 
 {- |
   If we had written the second pattern on top of the first one, 
-  it would catch all numbers, including 0 and our calculation would never terminate. 
+    it would catch all numbers, including 0 and our calculation would never terminate. 
   That's why order is important when specifying patterns and 
-  it is always best to specify the most specific ones first and then the more general ones later. 
+    it is always best to specify the most specific ones first 
+    and then the more general ones later. 
   This is used in recursive functions to specify base conditions.
 -}
 
@@ -65,10 +81,11 @@ patternMatchingWithNonExhaustivePattern 'c' = "Cecil"
   so that our program doesn't crash if we get some unexpected input. 
   -}
 
--- 5. Pattern matching on tuples : 
+
+-- 5. Pattern matching cal alse be used on tuples : 
   {- |
-  What if we wanted to make a function that takes two vectors in a 2D space 
-  (that are in the form of pairs) and adds them together? i
+  If we want to make a function that takes two vectors in a 2D space 
+  (that are in the form of pairs) and adds them together?
   To add together two vectors, we add their x components separately and then their y components separately. 
   Here's how we would have done it if we didn't know about pattern matching:
 
@@ -111,7 +128,7 @@ thirdElementFromTupleTest = thirdElementFromTuple(36, 37, 38)
 
 {- |
 The _ means the same thing as it does in list comprehensions. 
-It means that we really don't care what that part is, so we just write a _.
+It means that we really don't care what that part is, so we just write a `_`.
 -}
 
 -- We can also pattern match in list comprehensions. Check this out:
@@ -123,34 +140,38 @@ patternMatchingOnListComprehensions = [a+b | (a,b) <- xs]
 
 {- |
 Lists themselves can also be used in pattern matching. 
-You can match with the empty list [] or any pattern that involves : and the empty list. 
+You can match with the empty list [] or any pattern that involves `:` and the empty list. 
 But since [1,2,3] is just syntactic sugar for 1:2:3:[], you can also use the former pattern. 
-A pattern like x:xs will bind the head of the list to x and the rest of it to xs, 
+A pattern like `x:xs` will bind the head of the list to `x` and the rest of it to `xs`. 
 If there's only one element in the array, xs ends up being an empty list.
 
-Note: The x:xs pattern is used a lot, especially with recursive functions. 
+Note: The `x:xs` pattern is used a lot, especially with recursive functions. 
 But patterns that have : in them only match against lists of length 1 or more.
 
-If you want to bind, say, the first three elements to variables and the rest of the list to another variable, 
+If you want to bind, say, the first three elements to variables and 
+the rest of the list to another variable, 
 you can use something like x:y:z:zs. 
 It will only match against lists that have three elements or more.
 -}
 
--- Now that we know how to pattern match against list, let's make our own implementation of the head function.
+-- Now that we know how to pattern match against list, 
+-- let's make our own implementation of the head function.
 customImplementationForHeadUsingPatternMatching :: [a] -> a  
 customImplementationForHeadUsingPatternMatching [] = error "Can't call head on an empty list, dummy!"  
 customImplementationForHeadUsingPatternMatching (x:_) = x  
+-- tests
 customImplementationForHeadUsingPatternMatchingTest1 = customImplementationForHeadUsingPatternMatching [4,5,6]  
 customImplementationForHeadUsingPatternMatchingTest2 = customImplementationForHeadUsingPatternMatching "Hello"  
 customImplementationForHeadUsingPatternMatchingTest3 = customImplementationForHeadUsingPatternMatching []
 customImplementationForHeadUsingPatternMatchingTest4 = customImplementationForHeadUsingPatternMatching ""  
 customImplementationForHeadUsingPatternMatchingTest5 = customImplementationForHeadUsingPatternMatching "h"  
 {- |
-customImplementationForHeadUsingPatternMatchingTest6 = customImplementationForHeadUsingPatternMatching 'h'  
-Notice that if you want to bind to several variables (even if one of them is just _ and doesn't actually bind at all), 
-we have to surround them in parentheses. 
+Notice that if you want to bind to several variables 
+  (even if one of them is just _ and doesn't actually bind at all), 
+  we have to surround them in parentheses. 
 Also notice the error function that we used. 
-It takes a string and generates a runtime error, using that string as information about what kind of error occurred. 
+It takes a string and generates a runtime error, 
+  using that string as information about what kind of error occurred. 
 It causes the program to crash, so it's not good to use it too much. 
 But calling head on an empty list doesn't make sense.
 -}
@@ -161,6 +182,7 @@ tell [] = "The list is empty"
 tell (x:[]) = "The list has one element: " ++ show x  -- x:[] = [x]
 tell (x:y:[]) = "The list has two elements: " ++ show x ++ " and " ++ show y  -- x:y:[] = [x,y]
 tell (x:y:_) = "This list is long. The first two elements are: " ++ show x ++ " and " ++ show y  
+-- tests
 tellTest0 = tell ""
 tellTest1 = tell "h"
 tellTest2 = tell "he"
@@ -170,8 +192,10 @@ tellTest5 = tell "hello"
 {- |
 This function is safe because it takes care of the empty list, a singleton list, a list with two elements 
 and a list with more than two elements. 
-Note that (x:[]) and (x:y:[]) could be rewriten as [x] and [x,y] (because its syntatic sugar, we don't need the parentheses). 
-We can't rewrite (x:y:_) with square brackets because it matches any list of length 2 or more.
+Note that (x:[]) and (x:y:[]) could be rewriten as [x] and [x,y] 
+  (because its syntatic sugar, we don't need the parentheses). 
+We can't rewrite (x:y:_) with square brackets because 
+  it matches any list of length 2 or more.
 -}
 
 -- We already implemented our own length function using list comprehension. 
@@ -179,13 +203,20 @@ We can't rewrite (x:y:_) with square brackets because it matches any list of len
 customLengthImplementationUsingPatternMatchingAndRecursion :: (Num b) => [a] -> b  
 customLengthImplementationUsingPatternMatchingAndRecursion [] = 0  
 customLengthImplementationUsingPatternMatchingAndRecursion (_:xs) = 1 + customLengthImplementationUsingPatternMatchingAndRecursion xs  
+-- tests
 customLengthImplementationUsingPatternMatchingAndRecursionTest0  = customLengthImplementationUsingPatternMatchingAndRecursion ""
 customLengthImplementationUsingPatternMatchingAndRecursionTest1  = customLengthImplementationUsingPatternMatchingAndRecursion "h"
 customLengthImplementationUsingPatternMatchingAndRecursionTest2  = customLengthImplementationUsingPatternMatchingAndRecursion "he"
 customLengthImplementationUsingPatternMatchingAndRecursionTest3  = customLengthImplementationUsingPatternMatchingAndRecursion "hel"
 customLengthImplementationUsingPatternMatchingAndRecursionTest4  = customLengthImplementationUsingPatternMatchingAndRecursion "hell"
 customLengthImplementationUsingPatternMatchingAndRecursionTest5  = customLengthImplementationUsingPatternMatchingAndRecursion "hello"
--- First we defined the result of a known input — the empty list. This is also known as the edge condition. Then in the second pattern we take the list apart by splitting it into a head and a tail. We say that the length is equal to 1 plus the length of the tail. We use _ to match the head because we don't actually care what it is. Also note that we've taken care of all possible patterns of a list. The first pattern matches an empty list and the second one matches anything that isn't an empty list.
+-- First we defined the result of a known input — the empty list. 
+-- This is also known as the edge condition. 
+-- Then in the second pattern we take the list apart by splitting it into a head and a tail. 
+-- We say that the length is equal to 1 plus the length of the tail. 
+-- We use _ to match the head because we don't actually care what it is. 
+-- Also note that we've taken care of all possible patterns of a list. 
+-- The first pattern matches an empty list and the second one matches anything that isn't an empty list.
 
 {- |
 Let's implement sum. 
@@ -196,17 +227,19 @@ So if we write that down, we get:
 -}
 customSumImplementation :: (Num a) => [a] -> a  
 customSumImplementation [] = 0  
-customSumImplementation (x:xs) = x + customSumImplementation xs  
+customSumImplementation (x:xs) = x + customSumImplementation xs 
+--tests 
 customSumImplementationTest0 = customSumImplementation []
 customSumImplementationTest1 = customSumImplementation [2]
 customSumImplementationTest2 = customSumImplementation [2, 3]
 customSumImplementationTest3 = customSumImplementation [2, 3, 5]
 
+-----------------------------------------------------------------------
 
 {- |
 There's also a thing called as patterns. 
 Those are a handy way of breaking something up according to a pattern and 
-binding it to names whilst still keeping a reference to the whole thing. 
+  binding it to names whilst still keeping a reference to the whole thing. 
 You do that by putting a name and an @ in front of a pattern. 
 For instance, the pattern xs@(x:y:ys). 
 This pattern will match exactly the same thing as x:y:ys but you can easily get the whole list via xs 

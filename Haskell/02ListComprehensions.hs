@@ -117,6 +117,7 @@ customImplementationForLengthUsingListComprehensionTest2 = customImplementationF
  Here's a function that takes a string and removes everything except uppercase letters from it.
  The word "string" in the line below can also be called "characterList"
 -}
+removeNonUppercase :: [Char] -> [Char]
 removeNonUppercase string = [ c | c <- string, c `elem` ['A'..'Z']]   
 -- Testing it out:
 listComprehensionExample11 = removeNonUppercase "Free and Open Source Software"  
@@ -142,3 +143,4 @@ listComprehensionExample13 = [ [ x | x <- xs, even x ] | xs <- xxs]
 -- nub just removes the duplicates from a list.
 -- It would still keep one copy of the duplicate elements in the list.
 nubTest3 = nub [1,2,3,4,5,1,2]
+-- TODO Write custom implementation for this.
