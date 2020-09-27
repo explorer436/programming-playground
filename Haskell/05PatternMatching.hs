@@ -107,6 +107,15 @@ addVectorsTest = addVectors (1, 2) (3, 4)
   so we are guaranteed to get two pairs as parameters. 
   -}
 
+
+-- pattern matching directly on the input parameters.
+initialsUsingPatternMatchingOnParameters :: String -> String -> String  
+initialsUsingPatternMatchingOnParameters (f:_) (l:_)  = [f] ++ ". " ++ [l] ++ "."  
+-- tests
+initialsUsingPatternMatchingOnParametersTest1 = initialsUsingPatternMatchingOnParameters "Bruce" "Wayne"
+-- B. W.  
+
+
 {- |
 fst and snd extract the components of pairs. 
 But what about triples? 
@@ -237,7 +246,7 @@ customSumImplementationTest3 = customSumImplementation [2, 3, 5]
 -----------------------------------------------------------------------
 
 {- |
-There's also a thing called as patterns. 
+There's also a thing called `as patterns`. 
 Those are a handy way of breaking something up according to a pattern and 
   binding it to names whilst still keeping a reference to the whole thing. 
 You do that by putting a name and an @ in front of a pattern. 
@@ -249,16 +258,19 @@ Here's a quick and dirty example:
 capital :: String -> String  
 capital "" = "Empty string, whoops!"  
 capital entireWord@(x:xs) = "The first letter of " ++ entireWord ++ " is " ++ [x] ++ " and the rest is " ++ xs 
-capitalTest1 = capital "Dracula"  
+testCapital_01 = capital "Dracula"  
+
 {- |
-Normally we use as patterns to avoid repeating ourselves when matching against a bigger pattern 
-when we have to use the whole thing again in the function body.
+Normally we use `as patterns` to avoid repeating ourselves 
+  when matching against a bigger pattern 
+  when we have to use the whole thing again in the function body.
 -}
 
 
 {- |
-One more thing — you can't use ++ in pattern matches. 
-If you tried to pattern match against (xs ++ ys), what would be in the first and what would be in the second list? 
+You can't use ++ in pattern matches. 
+If you tried to pattern match against (xs ++ ys), 
+  what would be in the first and what would be in the second list? 
 It doesn't make much sense. 
 It would make sense to match stuff against (xs ++ [x,y,z]) or just (xs ++ [x]), 
 but because of the nature of lists, you can't do that.
