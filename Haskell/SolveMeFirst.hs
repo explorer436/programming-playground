@@ -1,7 +1,49 @@
 import Data.Char
 
 -- The problem we need to solve here is : 
--- read two numbers from standard input and print their sum on standard output.
+
+{- |
+  Complete the function solveMeFirst to compute the sum of two integers.
+
+    Function prototype:
+
+    int solveMeFirst(int a, int b);
+
+    where,
+
+        a is the first integer input.
+        b is the second integer input
+
+    Return values
+
+        sum of the above two integers
+
+    Sample Input
+
+    a = 2
+    b = 3
+
+    Sample Output
+
+    5
+
+    Explanation
+
+    The sum of the two integers a and b is computed as: 2 + 3 = 5. 
+-}
+
+-- Basically, read two numbers from standard input and print their sum on standard output.
+
+{- |
+    Prelude> :t interact
+    interact :: (String -> String) -> IO () 
+
+    This takes another function as argument and produces a side effect.
+    The input string is the standard input of the program.
+    The output string is the standard output of the program.
+
+    Using this, we write interactive Haskell programs in a declarative way.
+-}
 
 
 
@@ -65,6 +107,12 @@ readAListOfNumbersAsStringsAndPrintTheirSumAsString inputStringArray =
 -- tests
 readAListOfNumbersAsStringsAndPrintTheirSumAsStringTest1 = 
     readAListOfNumbersAsStringsAndPrintTheirSumAsString "1 2 3"
+
+-- To submit the solution, we have to convert the above expression into a function 
+-- which we can put into interact.
+-- So, take the expression and replace all the `$` signs with functional composition.
+main = interact $
+        show . sum . map read . words
 
 ------------------------------------------------------------
 

@@ -1,0 +1,1 @@
+Haskell is about declarative programming. Not imperative one.

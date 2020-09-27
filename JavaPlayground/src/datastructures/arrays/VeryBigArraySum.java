@@ -58,7 +58,9 @@ public class VeryBigArraySum {
         if (ar.length > 0)
         {
         	for (long i : ar)
-            result = result + i;	
+            {
+                result = result + i;	
+            }
         }
         
         return result;
