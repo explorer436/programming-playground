@@ -1,6 +1,6 @@
 Read more: https://javarevisited.blogspot.com/2015/04/error-could-not-find-or-load-main-class-helloworld-java.html#ixzz6Os82uQMr
 
-Error: Could not find or load main class in Java [Solved]
+Error: Could not find or load main class in Java
 
 Error: Could not find or load main class HelloWorld comes when you are trying to run your Java program using java command with the main class as HelloWorld but Java is not able to find the class. In order to solve this error, you must know how Java find and loads the classes, that's a little bit complex topic for beginners, but we will touch the same base here. For the curious reader, I would suggest reading my post How Classpath works in Java, a must read for a beginner. For now, you just remember that there is an environment variable called CLASSPATH which includes directories where Java looks for all class files and if it doesn't find your main class there then it throws "Error: Could not find or load main class XXX", where XXX is the name of your main class.
 

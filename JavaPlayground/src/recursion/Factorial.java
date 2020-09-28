@@ -1,10 +1,9 @@
 package recursion;
 
 public class Factorial {
-	
+
 	public static void main(String[] args) throws Exception {
-		
-		int result;
+int result;
 		
 		result = Factorial.factorial_recursive(4);
 		if (result != 24)
@@ -70,7 +69,7 @@ public class Factorial {
 		
 		System.out.println("done");
 
-    }
+	}
 	
 	public static int factorial_recursive(int number) {
         int result = 0;
@@ -115,4 +114,5 @@ public class Factorial {
             return result;
         }
     }
+
 }
