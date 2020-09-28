@@ -1,6 +1,9 @@
 -----------------------------------------------------------------------
 -- GUARDS
 
+-- Use Guards as opposed to patterns when 
+-- checking for boolean conditions on the input parameters for a function.
+
 {- |
  Whereas patterns are a way of making sure a value conforms to some form and deconstructing it, 
     guards are a way of testing whether some property of a value 

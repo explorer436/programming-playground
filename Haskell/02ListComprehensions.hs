@@ -139,8 +139,4 @@ listComprehensionExample13 = [ [ x | x <- xs, even x ] | xs <- xxs]
  This is where linters and syntax highlighters for the language might help.
 -}
 
--- This is not the same as nub.
--- nub just removes the duplicates from a list.
--- It would still keep one copy of the duplicate elements in the list.
-nubTest3 = nub [1,2,3,4,5,1,2]
--- TODO Write custom implementation for this.
+
