@@ -111,3 +111,53 @@ compareWithHundred = compare 100
 -- The additional class constraint sneaks up there because 100 is also part of the Num typeclass.
 
 
+-------------------------------------------------------
+
+-- Infix functions can also be partially applied by using sections. 
+-- To section an infix function, 
+-- simply surround it with parentheses and only supply a parameter on one side. 
+-- That creates a function that takes one parameter and 
+-- then applies it to the side that's missing an operand.
+
+
+divideByTen :: (Floating a) => a -> a  
+divideByTen = (/10) 
+-- divideByTen 200 is equivalent to doing 200 / 10, as is doing (/10) 200. 
+
+
+isUpperAlphanum :: Char -> Bool  
+isUpperAlphanum = (`elem` ['A'..'Z'])  
+-- A function that checks if a character supplied to it is an uppercase letter.
+
+
+{- |
+    The only special thing about sections is using -. 
+    From the definition of sections, 
+        (-4) would result in a function that takes a number and subtracts 4 from it. 
+    However, for convenience, (-4) means minus four. 
+    So if you want to make a function that subtracts 4 from the number it gets as a parameter, 
+        partially apply the subtract function like so: (subtract 4).
+- }
+
+{- |
+    What happens if we try to just do multThree 3 4 in GHCI 
+        instead of binding it to a name with a let or passing it to another function?
+
+    ghci> multThree 3 4  
+    <interactive>:1:0:  
+        No instance for (Show (t -> t))  
+          arising from a use of `print' at <interactive>:1:0-12  
+        Possible fix: add an instance declaration for (Show (t -> t))  
+        In the expression: print it  
+        In a 'do' expression: print it  
+
+    GHCI is telling us that the expression produced a function of type a -> a 
+        but it doesn't know how to print it to the screen. 
+    Functions aren't instances of the Show typeclass, 
+        so we can't get a neat string representation of a function. 
+    When we do, say, 1 + 1 at the GHCI prompt, 
+        it first calculates that to 2 
+        and then calls show on 2 to get a textual representation of that number. 
+    And the textual representation of 2 is just the string "2", 
+        which then gets printed to our screen.
+- }

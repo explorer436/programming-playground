@@ -16,13 +16,21 @@
 -- so that we get only the elements smaller than the head of our list and 
 -- only elements that are bigger?
 -- List comprehensions.
-
-quicksort :: (Ord a) => [a] -> [a]  
-quicksort [] = []  
-quicksort (x:xs) =   
-        let smallerSorted = quicksort [a | a <- xs, a <= x]  
-            biggerSorted = quicksort [a | a <- xs, a > x]  
+quicksort1 :: (Ord a) => [a] -> [a]  
+quicksort1 [] = []  
+quicksort1 (x:xs) =   
+        let smallerSorted = quicksort1 [a | a <- xs, a <= x]  
+            biggerSorted = quicksort1 [a | a <- xs, a > x]  
         in  smallerSorted ++ [x] ++ biggerSorted  
 
 -- tests
-testQuicksort01 = quicksort [10,2,5,3,1,6,7,4,2,3,4,8,9]     
+testQuicksort1_01 = quicksort1 [10,2,5,3,1,6,7,4,2,3,4,8,9]     
+
+-- Quick sort using filter
+quicksort2 :: (Ord a) => [a] -> [a]    
+quicksort2 [] = []    
+quicksort2 (x:xs) =     
+    let smallerSorted = quicksort2 (filter (<=x) xs)  
+        biggerSorted = quicksort2 (filter (>x) xs)   
+    in  smallerSorted ++ [x] ++ biggerSorted 
+testQuicksort2_01 = quicksort2 [10,2,5,3,1,6,7,4,2,3,4,8,9]     

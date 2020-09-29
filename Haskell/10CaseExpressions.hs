@@ -1,6 +1,19 @@
 -----------------------------------------------------------------------
 -- CASE EXPRESSIONS
 
+message :: String -> String
+message name =
+    case name of
+        "Dave"  -> "I can't do that."
+        "Sam"   -> "Play it again."
+        "Creep" -> "Feeling lucky?"
+        _       -> "Hello."
+-- tests        
+testMessage_01 = message "Dave"
+testMessage_02 = message "Sam"
+testMessage_03 = message "Creep"
+testMessage_04 = message "John"
+
 
 {- |
 Many imperative languages (C, C++, Java, etc.) have case syntax and 
@@ -40,8 +53,9 @@ customImplementationForHeadUsingPatternMatchingTest5 =
 -- Implementation for head using case expressions : 
 customImplementationForHeadUsingCaseExpression :: [a] -> a  
 customImplementationForHeadUsingCaseExpression xs = 
-    case xs of [] -> error "No head for empty lists!"  
-               (x:_) -> x 
+    case xs of 
+        []    -> error "No head for empty lists!"  
+        (x:_) -> x 
 -- tests
 customImplementationForHeadUsingCaseExpressionTest1 = 
     customImplementationForHeadUsingCaseExpression [4,5,6]  
@@ -58,10 +72,11 @@ customImplementationForHeadUsingCaseExpressionTest5 =
 {- |
 The syntax for case expressions is pretty simple:
 
-    case expression of pattern -> result  
-                       pattern -> result  
-                       pattern -> result  
-                       ...  
+    case expression of 
+        pattern -> result  
+        pattern -> result  
+        pattern -> result  
+        ...  
 
 `expression` is matched against the patterns. 
 The pattern matching action is the same as expected: 
@@ -76,9 +91,11 @@ For instance:
 
 
 describeList1 :: [a] -> String  
-describeList1 xs = "The list is " ++ case xs of [] -> "empty."  
-                                                [x] -> "a singleton list."   
-                                                xs -> "a longer list."  
+describeList1 xs = "The list is " ++ 
+                        case xs of 
+                            [] -> "empty."  
+                            [x] -> "a singleton list."   
+                            xs -> "a longer list."  
 
 
 {- |
