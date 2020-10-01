@@ -23,7 +23,6 @@ module challenges {
 	exports datastructures.lists;
 	exports datastructures.arrays;
 	exports datastructures.heap;
-	exports datastructures.arrays.countingelements;
 	exports codility.iterations;
 	exports datastructures.bags;
 	exports fractions;
