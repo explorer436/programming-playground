@@ -1,5 +1,7 @@
 When it comes to solving problems, what is the endgoal here? Is it the endgoal? Or, is it the means to something else? Getting a job at a good company.
 
+Write detailed description about handling hashmap collisions in your own words. Get a good understanding of it.
+
 When looking at new problems online, resist the urge to solve them right away. Instead, focus more on where the question is coming from. Are there more questions there? Do you have an in-depth understanding of the topic? If not, spend time on it.
 
 Try to go with topic in geeks for geeks instead of picking problems from all over the place and many websites at random.
@@ -89,3 +91,14 @@ Declarative vs Imperative programming - get a deeper understanding of this.
 What is MonteCarlo simulation?
 
 
+----------------------
+
+https://github.com/uptoskill
+https://github.com/uptoskill/graphql-job-board
+https://github.com/uptoskill/graphql-chat
+
+----------------------
+
+SpringRestTemplate example - implement and save it in the repo.
+
+CollectibleFutures - read about it.
