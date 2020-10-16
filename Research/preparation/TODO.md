@@ -1,4 +1,5 @@
-When it comes to solving problems, what is the endgoal here? Is it the endgoal? Or, is it the means to something else? Getting a job at a good company.
+When it comes to solving problems, what is the endgoal here? 
+The endgoal is to get to a point where I can think of a problem in my mind and be able to easily translate it into a solution on paper and implement it using a language (Java or Haskell). And then expand upon the problems. Plus, it is fun to solve puzzles.
 
 Write detailed description about handling hashmap collisions in your own words. Get a good understanding of it.
 
