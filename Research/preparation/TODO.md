@@ -103,3 +103,23 @@ https://github.com/uptoskill/graphql-chat
 SpringRestTemplate example - implement and save it in the repo.
 
 CollectibleFutures - read about it.
+
+----------------------
+
+REST api starting with Open API spec document
+
+----------------------
+
+Uber engineering blog: https://eng.uber.com/
+
+----------------------
+
+Tools and Technologies to learn:
+
+PaaS products: 
+	already know : Does CloudFoundry fall into the same category?
+	need to learn : Heroku, EngineYard, Google App Engine, Elastic Beanstalk
+
+IaaS products: 
+	already know : AWS Lambdas
+	need to learn : what other products are out there?

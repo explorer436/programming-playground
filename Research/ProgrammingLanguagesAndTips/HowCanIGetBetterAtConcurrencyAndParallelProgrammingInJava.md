@@ -1,8 +1,8 @@
 How can I get better at concurrency and parallel programming in Java?
 
-Dimitris Athanasiou · March 19, 2016 Software Engineer, Pianist
+Dimitris Athanasiou , Software Engineer, Pianist Answered March 19, 2016
 
-To start with, read Amazon.co.uk: Brian Goetz, Tim Peierls, Joshua Bloch, Joseph Bowbeer, David Holmes, Doug Lea: 0785342349603: Books
+To start with, read Amazon.co.uk: Brian Goetz, Tim Peierls, Joshua Bloch, Joseph Bowbeer, David Holmes, Doug Lea: 0785342349603: Books (http://www.amazon.co.uk/Java-Concurrency-Practice-Brian-Goetz/dp/0321349601/ref=sr_1_1?ie=UTF8&qid=1458398123&sr=8-1&keywords=java%2Bconcurrency%2Bin%2Bpractice)
 
 . Read it many times. When you think you've read it enough times, read it some more.
 

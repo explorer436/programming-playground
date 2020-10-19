@@ -1,3 +1,5 @@
+Need architecture research:
+
 https://dotnet.github.io/orleans/ 
 
  * https://medium.com/@kritner/getting-started-with-microsoft-orleans-882cdac4307f	

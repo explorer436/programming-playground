@@ -1,7 +1,6 @@
 Common developer pitfalls that even seniors struggle with
 
-Terry Karavoulias
-Apr 12, 2019 · 5 min read
+Terry Karavoulias Apr 12, 2019 · 5 min read
 
 I’ve been building websites, software, and services a couple of decades. I’ve worked with, managed, and mentored a few dozen full-stack developers. Over the course of my career, I’ve worked with many people who have struggled with similar problems. I too have fallen victim to some of these developer pitfalls. The following is advice on how to overcome the most common ones.
 
