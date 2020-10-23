@@ -14,3 +14,8 @@ integerListSumRecursion xs =
 -- tests
 integerListSumRecursionTest01 = integerListSumRecursion []  
 integerListSumRecursionTest02 = integerListSumRecursion [4,5,6]
+
+integerListSumUsingNativeLibrary :: [Int] -> Int
+integerListSumUsingNativeLibrary xs = sum xs
+--tests
+integerListSumUsingNativeLibraryTest01 = sum [3,4]

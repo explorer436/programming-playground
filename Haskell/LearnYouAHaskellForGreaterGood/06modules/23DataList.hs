@@ -286,8 +286,8 @@ testTails01 = tails "w00t"
 
 search :: (Eq a) => [a] -> [a] -> Bool  
 search needle haystack =   
-    let nlen = length needle  
-    in  foldl (\acc x -> if take nlen x == needle then True else acc) False (tails haystack)  
+    let needleLength = length needle  
+    in  foldl (\acc x -> if take needleLength x == needle then True else acc) False (tails haystack)  
 
 -- First we call tails with the list in which we're searching.
 -- Then we go over each tail and see if it starts with what we're looking for.

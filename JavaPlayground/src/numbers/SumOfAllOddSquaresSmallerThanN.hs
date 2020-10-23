@@ -1,3 +1,5 @@
+module SumOfAllOddSquaresSmallerThanN where
+
 solution1 :: Integral a => a -> a
 solution1 upperLimit = sum (takeWhile (< upperLimit) (filter odd (map (^2) [1..])))  
 -- Begin by mapping the (^2) function to the infinite list [1..].
