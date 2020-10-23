@@ -1,3 +1,7 @@
+https://www.haskelltutorials.com
+
+https://www.haskelltutorials.com/without-theory/basic-types-and-functions.html
+
 Setting up your Haskell development environment
 
 ----------------------------
