@@ -92,13 +92,18 @@ consOperatorSecondSample = 5:[1,2,3,4,5]
 
 {- |
  The difference between ++ and the cons operator is, 
- ++ operates on lists and cons operator operates on a single number (or character) and a list of numbers (or characters).
- You might be tempted to try writing [1,2]:3 to add an element to the end of a list, 
- but ghci will reject this with an error message, because the first argument of (:) must be an element, 
+ ++ operates on lists and 
+ cons operator operates on a single number (or character) 
+ and a list of numbers (or characters).
+ You might be tempted to try writing [1,2]:3 to 
+ add an element to the end of a list, 
+ but ghci will reject this with an error message, 
+ because the first argument of (:) must be an element, 
  and the second must be a list.
 -}
 -- How to append an element at the end of a list in Haskell?
--- Not preferrable because Haskell has to walk through the whole list on the left side first.
+-- Not preferrable because Haskell has to 
+-- walk through the whole list on the left side first.
 testAppendingAnElementAtTheEndOfAList_01 = "hello" ++ ['b']
 testAppendingAnElementAtTheEndOfAList_02 = [1,2,3] ++ [4]
 
