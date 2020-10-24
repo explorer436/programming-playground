@@ -1,19 +1,28 @@
+module FibonacciSequence where
+
 {- |
     In mathematics, the Fibonacci numbers, commonly denoted Fn, 
     form a sequence, called the Fibonacci sequence, 
     such that each number is the sum of the two preceding ones, starting from 0 and 1.
 -}
 
-import AddTwoNumbers (addTwoNumbers)
 
+-- This implementation requires O(fib n) additions.
 
+solution :: Num a => Int -> [a]
+solution n = take n (map (fibonacciNumberForPosition) [0..])
 
-fib n
-    | (n == 0)  = 0
-    | (n == 1)  = 1
-    | otherwise = (fib n-1) + (fib n-2)
+-- tests
+solutionTest01 = solution 5
+
+fibonacciNumberForPosition :: (Eq a, Num a, Num p) => a -> p
+fibonacciNumberForPosition 0 = 0
+fibonacciNumberForPosition 1 = 1
+fibonacciNumberForPosition n = fibonacciNumberForPosition (n-1) + fibonacciNumberForPosition (n-2)
 
 --tests
-testFib01 = fib 0
-testFib02 = fib 1
-testFib03 = fib 3
+fibonacciNumberForPositionTest01 = fibonacciNumberForPosition 0
+fibonacciNumberForPositionTest02 = fibonacciNumberForPosition 1
+fibonacciNumberForPositionTest03 = fibonacciNumberForPosition 3
+fibonacciNumberForPositionTest04 = fibonacciNumberForPosition 4
+fibonacciNumberForPositionTest05 = fibonacciNumberForPosition 5
