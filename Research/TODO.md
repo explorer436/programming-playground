@@ -4,6 +4,9 @@ The endgoal is to get to a point where I can think of a problem in my mind and b
 When looking at new problems online, resist the urge to solve them right away. Instead, focus more on where the question is coming from. Are there more questions there? Do you have an in-depth understanding of the topic? If not, spend time on it. 
 After getting a deeper understanding of the concept, see step below.
 Whenever you read about an algorithm or computer science concept, implementing a solution for it either in Java or in Haskell or any of your favorite languages will help remember it in the future.
+Note: Solving problems using pen and paper seems way more easier than tring to write code for it first. The free flow of thoughts is very helpful.
+
+----------------------
 
 Write detailed description about handling hashmap collisions in your own words. Get a good understanding of it.
 
@@ -186,5 +189,14 @@ Getting good at ADTs (abstract data types) will eventually get us ready for solv
 ----------------------
 
 Find an efficient implementation for generating a Fibonacci sequence - do not pay too much attention to the language - language doesn't matter.
+
+----------------------
+
+Tackle next:
+
+Palindrome substrings.
+Print all prime numbers less than n; print the number of prime numbers less than n;
+Longest common prefix in an array of words,
+Longest substring without repeating characters.
 
 ----------------------

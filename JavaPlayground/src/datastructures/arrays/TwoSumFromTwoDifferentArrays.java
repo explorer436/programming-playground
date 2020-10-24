@@ -19,6 +19,14 @@ import java.util.Map;
 
 public class TwoSumFromTwoDifferentArrays
 {
+    /**
+        The elements of the input arrays are not sorted.
+        If they are sorted, 
+        we can start at the middle of the array and move to the left or right depending upon 
+        whether the sum of them is lower or higher than the target number.
+
+        Can we try sorting the matrices first and then implementing it as an alternative to the brute force solution?
+    */
 
     public static void main(String[] args)
     {
