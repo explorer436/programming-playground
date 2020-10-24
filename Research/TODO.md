@@ -170,5 +170,21 @@ Here is the table of contents from Data Abstraction and Problem Solving with C++
 
 Tsoding videos on Youtube.
 
+----------------------
+
 depth first searches
 breadth first searches
+
+----------------------
+
+Design patterns
+
+----------------------
+
+Getting good at ADTs (abstract data types) will eventually get us ready for solving a lot of other problems like bracket balancing, etc. It will also lay a good foundation for trees and graphs.
+
+----------------------
+
+Find an efficient implementation for generating a Fibonacci sequence - do not pay too much attention to the language - language doesn't matter.
+
+----------------------
