@@ -1,7 +1,8 @@
 Certifications aren’t worth much unless you can walk the walk
 
+by Christophe Limpalair
+
 We hire skilled AWS Solutions Architects, not just paper-certified ones
-Christophe Limpalair
 
 Charles walks into an in-person interview looking to get a solutions architect position. He’s been studying for months prior to this day — he even earned the AWS Certified Solutions Architect certification, which is what got his foot in the door.
 
@@ -11,19 +12,19 @@ They shake hands, introduce themselves, and then get down to business.
 
 One of the lead architects asks:
 
-    Explain what makes these subnets (points to a white board) public, and what makes these subnets private.
+Explain what makes these subnets (points to a white board) public, and what makes these subnets private.
 
 Charles responds:
 
-    The public subnets are attached to an Internet Gateway which makes them publicly accessible through a public IP address, while the private subnets are not attached to an IGW and therefore cannot be publicly accessed.
+The public subnets are attached to an Internet Gateway which makes them publicly accessible through a public IP address, while the private subnets are not attached to an IGW and therefore cannot be publicly accessed.
 
 Lead architect:
 
-    What does that mean: “it is attached to an IGW?” and how does traffic flow to and from the public internet to our resources inside of the public subnets?
+What does that mean: “it is attached to an IGW?” and how does traffic flow to and from the public internet to our resources inside of the public subnets?
 
 Charles:
 
-    Hesitates — provides incomplete thoughts — doesn’t really answer the question, but instead goes back to using abstract concepts
+Hesitates — provides incomplete thoughts — doesn’t really answer the question, but instead goes back to using abstract concepts
 
 This is a scenario I personally witnessed some time ago. It’s also an example of a scenario that our business customers encounter on a regular basis when hiring Solutions Architects.
 
@@ -43,23 +44,23 @@ Let me clarify something real quick — we’ve trained many thousands of certif
 
 I’m not saying that they aren’t worth anything.
 
-What I’m saying is that certifications are not worth much unless you can also apply what you are learning.
+    What I’m saying is that certifications are not worth much unless you can also apply what you are learning.
 
     Watching videos and taking notes isn’t enough.
 
 It might help you pass the exam, but if you think that’s the end goal, you are setting yourself up for failure. Big time.
 
-You need to do. You need to jump into the AWS Console and break things. You need to solve broken multi-tier applications. You need to set up highly available, fault tolerant, and scalable applications — and you need to test your architecture as if it were running in production.
+    You need to do. You need to jump into the AWS Console and break things. You need to solve broken multi-tier applications. You need to set up highly available, fault tolerant, and scalable applications — and you need to test your architecture as if it were running in production.
 
 Because guess what, this is the type of stuff you will be doing in the real world. Not selecting A, B, C, D, or E. Solving real problems that cost organizations thousands, tens of thousands, or even millions of dollars.
 
 You’re not going to learn that only by taking a cheap course you found online that doesn’t give you access to real AWS environments and scenarios. You need access to hands-on labs with real scenarios and problems for you to solve.
 
-    But Christophe, I have my own AWS account to practice, I don’t need hands-on labs provided by someone else.
+But Christophe, I have my own AWS account to practice, I don’t need hands-on labs provided by someone else.
 
 This is something I hear a lot, and it’s a valid point. But let me ask you this: what’s going to validate your work? When you play around with services, even if it seems to work properly, how do you know it’s secure? How do you know it’s the best way to set it up? How do you know it will withstand actual production stress?
 
-How can you set up more complex architectures with n-amount of tiers where you have to go in and troubleshoot the issue? Setting up that kind of environment requires a good bit of experience in the first place, and it’s also pretty easy to troubleshoot something you purposefully broke yourself :-)
+    How can you set up more complex architectures with n-amount of tiers where you have to go in and troubleshoot the issue? Setting up that kind of environment requires a good bit of experience in the first place, and it’s also pretty easy to troubleshoot something you purposefully broke yourself :-)
 
 Video-only training courses can be great to get you started, but they’re simply not enough. You’ve got to get access to hands-on labs and practice, practice, practice. Learn by doing.
 
