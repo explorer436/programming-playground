@@ -1,3 +1,8 @@
+module ISBNVerifier where
+
+import RemoveSubstringFromAString
+import Data.Char (digitToInt)
+
 {- |
     ISBN Verifier
 
@@ -33,7 +38,8 @@
 
     -- Now check if the remainder of dividing by 11 is zero, or not
 
-    264 `mod` 11 == 0 -- This is a valid ISBN
+    264 `mod` 11 == 0 -- This is a valid ISBN.
+
     The first part of this exercise is to write a function 
     that checks if a given 10-digit ISBN without hyphens is valid, or not. 
     The ISBN will be provided as String, so you will need a way to conver a Char to an Int. 
@@ -62,3 +68,26 @@
 
     You can get more ISBNs for testing via http://isbndb.com/ Remember to use the ISBN10, not the ISBN13.
 -}
+
+isValidIsbn :: String -> Bool
+isValidIsbn isbn
+    | ((length isbnStrippedOfHyphens) /= 10)         = False
+    | (checkSum isbnStrippedOfHyphens `mod` 11 == 0) = True
+    | otherwise                                      = False
+    where isbnStrippedOfHyphens = remove "-" isbn
+
+-- tests
+
+isValidIsbnTest01 = isValidIsbn "3598215088"
+-- True
+
+isValidIsbnTest02 = isValidIsbn "123-45"
+-- False
+
+isValidIsbnTest03 = isValidIsbn "0-86381-580-4"
+-- True
+
+
+checkSum list = sum [a * digitToInt(b) | (a,b) <- zip [10,9..] list]
+testCheckSum01 = checkSum "3598215088"
+-- 264

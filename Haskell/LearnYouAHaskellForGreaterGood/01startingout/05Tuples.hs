@@ -82,11 +82,15 @@ tupleExample3 = [("Christopher", "Walken", 55), ("John", "Rambo", 58)]
 
 -- fst takes a pair and returns its first component.
 tupleExample4 = fst (8,11)  
+-- 8
 tupleExample5 = fst ("Wow", False)  
+-- "Wow"
 
 -- snd takes a pair and returns its second component. Surprise!
 tupleExample6 = snd (8,11)  
+-- 11
 tupleExample7 = snd ("Wow", False)  
+-- False
 
 {- |
  Note: these functions operate only on pairs. 
@@ -101,7 +105,9 @@ tupleExample7 = snd ("Wow", False)
  It's especially useful for when you want to combine two lists in a way or traverse two lists simultaneously. 
 -}
 tupleExample8 = zip [1,2,3,4,5] [6,6,6,6,6]  
+-- [(1,6),(2,6),(3,6),(4,6),(5,6)]
 tupleExample9 = zip [1 .. 5] ["one", "two", "three", "four", "five"]  
+-- [(1,"one"),(2,"two"),(3,"three"),(4,"four"),(5,"five")]
 
 {- |
  It pairs up the elements and produces a new list. 
@@ -110,11 +116,13 @@ tupleExample9 = zip [1 .. 5] ["one", "two", "three", "four", "five"]
  What happens if the lengths of the lists don't match?
 -}
 tupleExample10 = zip [5,3,2,6,2,7,2,5,4,6,6] ["im","a","turtle"] 
+-- [(5,"im"),(3,"a"),(2,"turtle")]
 {- |
  The longer list simply gets cut off to match the length of the shorter one. 
  Because Haskell is lazy, we can zip finite lists with infinite lists:
 -}
 tupleExample11 = zip [1..] ["apple", "orange", "cherry", "mango"]
+-- [(1,"apple"),(2,"orange"),(3,"cherry"),(4,"mango")]
 
 {- |
  Here's a problem that combines tuples and list comprehensions: 
@@ -124,3 +132,4 @@ tupleExample11 = zip [1..] ["apple", "orange", "cherry", "mango"]
 tupleTriangles = [ (a,b,c) | c <- [1..10], b <- [1..10], a <- [1..10] ] 
 tupleRigtTriangles = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b] , a^2 + b^2 == c^2 ]
 tupleRigtTriangleWithPerimeter24 = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b] , a^2 + b^2 == c^2 , a + b + c == 24]
+-- [(6,8,10)]

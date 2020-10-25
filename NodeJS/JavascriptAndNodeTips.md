@@ -17,3 +17,7 @@ To get a list of config settings in your computer for your application, use this
 https://node.green/
 
 Reinstalling a package after just deleting the node module works with: yarn install --check-files
+
+How to generate JSDoc comments for Javascript functions?
+Using Webstorm, position the caret before the declaration of the method/function or field to document, type the opening block comment `/**`, and press `Enter`. Describe the listed parameters, return values, and so on.
+

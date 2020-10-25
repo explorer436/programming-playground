@@ -82,7 +82,7 @@ patternMatchingWithNonExhaustivePattern 'c' = "Cecil"
   -}
 
 
--- 5. Pattern matching cal alse be used on tuples : 
+-- 5. Pattern matching can alse be used on tuples : 
   {- |
   If we want to make a function that takes two vectors in a 2D space 
   (that are in the form of pairs) and adds them together?

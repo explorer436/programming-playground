@@ -38,6 +38,7 @@ import Data.List
 -- and `x <= 10` is the predicate.
 -- In Haskell, it can be represented like this.
 setComprehensionExample1 = take 10 [2,4..]
+-- [2,4,6,8,10,12,14,16,18,20]
 
 {- |
  But what if we didn't want doubles of 
@@ -52,6 +53,7 @@ setComprehensionExample1 = take 10 [2,4..]
  return the list after doing the operation on all the elements in it.
 -}
 listComprehensionExample2 = [x*2 | x <- [1..10]]
+-- [2,4,6,8,10,12,14,16,18,20]
 
 {- |
  Now let's add a condition (or a predicate) to that comprehension.
@@ -61,10 +63,12 @@ listComprehensionExample2 = [x*2 | x <- [1..10]]
  are greater than or equal to 12. 
 -}
 listComprehensionExample3 = [x*2 | x <- [1..10], x*2 >= 12]
+-- [12,14,16,18,20]
 
 -- How about if we wanted all numbers from 50 to 100 
 -- whose remainder when divided with the number 7 is 3?
 listComprehensionExample4 = [x | x <- [50..100], x `mod` 7 == 3]
+-- [52,59,66,73,80,87,94]
 
 -- Filtering : Weeding out lists by predicates is also called filtering.
 -- The predicates do all the work when it comes to filtering.
@@ -78,6 +82,8 @@ listComprehensionExample4 = [x | x <- [50..100], x `mod` 7 == 3]
 -}
 boomBangs xs = [ if x < 10 then "BOOM!" else "BANG!" | x <- xs, odd x]   
 listComprehensionExample5 = boomBangs [3..22]
+-- ["BOOM!","BOOM!","BOOM!","BOOM!","BANG!","BANG!","BANG!","BANG!","BANG!","BANG!"]
+
 {- |
  The last part of the comprehension is the predicate. 
  The function odd returns True on an odd number and False on an even one. 
@@ -88,6 +94,7 @@ listComprehensionExample5 = boomBangs [3..22]
 -- We can include several predicates. 
 -- If we wanted all numbers from 10 to 20 that are not 13, 15 or 19, we'd do:
 listComprehensionExample6 = [ x | x <- [10..20], x /= 13, x /= 15, x /= 19]  
+-- [10,11,12,14,16,17,18,20]
 
 {- |
  Not only can we have multiple predicates in list comprehensions 
@@ -103,16 +110,22 @@ listComprehensionExample6 = [ x | x <- [10..20], x /= 13, x /= 15, x /= 19]
  we want to get the products of all the possible combinations 
  between numbers in those lists : 
 -}
-listComprehensionExample7 = [ x*y | x <- [10,20,30], y <- [3,4,6]]  
+listComprehensionExample7 = [ x*y | x <- [10,20,30], y <- [3,4,6]] 
+-- [30,40,60,60,80,120,90,120,180]
+
 -- As expected, the length of the new list is 9. 
 
 -- What if we wanted all possible products that are more than 50?
 listComprehensionExample8 = [ x*y | x <- [10,20,30], y <- [3,4,6], x*y > 50]  
+-- [60,60,80,120,90,120,180]
 
 -- How about a list comprehension that combines a list of adjectives and a list of nouns?
 nouns = ["bruce","arun","explorer"]  
 adjectives = ["smart","hard-working","patient"]  
 listComprehensionExample9 = [adjective ++ " " ++ noun | adjective <- adjectives, noun <- nouns] 
+-- ["smart bruce","smart arun","smart explorer",
+--  "hard-working bruce","hard-working arun","hard-working explorer",
+--  "patient bruce","patient arun","patient explorer"]
 
 
 -- Let's write our own version of length! We'll call it length'.
@@ -140,7 +153,9 @@ removeNonUppercase :: [Char] -> [Char]
 removeNonUppercase string = [ c | c <- string, c `elem` ['A'..'Z']]   
 -- Testing it out:
 listComprehensionExample11 = removeNonUppercase "Free and Open Source Software"  
+-- "FOSS"
 listComprehensionExample12 = removeNonUppercase "IdontLIKEFROGS"  
+-- "ILIKEFROGS"
 
 {- |
  Nested list comprehensions are also possible 
@@ -150,6 +165,7 @@ listComprehensionExample12 = removeNonUppercase "IdontLIKEFROGS"
 -}
 xxs = [[1,3,5,2,3,1,2,4,5],[1,2,3,4,5,6,7,8,9],[1,2,4,2,1,6,3,1,3,2,3,6]]  
 listComprehensionExample13 = [ [ x | x <- xs, even x ] | xs <- xxs]  
+-- [[2,2,4],[2,4,6,8],[2,4,2,6,2,6]]
 
 {- |
  You can write list comprehensions across several lines. 
