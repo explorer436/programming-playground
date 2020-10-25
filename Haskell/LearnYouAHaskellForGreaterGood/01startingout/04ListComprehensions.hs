@@ -150,7 +150,7 @@ customImplementationForLengthUsingListComprehensionTest2 = customImplementationF
  The word "string" in the line below can also be called "characterList"
 -}
 removeNonUppercase :: [Char] -> [Char]
-removeNonUppercase string = [ c | c <- string, c `elem` ['A'..'Z']]   
+removeNonUppercase str = [ c | c <- str, c `elem` ['A'..'Z']]   
 -- Testing it out:
 listComprehensionExample11 = removeNonUppercase "Free and Open Source Software"  
 -- "FOSS"
