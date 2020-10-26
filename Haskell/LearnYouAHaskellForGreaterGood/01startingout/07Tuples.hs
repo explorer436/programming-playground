@@ -1,7 +1,6 @@
 -----------------------------------------------------------------------------------------
 -- Tuples
 {- |
- Look into the topic called tuples. They seem analogous to Enums in Java.
 
  Tuples are like lists - they are a way to store several values into a single value.
  They seem very similar to lists - with a few important differences.
@@ -11,6 +10,7 @@
 
  However, tuples are used when you know exactly how many values you want to combine and 
    its type depends on how many components it has and the types of the components. 
+   
 They are denoted with parentheses and their components are separated by commas.
 
  Unlike lists, they don't have to be homogenous. 

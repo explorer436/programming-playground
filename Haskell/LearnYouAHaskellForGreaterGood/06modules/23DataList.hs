@@ -1,5 +1,7 @@
 import Data.List
 
+-- https://hackage.haskell.org/package/base-4.9.0.0/docs/Data-List.html
+
 -- The Data.List module is all about lists, obviously.
 -- It provides some very useful functions for dealing with them.
 -- We've already met some of its functions (like map and filter) 

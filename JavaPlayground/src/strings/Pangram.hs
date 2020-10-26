@@ -18,12 +18,25 @@ import Data.Char (toUpper)
     Sphinx of black quartz: judge my vow
 -}
 
+{- |
+pangram :: Foldable t => t Char -> Bool
 pangram input 
     | (length (charactersThatAreNotInTheSentence input) > 0)  = False
     | otherwise = True
 
+charactersThatAreNotInTheSentence :: Foldable t => t Char -> [Char]
 charactersThatAreNotInTheSentence input = [c | c <- ['a'..'z'], c `notElem` input && (toUpper c) `notElem` input]
-charactersThatAreNotInTheSentenceTest = charactersThatAreNotInTheSentence "Sphinx of black quartz: judge my vow"
+charactersThatAreNotInTheSentenceTest = charactersThatAreNotInTheSentence "Sphinx of black quartz: judge my vow"    
+-}
+
+-- `and` takes a list of boolean values 
+-- and returns True only if all the values in the list are True.
+pangram input = and $ (map (doesCharacterExistInString input) ['a'..'z'])
+
+doesCharacterExistInString input c
+    | (c `elem` input || (toUpper c) `elem` input) = True
+    | otherwise = False
+
 
 -- tests    
 pangramTest01 = pangram "The quick brown fox jumps over the lazy dog"
