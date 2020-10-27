@@ -2,8 +2,8 @@ Toggle full screen (zen mode) : `Alt + F11`
 
 ---------------------------------------------
 
-In some Eclipse packages, like STS or Eclipse for JEE Developers, the Terminal is already installed in your IDE. 
-If not, you can install the TM Terminal from the Eclipse */release update site, as you can see in the image below.
+If Terminal is not already installed in your Eclipse IDE, 
+you can install the TM Terminal from the Eclipse */release update site, as you can see in the image below.
 To open the command prompt (shell or terminal) using the path of a project directory inside Eclipse, you just need to select the folder, and press `Ctrl+Alt+T`, or right-click and select Show In Local Terminal > Terminal.
 
 Use CTRL-ALT-SHIFT-T to choose which type of Terminal to run.
@@ -158,3 +158,22 @@ F1 	Open Eclipse Help
 Shift+F10 	Show Context Menu right click with mouse
 
 
+---------------------------------------------
+
+How to import an existing directory into Eclipse?
+
+There is no need to create a Java project and let unnecessary Java dependencies and libraries to cling into the project. The question is regarding importing an existing directory into eclipse
+
+Suppose the directory is present in C:/harley/mydir. What you have to do is the following:
+
+Create a new project (Right click on Project explorer, select New -> Project; from the wizard list, select General -> Project and click next.)
+
+Give to the project the same name of your target directory (in this case mydir)
+
+Uncheck Use default location and give the exact location, for example C:/harley/mydir
+
+Click on Finish
+
+You are done.
+
+---------------------------------------------

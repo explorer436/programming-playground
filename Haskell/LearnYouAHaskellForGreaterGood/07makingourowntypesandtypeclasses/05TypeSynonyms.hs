@@ -13,7 +13,7 @@ type String = [Char]
 -- We've introduced the type keyword.
 -- The keyword might be misleading to some,
 -- because we're not actually making anything new 
--- (we did that with the data keyword),
+-- (we do that with the data keyword),
 -- but we're just making a synonym for an already existing type.
 
 -- If we make a function that converts a string to uppercase 
@@ -268,4 +268,7 @@ ghci> lockerLookup 110 lockers
 ghci> lockerLookup 105 lockers  
 -- Right "QOTSA"  
 
--- We could have used a Maybe a to represent the result but then we wouldn't know why we couldn't get the code. But now, we have information about the failure in our result type.
+-- We could have used a Maybe a to represent the result but then 
+-- we wouldn't know why we couldn't get the code. 
+-- But now, we have information about the failure in our result type.
+

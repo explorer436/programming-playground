@@ -7,7 +7,8 @@
  "foo"
  it :: [Char]
 
- The `it` variable is a handy ghci shortcut. It lets us use the result of the expression we just evaluated in a new expression.
+ The `it` variable is a handy ghci shortcut. 
+ It lets us use the result of the expression we just evaluated in a new expression.
  
  ghci> it ++ "bar"
  "foobar"

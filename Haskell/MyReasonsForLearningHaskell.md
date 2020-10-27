@@ -1,6 +1,7 @@
 What are your reasons you are trying to learn Haskell? What is the endgoal?
 
-To get a better understanding of the paradigm 'functional programming' (as opposed to trying to solve everything using object oriented approach)
+To get a better understanding of the paradigm 'functional programming' 
+(as opposed to trying to solve everything using object oriented approach)
 Most of the aspects of functional programming can be used in object oriented designs as well. 
 Looking at solutions written in Haskell actually makes things a lot easier to understand compared to understanding programs written in Java.
 My aim is to get to a point where I can think of a solution to a given problem in my mind and easily translate it into a solution using Haskell.

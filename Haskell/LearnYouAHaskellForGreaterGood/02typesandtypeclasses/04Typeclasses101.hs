@@ -1,6 +1,6 @@
 
 -----------------------------------------------------------------------------------------
--- Types classes
+-- Typesclasses101
 
 {- |
   A typeclass is a sort of interface that defines some behaviour.

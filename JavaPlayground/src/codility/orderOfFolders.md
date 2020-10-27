@@ -1,0 +1,22 @@
+│ 01iterations/
+│ 02arrays/
+│ 03timecomplexity/
+│ 04countingelements/
+│ 05prefixsums/
+│ 06sorting/
+│ 07StacksAndQueues/
+│ 08Leader/
+│ 09MaximumSliceProblem/
+│ 10PrimeAndCompositeNumbers/
+│ 11SieveOfEratosthenes/
+│ 12EuclideanAlgorithm/
+│ 13FibonacciNumbers/
+│ 14BinarySearchAlgorithm/
+│ 15CaterpillarMethod/
+│ 16GreedyAlgorithms/
+│ 17DynamicProgramming/
+│ 90TasksFromIndeedPrime2015challenge/
+│ 91tasksfromindeedprime2016challenge/
+│ 92tasksfromindeedprime2016collegecoderschallenge/
+│ 99futuretraining/
+
