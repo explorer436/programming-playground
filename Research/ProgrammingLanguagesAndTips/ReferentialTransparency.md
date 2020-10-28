@@ -6,7 +6,7 @@ The term "referential transparency" comes from analytical philosophy, the branch
 
 At its core, "referential transparency" is a very simple and clear idea. The term "referent" is used in analytical philosophy to talk about the thing that an expression refers to. It is roughly the same as what we mean by "meaning" or "denotation" in programming language semantics. Using Andrew Birkett's example (blog post), the term "the capital of Scotland" refers to the city of Edinburgh. That is a straightforward example of a "referent".
 
-A context in a sentence is "referentially transparent" if replacing a term in that context by another term that refers to the same entity doesn't alter the meaning. For example
+A context in a sentence is "referentially transparent" if replacing a term in that context by another term that refers to, the same entity doesn't alter the meaning. For example
 
 The Scottish Parliament meets in the capital of Scotland.
 
