@@ -1,18 +1,13 @@
 Input and Output
 
 We've mentioned that Haskell is a purely functional language. 
-Whereas in imperative languages you usually get things done by 
-giving the computer a series of steps to execute, 
+Whereas in imperative languages you usually get things done by giving the computer a series of steps to execute, 
 functional programming is more of defining what stuff is. 
-In Haskell, a function can't change some state, 
-like changing the contents of a variable 
+In Haskell, a function can't change some state, like changing the contents of a variable 
 (when a function changes state, we say that the function has side-effects). 
-The only thing a function can do in Haskell is 
-give us back some result based on the parameters we gave it. 
-If a function is called two times with the same parameters, 
-it has to return the same result. 
-While this may seem a bit limiting when you're coming from an imperative world, 
-we've seen that it's actually really cool. 
+The only thing a function can do in Haskell is give us back some result based on the parameters we gave it. 
+If a function is called two times with the same parameters, it has to return the same result. 
+While this may seem a bit limiting when you're coming from an imperative world, we've seen that it's actually really cool. 
 In an imperative language, 
 you have no guarantee that a simple function 
 that should just crunch some numbers won't burn down your house, 
