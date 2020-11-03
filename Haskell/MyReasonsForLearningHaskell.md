@@ -15,3 +15,13 @@ Are they more performant than traditional languages like C, Java, etc.
 How are they compared to Rust and Go?
 Can we deploy them within CloudForge or in AWS or in Azure or in GCP?
 Single threaded or multi threaded?
+
+--------------------------------
+
+Features that I find very interesting in Haskell:
+Expressive static types
+Higher order functions
+Purity
+Laziness
+
+--------------------------------
