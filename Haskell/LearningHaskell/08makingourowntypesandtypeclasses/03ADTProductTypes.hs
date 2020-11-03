@@ -1,3 +1,5 @@
+import qualified Data.List as L
+
 -- A street has ten houses on it. 
 -- Each house has a cat of a different breed living in it. 
 -- Write a program that finds the oldest of the cats on the street and 
@@ -79,3 +81,62 @@ getCatFromHouse (House _ c) = c
 getHumanAgeOfCatFromHouse :: House -> Age
 getHumanAgeOfCatFromHouse =
   humanAge . getCatFromHouse
+
+findOldestCat :: [House] -> Maybe Cat
+findOldestCat []     = Nothing
+findOldestCat houses = Just oldestCat
+  where
+    oldestCat = getCatFromHouse houseWithOldestCat
+    houseWithOldestCat = head housesSortedByCatAge
+    housesSortedByCatAge = L.sortBy catAgeComparer houses
+    catAgeComparer (House _ (Cat _ _ age1))
+                   (House _ (Cat _ _ age2))
+      = compare age2 age1
+
+findOldestCatHouse :: [House] -> Maybe House
+findOldestCatHouse houses =
+    if length housesSortedByCatAge > 0
+    then Just (head housesSortedByCatAge)
+    else Nothing
+  where housesSortedByCatAge
+          = L.sortBy catAgeComparer houses
+        catAgeComparer (House _ (Cat _ _ age1))
+                       (House _ (Cat _ _ age2))
+          = compare age2 age1
+
+-- catAgeComparer is a function that takes two houses and compares the ages of the cats contained within. 
+-- It does this by pattern matching the ages out of the cats, and the cats out of each house all at once (its type is House -> House -> Ordering).
+
+-- An Ordering is a built-in sum data type which has values of LT, EQ and GT which stand for less than, equal to and greater than respectively. Ordering values are used by sorting functions in Haskell.
+
+-- The sortBy :: (a -> a -> Ordering) -> [a] -> [a] function from Data.List takes a function whose type is (a -> a -> Ordering) to sort its second argument: a list. That fits the type of catAgeComparer, which is why we’re using sortBy in our definition of housesSortedByCatAge in the line above that. Put another way, the sortBy function takes a comparing function (that is, one that returns an Ordering), and a list, and returns that list sorted by using the comparing function on adjacent elements.
+
+-- Because we want to sort oldest to youngest, our application of the compare function in catAgeComparer has age2 first. If age1 was first, it’d sort youngest to oldest.
+
+-- It is only safe to use the head function when we can be absolutely sure there is at least one item in the list we’re applying it to. 
+-- Otherwise it will cause your program to crash (crashing is a term that means the program unexpectedly stopped working). 
+-- We are sure that there is at least one item in the list we’re applying head to because we have a clause that matches on the empty list and returns Nothing.
+
+getCatName :: Cat -> String
+getCatName (Cat name _ _) = name
+
+getHouseNumber :: House -> String
+getHouseNumber (House number _) = show number
+
+oldest =
+      case findOldestCatHouse street of
+        Nothing ->
+          "There is no oldest cat!"
+        Just house ->
+          "The oldest cat is "
+          ++ getCatName (getCatFromHouse house)
+          ++ ", is "
+          ++ show (getHumanAgeOfCatFromHouse house)
+          ++ " equivalent human years old"
+          ++ " and it lives in Number "
+          ++ getHouseNumber house
+-- "The oldest cat is The Ninja, is 65 equivalent human years old and it lives in Number 6"
+
+main :: IO ()
+main = putStrLn oldest
+-- The oldest cat is The Ninja, is 65 equivalent human years old and it lives in Number 6

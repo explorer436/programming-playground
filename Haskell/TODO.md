@@ -5,7 +5,6 @@ If necessary, modify both of them to write the results to a file directly.
 
 ----------------------------
 
-Implement sample from Chapter 14 of happy learn haskell
 Implement sample from Chapter 16 of happy learn haskell
 Implement sample from Chapter 17 of happy learn haskell
 Implement sample from Chapter 18 of happy learn haskell
