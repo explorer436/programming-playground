@@ -15,7 +15,9 @@ rangesExample9 = take 24 [13, 26..]
  If you just try to display the result, it will go on forever so you have to slice it off somewhere.
 -}
 cycleExample1 = take 10 (cycle [1,2,3])
+-- [1,2,3,1,2,3,1,2,3,1]
 cycleExample2 = take 12 (cycle "LOL ")
+-- "LOL LOL LOL "
 
 -- repeat takes an element and produces an infinite list of just that element. It's like cycling a list with only one element.
 repeatExample1 = take 10 (repeat 5) 

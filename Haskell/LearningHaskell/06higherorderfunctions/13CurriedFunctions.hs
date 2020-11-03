@@ -1,12 +1,33 @@
 {- |
-    Haskell functions can take functions as parameters and return functions as return values. 
-    A function that does either of those is called a higher order function. 
-    Higher order functions aren't just a part of the Haskell experience, 
-    they pretty much are the Haskell experience. 
-    It turns out that if you want to define computations by defining what stuff is 
-        instead of defining steps that change some state and maybe looping them, 
-        higher order functions are indispensable.
-    They're a really powerful way of solving problems and thinking about programs.
+    What is Currying?
+
+	You may remember that a function plus :: Int -> Int -> Int can be defined as plus x y = x + y, 
+	or it can be defined as plus = \x -> (\y -> x + y), 
+	they’re identical to Haskell, 
+	because a 2-argument function is actually a function that returns a function of one argument. 
+	If we give plus one Int value, it will bind that value to x, and return the inner function. 
+	Let’s see a defition for plus5: plus5 = plus 5. 
+	This will return the function y -> 5 + y. 
+	This way of defining multiple argument functions is called currying. 
+	It is named after one of the men who invented it, Haskell Curry. 
+	Yes, Haskell is named after him.
+-}
+
+-----------------------
+
+{- |
+	Haskell functions can take functions as parameters and return functions as return values. 
+	A function that does either of those is called a higher order function. 
+
+    They are called a higher order functions because they take a function as an argument, 
+    so they are an order higher than normal functions that just take values.
+
+	Higher order functions aren't just a part of the Haskell experience, 
+	they pretty much are the Haskell experience. 
+	It turns out that if you want to define computations by defining what stuff is 
+	    instead of defining steps that change some state and maybe looping them, 
+	    higher order functions are indispensable.
+	They're a really powerful way of solving problems and thinking about programs.
 -}
 
 -----------------------------------------------------------------------------------------

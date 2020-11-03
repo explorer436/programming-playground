@@ -28,7 +28,6 @@
 
 -- Like normal functions, lambdas can take any number of parameters:
 multipleParametersInALambda = zipWith (\a b -> (a * 30 + 3) / b) [5,4,3,2,1] [1,2,3,4,5]  
--- tests
 -- [153.0,61.5,31.0,15.75,6.6]
 
 -- And like normal functions, you can pattern match in lambdas. 
@@ -38,7 +37,6 @@ multipleParametersInALambda = zipWith (\a b -> (a * 30 + 3) / b) [5,4,3,2,1] [1,
 -- If a pattern matching fails in a lambda, 
 --  a runtime error occurs, so be careful when pattern matching in lambdas!
 patternMatchingInALambda = map (\(a,b) -> a + b) [(1,2),(3,5),(6,3),(2,6),(2,5)]  
--- tests
 -- [3,8,9,8,7] 
 
 -- Lambdas are normally surrounded by parentheses 
@@ -63,8 +61,7 @@ flip' f = \x y -> f y x
 
 -- Even though that's the same as writing flip' f x y = f y x, 
 -- we make it obvious that this will be used for producing a new function most of the time. 
--- The most common use case with flip is calling it 
---  with just the function parameter 
+-- The most common use case with flip is calling it  with just the function parameter 
 --  and then passing the resulting function on to a map or a filter. 
 -- So use lambdas in this way when you want to make it explicit that 
 --  your function is mainly meant to be partially applied and 

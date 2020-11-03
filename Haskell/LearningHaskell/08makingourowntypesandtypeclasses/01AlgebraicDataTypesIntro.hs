@@ -3,6 +3,15 @@
 
 -- Algebraic data types intro
 
+-- Algebra is another fancy word which just means 
+-- a sort of language of combining elements together — 
+-- in this case, we’re combining types. 
+-- You probably know this word from Maths if you’ve studied it.
+
+-- Both sum types and product types are examples of algebraic data types. 
+-- You can have combinations of these types in the one type, 
+-- which means you can have types that are sums of product types.
+
 -- So far, we've run into a lot of data types.
 -- Bool, Int, Char, Maybe, etc.
 -- But how do we make our own?

@@ -52,7 +52,7 @@ testApplyTwice05 = applyTwice (3:) [1]
 ----------------------------------------------------------------
 
 {- |
-    Use higher order programming to implement `zipWith`. I
+    Use higher order programming to implement `zipWith`.
     It takes a function and two lists as parameters 
         and then joins the two lists by applying the function between corresponding elements. 
 -}
