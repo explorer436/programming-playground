@@ -111,3 +111,23 @@ Car {company = "Ford", model = "Mustang", year = 1967}
 -- the fields are the components of a vector. 
 -- However, in our Person and Car types, 
 -- it wasn't so obvious and we greatly benefited from using record syntax.
+
+
+
+
+
+{- |
+  
+    data Person = Person String String Int Float String String deriving (Show)
+
+    |______________________________________| -> definition
+
+    |__| -> data type definition
+
+        |_______| -> type name
+
+                  |____|  -> value constructor name
+
+                        |____________________________________| -> field types
+  
+-}

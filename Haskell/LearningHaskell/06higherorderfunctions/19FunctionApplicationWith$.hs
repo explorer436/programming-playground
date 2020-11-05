@@ -3,6 +3,7 @@
 
 -- ($) :: (a -> b) -> a -> b  
 -- f $ x = f x  
+-- Given an a -> b function and an a to apply it to, it gives us a b.
 
 -- What the heck? What is this useless operator? 
 -- It's just function application! 
@@ -41,3 +42,9 @@
 
 testFunctionApplicationOnAMap = map ($ 3) [(4+), (10*), (^2), sqrt]  
 -- [7.0,30.0,9.0,1.7320508075688772]  
+
+In Haskell, we prefer not to use so many parentheses. There is a higher order function called ($) that will take a function on the left of it, and some expression on the right, and apply the function to the expression. It has an extremely low precedence, which means it will pretty much be applied last of all. This is basically the same effect as having parentheses wrapped around the expression on the right. Let’s see how the function above can be written with the ($) function.
+
+Note also that the ($) function is only for the cases where the parentheses would go right to the very end of the expression on the right.
+
+
