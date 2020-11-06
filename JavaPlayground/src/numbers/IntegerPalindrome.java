@@ -74,7 +74,8 @@ public class IntegerPalindrome {
 	
 	/**
 	 * 
-	 	REMEMBER : do not try to do it all in one method. Break it down into smaller methods wherever necessary.
+	 	REMEMBER : do not try to do it all in one method. 
+	 	Break it down into smaller methods wherever necessary.
 	 * 
 	 */
 	public static boolean isPalindrome(int x)
@@ -91,7 +92,8 @@ public class IntegerPalindrome {
 	
 	/**
 	 * 
-	 	This method is not incorrect. We are not using String's native operations like StringBuffer.reverse() for reversing the string.
+	 	This method is not incorrect. 
+	 	We are not using String's native operations like StringBuffer.reverse() for reversing the string.
  		But, it would be nice to do it without converting the integer into a String in the first place.
 	 * 
 	 */

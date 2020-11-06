@@ -13,8 +13,7 @@ solution n =
 testSolution01 = solution 10
 -- [2,4,6,8,10] 
 
--- We start with an infinite list of all natural numbers 
--- and then we filter it
+-- We start with an infinite list of all natural numbers and then we filter it
 
 {- |
     takeWhile function takes a predicate and a list 
@@ -26,5 +25,4 @@ testSolution01 = solution 10
    we could do 
    takeWhile (/=' ') "elephants know how to party"
    and it would return "elephants". 
- 
 --}

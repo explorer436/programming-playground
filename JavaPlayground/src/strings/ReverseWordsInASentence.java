@@ -3,9 +3,10 @@ package strings;
 public class ReverseWordsInASentence {
 
 	/**
-	 * Apache Commons has a utility method for this. 
-	 * 
-	 * StringUtils.reverseDelimited(sentence, ' ');
+	 *
+	   Apache Commons has a utility method for this. 
+	   
+	   StringUtils.reverseDelimited(sentence, ' ');
 	 * 
 	 */
 	public static void main(String[] args) {

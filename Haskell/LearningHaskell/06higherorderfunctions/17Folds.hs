@@ -1,5 +1,4 @@
--- Back when we were dealing with recursion, 
---     we noticed a theme throughout many of the recursive functions that operated on lists. 
+-- Back when we were dealing with recursion, we noticed a theme throughout many of the recursive functions that operated on lists. 
 -- Usually, we'd have an edge case for the empty list. 
 -- We'd introduce the x:xs pattern 
 --     and then we'd do some action that involves a single element 
@@ -9,15 +8,11 @@
 -- These functions are called folds. 
 -- They're sort of like the map function, only they reduce the list to some single value.
 
--- A fold takes a binary function, 
---     a starting value (I like to call it the accumulator) and a list to fold up. 
+-- A fold takes a binary function, a starting value (I like to call it the accumulator) and a list to fold up. 
 -- The binary function itself takes two parameters. 
--- The binary function is called with the accumulator 
---     and the first (or last) element and produces a new accumulator. 
--- Then, the binary function is called again with the new accumulator 
---     and the now new first (or last) element, and so on. 
--- Once we've walked over the whole list, 
---     only the accumulator remains, which is what we've reduced the list to.
+-- The binary function is called with the accumulator and the first (or last) element and produces a new accumulator. 
+-- Then, the binary function is called again with the new accumulator and the now new first (or last) element, and so on. 
+-- Once we've walked over the whole list, only the accumulator remains, which is what we've reduced the list to.
 
 -- Let's take a look at the foldl function, also called the left fold. 
 -- It folds the list up from the left side. 
@@ -29,12 +24,12 @@
 
 sum' :: (Num a) => [a] -> a  
 sum' xs = foldl (\acc x -> acc + x) 0 xs  
-Testing, one two three:
-
+-- tests
 testSum01 = sum' [3,5,2,1]  
 -- 11  
 
--- Let's take an in-depth look into how this fold happens. `\acc x -> acc + x` is the binary function. 
+-- Let's take an in-depth look into how this fold happens. 
+-- `\acc x -> acc + x` is the binary function. 
 -- 0 is the starting value and xs is the list to be folded up. 
 -- Now first, 0 is used as the acc parameter to the binary function and 
 --     3 is used as the x (or the current element) parameter. 
@@ -46,10 +41,11 @@ testSum01 = sum' [3,5,2,1]
 -- Congratulations, you've done a fold!
 
 -- If we take into account that functions are curried, we can write this implementation ever more succinctly, like so:
-
 sum' :: (Num a) => [a] -> a  
 sum' = foldl (+) 0  
--- The lambda function (\acc x -> acc + x) is the same as (+). We can omit the xs as the parameter because calling foldl (+) 0 will return a function that takes a list. Generally, if you have a function like foo a = bar b a, you can rewrite it as foo = bar b, because of currying.
+-- The lambda function (\acc x -> acc + x) is the same as (+). 
+-- We can omit the xs as the parameter because calling foldl (+) 0 will return a function that takes a list. 
+-- Generally, if you have a function like foo a = bar b a, you can rewrite it as foo = bar b, because of currying.
 
 -- Let's implement another function with a left fold before moving on to right folds. 
 -- elem checks whether a value is part of a list.
@@ -71,8 +67,7 @@ elem' y ys = foldl (\acc x -> if x == y then True else acc) False ys
 -- If it was False before, it stays that way because this current element is not it. 
 -- If it was True, we leave it at that.
 
--- The right fold, foldr works in a similar way to the left fold, 
---     only the accumulator eats up the values from the right. 
+-- The right fold, foldr works in a similar way to the left fold, only the accumulator eats up the values from the right. 
 -- Also, the left fold's binary function has the accumulator as the first parameter 
 --     and the current value as the second one (so \acc x -> ...), 
 --     the right fold's binary function has the current value as the first parameter 
@@ -177,3 +172,19 @@ last' = foldl1 (\_ x -> x)
 --     If we use flip (:) as the binary function and [] as the accumulator (so we're reversing the list),
 --     then that's the equivalent of flip (:) (flip (:) (flip (:) (flip (:) [] 3) 4) 5) 6.
 --     And sure enough, if you evaluate that expression, you get [6,5,4,3].
+
+-- foldl’
+-- While foldl and foldl' are very similar, there is a very subtle difference, which makes foldl unfit for most use-cases. 
+-- It still exists in the standard library due to historical reasons and backward compatibility. 
+-- Do not use foldl. Use foldl' instead.
+
+-- The strangely named foldl' is an extremely important higher-order function. 
+-- In some senses, it is the “mother function” of all higher-order functions that deal with processing lists. 
+-- Using foldl' you can implement, map, filter, and every other such function that visits each element and do something with it.
+
+-- Given a list of integers, select at most one occurence of each integer, i.e. if the input is [1, 2, 3, 3, 2, 4] the output should be [1, 2, 3, 4].
+-- You will be unable to write this function using only the filter function. 
+-- This is because the condition in step 2, the lambda that you are passing, needs access to the result of each step.
+-- This is exactly what foldl' gives you. 
+Prelude> foldl (\result x -> if (x `elem` result) then result else (x:result)) [] [1, 2, 3, 3, 2, 3, 1]
+[3,2,1]

@@ -1,6 +1,6 @@
 module ISBNVerifier where
 
-import RemoveSubstringFromAString
+import RemoveSubstringFromAString (remove)
 import Data.Char (digitToInt)
 
 {- |

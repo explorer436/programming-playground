@@ -14,3 +14,5 @@ print two_sum([4,7,1,-3,2], 5)
 
 
 Try to do it in a single pass of the list.
+
+(Solved - see TwoSum.java)

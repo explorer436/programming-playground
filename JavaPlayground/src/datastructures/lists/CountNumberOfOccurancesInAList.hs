@@ -1,4 +1,7 @@
--- How to count the number of occurances of an element in a list using List Comprehension?
+-- How to count the number of occurances of an element in a list?
+
+
+-- Using List Comprehension?
 countOccurancesInAnArrayUsingListComprehension :: Eq a => [a] -> a -> Int 
 -- base condition
 countOccurancesInAnArrayUsingListComprehension [] elementToBeFound = 0
@@ -16,7 +19,7 @@ countOccurancesInAnArrayUsingListComprehensionTest3 = countOccurancesInAnArrayUs
 countOccurancesInAnArrayUsingListComprehensionTest4 = countOccurancesInAnArrayUsingListComprehension "bruce" 'b'
 -- 1
 
--- How to count the number of occurances of an element in a list using Recursion?
+-- Using Recursion?
 countOccurancesInAnArrayUsingRecursion :: Eq a => [a] -> a -> Int
 -- base condition
 countOccurancesInAnArrayUsingRecursion [] elementToBeFound = 0

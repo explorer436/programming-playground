@@ -3,7 +3,7 @@
 
 {- |
 `let` bindings are very similar to `where` bindings. 
-Where bindings are a syntactic construct that let you bind to variables at the end of a function 
+`Where bindings are a syntactic construct that let you bind to variables at the end of a function 
     and the whole function can see them, 
     including all the guards. 
 `Let` bindings let you bind to variables anywhere and are expressions themselves, 
@@ -40,8 +40,8 @@ For now it just seems that `let` puts the bindings first and
     the expression that uses them later whereas `where` is the other way around.
  
 
-The difference is that let bindings are expressions themselves. 
-    where bindings are just syntactic constructs. 
+The difference is that `let` bindings are expressions themselves. 
+    `where` bindings are just syntactic constructs. 
     Remember when we did the if statement and 
     it was explained that an if else statement is an expression and 
     you can cram it in almost anywhere?

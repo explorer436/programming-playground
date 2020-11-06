@@ -1,3 +1,6 @@
+import Data.Char (toLower)
+import Data.List (foldl')
+
 -----------------------------------------------------------------------------------------
 -- Tuples
 {- |
@@ -133,3 +136,94 @@ tupleTriangles = [ (a,b,c) | c <- [1..10], b <- [1..10], a <- [1..10] ]
 tupleRigtTriangles = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b] , a^2 + b^2 == c^2 ]
 tupleRigtTriangleWithPerimeter24 = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b] , a^2 + b^2 == c^2 , a + b + c == 24]
 -- [(6,8,10)]
+
+-- Returning multiple values from functions
+
+-- Whenever you want to return multiple values from a function where the type and number of return-values is known at the time of writing the code (compile time, as opposed to run-time). 
+-- For example, take a look at the divMod function, which divides two integers, and returns the quotient and the remainder. 
+-- The return type is a 2-tuple of type (Int, Int). 
+-- Again, here’s the simplified tyep-signature of divmod (what you’ll see in GHCi will be different):
+-- divMod :: Int -> Int -> (Int, Int)
+
+-- GHCi> divMod 10 2
+-- (5, 0)
+
+-- GHCi> divMod 10 3
+-- (3, 1)
+
+-- How do we use the return value of this function? 
+-- Let’s understand by using divMod in a real-world example of time arithemetic. 
+-- Say, you want to write a function that calculates the end-time of an event, given the start-time and the duration of the event (in minutes):
+
+calculateEndTime :: Int -> Int -> Int -> (Int, Int)
+calculateEndTime hr mn durationInMins =
+  let (addHour, finalMins) = divMod (mn + durationInMins) 60
+  in (hr + addHour, finalMins)
+
+testCalculateEndTime01 = calculateEndTime 10 30 45
+-- (11, 15)
+
+testCalculateEndTime02 = calculateEndTime 10 30 115
+-- (12, 25)
+
+
+
+{- | 
+
+	Passing multiple values to a lambda which accept only a single parameter
+	
+	How do we actually transform our flat list of contacts to a list of tuples? 
+	That is, we want to build the following data transformation:
+	Transform this => [ "Adam", "Bhushan", "Bimal", "Chilgoza", "Beth", "Anurag", ...]
+	To this =>
+	[ ('a', ["Adam", "Anurag", ...]
+	, ('b', ["Beth", "Bhushan", ...]
+	, ('c', ["Chaman, "Charlie", ...]
+	]
+	
+	This is where we will use tuples to pass multiple values to a lambda which accepts only a single value.
+	
+	foldl' will give you access to a single accumulator variable, of any type b. 
+	What if you want to write logic where you need access to two accumulator variables (which seems to be what we need in our case)? 
+	Tuples to the rescue!
+	
+	Remember, that b cany be any type. 
+	foldl' doesn’t care. 
+	All it says is that, the lambda’s first argument, the lambda’s return value, and the initial value passed to the foldl' (which is technically the second argument) should be of the same type. 
+	Well, in that case b can very well be an n-tuple, if we need it to be!
+
+-}
+
+-- The list may not necessarily be sorted alphabetically
+contactsList = [ "Adam", "Bhushan", "Bimal", "Chilgoza", "Beth", "Anurag", "Ashton", "Chaman", "Charlie", "Banksky"]
+
+groupNamesByAlphabet :: Char -> [String] -> (Char, [String])
+groupNamesByAlphabet alpha names =
+  foldl'
+
+    -- the lambda
+    (\ (alphabet, collectedNames) name ->
+        if (length name > 0) && (toLower (head name) == (toLower alphabet))
+        then (alphabet, collectedNames ++ [name])
+        else (alphabet, collectedNames)
+    )
+
+    -- the initial value
+    (alpha, [])
+
+    -- the list
+    names
+
+-- tests
+testGroupNamesByAlphabet01 = groupNamesByAlphabet 'a' [ "Adam", "Bhushan", "Bimal", "Chilgoza", "Beth", "Anurag", "Ashton", "Chaman", "Charlie", "Banksky"]
+-- ('a',["Adam","Anurag","Ashton"])
+
+groupNamesByAllAlphabets :: [String] -> [(Char, [String])]
+-- groupNamesByAllAlphabets names = map (\alphabet -> groupNamesByAlphabet alphabet names) "abcdefghijklmnopqwxyz"
+groupNamesByAllAlphabets names = map (\alphabet -> groupNamesByAlphabet alphabet names) ['a'..'z']
+testGroupNamesByAllAlphabets = groupNamesByAllAlphabets contactsList
+-- [('a',["Adam","Anurag","Ashton"]),
+--  ('b',["Bhushan","Bimal","Beth","Banksky"]),
+--  ('c',["Chilgoza","Chaman","Charlie"]),
+--  ('d',[]), ('e',[]), ('f',[]),('g',[]),('h',[]),('i',[]),('j',[]),('k',[]),('l',[]),('m',[]),('n',[]),('o',[]),('p',[]),('q',[]),('w',[]),('x',[]),('y',[]),('z',[])]
+

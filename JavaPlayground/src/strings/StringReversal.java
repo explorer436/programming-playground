@@ -7,7 +7,7 @@ import java.util.ListIterator;
 
 /**
  * 
- * Reverse the characters in a String
+   Reverse the characters in a String
  *
  */
 public class StringReversal {

@@ -1,14 +1,11 @@
 {- |
-    Lambdas are basically anonymous functions that are used because 
-        we need some functions only once. 
+    Lambdas are basically anonymous functions that are used because we need some functions only once. 
     Normally, we make a lambda with the sole purpose of passing it to a higher-order function. 
     To make a lambda, we write a \ 
     (because it kind of looks like the greek letter lambda if you squint hard enough) 
         and then we write the parameters, separated by spaces. 
     After that comes a -> and then the function body. 
-    We usually surround them by parentheses, 
-        because otherwise they extend all the way to the right.
-
+    We usually surround them by parentheses, because otherwise they extend all the way to the right.
 
     See CollatzSequences.hs for an example.
 
@@ -61,8 +58,17 @@ flip' f = \x y -> f y x
 
 -- Even though that's the same as writing flip' f x y = f y x, 
 -- we make it obvious that this will be used for producing a new function most of the time. 
--- The most common use case with flip is calling it  with just the function parameter 
+-- The most common use case with flip is calling it with just the function parameter 
 --  and then passing the resulting function on to a map or a filter. 
 -- So use lambdas in this way when you want to make it explicit that 
 --  your function is mainly meant to be partially applied and 
 --  passed on to a function as a parameter.
+
+The three main differences between lambdas and regular named functions are:
+1. The parameter list of lambdas start with a backslash: \
+2. The parameter list of lambdas is separated from the function definition by a stabby arrow -> instead of an =, i.e.
+    \x -> (mod x 2) == 0
+    -- vs
+    checkEven x = (mod x 2) == 0 -- this is not a lambda, we need to give it a name!
+3. Lambdas, by default, do not have a type-signature. However, there is a technique using which you can add type-signatures to lambdas for the purpose of clarity and debugging.
+

@@ -14,5 +14,4 @@ solutionTest02 = solution [1,2,3,4,5]
 solutionTest03 = solution []
 -- 0
 
--- This can also be written recursively
--- TODO implement this recursively
+-- This can also be written recursively or using folds
