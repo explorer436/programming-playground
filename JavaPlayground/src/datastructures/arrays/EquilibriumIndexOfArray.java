@@ -55,7 +55,6 @@ package datastructures.arrays;
 		
 		Elements of input arrays can be modified.
 
-
  *
  */
 public class EquilibriumIndexOfArray {

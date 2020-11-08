@@ -221,7 +221,7 @@ testGroupNamesByAlphabet01 = groupNamesByAlphabet 'a' [ "Adam", "Bhushan", "Bima
 groupNamesByAllAlphabets :: [String] -> [(Char, [String])]
 -- groupNamesByAllAlphabets names = map (\alphabet -> groupNamesByAlphabet alphabet names) "abcdefghijklmnopqwxyz"
 groupNamesByAllAlphabets names = map (\alphabet -> groupNamesByAlphabet alphabet names) ['a'..'z']
-testGroupNamesByAllAlphabets = groupNamesByAllAlphabets contactsList
+testGroupNamesByAllAlphabets01 = groupNamesByAllAlphabets contactsList
 -- [('a',["Adam","Anurag","Ashton"]),
 --  ('b',["Bhushan","Bimal","Beth","Banksky"]),
 --  ('c',["Chilgoza","Chaman","Charlie"]),

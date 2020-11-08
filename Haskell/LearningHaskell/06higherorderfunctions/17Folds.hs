@@ -41,8 +41,8 @@ testSum01 = sum' [3,5,2,1]
 -- Congratulations, you've done a fold!
 
 -- If we take into account that functions are curried, we can write this implementation ever more succinctly, like so:
-sum' :: (Num a) => [a] -> a  
-sum' = foldl (+) 0  
+sum2' :: (Num a) => [a] -> a  
+sum2' = foldl (+) 0  
 -- The lambda function (\acc x -> acc + x) is the same as (+). 
 -- We can omit the xs as the parameter because calling foldl (+) 0 will return a function that takes a list. 
 -- Generally, if you have a function like foo a = bar b a, you can rewrite it as foo = bar b, because of currying.
@@ -186,5 +186,7 @@ last' = foldl1 (\_ x -> x)
 -- You will be unable to write this function using only the filter function. 
 -- This is because the condition in step 2, the lambda that you are passing, needs access to the result of each step.
 -- This is exactly what foldl' gives you. 
-Prelude> foldl (\result x -> if (x `elem` result) then result else (x:result)) [] [1, 2, 3, 3, 2, 3, 1]
-[3,2,1]
+-- Prelude> foldl (\result x -> if (x `elem` result) then result else (x:result)) [] [1, 2, 3, 3, 2, 3, 1]
+-- [3,2,1]
+
+-- Look at FibonacciSequence.hs for details about how tuples can be used to hold intermediate results while determining a FibonacciSequence.
