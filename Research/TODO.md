@@ -92,6 +92,10 @@ Uber engineering blog: https://eng.uber.com/
 
 ----------------------
 
+github.com/janestreet - They seem to be doing a lot of interesting stuff with OCaml. It would be worth spending time looking at their stuff if we need to get a better understanding of Ocaml.
+
+----------------------
+
 Tools and Technologies to learn:
 
 PaaS products: 
