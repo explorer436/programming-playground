@@ -1,66 +1,56 @@
-CONFIGURE TOOLING :
+*** Configure Tooling
 
-```
-git config --global push.default simple
-git config --global user.name "Bruce Wayne"
-git config --global user.email explorer436@tutanota.com
-git config --system core.longpaths true
-git config --global color.ui auto
-git config --global core.autocrlf true
-```
+   #+BEGIN_EXAMPLE
+   git config --global push.default simple
+   git config --global user.name "Bruce Wayne"
+   git config --global user.email explorer436@tutanota.com
+   git config --system core.longpaths true
+   git config --global color.ui auto
+   git config --global core.autocrlf true
+   #+END_EXAMPLE
+ 
 --------------------------------------------
-CREATE REPOSITORIES :
 
-`git init (project name)` - Creates a new local repository with the specified name
+*** Commands 
 
-`git clone (url)` - downloads a project and its entire version history
+**** Create Repositories
 
---------------------------------------------
-CREATE FEATURE BRANCH FROM COMMAND LINE : 
-
-To start a feature branch from command line, simply create a new branch from remotes/origin/develop:
-`git checkout -b feature/testFeatureBranch remotes/origin/develop`
-
-Find out which remote branch yout local branch is tracking : 
-`git branch -vv` : command to give tracking branch
-`git status -sb` : command to give tracking branch
-
-`git branch -m <newname>`  : command to rename the current local branch
-
-`git branch (local branch name) -u (remote branch name)` : To point local branch to a different remote branch
-
-`git stash -u` : command to undo all changes
-
-`git diff file_name.txt`  : command to show changes in a specific file
-
-`git remote update` : command to update remote branches
-`git remote update --prune` : command to update remote branches. This will remove all remote branches which you have a local record of, but are no longer actually present on the remote.
-
-`git branch -a` : command to list all branches
-`git branch -r` - Remote branches only.
-`git branch -l` or `git branch` - Local branches only.
-
-If you have two local branches and if you want to checkout one local branch instead of another one:
-git checkout localBranch1
-git checkout localBranch2
+| git init (project name) | Creates a new local repository with the specified name |
+| git clone (url)         | downloads a project and its entire version history     |
 
 --------------------------------------------
 
-Git - Use these comments for check in :
+**** Create feature branch from command line
 
-`git status`
 
-`git diff myfile.txt` : command to see what you haven't "git add"ed yet
+| git status                                                        | To see the status of the local repository                                                                                                                                                                |
+| git branch -vv                                                    | To find out which remote branch your local branch is tracking, command to give tracking branch                                                                                                           |
+| git status -sb                                                    | To find out which remote branch your local branch is tracking, command to give tracking branch                                                                                                           |
+| git branch -m <newname>                                           | To rename the current local branch                                                                                                                                                                       |
+| git branch (local branch name) -u (remote branch name)            | To point local branch to a different remote branch                                                                                                                                                       |
+| git stash -u                                                      | command to undo all changes                                                                                                                                                                              |
+| git remote update                                                 | command to update remote branches                                                                                                                                                                        |
+| git remote update --prune                                         | command to update remote branches. This will remove all remote branches which you have a local record of, but are no longer actually present on the remote.                                              |
+| git branch -a                                                     | command to list all branches                                                                                                                                                                             |
+| git branch -r                                                     | Remote branches only.                                                                                                                                                                                    |
+| git branch -l or `git branch`                                     | Local branches only.                                                                                                                                                                                     |
 
-Instead of showing you two lines for each change, Git allows you to highlight changes in a line explicitly:
-`git diff --word-diff myfile.txt`
-(The result is usually colored nicely, the removed part being red and the added text green.)
+| git checkout -b feature/testFeatureBranch remotes/origin/develop` | To start a feature branch from command line, simply create a new branch from remotes/origin/devel:                                                                                                       |
+| git checkout localBranch1                                         | To find out which remote branch your local branch is tracking,                                                                                                                                           |
+| git checkout localBranch2                                         | To find out which remote branch your local branch is tracking,                                                                                                                                           |
+
+| git diff file_name.txt                                            | command to show changes in a specific file. command to see what you haven't "git add"ed yet                                                                                                              |
+| git diff --word-diff myfile.txt                                   | Instead of showing you two lines for each change, Git allows you to highlight changes in a line explicitly. (The result is usually colored nicely, the removed part being red and the added text green.) |
+| git diff --cached myfile.txt                                      | command to see already "-add" ed changes                                                                                                                                                                 |
+
+--------------------------------------------
+
+**** Commands for checking files in
 
 When doing a diff on a long line, this can be very helpful but you'll still get a less-like scrolling output that can be unhandy to use. You maybe just want the diff put into your terminal:
 
 `PAGER='' git diff --word-diff myfile.txt`
 
-`git diff --cached myfile.txt` : command to see already "-add" ed changes
 
 `git add -A` or `git add .` : To stage all changed files
 `git add (fileName)` : To stage individual changed files
@@ -162,7 +152,8 @@ Add your SSH private key to the ssh-agent using the following command : ssh-add 
 (this should point to the location of the private key file)
 
 ------------------------------------------------
-Undoing a 'git push'
+
+*** Undoing a 'git push'
 
 You need to make sure that no other users of this repository are fetching the incorrect changes or trying to build on top of the commits that you want removed because you are about to rewind history.
 
@@ -175,6 +166,7 @@ e.g.
 `git push -f origin cc4b63bebb6:alpha-0.3.0`
 
 ------------------------------------------------
+
 Undo a commit and redo
 
 $ git commit -m "Something terribly misguided"              (1)
@@ -195,23 +187,15 @@ $ git commit -c ORIG_HEAD                                   (5)
 
 ------------------------------------------------
 
-CLEAN LOCAL UNTRACKED FILES:
+*** Clean local untracked files
 
-How to remove local untracked files from the current Git branch?
+| git clean                                                            | To remove local untracked files from the current Git branch                                    |
+| git clean -n                                                         | To see which files will be deleted you can use the -n option before you run the actual command |
+| git clean -f                                                         | When you are comfortable (because it will delete the files for real!) use the -f option        |
+| git clean -f -d or git clean -fd                                     | To remove directories                                                                          |
+| git clean -f -X or git clean -fX (Note the case difference on the X) | To remove ignored files                                                                        |
+| git clean -f -x or git clean -fx (Note the case difference on the X) | To remove ignored and non-ignored files                                                        |
 
-Well, the short answer as per the Git Documents is `git clean`
-
-If you want to see which files will be deleted you can use the -n option before you run the actual command: `git clean -n`
-
-Then when you are comfortable (because it will delete the files for real!) use the -f option: `git clean -f`
-
-Here are some more options for you to delete directories, files, ignored and non-ignored files
-
-* To remove directories, run git clean -f -d or git clean -fd
-* To remove ignored files, run git clean -f -X or git clean -fX
-* To remove ignored and non-ignored files, run git clean -f -x or git clean -fx
-
-Note the case difference on the X for the two latter commands.
 
 -------------------------------------------------------
 
@@ -237,22 +221,31 @@ TO VIEW RECENT COMMIT MESSAGES : `GIT LOG --ONELINE`
 
 If the commit you want to fix isn’t the most recent one:
 
-* git rebase --interactive $parent_of_flawed_commit (after the git log command, if you want to edit the fifth commit, then enter the name of the sixth commit in this command.)
+   #+BEGIN_EXAMPLE
+   git rebase --interactive $parent_of_flawed_commit (after the git log command, if you want to edit the fifth commit, then enter the name of the sixth commit in this command.)
+   #+END_EXAMPLE
  
 If you want to fix several flawed commits, pass the parent of the oldest one of them.
  
-* An editor will come up, with a list of all commits since the one you gave.
-*     Change pick to reword (or on old versions of Git, to edit) in front of any commits you want to fix.
-*     Once you save, Git will replay the listed commits.
+
+   #+BEGIN_EXAMPLE
+   An editor will come up, with a list of all commits since the one you gave.
+   Change pick to reword (or on old versions of Git, to edit) in front of any commits you want to fix.
+   Once you save, Git will replay the listed commits.
+   #+END_EXAMPLE
  
 For each commit you want to reword, Git will drop you back into your editor. For each commit you want to edit, Git drops you into the shell. If you’re in the shell:
-*     Change the commit in any way you like.
-*     git commit --amend
-*     git rebase --continue
+   #+BEGIN_EXAMPLE
+   Change the commit in any way you like.
+   git commit --amend
+   git rebase --continue
+   #+END_EXAMPLE
 
 Most of this sequence will be explained to you by the output of the various commands as you go. It’s very easy, you don’t need to memorise it – just remember that git rebase --interactive lets you correct commits no matter how long ago they were.
 
 -----------------------------------------------------------
 
+*** Helpful Resources
+    
 https://www.atlassian.com/git/tutorials/merging-vs-rebasing 
 
