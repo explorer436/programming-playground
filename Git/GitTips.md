@@ -1,19 +1,19 @@
 
 # Table of Contents
 
-1.  [Configure Tooling](#orgb141d88)
-2.  [Commands](#org0c3ea9e)
-    1.  [Create Repositories](#org8f325a7)
-    2.  [Create feature branch from command line](#orgff238da)
-    3.  [Commands for checking files in](#orga9d6d01)
-    4.  [Authentication issues](#org6491cf1)
-3.  [Undoing a git push](#org544beb2)
-4.  [Undo a commit and redo](#org74ff37d)
-5.  [Clean local untracked files](#org81f8e9b)
-6.  [Helpful Resources](#org9301426)
+1.  [Configure Tooling](#org7ab59dd)
+2.  [Commands](#orgfe2706b)
+    1.  [Create Repositories](#orgde83e36)
+    2.  [Create feature branch from command line](#orgfa731ef)
+    3.  [Commands for checking files in](#org1220224)
+    4.  [Clean local untracked files](#org2f9aa5e)
+3.  [Authentication issues](#org594e67c)
+4.  [Undoing a git push](#org8cf05bd)
+5.  [Undo a commit and redo](#orga6b07a0)
+6.  [Helpful Resources](#orga3dae29)
 
 
-<a id="orgb141d88"></a>
+<a id="org7ab59dd"></a>
 
 # Configure Tooling
 
@@ -27,12 +27,12 @@
 ---
 
 
-<a id="org0c3ea9e"></a>
+<a id="orgfe2706b"></a>
 
 # Commands
 
 
-<a id="org8f325a7"></a>
+<a id="orgde83e36"></a>
 
 ## Create Repositories
 
@@ -61,7 +61,7 @@
 ---
 
 
-<a id="orgff238da"></a>
+<a id="orgfa731ef"></a>
 
 ## Create feature branch from command line
 
@@ -179,7 +179,7 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="org-left">git diff file<sub>name.txt</sub></td>
+<td class="org-left">git diff filename.txt</td>
 <td class="org-left">command to show changes in a specific file. command to see what you haven't "git add"ed yet</td>
 </tr>
 
@@ -200,13 +200,13 @@
 ---
 
 
-<a id="orga9d6d01"></a>
+<a id="org1220224"></a>
 
 ## Commands for checking files in
 
 When doing a diff on a long line, this can be very helpful but you'll still get a less-like scrolling output that can be unhandy to use. You maybe just want the diff put into your terminal:
 
-\`PAGER='' git diff &#x2013;word-diff myfile.txt\`
+    `PAGER='' git diff --word-diff myfile.txt`
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -302,139 +302,10 @@ When doing a diff on a long line, this can be very helpful but you'll still get 
 </tbody>
 </table>
 
----
 
-GIT: SEE ALL UNPUSHED COMMITS OR COMMITS THAT ARE NOT IN ANOTHER BRANCH
+<a id="org2f9aa5e"></a>
 
-If you need to find out which of your local commits are not on the remote server do this:
-
-\`git cherry -v\`
-
-The -v option prints out the commit messages. Without it you will see only the SHA1 codes.
-
-You may also compare against another (upstream) branch like that:
-
-\`git cherry -v origin/somebranch\`
-
-This tool is especially useful when you have a ton of commits after a merge and want to know the commit differences between branches
-
-Once you have the list, use this to see the files that changed in each commit : \`git show (COMMIT<sub>HASH</sub>)\`
-
----
-
-\`git reset &#x2013;soft HEAD~\` (When you reset back to HEAD~ (the parent of HEAD), 
-    you are moving the branch back to where it was without changing the Index (staging area) or Working Directory. 
-
-You could now do a bit more work and commit again to accomplish basically what git commit &#x2013;amend would have done. 
-
-Note that if you run git status now you'll see in green the difference between the Index and what the new HEAD is.)
-git reset &#x2013;mixed HEAD~  (It still undid your last commit, but also unstaged everything. 
-
-You rolled back to before you ran all your git adds AND git commit.)
-
----
-
-If the names of your local branch and the remote branch are different, you will see this message.
-fatal: The upstream branch of your current branch does not match the name of your current branch.
-To push to the upstream branch on the remote, use "git push origin HEAD:feature/LifeEventObjectLocks"
-To push to the branch of the same name on the remote, use "git push origin feature/SavePropertyQuoteFailureLifeEventObjectLocks"
-
----
-
-
-<a id="org6491cf1"></a>
-
-## Authentication issues
-
-$ git pull
-
-Permission denied (publickey).
-fatal: Could not read from remote repository.
-Please make sure you have the correct access rights and the repository exists.
-A "Permission denied" error means that the server rejected your connection. 
-
-Resolution 1 : 
-\`git remote set-url origin <https://n0281526@git.forge.lmig.com/scm/uscm-esales/services-policywriting.git>\`
-
-Resolution 2 : 
-
-If you generated the keys yourself from your client machine, do not forget to add them to the SSH agent using the command "ssh-add".
-Run ssh-add on the client machine, that will add the SSH key to the agent. 
-
-To figure out where your client's SSH agent is looking for private and public keys, use this command:
-\`ssh -vT git@github.com\`
-
-This will show the list of the directories that your computer's SSH agent is looking in for public and private keys.
-If everything looks good with this command, you are pretty much set to push and pull from the remote repositories.
-
-You can change the protocol that your local repository is using to communicate with the remote repository :
-It can be HTTPS or SSH.
-The issue with using HTTPS URL is, every time you want to push a change, it might ask you for username and password.
-With SSH, you don't have to enter username and password every single time.
-
-Use these commands to switch between the two :
-
-1.  \`git remote set-url origin <https://github.com/USERNAME/REPOSITORY.git>\` (if you want to use HTTPS)
-    
-    If you got authentication issues with the GIT console you can try your auth this way : \`<https://><username>:<password>@bitbucket.org/<username>/<repo>.git\`
-
-2.  \`git remote set-url origin git@github.com:USERNAME/REPOSITORY.git\` (if you want to use SSH)
-    
-    ssh-keygen -t rsa -b 4096 -C "explorer436@tutanota.com" (When you're prompted to "Enter a file in which to save the key,"
-
-press Enter. This accepts the default file location.) Now add this SSH ket to bitbucket server.
-
-  If you want to add an SSH key generated from Git console to the ssh-agent in your computer : 
-( You might need to start ssh-agent before you run the ssh-add command: eval \`ssh-agent -s\` or eval $(ssh-agent))
-Add your SSH private key to the ssh-agent using the following command : ssh-add  ~/Downloads/CloudForgeGitSSHKeys/id<sub>rsa</sub>
-(this should point to the location of the private key file)
-
----
-
-
-<a id="org544beb2"></a>
-
-# Undoing a git push
-
-You need to make sure that no other users of this repository are fetching the incorrect changes or trying to build on top of the commits that you want removed because you are about to rewind history.
-
-Then you need to 'force' push the old reference.
-
-    `git push -f origin last_known_good_commit:branch_name`
-
-e.g.
-
-    `git push -f origin cc4b63bebb6:alpha-0.3.0`
-
----
-
-
-<a id="org74ff37d"></a>
-
-# Undo a commit and redo
-
-$ git commit -m "Something terribly misguided"              (1)
-
-$ git reset HEAD~                                           (2)
-
-<< edit files as necessary >>                               (3)
-
-$ git add &#x2026;                                               (4)
-
-$ git commit -c ORIG<sub>HEAD</sub>                                   (5)
-
-1.  This is what you want to undo
-2.  This leaves your working tree (the state of your files on disk) unchanged but undoes the commit and leaves the changes you  committed unstaged (so they'll appear as "Changes not staged for commit" in git status, and you'll need to add them again before committing). If you only want to add more changes to the previous commit, or change the commit message1, you could use git reset &#x2013;soft HEAD~ instead, which is like git reset HEAD~ (where HEAD~ is the same as HEAD~1) but leaves your existing changes staged.
-3.  Make corrections to working tree files.
-4.  git add anything that you want to include in your new commit.
-5.  Commit the changes, reusing the old commit message. reset copied the old head to .git/ORIG<sub>HEAD</sub>; commit with -c ORIG<sub>HEAD</sub> will open an editor, which initially contains the log message from the old commit and allows you to edit it. If you do not need to edit the message, you could use the -C option.
-
----
-
-
-<a id="org81f8e9b"></a>
-
-# Clean local untracked files
+## Clean local untracked files
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -484,6 +355,133 @@ $ git commit -c ORIG<sub>HEAD</sub>                                   (5)
 
 ---
 
+GIT: SEE ALL UNPUSHED COMMITS OR COMMITS THAT ARE NOT IN ANOTHER BRANCH
+
+If you need to find out which of your local commits are not on the remote server do this:
+
+\`git cherry -v\`
+
+The -v option prints out the commit messages. Without it you will see only the SHA1 codes.
+
+You may also compare against another (upstream) branch like that:
+
+\`git cherry -v origin/somebranch\`
+
+This tool is especially useful when you have a ton of commits after a merge and want to know the commit differences between branches
+
+Once you have the list, use this to see the files that changed in each commit : \`git show (COMMIT<sub>HASH</sub>)\`
+
+---
+
+\`git reset &#x2013;soft HEAD~\` (When you reset back to HEAD~ (the parent of HEAD), 
+    you are moving the branch back to where it was without changing the Index (staging area) or Working Directory. 
+
+You could now do a bit more work and commit again to accomplish basically what git commit &#x2013;amend would have done. 
+
+Note that if you run git status now you'll see in green the difference between the Index and what the new HEAD is.)
+git reset &#x2013;mixed HEAD~  (It still undid your last commit, but also unstaged everything. 
+
+You rolled back to before you ran all your git adds AND git commit.)
+
+---
+
+If the names of your local branch and the remote branch are different, you will see this message.
+fatal: The upstream branch of your current branch does not match the name of your current branch.
+To push to the upstream branch on the remote, use "git push origin HEAD:feature/LifeEventObjectLocks"
+To push to the branch of the same name on the remote, use "git push origin feature/SavePropertyQuoteFailureLifeEventObjectLocks"
+
+---
+
+
+<a id="org594e67c"></a>
+
+# Authentication issues
+
+$ git pull
+
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+Please make sure you have the correct access rights and the repository exists.
+A "Permission denied" error means that the server rejected your connection. 
+
+Resolution 1 : 
+\`git remote set-url origin <https://n0281526@git.forge.lmig.com/scm/uscm-esales/services-policywriting.git>\`
+
+Resolution 2 : 
+
+If you generated the keys yourself from your client machine, do not forget to add them to the SSH agent using the command "ssh-add".
+Run ssh-add on the client machine, that will add the SSH key to the agent. 
+
+To figure out where your client's SSH agent is looking for private and public keys, use this command:
+\`ssh -vT git@github.com\`
+
+This will show the list of the directories that your computer's SSH agent is looking in for public and private keys.
+If everything looks good with this command, you are pretty much set to push and pull from the remote repositories.
+
+You can change the protocol that your local repository is using to communicate with the remote repository :
+It can be HTTPS or SSH.
+The issue with using HTTPS URL is, every time you want to push a change, it might ask you for username and password.
+With SSH, you don't have to enter username and password every single time.
+
+Use these commands to switch between the two :
+
+1.  \`git remote set-url origin <https://github.com/USERNAME/REPOSITORY.git>\` (if you want to use HTTPS)
+    
+    If you got authentication issues with the GIT console you can try your auth this way : \`<https://><username>:<password>@bitbucket.org/<username>/<repo>.git\`
+
+2.  \`git remote set-url origin git@github.com:USERNAME/REPOSITORY.git\` (if you want to use SSH)
+    
+    ssh-keygen -t rsa -b 4096 -C "explorer436@tutanota.com" (When you're prompted to "Enter a file in which to save the key,"
+
+press Enter. This accepts the default file location.) Now add this SSH ket to bitbucket server.
+
+  If you want to add an SSH key generated from Git console to the ssh-agent in your computer : 
+( You might need to start ssh-agent before you run the ssh-add command: eval \`ssh-agent -s\` or eval $(ssh-agent))
+Add your SSH private key to the ssh-agent using the following command : ssh-add  ~/Downloads/CloudForgeGitSSHKeys/id<sub>rsa</sub>
+(this should point to the location of the private key file)
+
+---
+
+
+<a id="org8cf05bd"></a>
+
+# Undoing a git push
+
+You need to make sure that no other users of this repository are fetching the incorrect changes or trying to build on top of the commits that you want removed because you are about to rewind history.
+
+Then you need to 'force' push the old reference.
+
+    `git push -f origin last_known_good_commit:branch_name`
+
+e.g.
+
+    `git push -f origin cc4b63bebb6:alpha-0.3.0`
+
+---
+
+
+<a id="orga6b07a0"></a>
+
+# Undo a commit and redo
+
+    $ git commit -m "Something terribly misguided"              (1)
+    
+    $ git reset HEAD~                                           (2)
+    
+    << edit files as necessary >>                               (3)
+    
+    $ git add ...                                               (4)
+    
+    $ git commit -c ORIG_HEAD                                   (5)
+
+1.  This is what you want to undo
+2.  This leaves your working tree (the state of your files on disk) unchanged but undoes the commit and leaves the changes you  committed unstaged (so they'll appear as "Changes not staged for commit" in git status, and you'll need to add them again before committing). If you only want to add more changes to the previous commit, or change the commit message1, you could use git reset &#x2013;soft HEAD~ instead, which is like git reset HEAD~ (where HEAD~ is the same as HEAD~1) but leaves your existing changes staged.
+3.  Make corrections to working tree files.
+4.  git add anything that you want to include in your new commit.
+5.  Commit the changes, reusing the old commit message. reset copied the old head to .git/ORIG<sub>HEAD</sub>; commit with -c ORIG<sub>HEAD</sub> will open an editor, which initially contains the log message from the old commit and allows you to edit it. If you do not need to edit the message, you could use the -C option.
+
+---
+
 If the commit you want to fix isn’t the most recent one:
 
     git rebase --interactive $parent_of_flawed_commit (after the git log command, if you want to edit the fifth commit, then enter the name of the sixth commit in this command.)
@@ -505,7 +503,7 @@ Most of this sequence will be explained to you by the output of the various comm
 ---
 
 
-<a id="org9301426"></a>
+<a id="orga3dae29"></a>
 
 # Helpful Resources
 

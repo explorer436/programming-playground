@@ -38,7 +38,7 @@
 | git checkout localBranch1                                         | To find out which remote branch your local branch is tracking,                                                                                                                                           |
 | git checkout localBranch2                                         | To find out which remote branch your local branch is tracking,                                                                                                                                           |
 
-| git diff file_name.txt                                            | command to show changes in a specific file. command to see what you haven't "git add"ed yet                                                                                                              |
+| git diff filename.txt                                            | command to show changes in a specific file. command to see what you haven't "git add"ed yet                                                                                                              |
 | git diff --word-diff myfile.txt                                   | Instead of showing you two lines for each change, Git allows you to highlight changes in a line explicitly. (The result is usually colored nicely, the removed part being red and the added text green.) |
 | git diff --cached myfile.txt                                      | command to see already "-add" ed changes                                                                                                                                                                 |
 
@@ -48,7 +48,9 @@
 
 When doing a diff on a long line, this can be very helpful but you'll still get a less-like scrolling output that can be unhandy to use. You maybe just want the diff put into your terminal:
 
-`PAGER='' git diff --word-diff myfile.txt`
+   #+BEGIN_EXAMPLE
+   `PAGER='' git diff --word-diff myfile.txt`
+   #+END_EXAMPLE
 
 
 | git add -A` or `git add .`                       | To stage all changed files                                                                                                                                                                                                           |
@@ -66,6 +68,15 @@ When doing a diff on a long line, this can be very helpful but you'll still get 
 | git reset --hard HEAD~                           | (You undid your last commit, all the git adds, and all the work you did in your working directory.)                                                                                                                                  |
 | git reset --hard origin/master<remotebranchname> | master branch and 'origin/master' have diverged, how to 'undiverge' branches'                                                                                                                                                        |
  
+**** Clean local untracked files
+
+| git clean                                                            | To remove local untracked files from the current Git branch                                    |
+| git clean -n                                                         | To see which files will be deleted you can use the -n option before you run the actual command |
+| git clean -f                                                         | When you are comfortable (because it will delete the files for real!) use the -f option        |
+| git clean -f -d or git clean -fd                                     | To remove directories                                                                          |
+| git clean -f -X or git clean -fX (Note the case difference on the X) | To remove ignored files                                                                        |
+| git clean -f -x or git clean -fx (Note the case difference on the X) | To remove ignored and non-ignored files                                                        |
+
 -------------------------------------------------------
 
 GIT: SEE ALL UNPUSHED COMMITS OR COMMITS THAT ARE NOT IN ANOTHER BRANCH
@@ -105,7 +116,7 @@ To push to the branch of the same name on the remote, use "git push origin featu
     
 --------------------------------------------
 
-**** Authentication issues
+*** Authentication issues
 
 $ git pull
 
@@ -171,32 +182,23 @@ e.g.
 
 *** Undo a commit and redo
 
-$ git commit -m "Something terribly misguided"              (1)
-
-$ git reset HEAD~                                           (2)
-
-<< edit files as necessary >>                               (3)
-
-$ git add ...                                               (4)
-
-$ git commit -c ORIG_HEAD                                   (5)
+   #+BEGIN_EXAMPLE
+    $ git commit -m "Something terribly misguided"              (1)
+    
+    $ git reset HEAD~                                           (2)
+    
+    << edit files as necessary >>                               (3)
+    
+    $ git add ...                                               (4)
+    
+    $ git commit -c ORIG_HEAD                                   (5)
+   #+END_EXAMPLE
 
 1. This is what you want to undo
 2. This leaves your working tree (the state of your files on disk) unchanged but undoes the commit and leaves the changes you  committed unstaged (so they'll appear as "Changes not staged for commit" in git status, and you'll need to add them again before committing). If you only want to add more changes to the previous commit, or change the commit message1, you could use git reset --soft HEAD~ instead, which is like git reset HEAD~ (where HEAD~ is the same as HEAD~1) but leaves your existing changes staged.
 3. Make corrections to working tree files.
 4. git add anything that you want to include in your new commit.
 5. Commit the changes, reusing the old commit message. reset copied the old head to .git/ORIG_HEAD; commit with -c ORIG_HEAD will open an editor, which initially contains the log message from the old commit and allows you to edit it. If you do not need to edit the message, you could use the -C option.
-
-------------------------------------------------
-
-*** Clean local untracked files
-
-| git clean                                                            | To remove local untracked files from the current Git branch                                    |
-| git clean -n                                                         | To see which files will be deleted you can use the -n option before you run the actual command |
-| git clean -f                                                         | When you are comfortable (because it will delete the files for real!) use the -f option        |
-| git clean -f -d or git clean -fd                                     | To remove directories                                                                          |
-| git clean -f -X or git clean -fX (Note the case difference on the X) | To remove ignored files                                                                        |
-| git clean -f -x or git clean -fx (Note the case difference on the X) | To remove ignored and non-ignored files                                                        |
 
 -------------------------------------------------------
 
