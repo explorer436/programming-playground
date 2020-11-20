@@ -1,13 +1,19 @@
 
 # Table of Contents
 
-1.  [Configure Tooling](#org4603dfb)
-2.  [Commands](#org8c084e7)
-    1.  [CREATE REPOSITORIES :](#org4e6daea)
-3.  [Helpful Resources](#orgc544bae)
+1.  [Configure Tooling](#orgb141d88)
+2.  [Commands](#org0c3ea9e)
+    1.  [Create Repositories](#org8f325a7)
+    2.  [Create feature branch from command line](#orgff238da)
+    3.  [Commands for checking files in](#orga9d6d01)
+    4.  [Authentication issues](#org6491cf1)
+3.  [Undoing a git push](#org544beb2)
+4.  [Undo a commit and redo](#org74ff37d)
+5.  [Clean local untracked files](#org81f8e9b)
+6.  [Helpful Resources](#org9301426)
 
 
-<a id="org4603dfb"></a>
+<a id="orgb141d88"></a>
 
 # Configure Tooling
 
@@ -21,14 +27,14 @@
 ---
 
 
-<a id="org8c084e7"></a>
+<a id="org0c3ea9e"></a>
 
 # Commands
 
 
-<a id="org4e6daea"></a>
+<a id="org8f325a7"></a>
 
-## CREATE REPOSITORIES :
+## Create Repositories
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -54,7 +60,10 @@
 
 ---
 
-CREATE FEATURE BRANCH FROM COMMAND LINE : 
+
+<a id="orgff238da"></a>
+
+## Create feature branch from command line
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -190,43 +199,126 @@ CREATE FEATURE BRANCH FROM COMMAND LINE :
 
 ---
 
-COMMANDS FOR CHECKING FILES IN
+
+<a id="orga9d6d01"></a>
+
+## Commands for checking files in
 
 When doing a diff on a long line, this can be very helpful but you'll still get a less-like scrolling output that can be unhandy to use. You maybe just want the diff put into your terminal:
 
 \`PAGER='' git diff &#x2013;word-diff myfile.txt\`
 
-\`git add -A\` or \`git add .\` : To stage all changed files
-\`git add (fileName)\` : To stage individual changed files
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
-\`git commit -m "comments - include JIRA id in comments"\`
 
-\`git commit -m 'USPS-684 MapAddressesToSSMForDeletedAgreementAddressTypes' path/to/my/file.ext\` - this is the 
-command to git commit a single file/directory
+<colgroup>
+<col  class="org-left" />
 
-\`git push\`
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">git add -A` or `git add .`</td>
+<td class="org-left">To stage all changed files</td>
+</tr>
 
-\`git push <remotename> <commit SHA>:<remotebranchname>\`
 
-If it says "Your branch is ahead of 'origin/feature/LifeXXXXXX' by 1 commit" and 
-if you want to push your commit to remote branch, use \`git push\`.
+<tr>
+<td class="org-left">git add (fileName)`</td>
+<td class="org-left">To stage individual changed files</td>
+</tr>
 
-If you do not want to push your commit to remote branch, use \`git reset HEAD~\`
 
-\`git revert\` : is used to undo a previous commit. In git, you can't alter or erase an earlier commit. 
-    (Actually you can, but it can cause problems.) 
-    So instead of editing the earlier commit, revert introduces a new commit that reverses an earlier one.
+<tr>
+<td class="org-left">git commit -m "commit message"</td>
+<td class="org-left">To commit with a custom message</td>
+</tr>
 
-\`git reset\`  : is used to undo changes in your working directory that haven't been comitted yet.
 
-\`git checkout\` : is used to copy a file from some other commit to your current working tree. 
-    It doesn't automatically commit the file. (Switch branches or restore working tree files)
+<tr>
+<td class="org-left">GIT LOG &#x2013;ONELINE</td>
+<td class="org-left">To view recent commit messages</td>
+</tr>
 
-\`git checkout fileName\` - Command to undo changes to a single file in working directory
 
-\`git reset &#x2013;mixed HEAD file.txt\` - it essentially just takes whatever file.txt looks like in HEAD and puts that in the Index
+<tr>
+<td class="org-left">git push</td>
+<td class="org-left">To push the commits to an upsteam remote branch</td>
+</tr>
 
-\`git reset HEAD~\` (to undo previous commits that you don't want to push)
+
+<tr>
+<td class="org-left">git reset HEAD~</td>
+<td class="org-left">If you do not want to push your commit to remote branch</td>
+</tr>
+
+
+<tr>
+<td class="org-left">git revert</td>
+<td class="org-left">To undo a previous commit. In git, you can't alter or erase an earlier commit. (Actually you can, but it can cause problems.) So instead of editing the earlier commit, revert introduces a new commit that reverses an earlier one.</td>
+</tr>
+
+
+<tr>
+<td class="org-left">git reset</td>
+<td class="org-left">To undo changes in your working directory that haven't been comitted yet</td>
+</tr>
+
+
+<tr>
+<td class="org-left">git checkout</td>
+<td class="org-left">To copy a file from some other commit to your current working tree. It doesn't automatically commit the file. (Switch branches or restore working tree files)</td>
+</tr>
+
+
+<tr>
+<td class="org-left">git checkout fileName</td>
+<td class="org-left">Command to undo changes to a single file in working directory</td>
+</tr>
+
+
+<tr>
+<td class="org-left">git reset &#x2013;mixed HEAD file.txt</td>
+<td class="org-left">it essentially just takes whatever file.txt looks like in HEAD and puts that in the Index</td>
+</tr>
+
+
+<tr>
+<td class="org-left">git reset HEAD~</td>
+<td class="org-left">To undo previous commits that you don't want to push</td>
+</tr>
+
+
+<tr>
+<td class="org-left">git reset &#x2013;hard HEAD~</td>
+<td class="org-left">(You undid your last commit, all the git adds, and all the work you did in your working directory.)</td>
+</tr>
+
+
+<tr>
+<td class="org-left">git reset &#x2013;hard origin/master&lt;remotebranchname&gt;</td>
+<td class="org-left">master branch and 'origin/master' have diverged, how to 'undiverge' branches'</td>
+</tr>
+</tbody>
+</table>
+
+---
+
+GIT: SEE ALL UNPUSHED COMMITS OR COMMITS THAT ARE NOT IN ANOTHER BRANCH
+
+If you need to find out which of your local commits are not on the remote server do this:
+
+\`git cherry -v\`
+
+The -v option prints out the commit messages. Without it you will see only the SHA1 codes.
+
+You may also compare against another (upstream) branch like that:
+
+\`git cherry -v origin/somebranch\`
+
+This tool is especially useful when you have a ton of commits after a merge and want to know the commit differences between branches
+
+Once you have the list, use this to see the files that changed in each commit : \`git show (COMMIT<sub>HASH</sub>)\`
 
 ---
 
@@ -242,18 +334,17 @@ You rolled back to before you ran all your git adds AND git commit.)
 
 ---
 
-\`git reset &#x2013;hard HEAD~\`  (You undid your last commit, all the git adds, and all the work you did in your working directory.)
-
-\`git reset &#x2013;hard origin/master<remotebranchname>\` : master branch and 'origin/master' have diverged, how to 'undiverge' branches'
-
----
-
 If the names of your local branch and the remote branch are different, you will see this message.
 fatal: The upstream branch of your current branch does not match the name of your current branch.
 To push to the upstream branch on the remote, use "git push origin HEAD:feature/LifeEventObjectLocks"
 To push to the branch of the same name on the remote, use "git push origin feature/SavePropertyQuoteFailureLifeEventObjectLocks"
 
 ---
+
+
+<a id="org6491cf1"></a>
+
+## Authentication issues
 
 $ git pull
 
@@ -300,21 +391,27 @@ Add your SSH private key to the ssh-agent using the following command : ssh-add 
 
 ---
 
-Undoing a 'git push'
+
+<a id="org544beb2"></a>
+
+# Undoing a git push
 
 You need to make sure that no other users of this repository are fetching the incorrect changes or trying to build on top of the commits that you want removed because you are about to rewind history.
 
 Then you need to 'force' push the old reference.
 
-\`git push -f origin last<sub>known</sub><sub>good</sub><sub>commit</sub>:branch<sub>name</sub>\`
+    `git push -f origin last_known_good_commit:branch_name`
 
 e.g.
 
-\`git push -f origin cc4b63bebb6:alpha-0.3.0\`
+    `git push -f origin cc4b63bebb6:alpha-0.3.0`
 
 ---
 
-Undo a commit and redo
+
+<a id="org74ff37d"></a>
+
+# Undo a commit and redo
 
 $ git commit -m "Something terribly misguided"              (1)
 
@@ -334,45 +431,58 @@ $ git commit -c ORIG<sub>HEAD</sub>                                   (5)
 
 ---
 
-CLEAN LOCAL UNTRACKED FILES:
 
-How to remove local untracked files from the current Git branch?
+<a id="org81f8e9b"></a>
 
-Well, the short answer as per the Git Documents is \`git clean\`
+# Clean local untracked files
 
-If you want to see which files will be deleted you can use the -n option before you run the actual command: \`git clean -n\`
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
-Then when you are comfortable (because it will delete the files for real!) use the -f option: \`git clean -f\`
 
-Here are some more options for you to delete directories, files, ignored and non-ignored files
+<colgroup>
+<col  class="org-left" />
 
-To remove directories, run git clean -f -d or git clean -fd
-To remove ignored files, run git clean -f -X or git clean -fX
-To remove ignored and non-ignored files, run git clean -f -x or git clean -fx
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">git clean</td>
+<td class="org-left">To remove local untracked files from the current Git branch</td>
+</tr>
 
-Note the case difference on the X for the two latter commands.
+
+<tr>
+<td class="org-left">git clean -n</td>
+<td class="org-left">To see which files will be deleted you can use the -n option before you run the actual command</td>
+</tr>
+
+
+<tr>
+<td class="org-left">git clean -f</td>
+<td class="org-left">When you are comfortable (because it will delete the files for real!) use the -f option</td>
+</tr>
+
+
+<tr>
+<td class="org-left">git clean -f -d or git clean -fd</td>
+<td class="org-left">To remove directories</td>
+</tr>
+
+
+<tr>
+<td class="org-left">git clean -f -X or git clean -fX (Note the case difference on the X)</td>
+<td class="org-left">To remove ignored files</td>
+</tr>
+
+
+<tr>
+<td class="org-left">git clean -f -x or git clean -fx (Note the case difference on the X)</td>
+<td class="org-left">To remove ignored and non-ignored files</td>
+</tr>
+</tbody>
+</table>
 
 ---
-
-GIT: SEE ALL UNPUSHED COMMITS OR COMMITS THAT ARE NOT IN ANOTHER BRANCH
-
-If you need to find out which of your local commits are not on the remote server do this:
-
-\`git cherry -v\`
-
-The -v option prints out the commit messages. Without it you will see only the SHA1 codes.
-
-You may also compare against another (upstream) branch like that:
-
-\`git cherry -v origin/somebranch\`
-
-This tool is especially useful when you have a ton of commits after a merge and want to know the commit differences between branches
-
-Once you have the list, use this to see the files that changed in each commit : \`git show (COMMIT<sub>HASH</sub>)\`
-
----
-
-TO VIEW RECENT COMMIT MESSAGES : \`GIT LOG &#x2013;ONELINE\`
 
 If the commit you want to fix isn’t the most recent one:
 
@@ -395,7 +505,7 @@ Most of this sequence will be explained to you by the output of the various comm
 ---
 
 
-<a id="orgc544bae"></a>
+<a id="org9301426"></a>
 
 # Helpful Resources
 

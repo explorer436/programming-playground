@@ -22,7 +22,6 @@
 
 **** Create feature branch from command line
 
-
 | git status                                                        | To see the status of the local repository                                                                                                                                                                |
 | git branch -vv                                                    | To find out which remote branch your local branch is tracking, command to give tracking branch                                                                                                           |
 | git status -sb                                                    | To find out which remote branch your local branch is tracking, command to give tracking branch                                                                                                           |
@@ -52,39 +51,41 @@ When doing a diff on a long line, this can be very helpful but you'll still get 
 `PAGER='' git diff --word-diff myfile.txt`
 
 
-`git add -A` or `git add .` : To stage all changed files
-`git add (fileName)` : To stage individual changed files
-
-`git commit -m "comments - include JIRA id in comments"`
-
-`git commit -m 'USPS-684 MapAddressesToSSMForDeletedAgreementAddressTypes' path/to/my/file.ext` - this is the 
-command to git commit a single file/directory
-
-`git push`
-
-`git push <remotename> <commit SHA>:<remotebranchname>`
-
-If it says "Your branch is ahead of 'origin/feature/LifeXXXXXX' by 1 commit" and 
-if you want to push your commit to remote branch, use `git push`.
+| git add -A` or `git add .`                       | To stage all changed files                                                                                                                                                                                                           |
+| git add (fileName)`                              | To stage individual changed files                                                                                                                                                                                                    |
+| git commit -m "commit message"                   | To commit with a custom message                                                                                                                                                                                                      |
+| GIT LOG --ONELINE                                | To view recent commit messages                                                                                                                                                                                                       |
+| git push                                         | To push the commits to an upsteam remote branch                                                                                                                                                                                      |
+| git reset HEAD~                                  | If you do not want to push your commit to remote branch                                                                                                                                                                              |
+| git revert                                       | To undo a previous commit. In git, you can't alter or erase an earlier commit. (Actually you can, but it can cause problems.) So instead of editing the earlier commit, revert introduces a new commit that reverses an earlier one. |
+| git reset                                        | To undo changes in your working directory that haven't been comitted yet                                                                                                                                                             |
+| git checkout                                     | To copy a file from some other commit to your current working tree. It doesn't automatically commit the file. (Switch branches or restore working tree files)                                                                        |
+| git checkout fileName                            | Command to undo changes to a single file in working directory                                                                                                                                                                        |
+| git reset --mixed HEAD file.txt                  | it essentially just takes whatever file.txt looks like in HEAD and puts that in the Index                                                                                                                                            |
+| git reset HEAD~                                  | To undo previous commits that you don't want to push                                                                                                                                                                                 |
+| git reset --hard HEAD~                           | (You undid your last commit, all the git adds, and all the work you did in your working directory.)                                                                                                                                  |
+| git reset --hard origin/master<remotebranchname> | master branch and 'origin/master' have diverged, how to 'undiverge' branches'                                                                                                                                                        |
  
-If you do not want to push your commit to remote branch, use `git reset HEAD~`
+-------------------------------------------------------
 
-`git revert` : is used to undo a previous commit. In git, you can't alter or erase an earlier commit. 
-    (Actually you can, but it can cause problems.) 
-    So instead of editing the earlier commit, revert introduces a new commit that reverses an earlier one.
-    
-`git reset`  : is used to undo changes in your working directory that haven't been comitted yet.
+GIT: SEE ALL UNPUSHED COMMITS OR COMMITS THAT ARE NOT IN ANOTHER BRANCH
 
-`git checkout` : is used to copy a file from some other commit to your current working tree. 
-    It doesn't automatically commit the file. (Switch branches or restore working tree files)
+If you need to find out which of your local commits are not on the remote server do this:
 
-`git checkout fileName` - Command to undo changes to a single file in working directory
+`git cherry -v`
 
-`git reset --mixed HEAD file.txt` - it essentially just takes whatever file.txt looks like in HEAD and puts that in the Index
+The -v option prints out the commit messages. Without it you will see only the SHA1 codes.
 
-`git reset HEAD~` (to undo previous commits that you don't want to push)
+You may also compare against another (upstream) branch like that:
+
+`git cherry -v origin/somebranch`
+
+This tool is especially useful when you have a ton of commits after a merge and want to know the commit differences between branches
+
+Once you have the list, use this to see the files that changed in each commit : `git show (COMMIT_HASH)`
 
 ---------------------------------------------------
+
 `git reset --soft HEAD~` (When you reset back to HEAD~ (the parent of HEAD), 
     you are moving the branch back to where it was without changing the Index (staging area) or Working Directory. 
     
@@ -97,18 +98,15 @@ You rolled back to before you ran all your git adds AND git commit.)
     
 ---------------------------------------------------
     
-`git reset --hard HEAD~`  (You undid your last commit, all the git adds, and all the work you did in your working directory.)
-
-`git reset --hard origin/master<remotebranchname>` : master branch and 'origin/master' have diverged, how to 'undiverge' branches'
-
----------------------------------------------------
-
 If the names of your local branch and the remote branch are different, you will see this message.
 fatal: The upstream branch of your current branch does not match the name of your current branch.
 To push to the upstream branch on the remote, use "git push origin HEAD:feature/LifeEventObjectLocks"
 To push to the branch of the same name on the remote, use "git push origin feature/SavePropertyQuoteFailureLifeEventObjectLocks"
     
 --------------------------------------------
+
+**** Authentication issues
+
 $ git pull
 
 Permission denied (publickey).
@@ -153,21 +151,25 @@ Add your SSH private key to the ssh-agent using the following command : ssh-add 
 
 ------------------------------------------------
 
-*** Undoing a 'git push'
+*** Undoing a git push
 
 You need to make sure that no other users of this repository are fetching the incorrect changes or trying to build on top of the commits that you want removed because you are about to rewind history.
 
 Then you need to 'force' push the old reference.
 
-`git push -f origin last_known_good_commit:branch_name`
+   #+BEGIN_EXAMPLE
+   `git push -f origin last_known_good_commit:branch_name`
+   #+END_EXAMPLE
 
 e.g.
 
-`git push -f origin cc4b63bebb6:alpha-0.3.0`
+   #+BEGIN_EXAMPLE
+   `git push -f origin cc4b63bebb6:alpha-0.3.0`
+   #+END_EXAMPLE
 
 ------------------------------------------------
 
-Undo a commit and redo
+*** Undo a commit and redo
 
 $ git commit -m "Something terribly misguided"              (1)
 
@@ -196,28 +198,7 @@ $ git commit -c ORIG_HEAD                                   (5)
 | git clean -f -X or git clean -fX (Note the case difference on the X) | To remove ignored files                                                                        |
 | git clean -f -x or git clean -fx (Note the case difference on the X) | To remove ignored and non-ignored files                                                        |
 
-
 -------------------------------------------------------
-
-GIT: SEE ALL UNPUSHED COMMITS OR COMMITS THAT ARE NOT IN ANOTHER BRANCH
-
-If you need to find out which of your local commits are not on the remote server do this:
-
-`git cherry -v`
-
-The -v option prints out the commit messages. Without it you will see only the SHA1 codes.
-
-You may also compare against another (upstream) branch like that:
-
-`git cherry -v origin/somebranch`
-
-This tool is especially useful when you have a ton of commits after a merge and want to know the commit differences between branches
-
-Once you have the list, use this to see the files that changed in each commit : `git show (COMMIT_HASH)`
-
--------------------------------------------------------
-
-TO VIEW RECENT COMMIT MESSAGES : `GIT LOG --ONELINE`
 
 If the commit you want to fix isn’t the most recent one:
 
@@ -226,7 +207,6 @@ If the commit you want to fix isn’t the most recent one:
    #+END_EXAMPLE
  
 If you want to fix several flawed commits, pass the parent of the oldest one of them.
- 
 
    #+BEGIN_EXAMPLE
    An editor will come up, with a list of all commits since the one you gave.
@@ -235,6 +215,7 @@ If you want to fix several flawed commits, pass the parent of the oldest one of 
    #+END_EXAMPLE
  
 For each commit you want to reword, Git will drop you back into your editor. For each commit you want to edit, Git drops you into the shell. If you’re in the shell:
+
    #+BEGIN_EXAMPLE
    Change the commit in any way you like.
    git commit --amend
