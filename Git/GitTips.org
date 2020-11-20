@@ -22,29 +22,35 @@
 
 **** Create feature branch from command line
 
-| git status                                                        | To see the status of the local repository                                                                                                                                                                |
 | git branch -vv                                                    | To find out which remote branch your local branch is tracking, command to give tracking branch                                                                                                           |
 | git status -sb                                                    | To find out which remote branch your local branch is tracking, command to give tracking branch                                                                                                           |
-| git branch -m <newname>                                           | To rename the current local branch                                                                                                                                                                       |
-| git branch (local branch name) -u (remote branch name)            | To point local branch to a different remote branch                                                                                                                                                       |
-| git stash -u                                                      | command to undo all changes                                                                                                                                                                              |
+
 | git remote update                                                 | command to update remote branches                                                                                                                                                                        |
 | git remote update --prune                                         | command to update remote branches. This will remove all remote branches which you have a local record of, but are no longer actually present on the remote.                                              |
+
+| git branch -m <newname>                                           | To rename the current local branch                                                                                                                                                                       |
+| git branch (local branch name) -u (remote branch name)            | To point local branch to a different remote branch                                                                                                                                                       |
 | git branch -a                                                     | command to list all branches                                                                                                                                                                             |
 | git branch -r                                                     | Remote branches only.                                                                                                                                                                                    |
 | git branch -l or `git branch`                                     | Local branches only.                                                                                                                                                                                     |
 
-| git checkout -b feature/testFeatureBranch remotes/origin/develop` | To start a feature branch from command line, simply create a new branch from remotes/origin/devel:                                                                                                       |
+| git checkout -b feature/testFeatureBranch remotes/origin/develop` | To start a feature branch from command line, simply create a new branch from remotes/origin/develop                                                                                                     |
 | git checkout localBranch1                                         | To find out which remote branch your local branch is tracking,                                                                                                                                           |
 | git checkout localBranch2                                         | To find out which remote branch your local branch is tracking,                                                                                                                                           |
 
-| git diff filename.txt                                            | command to show changes in a specific file. command to see what you haven't "git add"ed yet                                                                                                              |
-| git diff --word-diff myfile.txt                                   | Instead of showing you two lines for each change, Git allows you to highlight changes in a line explicitly. (The result is usually colored nicely, the removed part being red and the added text green.) |
-| git diff --cached myfile.txt                                      | command to see already "-add" ed changes                                                                                                                                                                 |
-
---------------------------------------------
-
-**** Commands for checking files in
+| git status                      | To see the status of the local repository                                                                                                                                                                                            |
+| git diff filename.txt           | command to show changes in a specific file. command to see what you haven't "git add"ed yet                                                                                                                                          |
+| git diff --word-diff myfile.txt | Instead of showing you two lines for each change, Git allows you to highlight changes in a line explicitly. (The result is usually colored nicely, the removed part being red and the added text green.)                             |
+| git diff --cached myfile.txt    | command to see already "-add" ed changes                                                                                                                                                                                             |
+| git add -A` or `git add .`      | To stage all changed files                                                                                                                                                                                                           |
+| git add (fileName)`             | To stage individual changed files                                                                                                                                                                                                    |
+| git checkout                    | To copy a file from some other commit to your current working tree. It doesn't automatically commit the file. (Switch branches or restore working tree files)                                                                        |
+| git checkout fileName           | Command to undo changes to a single file in working directory                                                                                                                                                                        |
+| git commit -m "commit message"  | To commit with a custom message                                                                                                                                                                                                      |
+| git stash -u                    | command to undo all changes                                                                                                                                                                                                          |
+| GIT LOG --ONELINE               | To view recent commit messages                                                                                                                                                                                                       |
+| git push                        | To push the commits to an upsteam remote branch                                                                                                                                                                                      |
+| git revert                      | To undo a previous commit. In git, you can't alter or erase an earlier commit. (Actually you can, but it can cause problems.) So instead of editing the earlier commit, revert introduces a new commit that reverses an earlier one. |
 
 When doing a diff on a long line, this can be very helpful but you'll still get a less-like scrolling output that can be unhandy to use. You maybe just want the diff put into your terminal:
 
@@ -52,23 +58,14 @@ When doing a diff on a long line, this can be very helpful but you'll still get 
    `PAGER='' git diff --word-diff myfile.txt`
    #+END_EXAMPLE
 
-
-| git add -A` or `git add .`                       | To stage all changed files                                                                                                                                                                                                           |
-| git add (fileName)`                              | To stage individual changed files                                                                                                                                                                                                    |
-| git commit -m "commit message"                   | To commit with a custom message                                                                                                                                                                                                      |
-| GIT LOG --ONELINE                                | To view recent commit messages                                                                                                                                                                                                       |
-| git push                                         | To push the commits to an upsteam remote branch                                                                                                                                                                                      |
-| git reset HEAD~                                  | If you do not want to push your commit to remote branch                                                                                                                                                                              |
-| git revert                                       | To undo a previous commit. In git, you can't alter or erase an earlier commit. (Actually you can, but it can cause problems.) So instead of editing the earlier commit, revert introduces a new commit that reverses an earlier one. |
-| git reset                                        | To undo changes in your working directory that haven't been comitted yet                                                                                                                                                             |
-| git checkout                                     | To copy a file from some other commit to your current working tree. It doesn't automatically commit the file. (Switch branches or restore working tree files)                                                                        |
-| git checkout fileName                            | Command to undo changes to a single file in working directory                                                                                                                                                                        |
-| git reset --mixed HEAD file.txt                  | it essentially just takes whatever file.txt looks like in HEAD and puts that in the Index                                                                                                                                            |
-| git reset HEAD~                                  | To undo previous commits that you don't want to push                                                                                                                                                                                 |
-| git reset --hard HEAD~                           | (You undid your last commit, all the git adds, and all the work you did in your working directory.)                                                                                                                                  |
-| git reset --hard origin/master<remotebranchname> | master branch and 'origin/master' have diverged, how to 'undiverge' branches'                                                                                                                                                        |
- 
-**** Clean local untracked files
+| git reset                                        | To undo changes in your working directory that haven't been comitted yet                                                                                                                                                                                                                                                                                                                                  |
+| git reset --mixed HEAD file.txt                  | it essentially just takes whatever file.txt looks like in HEAD and puts that in the Index                                                                                                                                                                                                                                                                                                                 |
+| git reset HEAD~                                  | If you do not want to push your commit to remote branch                                                                                                                                                                                                                                                                                                                                                   |
+| git reset HEAD~                                  | To undo previous commits that you don't want to push                                                                                                                                                                                                                                                                                                                                                      |
+| git reset --hard HEAD~                           | (You undid your last commit, all the git adds, and all the work you did in your working directory.)                                                                                                                                                                                                                                                                                                       |
+| git reset --hard origin/master<remotebranchname> | master branch and 'origin/master' have diverged, how to 'undiverge' branches'                                                                                                                                                                                                                                                                                                                             |
+| git reset --soft HEAD~                           | (When you reset back to HEAD~ (the parent of HEAD), you are moving the branch back to where it was without changing the Index (staging area) or Working Directory. You could now do a bit more work and commit again to accomplish basically what git commit --amend would have done. Note that if you run git status now you'll see in green the difference between the Index and what the new HEAD is.) |
+| git reset --mixed HEAD~                          | It still undid your last commit, but also unstaged everything. You rolled back to before you ran all your git adds AND git commit.                                                                                                                                                                                                                                                                        |
 
 | git clean                                                            | To remove local untracked files from the current Git branch                                    |
 | git clean -n                                                         | To see which files will be deleted you can use the -n option before you run the actual command |
@@ -81,87 +78,12 @@ When doing a diff on a long line, this can be very helpful but you'll still get 
 
 GIT: SEE ALL UNPUSHED COMMITS OR COMMITS THAT ARE NOT IN ANOTHER BRANCH
 
-If you need to find out which of your local commits are not on the remote server do this:
-
-`git cherry -v`
-
-The -v option prints out the commit messages. Without it you will see only the SHA1 codes.
-
-You may also compare against another (upstream) branch like that:
-
-`git cherry -v origin/somebranch`
-
-This tool is especially useful when you have a ton of commits after a merge and want to know the commit differences between branches
-
-Once you have the list, use this to see the files that changed in each commit : `git show (COMMIT_HASH)`
+| git cherry -v                   | If you need to find out which of your local commits are not on the remote server do this. The -v option prints out the commit messages. Without it you will see only the SHA1 codes.                   |
+| git cherry -v origin/somebranch | You may also compare against another (upstream) branch like that. This tool is especially useful when you have a ton of commits after a merge and want to know the commit differences between branches |
+| git show (COMMIT_HASH)          | Once you have the list from the command above, use this to see the files that changed in each commit                                                                                                   |
 
 ---------------------------------------------------
-
-`git reset --soft HEAD~` (When you reset back to HEAD~ (the parent of HEAD), 
-    you are moving the branch back to where it was without changing the Index (staging area) or Working Directory. 
     
-You could now do a bit more work and commit again to accomplish basically what git commit --amend would have done. 
-
-Note that if you run git status now you'll see in green the difference between the Index and what the new HEAD is.)
-git reset --mixed HEAD~  (It still undid your last commit, but also unstaged everything. 
-
-You rolled back to before you ran all your git adds AND git commit.)
-    
----------------------------------------------------
-    
-If the names of your local branch and the remote branch are different, you will see this message.
-fatal: The upstream branch of your current branch does not match the name of your current branch.
-To push to the upstream branch on the remote, use "git push origin HEAD:feature/LifeEventObjectLocks"
-To push to the branch of the same name on the remote, use "git push origin feature/SavePropertyQuoteFailureLifeEventObjectLocks"
-    
---------------------------------------------
-
-*** Authentication issues
-
-$ git pull
-
-Permission denied (publickey).
-fatal: Could not read from remote repository.
-Please make sure you have the correct access rights and the repository exists.
-A "Permission denied" error means that the server rejected your connection. 
-
-Resolution 1 : 
-`git remote set-url origin https://n0281526@git.forge.lmig.com/scm/uscm-esales/services-policywriting.git`
-
-Resolution 2 : 
-
-If you generated the keys yourself from your client machine, do not forget to add them to the SSH agent using the command "ssh-add".
-Run ssh-add on the client machine, that will add the SSH key to the agent. 
-
-To figure out where your client's SSH agent is looking for private and public keys, use this command:
-`ssh -vT git@github.com`
-
-This will show the list of the directories that your computer's SSH agent is looking in for public and private keys.
-If everything looks good with this command, you are pretty much set to push and pull from the remote repositories.
-
-You can change the protocol that your local repository is using to communicate with the remote repository :
-It can be HTTPS or SSH.
-The issue with using HTTPS URL is, every time you want to push a change, it might ask you for username and password.
-With SSH, you don't have to enter username and password every single time.
-
-Use these commands to switch between the two :
-
-1. `git remote set-url origin https://github.com/USERNAME/REPOSITORY.git` (if you want to use HTTPS)
-
-  If you got authentication issues with the GIT console you can try your auth this way : `https://<username>:<password>@bitbucket.org/<username>/<repo>.git`
-
-2. `git remote set-url origin git@github.com:USERNAME/REPOSITORY.git` (if you want to use SSH)
-
-  ssh-keygen -t rsa -b 4096 -C "explorer436@tutanota.com" (When you're prompted to "Enter a file in which to save the key," 
-press Enter. This accepts the default file location.) Now add this SSH ket to bitbucket server.
-
-  If you want to add an SSH key generated from Git console to the ssh-agent in your computer : 
-( You might need to start ssh-agent before you run the ssh-add command: eval `ssh-agent -s` or eval $(ssh-agent))
-Add your SSH private key to the ssh-agent using the following command : ssh-add  ~/Downloads/CloudForgeGitSSHKeys/id_rsa
-(this should point to the location of the private key file)
-
-------------------------------------------------
-
 *** Undoing a git push
 
 You need to make sure that no other users of this repository are fetching the incorrect changes or trying to build on top of the commits that you want removed because you are about to rewind history.
@@ -225,6 +147,52 @@ For each commit you want to reword, Git will drop you back into your editor. For
    #+END_EXAMPLE
 
 Most of this sequence will be explained to you by the output of the various commands as you go. It’s very easy, you don’t need to memorise it – just remember that git rebase --interactive lets you correct commits no matter how long ago they were.
+
+-----------------------------------------------------------
+
+*** Authentication issues
+
+$ git pull
+
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+Please make sure you have the correct access rights and the repository exists.
+A "Permission denied" error means that the server rejected your connection. 
+
+Resolution 1 : 
+`git remote set-url origin https://n0281526@git.forge.lmig.com/scm/uscm-esales/services-policywriting.git`
+
+Resolution 2 : 
+
+If you generated the keys yourself from your client machine, do not forget to add them to the SSH agent using the command "ssh-add".
+Run ssh-add on the client machine, that will add the SSH key to the agent. 
+
+To figure out where your client's SSH agent is looking for private and public keys, use this command:
+`ssh -vT git@github.com`
+
+This will show the list of the directories that your computer's SSH agent is looking in for public and private keys.
+If everything looks good with this command, you are pretty much set to push and pull from the remote repositories.
+
+You can change the protocol that your local repository is using to communicate with the remote repository :
+It can be HTTPS or SSH.
+The issue with using HTTPS URL is, every time you want to push a change, it might ask you for username and password.
+With SSH, you don't have to enter username and password every single time.
+
+Use these commands to switch between the two :
+
+1. `git remote set-url origin https://github.com/USERNAME/REPOSITORY.git` (if you want to use HTTPS)
+
+  If you got authentication issues with the GIT console you can try your auth this way : `https://<username>:<password>@bitbucket.org/<username>/<repo>.git`
+
+2. `git remote set-url origin git@github.com:USERNAME/REPOSITORY.git` (if you want to use SSH)
+
+  ssh-keygen -t rsa -b 4096 -C "explorer436@tutanota.com" (When you're prompted to "Enter a file in which to save the key," 
+press Enter. This accepts the default file location.) Now add this SSH ket to bitbucket server.
+
+  If you want to add an SSH key generated from Git console to the ssh-agent in your computer : 
+( You might need to start ssh-agent before you run the ssh-add command: eval `ssh-agent -s` or eval $(ssh-agent))
+Add your SSH private key to the ssh-agent using the following command : ssh-add  ~/Downloads/CloudForgeGitSSHKeys/id_rsa
+(this should point to the location of the private key file)
 
 -----------------------------------------------------------
 
