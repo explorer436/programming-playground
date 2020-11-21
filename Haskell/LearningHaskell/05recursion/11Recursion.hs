@@ -1,5 +1,3 @@
--- TODO implement Fibonacci in Haskell.
-
 {- |
     Recursion is important to Haskell because 
         unlike imperative languages, 
@@ -9,7 +7,6 @@
     That is why there are no while loops or for loops in Haskell 
         and instead we many times have to use recursion to declare what something is.
 -}
-
 
 -------------------------------------------------------------------------
 -- The `maximum` function takes a list of things that can be ordered 
@@ -115,4 +112,3 @@ elem' a (x:xs)
 -- Take a look at Quicksort.hs
 
 -------------------------------------------------------------------------
-

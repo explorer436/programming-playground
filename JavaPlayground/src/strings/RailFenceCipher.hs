@@ -1,6 +1,6 @@
 module RailFenceCipher where
 
-import qualified StripASetOfCharactersFromAString as SSCFS
+import qualified RemoveSubstringFromAString as RSSFS
 
 {- |
     Rail Fence Cipher
@@ -56,9 +56,8 @@ testElementsOnRail02 = elementsOnRail "helloworld" 3 2 -- "elwrd"
 testElementsOnRail03 = elementsOnRail "helloworld" 3 3 -- "lo"
 
 solution :: Integral b => [Char] -> b -> [Char]
-solution inputString numberOfRails = concat [elementsOnRail (SSCFS.solution " " inputString) numberOfRails railNumber | railNumber <- [1..numberOfRails]]
+solution inputString numberOfRails = concat [elementsOnRail (RSSFS.removeSubstringFromAString " " inputString) numberOfRails railNumber | railNumber <- [1..numberOfRails]]
 testSolution01 = solution "helloworld" 3 -- "holelwrdlo"
 testSolution02 = solution "" 3 -- ""
 testSolution03 = solution "WE ARE DISCOVERED FLEE AT ONCE" 3 -- "WECRLTEERDSOEEFEAOCAIVDEN" 
 testSolution04 = solution "WE ARE DISCOVERED FLEE AT ONCE" 4 -- "WIREEEDSEEEACAECVDLTNROFO"
-

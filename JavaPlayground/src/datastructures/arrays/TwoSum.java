@@ -13,6 +13,33 @@ import java.util.Map;
  * return [0, 1].
  */
 
+
+/**
+ * 
+    Good morning! Here's your coding interview problem for today.
+    (Easy)
+    This problem was recently asked by Google.
+    Given a list of numbers and a number k, return whether any two numbers from the list add up to k.
+    For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17.
+    Bonus: Can you do this in one pass?
+ */
+
+/**
+ * 
+    Hi, here's your problem today. This problem was recently asked by Facebook:
+    You are given a list of numbers, and a target number k. Return whether or not there are two numbers in the list that add up to k.
+    Example:
+    Given [4, 7, 1 , -3, 2] and k = 5,
+    return true since 4 + 1 = 5.
+    
+    def two_sum(list, k):
+      # Fill this in.
+    
+    print two_sum([4,7,1,-3,2], 5)
+    # True
+    
+    Try to do it in a single pass of the list.
+ */
 public class TwoSum
 {
 

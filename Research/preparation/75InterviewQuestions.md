@@ -76,8 +76,6 @@ Here is a list of some of the frequently asked coding questions which are based 
 
 11. How to Print duplicate characters from String? (https://www.java67.com/2014/03/how-to-find-duplicate-characters-in-String-Java-program.html)
 
-12. How to check if two Strings are anagrams of each other? (https://javarevisited.blogspot.com/2013/03/Anagram-how-to-check-if-two-string-are-anagrams-example-tutorial.html)
-
 13. How to print first non repeated character from String? (https://javarevisited.blogspot.com/2014/03/3-ways-to-find-first-non-repeated-character-String-programming-problem.html)
 
 14. How to reverse a given String using recursion? (https://javarevisited.blogspot.com/2012/01/how-to-reverse-string-in-java-using.html)

@@ -8,18 +8,24 @@ import Data.List (isPrefixOf)
 
 -- Reference : `as patterns` in Haskell.
 
-remove :: String -> String -> String
-remove sb "" = ""
-remove sb entireWord@(x:xs)
-    | (sb `isPrefixOf` entireWord) = remove sb (drop (length sb) entireWord)
-    | otherwise = x : remove sb xs
+removeSubstringFromAString :: String -> String -> String
+removeSubstringFromAString sb "" = ""
+removeSubstringFromAString sb entireWord@(x:xs)
+    | (sb `isPrefixOf` entireWord) = removeSubstringFromAString sb (drop (length sb) entireWord)
+    | otherwise = x : removeSubstringFromAString sb xs
 
 
-removeTest01 = remove "not" "This is not good."
+removeSubstringFromAStringTest01 = removeSubstringFromAString "not" "This is not good."
 -- "This is  good."
 
-removeTest02 = remove "abc" ""
+removeSubstringFromAStringTest02 = removeSubstringFromAString "abc" ""
 -- ""
 
-removeTest03 = remove "abc" "ab"
+removeSubstringFromAStringTest03 = removeSubstringFromAString "abc" "ab"
 -- "ab"
+
+removeSubstringFromAStringTest04 = removeSubstringFromAString "-" "123-45"
+-- 12345
+
+removeSubstringFromAStringTest05 = removeSubstringFromAString "not" "This is not good."
+-- "This is  gd."

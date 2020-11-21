@@ -64,8 +64,6 @@
 
 1. How do you print duplicate characters from a string? (http://java67.blogspot.sg/2014/03/how-to-find-duplicate-characters-in-String-Java-program.html)
 
-1. How do you check if two strings are anagrams of each other? (http://javarevisited.blogspot.sg/2013/03/Anagram-how-to-check-if-two-string-are-anagrams-example-tutorial.html)
-
 1. How do you find all the permutations of a string? (http://javarevisited.blogspot.com/2015/08/how-to-find-all-permutations-of-string-java-example.html)
 
 1. How can a given string be reversed using recursion? (http://javarevisited.blogspot.sg/2012/01/how-to-reverse-string-in-java-using.html)

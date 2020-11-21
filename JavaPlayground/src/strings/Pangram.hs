@@ -31,6 +31,8 @@ charactersThatAreNotInTheSentenceTest = charactersThatAreNotInTheSentence "Sphin
 
 -- `and` takes a list of boolean values 
 -- and returns True only if all the values in the list are True.
+
+pangram :: Foldable t => t Char -> Bool
 pangram input = and $ (map (doesCharacterExistInString input) ['a'..'z'])
 
 doesCharacterExistInString input c
@@ -39,15 +41,9 @@ doesCharacterExistInString input c
 
 
 -- tests    
-pangramTest01 = pangram "The quick brown fox jumps over the lazy dog"
--- True
-pangramTest02 = pangram "test"
--- False
-pangramTest03 = pangram "Pack my box with five dozen liquor jugs"
--- True
-pangramTest04 = pangram "We promptly judged antique ivory buckles for the next prize"
--- True
-pangramTest05 = pangram "Sixty zippers were quickly picked from the woven jute bag"
--- True
-pangramTest06 = pangram "Sphinx of black quartz: judge my vow"
--- True
+pangramTest01 = pangram "The quick brown fox jumps over the lazy dog"                 -- True
+pangramTest02 = pangram "test"                                                        -- False
+pangramTest03 = pangram "Pack my box with five dozen liquor jugs"                     -- True
+pangramTest04 = pangram "We promptly judged antique ivory buckles for the next prize" -- True
+pangramTest05 = pangram "Sixty zippers were quickly picked from the woven jute bag"   -- True
+pangramTest06 = pangram "Sphinx of black quartz: judge my vow"                        -- True

@@ -1,7 +1,7 @@
 import qualified Data.List as L
 
 -- Let’s say we have a movie collection, and for some reason, 
--- we're only interested in movies whose first letter is in the first half of the alphabet. 
+-- we're only interested in movies whose first letter is in the first half of the alphabet ('a'..'z'). 
 -- In our program, we'll call those good movies, and the others bad.
 
 movies =
@@ -35,3 +35,4 @@ assessMovies = map assess
 
 assessedMovies :: [String]
 assessedMovies = assessMovies movies
+-- ["Aeon Flux - Good","The Black Cat - Bad","Superman - Bad","Stick It - Bad","The Matrix Revolutions - Bad","The Raven - Bad","Inception - Good","Looper - Good","Hoodwinked - Good","Tell-Tale - Bad"]
