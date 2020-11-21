@@ -16,3 +16,7 @@ JavaPlayground/src/preparation/.idea/modules.xml
 JavaPlayground/src/preparation/.idea/preparation.iml
 JavaPlayground/src/preparation/.idea/vcs.xml
 Erlang/.idea/*
+*.backup
+*~
+*.swp
+*.swo

@@ -1,3 +1,10 @@
+These are various tools that we can use when viewing the differences and to resolve merge conflicts.
+This takes a little bit of set-up.
+If using the terminal or the default tools for viewing diffs is not comfortable for you, these may help.
+If you cannot resolve the merge conflicts either manually or using other tools like vim-fugitive, these tools may help.
+
+--------------------------
+
 'git diff' command shows the differences on the command prompt.  
 
 GIT needs to know that KDiff3 should be used as the preferred diff/merge tool.  For this, we need to make a simple change in the .gitconfig file.  This file can be found under your home directory.
@@ -8,8 +15,8 @@ It should look something like this :
 [core]
 	longpaths = true
 [user]
-	name = Harsha Edupuganti
-	email = Harsha.Edupuganti01@libertymutual.com
+	name = Bruce Wayne
+	email = bruce.wayne@domain.com
   
   
 Add the following lines to the file :  
@@ -43,12 +50,13 @@ Hitting enter will launch the KDiff3 as the merge tool.
 KDiff3 shows nice GUI to do the merge easily.  It shows the original file on the leftmost window called "A" or "Base", local file in the middle called "B" or "Local" and remote file in the rightmost window called "C" or "Remote".
 
 --------------------------
+
 If you want to use DiffMerge as the diff and merge tool with git, this is how the git confile should look like : 
 [core]
 	longpaths = true
 [user]
-	name = Harsha Edupuganti
-	email = Harsha.Edupuganti01@libertymutual.com
+	name = Bruce Wayne
+	email = bruce.wayne@domain.com
 
 [merge]
 	tool = DiffMerge
@@ -65,12 +73,13 @@ If you want to use DiffMerge as the diff and merge tool with git, this is how th
     trustExitCode = false
     
 --------------------------
+
 To use diffuse as the merge tool and kdiff3 as the diff tool : 
 [core]
 	longpaths = true
 [user]
-	name = Harsha Edupuganti
-	email = Harsha.Edupuganti01@libertymutual.com
+	name = Bruce Wayne
+	email = bruce.wayne@domain.com
 
 [merge]
 	tool = diffuse
@@ -85,3 +94,5 @@ To use diffuse as the merge tool and kdiff3 as the diff tool :
     path = C:/Program Files/KDiff3/kdiff3.exe
     keepBackup = false
     trustExitCode = false
+
+--------------------------
