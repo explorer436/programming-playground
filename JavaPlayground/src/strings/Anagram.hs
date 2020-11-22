@@ -1,4 +1,5 @@
 import Data.Char (toUpper)
+import Data.List (partition, groupBy)
 import qualified RemoveSubstringFromAString as RSSFS
 
 -- `and` takes a list of boolean values 
@@ -6,22 +7,23 @@ import qualified RemoveSubstringFromAString as RSSFS
 
 anagram :: [Char] -> [Char] -> Bool
 anagram str1 str2
-    | (length str1WithSpacesRemoved /= length str2WithSpacesRemoved) = False
-    | (length (removeDuplicates str1WithSpacesRemoved) /= length (removeDuplicates str2WithSpacesRemoved)) = False
+    | length str1WithSpacesRemoved /= length str2WithSpacesRemoved = False
+    | length (removeDuplicates str1WithSpacesRemoved) /= length (removeDuplicates str2WithSpacesRemoved) = False
     | doesAllCharactersInStr1ExistInStr2 str1WithSpacesRemoved str2WithSpacesRemoved    = True
     | otherwise = False
     where str1WithSpacesRemoved = map toUpper (RSSFS.removeSubstringFromAString " " str1)
           str2WithSpacesRemoved = map toUpper (RSSFS.removeSubstringFromAString " " str2)
 
 -- Reference: CheckIfAllCharsOfAStringAreInAnotherString.hs
-doesAllCharactersInStr1ExistInStr2 str1 str2 = and $ map (doesCharacterExistInString str2) str1
+-- Module:	Prelude, Function:	all, returns True if all items in the list fulfill the condition
+doesAllCharactersInStr1ExistInStr2 str1 str2 = all (doesCharacterExistInString str2) str1
 
 doesCharacterExistInString inputString c
-    | (c `elem` inputString) = True
+    | c `elem` inputString = True
     | otherwise = False
 
--- Reference: RemoveDuplicatesFromList.hs
-removeDuplicates xs = foldl (\result x -> if (x `elem` result) then result else (x:result)) [] xs
+-- Reference: RemoveDuplicatesFromList.hs. Using ETA reduce here.
+removeDuplicates = foldl (\result x -> if (x `elem` result) then result else (x:result)) []
 
 -- tests
 anagramTest01 = anagram "listen" "silent"                       -- True
@@ -81,6 +83,25 @@ anagramTest30 = anagram "Fourth of July" "Joyful Fourth"        -- True
     For example, given that W is "ab", and S is "abxaba", return 0, 3, and 4.
 -}
 
+formGroupsOfN :: [a] -> Int -> [[a]]
+formGroupsOfN [] _ = []
+formGroupsOfN str n = first : formGroupsOfN rest n
+                        where
+                            first = take n str 
+                            rest = drop 1 str
+formGroupsOfNTest01 = formGroupsOfN "acdbacdacb" 3
+-- ["acd","cdb","dba","bac","acd","cda","dac","acb","cb","b"]
+formGroupsOfNTest02 = formGroupsOfN "abxaba" 2
+-- ["ab","bx","xa","ab","ba","a"]
+
+possibleTuples01 = zip (formGroupsOfN "acdbacdacb" 3) [0,1..]
+solution01 = [ snd x | x <- possibleTuples01, anagram (fst x) "abc"]
+-- [3,7]
+
+possibleTuples02 = zip (formGroupsOfN "abxaba" 2) [0,1..]
+solution02 = [ snd x | x <- possibleTuples02, anagram (fst x) "ab"]
+-- [0,3,4]
+
 {- |
     Hi, here's your problem today. This problem was recently asked by AirBNB:
 
@@ -100,5 +121,19 @@ anagramTest30 = anagram "Fourth of July" "Joyful Fourth"        -- True
 
     print groupAnagramWords(['abc', 'bcd', 'cba', 'cbd', 'efg'])
     # [['efg'], ['bcd', 'cbd'], ['abc', 'cba']]
-
 -}
+
+giveListWithHeadAndItsAnagrams :: [String] -> [String]
+giveListWithHeadAndItsAnagrams [] = []
+giveListWithHeadAndItsAnagrams xs = [ abc | abc <- xs, anagram (head xs) abc]
+giveListWithHeadAndItsAnagramsTest01 = giveListWithHeadAndItsAnagrams ["abc", "bcd", "cba", "cbd", "efg"]
+-- ["abc","cba"]
+
+solution04 :: [String] -> [[String]]
+solution04 [] = []
+solution04 xs = first : solution04 rest
+                        where
+                            first = giveListWithHeadAndItsAnagrams xs
+                            rest = giveListWithHeadAndItsAnagrams (drop 1 xs)
+solution04Test01 = solution04 ["abc", "bcd", "cba", "cbd", "efg"]    
+-- [["abc","cba"],["bcd","cbd"],["cbd"]]                        

@@ -71,9 +71,9 @@ import Data.Char (digitToInt)
 
 isValidIsbn :: String -> Bool
 isValidIsbn isbn
-    | ((length isbnStrippedOfHyphens) /= 10)         = False
-    | (checkSum isbnStrippedOfHyphens `mod` 11 == 0) = True
-    | otherwise                                      = False
+    | length isbnStrippedOfHyphens /= 10           = False
+    | checkSum isbnStrippedOfHyphens `mod` 11 == 0 = True
+    | otherwise                                    = False
     where isbnStrippedOfHyphens = remove "-" isbn
 
 -- tests
