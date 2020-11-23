@@ -1,9 +1,5 @@
 import Data.Char (toUpper)
-import Data.List (partition, groupBy)
 import qualified RemoveSubstringFromAString as RSSFS
-
--- `and` takes a list of boolean values 
--- and returns True only if all the values in the list are True.
 
 anagram :: [Char] -> [Char] -> Bool
 anagram str1 str2
@@ -83,22 +79,21 @@ anagramTest30 = anagram "Fourth of July" "Joyful Fourth"        -- True
     For example, given that W is "ab", and S is "abxaba", return 0, 3, and 4.
 -}
 
-formGroupsOfN :: [a] -> Int -> [[a]]
-formGroupsOfN [] _ = []
-formGroupsOfN str n = first : formGroupsOfN rest n
-                        where
-                            first = take n str 
-                            rest = drop 1 str
-formGroupsOfNTest01 = formGroupsOfN "acdbacdacb" 3
+getGroupsOfNCharacters :: [a] -> Int -> [[a]]
+getGroupsOfNCharacters [] _ = []
+getGroupsOfNCharacters str n = first : getGroupsOfNCharacters rest n
+                        where first = take n str 
+                              rest  = drop 1 str
+getGroupsOfNCharactersTest01 = getGroupsOfNCharacters "acdbacdacb" 3
 -- ["acd","cdb","dba","bac","acd","cda","dac","acb","cb","b"]
-formGroupsOfNTest02 = formGroupsOfN "abxaba" 2
+getGroupsOfNCharactersTest02 = getGroupsOfNCharacters "abxaba" 2
 -- ["ab","bx","xa","ab","ba","a"]
 
-possibleTuples01 = zip (formGroupsOfN "acdbacdacb" 3) [0,1..]
+possibleTuples01 = zip (getGroupsOfNCharacters "acdbacdacb" 3) [0,1..]
 solution01 = [ snd x | x <- possibleTuples01, anagram (fst x) "abc"]
 -- [3,7]
 
-possibleTuples02 = zip (formGroupsOfN "abxaba" 2) [0,1..]
+possibleTuples02 = zip (getGroupsOfNCharacters "abxaba" 2) [0,1..]
 solution02 = [ snd x | x <- possibleTuples02, anagram (fst x) "ab"]
 -- [0,3,4]
 
@@ -123,17 +118,17 @@ solution02 = [ snd x | x <- possibleTuples02, anagram (fst x) "ab"]
     # [['efg'], ['bcd', 'cbd'], ['abc', 'cba']]
 -}
 
-giveListWithHeadAndItsAnagrams :: [String] -> [String]
-giveListWithHeadAndItsAnagrams [] = []
-giveListWithHeadAndItsAnagrams xs = [ abc | abc <- xs, anagram (head xs) abc]
-giveListWithHeadAndItsAnagramsTest01 = giveListWithHeadAndItsAnagrams ["abc", "bcd", "cba", "cbd", "efg"]
+getListWithHeadAndItsAnagrams :: [String] -> [String]
+getListWithHeadAndItsAnagrams [] = []
+getListWithHeadAndItsAnagrams xs = [ abc | abc <- xs, anagram (head xs) abc]
+getListWithHeadAndItsAnagramsTest01 = getListWithHeadAndItsAnagrams ["abc", "bcd", "cba", "cbd", "efg"]
 -- ["abc","cba"]
 
 solution04 :: [String] -> [[String]]
 solution04 [] = []
 solution04 xs = first : solution04 rest
                         where
-                            first = giveListWithHeadAndItsAnagrams xs
-                            rest = giveListWithHeadAndItsAnagrams (drop 1 xs)
+                            first = getListWithHeadAndItsAnagrams xs
+                            rest  = getListWithHeadAndItsAnagrams (drop 1 xs)
 solution04Test01 = solution04 ["abc", "bcd", "cba", "cbd", "efg"]    
 -- [["abc","cba"],["bcd","cbd"],["cbd"]]                        
