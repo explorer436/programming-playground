@@ -1,4 +1,4 @@
--- solve :: [Int] -> [Int] -> Int
+solve :: [Int] -> Int
 solve (n:m:rest) = length 
                     $ filter (\x -> bsGcd `mod` x == 0) 
                     $ takeWhile (<= bsGcd) 
