@@ -5,17 +5,17 @@
 -- In Haskell, lists are homogenous (stores same type of elements).
 
 {- |
- In Haskell, strings are just a list of characters. 
- "hello" is just syntactic sugar for ['h', 'e', 'l', 'l', 'o'].
- Because strings are lists, we can use list functions on them, which is really handy.
+    In Haskell, strings are just a list of characters. 
+    "hello" is just syntactic sugar for ['h', 'e', 'l', 'l', 'o'].
+    Because strings are lists, we can use list functions on them, which is really handy.
 -}
 
 {- |
- When you put together two lists (even if you append a singleton list to a list, 
- for instance: [1,2,3] ++ [4]), 
- internally, Haskell has to walk through the whole list on the left side of ++. 
- That's not a problem when dealing with lists that aren't too big. 
- But putting something at the end of a list that's fifty million entries long is going to take a while.  
+    When you put together two lists (even if you append a singleton list to a list, 
+    for instance: [1,2,3] ++ [4]), 
+    internally, Haskell has to walk through the whole list on the left side of ++. 
+    That's not a problem when dealing with lists that aren't too big. 
+    But putting something at the end of a list that's fifty million entries long is going to take a while.  
 -}
 
 puttingTwoListsTogether l1 l2 = l1 ++ l2

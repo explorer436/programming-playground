@@ -13,19 +13,19 @@
 -}
 
 minutesAngle :: (Integral b, Integral a) => a -> b
-minutesAngle n = floor $ (fromIntegral n) * (360 / 60)
+minutesAngle n = floor $ fromIntegral n * (360 / 60)
 testMinutesAngle01 = minutesAngle 15 -- 90.0
 testMinutesAngle02 = minutesAngle 27 -- 162.0
 testMinutesAngle03 = minutesAngle 55 -- 330.0
 
 hoursAngle :: (Integral b, Integral a1, Integral a2) => a1 -> a2 -> b
-hoursAngle h m = floor $ ((fromIntegral (h `mod` 12)) * (360 / 12)) + (fromIntegral m * (30 / 60))
+hoursAngle h m = floor $ (fromIntegral (h `mod` 12) * (360 / 12)) + (fromIntegral m * (30 / 60))
 testHoursAngle01 = hoursAngle 3 0 -- 90.0
 testHoursAngle02 = hoursAngle 3 30 -- 105.0
 testHoursAngle03 = hoursAngle 15 0 -- 90.0
 
 calcAngle :: (Integral a1, Integral a2, Integral a3) => (a2, a3) -> a1
-calcAngle t = abs $ (hoursAngle (fst t) (snd t)) - minutesAngle (snd t)
+calcAngle t = abs $ hoursAngle (fst t) (snd t) - minutesAngle (snd t)
 testCalcAngle01 = calcAngle (3, 30) -- 75.0
 testCalcAngle02 = calcAngle (12, 30) -- 165.0
 

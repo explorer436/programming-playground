@@ -199,7 +199,6 @@ Find an efficient implementation for generating a Fibonacci sequence - do not pa
 Tackle next:
 
 Palindrome substrings.
-Print all prime numbers less than n; print the number of prime numbers less than n;
 Longest common prefix in an array of words,
 Longest substring without repeating characters.
 
