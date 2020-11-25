@@ -125,23 +125,17 @@ which are basically constructors for the numeric and character types,
 respectively.
 
 Now, we're going to implement a binary search tree. 
-If you're not familiar with binary search trees from languages like C, 
-here's what they are - 
-an element points to two elements, 
-one on its left and one on its right. 
+If you're not familiar with binary search trees from languages like C, here's what they are - 
+an element points to two elements, one on its left and one on its right. 
 The element to the left is smaller, the element to the right is bigger. 
 Each of those elements can also point to two elements (or one, or none). 
-In effect, 
-each element has up to two sub-trees. 
-And a cool thing about binary search trees is that 
-we know that all the elements at the left sub-tree of, say, 5 are going to be smaller than 5. 
+In effect, each element has up to two sub-trees. 
+And a cool thing about binary search trees is that we know that all the elements at the left sub-tree of, say, 5 are going to be smaller than 5. 
 Elements in its right sub-tree are going to be bigger. 
-So if we need to find if 8 is in our tree, 
-we'd start at 5 and then because 8 is greater than 5, we'd go right. 
+So if we need to find if 8 is in our tree, we'd start at 5 and then because 8 is greater than 5, we'd go right. 
 We're now at 7 and because 8 is greater than 7, we go right again. 
 And we've found our element in three hops! 
-Now if this were a normal list (or a tree, but really unbalanced), 
-it would take us seven hops instead of three to see if 8 is in there.
+Now if this were a normal list (or a tree, but really unbalanced), it would take us seven hops instead of three to see if 8 is in there.
 
 Sets and maps from Data.Set and Data.Map are implemented using trees, 
 only instead of normal binary search trees, 
@@ -150,27 +144,20 @@ which are always balanced.
 But right now, we'll just be implementing normal binary search trees.
 
 Here's what we're going to say: 
-a tree is either an empty tree or 
-it's an element that contains some value and two trees. 
+a tree is either an empty tree or it's an element that contains some value and two trees. 
 Sounds like a perfect fit for an algebraic data type!
 
 data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Show, Read, Eq) 
 
 Okay, good, this is good. 
-Instead of manually building a tree, 
-we're going to make a function that takes a tree and an element and 
-inserts an element. 
-We do this by comparing the value we want to insert 
-to the root node and then if it's smaller, we go left, 
-if it's larger, we go right. 
+Instead of manually building a tree, we're going to make a function that takes a tree and an element and inserts an element. 
+We do this by comparing the value we want to insert to the root node and then if it's smaller, we go left, if it's larger, we go right. 
 We do the same for every subsequent node until we reach an empty tree. 
-Once we've reached an empty tree, 
-we just insert a node with that value instead of the empty tree.
+Once we've reached an empty tree, we just insert a node with that value instead of the empty tree.
 
-In languages like C, 
-we'd do this by modifying the pointers and values inside the tree. 
-In Haskell, we can't really modify our tree, 
-so we have to make a new sub-tree each time we decide to go left or right 
+In languages like C, we'd do this by modifying the pointers and values inside the tree. 
+In Haskell, we can't really modify our tree.
+So, we have to make a new sub-tree each time we decide to go left or right 
 and in the end the insertion function returns a completely new tree, 
 because Haskell doesn't really have a concept of pointer, just values. 
 Hence, the type for our insertion function is going to be something like 
