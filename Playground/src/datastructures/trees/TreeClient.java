@@ -43,7 +43,10 @@ public class TreeClient {
 		
 		System.out.println("");
 		
-		// Look at DepthFirstSearchOfBinaryTree.jpg for definitions of N, L and R.
+//    What do L, R and N stand for?
+//    (L)	Recursively traverse N's left subtree.
+//    (R)	Recursively traverse N's right subtree.
+//    (N)	Process the current node N itself.
 		
 		/*
 		 *	Pre-order (NLR)

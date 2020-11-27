@@ -3,6 +3,14 @@ Level : Painless
 
 Compute the height of a binary tree.
 
+		 			     5
+		 			   /  \ 
+					  /    \
+					 /      \
+					3       10
+  				   / \     /
+  				  /   \   /
+				 20    21 1
 
 In this problem we consider binary trees, represented by pointer data structures.
 

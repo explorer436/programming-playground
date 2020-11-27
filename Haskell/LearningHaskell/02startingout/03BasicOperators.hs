@@ -1,11 +1,9 @@
 Basic operators
 
-|   |   |
-|---|---|
-| Arithmetic “operators” |	+, -, *, / |
-| Boolean “operators” |	&&, ||, ==, /=, not |
-| String concatenation |	++ |
-| List concatenation |	++ |
+| Arithmetic “operators” | +, -, *, /                                            |
+| Boolean “operators”    | &&, (two vertical pipes - stands for OR), ==, /=, not |
+| String concatenation   | ++                                                    |
+| List concatenation     | ++                                                    |
 
 
 Note:
