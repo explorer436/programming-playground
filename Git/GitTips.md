@@ -1,36 +1,39 @@
 
 # Table of Contents
 
-1.  [Configure Tooling](#org78bdfcf)
-2.  [Commands](#orgc7ea4e1)
-    1.  [Create Repositories](#org4d8122c)
-    2.  [Create feature branch from command line](#org8b41225)
-3.  [Undoing a git push](#org05a70b4)
-4.  [Undo a commit and redo](#org5424ed9)
-5.  [Authentication issues](#orga79e372)
-6.  [Helpful Resources](#orgb16c6cd)
+1.  [Configure Tooling](#org41c4fb0)
+2.  [Commands](#orge229508)
+    1.  [Create Repositories](#orgb8e9235)
+    2.  [Create feature branch from command line](#org01eefed)
+3.  [Undoing a git push](#org6c6c285)
+4.  [Undo a commit and redo](#org3ee9f61)
+5.  [Authentication issues](#orgaaffcaa)
+6.  [Helpful Resources](#orgf6485c6)
 
 
-<a id="org78bdfcf"></a>
+<a id="org41c4fb0"></a>
 
 # Configure Tooling
 
     git config --global push.default simple
     git config --global user.name "Bruce Wayne"
     git config --global user.email explorer436@tutanota.com
+    git config --global merge.conflictstyle diff3
     git config --system core.longpaths true
     git config --global color.ui auto
     git config --global core.autocrlf true
 
+What is "merge.conflictStyle"? Specify the style in which conflicted hunks are written out to working tree files upon merge. The default is "merge", which shows a <<<<<<< conflict marker, changes made by one side, a `=====` marker, changes made by the other side, and then a >>>>>>> marker. An alternate style, "diff3", adds a ||||||| marker and the original text before the `=====` marker.
+
 ---
 
 
-<a id="orgc7ea4e1"></a>
+<a id="orge229508"></a>
 
 # Commands
 
 
-<a id="org4d8122c"></a>
+<a id="orgb8e9235"></a>
 
 ## Create Repositories
 
@@ -59,7 +62,7 @@
 ---
 
 
-<a id="org8b41225"></a>
+<a id="org01eefed"></a>
 
 ## Create feature branch from command line
 
@@ -263,6 +266,10 @@
 </tbody>
 </table>
 
+When doing a diff on a long line, this can be very helpful but you'll still get a less-like scrolling output that can be unhandy to use. You maybe just want the diff put into your terminal:
+
+    `PAGER='' git diff --word-diff myfile.txt`
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -369,12 +376,6 @@
 
 ---
 
-When doing a diff on a long line, this can be very helpful but you'll still get a less-like scrolling output that can be unhandy to use. You maybe just want the diff put into your terminal:
-
-    `PAGER='' git diff --word-diff myfile.txt`
-
----
-
 GIT: SEE ALL UNPUSHED COMMITS OR COMMITS THAT ARE NOT IN ANOTHER BRANCH
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -408,7 +409,7 @@ GIT: SEE ALL UNPUSHED COMMITS OR COMMITS THAT ARE NOT IN ANOTHER BRANCH
 ---
 
 
-<a id="org05a70b4"></a>
+<a id="org6c6c285"></a>
 
 # Undoing a git push
 
@@ -425,7 +426,7 @@ e.g.
 ---
 
 
-<a id="org5424ed9"></a>
+<a id="org3ee9f61"></a>
 
 # Undo a commit and redo
 
@@ -468,7 +469,7 @@ Most of this sequence will be explained to you by the output of the various comm
 ---
 
 
-<a id="orga79e372"></a>
+<a id="orgaaffcaa"></a>
 
 # Authentication issues
 
@@ -518,7 +519,7 @@ Add your SSH private key to the ssh-agent using the following command : ssh-add 
 ---
 
 
-<a id="orgb16c6cd"></a>
+<a id="orgf6485c6"></a>
 
 # Helpful Resources
 

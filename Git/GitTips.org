@@ -4,11 +4,14 @@
    git config --global push.default simple
    git config --global user.name "Bruce Wayne"
    git config --global user.email explorer436@tutanota.com
+   git config --global merge.conflictstyle diff3
    git config --system core.longpaths true
    git config --global color.ui auto
    git config --global core.autocrlf true
    #+END_EXAMPLE
- 
+
+What is "merge.conflictStyle"? Specify the style in which conflicted hunks are written out to working tree files upon merge. The default is "merge", which shows a <<<<<<< conflict marker, changes made by one side, a ======= marker, changes made by the other side, and then a >>>>>>> marker. An alternate style, "diff3", adds a ||||||| marker and the original text before the ======= marker.
+
 --------------------------------------------
 
 *** Commands 
