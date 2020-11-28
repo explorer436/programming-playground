@@ -13,3 +13,4 @@ Tsoding videos on Youtube.
 
 Two sum in Haskell.
 
+Implement permutations using Haskell.

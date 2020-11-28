@@ -12,7 +12,7 @@ import utility.ArrayUtils;
 public class Permutations {
 	
 	/**
-	 * The second method is preferred because 
+	 *  The second method is preferred because 
 	 *  solution that converts to a char array and swaps to generate the permutations will require much less copying and generate much less garbage.
 	 *  
 	 *  TODO

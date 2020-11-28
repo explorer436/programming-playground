@@ -1,3 +1,5 @@
+import Data.List (permutations, foldl')
+
 {- |
     WE ARE GOING TO IMPLEMENT A BINARY SEARCH TREE. 
 
@@ -58,6 +60,11 @@ treeInsert x (Node a left right)
     | x == a = Node x left right  
     | x < a  = Node a (treeInsert x left) right  
     | x > a  = Node a left (treeInsert x right)
+
+-- TODO
+-- delete an element from a tree
+-- get the minimum value from the tree
+-- get the maximum value from the tree
     
 {- |
     The singleton function is just a shortcut for making a node 
@@ -96,6 +103,8 @@ treeElem x (Node a left right)
     | x == a = True  
     | x < a  = treeElem x left  
     | x > a  = treeElem x right 
+
+----------------------------------------------------------------------------------------------------
     
 {- |
     All we had to do was write up the previous paragraph in code. 
@@ -110,10 +119,12 @@ treeElem x (Node a left right)
     just insert element after element into our accumulator tree.
 -}
 
-nums = [8,6,4,1,7,3,5]  
-numsTree :: Tree Integer
 -- using a right fold here.
-numsTree = foldr treeInsert EmptyTree nums  
+treeFromRight :: (Foldable t, Ord a) => t a -> Tree a
+treeFromRight xs = foldr treeInsert EmptyTree xs
+
+nums = [8,6,4,1,7,3,5]  
+numsTreeFromRight = treeFromRight nums
 -- Node 5 (Node 3 (Node 1 EmptyTree EmptyTree) (Node 4 EmptyTree EmptyTree)) (Node 7 (Node 6 EmptyTree EmptyTree) (Node 8 EmptyTree EmptyTree))  
 
 {- |
@@ -129,7 +140,7 @@ numsTree = foldr treeInsert EmptyTree nums
 -}
 
 {- |
-    In that foldr for numsTree, 
+    In that foldr for treeFromRight, 
     treeInsert was the folding function 
     (it takes a tree and a list element and produces a new tree) and 
     EmptyTree was the starting accumulator. 
@@ -142,16 +153,21 @@ numsTree = foldr treeInsert EmptyTree nums
 -}
 
 -- Checking for membership also works nicely.
-testTreeElement01 =  8 `treeElem` numsTree   -- True  
-testTreeElement02 =  100 `treeElem` numsTree -- False  
-testTreeElement03 =  1 `treeElem` numsTree   -- True  
-testTreeElement04 =  10 `treeElem` numsTree  --  False  
+testTreeFromRightElement01 =  8 `treeElem` numsTreeFromRight   -- True  
+testTreeFromRightElement02 =  100 `treeElem` numsTreeFromRight -- False  
+testTreeFromRightElement03 =  1 `treeElem` numsTreeFromRight   -- True  
+testTreeFromRightElement04 =  10 `treeElem` numsTreeFromRight  --  False  
+
+----------------------------------------------------------------------------------------------------
 
 -- building a tree starting from the first element of a list:
-nums2 = [25, 20, 15, 27, 30, 29, 26, 22, 32, 17]
 -- Using a left fold here.
 -- For left fold, the order of the accumulator and the variable x in the lambda is important. The accumulator has to be on the left side of the variable.
-numsTree2 = foldl (\acc x -> treeInsert x acc) EmptyTree nums2
+treeFromLeft :: (Foldable t, Ord a) => t a -> Tree a
+treeFromLeft xs = foldl (\acc x -> treeInsert x acc) EmptyTree xs
+
+nums2 = [25, 20, 15, 27, 30, 29, 26, 22, 32, 17]
+numsTreeFromLeft = treeFromLeft nums2
 
 {- |
 		 			    25
@@ -166,31 +182,51 @@ numsTree2 = foldl (\acc x -> treeInsert x acc) EmptyTree nums2
 				  17	     29  32
 -}
 
+----------------------------------------------------------------------------------------------------
+
 -- TREE TRAVERSALS
+
+{- |
+    DEPTH-FIRST SEARCH
+
+    Depth-first search (DFS) is an algorithm for traversing or searching tree or graph data structures. 
+    The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph) and explores as far as possible along each branch before backtracking.
+
+    Depth-first search of binary tree: These searches are referred to as depth-first search (DFS), since the search tree is deepened as much as possible on each child before going to the next sibling. 
+     	Pre-order (NLR)
+     	In-order (LNR)
+     	Reverse in-order (RNL)
+     	Post-order (LRN)
+
+    What do L, R and N stand for?
+    (L)	Recursively traverse N's left subtree.
+    (R)	Recursively traverse N's right subtree.
+    (N)	Process the current node N itself.
+-}
 
 traversePreOrder :: Tree a -> [a]
 traversePreOrder EmptyTree = []
 traversePreOrder (Node a l r) = a : (traversePreOrder l) ++ (traversePreOrder r)
 --tests
-testPreOrder01 = traversePreOrder numsTree2 -- [25,20,15,17,22,27,26,30,29,32]
+testPreOrder01 = traversePreOrder numsTreeFromLeft -- [25,20,15,17,22,27,26,30,29,32]
 
 traverseInOrder :: Tree a -> [a]
 traverseInOrder EmptyTree = []
 traverseInOrder (Node a l r) = (traverseInOrder l) ++ [a] ++ (traverseInOrder r)
 --tests
-testInOrder01 = traverseInOrder numsTree2 -- [15,17,20,22,25,26,27,29,30,32] 
+testInOrder01 = traverseInOrder numsTreeFromLeft -- [15,17,20,22,25,26,27,29,30,32] 
 
 traverseReverseInOrder :: Tree a -> [a]
 traverseReverseInOrder EmptyTree = []
 traverseReverseInOrder (Node a l r) = (traverseReverseInOrder r) ++ [a] ++ (traverseReverseInOrder l)
 --tests
-testReverseInOrder01 = traverseReverseInOrder numsTree2 -- [32,30,29,27,26,25,22,20,17,15]
+testReverseInOrder01 = traverseReverseInOrder numsTreeFromLeft -- [32,30,29,27,26,25,22,20,17,15]
 
 traversePostOrder :: Tree a -> [a]
 traversePostOrder EmptyTree = []
 traversePostOrder (Node a l r) = (traversePostOrder l) ++ (traversePostOrder r) ++ [a]
 --tests
-testPostOrder01 = traversePostOrder numsTree2 -- [17,15,22,20,26,29,32,30,27,25]
+testPostOrder01 = traversePostOrder numsTreeFromLeft -- [17,15,22,20,26,29,32,30,27,25]
 
 {- |
 		 			     F
@@ -216,21 +252,11 @@ testInOrder03 = traverseInOrder numsTree3 -- "ABCDEFGHIJK"
 testReverseInOrder03 = traverseReverseInOrder numsTree3 -- "KJIHGFEDCBA"
 testPostOrder03 = traversePostOrder numsTree3 -- "ACEDBHKJIGF"
 
-{- |
-    Depth-first search of binary tree: These searches are referred to as depth-first search (DFS), since the search tree is deepened as much as possible on each child before going to the next sibling. 
-     	Pre-order (NLR)
-     	In-order (LNR)
-     	Reverse in-order (RNL)
-     	Post-order (LRN)
 
-    What do L, R and N stand for?
-    (L)	Recursively traverse N's left subtree.
-    (R)	Recursively traverse N's right subtree.
-    (N)	Process the current node N itself.
--}
+----------------------------------------------------------------------------------------------------
 
 {- |
-    Breadth-first search / level order
+    BREADTH-FIRST SEARCH / LEVEL ORDER
     
     Trees can also be traversed in level-order, where we visit every node on a level before going to a lower level. This search is referred to as breadth-first search (BFS), as the search tree is broadened as much as possible on each depth before going to the next depth.
 -}
@@ -276,3 +302,130 @@ testTraverseBreadthFirst01 = traverseBreadthFirst numsTree3  -- "FBGADICEHJK"
 
     4. F + B + G + A + D + I + C + E + H +    J + K
 -}
+
+----------------------------------------------------------------------------------------------------
+
+{- |
+   GenerateBinarySearchTrees
+  
+    Hi, here's your problem today. This problem was recently asked by Amazon:
+    
+    Given a number n, generate all binary search trees that can be constructed with nodes 1 to n.
+    
+    Here's some code to start with:
+    
+    class Node:
+      def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+    
+      def __str__(self):
+        result = str(self.value)
+        if self.left:
+          result = result + str(self.left)
+        if self.right:
+          result = result + str(self.right)
+        return result
+    
+    def generate_bst(n):
+      # Fill this in.
+    
+    for tree in generate_bst(3):
+      print tree
+    
+    # Pre-order traversals of binary trees from 1 to n.
+    # 123
+    # 132
+    # 213
+    # 312
+    # 321
+    
+    #   1      1      2      3      3
+    #    \      \    / \    /      /
+    #     2      3  1   3  1      2
+    #      \    /           \    /
+    #       3  2             2  1
+-}
+
+-- Using Data.List.permutations here. TODO : write your own implementation for permutations.
+perms n = permutations [1..n]
+testGenerateBinarySearchTrees = map treeFromLeft (perms 3)
+-- [
+-- Node 1 EmptyTree (Node 2 EmptyTree (Node 3 EmptyTree EmptyTree)),
+-- Node 1 EmptyTree (Node 3 (Node 2 EmptyTree EmptyTree) EmptyTree),
+-- Node 2 (Node 1 EmptyTree EmptyTree) (Node 3 EmptyTree EmptyTree),   [2,3,1] and [2,1,3] are going to give the same Binary Search Tree.
+-- Node 2 (Node 1 EmptyTree EmptyTree) (Node 3 EmptyTree EmptyTree),
+-- Node 3 (Node 1 EmptyTree (Node 2 EmptyTree EmptyTree)) EmptyTree,
+-- Node 3 (Node 2 (Node 1 EmptyTree EmptyTree) EmptyTree) EmptyTree
+-- ]
+----------------------------------------------------------------------------------------------------
+
+-- The height of a node is the length of the longest downward path to a leaf from that node. 
+-- The height of the root is the height of the tree. 
+-- The depth of a node is the length of the path to its root (i.e., its root path). 
+
+{- |
+    
+    Level : Painless
+    
+    Compute the height of a binary tree.
+    
+    		 			     5
+    		 			   /  \ 
+    					  /    \
+    					 /      \
+    					3       10
+      				   / \     /
+      				  /   \   /
+    				 20    21 1
+    
+    In this problem we consider binary trees, represented by pointer data structures.
+    
+    A binary tree is either an empty tree or a node (called the root) consisting of a single integer value and two further binary trees, called the left subtree and the right subtree.
+    
+    For example, the figure below shows a binary tree consisting of six nodes. Its root contains the value 5, and the roots of its left and right subtrees have the values 3 and 10, respectively. The right subtree of the node containing the value 10, as well as the left and right subtrees of the nodes containing the values 20, 21 and 1, are empty trees.
+    
+    A path in a binary tree is a non-empty sequence of nodes that one can traverse by following the pointers. The length of a path is the number of pointers it traverses. More formally, a path of length K is a sequence of nodes P[0], P[1], ..., P[K], such that node P[I + 1] is the root of the left or right subtree of P[I], for 0 ≤ I < K. For example, the sequence of nodes with values 5, 3, 21 is a path of length 2 in the tree from the above figure. The sequence of nodes with values 10, 1 is a path of length 1. The sequence of nodes with values 21, 3, 20 is not a valid path.
+    
+    The height of a binary tree is defined as the length of the longest possible path in the tree. In particular, a tree consisting of only one node has height 0 and, conventionally, an empty tree has height −1. For example, the tree shown in the above figure is of height 2.
+    
+    Problem
+    
+    Write a function:
+    
+        class Solution { public int solution(Tree T); }
+    
+    that, given a non-empty binary tree T consisting of N nodes, returns its height. For example, given tree T shown in the figure above, the function should return 2, as explained above. Note that the values contained in the nodes are not relevant in this task.
+    
+    Technical details
+    
+    A binary tree can be given using a pointer data structure. Assume that the following declarations are given:
+    
+        class Tree {
+          public int x;
+          public Tree l;
+          public Tree r;
+        }
+    
+    An empty tree is represented by an empty pointer (denoted by null). A non-empty tree is represented by a pointer to an object representing its root. The attribute x holds the integer contained in the root, whereas attributes l and r hold the left and right subtrees of the binary tree, respectively.
+    
+    For the purpose of entering your own test cases, you can denote a tree recursively in the following way. An empty binary tree is denoted by None. A non-empty tree is denoted as (X, L, R), where X is the value contained in the root and L and R denote the left and right subtrees, respectively. The tree from the above figure can be denoted as:
+      (5, (3, (20, None, None), (21, None, None)), (10, (1, None, None), None))
+    
+    Assumptions
+    
+    Write an efficient algorithm for the following assumptions:
+    
+            N is an integer within the range [1..1,000];
+            the height of tree T (number of edges on the longest path from root to leaf) is within the range [0..500].
+
+-}
+
+treeHeight EmptyTree    = -1
+treeHeight (Node _ l r) = 1 + max (treeHeight l) (treeHeight r)
+-- tests
+testTreeHeight01 = treeHeight numsTreeFromLeft -- 3
+testTreeHeight02 = treeHeight numsTreeFromRight -- 2
+
+----------------------------------------------------------------------------------------------------
