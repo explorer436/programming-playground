@@ -31,15 +31,16 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 | git remote update                                                 | command to update remote branches                                                                                                                                                                        |
 | git remote update --prune                                         | command to update remote branches. This will remove all remote branches which you have a local record of, but are no longer actually present on the remote.                                              |
 
-| git branch -m <newname>                                           | To rename the current local branch                                                                                                                                                                       |
-| git branch (local branch name) -u (remote branch name)            | To point local branch to a different remote branch                                                                                                                                                       |
-| git branch -a                                                     | command to list all branches                                                                                                                                                                             |
-| git branch -r                                                     | Remote branches only.                                                                                                                                                                                    |
-| git branch -l or `git branch`                                     | Local branches only.                                                                                                                                                                                     |
+| git branch -m <newname>                                | To rename the current local branch                 |
+| git branch (local branch name) -u (remote branch name) | To point local branch to a different remote branch |
+| git branch -a                                          | command to list all branches                       |
+| git branch -r                                          | Remote branches only.                              |
+| git branch -l or `git branch`                          | Local branches only.                               |
+| git branch -d <local-branch-name>                      | delete a local branch.                             |
 
-| git checkout -b feature/testFeatureBranch remotes/origin/develop` | To start a feature branch from command line, simply create a new branch from remotes/origin/develop                                                                                                     |
-| git checkout localBranch1                                         | To find out which remote branch your local branch is tracking,                                                                                                                                           |
-| git checkout localBranch2                                         | To find out which remote branch your local branch is tracking,                                                                                                                                           |
+| git checkout -b feature/testFeatureBranch remotes/origin/develop` | To start a feature branch from command line, simply create a new branch from remotes/origin/develop |
+| git checkout localBranch1                                         | To checkout a specific localBranch                                                                  |
+| git checkout localBranch2                                         | To checkout a specific localBranch                                                                  |
 
 | git status                      | To see the status of the local repository                                                                                                                                                                                            |
 | git diff filename.txt           | command to show changes in a specific file. command to see what you haven't "git add"ed yet                                                                                                                                          |
@@ -58,7 +59,9 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 When doing a diff on a long line, this can be very helpful but you'll still get a less-like scrolling output that can be unhandy to use. You maybe just want the diff put into your terminal:
 
    #+BEGIN_EXAMPLE
-   `PAGER='' git diff --word-diff myfile.txt`
+   git diff --word-diff myfile.txt
+
+   git diff --word-diff=color myfile.txt
    #+END_EXAMPLE
 
 | git reset                                        | To undo changes in your working directory that haven't been comitted yet                                                                                                                                                                                                                                                                                                                                  |

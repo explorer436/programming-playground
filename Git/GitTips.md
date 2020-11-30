@@ -1,17 +1,17 @@
 
 # Table of Contents
 
-1.  [Configure Tooling](#org41c4fb0)
-2.  [Commands](#orge229508)
-    1.  [Create Repositories](#orgb8e9235)
-    2.  [Create feature branch from command line](#org01eefed)
-3.  [Undoing a git push](#org6c6c285)
-4.  [Undo a commit and redo](#org3ee9f61)
-5.  [Authentication issues](#orgaaffcaa)
-6.  [Helpful Resources](#orgf6485c6)
+1.  [Configure Tooling](#org3575051)
+2.  [Commands](#orgd105284)
+    1.  [Create Repositories](#org1ff906c)
+    2.  [Create feature branch from command line](#orgef7a041)
+3.  [Undoing a git push](#org7ba9b91)
+4.  [Undo a commit and redo](#orge925aed)
+5.  [Authentication issues](#org9add32f)
+6.  [Helpful Resources](#org03a4d73)
 
 
-<a id="org41c4fb0"></a>
+<a id="org3575051"></a>
 
 # Configure Tooling
 
@@ -28,12 +28,12 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 ---
 
 
-<a id="orge229508"></a>
+<a id="orgd105284"></a>
 
 # Commands
 
 
-<a id="orgb8e9235"></a>
+<a id="org1ff906c"></a>
 
 ## Create Repositories
 
@@ -62,7 +62,7 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 ---
 
 
-<a id="org01eefed"></a>
+<a id="orgef7a041"></a>
 
 ## Create feature branch from command line
 
@@ -147,6 +147,12 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 <td class="org-left">git branch -l or `git branch`</td>
 <td class="org-left">Local branches only.</td>
 </tr>
+
+
+<tr>
+<td class="org-left">git branch -d &lt;local-branch-name&gt;</td>
+<td class="org-left">delete a local branch.</td>
+</tr>
 </tbody>
 </table>
 
@@ -167,13 +173,13 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 
 <tr>
 <td class="org-left">git checkout localBranch1</td>
-<td class="org-left">To find out which remote branch your local branch is tracking,</td>
+<td class="org-left">To checkout a specific localBranch</td>
 </tr>
 
 
 <tr>
 <td class="org-left">git checkout localBranch2</td>
-<td class="org-left">To find out which remote branch your local branch is tracking,</td>
+<td class="org-left">To checkout a specific localBranch</td>
 </tr>
 </tbody>
 </table>
@@ -268,7 +274,9 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 
 When doing a diff on a long line, this can be very helpful but you'll still get a less-like scrolling output that can be unhandy to use. You maybe just want the diff put into your terminal:
 
-    `PAGER='' git diff --word-diff myfile.txt`
+    git diff --word-diff myfile.txt
+    
+    git diff --word-diff=color myfile.txt
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -409,7 +417,7 @@ GIT: SEE ALL UNPUSHED COMMITS OR COMMITS THAT ARE NOT IN ANOTHER BRANCH
 ---
 
 
-<a id="org6c6c285"></a>
+<a id="org7ba9b91"></a>
 
 # Undoing a git push
 
@@ -426,7 +434,7 @@ e.g.
 ---
 
 
-<a id="org3ee9f61"></a>
+<a id="orge925aed"></a>
 
 # Undo a commit and redo
 
@@ -469,7 +477,7 @@ Most of this sequence will be explained to you by the output of the various comm
 ---
 
 
-<a id="orgaaffcaa"></a>
+<a id="org9add32f"></a>
 
 # Authentication issues
 
@@ -519,7 +527,7 @@ Add your SSH private key to the ssh-agent using the following command : ssh-add 
 ---
 
 
-<a id="orgf6485c6"></a>
+<a id="org03a4d73"></a>
 
 # Helpful Resources
 
