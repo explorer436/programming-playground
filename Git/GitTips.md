@@ -12,6 +12,8 @@
 
 
 <a id="org3575051"></a>
+||||||| parent of dd0d379 (git tips updates)
+<a id="org41c4fb0"></a>
 
 # Configure Tooling
 
@@ -29,11 +31,15 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 
 
 <a id="orgd105284"></a>
+||||||| parent of dd0d379 (git tips updates)
+<a id="orge229508"></a>
 
 # Commands
 
 
 <a id="org1ff906c"></a>
+<a id="orgb28d69c"></a>
+>>>>>>> dd0d379 (git tips updates)
 
 ## Create Repositories
 
@@ -63,6 +69,7 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 
 
 <a id="orgef7a041"></a>
+<a id="org603e138"></a>
 
 ## Create feature branch from command line
 
@@ -434,7 +441,7 @@ e.g.
 ---
 
 
-<a id="orge925aed"></a>
+<a id="org3ee9f61"></a>
 
 # Undo a commit and redo
 
@@ -480,6 +487,8 @@ Most of this sequence will be explained to you by the output of the various comm
 <a id="org9add32f"></a>
 
 # Authentication issues
+
+If you need to set the username and password, use this command : git remote set-url origin <https://><username>:<password>@github.com/<details-about-the-repository>.git
 
 $ git pull
 
