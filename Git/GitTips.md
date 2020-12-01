@@ -1,17 +1,17 @@
 
 # Table of Contents
 
-1.  [Configure Tooling](#org8b8f259)
-2.  [Commands](#orga34505d)
-    1.  [Create Repositories](#orga22da28)
-    2.  [Create feature branch from command line](#org501b20b)
-3.  [Undoing a git push](#org3e7c1dd)
-4.  [Undo a commit and redo](#org493de40)
-5.  [Authentication issues](#org01e5669)
-6.  [Helpful Resources](#org1061543)
+1.  [Configure Tooling](#orgc35a4d2)
+2.  [Commands](#org3f9c4db)
+    1.  [Create Repositories](#orge761638)
+    2.  [Create feature branch from command line](#org3231238)
+3.  [Undoing a git push](#org229107c)
+4.  [Undo a commit and redo](#org2ebdc40)
+5.  [Authentication issues](#orgf68a8a8)
+6.  [Helpful Resources](#org377b157)
 
 
-<a id="org8b8f259"></a>
+<a id="orgc35a4d2"></a>
 
 # Configure Tooling
 
@@ -28,12 +28,12 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 ---
 
 
-<a id="orga34505d"></a>
+<a id="org3f9c4db"></a>
 
 # Commands
 
 
-<a id="orga22da28"></a>
+<a id="orge761638"></a>
 
 ## Create Repositories
 
@@ -62,7 +62,7 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 ---
 
 
-<a id="org501b20b"></a>
+<a id="org3231238"></a>
 
 ## Create feature branch from command line
 
@@ -409,7 +409,7 @@ GIT: SEE ALL UNPUSHED COMMITS OR COMMITS THAT ARE NOT IN ANOTHER BRANCH
 ---
 
 
-<a id="org3e7c1dd"></a>
+<a id="org229107c"></a>
 
 # Undoing a git push
 
@@ -426,7 +426,7 @@ e.g.
 ---
 
 
-<a id="org493de40"></a>
+<a id="org2ebdc40"></a>
 
 # Undo a commit and redo
 
@@ -469,7 +469,7 @@ Most of this sequence will be explained to you by the output of the various comm
 ---
 
 
-<a id="org01e5669"></a>
+<a id="orgf68a8a8"></a>
 
 # Authentication issues
 
@@ -518,21 +518,23 @@ Use these commands to switch between the two :
 2.  If you want to use SSH
     
         git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
-
-    ssh-keygen -t rsa -b 4096 -C "explorer436@tutanota.com"
-
-(When you're prompted to "Enter a file in which to save the key," 
-press Enter. This accepts the default file location.) Now add this SSH ket to bitbucket server.
-
-If you want to add an SSH key generated from Git console to the ssh-agent in your computer : 
-( You might need to start ssh-agent before you run the ssh-add command: eval \`ssh-agent -s\` or eval $(ssh-agent))
-Add your SSH private key to the ssh-agent using the following command : ssh-add  ~/Downloads/CloudForgeGitSSHKeys/id<sub>rsa</sub>
-(this should point to the location of the private key file)
+    
+    And then run this:
+    
+        ssh-keygen -t rsa -b 4096 -C "explorer436@tutanota.com"
+    
+    (When you're prompted to "Enter a file in which to save the key," 
+    press Enter. This accepts the default file location.) Now add this SSH ket to bitbucket server.
+    
+    If you want to add an SSH key generated from Git console to the ssh-agent in your computer : 
+    ( You might need to start ssh-agent before you run the ssh-add command: eval \`ssh-agent -s\` or eval $(ssh-agent))
+    Add your SSH private key to the ssh-agent using the following command : ssh-add  ~/Downloads/CloudForgeGitSSHKeys/id<sub>rsa</sub>
+    (this should point to the location of the private key file)
 
 ---
 
 
-<a id="org1061543"></a>
+<a id="org377b157"></a>
 
 # Helpful Resources
 

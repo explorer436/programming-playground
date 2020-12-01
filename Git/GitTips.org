@@ -210,7 +210,8 @@ Most of this sequence will be explained to you by the output of the various comm
       git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
       #+END_EXAMPLE
 
-
+      And then run this:
+      
       #+BEGIN_EXAMPLE
       ssh-keygen -t rsa -b 4096 -C "explorer436@tutanota.com"
       #+END_EXAMPLE
