@@ -220,8 +220,16 @@ Most of this sequence will be explained to you by the output of the various comm
       press Enter. This accepts the default file location.) Now add this SSH ket to bitbucket server.
     
       If you want to add an SSH key generated from Git console to the ssh-agent in your computer : 
-      ( You might need to start ssh-agent before you run the ssh-add command: eval `ssh-agent -s` or eval $(ssh-agent))
-      Add your SSH private key to the ssh-agent using the following command : ssh-add  ~/Downloads/CloudForgeGitSSHKeys/id_rsa
+
+      You might need to start ssh-agent before you run the ssh-add command: 
+      #+BEGIN_EXAMPLE
+      eval `ssh-agent -s` or eval $(ssh-agent)
+      #+END_EXAMPLE
+
+      Add your SSH private key to the ssh-agent using the following command:
+      #+BEGIN_EXAMPLE
+      ssh-add  ~/Downloads/CloudForgeGitSSHKeys/id_rsa
+      #+END_EXAMPLE
       (this should point to the location of the private key file)
 
 -----------------------------------------------------------

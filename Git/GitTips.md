@@ -1,17 +1,17 @@
 
 # Table of Contents
 
-1.  [Configure Tooling](#orgc35a4d2)
-2.  [Commands](#org3f9c4db)
-    1.  [Create Repositories](#orge761638)
-    2.  [Create feature branch from command line](#org3231238)
-3.  [Undoing a git push](#org229107c)
-4.  [Undo a commit and redo](#org2ebdc40)
-5.  [Authentication issues](#orgf68a8a8)
-6.  [Helpful Resources](#org377b157)
+1.  [Configure Tooling](#orgf0d8af1)
+2.  [Commands](#orgc4ef20d)
+    1.  [Create Repositories](#orgc878b21)
+    2.  [Create feature branch from command line](#org1c26b87)
+3.  [Undoing a git push](#org8fa5ca4)
+4.  [Undo a commit and redo](#org4c806aa)
+5.  [Authentication issues](#org4747aac)
+6.  [Helpful Resources](#org1b5306c)
 
 
-<a id="orgc35a4d2"></a>
+<a id="orgf0d8af1"></a>
 
 # Configure Tooling
 
@@ -28,12 +28,12 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 ---
 
 
-<a id="org3f9c4db"></a>
+<a id="orgc4ef20d"></a>
 
 # Commands
 
 
-<a id="orge761638"></a>
+<a id="orgc878b21"></a>
 
 ## Create Repositories
 
@@ -62,7 +62,7 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 ---
 
 
-<a id="org3231238"></a>
+<a id="org1c26b87"></a>
 
 ## Create feature branch from command line
 
@@ -409,7 +409,7 @@ GIT: SEE ALL UNPUSHED COMMITS OR COMMITS THAT ARE NOT IN ANOTHER BRANCH
 ---
 
 
-<a id="org229107c"></a>
+<a id="org8fa5ca4"></a>
 
 # Undoing a git push
 
@@ -426,7 +426,7 @@ e.g.
 ---
 
 
-<a id="org2ebdc40"></a>
+<a id="org4c806aa"></a>
 
 # Undo a commit and redo
 
@@ -469,7 +469,7 @@ Most of this sequence will be explained to you by the output of the various comm
 ---
 
 
-<a id="orgf68a8a8"></a>
+<a id="org4747aac"></a>
 
 # Authentication issues
 
@@ -527,14 +527,21 @@ Use these commands to switch between the two :
     press Enter. This accepts the default file location.) Now add this SSH ket to bitbucket server.
     
     If you want to add an SSH key generated from Git console to the ssh-agent in your computer : 
-    ( You might need to start ssh-agent before you run the ssh-add command: eval \`ssh-agent -s\` or eval $(ssh-agent))
-    Add your SSH private key to the ssh-agent using the following command : ssh-add  ~/Downloads/CloudForgeGitSSHKeys/id<sub>rsa</sub>
+    
+    You might need to start ssh-agent before you run the ssh-add command: 
+    
+        eval `ssh-agent -s` or eval $(ssh-agent)
+    
+    Add your SSH private key to the ssh-agent using the following command:
+    
+        ssh-add  ~/Downloads/CloudForgeGitSSHKeys/id_rsa
+    
     (this should point to the location of the private key file)
 
 ---
 
 
-<a id="org377b157"></a>
+<a id="org1b5306c"></a>
 
 # Helpful Resources
 
