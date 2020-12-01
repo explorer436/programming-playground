@@ -1,17 +1,17 @@
 
 # Table of Contents
 
-1.  [Configure Tooling](#org474eeea)
-2.  [Commands](#org4daf167)
-    1.  [Create Repositories](#org4bf8251)
-    2.  [Create feature branch from command line](#orga5f3219)
-3.  [Undoing a git push](#org5a2c1c0)
-4.  [Undo a commit and redo](#orga3946a3)
-5.  [Authentication issues](#orgb0edd19)
-6.  [Helpful Resources](#org7dbc336)
+1.  [Configure Tooling](#orgc89a7d2)
+2.  [Commands](#orged27644)
+    1.  [Create Repositories](#orgb3882ca)
+    2.  [Create feature branch from command line](#org33b4edd)
+3.  [Undoing a git push](#org512e69e)
+4.  [Undo a commit and redo](#orgc1529a2)
+5.  [Authentication issues](#org434f6e2)
+6.  [Helpful Resources](#orgf495e76)
 
 
-<a id="org474eeea"></a>
+<a id="orgc89a7d2"></a>
 
 # Configure Tooling
 
@@ -28,12 +28,12 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 ---
 
 
-<a id="org4daf167"></a>
+<a id="orged27644"></a>
 
 # Commands
 
 
-<a id="org4bf8251"></a>
+<a id="orgb3882ca"></a>
 
 ## Create Repositories
 
@@ -62,7 +62,7 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 ---
 
 
-<a id="orga5f3219"></a>
+<a id="org33b4edd"></a>
 
 ## Create feature branch from command line
 
@@ -409,7 +409,7 @@ GIT: SEE ALL UNPUSHED COMMITS OR COMMITS THAT ARE NOT IN ANOTHER BRANCH
 ---
 
 
-<a id="org5a2c1c0"></a>
+<a id="org512e69e"></a>
 
 # Undoing a git push
 
@@ -426,7 +426,7 @@ e.g.
 ---
 
 
-<a id="orga3946a3"></a>
+<a id="orgc1529a2"></a>
 
 # Undo a commit and redo
 
@@ -469,11 +469,13 @@ Most of this sequence will be explained to you by the output of the various comm
 ---
 
 
-<a id="orgb0edd19"></a>
+<a id="org434f6e2"></a>
 
 # Authentication issues
 
-If you need to set the username and password, use this command : git remote set-url origin <https://><username>:<password>@github.com/<details-about-the-repository>.git
+If you need to set the username and password, use this command:
+
+    git remote set-url origin https://<username>:<password>@github.com/<details-about-the-repository>.git
 
 $ git pull
 
@@ -521,7 +523,7 @@ Add your SSH private key to the ssh-agent using the following command : ssh-add 
 ---
 
 
-<a id="org7dbc336"></a>
+<a id="orgf495e76"></a>
 
 # Helpful Resources
 

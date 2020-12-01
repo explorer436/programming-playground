@@ -155,7 +155,10 @@ Most of this sequence will be explained to you by the output of the various comm
 
 *** Authentication issues
 
-    If you need to set the username and password, use this command : git remote set-url origin https://<username>:<password>@github.com/<details-about-the-repository>.git
+    If you need to set the username and password, use this command:
+   #+BEGIN_EXAMPLE
+   git remote set-url origin https://<username>:<password>@github.com/<details-about-the-repository>.git
+   #+END_EXAMPLE
 
     $ git pull
     
