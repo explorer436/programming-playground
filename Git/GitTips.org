@@ -31,16 +31,15 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 | git remote update                                                 | command to update remote branches                                                                                                                                                                        |
 | git remote update --prune                                         | command to update remote branches. This will remove all remote branches which you have a local record of, but are no longer actually present on the remote.                                              |
 
-| git branch -m <newname>                                | To rename the current local branch                 |
-| git branch (local branch name) -u (remote branch name) | To point local branch to a different remote branch |
-| git branch -a                                          | command to list all branches                       |
-| git branch -r                                          | Remote branches only.                              |
-| git branch -l or `git branch`                          | Local branches only.                               |
-| git branch -d <local-branch-name>                      | delete a local branch.                             |
+| git branch -m <newname>                                           | To rename the current local branch                                                                                                                                                                       |
+| git branch (local branch name) -u (remote branch name)            | To point local branch to a different remote branch                                                                                                                                                       |
+| git branch -a                                                     | command to list all branches                                                                                                                                                                             |
+| git branch -r                                                     | Remote branches only.                                                                                                                                                                                    |
+| git branch -l or `git branch`                                     | Local branches only.                                                                                                                                                                                     |
 
-| git checkout -b feature/testFeatureBranch remotes/origin/develop` | To start a feature branch from command line, simply create a new branch from remotes/origin/develop |
-| git checkout localBranch1                                         | To checkout a specific localBranch                                                                  |
-| git checkout localBranch2                                         | To checkout a specific localBranch                                                                  |
+| git checkout -b feature/testFeatureBranch remotes/origin/develop` | To start a feature branch from command line, simply create a new branch from remotes/origin/develop                                                                                                     |
+| git checkout localBranch1                                         | To find out which remote branch your local branch is tracking,                                                                                                                                           |
+| git checkout localBranch2                                         | To find out which remote branch your local branch is tracking,                                                                                                                                           |
 
 | git status                      | To see the status of the local repository                                                                                                                                                                                            |
 | git diff filename.txt           | command to show changes in a specific file. command to see what you haven't "git add"ed yet                                                                                                                                          |
@@ -59,9 +58,7 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 When doing a diff on a long line, this can be very helpful but you'll still get a less-like scrolling output that can be unhandy to use. You maybe just want the diff put into your terminal:
 
    #+BEGIN_EXAMPLE
-   git diff --word-diff myfile.txt
-
-   git diff --word-diff=color myfile.txt
+   `PAGER='' git diff --word-diff myfile.txt`
    #+END_EXAMPLE
 
 | git reset                                        | To undo changes in your working directory that haven't been comitted yet                                                                                                                                                                                                                                                                                                                                  |
@@ -160,51 +157,51 @@ Most of this sequence will be explained to you by the output of the various comm
 
     If you need to set the username and password, use this command : git remote set-url origin https://<username>:<password>@github.com/<details-about-the-repository>.git
 
-$ git pull
-
-Permission denied (publickey).
-fatal: Could not read from remote repository.
-Please make sure you have the correct access rights and the repository exists.
-A "Permission denied" error means that the server rejected your connection. 
-
-Resolution 1 : 
-`git remote set-url origin https://n0281526@git.forge.lmig.com/scm/uscm-esales/services-policywriting.git`
-
-Resolution 2 : 
-
-If you generated the keys yourself from your client machine, do not forget to add them to the SSH agent using the command "ssh-add".
-Run ssh-add on the client machine, that will add the SSH key to the agent. 
-
-To figure out where your client's SSH agent is looking for private and public keys, use this command:
-`ssh -vT git@github.com`
-
-This will show the list of the directories that your computer's SSH agent is looking in for public and private keys.
-If everything looks good with this command, you are pretty much set to push and pull from the remote repositories.
-
-You can change the protocol that your local repository is using to communicate with the remote repository :
-It can be HTTPS or SSH.
-The issue with using HTTPS URL is, every time you want to push a change, it might ask you for username and password.
-With SSH, you don't have to enter username and password every single time.
-
-Use these commands to switch between the two :
-
-1. `git remote set-url origin https://github.com/USERNAME/REPOSITORY.git` (if you want to use HTTPS)
-
-  If you got authentication issues with the GIT console you can try your auth this way : `https://<username>:<password>@bitbucket.org/<username>/<repo>.git`
-
-2. `git remote set-url origin git@github.com:USERNAME/REPOSITORY.git` (if you want to use SSH)
-
-  ssh-keygen -t rsa -b 4096 -C "explorer436@tutanota.com" (When you're prompted to "Enter a file in which to save the key," 
-press Enter. This accepts the default file location.) Now add this SSH ket to bitbucket server.
-
-  If you want to add an SSH key generated from Git console to the ssh-agent in your computer : 
-( You might need to start ssh-agent before you run the ssh-add command: eval `ssh-agent -s` or eval $(ssh-agent))
-Add your SSH private key to the ssh-agent using the following command : ssh-add  ~/Downloads/CloudForgeGitSSHKeys/id_rsa
-(this should point to the location of the private key file)
+    $ git pull
+    
+    Permission denied (publickey).
+    fatal: Could not read from remote repository.
+    Please make sure you have the correct access rights and the repository exists.
+    A "Permission denied" error means that the server rejected your connection. 
+    
+    Resolution 1 : 
+    `git remote set-url origin https://n0281526@git.forge.lmig.com/scm/uscm-esales/services-policywriting.git`
+    
+    Resolution 2 : 
+    
+    If you generated the keys yourself from your client machine, do not forget to add them to the SSH agent using the command "ssh-add".
+    Run ssh-add on the client machine, that will add the SSH key to the agent. 
+    
+    To figure out where your client's SSH agent is looking for private and public keys, use this command:
+    `ssh -vT git@github.com`
+    
+    This will show the list of the directories that your computer's SSH agent is looking in for public and private keys.
+    If everything looks good with this command, you are pretty much set to push and pull from the remote repositories.
+    
+    You can change the protocol that your local repository is using to communicate with the remote repository :
+    It can be HTTPS or SSH.
+    The issue with using HTTPS URL is, every time you want to push a change, it might ask you for username and password.
+    With SSH, you don't have to enter username and password every single time.
+    
+    Use these commands to switch between the two :
+    
+    1. `git remote set-url origin https://github.com/USERNAME/REPOSITORY.git` (if you want to use HTTPS)
+    
+      If you got authentication issues with the GIT console you can try your auth this way : `https://<username>:<password>@bitbucket.org/<username>/<repo>.git`
+    
+    2. `git remote set-url origin git@github.com:USERNAME/REPOSITORY.git` (if you want to use SSH)
+    
+      ssh-keygen -t rsa -b 4096 -C "explorer436@tutanota.com" (When you're prompted to "Enter a file in which to save the key," 
+    press Enter. This accepts the default file location.) Now add this SSH ket to bitbucket server.
+    
+      If you want to add an SSH key generated from Git console to the ssh-agent in your computer : 
+    ( You might need to start ssh-agent before you run the ssh-add command: eval `ssh-agent -s` or eval $(ssh-agent))
+    Add your SSH private key to the ssh-agent using the following command : ssh-add  ~/Downloads/CloudForgeGitSSHKeys/id_rsa
+    (this should point to the location of the private key file)
 
 -----------------------------------------------------------
 
 *** Helpful Resources
     
-https://www.atlassian.com/git/tutorials/merging-vs-rebasing 
+    https://www.atlassian.com/git/tutorials/merging-vs-rebasing 
 
