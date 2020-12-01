@@ -1,17 +1,17 @@
 
 # Table of Contents
 
-1.  [Configure Tooling](#orgc89a7d2)
-2.  [Commands](#orged27644)
-    1.  [Create Repositories](#orgb3882ca)
-    2.  [Create feature branch from command line](#org33b4edd)
-3.  [Undoing a git push](#org512e69e)
-4.  [Undo a commit and redo](#orgc1529a2)
-5.  [Authentication issues](#org434f6e2)
-6.  [Helpful Resources](#orgf495e76)
+1.  [Configure Tooling](#orgf2149ff)
+2.  [Commands](#org8cf6d63)
+    1.  [Create Repositories](#org3a92e55)
+    2.  [Create feature branch from command line](#orgdf1210a)
+3.  [Undoing a git push](#org3f4de3b)
+4.  [Undo a commit and redo](#orgeb8ec33)
+5.  [Authentication issues](#orgf04f0b9)
+6.  [Helpful Resources](#orgd7c3fcf)
 
 
-<a id="orgc89a7d2"></a>
+<a id="orgf2149ff"></a>
 
 # Configure Tooling
 
@@ -28,12 +28,12 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 ---
 
 
-<a id="orged27644"></a>
+<a id="org8cf6d63"></a>
 
 # Commands
 
 
-<a id="orgb3882ca"></a>
+<a id="org3a92e55"></a>
 
 ## Create Repositories
 
@@ -62,7 +62,7 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 ---
 
 
-<a id="org33b4edd"></a>
+<a id="orgdf1210a"></a>
 
 ## Create feature branch from command line
 
@@ -409,7 +409,7 @@ GIT: SEE ALL UNPUSHED COMMITS OR COMMITS THAT ARE NOT IN ANOTHER BRANCH
 ---
 
 
-<a id="org512e69e"></a>
+<a id="org3f4de3b"></a>
 
 # Undoing a git push
 
@@ -426,7 +426,7 @@ e.g.
 ---
 
 
-<a id="orgc1529a2"></a>
+<a id="orgeb8ec33"></a>
 
 # Undo a commit and redo
 
@@ -469,7 +469,7 @@ Most of this sequence will be explained to you by the output of the various comm
 ---
 
 
-<a id="org434f6e2"></a>
+<a id="orgf04f0b9"></a>
 
 # Authentication issues
 
@@ -485,7 +485,8 @@ Please make sure you have the correct access rights and the repository exists.
 A "Permission denied" error means that the server rejected your connection. 
 
 Resolution 1 : 
-\`git remote set-url origin <https://n0281526@git.forge.lmig.com/scm/uscm-esales/services-policywriting.git>\`
+
+    git remote set-url origin https://n0281526@git.forge.lmig.com/scm/uscm-esales/services-policywriting.git
 
 Resolution 2 : 
 
@@ -493,7 +494,8 @@ If you generated the keys yourself from your client machine, do not forget to ad
 Run ssh-add on the client machine, that will add the SSH key to the agent. 
 
 To figure out where your client's SSH agent is looking for private and public keys, use this command:
-\`ssh -vT git@github.com\`
+
+    ssh -vT git@github.com
 
 This will show the list of the directories that your computer's SSH agent is looking in for public and private keys.
 If everything looks good with this command, you are pretty much set to push and pull from the remote repositories.
@@ -505,14 +507,21 @@ With SSH, you don't have to enter username and password every single time.
 
 Use these commands to switch between the two :
 
-1.  \`git remote set-url origin <https://github.com/USERNAME/REPOSITORY.git>\` (if you want to use HTTPS)
-    
-    If you got authentication issues with the GIT console you can try your auth this way : \`<https://><username>:<password>@bitbucket.org/<username>/<repo>.git\`
+1.  If you want to use HTTPS
 
-2.  \`git remote set-url origin git@github.com:USERNAME/REPOSITORY.git\` (if you want to use SSH)
-    
-    ssh-keygen -t rsa -b 4096 -C "explorer436@tutanota.com" (When you're prompted to "Enter a file in which to save the key,"
+    git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
 
+If you got authentication issues with the GIT console you can try your auth this way:
+
+    https://<username>:<password>@bitbucket.org/<username>/<repo>.git
+
+1.  If you want to use SSH
+
+    git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
+
+    ssh-keygen -t rsa -b 4096 -C "explorer436@tutanota.com"
+
+(When you're prompted to "Enter a file in which to save the key," 
 press Enter. This accepts the default file location.) Now add this SSH ket to bitbucket server.
 
   If you want to add an SSH key generated from Git console to the ssh-agent in your computer : 
@@ -523,7 +532,7 @@ Add your SSH private key to the ssh-agent using the following command : ssh-add 
 ---
 
 
-<a id="orgf495e76"></a>
+<a id="orgd7c3fcf"></a>
 
 # Helpful Resources
 

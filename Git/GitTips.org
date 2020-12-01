@@ -168,7 +168,10 @@ Most of this sequence will be explained to you by the output of the various comm
     A "Permission denied" error means that the server rejected your connection. 
     
     Resolution 1 : 
-    `git remote set-url origin https://n0281526@git.forge.lmig.com/scm/uscm-esales/services-policywriting.git`
+   #+BEGIN_EXAMPLE
+   git remote set-url origin https://n0281526@git.forge.lmig.com/scm/uscm-esales/services-policywriting.git
+   #+END_EXAMPLE
+    
     
     Resolution 2 : 
     
@@ -176,7 +179,9 @@ Most of this sequence will be explained to you by the output of the various comm
     Run ssh-add on the client machine, that will add the SSH key to the agent. 
     
     To figure out where your client's SSH agent is looking for private and public keys, use this command:
-    `ssh -vT git@github.com`
+   #+BEGIN_EXAMPLE
+   ssh -vT git@github.com
+   #+END_EXAMPLE
     
     This will show the list of the directories that your computer's SSH agent is looking in for public and private keys.
     If everything looks good with this command, you are pretty much set to push and pull from the remote repositories.
@@ -188,13 +193,27 @@ Most of this sequence will be explained to you by the output of the various comm
     
     Use these commands to switch between the two :
     
-    1. `git remote set-url origin https://github.com/USERNAME/REPOSITORY.git` (if you want to use HTTPS)
+    1. If you want to use HTTPS
     
-      If you got authentication issues with the GIT console you can try your auth this way : `https://<username>:<password>@bitbucket.org/<username>/<repo>.git`
+   #+BEGIN_EXAMPLE
+   git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+   #+END_EXAMPLE
+
+      If you got authentication issues with the GIT console you can try your auth this way:
+   #+BEGIN_EXAMPLE
+   https://<username>:<password>@bitbucket.org/<username>/<repo>.git
+   #+END_EXAMPLE
     
-    2. `git remote set-url origin git@github.com:USERNAME/REPOSITORY.git` (if you want to use SSH)
-    
-      ssh-keygen -t rsa -b 4096 -C "explorer436@tutanota.com" (When you're prompted to "Enter a file in which to save the key," 
+    2. If you want to use SSH
+   #+BEGIN_EXAMPLE
+   git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
+   #+END_EXAMPLE
+
+
+   #+BEGIN_EXAMPLE
+   ssh-keygen -t rsa -b 4096 -C "explorer436@tutanota.com"
+   #+END_EXAMPLE
+    (When you're prompted to "Enter a file in which to save the key," 
     press Enter. This accepts the default file location.) Now add this SSH ket to bitbucket server.
     
       If you want to add an SSH key generated from Git console to the ssh-agent in your computer : 
