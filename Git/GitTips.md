@@ -1,17 +1,17 @@
 
 # Table of Contents
 
-1.  [Configure Tooling](#orgf2149ff)
-2.  [Commands](#org8cf6d63)
-    1.  [Create Repositories](#org3a92e55)
-    2.  [Create feature branch from command line](#orgdf1210a)
-3.  [Undoing a git push](#org3f4de3b)
-4.  [Undo a commit and redo](#orgeb8ec33)
-5.  [Authentication issues](#orgf04f0b9)
-6.  [Helpful Resources](#orgd7c3fcf)
+1.  [Configure Tooling](#org8b8f259)
+2.  [Commands](#orga34505d)
+    1.  [Create Repositories](#orga22da28)
+    2.  [Create feature branch from command line](#org501b20b)
+3.  [Undoing a git push](#org3e7c1dd)
+4.  [Undo a commit and redo](#org493de40)
+5.  [Authentication issues](#org01e5669)
+6.  [Helpful Resources](#org1061543)
 
 
-<a id="orgf2149ff"></a>
+<a id="org8b8f259"></a>
 
 # Configure Tooling
 
@@ -28,12 +28,12 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 ---
 
 
-<a id="org8cf6d63"></a>
+<a id="orga34505d"></a>
 
 # Commands
 
 
-<a id="org3a92e55"></a>
+<a id="orga22da28"></a>
 
 ## Create Repositories
 
@@ -62,7 +62,7 @@ What is "merge.conflictStyle"? Specify the style in which conflicted hunks are w
 ---
 
 
-<a id="orgdf1210a"></a>
+<a id="org501b20b"></a>
 
 ## Create feature branch from command line
 
@@ -409,7 +409,7 @@ GIT: SEE ALL UNPUSHED COMMITS OR COMMITS THAT ARE NOT IN ANOTHER BRANCH
 ---
 
 
-<a id="org3f4de3b"></a>
+<a id="org3e7c1dd"></a>
 
 # Undoing a git push
 
@@ -426,7 +426,7 @@ e.g.
 ---
 
 
-<a id="orgeb8ec33"></a>
+<a id="org493de40"></a>
 
 # Undo a commit and redo
 
@@ -469,7 +469,7 @@ Most of this sequence will be explained to you by the output of the various comm
 ---
 
 
-<a id="orgf04f0b9"></a>
+<a id="org01e5669"></a>
 
 # Authentication issues
 
@@ -508,23 +508,23 @@ With SSH, you don't have to enter username and password every single time.
 Use these commands to switch between the two :
 
 1.  If you want to use HTTPS
+    
+        git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+    
+    If you got authentication issues with the GIT console you can try your auth this way:
+    
+        https://<username>:<password>@bitbucket.org/<username>/<repo>.git
 
-    git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
-
-If you got authentication issues with the GIT console you can try your auth this way:
-
-    https://<username>:<password>@bitbucket.org/<username>/<repo>.git
-
-1.  If you want to use SSH
-
-    git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
+2.  If you want to use SSH
+    
+        git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
 
     ssh-keygen -t rsa -b 4096 -C "explorer436@tutanota.com"
 
 (When you're prompted to "Enter a file in which to save the key," 
 press Enter. This accepts the default file location.) Now add this SSH ket to bitbucket server.
 
-  If you want to add an SSH key generated from Git console to the ssh-agent in your computer : 
+If you want to add an SSH key generated from Git console to the ssh-agent in your computer : 
 ( You might need to start ssh-agent before you run the ssh-add command: eval \`ssh-agent -s\` or eval $(ssh-agent))
 Add your SSH private key to the ssh-agent using the following command : ssh-add  ~/Downloads/CloudForgeGitSSHKeys/id<sub>rsa</sub>
 (this should point to the location of the private key file)
@@ -532,7 +532,7 @@ Add your SSH private key to the ssh-agent using the following command : ssh-add 
 ---
 
 
-<a id="orgd7c3fcf"></a>
+<a id="org1061543"></a>
 
 # Helpful Resources
 

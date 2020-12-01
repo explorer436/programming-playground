@@ -195,31 +195,33 @@ Most of this sequence will be explained to you by the output of the various comm
     
     1. If you want to use HTTPS
     
-   #+BEGIN_EXAMPLE
-   git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
-   #+END_EXAMPLE
+      #+BEGIN_EXAMPLE
+      git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+      #+END_EXAMPLE
 
       If you got authentication issues with the GIT console you can try your auth this way:
-   #+BEGIN_EXAMPLE
-   https://<username>:<password>@bitbucket.org/<username>/<repo>.git
-   #+END_EXAMPLE
+      #+BEGIN_EXAMPLE
+      https://<username>:<password>@bitbucket.org/<username>/<repo>.git
+      #+END_EXAMPLE
     
     2. If you want to use SSH
-   #+BEGIN_EXAMPLE
-   git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
-   #+END_EXAMPLE
+
+      #+BEGIN_EXAMPLE
+      git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
+      #+END_EXAMPLE
 
 
-   #+BEGIN_EXAMPLE
-   ssh-keygen -t rsa -b 4096 -C "explorer436@tutanota.com"
-   #+END_EXAMPLE
-    (When you're prompted to "Enter a file in which to save the key," 
-    press Enter. This accepts the default file location.) Now add this SSH ket to bitbucket server.
+      #+BEGIN_EXAMPLE
+      ssh-keygen -t rsa -b 4096 -C "explorer436@tutanota.com"
+      #+END_EXAMPLE
+
+      (When you're prompted to "Enter a file in which to save the key," 
+      press Enter. This accepts the default file location.) Now add this SSH ket to bitbucket server.
     
       If you want to add an SSH key generated from Git console to the ssh-agent in your computer : 
-    ( You might need to start ssh-agent before you run the ssh-add command: eval `ssh-agent -s` or eval $(ssh-agent))
-    Add your SSH private key to the ssh-agent using the following command : ssh-add  ~/Downloads/CloudForgeGitSSHKeys/id_rsa
-    (this should point to the location of the private key file)
+      ( You might need to start ssh-agent before you run the ssh-add command: eval `ssh-agent -s` or eval $(ssh-agent))
+      Add your SSH private key to the ssh-agent using the following command : ssh-add  ~/Downloads/CloudForgeGitSSHKeys/id_rsa
+      (this should point to the location of the private key file)
 
 -----------------------------------------------------------
 
