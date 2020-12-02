@@ -26,7 +26,7 @@
 10.24.228.22           routed-pmpaymentservice.lmig.com		    #dev-c 
 
 
-#Harsha WID
+#My WID slice
 #10.172.104.226          routed-inetutl-wps.libertyec.com             #dev-c-inetutl-wps.libertyec.com
 10.172.104.226          routed-PWS-businessdomain.libertyec.com      #dev-d-inet.libertyec.com
 10.172.104.226          routed-PWS-propertyquote.libertyec.com       #dev-d-inet.libertyec.com
