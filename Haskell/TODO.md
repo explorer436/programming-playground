@@ -30,3 +30,8 @@ Try in Haskell:
 - backtracking a tree starting from the nodes
 - working with linked lists
 - suffix tree like data structures - what do they mean?
+
+Write a program to retrieve the highest or lowest element from a list.
+Write a program to retrieve the index of the highest or lowest element from a list.
+
+Go through the remaining tutorials from haskell tutorials.com and see how long it would take to work on them.
