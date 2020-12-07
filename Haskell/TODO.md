@@ -35,3 +35,10 @@ Write a program to retrieve the highest or lowest element from a list.
 Write a program to retrieve the index of the highest or lowest element from a list.
 
 Go through the remaining tutorials from haskell tutorials.com and see how long it would take to work on them.
+
+Source: https://www.haskelltutorials.com/without-theory/lambdas.html
+AddLineNumbersToSourceCode.hs
+Generalized Fibonacci selector
+Pagination.hs
+Exam Score Processing
+

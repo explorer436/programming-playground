@@ -1,10 +1,26 @@
 Setup your first throw-away project:
 
+$ stack new first-project (if you do not want to specify a resolver)
+or
 $ stack new --resolver=lts-9.14 first-project
 $ cd first-project
-$ stack setup
 
-The last command stack setup may take forever, becuase it will probably download the GHC compiler and a bunch of core/base libraries. Also, it’s going to take a lot of disk-space (about 2GB+).
+Use either stack setup or stack build:
+
+$ stack setup
+The last command stack setup may take forever, because it will probably download the GHC compiler and a bunch of core/base libraries. Also, it’s going to take a lot of disk-space (about 2GB+).
+
+OK, before we go too much further, let’s just make sure this fresh project builds:
+$ stack build
+
+Pretty straight forward stuff! If everything’s been set up right, we should expect stack exec <project>-exe (corresponding to the executable target in the cabal file) to run the program as it sits now, as described by the Stack quickstart guide to write “someFunc” as output to STDOUT and exit immediately. Let’s make sure:
+
+$ stack exec haskell-restish-todo-exe
+someFunc
+
+-------------------------------------------------------------------
+
+Creating custom hs files in your project and working with them:
 
 Create a new file called Throwaway.hs in your project:
 
@@ -44,3 +60,4 @@ Change something in the function
 Reload the file via :r (There is a difference in the behaviour of :l and :r that you may read about, if you are interested.)
 Re-run the function
 
+-------------------------------------------------------------------

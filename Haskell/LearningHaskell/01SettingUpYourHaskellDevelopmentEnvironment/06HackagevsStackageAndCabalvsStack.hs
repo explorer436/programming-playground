@@ -1,4 +1,4 @@
-Hackage vs Stackage & Cabal vs Stack
+Hackage vs Stackage
 
 Strangely, Haskell has two widely used package repositories. Here is how they are conceptually different and why both exist:
 
@@ -7,6 +7,10 @@ Hackage (http://hackage.haskell.org/) is the original package repository. This i
 Stackage (https://www.stackage.org/) pulls specific versions of specific packages from Hackage and divides them into “sets” known as “snapshots”. Each snapshot contains only a single version of any package with a guarantee that all the packages in a given snapshot will successfully build when included in a project. That is, you will not get a dependency hell when your project depends on 5 packages from the same Stackage snapshot. (If you go to a snapshot/LTS’ listing page you can verify that there is only one version of each package listed there. On the other hand, if you check the same package on Hackage, you will see all versions of the package listed there).
 
 Hackage has way more packages than Stackage, because, not every author adds their package to the Stackage snapshot. This is probably because, every time a new LTS/snapshot is released, package-authors have to do some extra work to maintain the “no dependeny-hell guaranteee”. However, most popular/important packages have already been added to Stackage, so you won’t be missing any packages till you start doing advanced Haskell stuff.
+
+------------------------------
+
+Cabal vs Stack
 
 The command-line tool called cabal does not know about Stackage and pulls packages directly from Hackage. Also, cabal+Hackage do not give this “no dependency-hell guarantee” that stack+Stackage works very hard to maintain.
 
