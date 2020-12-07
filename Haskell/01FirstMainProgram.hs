@@ -10,6 +10,8 @@ main = putStrLn helloString
 
 ----------------------------------------------------------------
 
+If you were to run this first program, it will put "Polly wants a cracker" on to the screen.
+
 
 {- |
   
@@ -26,3 +28,5 @@ main = putStrLn helloString
            |______________________________| -> expression
   
 -}
+
+
