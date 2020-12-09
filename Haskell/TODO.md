@@ -42,3 +42,13 @@ Generalized Fibonacci selector
 Pagination.hs
 Exam Score Processing
 
+Functors, Applicatives, And Monads In Pictures - https://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html
+http://blog.sigfpe.com/2006/08/you-could-have-invented-monads-and.html
+https://www.maztravel.com/haskell/readerMonad.html
+Three Useful Monads - https://adit.io/posts/2013-06-10-three-useful-monads.html
+https://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html
+Teleport - How to write a small, useful command line application in Haskell  - https://bollu.github.io/teleport/
+
+Building trees back from the string representations of the various traversal techniques.
+
+Working with OpenAPI specs for REST APIs. How to do that?

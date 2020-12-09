@@ -15,7 +15,6 @@ Let's take a peek.
 class Functor f where  
     fmap :: (a -> b) -> f a -> f b  
     
-Alright. 
 We see that it defines one function, fmap, and doesn't provide any default implementation for it. 
 The type of fmap is interesting. 
 In the definitions of typeclasses so far, 
