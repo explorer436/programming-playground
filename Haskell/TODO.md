@@ -31,8 +31,8 @@ Try in Haskell:
 - working with linked lists
 - suffix tree like data structures - what do they mean?
 
-Write a program to retrieve the highest or lowest element from a list.
-Write a program to retrieve the index of the highest or lowest element from a list.
+Write a program to retrieve the highest or lowest element from a list. When there are duplicate elements, write separate functions to retrieve the one from the left and the one from the left.
+Write a program to retrieve the index of the highest or lowest element from a list. When there are duplicate elements, write separate functions to retrieve the one from the left and the one from the left.
 
 Go through the remaining tutorials from haskell tutorials.com and see how long it would take to work on them.
 
