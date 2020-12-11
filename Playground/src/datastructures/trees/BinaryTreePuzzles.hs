@@ -1,3 +1,5 @@
+import MyBinaryTree
+
 import Data.List (elemIndex)
 import Data.Maybe (fromJust)
 
@@ -48,14 +50,6 @@ import Data.Maybe (fromJust)
     True
 
 -}
-
-data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Show, Read, Eq) 
-
-rootValue :: Tree a -> a
-rootValue (Node a _ _) = a
-
-compareTrees :: Eq a => a -> a -> Bool
-compareTrees t1 t2 = t1 == t2
 
 doesSubtreeExistInParentTree :: Eq a => Tree a -> Tree a -> Bool
 doesSubtreeExistInParentTree t1@(Node a EmptyTree EmptyTree) t2 = t1 == t2

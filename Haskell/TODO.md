@@ -7,9 +7,6 @@ If necessary, modify both of them to write the results to a file directly.
 
 vacationlabs.com/haskell/adt.html
 
-Tree traversals - all four types - implement this in Haskell.
-deleting a tree node in Haskell.
-
 Tsoding videos on Youtube.
 
 Two sum in Haskell.
@@ -52,3 +49,5 @@ Teleport - How to write a small, useful command line application in Haskell  - h
 Building trees back from the string representations of the various traversal techniques.
 
 Working with OpenAPI specs for REST APIs. How to do that?
+
+Pretty print a binary tree or a binary search tree. In a vertical tree like structure with branches showing the left and right subtrees. This will be very useful while printing the results of various operations on trees. The default structure that is printed on the console is a little helpful but it gets difficult to read it if the tree gets relatively big. Printing the tree in a visual form will be very helpful.

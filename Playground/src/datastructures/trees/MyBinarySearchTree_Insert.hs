@@ -1,6 +1,6 @@
 module MyBinarySearchTree_Insert where
 
-import MyBinarySearchTree
+import MyBinaryTree
 import MyBinarySearchTree_Search (treeElem)
 
 import Data.List (permutations, foldl')

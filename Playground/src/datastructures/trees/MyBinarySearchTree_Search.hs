@@ -1,6 +1,6 @@
 module MyBinarySearchTree_Search where
   
-import MyBinarySearchTree
+import MyBinaryTree
 
 {- |
     

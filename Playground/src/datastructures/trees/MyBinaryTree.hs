@@ -1,4 +1,4 @@
-module MyBinarySearchTree where
+module MyBinaryTree where
 
 {- |
 
@@ -40,5 +40,11 @@ module MyBinarySearchTree where
 -}
 
 data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Show, Read, Eq) 
+
+rootValue :: Tree a -> a
+rootValue (Node a _ _) = a
+
+compareTrees :: Eq a => a -> a -> Bool
+compareTrees t1 t2 = t1 == t2
 
 ----------------------------------------------------------------------------------------------------

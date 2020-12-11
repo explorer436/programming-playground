@@ -1,6 +1,6 @@
 module MyBinarySearchTree_Height where
   
-import MyBinarySearchTree
+import MyBinaryTree
 import MyBinarySearchTree_Insert
 
 -- The height of a node is the length of the longest downward path to a leaf from that node. 

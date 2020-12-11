@@ -2,7 +2,8 @@ Hi, here's your problem today. This problem was recently asked by Amazon:
 
 Given a binary tree, flatten the binary tree using inorder traversal. 
 Instead of creating a new list, reuse the nodes, where the list is represented by following each right child. 
-As such the root should always be the first element in the list so you do not need to return anything in the implementation, just rearrange the nodes such that following the right child will give us the list.
+As such the root should always be the first element in the list so you do not need to return anything in the implementation, 
+just rearrange the nodes such that following the right child will give us the list.
 
 Here's an example and some starter code.
 
@@ -17,7 +18,7 @@ class Node:
 
 def flatten_bst(root):
   # Fill this in.
-  
+
 n5 = Node(5)
 n4 = Node(4)
 n3 = Node(3, n4)

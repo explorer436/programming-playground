@@ -1,6 +1,6 @@
 module MyBinarySearchTree_MaximumAndMinimumElements where
 
-import MyBinarySearchTree
+import MyBinaryTree
 
 ----------------------------------------------------------------------------------------------------
 

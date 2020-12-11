@@ -1,6 +1,6 @@
 module MyBinarySearchTreeTraversals_BreadthFirst where
 
-import MyBinarySearchTree
+import MyBinaryTree
 
 {- |
     BREADTH-FIRST SEARCH / LEVEL ORDER
@@ -10,11 +10,11 @@ import MyBinarySearchTree
 -}
 
 traverseBreadthFirst :: Tree a -> [a]
-traverseBreadthFirst tree = tbf [tree]
+traverseBreadthFirst tree = helper [tree]
 
-tbf :: [Tree a] -> [a]
-tbf [] = []
-tbf listOfTrees = map nodeValue listOfTrees ++ tbf (concat (map leftAndRightTrees listOfTrees))
+helper :: [Tree a] -> [a]
+helper [] = []
+helper listOfTrees = map nodeValue listOfTrees ++ helper (concat (map leftAndRightTrees listOfTrees))
 
 nodeValue :: Tree a -> a
 nodeValue (Node a _ _) = a
