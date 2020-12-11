@@ -1,7 +1,8 @@
-module BinarySearchTrees01 where
+module MyBinarySearchTree where
 
 {- |
     Why do we need Binary Search Trees in the first place?
+
     Because there is a need for data structures that allow both fast search and flexible updates - not just fast search or flexible updates.
     Unsorted double-linked lists support insertion and deletion in O(1) time but search takes linear time in worst case.
     Sorted arrays support binary search and logarithmic query times but at the cost of linear-time update.
@@ -9,8 +10,6 @@ module BinarySearchTrees01 where
     Binary search requires that we have fast access to two elements - the median elements above and below the given node.
     To combine these ideas, we need a "linked list" with two pointers per node.
     And this is the basic idea behind binary search trees.
-
-    WE ARE GOING TO IMPLEMENT A BINARY SEARCH TREE. 
 
     A rooted binary tree is recursively defined as either being
     1. empty, or
@@ -29,42 +28,16 @@ module BinarySearchTrees01 where
     And we've found our element in three hops! 
     Now if this were a normal list (or a tree, but really unbalanced), it would take us seven hops instead of three to see if 8 is in there.
     
-    Sets and maps from Data.Set and Data.Map are implemented using trees, 
+    In Haskell, Sets and maps from Data.Set and Data.Map are implemented using trees, 
     only instead of normal binary search trees, 
     they use balanced binary search trees, 
     which are always balanced. 
-    But right now, we'll just be implementing normal binary search trees.
     
     Here's what we're going to say: 
     a tree is either an empty tree or it's an element that contains some value and two trees. 
-    Sounds like a perfect fit for an algebraic data type!
+    This is a perfect fit for an algebraic data type in Haskell!
 -}
 
 data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Show, Read, Eq) 
-
-----------------------------------------------------------------------------------------------------
-
-{- |
-    
-    Next up, we're going to make a function that checks if some element is in the tree. 
-    First, let's define the edge condition. 
-    If we're looking for an element in an empty tree, then it's certainly not there. 
-    Notice how this is the same as the edge condition when searching for elements in lists. 
-    If we're looking for an element in an empty list, it's not there. 
-    Anyway, if we're not looking for an element in an empty tree, then we check some things. 
-    If the element in the root node is what we're looking for, great! 
-    If it's not, what then? 
-    Well, we can take advantage of knowing that all the left elements are smaller than the root node. 
-    So if the element we're looking for is smaller than the root node, 
-    check to see if it's in the left sub-tree. 
-    If it's bigger, check to see if it's in the right sub-tree.
--}
-
-treeElem :: (Ord a) => a -> Tree a -> Bool  
-treeElem x EmptyTree = False  
-treeElem x (Node a left right)  
-    | x == a = True  
-    | x < a  = treeElem x left  
-    | x > a  = treeElem x right 
 
 ----------------------------------------------------------------------------------------------------

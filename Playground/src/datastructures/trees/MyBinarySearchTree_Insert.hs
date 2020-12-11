@@ -1,6 +1,8 @@
-module BinarySearchTree_Insert02 where
+module MyBinarySearchTree_Insert where
 
-import BinarySearchTrees01
+import MyBinarySearchTree
+import MyBinarySearchTree_IsElement
+
 import Data.List (permutations, foldl')
 
 ----------------------------------------------------------------------------------------------------
@@ -74,14 +76,14 @@ numsTreeFromRight = treeFromRight nums
 -- Node 5 (Node 3 (Node 1 EmptyTree EmptyTree) (Node 4 EmptyTree EmptyTree)) (Node 7 (Node 6 EmptyTree EmptyTree) (Node 8 EmptyTree EmptyTree))  
 
 {- |
-		 			     5
-		 			   /  \ 
-					  /    \
-					 /      \
-					3        7 
-  				   /  \     /  \
-  				  /    \   /    \
-				 1      4 6      8 
+                          5
+                        /  \ 
+                       /    \
+                      /      \
+                     3        7 
+                    /  \     /  \
+                   /    \   /    \
+                  1      4 6      8 
 
 -}
 
@@ -116,16 +118,16 @@ nums2 = [25, 20, 15, 27, 30, 29, 26, 22, 32, 17]
 numsTreeFromLeft = treeFromLeft nums2
 
 {- |
-		 			    25
-		 			   /  \ 
-					  /    \
-					 /      \
-					20       27
-  				   /  \     /  \
-  				  /    \   /    \
-				 15    22 26   30
-				  \	           / \
-				  17	     29  32
+                         25
+                        /  \ 
+                       /    \
+                      /      \
+                     20       27
+                    /  \     /  \
+                   /    \   /    \
+                 15    22 26     30
+                  \             /  \
+                  17          29   32
 -}
 
 ----------------------------------------------------------------------------------------------------

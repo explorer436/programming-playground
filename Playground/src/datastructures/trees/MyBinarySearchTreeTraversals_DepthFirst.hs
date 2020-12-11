@@ -1,7 +1,7 @@
-module BinarySearchTreeTraversals_DepthFirst05 where
+module MyBinarySearchTreeTraversals_DepthFirst where
     
-import BinarySearchTrees01
-import BinarySearchTree_Insert02
+import MyBinarySearchTree
+import MyBinarySearchTree_Insert
 
 
 -- TREE TRAVERSALS

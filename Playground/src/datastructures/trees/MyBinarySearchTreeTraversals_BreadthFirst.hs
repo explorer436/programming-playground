@@ -1,7 +1,7 @@
-module BinarySearchTreeTraversals_BreadthFirst06 where
+module MyBinarySearchTreeTraversals_BreadthFirst where
 
-import BinarySearchTrees01
-import BinarySearchTreeTraversals_DepthFirst05
+import MyBinarySearchTree
+import MyBinarySearchTreeTraversals_DepthFirst
 
 {- |
     BREADTH-FIRST SEARCH / LEVEL ORDER

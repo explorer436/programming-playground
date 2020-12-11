@@ -1,5 +1,7 @@
-import BinarySearchTrees01
-import BinarySearchTree_Insert02
+module MyBinarySearchTree_Height where
+  
+import MyBinarySearchTree
+import MyBinarySearchTree_Insert
 
 -- The height of a node is the length of the longest downward path to a leaf from that node. 
 -- The height of the root is the height of the tree. 
@@ -13,14 +15,14 @@ import BinarySearchTree_Insert02
     
     Compute the height of a binary tree.
     
-    		 			     5
-    		 			   /  \ 
-    					  /    \
-    					 /      \
-    					3       10
-      				   / \     /
-      				  /   \   /
-    				 20    21 1
+                              5
+                            /  \ 
+                           /    \
+                          /      \
+                         3       10
+                        / \     /
+                       /   \   /
+                     20    21 1
     
     In this problem we consider binary trees, represented by pointer data structures.
     
