@@ -1,5 +1,5 @@
 import BinarySearchTrees01
-import BuildABinarySearchTree02
+import BinarySearchTree_Insert02
 
 -- The height of a node is the length of the longest downward path to a leaf from that node. 
 -- The height of the root is the height of the tree. 

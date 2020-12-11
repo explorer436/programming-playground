@@ -1,4 +1,4 @@
-module BuildABinarySearchTree02 where
+module BinarySearchTree_Insert02 where
 
 import BinarySearchTrees01
 import Data.List (permutations, foldl')
