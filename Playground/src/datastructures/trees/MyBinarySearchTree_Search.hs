@@ -1,8 +1,6 @@
-module MyBinarySearchTree_IsElement where
+module MyBinarySearchTree_Search where
   
 import MyBinarySearchTree
-
-----------------------------------------------------------------------------------------------------
 
 {- |
     
@@ -27,4 +25,5 @@ treeElem x (Node a left right)
     | x < a  = treeElem x left  
     | x > a  = treeElem x right 
 
-----------------------------------------------------------------------------------------------------
+-- This search algorithm runs in O(h) time, where h denotes the height of the tree.
+

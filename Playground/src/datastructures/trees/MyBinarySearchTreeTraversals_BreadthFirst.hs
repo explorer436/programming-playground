@@ -1,12 +1,12 @@
 module MyBinarySearchTreeTraversals_BreadthFirst where
 
 import MyBinarySearchTree
-import MyBinarySearchTreeTraversals_DepthFirst
 
 {- |
     BREADTH-FIRST SEARCH / LEVEL ORDER
     
-    Trees can also be traversed in level-order, where we visit every node on a level before going to a lower level. This search is referred to as breadth-first search (BFS), as the search tree is broadened as much as possible on each depth before going to the next depth.
+    Trees can also be traversed in level-order, where we visit every node on a level before going to a lower level.
+    This search is referred to as breadth-first search (BFS), as the search tree is broadened as much as possible on each depth before going to the next depth.
 -}
 
 traverseBreadthFirst :: Tree a -> [a]
@@ -25,8 +25,44 @@ leftAndRightTrees (Node _ EmptyTree b)     = [b]
 leftAndRightTrees (Node _ a EmptyTree)     = [a]
 leftAndRightTrees (Node _ a b)         = [a,b]
 
+{- |
+                          F
+                        /  \ 
+                       /    \
+                      /      \
+                     B         G 
+                    / \        \
+                   /   \        \
+                  A     D        I
+                       / \      / \ 
+                     /    \    /   \ 
+                    C      E  H     J
+                                     \
+                                      K
+-}
+
+lettersTree = Node 'F' 
+                (Node 'B' 
+                  (Node 'A' EmptyTree EmptyTree) 
+                  (Node 'D' 
+                    (Node 'C' EmptyTree EmptyTree) 
+                    (Node 'E' EmptyTree EmptyTree)
+                  )
+                ) 
+                (Node 'G' 
+                  EmptyTree 
+                  (Node 'I' 
+                    (Node 'H' EmptyTree EmptyTree) 
+                    (Node 'J' 
+                      EmptyTree 
+                      (Node 'K' EmptyTree EmptyTree)
+                    )
+                  )
+                )
+
+
 -- tests
-testTraverseBreadthFirst01 = traverseBreadthFirst numsTree3  -- "FBGADICEHJK"
+testTraverseBreadthFirst01 = traverseBreadthFirst lettersTree  -- "FBGADICEHJK"
 
 {- |
     explanation:

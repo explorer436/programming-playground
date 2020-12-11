@@ -1,7 +1,7 @@
 module MyBinarySearchTree_Insert where
 
 import MyBinarySearchTree
-import MyBinarySearchTree_IsElement
+import MyBinarySearchTree_Search (treeElem)
 
 import Data.List (permutations, foldl')
 

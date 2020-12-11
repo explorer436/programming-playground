@@ -39,7 +39,8 @@ treeMinimum EmptyTree = 0
 treeMinimum (Node a EmptyTree _) = a
 treeMinimum (Node a left right) = treeMinimum left
 
-testMinimum = treeMinimum sampleTree
+testMinimum01 = treeMinimum sampleTree
+testMinimum02 = treeMinimum (Node 8 EmptyTree EmptyTree)
 
 
 treeMaximum :: Num p => Tree p -> p

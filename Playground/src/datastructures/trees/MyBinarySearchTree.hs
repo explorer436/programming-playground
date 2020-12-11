@@ -1,6 +1,7 @@
 module MyBinarySearchTree where
 
 {- |
+
     Why do we need Binary Search Trees in the first place?
 
     Because there is a need for data structures that allow both fast search and flexible updates - not just fast search or flexible updates.
