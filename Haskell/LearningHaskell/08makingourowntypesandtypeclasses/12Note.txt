@@ -1,0 +1,2 @@
+Look at binary trees and binary search trees here.
+They are good examples of making our own types and type classes.
