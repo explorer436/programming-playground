@@ -1,7 +1,8 @@
 import MyBinaryTree
 
+import Data.Int
 import Data.Maybe (fromJust)
-import Data.List (minimumBy)
+import Data.List (minimumBy, foldl')
 
 import BinaryTreeSumsForEachLevel (listWithSumsForEachLevel)
 
@@ -39,22 +40,23 @@ import BinaryTreeSumsForEachLevel (listWithSumsForEachLevel)
     print minimum_level_sum(node)
 -}
 
-customImplementationForCompare :: (Ord a) => a -> a -> Ordering  
-a `customImplementationForCompare` b  
-    | a > b     = GT  
-    | a == b    = EQ  
-    | otherwise = LT
-
 -- For reference, see MaxElementInAListAndItsIndex.hs
--- TODO: Do not use the implementation below. Re-write this using foldl'
-findFirstMinimumElementInTheListAndIndex xs = minimumBy (\(a, i) (b, j) -> customImplementationForCompare (customImplementationForCompare a b) (customImplementationForCompare i j)) $ zip xs [0..]
-testFindFirstMinimumElementInTheListAndIndex = findFirstMinimumElementInTheListAndIndex [10,7,7]
+-- findFirstMinimumElementInTheListAndIndex :: (Int a, Int b) => [(a, b)] -> Maybe (a, b)
+findFirstMinimumElementInTheListAndIndex [] = Nothing
+findFirstMinimumElementInTheListAndIndex xs = Just (foldl' (\acc x -> 
+                                                        if ((fst acc) > (fst x)) 
+                                                            then x 
+                                                        else if ((fst acc) == (fst x)) 
+                                                            then (if (snd acc < snd x) 
+                                                                    then acc 
+                                                                  else x) 
+                                                        else acc) (head xs) xs)
 
-smallestSumOfAllNodesInALevel tree = fst (findFirstMinimumElementInTheListAndIndex (listWithSumsForEachLevel tree))
-levelOfTreeWhereSumOfAllNodesIsTheSmallest tree = snd (findFirstMinimumElementInTheListAndIndex (listWithSumsForEachLevel tree))
+smallestSumOfAllNodesInALevel tree = fst (fromJust $ findFirstMinimumElementInTheListAndIndex (zip (listWithSumsForEachLevel tree)[0..]))
+levelOfTreeWhereSumOfAllNodesIsTheSmallest tree = snd (fromJust $ findFirstMinimumElementInTheListAndIndex (zip (listWithSumsForEachLevel tree)[0..]))
 
 -- tests
-testFindFirstMinimumElementInTheListAndIndex01 = findFirstMinimumElementInTheListAndIndex (listWithSumsForEachLevel testTree01) -- (7,2)
+testFindFirstMinimumElementInTheListAndIndex01 = fromJust $ findFirstMinimumElementInTheListAndIndex (zip (listWithSumsForEachLevel testTree01)[0..]) -- (7,2)
 testMinSum01 = smallestSumOfAllNodesInALevel testTree01 -- 7
 testLevelOfTreeWithMinimumSum01 = levelOfTreeWhereSumOfAllNodesIsTheSmallest testTree01 -- 2
 
@@ -66,7 +68,7 @@ testTree01 = (Node 10
                    (EmptyTree)
                    (Node 2 EmptyTree EmptyTree)))
 
-testFindFirstMinimumElementInTheListAndIndex02 = findFirstMinimumElementInTheListAndIndex (listWithSumsForEachLevel testTree02) -- (7,1)
+testFindFirstMinimumElementInTheListAndIndex02 = fromJust $ findFirstMinimumElementInTheListAndIndex (zip (listWithSumsForEachLevel testTree02)[0..]) -- (7,1)
 testMinSum02 = smallestSumOfAllNodesInALevel testTree02 -- 7
 testLevelOfTreeWithMinimumSum02 = levelOfTreeWhereSumOfAllNodesIsTheSmallest testTree02 -- 1
 

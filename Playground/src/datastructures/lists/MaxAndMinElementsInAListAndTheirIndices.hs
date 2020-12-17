@@ -3,25 +3,7 @@ import Data.Maybe (fromJust)
 
 -- MAXIMUM ELEMENTS AND THEIR INDICES
 
-{- |
-    Source code for maximumBy:
-
-    maximumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
-    maximumBy cmp = foldl1 max'
-    where max' x y = case cmp x y of
-                            GT -> x
-                            _  -> y
--} 
-
-{- |
-    customImplementationForCompare :: (Ord a) => a -> a -> Ordering  
-    a `customImplementationForCompare` b  
-        | a > b     = GT  
-        | a == b    = EQ  
-        | otherwise = LT
-    customImplementationForCompareTest1 =  2 `customImplementationForCompare` 3 -- LT
-    customImplementationForCompareTest2 = customImplementationForCompare 5 4 -- GT
--} 
+testMaximum01 = maximum [1,53,9001,10] -- 9001
 
 -- comparing elements in a single list
 testMaximumBy01 = maximumBy compare [1,53,9001,10] -- 9001
@@ -31,8 +13,6 @@ testMaximumBy01 = maximumBy compare [1,53,9001,10] -- 9001
 testMaximumBy02 = maximumBy (compare) (zip [2,7,3,7] [0..]) -- (7, 3)
 testMaximumBy03 = maximumBy compare (zip [0..] [2,7,3,1]) -- (3, 1)
 
-
--- Notice the order of i and j in the comparison function. This is because, we want the first index (as opposed to the last index) of the greatest element when it occurs multiple times in the list.
 -- compare the first elements first and if they are equal, then compare the second elements.
 -- findFirstMinimumElementInTheListAndIndex [] = null
 findFirstMaximumElementInTheListAndIndex :: (Integral a, Integral b) => [(a, b)] -> Maybe (a, b)
@@ -49,6 +29,7 @@ findFirstMaximumElementInTheListAndIndex xs = Just (foldl' (\acc x ->
 testFindFirstMaximumElementInTheListAndIndex01 = fromJust $ findFirstMaximumElementInTheListAndIndex [(4,0),(9,1),(3,2),(7,3)] -- (9,1)
 testFindFirstMaximumElementInTheListAndIndex02 = fromJust $ findFirstMaximumElementInTheListAndIndex [(4,0),(9,1),(9,2),(7,3)] -- (9,2)
 testFindFirstMaximumElementInTheListAndIndex03 = findFirstMaximumElementInTheListAndIndex [] -- Nothing
+
 
 -- MINIMUM ELEMENTS AND THEIR INDICES
 
@@ -70,12 +51,10 @@ findFirstMinimumElementInTheListAndIndex xs = Just (foldl' (\acc x ->
                                                             then x 
                                                         else if ((fst acc) == (fst x)) 
                                                             then (if (snd acc < snd x) 
-                                                                    then x 
-                                                                  else acc) 
+                                                                    then acc 
+                                                                  else x) 
                                                         else acc) (head xs) xs)
--- findFirstMinimumElementInTheListAndIndex xs = foldl' (\acc x -> if ((fst acc) > (fst x)) then (if ((snd acc) > (snd x)) then x else acc) else acc) (head xs) xs
-
+-- tests
 testFindFirstMinimumElementInTheListAndIndex01 = fromJust $ findFirstMinimumElementInTheListAndIndex [(4,0),(2,1),(3,2),(7,3)] -- (2,1)
-testFindFirstMinimumElementInTheListAndIndex02 = fromJust $ findFirstMinimumElementInTheListAndIndex [(4,0),(2,1),(2,2),(7,3)] -- (2,2)
+testFindFirstMinimumElementInTheListAndIndex02 = fromJust $ findFirstMinimumElementInTheListAndIndex [(4,0),(2,1),(2,2),(7,3)] -- (2,1)
 testFindFirstMinimumElementInTheListAndIndex03 = findFirstMinimumElementInTheListAndIndex [] -- Nothing
-

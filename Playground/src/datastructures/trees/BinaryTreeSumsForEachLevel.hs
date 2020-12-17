@@ -1,11 +1,13 @@
 module BinaryTreeSumsForEachLevel where
 
+import Data.Int
+
 import MyBinaryTree
 
-listWithSumsForEachLevel :: Tree Integer -> [Integer]
+listWithSumsForEachLevel :: Tree Int8 -> [Int8]
 listWithSumsForEachLevel tree = breadthLevelSums [tree]
 
-breadthLevelSums :: [Tree Integer] -> [Integer]
+breadthLevelSums :: [Tree Int8] -> [Int8]
 breadthLevelSums [] = []
 breadthLevelSums [EmptyTree] = []
 breadthLevelSums listOfTrees = sumOfRootNodeValues listOfTrees ++ breadthLevelSums (concat (map leftAndRightTrees listOfTrees))   
@@ -16,10 +18,10 @@ leftAndRightTrees (Node _ EmptyTree b)     = [b]
 leftAndRightTrees (Node _ a EmptyTree)     = [a]
 leftAndRightTrees (Node _ a b)         = [a,b]
 
-sumOfRootNodeValues :: [Tree Integer] -> [Integer]
+sumOfRootNodeValues :: [Tree Int8] -> [Int8]
 sumOfRootNodeValues listOfTrees = [sum (map nodeValue listOfTrees)]
 
-nodeValue :: Tree Integer -> Integer
+nodeValue :: Tree Int8 -> Int8
 nodeValue (Node a _ _) = a
 
 -- tests
