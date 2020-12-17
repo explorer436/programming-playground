@@ -1,6 +1,6 @@
 import MyBinaryTree
 
-import Data.List (elemIndex)
+import Data.List (maximumBy)
 import Data.Maybe (fromJust)
 import BinaryTreeSumsForEachLevel (listWithSumsForEachLevel)
 
@@ -23,43 +23,37 @@ import BinaryTreeSumsForEachLevel (listWithSumsForEachLevel)
         return f"(Value: {self.value} Left: {self.left} Right: {self.right})"
 
     def tree_level_max_sum(root):
-      # Fill this in.
+      -- Fill this in.
 
     n3 = Node(4, Node(3), Node(2))
     n2 = Node(5, Node(4), Node(-1))
     n1 = Node(1, n2, n3)
 
-    """
         1          Level 0 - Sum: 1
        / \
       4   5        Level 1 - Sum: 9
      / \ / \
     3  2 4 -1      Level 2 - Sum: 8
-    """
 
     print(tree_level_max_sum(n1))
-    # Should print 1 as level 1 has the highest level sum
+    -- Should print 1 as level 1 has the highest level sum
 -}
 
--- We can probably extract the index of the largest element of the list by creating tuples using zip list [0..] and then using a fold function
-levelOfTreeWithMaximumSum tree = fromJust $ elemIndex (maxSum tree) (listWithSumsForEachLevel tree)
+-- For reference, see MaxElementInAListAndItsIndex.hs
+-- TODO: re-write this using foldl'
+findFirstMaximumElementInTheListAndIndex xs = maximumBy (\(a, i) (b, j) -> compare (compare a b) (compare i j)) $ zip xs [0..]
 
-maxSum tree = maximum (listWithSumsForEachLevel tree)
+greatestSumOfAllNodesInALevel tree = fst (findFirstMaximumElementInTheListAndIndex (listWithSumsForEachLevel tree))
+levelOfTreeWhereSumOfAllNodesIsTheGreatest tree = snd (findFirstMaximumElementInTheListAndIndex (listWithSumsForEachLevel tree))
 
 -- tests
-testLevelOfTreeWithMaximumSum01 = levelOfTreeWithMaximumSum
+testLevelOfTreeWithMaximumSum01 = levelOfTreeWhereSumOfAllNodesIsTheGreatest testTree -- 1
+testGreatestSumOfAllNodesInALevel01 = greatestSumOfAllNodesInALevel testTree -- 9
 
-            (Node 1
-
+testTree = (Node 1
                (Node 4
-
                    (Node 3 EmptyTree EmptyTree)
-
                    (Node 2 EmptyTree EmptyTree))
-
                (Node 5
-
                    (Node 4 EmptyTree EmptyTree)
-
                    (Node (-1) EmptyTree EmptyTree)))
--- 1
