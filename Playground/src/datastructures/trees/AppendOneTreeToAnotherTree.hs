@@ -24,15 +24,15 @@ test = appendTree2ToTheRightMostLeafOfTree1 testTree01 testTree02
 -}
 
 testTree01 = Node 1 
-                     EmptyTree
-                     (Node 2 
-                          EmptyTree
-                          (
-                              Node 5
-                                  (Node 7 EmptyTree EmptyTree)
-                                  (Node 6 EmptyTree EmptyTree)
-                          )
-                     )
+                  EmptyTree
+                  (Node 2 
+                        EmptyTree
+                        (
+                            Node 5
+                                 (Node 7 EmptyTree EmptyTree)
+                                 (Node 6 EmptyTree EmptyTree)
+                        )
+                  )
 {- |
       1
        \
