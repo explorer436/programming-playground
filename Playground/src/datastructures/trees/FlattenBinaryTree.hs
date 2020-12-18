@@ -66,7 +66,15 @@ test01 = flatten (Node 1
                              EmptyTree
                        )
                  )
-
+-- Node 1 
+--      EmptyTree 
+--      (Node 2 
+--            EmptyTree 
+--            (Node 5 
+--                  EmptyTree 
+--                  (Node 3 
+--                        EmptyTree 
+--                        (Node 4 EmptyTree EmptyTree))))
 test02 = flatten (
                      Node 1 
                           (Node 2 
@@ -75,4 +83,10 @@ test02 = flatten (
                           )
                           EmptyTree
                  )
--- Node 1 EmptyTree (Node 5 EmptyTree (Node 3 EmptyTree (Node 4 EmptyTree EmptyTree)))                 
+-- Node 1 
+--      EmptyTree 
+--      (Node 2 
+--            EmptyTree 
+--            (Node 3 
+--                  EmptyTree 
+--                  (Node 4 EmptyTree EmptyTree)))
