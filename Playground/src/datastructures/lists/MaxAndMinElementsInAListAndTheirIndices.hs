@@ -14,7 +14,6 @@ testMaximumBy02 = maximumBy (compare) (zip [2,7,3,7] [0..]) -- (7, 3)
 testMaximumBy03 = maximumBy compare (zip [0..] [2,7,3,1]) -- (3, 1)
 
 -- compare the first elements first and if they are equal, then compare the second elements.
--- findFirstMinimumElementInTheListAndIndex [] = null
 findFirstMaximumElementInTheListAndIndex :: (Integral a, Integral b) => [(a, b)] -> Maybe (a, b)
 findFirstMaximumElementInTheListAndIndex [] = Nothing
 findFirstMaximumElementInTheListAndIndex xs = Just (foldl' (\acc x -> 
@@ -30,6 +29,7 @@ testFindFirstMaximumElementInTheListAndIndex01 = fromJust $ findFirstMaximumElem
 testFindFirstMaximumElementInTheListAndIndex02 = fromJust $ findFirstMaximumElementInTheListAndIndex [(4,0),(9,1),(9,2),(7,3)] -- (9,2)
 testFindFirstMaximumElementInTheListAndIndex03 = findFirstMaximumElementInTheListAndIndex [] -- Nothing
 
+----------------------------------------------------------------------------
 
 -- MINIMUM ELEMENTS AND THEIR INDICES
 

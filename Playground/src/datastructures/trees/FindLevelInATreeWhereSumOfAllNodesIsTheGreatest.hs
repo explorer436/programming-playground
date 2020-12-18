@@ -1,6 +1,7 @@
 import MyBinaryTree
 
-import Data.List (maximumBy)
+import Data.Int
+import Data.List (maximumBy, foldl')
 import Data.Maybe (fromJust)
 import BinaryTreeSumsForEachLevel (listWithSumsForEachLevel)
 
@@ -40,11 +41,19 @@ import BinaryTreeSumsForEachLevel (listWithSumsForEachLevel)
 -}
 
 -- For reference, see MaxElementInAListAndItsIndex.hs
--- TODO: re-write this using foldl'
-findFirstMaximumElementInTheListAndIndex xs = maximumBy (\(a, i) (b, j) -> compare (compare a b) (compare i j)) $ zip xs [0..]
+findFirstMaximumElementInTheListAndIndex :: (Integral a, Integral b) => [(a, b)] -> Maybe (a, b)
+findFirstMaximumElementInTheListAndIndex [] = Nothing
+findFirstMaximumElementInTheListAndIndex xs = Just (foldl' (\acc x -> 
+                                                        if ((fst acc) < (fst x)) 
+                                                            then x 
+                                                        else if ((fst acc) == (fst x)) 
+                                                            then (if (snd acc < snd x) 
+                                                                    then x 
+                                                                  else acc) 
+                                                        else acc) (head xs) xs)
 
-greatestSumOfAllNodesInALevel tree = fst (findFirstMaximumElementInTheListAndIndex (listWithSumsForEachLevel tree))
-levelOfTreeWhereSumOfAllNodesIsTheGreatest tree = snd (findFirstMaximumElementInTheListAndIndex (listWithSumsForEachLevel tree))
+greatestSumOfAllNodesInALevel tree = fst (fromJust $ findFirstMaximumElementInTheListAndIndex (zip (listWithSumsForEachLevel tree)[0..]))
+levelOfTreeWhereSumOfAllNodesIsTheGreatest tree = snd (fromJust $ findFirstMaximumElementInTheListAndIndex (zip(listWithSumsForEachLevel tree)[0..]))
 
 -- tests
 testLevelOfTreeWithMaximumSum01 = levelOfTreeWhereSumOfAllNodesIsTheGreatest testTree -- 1
