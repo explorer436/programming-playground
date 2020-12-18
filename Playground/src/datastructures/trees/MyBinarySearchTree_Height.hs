@@ -3,11 +3,7 @@ module MyBinarySearchTree_Height where
 import MyBinaryTree
 import MyBinarySearchTree_Insert
 
--- The height of a node is the length of the longest downward path to a leaf from that node. 
--- The height of the root is the height of the tree. 
--- The depth of a node is the length of the path to its root (i.e., its root path). 
-
-----------------------------------------------------------------------------------------------------
+-- Reference: Look at HeightAndDepthOfBinaryTree.txt
 
 {- |
     
@@ -72,4 +68,3 @@ treeHeight (Node _ l r) = 1 + max (treeHeight l) (treeHeight r)
 testTreeHeight01 = treeHeight numsTreeFromLeft -- 3
 testTreeHeight02 = treeHeight numsTreeFromRight -- 2
 
-----------------------------------------------------------------------------------------------------

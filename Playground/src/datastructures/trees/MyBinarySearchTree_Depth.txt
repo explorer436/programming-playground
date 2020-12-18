@@ -1,0 +1,3 @@
+At the tree level, the height and the depth are always going to have equal values (even thought they do not represent the same thing).
+So, the solution in "MyBinarySearchTree_Height.hs" can also be used to calculate depth. If you need a solution to specifically calculate the depth based on it's definition, it is going to look  similar to the solution in "MyBinarySearchTree_Height".
+Reference: HeightAndDepthOfBinaryTree.txt
