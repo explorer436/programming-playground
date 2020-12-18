@@ -1,13 +1,8 @@
 module MyBinarySearchTree_Height where
   
 import MyBinaryTree
-import MyBinarySearchTree_Insert
 
--- The height of a node is the length of the longest downward path to a leaf from that node. 
--- The height of the root is the height of the tree. 
--- The depth of a node is the length of the path to its root (i.e., its root path). 
-
-----------------------------------------------------------------------------------------------------
+-- Reference: Look at HeightAndDepthOfBinaryTree.txt
 
 {- |
     
@@ -66,10 +61,69 @@ import MyBinarySearchTree_Insert
 
 -}
 
+treeHeight :: (Num p, Ord p) => Tree a -> p
 treeHeight EmptyTree    = -1
+treeHeight (Node a EmptyTree EmptyTree)    = 0
 treeHeight (Node _ l r) = 1 + max (treeHeight l) (treeHeight r)
--- tests
-testTreeHeight01 = treeHeight numsTreeFromLeft -- 3
-testTreeHeight02 = treeHeight numsTreeFromRight -- 2
 
-----------------------------------------------------------------------------------------------------
+-- tests
+testTreeHeight03 = treeHeight EmptyTree -- -1
+testTreeHeight04 = treeHeight (Node 3 EmptyTree EmptyTree) -- 0
+
+testTreeHeight01 = treeHeight lettersTree -- 4
+{- |
+                          F
+                        /  \ 
+                       /    \
+                      /      \
+                     B         G 
+                    / \        \
+                   /   \        \
+                  A     D        I
+                       / \      / \ 
+                     /    \    /   \ 
+                    C      E  H     J
+                                     \
+                                      K
+-}
+
+lettersTree = Node 'F' 
+                (Node 'B' 
+                  (Node 'A' EmptyTree EmptyTree) 
+                  (Node 'D' 
+                    (Node 'C' EmptyTree EmptyTree) 
+                    (Node 'E' EmptyTree EmptyTree)
+                  )
+                ) 
+                (Node 'G' 
+                  EmptyTree 
+                  (Node 'I' 
+                    (Node 'H' EmptyTree EmptyTree) 
+                    (Node 'J' 
+                      EmptyTree 
+                      (Node 'K' EmptyTree EmptyTree)
+                    )
+                  )
+                )
+
+{- |
+      1
+       \
+        2
+         \
+          5
+         / \
+        7   6
+-}
+
+testTreeHeight02 = treeHeight numbersTree -- 3
+numbersTree = Node 1 
+                  EmptyTree
+                  (Node 2 
+                        EmptyTree
+                        (
+                            Node 5
+                                 (Node 7 EmptyTree EmptyTree)
+                                 (Node 6 EmptyTree EmptyTree)
+                        )
+                  )
