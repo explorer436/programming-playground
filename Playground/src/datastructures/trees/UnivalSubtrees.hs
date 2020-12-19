@@ -1,3 +1,7 @@
+module UnivalSubtrees where
+
+import Data.Maybe (fromJust)
+
 import MyBinaryTree
 
 {- |
@@ -25,7 +29,30 @@ import MyBinaryTree
 isUnival :: Eq a => Tree a -> Bool
 isUnival EmptyTree = False
 isUnival (Node a EmptyTree EmptyTree) = True
-isUnival (Node a left right) = (a == rootValue left) && (a == rootValue right) && (isUnival left) && (isUnival right)
+isUnival (Node a left EmptyTree) 
+    | isAEqualToLeftRootValue && (isUnival left) = True
+    | otherwise                                  = False
+    where
+        isAEqualToLeftRootValue = case (rootValue left) of 
+                                     Just value -> (a == value)  
+                                     Nothing -> False
+isUnival (Node a EmptyTree right) 
+    | isAEqualToRightRootValue && (isUnival right) = True
+    | otherwise                                    = False
+    where
+        isAEqualToRightRootValue = case (rootValue right) of 
+                                     Just value -> (a == value)  
+                                     Nothing -> False
+isUnival (Node a left right) 
+    | isAEqualToLeftRootValue && isAEqualToRightRootValue && (isUnival left) && (isUnival right) = True
+    | otherwise                                                                                  = False
+    where
+        isAEqualToRightRootValue = case (rootValue right) of 
+                                     Just value -> (a == value)  
+                                     Nothing -> False
+        isAEqualToLeftRootValue = case (rootValue left) of 
+                                     Just value -> (a == value)  
+                                     Nothing -> False
 
 -- testIsUnival01 = isUnival EmptyTree -- False. This seems to be working when tested from the ghci interpreter.
 testIsUnival02 = isUnival (Node 3 EmptyTree EmptyTree) -- True
@@ -43,6 +70,10 @@ testIsUnival04 = isUnival (Node 4
                                 (Node 4
                                       (Node 4 EmptyTree EmptyTree)
                                       (Node 4 EmptyTree EmptyTree))) -- True
+testIsUnival05 = isUnival (Node 1
+                                (Node 1 EmptyTree EmptyTree)
+                                EmptyTree
+                          )
 
 countUnivalSubtrees EmptyTree                    = 0
 countUnivalSubtrees (Node a EmptyTree EmptyTree) = 1
