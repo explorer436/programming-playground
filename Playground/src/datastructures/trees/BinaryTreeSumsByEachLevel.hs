@@ -7,6 +7,8 @@ import MyBinaryTree
 listWithSumsForEachLevel :: Tree Int8 -> [Int8]
 listWithSumsForEachLevel tree = breadthLevelSums [tree]
 
+-- An alternative approach is to use MyBinarySearchTreeTraversals_BreadthFirst_ListsByLevel.breadthLevelLists and then calculating the sums for each internal list. This will give us the sum of elements at every level in the binary tree.
+
 breadthLevelSums :: [Tree Int8] -> [Int8]
 breadthLevelSums [] = []
 breadthLevelSums [EmptyTree] = []
