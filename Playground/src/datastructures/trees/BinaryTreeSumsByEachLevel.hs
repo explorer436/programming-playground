@@ -1,4 +1,4 @@
-module BinaryTreeSumsForEachLevel where
+module BinaryTreeSumsByEachLevel where
 
 import Data.Int
 

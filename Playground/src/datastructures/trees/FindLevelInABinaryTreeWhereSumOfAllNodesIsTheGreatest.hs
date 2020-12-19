@@ -3,7 +3,7 @@ import MyBinaryTree
 import Data.Int
 import Data.List (maximumBy, foldl')
 import Data.Maybe (fromJust)
-import BinaryTreeSumsForEachLevel (listWithSumsForEachLevel)
+import BinaryTreeSumsByEachLevel (listWithSumsForEachLevel)
 
 {- |
 
@@ -52,8 +52,9 @@ findFirstMaximumElementInTheListAndIndex xs = Just (foldl' (\acc x ->
                                                                   else acc) 
                                                         else acc) (head xs) xs)
 
-greatestSumOfAllNodesInALevel tree = fst (fromJust $ findFirstMaximumElementInTheListAndIndex (zip (listWithSumsForEachLevel tree)[0..]))
-levelOfTreeWhereSumOfAllNodesIsTheGreatest tree = snd (fromJust $ findFirstMaximumElementInTheListAndIndex (zip(listWithSumsForEachLevel tree)[0..]))
+greatestTupleOfAllNodesInALevel tree = fromJust $ findFirstMaximumElementInTheListAndIndex (zip (listWithSumsForEachLevel tree)[0..])
+greatestSumOfAllNodesInALevel tree = fst $ greatestTupleOfAllNodesInALevel tree
+levelOfTreeWhereSumOfAllNodesIsTheGreatest tree = snd $ greatestTupleOfAllNodesInALevel tree
 
 -- tests
 testLevelOfTreeWithMaximumSum01 = levelOfTreeWhereSumOfAllNodesIsTheGreatest testTree -- 1

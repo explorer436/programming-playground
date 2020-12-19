@@ -4,7 +4,7 @@ import Data.Int
 import Data.Maybe (fromJust)
 import Data.List (minimumBy, foldl')
 
-import BinaryTreeSumsForEachLevel (listWithSumsForEachLevel)
+import BinaryTreeSumsByEachLevel (listWithSumsForEachLevel)
 
 {- |
 
@@ -52,8 +52,9 @@ findFirstMinimumElementInTheListAndIndex xs = Just (foldl' (\acc x ->
                                                                   else x) 
                                                         else acc) (head xs) xs)
 
-smallestSumOfAllNodesInALevel tree = fst (fromJust $ findFirstMinimumElementInTheListAndIndex (zip (listWithSumsForEachLevel tree)[0..]))
-levelOfTreeWhereSumOfAllNodesIsTheSmallest tree = snd (fromJust $ findFirstMinimumElementInTheListAndIndex (zip (listWithSumsForEachLevel tree)[0..]))
+smallestTupleOfAllNodesInALevel tree = fromJust $ findFirstMinimumElementInTheListAndIndex (zip (listWithSumsForEachLevel tree)[0..])
+smallestSumOfAllNodesInALevel tree = fst $ smallestTupleOfAllNodesInALevel tree
+levelOfTreeWhereSumOfAllNodesIsTheSmallest tree = snd $ smallestTupleOfAllNodesInALevel tree
 
 -- tests
 testFindFirstMinimumElementInTheListAndIndex01 = fromJust $ findFirstMinimumElementInTheListAndIndex (zip (listWithSumsForEachLevel testTree01)[0..]) -- (7,2)
