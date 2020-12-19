@@ -1,5 +1,3 @@
-module MyBinarySearchTreeTraversals_BreadthFirst where
-
 import MyBinaryTree
 
 {- |
@@ -46,16 +44,7 @@ traverseBreadthFirst tree = helper [tree]
 
 helper :: [Tree a] -> [a]
 helper [] = []
-helper listOfTrees = map nodeValue listOfTrees ++ helper (concat (map leftAndRightTrees listOfTrees))
-
-nodeValue :: Tree a -> a
-nodeValue (Node a _ _) = a
-
-leftAndRightTrees :: Tree a -> [Tree a]
-leftAndRightTrees (Node _ EmptyTree EmptyTree) = []
-leftAndRightTrees (Node _ EmptyTree b)     = [b]
-leftAndRightTrees (Node _ a EmptyTree)     = [a]
-leftAndRightTrees (Node _ a b)         = [a,b]
+helper listOfTrees = map rootValue listOfTrees ++ helper (concat (map leftAndRightTrees listOfTrees))
 
 {- |
                           F

@@ -12,17 +12,8 @@ breadthLevelSums [] = []
 breadthLevelSums [EmptyTree] = []
 breadthLevelSums listOfTrees = sumOfRootNodeValues listOfTrees ++ breadthLevelSums (concat (map leftAndRightTrees listOfTrees))   
 
-leftAndRightTrees :: Tree a -> [Tree a]
-leftAndRightTrees (Node _ EmptyTree EmptyTree) = []
-leftAndRightTrees (Node _ EmptyTree b)     = [b]
-leftAndRightTrees (Node _ a EmptyTree)     = [a]
-leftAndRightTrees (Node _ a b)         = [a,b]
-
 sumOfRootNodeValues :: [Tree Int8] -> [Int8]
-sumOfRootNodeValues listOfTrees = [sum (map nodeValue listOfTrees)]
-
-nodeValue :: Tree Int8 -> Int8
-nodeValue (Node a _ _) = a
+sumOfRootNodeValues listOfTrees = [sum (map rootValue listOfTrees)]
 
 -- tests
 test01 = listWithSumsForEachLevel
