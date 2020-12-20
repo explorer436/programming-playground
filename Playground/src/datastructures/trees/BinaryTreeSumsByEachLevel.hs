@@ -23,18 +23,11 @@ actualRootValue tree = case (rootValue tree) of
 
 -- tests
 test01 = listWithSumsForEachLevel
-
             (Node 1
-
                (Node 4
-
                    (Node 3 EmptyTree EmptyTree)
-
                    (Node 2 EmptyTree EmptyTree))
-
                (Node 5
-
                    (Node 4 EmptyTree EmptyTree)
-
                    (Node (-1) EmptyTree EmptyTree)))
 -- [1,9,8]

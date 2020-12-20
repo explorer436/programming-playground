@@ -1,4 +1,4 @@
-module MyBinarySearchTreeTraversals_BreadthFirst_ListsByLevel where
+module MyBinarySearchTreeTraversals_BreadthFirst_ListsByLevel (listsByEachLevel) where
 
 import MyBinaryTree (Tree (..), rootValue, leftAndRightTrees)
 import Data.Maybe (fromJust)
