@@ -55,6 +55,33 @@ import MyBinaryTree (Tree (..))
     # a c f b e d
 -}
 
+{- |
+    (Medium)
+
+    Good morning! Here's your coding interview problem for today.
+
+    This problem was asked by Google.
+
+    Invert a binary tree.
+
+    For example, given the following tree:
+
+        a
+      / \
+      b   c
+    / \  /
+    d   e f
+
+    should become:
+
+      a
+    / \
+    c  b
+    \  / \
+      f e  d
+
+-}
+
 invertTree :: Tree a -> Tree a
 invertTree EmptyTree = EmptyTree
 invertTree tree@(Node a EmptyTree EmptyTree) = tree
