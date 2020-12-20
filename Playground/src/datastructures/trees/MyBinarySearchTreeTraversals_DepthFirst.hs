@@ -1,6 +1,6 @@
 module MyBinarySearchTreeTraversals_DepthFirst where
     
-import MyBinaryTree
+import MyBinaryTree (Tree (..))
 import MyBinarySearchTree_Insert
 
 

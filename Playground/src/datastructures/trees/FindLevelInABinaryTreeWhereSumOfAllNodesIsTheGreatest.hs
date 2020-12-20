@@ -1,4 +1,4 @@
-import MyBinaryTree
+import MyBinaryTree (Tree (..))
 
 import Data.Int
 import Data.List (maximumBy, foldl')

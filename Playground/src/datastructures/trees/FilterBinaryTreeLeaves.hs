@@ -1,4 +1,4 @@
-import MyBinaryTree
+import MyBinaryTree (Tree (..))
 import UnivalSubtrees
 
 import Data.Int

@@ -1,6 +1,6 @@
 module AppendOneTreeToAnotherTree where
 
-import MyBinaryTree
+import MyBinaryTree (Tree (..))
 
 appendTree2ToTheRightMostLeafOfTree1 :: Tree a -> Tree a -> Tree a 
 appendTree2ToTheRightMostLeafOfTree1 tree1@(Node a left EmptyTree) EmptyTree = tree1

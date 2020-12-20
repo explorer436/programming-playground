@@ -1,6 +1,6 @@
 module MyBinarySearchTree_Delete where
 
-import MyBinaryTree
+import MyBinaryTree (Tree (..))
 import MyBinarySearchTree_MaximumAndMinimumElements (treeMinimum)
 
 {- |

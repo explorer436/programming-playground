@@ -1,4 +1,4 @@
-import MyBinaryTree
+import MyBinaryTree (Tree (..))
 
 {-|
     Hi, here's your problem today. This problem was recently asked by LinkedIn:

@@ -1,4 +1,4 @@
-import MyBinaryTree
+import MyBinaryTree (Tree (..))
 
 import AppendOneTreeToAnotherTree (appendTree2ToTheRightMostLeafOfTree1)
 

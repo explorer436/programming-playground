@@ -1,4 +1,5 @@
-import MyBinaryTree
+import MyBinaryTree (Tree (..), rootValue)
+import Data.Maybe (fromJust)
 
 {- |
     Hi, here's your problem today. This problem was recently asked by Facebook:
@@ -35,9 +36,9 @@ import MyBinaryTree
 
 validate EmptyTree = False
 validate (Node a EmptyTree EmptyTree) = True
-validate (Node a left EmptyTree) = (rootValue left < a) && validate left
-validate (Node a EmptyTree right) = (a < rootValue right) && validate right
-validate (Node a left right) = (rootValue left < a) && (a < rootValue right) && validate left && validate right
+validate (Node a left EmptyTree) = (fromJust (rootValue left) < a) && validate left
+validate (Node a EmptyTree right) = (a < fromJust (rootValue right)) && validate right
+validate (Node a left right) = (fromJust (rootValue left) < a) && (a < fromJust (rootValue right)) && validate left && validate right
 
 test01 = validate (Node 5 
                         (Node 3

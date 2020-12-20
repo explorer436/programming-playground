@@ -1,6 +1,6 @@
 module MyBinarySearchTree_Height where
   
-import MyBinaryTree
+import MyBinaryTree (Tree (..))
 
 -- Reference: Look at HeightAndDepthOfBinaryTree.txt
 

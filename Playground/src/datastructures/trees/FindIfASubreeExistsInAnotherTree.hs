@@ -1,4 +1,6 @@
-import MyBinaryTree
+import MyBinaryTree (Tree (..), rootValue, compareTrees)
+
+import Data.Maybe (fromJust)
 
 {- |
 
@@ -48,7 +50,7 @@ import MyBinaryTree
 
 doesSubtreeExistInParentTree :: Eq a => Tree a -> Tree a -> Bool
 doesSubtreeExistInParentTree t1@(Node a EmptyTree EmptyTree) t2 = t1 == t2
-doesSubtreeExistInParentTree t1@(Node a l r) t2 = if a == rootValue t2 then compareTrees t1 t2
+doesSubtreeExistInParentTree t1@(Node a l r) t2 = if (a == fromJust (rootValue t2)) then compareTrees t1 t2
                               else doesSubtreeExistInParentTree l t2 || doesSubtreeExistInParentTree r t2
 -- tests
 testDoesSubtreeExistInParentTree01 = doesSubtreeExistInParentTree 
@@ -62,7 +64,7 @@ testDoesSubtreeExistInParentTree01 = doesSubtreeExistInParentTree
             (Node 4 
                (Node 3 EmptyTree EmptyTree) 
                (Node 2 EmptyTree EmptyTree))
--- true
+-- True
 
 testDoesSubtreeExistInParentTree02 = doesSubtreeExistInParentTree 
             (Node 1 
@@ -75,7 +77,7 @@ testDoesSubtreeExistInParentTree02 = doesSubtreeExistInParentTree
             (Node 4 
                (Node 3 EmptyTree EmptyTree) 
                (Node 2 EmptyTree EmptyTree))
--- false
+-- False
 
 testDoesSubtreeExistInParentTree03 = doesSubtreeExistInParentTree 
             (Node 1 
@@ -90,4 +92,4 @@ testDoesSubtreeExistInParentTree03 = doesSubtreeExistInParentTree
             (Node 4 
                (Node 3 EmptyTree EmptyTree) 
                (Node 2 EmptyTree EmptyTree))
--- true
+-- True

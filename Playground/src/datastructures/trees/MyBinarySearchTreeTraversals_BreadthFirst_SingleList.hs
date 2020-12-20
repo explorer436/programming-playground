@@ -1,4 +1,6 @@
-import MyBinaryTree
+import MyBinaryTree (Tree (..), rootValue, leftAndRightTrees)
+
+import Data.Maybe (fromJust)
 
 {- |
     BREADTH-FIRST SEARCH / LEVEL ORDER
@@ -39,12 +41,12 @@ import MyBinaryTree
 
 -}
 
-traverseBreadthFirst :: Tree a -> [a]
+-- traverseBreadthFirst :: Tree a -> [a]
 traverseBreadthFirst tree = helper [tree]
 
-helper :: [Tree a] -> [a]
+-- helper :: [Tree a] -> [a]
 helper [] = []
-helper listOfTrees = map rootValue listOfTrees ++ helper (concat (map leftAndRightTrees listOfTrees))
+helper listOfTrees = map (fromJust . rootValue) listOfTrees ++ helper (concat (map leftAndRightTrees listOfTrees))
 
 {- |
                           F

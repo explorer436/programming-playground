@@ -1,17 +1,18 @@
 module MyBinarySearchTreeTraversals_BreadthFirst_ListsByLevel where
 
-import MyBinaryTree
+import MyBinaryTree (Tree (..), rootValue, leftAndRightTrees)
+import Data.Maybe (fromJust)
 
-listsByEachLevel :: Tree a -> [[a]]
+listsByEachLevel :: Eq a => Tree a -> [[a]]
 listsByEachLevel tree = breadthLevelLists [tree]
 
-breadthLevelLists :: [Tree a] -> [[a]]
+breadthLevelLists :: Eq a => [Tree a] -> [[a]]
 breadthLevelLists [] = []
 breadthLevelLists [EmptyTree] = []
 breadthLevelLists listOfTrees = rootNodeValues listOfTrees ++ breadthLevelLists (concat (map leftAndRightTrees listOfTrees))   
 
-rootNodeValues :: [Tree b] -> [[b]]
-rootNodeValues listOfTrees = [map rootValue listOfTrees]
+rootNodeValues :: Eq b => [Tree b] -> [[b]]
+rootNodeValues listOfTrees = [map (fromJust . rootValue) listOfTrees]
 
 {- |
                           F

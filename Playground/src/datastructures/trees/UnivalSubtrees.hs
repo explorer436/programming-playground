@@ -2,7 +2,7 @@ module UnivalSubtrees where
 
 import Data.Maybe (fromJust)
 
-import MyBinaryTree
+import MyBinaryTree (Tree (..), rootValue)
 
 {- |
     Good morning! Here's your coding interview problem for today.

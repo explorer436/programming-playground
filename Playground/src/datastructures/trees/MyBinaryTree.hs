@@ -1,4 +1,4 @@
-module MyBinaryTree where
+module MyBinaryTree (Tree (..), rootValue, compareTrees, leftAndRightTrees) where
 
 {- |
 

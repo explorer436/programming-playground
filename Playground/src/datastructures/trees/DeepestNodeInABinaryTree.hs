@@ -1,4 +1,4 @@
-import MyBinaryTree
+import MyBinaryTree (Tree (..))
 import MyBinarySearchTreeTraversals_BreadthFirst_ListsByLevel (listsByEachLevel)
 
 {- |

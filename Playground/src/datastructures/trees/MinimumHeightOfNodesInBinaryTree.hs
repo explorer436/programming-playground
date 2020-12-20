@@ -1,6 +1,6 @@
-import MyBinaryTree
+import MyBinaryTree (Tree (..))
 
-minimumHeight :: (Num p, Ord p) => Tree a -> p
+-- minimumHeight :: (Num p, Ord p) => Tree a -> p
 minimumHeight EmptyTree                    = -1
 minimumHeight (Node a EmptyTree EmptyTree) = 0
 minimumHeight (Node a l EmptyTree)         = 1 + (minimumHeight l)
@@ -16,7 +16,7 @@ testMinimumHeight03 = minimumHeight (Node 3
                                           EmptyTree
                                     ) -- expect 1
 
-testMinimumHeight04 = minimumHeight Node 'F' 
+testMinimumHeight04 = minimumHeight (Node 'F' 
                                          (Node 'B' 
                                            (Node 'A' EmptyTree EmptyTree) 
                                            (Node 'D' 
@@ -33,7 +33,8 @@ testMinimumHeight04 = minimumHeight Node 'F'
                                                (Node 'K' EmptyTree EmptyTree)
                                              )
                                            )
-                                         ) -- expect 2
+                                         )
+                                        ) -- expect 2
 {- |
                           F
                         /  \ 
