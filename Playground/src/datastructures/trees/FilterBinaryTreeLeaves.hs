@@ -45,6 +45,36 @@ import Data.Int
     # value: 1, left: (value: 1, left: (value: 2, left: (None), right: (None)), right: (None)), right: (None)
 -}
 
+{- |
+      (Medium)
+
+      Good morning! Here's your coding interview problem for today.
+
+      This question was asked by BufferBox.
+
+      Given a binary tree where all nodes are either 0 or 1, prune the tree so that subtrees containing all 0s are removed.
+
+      For example, given the following tree:
+
+         0
+      / \
+      1   0
+         / \
+         1   0
+      / \
+      0   0
+
+      should be pruned to:
+
+         0
+      / \
+      1   0
+         /
+         1
+
+      We do not remove the tree at the root or its left child because it still has a 1 as a descendant.
+-}
+
 filterBinaryTreeLeaves :: Eq t => t -> Tree t -> Tree t
 filterBinaryTreeLeaves x EmptyTree = EmptyTree
 filterBinaryTreeLeaves x tree@(Node a EmptyTree EmptyTree)

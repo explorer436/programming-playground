@@ -52,13 +52,13 @@ findFirstMaximumElementInTheListAndIndex xs = Just (foldl' (\acc x ->
                                                                   else acc) 
                                                         else acc) (head xs) xs)
 
-greatestTupleOfAllNodesInALevel tree = fromJust $ findFirstMaximumElementInTheListAndIndex (zip (listWithSumsForEachLevel tree)[0..])
-greatestSumOfAllNodesInALevel tree = fst $ greatestTupleOfAllNodesInALevel tree
-levelOfTreeWhereSumOfAllNodesIsTheGreatest tree = snd $ greatestTupleOfAllNodesInALevel tree
+tupleWithMaximumSum tree = fromJust $ findFirstMaximumElementInTheListAndIndex (zip (listWithSumsForEachLevel tree)[0..])
+maximumSum tree = fst $ tupleWithMaximumSum tree
+levelWithMaximumSum tree = snd $ tupleWithMaximumSum tree
 
 -- tests
-testLevelOfTreeWithMaximumSum01 = levelOfTreeWhereSumOfAllNodesIsTheGreatest testTree -- 1
-testGreatestSumOfAllNodesInALevel01 = greatestSumOfAllNodesInALevel testTree -- 9
+testLevelOfTreeWithMaximumSum01 = levelWithMaximumSum testTree -- 1
+testMaximumSum01 = maximumSum testTree -- 9
 
 testTree = (Node 1
                (Node 4
