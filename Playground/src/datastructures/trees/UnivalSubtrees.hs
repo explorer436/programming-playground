@@ -30,27 +30,27 @@ isUnival :: Eq a => Tree a -> Bool
 isUnival EmptyTree = False
 isUnival (Node a EmptyTree EmptyTree) = True
 isUnival (Node a left EmptyTree) 
-    | isAEqualToLeftRootValue && (isUnival left) = True
+    | isAEqualToLeftNodeValue && (isUnival left) = True
     | otherwise                                  = False
     where
-        isAEqualToLeftRootValue = case (rootValue left) of 
+        isAEqualToLeftNodeValue = case (rootValue left) of 
                                      Just value -> (a == value)  
                                      Nothing -> False
 isUnival (Node a EmptyTree right) 
-    | isAEqualToRightRootValue && (isUnival right) = True
+    | isAEqualToRightNodeValue && (isUnival right) = True
     | otherwise                                    = False
     where
-        isAEqualToRightRootValue = case (rootValue right) of 
+        isAEqualToRightNodeValue = case (rootValue right) of 
                                      Just value -> (a == value)  
                                      Nothing -> False
 isUnival (Node a left right) 
-    | isAEqualToLeftRootValue && isAEqualToRightRootValue && (isUnival left) && (isUnival right) = True
+    | isAEqualToLeftNodeValue && isAEqualToRightNodeValue && (isUnival left) && (isUnival right) = True
     | otherwise                                                                                  = False
     where
-        isAEqualToRightRootValue = case (rootValue right) of 
+        isAEqualToRightNodeValue = case (rootValue right) of 
                                      Just value -> (a == value)  
                                      Nothing -> False
-        isAEqualToLeftRootValue = case (rootValue left) of 
+        isAEqualToLeftNodeValue = case (rootValue left) of 
                                      Just value -> (a == value)  
                                      Nothing -> False
 

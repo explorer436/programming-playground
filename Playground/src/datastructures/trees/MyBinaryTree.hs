@@ -1,4 +1,4 @@
-module MyBinaryTree (Tree (..), rootValue, compareTrees, leftAndRightTrees) where
+module MyBinaryTree (Tree (..), rootValue, compareTrees, leftAndRightTrees, leftSubtree, rightSubtree, leftNodeValue, rightNodeValue) where
 
 {- |
 
@@ -53,3 +53,21 @@ leftAndRightTrees (Node _ EmptyTree EmptyTree) = []
 leftAndRightTrees (Node _ EmptyTree b)     = [b]
 leftAndRightTrees (Node _ a EmptyTree)     = [a]
 leftAndRightTrees (Node _ a b)         = [a,b]
+
+leftSubtree :: Tree a -> Maybe (Tree a)
+leftSubtree EmptyTree = Nothing
+leftSubtree (Node _ left _) = Just left
+
+rightSubtree :: Tree a -> Maybe (Tree a)
+rightSubtree EmptyTree = Nothing
+rightSubtree (Node _ _ right) = Just right
+
+leftNodeValue :: Tree a -> Maybe a
+leftNodeValue EmptyTree = Nothing
+leftNodeValue (Node a EmptyTree _) = Nothing
+leftNodeValue (Node a left _) = rootValue left
+
+rightNodeValue :: Tree a -> Maybe a
+rightNodeValue EmptyTree = Nothing
+rightNodeValue (Node a _ EmptyTree) = Nothing
+rightNodeValue (Node a _ right) = rootValue right

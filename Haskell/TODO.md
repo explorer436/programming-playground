@@ -51,3 +51,7 @@ Building trees back from the string representations of the various traversal tec
 Working with OpenAPI specs for REST APIs. How to do that?
 
 Pretty print a binary tree or a binary search tree. In a vertical tree like structure with branches showing the left and right subtrees. This will be very useful while printing the results of various operations on trees. The default structure that is printed on the console is a little helpful but it gets difficult to read it if the tree gets relatively big. Printing the tree in a visual form will be very helpful.
+
+How to debug a Haskell function with breakpoints?
+
+How to set-up unit tests that can be run at a project level for a Haskell project?
