@@ -59,6 +59,7 @@ library
       Datastructures.Trees.ZigZagBinaryTree
       Lib
       Math
+      WordCount.WordCount
   other-modules:
       Paths_haskell_playground
   hs-source-dirs:
