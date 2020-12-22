@@ -1,0 +1,95 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.3.
+--
+-- see: https://github.com/sol/hpack
+
+name:           haskell-playground
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/haskell-playground#readme>
+homepage:       https://github.com/githubuser/haskell-playground#readme
+bug-reports:    https://github.com/githubuser/haskell-playground/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2020 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/haskell-playground
+
+library
+  exposed-modules:
+      Datastructures.Trees.AppendOneTreeToAnotherTree
+      Datastructures.Trees.ArithmeticBinaryTree
+      Datastructures.Trees.BinaryTreeSumsByEachLevel
+      Datastructures.Trees.DeepestNodeInABinaryTree
+      Datastructures.Trees.FilterBinaryTreeLeaves
+      Datastructures.Trees.FindIfASubreeExistsInAnotherTree
+      Datastructures.Trees.FlattenBinaryTree
+      Datastructures.Trees.FloorAndCeilingOfAnElementInAGivenBST
+      Datastructures.Trees.FullBinaryTree
+      Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTree
+      Datastructures.Trees.InvertABinaryTree
+      Datastructures.Trees.LevelOfTreeWithMaximumSum
+      Datastructures.Trees.LevelOfTreeWithMinimumSum
+      Datastructures.Trees.MinimumDepthOfNodesInBinaryTree
+      Datastructures.Trees.MinimumHeightOfNodesInBinaryTree
+      Datastructures.Trees.MyBinarySearchTree_Delete
+      Datastructures.Trees.MyBinarySearchTree_Depth
+      Datastructures.Trees.MyBinarySearchTree_Height
+      Datastructures.Trees.MyBinarySearchTree_Insert
+      Datastructures.Trees.MyBinarySearchTree_MaximumAndMinimumElements
+      Datastructures.Trees.MyBinarySearchTree_Search
+      Datastructures.Trees.MyBinarySearchTreeTraversals_BreadthFirst_ListsByLevel
+      Datastructures.Trees.MyBinarySearchTreeTraversals_BreadthFirst_SingleList
+      Datastructures.Trees.MyBinarySearchTreeTraversals_DepthFirst
+      Datastructures.Trees.MyBinaryTree
+      Datastructures.Trees.UnivalSubtrees
+      Datastructures.Trees.ValidateBinarySearchTree
+      Datastructures.Trees.ZigZagBinaryTree
+      Lib
+      Math
+  other-modules:
+      Paths_haskell_playground
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , hspec
+  default-language: Haskell2010
+
+executable haskell-playground-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_haskell_playground
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , haskell-playground
+    , hspec
+  default-language: Haskell2010
+
+test-suite haskell-playground-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Datastructures.Trees.AppendOneTreeToAnotherTreeSpec
+      Datastructures.Trees.FloorAndCeilingOfAnElementInAGivenBSTSpec
+      MathSpec
+      Paths_haskell_playground
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , haskell-playground
+    , hspec
+  default-language: Haskell2010
