@@ -28,11 +28,11 @@ library
       Datastructures.Trees.AppendOneTreeToAnotherTree
       Datastructures.Trees.ArithmeticBinaryTree
       Datastructures.Trees.BinaryTreeSumsByEachLevel
+      Datastructures.Trees.CeilingOfAnElementInAGivenBST
       Datastructures.Trees.DeepestNodeInABinaryTree
       Datastructures.Trees.FilterBinaryTreeLeaves
       Datastructures.Trees.FindIfASubreeExistsInAnotherTree
       Datastructures.Trees.FlattenBinaryTree
-      Datastructures.Trees.FloorAndCeilingOfAnElementInAGivenBST
       Datastructures.Trees.FullBinaryTree
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTree
       Datastructures.Trees.InvertABinaryTree
@@ -84,7 +84,7 @@ test-suite haskell-playground-test
   main-is: Spec.hs
   other-modules:
       Datastructures.Trees.AppendOneTreeToAnotherTreeSpec
-      Datastructures.Trees.FloorAndCeilingOfAnElementInAGivenBSTSpec
+      Datastructures.Trees.CeilingOfAnElementInAGivenBSTSpec
       Datastructures.Trees.ValidateBinarySearchTreeSpec
       MathSpec
       Paths_haskell_playground
