@@ -1,4 +1,4 @@
-module Datastructures.Trees.ValidateBinarySearchTree where
+module Datastructures.Trees.ValidateBinarySearchTree (validate) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue)
 import Data.Maybe (fromJust)
@@ -41,25 +41,3 @@ validate (Node a EmptyTree EmptyTree) = True
 validate (Node a left EmptyTree) = (fromJust (rootValue left) < a) && validate left
 validate (Node a EmptyTree right) = (a < fromJust (rootValue right)) && validate right
 validate (Node a left right) = (fromJust (rootValue left) < a) && (a < fromJust (rootValue right)) && validate left && validate right
-
-test01 = validate (Node 5 
-                        (Node 3
-                              (Node 1 EmptyTree EmptyTree)
-                              (Node 4 EmptyTree EmptyTree)
-                        )
-                        (Node 7
-                              (Node 6 EmptyTree EmptyTree)
-                              EmptyTree
-                        )
-                  ) -- expect True
-
-test02 = validate (Node 5 
-                        (Node 3
-                              (Node 1 EmptyTree EmptyTree)
-                              (Node 4 EmptyTree EmptyTree)
-                        )
-                        (Node 7
-                              (Node 8 EmptyTree EmptyTree)
-                              EmptyTree
-                        )
-                  ) -- expect False
