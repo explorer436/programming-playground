@@ -1,24 +1,24 @@
-module Datastructures.Trees.CeilingOfAnElementInAGivenBSTSpec where
+module Datastructures.Trees.FloorOfAnElementInAGivenBSTSpec where
 
 import Test.Hspec
-import Datastructures.Trees.CeilingOfAnElementInAGivenBST
+import Datastructures.Trees.FloorOfAnElementInAGivenBST
 import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
-  describe "ceilingOfAnElement" $ do
+  describe "floorOfAnElement" $ do
     it "returns Nothing when the tree is EmptyTree" $
-      ceilingOfAnElement 1 EmptyTree `shouldBe` Nothing
+      floorOfAnElement 1 EmptyTree `shouldBe` Nothing
 
     it "returns root value when the tree is singleton and the input is lesser than the root" $
-      ceilingOfAnElement 1 (Node 2 EmptyTree EmptyTree) `shouldBe` Just 2
+      floorOfAnElement 1 (Node 2 EmptyTree EmptyTree) `shouldBe` Just 2
     it "returns root value when the tree is singleton and the input is greater than the root" $
-      ceilingOfAnElement 3 (Node 2 EmptyTree EmptyTree) `shouldBe` Just 2
+      floorOfAnElement 3 (Node 2 EmptyTree EmptyTree) `shouldBe` Just 2
     it "returns root value when the tree is singleton and the input is equal to the root" $
-      ceilingOfAnElement 2 (Node 2 EmptyTree EmptyTree) `shouldBe` Just 2
+      floorOfAnElement 2 (Node 2 EmptyTree EmptyTree) `shouldBe` Just 2
 
     it "returns leftNodeValue when the input is equal to the left node value" $
-      ceilingOfAnElement 1 (Node 2 
+      floorOfAnElement 1 (Node 2 
                                  (Node 1 EmptyTree EmptyTree) 
                                  EmptyTree
                            ) `shouldBe` Just 1
@@ -28,7 +28,7 @@ spec = do
                          input=1       1     
                                     -}
     it "returns rightNodeValue when the input is equal to the right node value" $
-      ceilingOfAnElement 2 (Node 1 
+      floorOfAnElement 2 (Node 1 
                                  EmptyTree
                                  (Node 2 EmptyTree EmptyTree) 
                            ) `shouldBe` Just 2
@@ -38,63 +38,63 @@ spec = do
                                            2   input=2 
                                     -}
 
-    it "returns root value when the input is lesser than the root and the left tree is EmptyTree" $
-      ceilingOfAnElement 1 (Node 2 
+    it "returns Nothing when the input is lesser than the root and the left tree is EmptyTree" $
+      floorOfAnElement 1 (Node 2 
                                  EmptyTree
                                  (Node 3 EmptyTree EmptyTree) 
-                           ) `shouldBe` Just 2
+                           ) `shouldBe` Nothing
                                     {- |
                                          2
                                 input=1   \    
                                            3     
                                     -}
-    it "returns root value when the input is greater than the root and the right tree is EmptyTree" $
-      ceilingOfAnElement 3 (Node 2 
+    it "returns Nothing when the input is greater than the root and the right tree is EmptyTree" $
+      floorOfAnElement 3 (Node 2 
                                  (Node 1 EmptyTree EmptyTree)
                                  EmptyTree
-                           ) `shouldBe` Just 2
+                           ) `shouldBe` Nothing
                                     {- |
                                          2
                                         /   input=3 
                                        1     
                                     -}
-    it "returns root value when the input is lesser than the root and greater than the left node value and the left node's right subtree is EmptyTree" $
-      ceilingOfAnElement 6 (Node 8 
+    it "returns left node value when the input is lesser than the root and greater than the left node value and the left node's right subtree is EmptyTree" $
+      floorOfAnElement 6 (Node 8 
                                  (Node 4 EmptyTree EmptyTree)
                                  (Node 12 EmptyTree EmptyTree)
-                           ) `shouldBe` Just 8
+                           ) `shouldBe` Just 4
                                     {- |
                                          8
                                  input=6/ \
                                        4   12
                                     -}
-    it "returns root value when the input is greater than the root and lesser than the left node value and the right node's left subtree is EmptyTree" $
-      ceilingOfAnElement 11 (Node 8 
+    it "returns right node value when the input is greater than the root and lesser than the right node value and the right node's left subtree is EmptyTree" $
+      floorOfAnElement 11 (Node 8 
                                   (Node 4 EmptyTree EmptyTree)
                                   (Node 12 EmptyTree EmptyTree)
-                            ) `shouldBe` Just 8
+                            ) `shouldBe` Just 12
                                     {- |
                                          8
                                         / \input=11
                                        4   12
                                     -}
 
-    it "returns left node value when the input is lesser than the left node value and the left node's left subtree is EmptyTree" $
-      ceilingOfAnElement 2 (Node 8 
+    it "returns Nothing value when the input is lesser than the left node value and the left node's left subtree is EmptyTree" $
+      floorOfAnElement 2 (Node 8 
                                  (Node 4 EmptyTree EmptyTree)
                                  (Node 12 EmptyTree EmptyTree)
-                           ) `shouldBe` Just 4
+                           ) `shouldBe` Nothing
                                     {- |
                                          8
                                         / \
                                        4   12
                                     input=2 
                                     -}
-    it "returns right node value when the input is greater than the right node value and the right node's right subtree is EmptyTree" $
-      ceilingOfAnElement 13 (Node 8 
+    it "returns Nothing value when the input is greater than the right node value and the right node's right subtree is EmptyTree" $
+      floorOfAnElement 13 (Node 8 
                                   (Node 4 EmptyTree EmptyTree)
                                   (Node 12 EmptyTree EmptyTree)
-                            ) `shouldBe` Just 12
+                            ) `shouldBe` Nothing
                                     {- |
                                          8
                                         / \
@@ -102,25 +102,25 @@ spec = do
                                           input=13
                                     -}
     it "customTreeTests01" $
-      ceilingOfAnElement 1 testTree `shouldBe` Just 2
+      floorOfAnElement 1 testTree `shouldBe` Nothing
     it "customTreeTests03" $
-      ceilingOfAnElement 3 testTree `shouldBe` Just 4
+      floorOfAnElement 3 testTree `shouldBe` Just 2
     it "customTreeTests04" $
-      ceilingOfAnElement 4 testTree `shouldBe` Just 4
+      floorOfAnElement 4 testTree `shouldBe` Just 4
     it "customTreeTests05" $
-      ceilingOfAnElement 5 testTree `shouldBe` Just 4
+      floorOfAnElement 5 testTree `shouldBe` Just 6
     it "customTreeTests06" $
-      ceilingOfAnElement 6 testTree `shouldBe` Just 6
+      floorOfAnElement 6 testTree `shouldBe` Just 6
     it "customTreeTests07" $
-      ceilingOfAnElement 7 testTree `shouldBe` Just 6
+      floorOfAnElement 7 testTree `shouldBe` Nothing
     it "customTreeTests09" $
-      ceilingOfAnElement 9 testTree `shouldBe` Just 10
+      floorOfAnElement 9 testTree `shouldBe` Nothing
     it "customTreeTests12" $
-      ceilingOfAnElement 12 testTree `shouldBe` Just 12
+      floorOfAnElement 12 testTree `shouldBe` Just 12
     it "customTreeTests14" $
-      ceilingOfAnElement 14 testTree `shouldBe` Just 14
+      floorOfAnElement 14 testTree `shouldBe` Just 14
     it "customTreeTests15" $
-      ceilingOfAnElement 15 testTree `shouldBe` Just 14
+      floorOfAnElement 15 testTree `shouldBe` Nothing
 
 {- |
          8

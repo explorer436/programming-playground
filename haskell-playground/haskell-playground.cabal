@@ -33,6 +33,7 @@ library
       Datastructures.Trees.FilterBinaryTreeLeaves
       Datastructures.Trees.FindIfASubreeExistsInAnotherTree
       Datastructures.Trees.FlattenBinaryTree
+      Datastructures.Trees.FloorOfAnElementInAGivenBST
       Datastructures.Trees.FullBinaryTree
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTree
       Datastructures.Trees.InvertABinaryTree
@@ -85,6 +86,7 @@ test-suite haskell-playground-test
   other-modules:
       Datastructures.Trees.AppendOneTreeToAnotherTreeSpec
       Datastructures.Trees.CeilingOfAnElementInAGivenBSTSpec
+      Datastructures.Trees.FloorOfAnElementInAGivenBSTSpec
       Datastructures.Trees.ValidateBinarySearchTreeSpec
       MathSpec
       Paths_haskell_playground
