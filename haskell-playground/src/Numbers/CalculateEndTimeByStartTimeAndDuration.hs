@@ -1,3 +1,5 @@
+module Numbers.CalculateEndTimeByStartTimeAndDuration where
+
 -- Let’s understand by using divMod in a real-world example of time arithemetic. 
 -- Say, you want to write a function that calculates the end-time of an event, given the start-time and the duration of the event (in minutes):
 

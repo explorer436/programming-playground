@@ -6,7 +6,7 @@
     Find the sum of all the multiples of 3 or 5 below 1000. 
 -}
 
-module SumOfMultiplesOf3Or5SmallerThanN where
+module Numbers.SumOfMultiplesOf3Or5SmallerThanN where
 
 solution :: Integral a => a -> a
 solution upperLimit = sum (takeWhile (< upperLimit) (filter isMultipleOf3Or5 [1..])) 

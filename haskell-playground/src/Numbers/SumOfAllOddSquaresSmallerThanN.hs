@@ -1,4 +1,4 @@
-module SumOfAllOddSquaresSmallerThanN where
+module Numbers.SumOfAllOddSquaresSmallerThanN where
 
 solution1 :: Integral a => a -> a
 solution1 upperLimit = sum (takeWhile (< upperLimit) (filter odd (map (^2) [1..])))  

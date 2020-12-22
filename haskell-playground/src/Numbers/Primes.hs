@@ -1,3 +1,6 @@
+
+module Numbers.Primes where
+
 import Data.List
 -- import Data.List (foldl', \\)
 

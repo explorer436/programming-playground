@@ -1,4 +1,4 @@
-module FibonacciSequence where
+module Numbers.FibonacciSequence where
 
 import Data.List (foldl')
 

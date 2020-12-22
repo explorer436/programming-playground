@@ -1,4 +1,4 @@
-module SumOfIntegersInAList where
+module Numbers.SumOfIntegersInAList where
 
 integerListSumPatternMatching :: [Int] -> Int
 integerListSumPatternMatching [] = 0  

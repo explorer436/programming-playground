@@ -1,4 +1,4 @@
-module EvenOrOddNumbers where
+module Numbers.EvenOrOddNumbers where
 
 checkIfNumberIsEvenOrOdd :: Int -> String
 checkIfNumberIsEvenOrOdd a = 

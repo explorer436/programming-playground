@@ -1,4 +1,4 @@
-module AddTwoNumbers where
+module Numbers.AddTwoNumbers where
 
 addTwoNumbers :: Num a => a -> a -> a
 addTwoNumbers a b = a + b

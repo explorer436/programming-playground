@@ -1,4 +1,4 @@
-module GenerateAListOfAllEvenNumbersTillN where
+module Numbers.GenerateAListOfAllEvenNumbersTillN where
 
 -- Important - This is not going to work with the following type signature
 -- solution :: Int => [Int]

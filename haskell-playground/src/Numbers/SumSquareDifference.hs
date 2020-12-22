@@ -1,3 +1,5 @@
+module Numbers.SumSquareDifference where
+
 {- |
     Sum square difference
     The sum of the squares of the first ten natural numbers is,

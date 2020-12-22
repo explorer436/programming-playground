@@ -1,4 +1,4 @@
-module DoubleAllNumbersInAListOfIntegers where
+module Numbers.DoubleAllNumbersInAListOfIntegers where
 
 solution :: [Int] -> [Int]
 solution xs = 

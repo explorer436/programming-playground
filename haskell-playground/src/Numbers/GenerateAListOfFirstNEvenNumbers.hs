@@ -1,4 +1,4 @@
-module GenerateAListOfFirstNEvenNumbers where
+module Numbers.GenerateAListOfFirstNEvenNumbers where
 
 solution :: Integral a => Int -> [a]
 solution n = take n $ filter even [1..]

@@ -59,6 +59,26 @@ library
       Datastructures.Trees.ZigZagBinaryTree
       Lib
       Math
+      Numbers.AddTwoNumbers
+      Numbers.CalculateEndTimeByStartTimeAndDuration
+      Numbers.CollatzSequences
+      Numbers.DoubleAllNumbersInAListOfIntegers
+      Numbers.EvenFibonacciSequence
+      Numbers.EvenOrOddNumbers
+      Numbers.FibonacciSequence
+      Numbers.GenerateAListOfAllEvenNumbersTillN
+      Numbers.GenerateAListOfFirstNEvenNumbers
+      Numbers.LargestNumberUnderNDivisibleByAGivenNumber
+      Numbers.LeapYear
+      Numbers.Primes
+      Numbers.RightTriangle
+      Numbers.SumOfAllEvenNumbersInAListOfIntegers
+      Numbers.SumOfAllOddSquaresSmallerThanN
+      Numbers.SumOfEvenValuedFibonacciTermsLessThanMaxValue
+      Numbers.SumOfFirstNMultiplesOf3Or5
+      Numbers.SumOfIntegersInAList
+      Numbers.SumOfMultiplesOf3Or5SmallerThanN
+      Numbers.SumSquareDifference
       WordCount.WordCount
   other-modules:
       Paths_haskell_playground

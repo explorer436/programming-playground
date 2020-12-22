@@ -1,3 +1,5 @@
+module Numbers.LeapYear where
+
 {- |
     Leap year
 `    Write a function which checks if a given year is a leap year:
@@ -19,8 +21,6 @@
     GHCi> isLeapYear 1999
     False`
 -}
-
-module LeapYear where
 
 solutionUsingIfElse :: Int -> Bool
 solutionUsingIfElse yr = 

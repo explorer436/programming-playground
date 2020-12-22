@@ -1,4 +1,6 @@
-import qualified FibonacciSequence as FS
+module Numbers.SumOfEvenValuedFibonacciTermsLessThanMaxValue where
+
+import qualified Numbers.FibonacciSequence as FS
 
 -- solution upperLimit = take n (map (fibonacciNumberForPosition) [0..])
 

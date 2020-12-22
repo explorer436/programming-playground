@@ -1,3 +1,5 @@
+module Numbers.CollatzSequences where
+
 {- |
     We take a natural number. 
     If that number is even, we divide it by two. 

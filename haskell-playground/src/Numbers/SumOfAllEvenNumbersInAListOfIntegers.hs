@@ -1,4 +1,4 @@
-module SumOfAllEvenNumbersInAListOfIntegers where
+module Numbers.SumOfAllEvenNumbersInAListOfIntegers where
 
 solution :: [Int] -> Int
 solution xs = 
