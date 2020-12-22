@@ -51,6 +51,7 @@ library
       Datastructures.Trees.MyBinarySearchTreeTraversals_BreadthFirst_SingleList
       Datastructures.Trees.MyBinarySearchTreeTraversals_DepthFirst
       Datastructures.Trees.MyBinaryTree
+      Datastructures.Trees.PathsFromRootToAllLeaves
       Datastructures.Trees.UnivalSubtrees
       Datastructures.Trees.ValidateBinarySearchTree
       Datastructures.Trees.ZigZagBinaryTree
@@ -87,6 +88,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.AppendOneTreeToAnotherTreeSpec
       Datastructures.Trees.CeilingOfAnElementInAGivenBSTSpec
       Datastructures.Trees.FloorOfAnElementInAGivenBSTSpec
+      Datastructures.Trees.PathsFromRootToAllLeavesSpec
       Datastructures.Trees.ValidateBinarySearchTreeSpec
       MathSpec
       Paths_haskell_playground
