@@ -31,9 +31,3 @@ helper tree@(Node a EmptyTree EmptyTree) [list] = [list ++ [a]]
 helper tree@(Node a left EmptyTree) [list] = helper left [list ++ [a]]
 helper tree@(Node a EmptyTree right) [list] = helper right [list ++ [a]]
 helper tree@(Node a left right) [list] = helper left [list ++ [a]] ++ helper right [list ++ [a]]
-
-test01 = paths EmptyTree
-test02 = paths (Node 'a' EmptyTree EmptyTree)
-test03 = paths (Node 'a' (Node 'b' EmptyTree EmptyTree) EmptyTree)
-test04 = paths (Node 'a' EmptyTree (Node 'c' EmptyTree EmptyTree))
-test05 = paths (Node 'a' (Node 'b' EmptyTree EmptyTree) (Node 'c' EmptyTree EmptyTree))
