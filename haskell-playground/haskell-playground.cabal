@@ -58,7 +58,7 @@ library
       Datastructures.Trees.ValidateBinarySearchTree
       Datastructures.Trees.ZigZagBinaryTree
       Lib
-      Math
+      Numbers.Absolute
       Numbers.AddTwoNumbers
       Numbers.CalculateEndTimeByStartTimeAndDuration
       Numbers.CollatzSequences
@@ -115,7 +115,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.PathsFromRootToAllLeavesSpec
       Datastructures.Trees.TargetSumFromRootToLeafSpec
       Datastructures.Trees.ValidateBinarySearchTreeSpec
-      MathSpec
+      Numbers.AbsoluteSpec
       Paths_haskell_playground
   hs-source-dirs:
       test

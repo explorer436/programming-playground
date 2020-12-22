@@ -1,7 +1,7 @@
-module MathSpec where
+module Numbers.AbsoluteSpec where
 
 import Test.Hspec
-import Math
+import Numbers.Absolute
 
 spec :: Spec
 spec = do
