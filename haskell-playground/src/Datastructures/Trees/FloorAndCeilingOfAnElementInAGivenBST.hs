@@ -1,4 +1,4 @@
-module Datastructures.Trees.FloorAndCeilingOfAnElementInAGivenBST where
+module Datastructures.Trees.FloorAndCeilingOfAnElementInAGivenBST (ceilingOfAnElement) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, leftSubtree, rightSubtree, leftNodeValue, rightNodeValue)
 import Data.Maybe (fromJust)
@@ -74,21 +74,10 @@ ceilingOfAnElement x tree@(Node a left right)     = trace ("DEBUG: ceilingOfAnEl
                                                      )
                                                      else Nothing)
 
-testCeiling00 = ceilingOfAnElement 1 EmptyTree -- Nothing
-testCeiling01 = ceilingOfAnElement 1 (Node 1 EmptyTree EmptyTree) -- Just 1
-testCeiling02 = ceilingOfAnElement 1 (Node 2 EmptyTree EmptyTree) -- Just 2
-testCeiling03 = ceilingOfAnElement 2 (Node 1 
-                                           EmptyTree
-                                           (Node 2 EmptyTree EmptyTree) 
-                                    ) -- Just 2
 testCeiling04 = ceilingOfAnElement 1 (Node 2 
                                            EmptyTree
                                            (Node 3 EmptyTree EmptyTree) 
                                     ) -- Just 2
-testCeiling05 = ceilingOfAnElement 1 (Node 2 
-                                           (Node 1 EmptyTree EmptyTree) 
-                                           EmptyTree
-                                    ) -- expect Just 1
 testCeiling06 = ceilingOfAnElement 1 (Node 4
                                            (Node 2 EmptyTree EmptyTree) 
                                            (Node 6 EmptyTree EmptyTree)
