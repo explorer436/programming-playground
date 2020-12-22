@@ -37,6 +37,7 @@ library
       Datastructures.Trees.FullBinaryTree
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTree
       Datastructures.Trees.InvertABinaryTree
+      Datastructures.Trees.LargestPathSumFromRootToLeaf
       Datastructures.Trees.LevelOfTreeWithMaximumSum
       Datastructures.Trees.LevelOfTreeWithMinimumSum
       Datastructures.Trees.MinimumDepthOfNodesInBinaryTree
@@ -89,6 +90,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.AppendOneTreeToAnotherTreeSpec
       Datastructures.Trees.CeilingOfAnElementInAGivenBSTSpec
       Datastructures.Trees.FloorOfAnElementInAGivenBSTSpec
+      Datastructures.Trees.LargestPathSumFromRootToLeafSpec
       Datastructures.Trees.PathsFromRootToAllLeavesSpec
       Datastructures.Trees.TargetSumFromRootToLeafSpec
       Datastructures.Trees.ValidateBinarySearchTreeSpec

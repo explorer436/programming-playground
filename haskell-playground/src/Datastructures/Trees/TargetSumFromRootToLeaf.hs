@@ -1,4 +1,4 @@
-module Datastructures.Trees.TargetSumFromRootToLeaf where
+module Datastructures.Trees.TargetSumFromRootToLeaf (pathWithMatchingSum) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, leftAndRightTrees)
 import Datastructures.Trees.PathsFromRootToAllLeaves (paths)
