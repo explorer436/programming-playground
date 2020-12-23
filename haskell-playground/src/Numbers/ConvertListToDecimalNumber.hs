@@ -1,3 +1,5 @@
+module Numbers.ConvertListToDecimalNumber (convertListToDecimal, decimalNumberfromDigits) where
+
 import Data.Int
 
 -- [1,3,4] should return 134
