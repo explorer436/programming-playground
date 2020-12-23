@@ -48,9 +48,10 @@ import Debug.Trace ( trace )
 
 -- From BinarySearch.java, int mid = lo + (hi - lo) / 2;
 
+createBalancedBST :: Show a => [a] -> Tree a
 createBalancedBST [] = EmptyTree 
-createBalancedBST (x:[]) = Node x EmptyTree EmptyTree 
-createBalancedBST xs = -- trace ("DEBUG: createBalancedBST - xs:" ++ show xs) 
+createBalancedBST [x] = Node x EmptyTree EmptyTree 
+createBalancedBST xs = trace ("DEBUG: createBalancedBST - xs:" ++ show xs) 
                        (Node (middleElement xs) (createBalancedBST firstHalf) (createBalancedBST secondHalf))
                        where indexOfMiddleElement = (length xs - 1 ) `div` 2
                              firstHalf = take indexOfMiddleElement xs
@@ -59,5 +60,3 @@ createBalancedBST xs = -- trace ("DEBUG: createBalancedBST - xs:" ++ show xs)
 middleElement :: [a] -> a
 middleElement xs = xs !! middle 
             where middle = (length xs - 1 ) `div` 2
-
-test01 = createBalancedBST [1, 2, 3, 4, 5, 6, 7]            

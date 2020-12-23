@@ -1,7 +1,7 @@
 module Datastructures.Trees.MyBinarySearchTreeTraversals_DepthFirst where
     
 import Datastructures.Trees.MyBinaryTree (Tree (..))
-import Datastructures.Trees.MyBinarySearchTree_Insert
+import Datastructures.Trees.MyBinarySearchTree_Insert (treeInsert, numsTreeFromLeft)
 
 
 -- TREE TRAVERSALS
@@ -73,6 +73,7 @@ testReverseInOrder01 = traverseReverseInOrder numsTreeFromLeft -- [32,30,29,27,2
                                       K
 -}
 
+lettersList :: [Char]
 lettersList = ['F', 'B', 'A', 'D', 'C', 'E', 'G', 'I', 'H', 'J', 'K']
 {- |
     Node 'F' 
@@ -94,9 +95,14 @@ lettersList = ['F', 'B', 'A', 'D', 'C', 'E', 'G', 'I', 'H', 'J', 'K']
         )
       )
 -}
+lettersTree :: Tree Char
 lettersTree = foldl (\acc x -> treeInsert x acc) EmptyTree lettersList
+testInOrder03 :: [Char]
 testInOrder03 = traverseInOrder lettersTree -- "ABCDEFGHIJK"
+testPreOrder03 :: [Char]
 testPreOrder03 = traversePreOrder lettersTree -- "FBADCEGIHJK"
+testPostOrder03 :: [Char]
 testPostOrder03 = traversePostOrder lettersTree -- "ACEDBHKJIGF"
+testReverseInOrder03 :: [Char]
 testReverseInOrder03 = traverseReverseInOrder lettersTree -- "KJIHGFEDCBA"
 
