@@ -1,4 +1,4 @@
-module Datastructures.Trees.FlattenBinaryTree where
+module Datastructures.Trees.FlattenBinaryTree (flatten) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..))
 

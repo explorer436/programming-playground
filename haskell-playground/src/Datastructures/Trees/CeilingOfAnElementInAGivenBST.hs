@@ -2,7 +2,7 @@ module Datastructures.Trees.CeilingOfAnElementInAGivenBST (ceilingOfAnElement) w
 
 import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, leftSubtree, rightSubtree, leftNodeValue, rightNodeValue)
 import Data.Maybe (fromJust)
-import Debug.Trace
+import Debug.Trace ( trace )
 
 {- |
     Hi, here's your problem today. This problem was recently asked by Apple:

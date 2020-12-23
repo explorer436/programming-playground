@@ -29,6 +29,7 @@ library
       Datastructures.Trees.ArithmeticBinaryTree
       Datastructures.Trees.BinaryTreeSumsByEachLevel
       Datastructures.Trees.CeilingOfAnElementInAGivenBST
+      Datastructures.Trees.CreateABalancedBinarySearchTree
       Datastructures.Trees.DeepestNodeInABinaryTree
       Datastructures.Trees.FilterBinaryTreeLeaves
       Datastructures.Trees.FindIfASubreeExistsInAnotherTree
@@ -112,6 +113,7 @@ test-suite haskell-playground-test
   other-modules:
       Datastructures.Trees.AppendOneTreeToAnotherTreeSpec
       Datastructures.Trees.CeilingOfAnElementInAGivenBSTSpec
+      Datastructures.Trees.CreateABalancedBinarySearchTreeSpec
       Datastructures.Trees.FloorOfAnElementInAGivenBSTSpec
       Datastructures.Trees.LargestPathSumFromRootToLeafSpec
       Datastructures.Trees.PathsFromRootToAllLeavesSpec

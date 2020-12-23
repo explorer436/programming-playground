@@ -42,13 +42,5 @@ import Numbers.ConvertListToDecimalNumber (decimalNumberfromDigits)
     # Explanation: 124 + 125 + 13 = 262
 -}
 
-rootToLeavesNumbersSummed tree = sum $ map (decimalNumberfromDigits) (paths tree)
-
--- tests
-test01 = rootToLeavesNumbersSummed (Node 1
-                                         (Node 2
-                                               (Node 4 EmptyTree EmptyTree)
-                                               (Node 5 EmptyTree EmptyTree))
-                                         (Node 3 EmptyTree EmptyTree)
-                                   )
+rootToLeavesNumbersSummed tree = sum $ map decimalNumberfromDigits (paths tree)
 
