@@ -1,3 +1,5 @@
+Reference: haskelltutorials.com
+
 Note: For details about setting up a project, see the section "Setup your first throw-away project" from the document "SettingUpYourHaskellDevelopmentEnvironment.md"
 
 Basic operators

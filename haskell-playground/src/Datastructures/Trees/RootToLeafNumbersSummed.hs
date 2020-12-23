@@ -1,4 +1,8 @@
+module Datastructures.Trees.RootToLeafNumbersSummed (rootToLeavesNumbersSummed) where
+
 import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, leftAndRightTrees)
+import Datastructures.Trees.PathsFromRootToAllLeaves (paths)
+import Numbers.ConvertListToDecimalNumber (decimalNumberfromDigits)
 
 {- |
     Hi, here's your problem today. This problem was recently asked by Amazon:
@@ -38,15 +42,13 @@ import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, leftAndRightTree
     # Explanation: 124 + 125 + 13 = 262
 -}
 
-rootToLeavesNumbersSummed = map (+) (paths tree)
+rootToLeavesNumbersSummed tree = sum $ map (decimalNumberfromDigits) (paths tree)
 
 -- tests
 test01 = rootToLeavesNumbersSummed (Node 1
-                                         (Node 3
-                                               EmptyTree
-                                               (Node 5 EmptyTree EmptyTree))
-                                         (Node 2 
+                                         (Node 2
                                                (Node 4 EmptyTree EmptyTree)
-                                               EmptyTree)
+                                               (Node 5 EmptyTree EmptyTree))
+                                         (Node 3 EmptyTree EmptyTree)
                                    )
 
