@@ -30,6 +30,7 @@ decimalNumberfromDigits xs = foldl addDigit 0 xs
     foldl walks through the list from left to right, adding the elements to accumulate some value.
     The second argument of foldl, 0 in this case, is the starting value of the process.
  -}
+
 -- tests
 testDecimalNumberfromDigits01 = decimalNumberfromDigits [1,3,4] -- expect 134
 testDecimalNumberfromDigits02 = decimalNumberfromDigits [13,45] -- expect 175
