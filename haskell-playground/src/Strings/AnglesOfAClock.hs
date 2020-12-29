@@ -1,3 +1,5 @@
+module Strings.AnglesOfAClock where
+
 {- |
     Hi, here's your problem today. This problem was recently asked by Microsoft:
     

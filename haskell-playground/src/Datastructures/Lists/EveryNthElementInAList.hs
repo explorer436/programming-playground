@@ -1,4 +1,4 @@
-module EveryNthElementInAList where
+module Datastructures.Lists.EveryNthElementInAList where
 
 everyNthElement :: [a] -> Int -> [a]
 everyNthElement [] _ = []

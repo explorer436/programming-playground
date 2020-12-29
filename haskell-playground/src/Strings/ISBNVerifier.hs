@@ -1,6 +1,6 @@
-module ISBNVerifier where
+module Strings.ISBNVerifier where
 
-import RemoveSubstringFromAString (remove)
+import Strings.RemoveSubstringFromAString (removeSubstringFromAString)
 import Data.Char (digitToInt)
 
 {- |
@@ -74,7 +74,7 @@ isValidIsbn isbn
     | length isbnStrippedOfHyphens /= 10           = False
     | checkSum isbnStrippedOfHyphens `mod` 11 == 0 = True
     | otherwise                                    = False
-    where isbnStrippedOfHyphens = remove "-" isbn
+    where isbnStrippedOfHyphens = removeSubstringFromAString "-" isbn
 
 -- tests
 

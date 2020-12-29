@@ -1,5 +1,7 @@
+module Strings.Anagram where
+
 import Data.Char (toUpper)
-import qualified RemoveSubstringFromAString as RSSFS
+import qualified Strings.RemoveSubstringFromAString as RSSFS
 
 anagram :: [Char] -> [Char] -> Bool
 anagram str1 str2

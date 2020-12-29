@@ -1,5 +1,4 @@
-module FizzBuzz where
-
+module Strings.FizzBuzz where
 
 solution n = take n (map (fizzOrBuzzOrFizzBuzz) [1..])
 

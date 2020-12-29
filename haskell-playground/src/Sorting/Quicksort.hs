@@ -1,3 +1,5 @@
+module Sorting.Quicksort where
+
 {- |
     Quicksort definition: 
     A sorted list is a list 

@@ -1,3 +1,5 @@
+module Recursion.Factorial where
+
 -- To run this, load this into Prelude (:l Factorial.hs) and 
 -- call the customFactorialFunctionUsingRecursion function with a parameter.
 

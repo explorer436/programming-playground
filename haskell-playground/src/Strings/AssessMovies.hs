@@ -1,3 +1,5 @@
+module Strings.AssessMovies where
+
 import qualified Data.List as L
 
 -- Let’s say we have a movie collection, and for some reason, 

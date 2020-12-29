@@ -1,3 +1,5 @@
+module Strings.Pangram where
+
 import Data.Char (toUpper)
 
 {- |

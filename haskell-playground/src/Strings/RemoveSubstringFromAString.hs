@@ -1,6 +1,4 @@
-
-
-module RemoveSubstringFromAString where
+module Strings.RemoveSubstringFromAString (removeSubstringFromAString) where
 
 import Data.List (isPrefixOf)
 

@@ -1,3 +1,5 @@
+module Strings.CheckIfAllCharsOfAStringAreInAnotherString where
+
 import Data.List (foldl')
 
 -- Check if all characters in a String are contained within another String: Use foldl' & elem

@@ -25,6 +25,13 @@ source-repository head
 
 library
   exposed-modules:
+      Datastructures.Arrays.FindUniqueNumbersInAnArray
+      Datastructures.Lists.CountNumberOfOccurancesInAList
+      Datastructures.Lists.EveryNthElementInAList
+      Datastructures.Lists.FindFirstDuplicate
+      Datastructures.Lists.LengthOfAList
+      Datastructures.Lists.MaxAndMinElementsInAListAndTheirIndices
+      Datastructures.Lists.RemoveDuplicatesFromList
       Datastructures.Trees.AppendOneTreeToAnotherTree
       Datastructures.Trees.ArithmeticBinaryTree
       Datastructures.Trees.BinaryTreeSumsByEachLevel
@@ -84,6 +91,25 @@ library
       Numbers.SumOfIntegersInAList
       Numbers.SumOfMultiplesOf3Or5SmallerThanN
       Numbers.SumSquareDifference
+      Recursion.Factorial
+      Sorting.Quicksort
+      Strings.AddLineNumbersToSourceCode
+      Strings.Anagram
+      Strings.AnglesOfAClock
+      Strings.AssessMovies
+      Strings.CaesarCipher
+      Strings.CheckIfAllCharsOfAStringAreInAnotherString
+      Strings.ConvertAStringToLowerCase
+      Strings.ExamScoreProcessing
+      Strings.FizzBuzz
+      Strings.GeneralizedFibonacciSelector
+      Strings.GroupNamesByAlphabets
+      Strings.ISBNVerifier
+      Strings.Pagination
+      Strings.Palindrome
+      Strings.Pangram
+      Strings.RailFenceCipher
+      Strings.RemoveSubstringFromAString
       WordCount.WordCount
   other-modules:
       Paths_haskell_playground

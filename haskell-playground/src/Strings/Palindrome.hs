@@ -1,3 +1,5 @@
+module Strings.Palindrome where
+
 import Data.Char
 
 ---------------------------------------------------------------------------

@@ -1,3 +1,5 @@
+module Strings.ConvertAStringToLowerCase where
+
 import Data.Char
 
 ------------------------------------------------------------

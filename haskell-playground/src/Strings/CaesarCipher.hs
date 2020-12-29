@@ -1,3 +1,5 @@
+module Strings.CaesarCipher where
+
 import qualified Data.Char as CH
 
 {- |

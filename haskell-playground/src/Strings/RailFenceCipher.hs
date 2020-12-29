@@ -1,6 +1,6 @@
-module RailFenceCipher where
+module Strings.RailFenceCipher where
 
-import qualified RemoveSubstringFromAString as RSSFS
+import qualified Strings.RemoveSubstringFromAString as RSSFS
 
 {- |
     Rail Fence Cipher

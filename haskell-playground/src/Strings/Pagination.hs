@@ -1,3 +1,5 @@
+module Strings.Pagination where
+
 {- |
     Source: https://www.haskelltutorials.com/without-theory/lambdas.html
 

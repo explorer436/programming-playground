@@ -1,3 +1,5 @@
+module Datastructures.Lists.LengthOfAList where
+
 customLengthImplementationUsingPatternMatchingAndRecursion :: (Num b) => [a] -> b  
 customLengthImplementationUsingPatternMatchingAndRecursion [] = 0  
 customLengthImplementationUsingPatternMatchingAndRecursion (_:xs) = 1 + customLengthImplementationUsingPatternMatchingAndRecursion xs  

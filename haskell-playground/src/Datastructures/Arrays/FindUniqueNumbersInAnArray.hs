@@ -1,3 +1,5 @@
+module Datastructures.Arrays.FindUniqueNumbersInAnArray where
+
 import Data.List
 
 -- How to find the unique numbers in an array

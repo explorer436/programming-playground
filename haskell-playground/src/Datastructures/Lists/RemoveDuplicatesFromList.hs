@@ -1,3 +1,5 @@
+module Datastructures.Lists.RemoveDuplicatesFromList where
+
 -- Given a list of integers, select at most one occurence of each integer, 
 -- i.e. if the input is [1, 2, 3, 3, 2, 4] the output should be [1, 2, 3, 4].
 -- You will be unable to write this function using only the filter function. 

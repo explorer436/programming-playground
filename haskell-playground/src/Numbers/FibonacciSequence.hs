@@ -12,7 +12,7 @@ import Data.List (foldl')
 -- This implementation requires O(fib n) additions.
 
 solution :: Num a => Int -> [a]
-solution n = take n (map (fibonacciNumberForPosition) [0..])
+solution n = take n (map fibonacciNumberForPosition [0..])
 
 -- tests
 solutionTest01 = solution 5

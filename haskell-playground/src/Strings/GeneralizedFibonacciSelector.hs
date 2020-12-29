@@ -1,3 +1,5 @@
+module Strings.GeneralizedFibonacciSelector where
+
 {- |
     Source: https://www.haskelltutorials.com/without-theory/lambdas.html
 

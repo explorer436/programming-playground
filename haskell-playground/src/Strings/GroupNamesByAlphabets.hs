@@ -1,3 +1,5 @@
+module Strings.GroupNamesByAlphabets where
+
 import Data.Char (toLower)
 import Data.List (foldl')
 

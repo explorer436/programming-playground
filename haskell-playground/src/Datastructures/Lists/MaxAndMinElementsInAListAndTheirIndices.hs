@@ -1,3 +1,5 @@
+module Datastructures.Lists.MaxAndMinElementsInAListAndTheirIndices where
+
 import Data.List (minimumBy, maximumBy, foldl')
 import Data.Maybe (fromJust)
 

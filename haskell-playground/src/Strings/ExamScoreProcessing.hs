@@ -1,3 +1,5 @@
+module Strings.ExamScoreProcessing where
+
 {- |
     Source: https://www.haskelltutorials.com/without-theory/lambdas.html
 
