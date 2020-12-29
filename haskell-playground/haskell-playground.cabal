@@ -68,6 +68,12 @@ library
       Datastructures.Trees.UnivalSubtrees
       Datastructures.Trees.ValidateBinarySearchTree
       Datastructures.Trees.ZigZagBinaryTree
+      Hackerrank.AppleAndOrange
+      Hackerrank.BetweenTwoSets
+      Hackerrank.GradingStudents
+      Hackerrank.SimpleArraySum
+      Hackerrank.SolveMeFirst
+      Hackerrank.VeryBigArraySum
       Lib
       Numbers.Absolute
       Numbers.AddTwoNumbers

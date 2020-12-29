@@ -1,3 +1,5 @@
+module Hackerrank.SolveMeFirst where
+
 import Data.Char
 
 -- The problem we need to solve here is : 

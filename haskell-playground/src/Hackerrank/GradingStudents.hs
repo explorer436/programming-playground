@@ -1,4 +1,6 @@
-main = interace $
+module Hackerrank.GradingStudents where
+
+main = interact $
             unlines . map show . solve . map read . tail . words
 
 solve :: [Int] -> [Int]

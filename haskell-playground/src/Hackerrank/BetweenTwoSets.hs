@@ -1,3 +1,5 @@
+module Hackerrank.BetweenTwoSets where
+
 {- |
     You will be given two arrays of integers and asked to determine all integers that satisfy the following two
     conditions:
