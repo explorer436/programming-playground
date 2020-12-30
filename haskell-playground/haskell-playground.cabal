@@ -66,6 +66,7 @@ library
       Datastructures.Trees.ReconstrunctBinaryTreeFromPreorderAndInorderTraversals
       Datastructures.Trees.RootToLeafNumbersSummed
       Datastructures.Trees.TargetSumFromRootToLeaf
+      Datastructures.Trees.TreeSize
       Datastructures.Trees.UnivalSubtrees
       Datastructures.Trees.ValidateBinarySearchTree
       Datastructures.Trees.ZigZagBinaryTree

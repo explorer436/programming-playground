@@ -38,3 +38,7 @@
     print largest_bst_subtree(node)
     #749
 -}
+
+-- From Wikipedia:
+-- Size of a tree
+-- Number of nodes in the tree.
