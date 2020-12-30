@@ -29,6 +29,7 @@ library
       Datastructures.Lists.CountNumberOfOccurancesInAList
       Datastructures.Lists.EveryNthElementInAList
       Datastructures.Lists.FindFirstDuplicate
+      Datastructures.Lists.IsListSymmetric
       Datastructures.Lists.LengthOfAList
       Datastructures.Lists.MaxAndMinElementsInAListAndTheirIndices
       Datastructures.Lists.RemoveDuplicatesFromList
