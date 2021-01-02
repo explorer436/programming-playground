@@ -3,8 +3,7 @@ module Datastructures.Trees.TreeSize (treeSize) where
 import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 -- From Wikipedia:
--- Size of a tree
--- Number of nodes in the tree.
+-- Size of a tree = Number of nodes in the tree.
 
 treeSize :: Num p => Tree a -> p
 treeSize EmptyTree = 0

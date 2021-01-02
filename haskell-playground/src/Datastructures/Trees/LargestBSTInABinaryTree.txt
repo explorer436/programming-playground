@@ -29,6 +29,7 @@
     #   6   7
     #  /   / \
     # 2   4   9
+    
     node = TreeNode(5)
     node.left = TreeNode(6)
     node.right = TreeNode(7)
@@ -40,5 +41,4 @@
 -}
 
 -- From Wikipedia:
--- Size of a tree
--- Number of nodes in the tree.
+-- Size of a tree = Number of nodes in the tree.
