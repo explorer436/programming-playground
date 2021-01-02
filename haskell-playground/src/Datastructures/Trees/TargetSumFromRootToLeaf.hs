@@ -35,4 +35,5 @@ import Datastructures.Trees.PathsFromRootToAllLeaves (paths)
     # Path from 1 -> 2 -> 6
 -}
 
-pathWithMatchingSum inputNumber tree = filter (\x -> sum (x) == inputNumber) (paths tree)
+pathWithMatchingSum :: (Eq a, Num a) => a -> Tree a -> [[a]]
+pathWithMatchingSum inputNumber tree = filter (\x -> sum x == inputNumber) (paths tree)

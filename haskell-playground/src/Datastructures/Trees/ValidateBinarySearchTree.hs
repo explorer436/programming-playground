@@ -36,6 +36,7 @@ import Data.Maybe (fromJust)
     #1  4 6
 -}
 
+validate :: Ord a => Tree a -> Bool
 validate EmptyTree = False
 validate (Node a EmptyTree EmptyTree) = True
 validate (Node a left EmptyTree) = (fromJust (rootValue left) < a) && validate left
