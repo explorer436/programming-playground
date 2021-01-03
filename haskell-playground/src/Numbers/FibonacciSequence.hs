@@ -8,14 +8,30 @@ import Data.List (foldl')
     such that each number is the sum of the two preceding ones, starting from 0 and 1.
 -}
 
+-- A recursive approach
+-- This is an infinite list. We can just grab how ever many elements we want from the beginning of it.
+-- In this approach, the result at each position depends on the result at the previous position.
+fibs :: [Integer]
+fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
+-- This works by taking advantage of lazyness.
+-- First iteration:
+--   fibs = 0 : 1 : <lazy>
+--   tail fibs = 1 : <lazy>
+--   fibs = 0 : 1 : zipWith (+) (0 : 1 : <lazy>) (1 : <lazy>)
+-- Second iteration:
+--   fibs = 0 : 1 : 1 : <lazy>
+--   tail fibs = 1 : 1 : <lazy>
+--   fibs = 0 : 1 : zipWith (+) (0 : 1 : 1 : <lazy>) (1 : 1 : <lazy>)
+fibsTest01 = take 5 fibs
+
 
 -- This implementation requires O(fib n) additions.
 
-solution :: Num a => Int -> [a]
-solution n = take n (map fibonacciNumberForPosition [0..])
+fibonacciUsingRecursion :: Num a => Int -> [a]
+fibonacciUsingRecursion n = take n (map fibonacciNumberForPosition [0..])
 
 -- tests
-solutionTest01 = solution 5
+fibonacciUsingRecursionTest01 = fibonacciUsingRecursion 5
 
 -- We are using recursion here.
 fibonacciNumberForPosition :: (Eq a, Num a, Num p) => a -> p
