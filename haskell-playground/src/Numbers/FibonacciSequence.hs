@@ -1,6 +1,7 @@
 module Numbers.FibonacciSequence where
 
 import Data.List (foldl')
+import Data.Array
 
 {- |
     In mathematics, the Fibonacci numbers, commonly denoted Fn, 
@@ -8,25 +9,44 @@ import Data.List (foldl')
     such that each number is the sum of the two preceding ones, starting from 0 and 1.
 -}
 
--- A recursive approach
+----------------------------------------------------------------------------
+-- A linear-time solution.
 -- This is an infinite list. We can just grab how ever many elements we want from the beginning of it.
 -- In this approach, the result at each position depends on the result at the previous position.
-fibs :: [Integer]
-fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
+fibsZ :: [Integer]
+fibsZ = 0 : 1 : zipWith (+) fibsZ (tail fibsZ)
 -- This works by taking advantage of lazyness.
--- First iteration:
---   fibs = 0 : 1 : <lazy>
---   tail fibs = 1 : <lazy>
---   fibs = 0 : 1 : zipWith (+) (0 : 1 : <lazy>) (1 : <lazy>)
--- Second iteration:
---   fibs = 0 : 1 : 1 : <lazy>
---   tail fibs = 1 : 1 : <lazy>
---   fibs = 0 : 1 : zipWith (+) (0 : 1 : 1 : <lazy>) (1 : 1 : <lazy>)
-fibsTest01 = take 5 fibs
+-- Explanation:
+-- n = 0 :    0
+-- n = 1 :    1
+-- n = 2 :    0:1:zipWith (+) [0,1,<lazy>][1,<lazy>]           = [0,1] + <lazy>
+-- n = 3 : => 0:1:(0+1):zipWith (+) [1,1,<lazy>][1,<lazy>]     = [0,1,1] + <lazy>
+-- n = 4 : => 0:1:1:(1+1):zipWith (+) [1,2,<lazy>][2,<lazy>]   = [0,1,1,2] + <lazy>
+-- n = 5 : => 0:1:1:2:(1+2):zipWith (+) [2,3,<lazy>][3,<lazy>] = [0,1,1,2,3] + <lazy>
+-- n = n : => ...
+-- The <lazy> part is not evaluated unless it is necessary to do so.
+fibsZTest01 :: [Integer]
+fibsZTest01 = take 5 fibsZ
 
+----------------------------------------------------------------------------
+
+-- Fibonacci using arrays
+fib :: (Ix i, Enum i, Num i, Num e) => i -> e
+fib n = fibA n !n
+
+-- fibA array is used even before it is completely defined, thanks to Haskell's laziness.
+-- This works in O(n) time.
+fibA :: (Enum i, Num i, Num e, Ix i) => i -> Array i e
+fibA n = listArray (0,n) [f i | i <- [0..n]]
+         where 
+           f 0 = 0
+           f 1 = 1
+           f i = fibA n !(i-1) + fibA n !(i-2)
+
+----------------------------------------------------------------------------
 
 -- This implementation requires O(fib n) additions.
-
+-- This is an inefficient way to get the fibonacci series for a given number n. The number of calls to calculate the values at the positions prior to n will increase exponentially as the value of n increases.
 fibonacciUsingRecursion :: Num a => Int -> [a]
 fibonacciUsingRecursion n = take n (map fibonacciNumberForPosition [0..])
 
@@ -34,6 +54,7 @@ fibonacciUsingRecursion n = take n (map fibonacciNumberForPosition [0..])
 fibonacciUsingRecursionTest01 = fibonacciUsingRecursion 5
 
 -- We are using recursion here.
+-- This computes f(n) in unary, in effect.
 fibonacciNumberForPosition :: (Eq a, Num a, Num p) => a -> p
 fibonacciNumberForPosition 0 = 0
 fibonacciNumberForPosition 1 = 1
@@ -52,6 +73,7 @@ fibonacciNumberForPositionTest09 = fibonacciNumberForPosition 9 -- 34
 fibonacciNumberForPositionTest10 = fibonacciNumberForPosition 10 -- 55
 
 
+----------------------------------------------------------------------------
 
 {- | 
    How can we do this without calculating the fibonacciNumber for a given position without having to calculate it so many times?
@@ -84,6 +106,7 @@ fibonacciNumberForPositionTest10 = fibonacciNumberForPosition 10 -- 55
 -}
 
 --                      foldl' :: (   b               -> a   ->  b)                            ->  b        ->  [a]
+fibonacciUsingFolds :: (Num a1, Num a2, Enum a2) => a2 -> (a1, a1, [a1])
 fibonacciUsingFolds n = foldl'    (\ (x, y, fiboList)    i   ->  (y, x + y, fiboList ++ [x+y]))   (0, 1, [])    [1..n]
 
 -- tests
