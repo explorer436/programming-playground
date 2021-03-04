@@ -163,6 +163,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.ValidateBinarySearchTreeSpec
       Numbers.AbsoluteSpec
       Strings.AnagramSpec
+      Strings.AnglesOfAClockSpec
       Strings.LongestCommonSubsequenceBetweenTwoStringsSpec
       Paths_haskell_playground
   hs-source-dirs:

@@ -1,4 +1,4 @@
-module Strings.Anagram where
+module Strings.Anagram (anagram) where
 
 import Data.Char (toUpper)
 import qualified Strings.RemoveSubstringFromAString as RSSFS
