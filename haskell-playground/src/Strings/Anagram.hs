@@ -5,11 +5,11 @@ import qualified Strings.RemoveSubstringFromAString as RSSFS
 
 anagram :: [Char] -> [Char] -> Bool
 anagram str1 str2
-    | length str1WithSpacesRemoved /= length str2WithSpacesRemoved = False
-    | length (removeDuplicates str1WithSpacesRemoved) /= length (removeDuplicates str2WithSpacesRemoved) = False
-    | doesAllCharactersInStr1ExistInStr2 str1WithSpacesRemoved str2WithSpacesRemoved    = True
-    | otherwise = False
-    where str1WithSpacesRemoved = map toUpper (RSSFS.removeSubstringFromAString " " str1)
+    | length str1WithSpacesRemoved_DuplicatesRemoved_Uppercase /= length str2WithSpacesRemoved_DuplicatesRemoved_Uppercase                   = False
+    | doesAllCharactersInStr1ExistInStr2 str1WithSpacesRemoved_DuplicatesRemoved_Uppercase str2WithSpacesRemoved_DuplicatesRemoved_Uppercase = True
+    | otherwise                                                                                                                              = False
+    where str1WithSpacesRemoved_DuplicatesRemoved_Uppercase = removeDuplicates (map toUpper (RSSFS.removeSubstringFromAString " " str1))
+          str2WithSpacesRemoved_DuplicatesRemoved_Uppercase = removeDuplicates (map toUpper (RSSFS.removeSubstringFromAString " " str2))
           str2WithSpacesRemoved = map toUpper (RSSFS.removeSubstringFromAString " " str2)
 
 -- Reference: CheckIfAllCharsOfAStringAreInAnotherString.hs
