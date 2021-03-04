@@ -162,6 +162,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.TargetSumFromRootToLeafSpec
       Datastructures.Trees.ValidateBinarySearchTreeSpec
       Numbers.AbsoluteSpec
+      Strings.AnagramSpec
       Strings.LongestCommonSubsequenceBetweenTwoStringsSpec
       Paths_haskell_playground
   hs-source-dirs:

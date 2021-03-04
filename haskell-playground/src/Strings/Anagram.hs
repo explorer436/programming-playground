@@ -10,7 +10,6 @@ anagram str1 str2
     | otherwise                                                                                                                              = False
     where str1WithSpacesRemoved_DuplicatesRemoved_Uppercase = removeDuplicates (map toUpper (RSSFS.removeSubstringFromAString " " str1))
           str2WithSpacesRemoved_DuplicatesRemoved_Uppercase = removeDuplicates (map toUpper (RSSFS.removeSubstringFromAString " " str2))
-          str2WithSpacesRemoved = map toUpper (RSSFS.removeSubstringFromAString " " str2)
 
 -- Reference: CheckIfAllCharsOfAStringAreInAnotherString.hs
 -- Module:	Prelude, Function:	all, returns True if all items in the list fulfill the condition
@@ -22,38 +21,6 @@ doesCharacterExistInString inputString c
 
 -- Reference: RemoveDuplicatesFromList.hs. Using ETA reduce here.
 removeDuplicates = foldl (\result x -> if (x `elem` result) then result else (x:result)) []
-
--- tests
-anagramTest01 = anagram "listen" "silent"                       -- True
-anagramTest02 = anagram "listen" "not silent"                   -- False
-anagramTest03 = anagram "anagram" "nag a ram"                   -- True
-anagramTest04 = anagram "Tar" "Rat"                             -- True
-anagramTest05 = anagram "Arc" "Car"                             -- True
-anagramTest06 = anagram "Elbow" "Below"                         -- True
-anagramTest07 = anagram "State" "Taste"                         -- True
-anagramTest08 = anagram "Cider" "Cried"                         -- True
-anagramTest09 = anagram "Dusty" "Study"                         -- True
-anagramTest10 = anagram "Night" "Thing"                         -- True
-anagramTest11 = anagram "Inch" "Chin"                           -- True
-anagramTest12 = anagram "Brag" "Grab"                           -- True
-anagramTest13 = anagram "Cat" "Act"                             -- True
-anagramTest14 = anagram "Bored" "Robed"                         -- True
-anagramTest15 = anagram "Save" "Vase"                           -- True
-anagramTest16 = anagram "Angel" "Glean"                         -- True
-anagramTest17 = anagram "Stressed" "Desserts"                   -- True
-anagramTest18 = anagram "debit card" "bad credit"               -- True
-anagramTest19 = anagram "Dormitory" "Dirty room"                -- True
-anagramTest20 = anagram "School master" "The classroom"         -- True
-anagramTest21 = anagram "Conversation" "Voices rant on"         -- True
-anagramTest22 = anagram "Listen" "Silent"                       -- True
-anagramTest23 = anagram "Astronomer" "Moon starer"              -- True
-anagramTest24 = anagram "The eyes" "They see"                   -- True
-anagramTest25 = anagram "A gentleman" "Elegant man"             -- True
-anagramTest26 = anagram "Funeral" "Real fun"                    -- True
-anagramTest27 = anagram "The Morse Code" "Here comes dots"      -- True
-anagramTest28 = anagram "Eleven plus two" "Twelve plus one"     -- True
-anagramTest29 = anagram "Slot machines" "Cash lost in me"       -- True
-anagramTest30 = anagram "Fourth of July" "Joyful Fourth"        -- True
 
 {- |
     Hi, here's your problem today. This problem was recently asked by Twitter:
@@ -86,6 +53,7 @@ getGroupsOfNCharacters [] _ = []
 getGroupsOfNCharacters str n = first : getGroupsOfNCharacters rest n
                         where first = take n str 
                               rest  = drop 1 str
+
 getGroupsOfNCharactersTest01 = getGroupsOfNCharacters "acdbacdacb" 3
 -- ["acd","cdb","dba","bac","acd","cda","dac","acb","cb","b"]
 getGroupsOfNCharactersTest02 = getGroupsOfNCharacters "abxaba" 2
