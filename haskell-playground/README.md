@@ -14,3 +14,7 @@ Add hspec as a dependency in package.yaml
 
 To load a single file into ghci, go to that folder in terminal and run `stack ghci`.
 After that, load that file into ghci by using `:l FileName`
+
+TODO:
+Move all the tests into the test directory. 
+That way, the source code will be free of tests and, we will be able to run all the tests using a single command.
