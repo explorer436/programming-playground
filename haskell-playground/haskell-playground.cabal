@@ -160,6 +160,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.ReconstrunctBinaryTreeFromPreorderAndInorderTraversalsSpec
       Datastructures.Trees.RootToLeafNumbersSummedSpec
       Datastructures.Trees.TargetSumFromRootToLeafSpec
+      Datastructures.Trees.TreeSizeSpec
       Datastructures.Trees.ValidateBinarySearchTreeSpec
       Numbers.AbsoluteSpec
       Strings.AnagramSpec
