@@ -20,10 +20,6 @@ package datastructures.queues;
 
 	This implementation uses the same data structure as does Stack —a linked list—but it implements different algorithms for adding
 	and removing items, which make the difference between LIFO and FIFO for the client.
-	
-	Again, the use of linked lists achieves our optimum design goals: 
-	it can be used for any type of data, the space required is proportional to the number of items in the collection,
-	and the time required per operation is always independent of the size of the collection.
  *
  */
 public class QueueImplementationUsingLinkedList<Item> {

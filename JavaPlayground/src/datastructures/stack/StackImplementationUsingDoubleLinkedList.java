@@ -18,10 +18,6 @@ package datastructures.stack;
 	that any occurrence of Item in the implementation will be replaced by a client-supplied
 	data-type name (see FixedCapacityStack.java - Generics). For now, we omit the code to support iteration. 
 	Write a box trace for a client of this class yourself (see "Trace of Stack development client"). 
-	This use of linked lists achieves our optimum design goals:
-	■ It can be used for any type of data.
-	■ The space required is always proportional to the size of the collection.
-	■ The time per operation is always independent of the size of the collection.
 	
 	This implementation is a prototype for many algorithm implementations that we con-
 	sider. It defines the linked-list data structure and implements the client methods push()
@@ -37,8 +33,7 @@ package datastructures.stack;
 /*
  * This generic Stack implementation is based on a linked-list data structure. 
 	It can be used to create stacks containing any type of data.
-	To support iteration, add the highlighted code described 
-	for Bag on page 155.
+	To support iteration, add the highlighted code described for Bag on page 155.
  */
 public class StackImplementationUsingDoubleLinkedList<Item> {
 	

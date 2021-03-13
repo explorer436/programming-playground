@@ -21,11 +21,6 @@ package datastructures.stack;
 	that any occurrence of Item in the implementation will be replaced by a client-supplied
 	data-type name (see FixedCapacityStack.java - Generics). We omit the code to support iteration. 
 
-	This use of linked lists achieves our optimum design goals:
-	■ It can be used for any type of data.
-	■ The space required is always proportional to the size of the collection.
-	■ The time per operation is always independent of the size of the collection.
-	
 	This implementation is a prototype for many algorithm implementations that we consider. 
 	It defines the linked-list data structure and implements the client methods push()
 	and pop() that achieve the specified effect with just a few lines of code. The algorithms

@@ -1,8 +1,13 @@
 ### Linked lists:
 
-Now we consider the use of a fundamental data structure that is an ap-
-propriate choice for representing the data in a collection ADT implementation. This is
-our first example of building a data structure that is not directly supported by the Java
+
+This use of linked lists for building stacks and queues achieves optimum design goals:
+■ It can be used for any type of data.
+■ The space required is always proportional to the size of the collection.
+■ The time per operation is always independent of the size of the collection.
+
+Lets consider the use of a fundamental data structure that is an appropriate choice for representing the data in a collection ADT implementation. 
+This is our first example of building a data structure that is not directly supported by the Java
 language. Our implementation serves as a model for the code that we use for building
 more complex data structures throughout the book, so you should read this section
 carefully, even if you have experience working with linked lists.
