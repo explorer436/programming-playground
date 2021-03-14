@@ -1,4 +1,4 @@
-module Datastructures.Trees.FullBinaryTree where
+module Datastructures.Trees.FullBinaryTree (fullBinaryTree) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue)
 
@@ -68,6 +68,7 @@ import Data.Maybe (fromJust)
     # 94
 -}
 
+fullBinaryTree :: Tree a -> Tree a
 fullBinaryTree EmptyTree = EmptyTree
 fullBinaryTree tree@(Node a EmptyTree EmptyTree) = tree
 fullBinaryTree tree@(Node a left EmptyTree) = fullBinaryTree left

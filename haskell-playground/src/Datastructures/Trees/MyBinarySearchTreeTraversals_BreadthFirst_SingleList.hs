@@ -61,10 +61,10 @@ import Data.Maybe (fromJust)
 
 -}
 
--- traverseBreadthFirst :: Tree a -> [a]
+traverseBreadthFirst :: Tree a -> [a]
 traverseBreadthFirst tree = helper [tree]
 
--- helper :: [Tree a] -> [a]
+helper :: [Tree a] -> [a]
 helper [] = []
 helper listOfTrees = map (fromJust . rootValue) listOfTrees ++ helper (concat (map leftAndRightTrees listOfTrees))
 
@@ -84,6 +84,7 @@ helper listOfTrees = map (fromJust . rootValue) listOfTrees ++ helper (concat (m
                                       K
 -}
 
+lettersTree :: Tree Char
 lettersTree = Node 'F' 
                 (Node 'B' 
                   (Node 'A' EmptyTree EmptyTree) 

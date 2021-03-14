@@ -30,6 +30,7 @@ rootNodeValues listOfTrees = [map (fromJust . rootValue) listOfTrees]
                                       K
 -}
 
+lettersTree :: Tree Char
 lettersTree = Node 'F' 
                 (Node 'B' 
                   (Node 'A' EmptyTree EmptyTree) 

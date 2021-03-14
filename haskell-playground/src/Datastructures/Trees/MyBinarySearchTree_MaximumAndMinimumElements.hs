@@ -20,6 +20,7 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
                   17          29   32
 -}
 
+sampleTree :: Tree Integer
 sampleTree = Node 25 
                   (Node 20 
                         (Node 15 
