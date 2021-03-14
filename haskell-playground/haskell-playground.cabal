@@ -161,6 +161,8 @@ test-suite haskell-playground-test
       Datastructures.Trees.FlattenBinaryTreeSpec
       Datastructures.Trees.FloorOfAnElementInAGivenBSTSpec
       Datastructures.Trees.FullBinaryTreeSpec
+      Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTreeSpec
+      Datastructures.Trees.InvertABinaryTreeSpec
       Datastructures.Trees.LargestPathSumFromRootToLeafSpec
       Datastructures.Trees.PathsFromRootToAllLeavesSpec
       Datastructures.Trees.ReconstrunctBinaryTreeFromPreorderAndInorderTraversalsSpec

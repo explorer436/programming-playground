@@ -1,7 +1,5 @@
 Move tests out.
 
-GetAllValuesAtACertainHeightInABinaryTree.hs
-InvertABinaryTree.hs
 LevelOfTreeWithMaximumSum.hs
 LevelOfTreeWithMinimumSum.hs
 MinimumHeightOfNodesInBinaryTree.hs

@@ -1,4 +1,4 @@
-module Datastructures.Trees.InvertABinaryTree where
+module Datastructures.Trees.InvertABinaryTree (invertTree) where
   
 import Datastructures.Trees.MyBinaryTree (Tree (..))
 
