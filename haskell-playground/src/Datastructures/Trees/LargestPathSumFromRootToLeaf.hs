@@ -35,6 +35,7 @@ import Data.List (foldl')
     # [1, 3, 5]
 -}
 
+largestPathSum :: (Ord a, Num a) => Tree a -> [a]
 largestPathSum tree = (foldl' (\acc x -> if (sum acc < sum x) then x else acc) (head xs) xs)
                                   where xs = paths tree
 

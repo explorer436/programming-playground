@@ -38,6 +38,7 @@ import Debug.Trace ( trace )
 -}
 
 -- ceilingOfAnElement :: Ord a => a -> Tree a -> Maybe a
+ceilingOfAnElement :: (Show a, Ord a) => a -> Tree a -> Maybe a
 ceilingOfAnElement x EmptyTree                    = Nothing
 ceilingOfAnElement x (Node a EmptyTree EmptyTree) = Just a
 ceilingOfAnElement x tree@(Node a left right)     = trace ("DEBUG: ceilingOfAnElement - x:" ++ show x ++ ", tree:" ++ show tree) 
@@ -46,6 +47,7 @@ ceilingOfAnElement x tree@(Node a left right)     = trace ("DEBUG: ceilingOfAnEl
                                                      else if (x > a) then (xIsGreaterThanRootValue x tree)
                                                      else Nothing)
 
+xIsLesserThanRootValue :: (Show a, Ord a) => a -> Tree a -> Maybe a
 xIsLesserThanRootValue x tree@(Node a left right) = trace ("DEBUG: xIsLesserThanRootValue - x:" ++ show x ++ ", tree:" ++ show tree) 
                                                     (
                                                       if (left == EmptyTree) then Just a
@@ -63,6 +65,7 @@ xIsLesserThanRootValue x tree@(Node a left right) = trace ("DEBUG: xIsLesserThan
                                                       else Nothing
                                                     )
 
+xIsGreaterThanRootValue :: (Show a, Ord a) => a -> Tree a -> Maybe a
 xIsGreaterThanRootValue x tree@(Node a left right) = trace ("DEBUG: xIsGreaterThanRootValue - x:" ++ show x ++ ", tree:" ++ show tree) 
                                                      (
                                                        if (right == EmptyTree) then Just a

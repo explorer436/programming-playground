@@ -1,7 +1,7 @@
-module Datastructures.Trees.ArithmeticBinaryTree where
+module Datastructures.Trees.ArithmeticBinaryTree (evaluateArithmeticBinaryTree) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..))
-import Data.Int
+import Data.Int ( Int8 )
 
 {- |
     Hi, here's your problem today. This problem was recently asked by Apple:
@@ -71,7 +71,9 @@ import Data.Int
     You should return 45, as it is (3 + 2) * (4 + 5).
 -}
 
+-- Need to make them strings as opposed to chars because there may be cases when the input numbers are longer than one digit.
 
+evaluateArithmeticBinaryTree :: Tree String -> Int8
 evaluateArithmeticBinaryTree EmptyTree = 0
 evaluateArithmeticBinaryTree (Node a EmptyTree EmptyTree) = read a :: Int8
 evaluateArithmeticBinaryTree tree@(Node a left right) = case (a) of
@@ -79,16 +81,3 @@ evaluateArithmeticBinaryTree tree@(Node a left right) = case (a) of
                                                                     "-"   -> (evaluateArithmeticBinaryTree left) - (evaluateArithmeticBinaryTree right)
                                                                     "*"   -> (evaluateArithmeticBinaryTree left) * (evaluateArithmeticBinaryTree right)
                                                                     "/"   -> (evaluateArithmeticBinaryTree left) `div` (evaluateArithmeticBinaryTree right)
-
--- Need to make them strings as opposed to chars because there may be cases when the input numbers are longer than one digit.
-test01 = evaluateArithmeticBinaryTree (Node "*" 
-                                            (Node "+"
-                                                  (Node "3" EmptyTree EmptyTree)
-                                                  (Node "2" EmptyTree EmptyTree)
-                                            )
-                                            (Node "+"
-                                                  (Node "4" EmptyTree EmptyTree)
-                                                  (Node "5" EmptyTree EmptyTree)
-                                            )
-                                      )
--- 45                  

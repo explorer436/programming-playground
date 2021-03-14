@@ -1,4 +1,4 @@
-module Datastructures.Trees.FindIfASubreeExistsInAnotherTree where
+module Datastructures.Trees.FindIfASubreeExistsInAnotherTree (doesSubtreeExistInParentTree) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, compareTrees)
 
@@ -64,44 +64,3 @@ doesSubtreeExistInParentTree :: Eq a => Tree a -> Tree a -> Bool
 doesSubtreeExistInParentTree t1@(Node a EmptyTree EmptyTree) t2 = t1 == t2
 doesSubtreeExistInParentTree t1@(Node a l r) t2 = if (a == fromJust (rootValue t2)) then compareTrees t1 t2
                               else doesSubtreeExistInParentTree l t2 || doesSubtreeExistInParentTree r t2
--- tests
-testDoesSubtreeExistInParentTree01 = doesSubtreeExistInParentTree 
-            (Node 1 
-               (Node 4 
-                   (Node 3 EmptyTree EmptyTree) 
-                   (Node 2 EmptyTree EmptyTree)) 
-               (Node 5 
-                   (Node 4 EmptyTree EmptyTree) 
-                   (Node (-1) EmptyTree EmptyTree)))
-            (Node 4 
-               (Node 3 EmptyTree EmptyTree) 
-               (Node 2 EmptyTree EmptyTree))
--- True
-
-testDoesSubtreeExistInParentTree02 = doesSubtreeExistInParentTree 
-            (Node 1 
-               (Node 6 
-                   (Node 3 EmptyTree EmptyTree) 
-                   (Node 2 EmptyTree EmptyTree)) 
-               (Node 5 
-                   (Node 4 EmptyTree EmptyTree) 
-                   (Node (-1) EmptyTree EmptyTree)))
-            (Node 4 
-               (Node 3 EmptyTree EmptyTree) 
-               (Node 2 EmptyTree EmptyTree))
--- False
-
-testDoesSubtreeExistInParentTree03 = doesSubtreeExistInParentTree 
-            (Node 1 
-               (Node 4 
-                   (Node 3 EmptyTree EmptyTree) 
-                   (Node 1 EmptyTree EmptyTree)) 
-               (Node 5 
-                   (Node 4 
-                        (Node 3 EmptyTree EmptyTree)
-                        (Node 2 EmptyTree EmptyTree))
-                   (Node (-1) EmptyTree EmptyTree)))
-            (Node 4 
-               (Node 3 EmptyTree EmptyTree) 
-               (Node 2 EmptyTree EmptyTree))
--- True

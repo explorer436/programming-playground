@@ -1,5 +1,3 @@
-module Datastructures.Trees.MyBinarySearchTree_Depth where
-
 {-|
     At the tree level, 
     the height and the depth are always going to have equal values 

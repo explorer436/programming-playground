@@ -1,6 +1,6 @@
 module Datastructures.Trees.AppendOneTreeToAnotherTreeSpec where
 
-import Test.Hspec
+import Test.Hspec ( describe, it, shouldBe, Spec )
 import Datastructures.Trees.AppendOneTreeToAnotherTree (appendTree2ToTheRightMostLeafOfTree1)
 import Datastructures.Trees.MyBinaryTree (Tree (..))
 
@@ -20,7 +20,7 @@ spec = do
       appendTree2ToTheRightMostLeafOfTree1 EmptyTree EmptyTree `shouldBe` EmptyTree
     -}
 
-expectedResult = (Node 1 EmptyTree (Node 2 EmptyTree (Node 5 (Node 7 EmptyTree EmptyTree) (Node 6 EmptyTree (Node 3 (Node 4 EmptyTree EmptyTree) EmptyTree)))))
+expectedResult = Node 1 EmptyTree (Node 2 EmptyTree (Node 5 (Node 7 EmptyTree EmptyTree) (Node 6 EmptyTree (Node 3 (Node 4 EmptyTree EmptyTree) EmptyTree))))
 {- |
       1
        \
@@ -36,9 +36,9 @@ expectedResult = (Node 1 EmptyTree (Node 2 EmptyTree (Node 5 (Node 7 EmptyTree E
 -}
 
 testTree01 :: Num a => Tree a
-testTree01 = (Node 1 
+testTree01 = Node 1
                   EmptyTree
-                  (Node 2 
+                  (Node 2
                         EmptyTree
                         (
                             Node 5
@@ -46,7 +46,6 @@ testTree01 = (Node 1
                                  (Node 6 EmptyTree EmptyTree)
                         )
                   )
-             )
 {- |
       1
        \
@@ -58,13 +57,12 @@ testTree01 = (Node 1
 -}
 
 testTree02 :: Num a => Tree a
-testTree02 = (Node 3 
+testTree02 = Node 3
                   (Node 4 EmptyTree EmptyTree)
                   EmptyTree
-             )
 
 {- |
           3
          /  
         4    
--}      
+-}

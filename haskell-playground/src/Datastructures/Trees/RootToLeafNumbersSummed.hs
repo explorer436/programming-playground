@@ -42,5 +42,6 @@ import Numbers.ConvertListToDecimalNumber (decimalNumberfromDigits)
     # Explanation: 124 + 125 + 13 = 262
 -}
 
+rootToLeavesNumbersSummed :: Num a => Tree a -> a
 rootToLeavesNumbersSummed tree = sum $ map decimalNumberfromDigits (paths tree)
 

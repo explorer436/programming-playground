@@ -12,6 +12,7 @@ customLengthImplementationUsingPatternMatchingAndRecursionTest4  = customLengthI
 customLengthImplementationUsingPatternMatchingAndRecursionTest5  = customLengthImplementationUsingPatternMatchingAndRecursion "hello"
 
 
+customImplementationForLengthUsingListComprehension :: Num a => [t] -> a
 customImplementationForLengthUsingListComprehension xs = sum [1 | _ <- xs]   
 customImplementationForLengthUsingListComprehensionTest1 = customImplementationForLengthUsingListComprehension [1..9]
 -- 9

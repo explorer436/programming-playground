@@ -56,39 +56,3 @@ import Datastructures.Trees.AppendOneTreeToAnotherTree (appendTree2ToTheRightMos
 flatten EmptyTree = EmptyTree
 flatten tree@(Node a EmptyTree EmptyTree) = tree
 flatten tree@(Node a left right) = Node a EmptyTree (appendTree2ToTheRightMostLeafOfTree1 (flatten left) (flatten right))
-
-
-test01 = flatten (Node 1
-                       (Node 2 
-                             (Node 5 EmptyTree EmptyTree) 
-                             EmptyTree
-                       )
-                       (Node 3 
-                             (Node 4 EmptyTree EmptyTree) 
-                             EmptyTree
-                       )
-                 )
--- Node 1 
---      EmptyTree 
---      (Node 2 
---            EmptyTree 
---            (Node 5 
---                  EmptyTree 
---                  (Node 3 
---                        EmptyTree 
---                        (Node 4 EmptyTree EmptyTree))))
-test02 = flatten (
-                     Node 1 
-                          (Node 2 
-                                (Node 3 EmptyTree EmptyTree)
-                                (Node 4 EmptyTree EmptyTree)
-                          )
-                          EmptyTree
-                 )
--- Node 1 
---      EmptyTree 
---      (Node 2 
---            EmptyTree 
---            (Node 3 
---                  EmptyTree 
---                  (Node 4 EmptyTree EmptyTree)))

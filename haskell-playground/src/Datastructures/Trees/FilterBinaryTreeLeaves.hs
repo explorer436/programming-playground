@@ -1,9 +1,9 @@
-module Datastructures.Trees.FilterBinaryTreeLeaves where
+module Datastructures.Trees.FilterBinaryTreeLeaves (filterBinaryTreeLeaves) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..))
-import Datastructures.Trees.UnivalSubtrees
+import Datastructures.Trees.UnivalSubtrees ( isUnival )
 
-import Data.Int
+import Data.Int ()
 
 {- |
     Hi, here's your problem today. This problem was recently asked by Twitter:
@@ -86,23 +86,3 @@ filterBinaryTreeLeaves x tree@(Node a left right)
     | (a == x && isUnival tree == True) = EmptyTree
     | otherwise                         = Node a (filterBinaryTreeLeaves x left) (filterBinaryTreeLeaves x right)
 
-testFilter01 = filterBinaryTreeLeaves 1 (Node 1
-                                              (Node 1 
-                                                    (Node 2 EmptyTree EmptyTree)
-                                                    EmptyTree
-                                              )
-                                              (Node 1 
-                                                    (Node 1 EmptyTree EmptyTree)
-                                                    EmptyTree
-                                              )
-                                        )
--- Node 1 
---      (Node 1 
---            (Node 2 EmptyTree EmptyTree) 
---            EmptyTree
---      ) 
---      EmptyTree
-
-testFilter02 = filterBinaryTreeLeaves 1 EmptyTree
-testFilter03 = filterBinaryTreeLeaves 1 (Node 1 (Node 2 EmptyTree EmptyTree) EmptyTree)
-testFilter04 = filterBinaryTreeLeaves 2 (Node 1 (Node 2 EmptyTree EmptyTree) EmptyTree)

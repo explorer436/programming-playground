@@ -2,7 +2,7 @@ module Datastructures.Trees.FloorOfAnElementInAGivenBST (floorOfAnElement) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, leftSubtree, rightSubtree, leftNodeValue, rightNodeValue)
 import Data.Maybe (fromJust)
-import Debug.Trace
+import Debug.Trace ( trace )
 
 {- |
     Hi, here's your problem today. This problem was recently asked by Apple:
@@ -38,6 +38,7 @@ import Debug.Trace
 -}
 
 -- floorOfAnElement :: Ord a => a -> Tree a -> Maybe a
+floorOfAnElement :: (Show a, Ord a) => a -> Tree a -> Maybe a
 floorOfAnElement x EmptyTree                    = Nothing
 floorOfAnElement x (Node a EmptyTree EmptyTree) = Just a
 floorOfAnElement x tree@(Node a left right)     = trace ("DEBUG: floorOfAnElement - x:" ++ show x ++ ", tree:" ++ show tree) 
@@ -46,6 +47,7 @@ floorOfAnElement x tree@(Node a left right)     = trace ("DEBUG: floorOfAnElemen
                                                      else if (x > a) then (xIsGreaterThanRootValue x tree)
                                                      else Nothing)
 
+xIsLesserThanRootValue :: (Show a, Ord a) => a -> Tree a -> Maybe a
 xIsLesserThanRootValue x tree@(Node a left right) = trace ("DEBUG: xIsLesserThanRootValue - x:" ++ show x ++ ", tree:" ++ show tree) 
                                                     (
                                                       if (left == EmptyTree) then Nothing
@@ -63,6 +65,7 @@ xIsLesserThanRootValue x tree@(Node a left right) = trace ("DEBUG: xIsLesserThan
                                                       else Nothing
                                                     )
 
+xIsGreaterThanRootValue :: (Show a, Ord a) => a -> Tree a -> Maybe a
 xIsGreaterThanRootValue x tree@(Node a left right) = trace ("DEBUG: xIsGreaterThanRootValue - x:" ++ show x ++ ", tree:" ++ show tree) 
                                                      (
                                                        if (right == EmptyTree) then Nothing

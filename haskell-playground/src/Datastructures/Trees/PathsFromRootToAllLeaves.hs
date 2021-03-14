@@ -24,9 +24,11 @@ import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, leftAndRightTree
     Return [[1, 2], [1, 3, 4], [1, 3, 5]].
 -}
 
+paths :: Tree a -> [[a]]
 paths EmptyTree = [[]]
 paths tree@(Node a left right) = helper tree [[]]
 
+helper :: Tree a -> [[a]] -> [[a]]
 helper tree@(Node a EmptyTree EmptyTree) [list] = [list ++ [a]]
 helper tree@(Node a left EmptyTree) [list] = helper left [list ++ [a]]
 helper tree@(Node a EmptyTree right) [list] = helper right [list ++ [a]]

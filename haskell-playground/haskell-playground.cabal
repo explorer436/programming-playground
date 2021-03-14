@@ -52,7 +52,6 @@ library
       Datastructures.Trees.MinimumDepthOfNodesInBinaryTree
       Datastructures.Trees.MinimumHeightOfNodesInBinaryTree
       Datastructures.Trees.MyBinarySearchTree_Delete
-      Datastructures.Trees.MyBinarySearchTree_Depth
       Datastructures.Trees.MyBinarySearchTree_Height
       Datastructures.Trees.MyBinarySearchTree_Insert
       Datastructures.Trees.MyBinarySearchTree_MaximumAndMinimumElements
@@ -152,8 +151,14 @@ test-suite haskell-playground-test
   main-is: Spec.hs
   other-modules:
       Datastructures.Trees.AppendOneTreeToAnotherTreeSpec
+      Datastructures.Trees.ArithmeticBinaryTreeSpec
+      Datastructures.Trees.BinaryTreeSumsByEachLevelSpec
       Datastructures.Trees.CeilingOfAnElementInAGivenBSTSpec
       Datastructures.Trees.CreateABalancedBinarySearchTreeSpec
+      Datastructures.Trees.DeepestNodeInABinaryTreeSpec
+      Datastructures.Trees.FilterBinaryTreeLeavesSpec
+      Datastructures.Trees.FindIfASubreeExistsInAnotherTreeSpec
+      Datastructures.Trees.FlattenBinaryTreeSpec
       Datastructures.Trees.FloorOfAnElementInAGivenBSTSpec
       Datastructures.Trees.LargestPathSumFromRootToLeafSpec
       Datastructures.Trees.PathsFromRootToAllLeavesSpec

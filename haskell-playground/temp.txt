@@ -1,0 +1,19 @@
+Move tests out.
+
+FullBinaryTree.hs
+GetAllValuesAtACertainHeightInABinaryTree.hs
+InvertABinaryTree.hs
+LevelOfTreeWithMaximumSum.hs
+LevelOfTreeWithMinimumSum.hs
+MinimumHeightOfNodesInBinaryTree.hs
+MyBinarySearchTree_Delete.hs
+MyBinarySearchTree_Height.hs
+MyBinarySearchTree_Insert.hs
+MyBinarySearchTree_MaximumAndMinimumElements.hs
+MyBinarySearchTreeTraversals_BreadthFirst_ListsByLevel.hs
+MyBinarySearchTreeTraversals_BreadthFirst_SingleList.hs
+MyBinarySearchTreeTraversals_DepthFirst.hs
+NumberOfCousinsInLevelOrder.hs
+ReconstrunctBinaryTreeFromPreorderAndInorderTraversals.hs
+UnivalSubtrees.hs
+ZigZagBinaryTree.hs
