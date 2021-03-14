@@ -160,6 +160,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.FindIfASubreeExistsInAnotherTreeSpec
       Datastructures.Trees.FlattenBinaryTreeSpec
       Datastructures.Trees.FloorOfAnElementInAGivenBSTSpec
+      Datastructures.Trees.FullBinaryTreeSpec
       Datastructures.Trees.LargestPathSumFromRootToLeafSpec
       Datastructures.Trees.PathsFromRootToAllLeavesSpec
       Datastructures.Trees.ReconstrunctBinaryTreeFromPreorderAndInorderTraversalsSpec

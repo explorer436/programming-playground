@@ -1,6 +1,5 @@
 Move tests out.
 
-FullBinaryTree.hs
 GetAllValuesAtACertainHeightInABinaryTree.hs
 InvertABinaryTree.hs
 LevelOfTreeWithMaximumSum.hs

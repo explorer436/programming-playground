@@ -74,20 +74,3 @@ fullBinaryTree tree@(Node a EmptyTree EmptyTree) = tree
 fullBinaryTree tree@(Node a left EmptyTree) = fullBinaryTree left
 fullBinaryTree tree@(Node a EmptyTree right) = fullBinaryTree right
 fullBinaryTree tree@(Node a left right) = Node a (fullBinaryTree left) (fullBinaryTree right)
-
-
-test01 = fullBinaryTree (Node 1
-                            (Node 2
-                                  (Node 0 EmptyTree EmptyTree)
-                                  EmptyTree
-                            )
-                            (Node 3 
-                                  (Node 9 EmptyTree EmptyTree)
-                                  (Node 4 EmptyTree EmptyTree)
-                            )
-                      )
--- Node 1 
---      (Node 0 EmptyTree EmptyTree)
---      (Node 3 
---            (Node 9 EmptyTree EmptyTree) 
---            (Node 4 EmptyTree EmptyTree))                      
