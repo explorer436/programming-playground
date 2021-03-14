@@ -1,4 +1,4 @@
-module Datastructures.Trees.MyBinarySearchTree_Delete where
+module Datastructures.Trees.MyBinarySearchTree_Delete (delete) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..))
 import Datastructures.Trees.MyBinarySearchTree_MaximumAndMinimumElements (treeMinimum)

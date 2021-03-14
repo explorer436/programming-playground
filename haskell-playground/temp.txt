@@ -1,8 +1,5 @@
 Move tests out.
 
-LevelOfTreeWithMaximumSum.hs
-LevelOfTreeWithMinimumSum.hs
-MinimumHeightOfNodesInBinaryTree.hs
 MyBinarySearchTree_Delete.hs
 MyBinarySearchTree_Height.hs
 MyBinarySearchTree_Insert.hs

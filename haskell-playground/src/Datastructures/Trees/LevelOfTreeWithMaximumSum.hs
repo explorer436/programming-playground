@@ -1,4 +1,4 @@
-module Datastructures.Trees.LevelOfTreeWithMaximumSum where
+module Datastructures.Trees.LevelOfTreeWithMaximumSum (levelWithMaximumSum, maximumSum) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..))
 
@@ -54,18 +54,11 @@ findFirstMaximumElementInTheListAndIndex xs = Just (foldl' (\acc x ->
                                                                   else acc) 
                                                         else acc) (head xs) xs)
 
+tupleWithMaximumSum :: Integral b => Tree Int8 -> (Int8, b)
 tupleWithMaximumSum tree = fromJust $ findFirstMaximumElementInTheListAndIndex (zip (listWithSumsForEachLevel tree)[0..])
+maximumSum :: Tree Int8 -> Int8
 maximumSum tree = fst $ tupleWithMaximumSum tree
+levelWithMaximumSum :: Integral b => Tree Int8 -> b
 levelWithMaximumSum tree = snd $ tupleWithMaximumSum tree
 
--- tests
-testLevelOfTreeWithMaximumSum01 = levelWithMaximumSum testTree -- 1
-testMaximumSum01 = maximumSum testTree -- 9
 
-testTree = (Node 1
-               (Node 4
-                   (Node 3 EmptyTree EmptyTree)
-                   (Node 2 EmptyTree EmptyTree))
-               (Node 5
-                   (Node 4 EmptyTree EmptyTree)
-                   (Node (-1) EmptyTree EmptyTree)))

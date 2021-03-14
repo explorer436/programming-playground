@@ -1,4 +1,4 @@
-module Datastructures.Trees.LevelOfTreeWithMinimumSum where
+module Datastructures.Trees.LevelOfTreeWithMinimumSum (tupleWithMinimumSum, levelWithMinimumSum, minimumSum) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..))
 
@@ -54,6 +54,7 @@ import Datastructures.Trees.BinaryTreeSumsByEachLevel (listWithSumsForEachLevel)
 
 -- For reference, see MaxElementInAListAndItsIndex.hs
 -- findFirstMinimumElementInTheListAndIndex :: (Int a, Int b) => [(a, b)] -> Maybe (a, b)
+findFirstMinimumElementInTheListAndIndex :: (Ord a, Ord b) => [(a, b)] -> Maybe (a, b)
 findFirstMinimumElementInTheListAndIndex [] = Nothing
 findFirstMinimumElementInTheListAndIndex xs = Just (foldl' (\acc x -> 
                                                         if ((fst acc) > (fst x)) 
@@ -64,31 +65,11 @@ findFirstMinimumElementInTheListAndIndex xs = Just (foldl' (\acc x ->
                                                                   else x) 
                                                         else acc) (head xs) xs)
 
+tupleWithMinimumSum :: (Ord b, Num b, Enum b) => Tree Int8 -> (Int8, b)
 tupleWithMinimumSum tree = fromJust $ findFirstMinimumElementInTheListAndIndex (zip (listWithSumsForEachLevel tree)[0..])
+minimumSum :: Tree Int8 -> Int8
 minimumSum tree = fst $ tupleWithMinimumSum tree
+levelWithMinimumSum :: (Ord b, Num b, Enum b) => Tree Int8 -> b
 levelWithMinimumSum tree = snd $ tupleWithMinimumSum tree
 
--- tests
-testTupleWithMinimumSum01 = fromJust $ findFirstMinimumElementInTheListAndIndex (zip (listWithSumsForEachLevel testTree01)[0..]) -- (7,2)
-testMinSum01 = minimumSum testTree01 -- 7
-testLevelWithMinimumSum01 = levelWithMinimumSum testTree01 -- 2
 
-testTree01 = (Node 10
-               (Node 2
-                   (Node 4 EmptyTree EmptyTree)
-                   (Node 1 EmptyTree EmptyTree))
-               (Node 8
-                   (EmptyTree)
-                   (Node 2 EmptyTree EmptyTree)))
-
-testTupleWithMinimumSum02 = fromJust $ findFirstMinimumElementInTheListAndIndex (zip (listWithSumsForEachLevel testTree02)[0..]) -- (7,1)
-testMinSum02 = minimumSum testTree02 -- 7
-testLevelWithMinimumSum02 = levelWithMinimumSum testTree02 -- 1
-
-testTree02 = (Node 10
-               (Node 2
-                   (Node 4 EmptyTree EmptyTree)
-                   (Node 1 EmptyTree EmptyTree))
-               (Node 5
-                   (EmptyTree)
-                   (Node 2 EmptyTree EmptyTree)))
