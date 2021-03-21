@@ -167,6 +167,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.LevelOfTreeWithMinimumSumSpec
       Datastructures.Trees.MinimumHeightOfNodesInBinaryTreeSpec
       Datastructures.Trees.MyBinarySearchTree_DeleteSpec
+      Datastructures.Trees.MyBinarySearchTree_HeightSpec
       Datastructures.Trees.PathsFromRootToAllLeavesSpec
       Datastructures.Trees.ReconstrunctBinaryTreeFromPreorderAndInorderTraversalsSpec
       Datastructures.Trees.RootToLeafNumbersSummedSpec
