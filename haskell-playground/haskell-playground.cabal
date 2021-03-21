@@ -1,6 +1,6 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.34.3.
+-- This file has been generated from package.yaml by hpack version 0.34.4.
 --
 -- see: https://github.com/sol/hpack
 
@@ -49,7 +49,6 @@ library
       Datastructures.Trees.LargestPathSumFromRootToLeaf
       Datastructures.Trees.LevelOfTreeWithMaximumSum
       Datastructures.Trees.LevelOfTreeWithMinimumSum
-      Datastructures.Trees.MinimumDepthOfNodesInBinaryTree
       Datastructures.Trees.MinimumHeightOfNodesInBinaryTree
       Datastructures.Trees.MyBinarySearchTree_Delete
       Datastructures.Trees.MyBinarySearchTree_Height
@@ -167,6 +166,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.LevelOfTreeWithMaximumSumSpec
       Datastructures.Trees.LevelOfTreeWithMinimumSumSpec
       Datastructures.Trees.MinimumHeightOfNodesInBinaryTreeSpec
+      Datastructures.Trees.MyBinarySearchTree_DeleteSpec
       Datastructures.Trees.PathsFromRootToAllLeavesSpec
       Datastructures.Trees.ReconstrunctBinaryTreeFromPreorderAndInorderTraversalsSpec
       Datastructures.Trees.RootToLeafNumbersSummedSpec

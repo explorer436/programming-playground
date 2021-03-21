@@ -1,6 +1,3 @@
-module Datastructures.Trees.MinimumDepthOfNodesInBinaryTree where
-
-import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 {-|
     Hi, here's your problem today. This problem was recently asked by LinkedIn:
