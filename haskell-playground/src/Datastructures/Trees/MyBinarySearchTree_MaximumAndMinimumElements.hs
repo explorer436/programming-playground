@@ -1,4 +1,4 @@
-module Datastructures.Trees.MyBinarySearchTree_MaximumAndMinimumElements where
+module Datastructures.Trees.MyBinarySearchTree_MaximumAndMinimumElements (treeMinimum, treeMaximum) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..))
 
@@ -20,33 +20,15 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
                   17          29   32
 -}
 
-sampleTree :: Tree Integer
-sampleTree = Node 25 
-                  (Node 20 
-                        (Node 15 
-                              EmptyTree 
-                              (Node 17 EmptyTree EmptyTree)) 
-                        (Node 22 EmptyTree EmptyTree)
-                  ) 
-                  (Node 27 
-                        (Node 26 EmptyTree EmptyTree) 
-                        (Node 30 
-                              (Node 29 EmptyTree EmptyTree) 
-                              (Node 32 EmptyTree EmptyTree))
-                  )
+
 
 treeMinimum :: Num p => Tree p -> p
 treeMinimum EmptyTree = 0
 treeMinimum (Node a EmptyTree _) = a
 treeMinimum (Node a left right) = treeMinimum left
 
-testMinimum01 = treeMinimum sampleTree -- 15
-testMinimum02 = treeMinimum (Node 8 EmptyTree EmptyTree) -- 8
-
-
 treeMaximum :: Num p => Tree p -> p
 treeMaximum EmptyTree = 0
 treeMaximum (Node a _ EmptyTree) = a
 treeMaximum (Node a left right) = treeMaximum right
 
-testMaximum = treeMaximum sampleTree -- 32

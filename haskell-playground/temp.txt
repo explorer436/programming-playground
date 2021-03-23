@@ -1,10 +1,5 @@
 Move tests out.
 
-MyBinarySearchTree_Insert.hs
-MyBinarySearchTree_MaximumAndMinimumElements.hs
-MyBinarySearchTreeTraversals_BreadthFirst_ListsByLevel.hs
-MyBinarySearchTreeTraversals_BreadthFirst_SingleList.hs
-MyBinarySearchTreeTraversals_DepthFirst.hs
 NumberOfCousinsInLevelOrder.hs
 ReconstrunctBinaryTreeFromPreorderAndInorderTraversals.hs
 UnivalSubtrees.hs

@@ -91,7 +91,7 @@ reconstruct inorderList preorderList = Node rootValue (reconstruct leftHalfInOrd
                                              leftHalfPreOrder = take (length leftHalfInOrder) (tail preorderList)
 
 -- SEPARATING THESE FOR DEBUGGING PURPOSES. 
--- These are not needed because they are already defined in the where claude.
+-- These are not needed because they are already defined in the where clause.
 
 leftHalfInOrder :: Ord a => [a] -> [a] -> [a]
 leftHalfInOrder inorderList preorderList = takeWhile (< rootValue) inorderList
