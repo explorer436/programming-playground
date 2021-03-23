@@ -26,7 +26,7 @@ numbersTree = Node 1
                                  (Node 6 EmptyTree EmptyTree)
                         )
                   )
-                  {- |
+{- |
       1
        \
         2

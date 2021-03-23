@@ -1,7 +1,5 @@
 Move tests out.
 
-MyBinarySearchTree_Delete.hs
-MyBinarySearchTree_Height.hs
 MyBinarySearchTree_Insert.hs
 MyBinarySearchTree_MaximumAndMinimumElements.hs
 MyBinarySearchTreeTraversals_BreadthFirst_ListsByLevel.hs

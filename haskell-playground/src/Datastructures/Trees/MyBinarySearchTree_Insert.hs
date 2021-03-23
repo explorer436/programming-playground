@@ -81,22 +81,20 @@ numsTreeFromRight = treeFromRight nums
                        /    \
                       /      \
                      3        7 
-                    /  \     /  \
-                   /    \   /    \
-                  1      4 6      8 
+                    / \      / \
+                   /   \    /   \
+                  1     4  6     8 
 
 -}
 
 {- |
-    In that foldr for treeFromRight, 
+    In the foldr for treeFromRight, 
     treeInsert was the folding function 
     (it takes a tree and a list element and produces a new tree) and 
     EmptyTree was the starting accumulator. 
     nums, of course, was the list we were folding over.
     
-    When we print our tree to the console, 
-    it's not very readable, but if we try, we can make out its structure. 
-    We see that the root node is 5 and then it has two sub-trees, 
+    The root node is 5 and then it has two sub-trees, 
     one of which has the root node of 3 and the other a 7, etc.
 -}
 
