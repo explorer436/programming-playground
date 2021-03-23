@@ -2,5 +2,3 @@ Move tests out.
 
 NumberOfCousinsInLevelOrder.hs
 ReconstrunctBinaryTreeFromPreorderAndInorderTraversals.hs
-UnivalSubtrees.hs
-ZigZagBinaryTree.hs

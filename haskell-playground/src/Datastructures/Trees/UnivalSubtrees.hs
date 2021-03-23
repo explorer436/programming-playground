@@ -1,4 +1,4 @@
-module Datastructures.Trees.UnivalSubtrees where
+module Datastructures.Trees.UnivalSubtrees (isUnival, countUnivalSubtrees) where
 
 import Data.Maybe (fromJust)
 
@@ -99,25 +99,6 @@ isUnival (Node a left right)
                                      Nothing -> False
 
 -- testIsUnival01 = isUnival EmptyTree -- False. This seems to be working when tested from the ghci interpreter.
-testIsUnival02 = isUnival (Node 3 EmptyTree EmptyTree) -- True
-testIsUnival03 = isUnival (Node 1
-                                (Node 4
-                                      (Node 3 EmptyTree EmptyTree)
-                                      (Node 2 EmptyTree EmptyTree))
-                                (Node 5
-                                      (Node 4 EmptyTree EmptyTree)
-                                      (Node (-1) EmptyTree EmptyTree))) -- False
-testIsUnival04 = isUnival (Node 4
-                                (Node 4
-                                      (Node 4 EmptyTree EmptyTree)
-                                      (Node 4 EmptyTree EmptyTree))
-                                (Node 4
-                                      (Node 4 EmptyTree EmptyTree)
-                                      (Node 4 EmptyTree EmptyTree))) -- True
-testIsUnival05 = isUnival (Node 1
-                                (Node 1 EmptyTree EmptyTree)
-                                EmptyTree
-                          )
 
 countUnivalSubtrees EmptyTree                    = 0
 countUnivalSubtrees (Node a EmptyTree EmptyTree) = 1
