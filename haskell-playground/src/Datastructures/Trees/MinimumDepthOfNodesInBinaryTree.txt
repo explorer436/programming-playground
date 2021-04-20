@@ -28,6 +28,7 @@
     # 1
 -}
 
--- By definition, the values for the minimum height and the minimum depth will be the same. The reason for this is, the distance of the leaf that is the least farthest from the root is the same whether that distance is measured from the root or from the leaf. 
+-- By definition, the values for the minimum height and the minimum depth will be the same.
+-- The reason for this is, the distance of the leaf that is the least farthest from the root is the same whether that distance is measured from the root to the leaf or from the leaf to the root.
 
 -- Reference: See MinimumHeightOfNodesInBinaryTree.hs

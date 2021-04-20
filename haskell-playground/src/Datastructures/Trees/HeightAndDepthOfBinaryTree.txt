@@ -7,7 +7,8 @@ The height of a particular node is the length of the longest downward path (also
 The depth of a particular node is the length of the path (also called edges) from that node to the tree's root (i.e., its root path). 
 
 
-It is easy to get confused between Depth and Height of Binary tree. It is because the depth of binary tree is always equal to the height of binary tree but they are not the same and using the terms interchangeably is not correct. 
+It is easy to get confused between Depth and Height of Binary tree.
+It is because the depth of binary tree is always equal to the height of binary tree but they are not the same and using the terms interchangeably is not correct. 
 
 Lets understand the difference between the Height and Depth of a given node in the tree and height and depth of the Binary tree itself.
 
@@ -15,7 +16,7 @@ Lets understand the difference between the Height and Depth of a given node in t
 
 Height:
 
-As the quote on top says, the sky is what we should see while calculating height (of a node or the root) from the sea-level. In our case, the sea-level is the leaf that is farthest from the particular node in the downward direction. 
+As the quote says, the sky is what we should see while calculating height (of a node or the root) from the sea-level. In our case, the sea-level is the leaf that is farthest from the particular node in the downward direction. 
 The height of a particular node is the length of the longest downward path (also called edges) to a leaf from that node.
 The height of the root node of the tree is the height of the tree itself. The height of the root node is the highest because it is the farthest from the leaf node that is at the most bottom in the tree.
 The leaf nodes have height of 0 as there is no nodes below them. 
@@ -29,7 +30,8 @@ The depth of a particular node is the length of the path (also called edges) fro
 The depth of binary tree is the depth of the deepest node (leaf node).
 The root node has a depth of 0 since it is at the sea-level.
 
-                            depth=0
+
+                       depth(of the root node)=0
                        height(of the tree)=3
                           /                \ 
                          /                  \ 
@@ -48,4 +50,4 @@ The root node has a depth of 0 since it is at the sea-level.
                                                       /
                                                      /
                                              depth(of the tree)=3
-                                                 height=0
+                                             height(of the node)=0

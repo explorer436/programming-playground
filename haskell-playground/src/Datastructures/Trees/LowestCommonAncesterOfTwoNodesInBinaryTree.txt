@@ -21,6 +21,7 @@
     # b   c
     #    / \
     #   d*  e*
+    
     root = TreeNode('a')
     root.left = TreeNode('b')
     root.left.parent = root

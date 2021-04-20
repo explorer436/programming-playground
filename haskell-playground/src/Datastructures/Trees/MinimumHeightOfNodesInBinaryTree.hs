@@ -9,7 +9,3 @@ minimumHeight (Node a l EmptyTree)         = 1 + (minimumHeight l)
 minimumHeight (Node a EmptyTree r)         = 1 + (minimumHeight r)
 minimumHeight (Node _ l r)                 = 1 + min (minimumHeight l) (minimumHeight r)
 
--- tests
-
-
-
