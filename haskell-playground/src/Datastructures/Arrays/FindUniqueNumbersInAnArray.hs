@@ -10,12 +10,10 @@ removeDuplicateEntriesFromList :: Eq a => [a] -> [a]
 removeDuplicateEntriesFromList inputList = [x | x <- inputList, countOccurancesInAnArrayUsingRecursion inputList x == 1]
 -- tests
 
-removeDuplicateEntriesFromListTest1 = 
-    removeDuplicateEntriesFromList [1,2,3,4,5,1,2]
+removeDuplicateEntriesFromListTest1 = removeDuplicateEntriesFromList [1,2,3,4,5,1,2]
 -- [3,4,5]
 
-removeDuplicateEntriesFromListTest2 = 
-    removeDuplicateEntriesFromList [1,2,1,3]
+removeDuplicateEntriesFromListTest2 = removeDuplicateEntriesFromList [1,2,1,3]
 -- [2,3]
 
 ------------------------------------------------------------------------

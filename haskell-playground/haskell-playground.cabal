@@ -149,6 +149,7 @@ test-suite haskell-playground-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      Datastructures.Lists.CountNumberOfUniqueOccurancesInAListSpec
       Datastructures.Trees.AppendOneTreeToAnotherTreeSpec
       Datastructures.Trees.ArithmeticBinaryTreeSpec
       Datastructures.Trees.BinaryTreeSumsByEachLevelSpec
