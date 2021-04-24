@@ -1,6 +1,7 @@
 module Datastructures.Arrays.FindUniqueNumbersInAnArray where
 
 import Data.List ( nub )
+import Datastructures.Lists.CountNumberOfOccurancesInAList
 
 -- How to find the unique numbers in an array
 -- e.g. input [1, 2, 1, 3], the result should be [2, 3]
@@ -15,18 +16,7 @@ removeDuplicateEntriesFromListTest1 =
 
 removeDuplicateEntriesFromListTest2 = 
     removeDuplicateEntriesFromList [1,2,1,3]
--- [2,3]    
-
--- see CountNumberOfOccurancesInAList.hs
--- How to count the number of occurances of an element in a list using Recursion?
-countOccurancesInAnArrayUsingRecursion :: Eq a => [a] -> a -> Int
--- base condition
-countOccurancesInAnArrayUsingRecursion [] elementToBeFound = 0
--- main condition
-countOccurancesInAnArrayUsingRecursion (x:xs) elementToBeFound 
-    | elementToBeFound == x = 1 + (countOccurancesInAnArrayUsingRecursion xs elementToBeFound)
-    | otherwise = countOccurancesInAnArrayUsingRecursion xs elementToBeFound  
-
+-- [2,3]
 
 ------------------------------------------------------------------------
 
