@@ -150,6 +150,7 @@ test-suite haskell-playground-test
   main-is: Spec.hs
   other-modules:
       Datastructures.Lists.CountNumberOfUniqueOccurancesInAListSpec
+      Datastructures.Lists.IsListSymmetricSpec
       Datastructures.Lists.RemoveDuplicatesFromListSpec
       Datastructures.Trees.AppendOneTreeToAnotherTreeSpec
       Datastructures.Trees.ArithmeticBinaryTreeSpec
