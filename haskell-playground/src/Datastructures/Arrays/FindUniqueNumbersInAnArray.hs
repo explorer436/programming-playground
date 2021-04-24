@@ -1,4 +1,4 @@
-module Datastructures.Arrays.FindUniqueNumbersInAnArray where
+module Datastructures.Arrays.FindUniqueNumbersInAnArray (removeDuplicateEntriesFromList) where
 
 import Data.List ( nub )
 import Datastructures.Lists.CountNumberOfOccurancesInAList
