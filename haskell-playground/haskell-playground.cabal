@@ -45,6 +45,7 @@ library
       Datastructures.Trees.FloorOfAnElementInAGivenBST
       Datastructures.Trees.FullBinaryTree
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTree
+      Datastructures.Trees.HeightBalancedBinaryTree
       Datastructures.Trees.InvertABinaryTree
       Datastructures.Trees.LargestPathSumFromRootToLeaf
       Datastructures.Trees.LevelOfTreeWithMaximumSum
@@ -164,6 +165,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.FloorOfAnElementInAGivenBSTSpec
       Datastructures.Trees.FullBinaryTreeSpec
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTreeSpec
+      Datastructures.Trees.HeightBalancedBinaryTreeSpec
       Datastructures.Trees.InvertABinaryTreeSpec
       Datastructures.Trees.LargestPathSumFromRootToLeafSpec
       Datastructures.Trees.LevelOfTreeWithMaximumSumSpec
