@@ -10,7 +10,7 @@ Java came into the world with a number of bold promises:
 It has pretty much delivered in all of the above for a while until all those pillars started crumbling:
 
     Universal support:
-        it lost the in-browser battle early on to java script
+        it lost the in-browser battle early on to javascript
         it never quite deliver rich enough desktop experience (with few notable exceptions) to become a top choice for desktop application development
         Apple has actively discouraged its use in OSX and there is no reasonable way to doing java iOS development
         It is an Android supported language, and that would have been a big java revival moment, EXCEPT that the fraught relation between Oracle and Google, has made Google less bullish in promoting it as the language of choice.
