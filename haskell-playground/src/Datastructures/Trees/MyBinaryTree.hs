@@ -1,4 +1,4 @@
-module Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, compareTrees, leftAndRightTrees, leftSubtree, rightSubtree, leftNodeValue, rightNodeValue) where
+module Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, areTreesEqual, leftAndRightTrees, leftSubtree, rightSubtree, leftNodeValue, rightNodeValue) where
 
 {- |
 
@@ -45,8 +45,8 @@ rootValue :: Tree a -> Maybe a
 rootValue (Node a _ _) = Just a
 rootValue EmptyTree    = Nothing
 
-compareTrees :: Eq a => a -> a -> Bool
-compareTrees t1 t2 = t1 == t2
+areTreesEqual :: Eq a => a -> a -> Bool
+areTreesEqual t1 t2 = t1 == t2
 
 leftAndRightTrees :: Tree a -> [Tree a]
 leftAndRightTrees (Node _ EmptyTree EmptyTree) = []

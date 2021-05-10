@@ -42,15 +42,15 @@
    A height-balanced binary tree is defined as: a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
 -}
 
-module Datastructures.Trees.HeightBalancedBinaryTree (heightBalancedBinaryTree) where
+module Datastructures.Trees.HeightBalancedBinaryTree (isTreeHeightBalanced) where
   
 import Datastructures.Trees.MyBinaryTree (Tree (..))
 import Datastructures.Trees.MyBinarySearchTree_Height (treeHeight)
 
 -- Ideally, the depth of the tree should be used instead of "height". But at the tree level, the values for the depth and height are exactly the same. See MyBinarySearchTree_Depth.txt
 
-heightBalancedBinaryTree :: Tree a -> Bool
-heightBalancedBinaryTree EmptyTree    = True
-heightBalancedBinaryTree (Node a EmptyTree EmptyTree)    = True
-heightBalancedBinaryTree (Node _ l r) = if (abs(treeHeight l - treeHeight r) <= 1) then True else False
+isTreeHeightBalanced :: Tree a -> Bool
+isTreeHeightBalanced EmptyTree    = True
+isTreeHeightBalanced (Node a EmptyTree EmptyTree)    = True
+isTreeHeightBalanced (Node _ l r) = if (abs(treeHeight l - treeHeight r) <= 1) then True else False
 
