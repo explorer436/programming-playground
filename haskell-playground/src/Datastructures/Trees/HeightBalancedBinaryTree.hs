@@ -44,8 +44,7 @@
 
 module Datastructures.Trees.HeightBalancedBinaryTree (isTreeHeightBalanced) where
   
-import Datastructures.Trees.MyBinaryTree (Tree (..))
-import Datastructures.Trees.MyBinarySearchTree_Height (treeHeight)
+import Datastructures.Trees.MyBinaryTree (Tree (..), treeHeight)
 
 -- Ideally, the depth of the tree should be used instead of "height". But at the tree level, the values for the depth and height are exactly the same. See MyBinarySearchTree_Depth.txt
 

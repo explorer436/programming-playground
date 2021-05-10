@@ -1,4 +1,4 @@
-module Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, areTreesEqual, leftAndRightTrees, leftSubtree, rightSubtree, leftNodeValue, rightNodeValue) where
+module Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, areTreesEqual, leftAndRightTrees, leftSubtree, rightSubtree, leftNodeValue, rightNodeValue, treeHeight) where
 
 {- |
 
@@ -50,24 +50,34 @@ areTreesEqual t1 t2 = t1 == t2
 
 leftAndRightTrees :: Tree a -> [Tree a]
 leftAndRightTrees (Node _ EmptyTree EmptyTree) = []
-leftAndRightTrees (Node _ EmptyTree b)     = [b]
-leftAndRightTrees (Node _ a EmptyTree)     = [a]
-leftAndRightTrees (Node _ a b)         = [a,b]
+leftAndRightTrees (Node _ EmptyTree b)         = [b]
+leftAndRightTrees (Node _ a EmptyTree)         = [a]
+leftAndRightTrees (Node _ a b)                 = [a,b]
 
 leftSubtree :: Tree a -> Maybe (Tree a)
-leftSubtree EmptyTree = Nothing
+leftSubtree EmptyTree       = Nothing
 leftSubtree (Node _ left _) = Just left
 
 rightSubtree :: Tree a -> Maybe (Tree a)
-rightSubtree EmptyTree = Nothing
+rightSubtree EmptyTree        = Nothing
 rightSubtree (Node _ _ right) = Just right
 
 leftNodeValue :: Tree a -> Maybe a
-leftNodeValue EmptyTree = Nothing
+leftNodeValue EmptyTree            = Nothing
 leftNodeValue (Node a EmptyTree _) = Nothing
-leftNodeValue (Node a left _) = rootValue left
+leftNodeValue (Node a left _)      = rootValue left
 
 rightNodeValue :: Tree a -> Maybe a
-rightNodeValue EmptyTree = Nothing
+rightNodeValue EmptyTree            = Nothing
 rightNodeValue (Node a _ EmptyTree) = Nothing
-rightNodeValue (Node a _ right) = rootValue right
+rightNodeValue (Node a _ right)     = rootValue right
+
+treeHeight :: (Num p, Ord p) => Tree a -> p
+treeHeight EmptyTree                    = -1
+treeHeight (Node a EmptyTree EmptyTree) = 0
+treeHeight (Node _ l r)                 = 1 + max (treeHeight l) (treeHeight r)
+
+
+-- TODO
+-- write implementations for left height and right height
+-- we need them in the implementation for counting nodes in full binary tree and complete binary tree.

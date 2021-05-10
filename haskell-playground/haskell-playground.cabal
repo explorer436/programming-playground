@@ -37,6 +37,7 @@ library
       Datastructures.Trees.ArithmeticBinaryTree
       Datastructures.Trees.BinaryTreeSumsByEachLevel
       Datastructures.Trees.CeilingOfAnElementInAGivenBST
+      Datastructures.Trees.CountTheNumberOfNodesInAFullBinaryTree
       Datastructures.Trees.CreateABalancedBinarySearchTree
       Datastructures.Trees.DeepestNodeInABinaryTree
       Datastructures.Trees.FilterBinaryTreeLeaves
@@ -52,7 +53,6 @@ library
       Datastructures.Trees.LevelOfTreeWithMinimumSum
       Datastructures.Trees.MinimumHeightOfNodesInBinaryTree
       Datastructures.Trees.MyBinarySearchTree_Delete
-      Datastructures.Trees.MyBinarySearchTree_Height
       Datastructures.Trees.MyBinarySearchTree_Insert
       Datastructures.Trees.MyBinarySearchTree_MaximumAndMinimumElements
       Datastructures.Trees.MyBinarySearchTree_Search
@@ -157,6 +157,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.ArithmeticBinaryTreeSpec
       Datastructures.Trees.BinaryTreeSumsByEachLevelSpec
       Datastructures.Trees.CeilingOfAnElementInAGivenBSTSpec
+      Datastructures.Trees.CountTheNumberOfNodesInAFullBinaryTreeSpec
       Datastructures.Trees.CreateABalancedBinarySearchTreeSpec
       Datastructures.Trees.DeepestNodeInABinaryTreeSpec
       Datastructures.Trees.FilterBinaryTreeLeavesSpec

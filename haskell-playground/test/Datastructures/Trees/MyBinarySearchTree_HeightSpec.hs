@@ -1,8 +1,7 @@
 module Datastructures.Trees.MyBinarySearchTree_HeightSpec where
 
 import Test.Hspec ( describe, it, shouldBe, Spec )
-import Datastructures.Trees.MyBinarySearchTree_Height (treeHeight)
-import Datastructures.Trees.MyBinaryTree (Tree (..))
+import Datastructures.Trees.MyBinaryTree (Tree (..), treeHeight)
 
 spec :: Spec
 spec = do
