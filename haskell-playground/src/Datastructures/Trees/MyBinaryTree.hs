@@ -1,4 +1,4 @@
-module Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, areTreesEqual, leftAndRightTrees, leftSubtree, rightSubtree, leftNodeValue, rightNodeValue, treeHeight) where
+module Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, areTreesEqual, leftAndRightTrees, leftSubtree, rightSubtree, leftNodeValue, rightNodeValue, treeHeight, treeLeftHeight, treeRightHeight) where
 
 {- |
 
@@ -77,7 +77,13 @@ treeHeight EmptyTree                    = -1
 treeHeight (Node a EmptyTree EmptyTree) = 0
 treeHeight (Node _ l r)                 = 1 + max (treeHeight l) (treeHeight r)
 
+treeLeftHeight :: (Num p, Ord p) => Tree a -> p
+treeLeftHeight EmptyTree                    = -1
+treeLeftHeight (Node a EmptyTree EmptyTree) = 0
+treeLeftHeight (Node _ l r)                 = 1 + treeLeftHeight l
 
--- TODO
--- write implementations for left height and right height
--- we need them in the implementation for counting nodes in full binary tree and complete binary tree.
+treeRightHeight :: (Num p, Ord p) => Tree a -> p
+treeRightHeight EmptyTree                    = -1
+treeRightHeight (Node a EmptyTree EmptyTree) = 0
+treeRightHeight (Node _ l r)                 = 1 + treeRightHeight r
+

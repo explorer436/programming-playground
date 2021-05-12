@@ -1,11 +1,12 @@
 module Numbers.AbsoluteSpec where
 
 import Test.Hspec
-import Numbers.Absolute
+import Numbers.Absolute (absolute)
 
 spec :: Spec
 spec = do
   describe "absolute" $ do
+
     it "returns the original number when given a positive input" $
       absolute 1 `shouldBe` 1
 

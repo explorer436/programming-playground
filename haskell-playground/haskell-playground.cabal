@@ -174,7 +174,9 @@ test-suite haskell-playground-test
       Datastructures.Trees.MinimumHeightOfNodesInBinaryTreeSpec
       Datastructures.Trees.MyBinarySearchTree_DeleteSpec
       Datastructures.Trees.MyBinarySearchTree_HeightSpec
+      Datastructures.Trees.MyBinarySearchTree_LeftHeightSpec
       Datastructures.Trees.MyBinarySearchTree_MaximumAndMinimumElementsSpec
+      Datastructures.Trees.MyBinarySearchTree_RightHeightSpec
       Datastructures.Trees.PathsFromRootToAllLeavesSpec
       Datastructures.Trees.ReconstrunctBinaryTreeFromPreorderAndInorderTraversalsSpec
       Datastructures.Trees.RootToLeafNumbersSummedSpec
@@ -183,6 +185,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.UnivalSubtreesSpec
       Datastructures.Trees.ValidateBinarySearchTreeSpec
       Numbers.AbsoluteSpec
+      Numbers.GenerateAListOfAllEvenNumbersTillNSpec
       Strings.AnagramSpec
       Strings.AnglesOfAClockSpec
       Strings.LongestCommonSubsequenceBetweenTwoStringsSpec
