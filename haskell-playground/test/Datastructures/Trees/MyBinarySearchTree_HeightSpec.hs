@@ -6,13 +6,17 @@ import Datastructures.Trees.MyBinaryTree (Tree (..), treeHeight)
 spec :: Spec
 spec = do
   describe "treeHeight" $ do
-    it "returns expected results" $
+
+    it "returns 3 when the height of the input tree is 3" $
       treeHeight numbersTree `shouldBe` 3
-    it "returns expected results" $
+
+    it "returns 4 when the height of the input tree is 4" $
       treeHeight lettersTree `shouldBe` 4
-    it "returns expected results" $
+
+    it "returns -1 when the input is EmptyTree" $
       treeHeight EmptyTree `shouldBe` -1
-    it "returns expected results" $
+
+    it "returns 0 when the input tree has only one node" $
       treeHeight (Node 3 EmptyTree EmptyTree) `shouldBe` 0
 
 numbersTree = Node 1 

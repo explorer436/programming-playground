@@ -7,16 +7,16 @@ spec :: Spec
 spec = do
   describe "treeRightHeight" $ do
 
-    it "returns expected results" $
+    it "returns 3 when the right height of the input tree is 3" $
       treeRightHeight numbersTree `shouldBe` 3
 
-    it "returns expected results" $
+    it "returns 4 when the right height of the input tree is 4" $
       treeRightHeight lettersTree `shouldBe` 4
 
-    it "returns expected results" $
+    it "returns -1 when the input is EmptyTree" $
       treeRightHeight EmptyTree `shouldBe` -1
 
-    it "returns expected results" $
+    it "returns 0 when the input tree has only one node" $
       treeRightHeight (Node 3 EmptyTree EmptyTree) `shouldBe` 0
 
 numbersTree = Node 1 
