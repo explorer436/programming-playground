@@ -6,7 +6,9 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+
   describe "invertTree" $ do
+
     it "returns expected output for the input tree" $
       invertTree (Node 'a'
                             (Node 'b'

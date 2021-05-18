@@ -6,7 +6,9 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+
   describe "delete" $ do
+
     it "returns expected results" $
       delete 3 sampleTree `shouldBe` Node 2 (Node 1 EmptyTree EmptyTree) (Node 7 (Node 4 EmptyTree (Node 6 (Node 5 EmptyTree EmptyTree) EmptyTree)) (Node 8 EmptyTree EmptyTree))
 {- |

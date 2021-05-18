@@ -6,7 +6,9 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+
   describe "validate" $ do
+
     it "returns True when the input tree is a valid binary search tree" $
       validate (Node 5 
                         (Node 3
@@ -18,6 +20,7 @@ spec = do
                               EmptyTree
                         )
                   ) `shouldBe` True
+
     it "returns False when the input tree is not a valid binary search tree" $
       validate (Node 5 
                         (Node 3

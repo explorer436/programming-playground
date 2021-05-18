@@ -6,14 +6,18 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+
   describe "ceilingOfAnElement" $ do
+
     it "returns Nothing when the tree is EmptyTree" $
       ceilingOfAnElement 1 EmptyTree `shouldBe` Nothing
 
     it "returns root value when the tree is singleton and the input is lesser than the root" $
       ceilingOfAnElement 1 (Node 2 EmptyTree EmptyTree) `shouldBe` Just 2
+
     it "returns root value when the tree is singleton and the input is greater than the root" $
       ceilingOfAnElement 3 (Node 2 EmptyTree EmptyTree) `shouldBe` Just 2
+
     it "returns root value when the tree is singleton and the input is equal to the root" $
       ceilingOfAnElement 2 (Node 2 EmptyTree EmptyTree) `shouldBe` Just 2
 
@@ -27,6 +31,7 @@ spec = do
                                         /
                          input=1       1     
                                     -}
+
     it "returns rightNodeValue when the input is equal to the right node value" $
       ceilingOfAnElement 2 (Node 1 
                                  EmptyTree
@@ -48,6 +53,7 @@ spec = do
                                 input=1   \    
                                            3     
                                     -}
+
     it "returns root value when the input is greater than the root and the right tree is EmptyTree" $
       ceilingOfAnElement 3 (Node 2 
                                  (Node 1 EmptyTree EmptyTree)
@@ -58,6 +64,7 @@ spec = do
                                         /   input=3 
                                        1     
                                     -}
+
     it "returns root value when the input is lesser than the root and greater than the left node value and the left node's right subtree is EmptyTree" $
       ceilingOfAnElement 6 (Node 8 
                                  (Node 4 EmptyTree EmptyTree)
@@ -68,6 +75,7 @@ spec = do
                                  input=6/ \
                                        4   12
                                     -}
+
     it "returns root value when the input is greater than the root and lesser than the left node value and the right node's left subtree is EmptyTree" $
       ceilingOfAnElement 11 (Node 8 
                                   (Node 4 EmptyTree EmptyTree)
@@ -90,6 +98,7 @@ spec = do
                                        4   12
                                     input=2 
                                     -}
+
     it "returns right node value when the input is greater than the right node value and the right node's right subtree is EmptyTree" $
       ceilingOfAnElement 13 (Node 8 
                                   (Node 4 EmptyTree EmptyTree)
@@ -101,24 +110,34 @@ spec = do
                                        4   12
                                           input=13
                                     -}
+
     it "customTreeTests01" $
       ceilingOfAnElement 1 testTree `shouldBe` Just 2
+
     it "customTreeTests03" $
       ceilingOfAnElement 3 testTree `shouldBe` Just 4
+
     it "customTreeTests04" $
       ceilingOfAnElement 4 testTree `shouldBe` Just 4
+
     it "customTreeTests05" $
       ceilingOfAnElement 5 testTree `shouldBe` Just 4
+
     it "customTreeTests06" $
       ceilingOfAnElement 6 testTree `shouldBe` Just 6
+
     it "customTreeTests07" $
       ceilingOfAnElement 7 testTree `shouldBe` Just 6
+
     it "customTreeTests09" $
       ceilingOfAnElement 9 testTree `shouldBe` Just 10
+
     it "customTreeTests12" $
       ceilingOfAnElement 12 testTree `shouldBe` Just 12
+
     it "customTreeTests14" $
       ceilingOfAnElement 14 testTree `shouldBe` Just 14
+
     it "customTreeTests15" $
       ceilingOfAnElement 15 testTree `shouldBe` Just 14
 
@@ -129,6 +148,7 @@ spec = do
       / \ /  \
      2  6 10  14
 -}
+
 testTree = Node 8
                 (Node 4
                       (Node 2 EmptyTree EmptyTree)

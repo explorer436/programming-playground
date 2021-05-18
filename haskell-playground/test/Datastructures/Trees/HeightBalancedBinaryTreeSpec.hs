@@ -6,6 +6,7 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+
   describe "isTreeHeightBalanced" $ do
 
     it "returns True when the input is EmptyTree" $

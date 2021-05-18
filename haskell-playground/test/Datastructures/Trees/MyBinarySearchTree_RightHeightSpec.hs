@@ -5,6 +5,7 @@ import Datastructures.Trees.MyBinaryTree (Tree (..), treeRightHeight)
 
 spec :: Spec
 spec = do
+
   describe "treeRightHeight" $ do
 
     it "returns 3 when the right height of the input tree is 3" $

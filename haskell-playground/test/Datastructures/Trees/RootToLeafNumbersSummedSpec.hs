@@ -6,7 +6,9 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+
   describe "rootToLeavesNumbersSummed" $ do
+
     it "returns the sum of all the numbers formed by combining the elements from the root to each of the leaf nodes" $
       rootToLeavesNumbersSummed (Node 1
                                          (Node 2

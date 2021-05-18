@@ -6,6 +6,7 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+
   describe "largestPathSum" $ do
 
     it "returns an array with left and right elements when the input has left and right subtrees" $

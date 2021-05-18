@@ -6,7 +6,9 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+  
   describe "evaluateArithmeticBinaryTree" $ do
+
     it "returns 45 for the input tree" $
       evaluateArithmeticBinaryTree (Node "*" 
                                             (Node "+"

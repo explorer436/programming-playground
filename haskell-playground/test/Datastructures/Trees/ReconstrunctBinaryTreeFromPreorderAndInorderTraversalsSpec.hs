@@ -6,7 +6,9 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+
   describe "reconstruct" $ do
+
     it "returns the correct tree structure when inorder and preorder lists are provided as input" $
       reconstruct "ABCDEFGHIJK" "FBADCEGIHJK" `shouldBe` Node 'F' 
          (Node 'B' 

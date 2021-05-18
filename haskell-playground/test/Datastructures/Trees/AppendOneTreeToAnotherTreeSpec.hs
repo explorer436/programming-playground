@@ -6,11 +6,15 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+
   describe "appendTree2ToTheRightMostLeafOfTree1" $ do
+
     it "returns a tree that has tree2 appended to the right of tree1" $
       appendTree2ToTheRightMostLeafOfTree1 testTree01 testTree02 `shouldBe` expectedResult
+
     it "returns the first tree when EmptyTree is appended to it" $
       appendTree2ToTheRightMostLeafOfTree1 testTree01 EmptyTree `shouldBe` testTree01
+
     it "returns the second tree when it is appended to an EmptyTree" $
       appendTree2ToTheRightMostLeafOfTree1 EmptyTree testTree02 `shouldBe` testTree02
 

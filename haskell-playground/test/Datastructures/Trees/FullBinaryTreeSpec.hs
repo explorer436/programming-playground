@@ -6,7 +6,9 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+
   describe "fullBinaryTree" $ do
+
     it "returns a tree that has tree2 appended to the right of tree1" $
       fullBinaryTree (Node 1
                             (Node 2

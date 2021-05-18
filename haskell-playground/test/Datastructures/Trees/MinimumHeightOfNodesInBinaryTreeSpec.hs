@@ -7,15 +7,19 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 spec :: Spec
 spec = do
   describe "minimumHeight" $ do
+
     it "returns -1 when the input is EmptyTree" $
       minimumHeight EmptyTree `shouldBe` -1
+
     it "returns 0 for the input parameters" $
       minimumHeight (Node 3 EmptyTree EmptyTree) `shouldBe` 0
+
     it "returns 0 for the input parameters" $
       minimumHeight (Node 3 
                                           (Node 2 EmptyTree EmptyTree)
                                           EmptyTree
                                     ) `shouldBe` 1
+
     it "returns 2 for the input parameters" $
       minimumHeight (Node 'F' 
                                          (Node 'B' 
@@ -36,6 +40,7 @@ spec = do
                                            )
                                          )
                                         ) `shouldBe` 2
+
     it "returns 1 for the input parameters" $
       minimumHeight (Node 1
                                          (Node 2 EmptyTree EmptyTree) 

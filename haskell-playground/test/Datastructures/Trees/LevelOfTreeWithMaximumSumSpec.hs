@@ -6,10 +6,14 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+
   describe "levelWithMaximumSum" $ do
+
     it "returns three when there are three nodes in the tree" $
       levelWithMaximumSum testTree `shouldBe` 1
+
   describe "levelWithMaximumSum" $ do
+
     it "returns three when there are three nodes in the tree" $
       maximumSum testTree `shouldBe` 9
 

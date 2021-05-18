@@ -6,7 +6,9 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+
   describe "listWithSumsForEachLevel" $ do
+
     it "returns [1,9,8] for the input tree" $
       listWithSumsForEachLevel
             (Node 1

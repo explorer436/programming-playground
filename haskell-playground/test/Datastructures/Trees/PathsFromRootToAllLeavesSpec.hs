@@ -6,12 +6,15 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+
   describe "paths" $ do
+
 {- |
     TODO FIXME - why is this not working?
     it "returns Nothing when the input tree is EmptyTree" $
       paths (EmptyTree) `shouldBe` [[]]
 -}
+
     it "returns an array with single element when the input is a singleton tree" $
       paths (Node 2 EmptyTree EmptyTree) `shouldBe` [[2]]
 

@@ -6,7 +6,9 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+
   describe "deepestNodes" $ do
+
     it "returns d for the input tree" $
       deepestNodes (Node 'a'
                             (Node 'b'
@@ -15,6 +17,7 @@ spec = do
                             )
                             (Node 'c' EmptyTree EmptyTree)
                       ) `shouldBe` "d"
+
     it "returns [3,2,4,-1] for the input tree" $
       deepestNodes (Node 1
                             (Node 4

@@ -6,7 +6,9 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+
   describe "flatten" $ do
+
     it "returns expected output for the input tree" $
       flatten (Node 1
                        (Node 2 
@@ -18,6 +20,7 @@ spec = do
                              EmptyTree
                        )
                  ) `shouldBe` Node 1 EmptyTree (Node 2 EmptyTree (Node 5 EmptyTree (Node 3 EmptyTree (Node 4 EmptyTree EmptyTree))))
+
     it "returns expected output for the input tree" $
       flatten (
                      Node 1 

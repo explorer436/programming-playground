@@ -6,12 +6,17 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+
   describe "treeMinimum" $ do
+
     it "returns the minimum element in the tree" $
       treeMinimum sampleTree `shouldBe` 15
+
     it "returns the minimum element in the tree" $
       treeMinimum (Node 8 EmptyTree EmptyTree) `shouldBe` 8
+
   describe "treeMaximum" $ do
+
     it "returns the maximum element in the tree" $
       treeMaximum sampleTree `shouldBe` 32
 

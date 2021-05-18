@@ -6,7 +6,9 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
+
   describe "doesSubtreeExistInParentTree" $ do
+
     it "returns True for the two input trees" $
       doesSubtreeExistInParentTree 
             (Node 1 
@@ -19,6 +21,7 @@ spec = do
             (Node 4 
                (Node 3 EmptyTree EmptyTree) 
                (Node 2 EmptyTree EmptyTree)) `shouldBe` True
+
     it "returns False for the two input trees" $
       doesSubtreeExistInParentTree 
             (Node 1 
@@ -31,6 +34,7 @@ spec = do
             (Node 4 
                (Node 3 EmptyTree EmptyTree) 
                (Node 2 EmptyTree EmptyTree)) `shouldBe` False
+
     it "returns True for the two input trees" $
       doesSubtreeExistInParentTree 
             (Node 1 
