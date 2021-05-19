@@ -37,6 +37,7 @@ library
       Datastructures.Trees.ArithmeticBinaryTree
       Datastructures.Trees.BinaryTreeSumsByEachLevel
       Datastructures.Trees.CeilingOfAnElementInAGivenBST
+      Datastructures.Trees.CountFullNodesInABinaryTree
       Datastructures.Trees.CountTheNumberOfNodesInACompleteBinaryTree
       Datastructures.Trees.CountTheNumberOfNodesInAFullBinaryTree
       Datastructures.Trees.CreateABalancedBinarySearchTree
@@ -158,6 +159,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.ArithmeticBinaryTreeSpec
       Datastructures.Trees.BinaryTreeSumsByEachLevelSpec
       Datastructures.Trees.CeilingOfAnElementInAGivenBSTSpec
+      Datastructures.Trees.CountFullNodesInABinaryTreeSpec
       Datastructures.Trees.CountTheNumberOfNodesInACompleteBinaryTreeSpec
       Datastructures.Trees.CountTheNumberOfNodesInAFullBinaryTreeSpec
       Datastructures.Trees.CreateABalancedBinarySearchTreeSpec
