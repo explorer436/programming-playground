@@ -1,4 +1,4 @@
-module Datastructures.Trees.ValidateBinarySearchTree (validate) where
+module Datastructures.Trees.ValidateBinarySearchTree (isBST) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue)
 import Data.Maybe (fromJust)
@@ -36,9 +36,9 @@ import Data.Maybe (fromJust)
     #1  4 6
 -}
 
-validate :: Ord a => Tree a -> Bool
-validate EmptyTree = False
-validate (Node a EmptyTree EmptyTree) = True
-validate (Node a left EmptyTree) = (fromJust (rootValue left) < a) && validate left
-validate (Node a EmptyTree right) = (a < fromJust (rootValue right)) && validate right
-validate (Node a left right) = (fromJust (rootValue left) < a) && (a < fromJust (rootValue right)) && validate left && validate right
+isBST :: Ord a => Tree a -> Bool
+isBST EmptyTree = False
+isBST (Node a EmptyTree EmptyTree) = True
+isBST (Node a left EmptyTree) = (fromJust (rootValue left) < a) && isBST left
+isBST (Node a EmptyTree right) = (a < fromJust (rootValue right)) && isBST right
+isBST (Node a left right) = (fromJust (rootValue left) < a) && (a < fromJust (rootValue right)) && isBST left && isBST right

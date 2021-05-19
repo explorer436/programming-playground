@@ -50,6 +50,7 @@ library
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTree
       Datastructures.Trees.HeightBalancedBinaryTree
       Datastructures.Trees.InvertABinaryTree
+      Datastructures.Trees.LargestBSTInABinaryTree
       Datastructures.Trees.LargestPathSumFromRootToLeaf
       Datastructures.Trees.LevelOfTreeWithMaximumSum
       Datastructures.Trees.LevelOfTreeWithMinimumSum

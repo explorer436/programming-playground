@@ -1,16 +1,16 @@
 module Datastructures.Trees.ValidateBinarySearchTreeSpec where
 
 import Test.Hspec
-import Datastructures.Trees.ValidateBinarySearchTree (validate)
+import Datastructures.Trees.ValidateBinarySearchTree (isBST)
 import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
 
-  describe "validate" $ do
+  describe "isBST" $ do
 
     it "returns True when the input tree is a valid binary search tree" $
-      validate (Node 5 
+      isBST (Node 5 
                         (Node 3
                               (Node 1 EmptyTree EmptyTree)
                               (Node 4 EmptyTree EmptyTree)
@@ -22,7 +22,7 @@ spec = do
                   ) `shouldBe` True
 
     it "returns False when the input tree is not a valid binary search tree" $
-      validate (Node 5 
+      isBST (Node 5 
                         (Node 3
                               (Node 1 EmptyTree EmptyTree)
                               (Node 4 EmptyTree EmptyTree)

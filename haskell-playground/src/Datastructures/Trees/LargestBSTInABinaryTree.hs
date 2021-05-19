@@ -42,3 +42,13 @@
 
 -- From Wikipedia:
 -- Size of a tree = Number of nodes in the tree.
+
+
+module Datastructures.Trees.LargestBSTInABinaryTree (largestBSTTree) where
+
+import Datastructures.Trees.MyBinaryTree (Tree (..))
+import Datastructures.Trees.ValidateBinarySearchTree (isBST)
+
+largestBSTTree EmptyTree = EmptyTree
+largestBSTTree tree@(Node a EmptyTree EmptyTree) = tree
+largestBSTTree tree@(Node a l r) = tree
