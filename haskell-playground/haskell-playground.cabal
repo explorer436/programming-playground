@@ -68,7 +68,6 @@ library
       Datastructures.Trees.ReconstrunctBinaryTreeFromPreorderAndInorderTraversals
       Datastructures.Trees.RootToLeafNumbersSummed
       Datastructures.Trees.TargetSumFromRootToLeaf
-      Datastructures.Trees.TreeSize
       Datastructures.Trees.UnivalSubtrees
       Datastructures.Trees.ValidateBinarySearchTree
       Datastructures.Trees.ZigZagBinaryTree
@@ -173,6 +172,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTreeSpec
       Datastructures.Trees.HeightBalancedBinaryTreeSpec
       Datastructures.Trees.InvertABinaryTreeSpec
+      Datastructures.Trees.LargestBSTInABinaryTreeSpec
       Datastructures.Trees.LargestPathSumFromRootToLeafSpec
       Datastructures.Trees.LevelOfTreeWithMaximumSumSpec
       Datastructures.Trees.LevelOfTreeWithMinimumSumSpec

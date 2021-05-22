@@ -1,4 +1,4 @@
-module Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, areTreesEqual, leftAndRightTrees, leftSubtree, rightSubtree, leftNodeValue, rightNodeValue, treeHeight, treeLeftHeight, treeRightHeight) where
+module Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, areTreesEqual, leftAndRightTrees, leftSubtree, rightSubtree, leftNodeValue, rightNodeValue, treeHeight, treeLeftHeight, treeRightHeight, treeSize, largerTreeBySize) where
 
 {- |
 
@@ -87,3 +87,15 @@ treeRightHeight EmptyTree                    = -1
 treeRightHeight (Node a EmptyTree EmptyTree) = 0
 treeRightHeight (Node _ l r)                 = 1 + treeRightHeight r
 
+
+-- From Wikipedia:
+-- Size of a tree = Number of nodes in the tree.
+treeSize :: Num p => Tree a -> p
+treeSize EmptyTree = 0
+treeSize (Node a EmptyTree EmptyTree ) = 1
+treeSize tree@(Node a left right) = 1 + treeSize left + treeSize right
+
+largerTreeBySize tree1 tree2
+    | treeSize tree1 == treeSize tree2 = tree1
+    | treeSize tree1 > treeSize tree2  = tree1
+    | treeSize tree1 < treeSize tree2  = tree2
