@@ -1,17 +1,12 @@
 import qualified Data.Map as Map 
 import Data.Char
 
--- Association lists (also called dictionaries) are lists 
--- that are used to store key-value pairs where ordering doesn't matter.
--- For instance, we might use an association list to store phone numbers,
--- where phone numbers would be the values and people's names would be the keys.
--- We don't care in which order they're stored,
--- we just want to get the right phone number for the right person.
+-- Association lists (also called dictionaries) are lists that are used to store key-value pairs where ordering doesn't matter.
+-- For instance, we might use an association list to store phone numbers, where phone numbers would be the values and people's names would be the keys.
+-- We don't care in which order they're stored, we just want to get the right phone number for the right person.
 
--- The most obvious way to represent association lists in Haskell 
--- would be by having a list of pairs.
--- The first component in the pair would be the key,
--- the second component the value.
+-- The most obvious way to represent association lists in Haskell would be by having a list of pairs.
+-- The first component in the pair would be the key, the second component the value.
 -- Here's an example of an association list with phone numbers:
 
 phoneBook1 =   
@@ -24,8 +19,7 @@ phoneBook1 =
     ]  
 
 -- Despite this seemingly odd indentation, this is just a list of pairs of strings.
--- The most common task when dealing with association lists is 
--- looking up some value by key.
+-- The most common task when dealing with association lists is looking up some value by key.
 -- Let's make a function that looks up some value given a key.
 
 findKey1 :: (Eq k) => k -> [(k,v)] -> v  

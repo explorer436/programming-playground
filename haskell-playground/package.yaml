@@ -24,6 +24,7 @@ dependencies:
 - HUnit
 - hspec
 - array
+- containers
 
 library:
   source-dirs: src

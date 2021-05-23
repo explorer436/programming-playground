@@ -26,7 +26,7 @@ source-repository head
 library
   exposed-modules:
       Datastructures.Arrays.FindUniqueNumbersInAnArray
-      Datastructures.Lists.CountNumberOfOccurancesInAList
+      Datastructures.Lists.CountFrequencyOfElementsInAList
       Datastructures.Lists.EveryNthElementInAList
       Datastructures.Lists.FindFirstDuplicate
       Datastructures.Lists.IsListSymmetric
@@ -131,6 +131,7 @@ library
       HUnit
     , array
     , base >=4.7 && <5
+    , containers
     , hspec
   default-language: Haskell2010
 
@@ -145,6 +146,7 @@ executable haskell-playground-exe
       HUnit
     , array
     , base >=4.7 && <5
+    , containers
     , haskell-playground
     , hspec
   default-language: Haskell2010
@@ -153,7 +155,7 @@ test-suite haskell-playground-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
-      Datastructures.Lists.CountNumberOfUniqueOccurancesInAListSpec
+      Datastructures.Lists.CountFrequencyOfElementsInAListSpec
       Datastructures.Lists.IsListSymmetricSpec
       Datastructures.Lists.RemoveDuplicatesFromListSpec
       Datastructures.Trees.AppendOneTreeToAnotherTreeSpec
@@ -204,6 +206,7 @@ test-suite haskell-playground-test
       HUnit
     , array
     , base >=4.7 && <5
+    , containers
     , haskell-playground
     , hspec
   default-language: Haskell2010
