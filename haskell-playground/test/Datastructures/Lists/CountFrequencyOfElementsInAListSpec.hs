@@ -4,6 +4,7 @@ import Test.Hspec ( describe, it, shouldBe, Spec )
 import Datastructures.Lists.CountFrequencyOfElementsInAList (countFrequencyOfAnElementUsingListComprehension, countFrequencyOfAnElementUsingRecursion, countFrequencyOfAllElements)
 import qualified Data.Map as Map
 import Data.Maybe (fromJust)
+import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec
 spec = do
@@ -39,5 +40,13 @@ spec = do
 
   describe "countFrequencyOfAllElements" $ do
 
-    it "returns the frequency of all the elements in the input list" $
+    it "returns the frequency of all the elements in the input list when the input list has integers" $
       countFrequencyOfAllElements [1,2,3,1] `shouldBe` [(1,2),(2,1),(3,1)]
+
+    it "returns the frequency of all the elements in the input list when the input list has characters" $
+      countFrequencyOfAllElements ['a','b','c','d','a'] `shouldBe` [('a',2),('b',1),('c',1),('d',1)]
+
+    {- |
+    it "returns the frequency of all the elements in the input list when the input list has trees" $
+      countFrequencyOfAllElements [EmptyTree,(Node (5) EmptyTree EmptyTree)] `shouldBe` [(EmptyTree,2),((Node (5) EmptyTree EmptyTree),1)]
+    -}
