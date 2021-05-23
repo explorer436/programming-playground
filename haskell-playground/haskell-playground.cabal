@@ -55,6 +55,7 @@ library
       Datastructures.Trees.LevelOfTreeWithMaximumSum
       Datastructures.Trees.LevelOfTreeWithMinimumSum
       Datastructures.Trees.MinimumHeightOfNodesInBinaryTree
+      Datastructures.Trees.MinimumPathSumFromRootToLeaf
       Datastructures.Trees.MyBinarySearchTree_Delete
       Datastructures.Trees.MyBinarySearchTree_Insert
       Datastructures.Trees.MyBinarySearchTree_MaximumAndMinimumElements
@@ -177,6 +178,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.LevelOfTreeWithMaximumSumSpec
       Datastructures.Trees.LevelOfTreeWithMinimumSumSpec
       Datastructures.Trees.MinimumHeightOfNodesInBinaryTreeSpec
+      Datastructures.Trees.MinimumPathSumFromRootToLeafSpec
       Datastructures.Trees.MyBinarySearchTree_DeleteSpec
       Datastructures.Trees.MyBinarySearchTree_HeightSpec
       Datastructures.Trees.MyBinarySearchTree_LeftHeightSpec
