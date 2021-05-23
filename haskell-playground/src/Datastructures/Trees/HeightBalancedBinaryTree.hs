@@ -38,6 +38,17 @@
     # False
 -}
 
+
+{- |
+    (Easy)
+    
+    Good morning! Here's your coding interview problem for today.
+    
+    This problem was asked by PayPal.
+    
+    Given a binary tree, determine whether or not it is height-balanced. A height-balanced binary tree can be defined as one in which the heights of the two subtrees of any node never differ by more than one.
+-}
+
 {- |
    A height-balanced binary tree is defined as: a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
 -}

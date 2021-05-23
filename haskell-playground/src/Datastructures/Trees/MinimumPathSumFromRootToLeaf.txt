@@ -17,3 +17,5 @@
            /
          -1
 -}
+
+Hint: use Paths from root to all leaves

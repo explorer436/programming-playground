@@ -4,7 +4,9 @@ Good morning! Here's your coding interview problem for today.
 
 This problem was asked by Adobe.
 
-You are given a tree with an even number of nodes. Consider each connection between a parent and child node to be an "edge". You would like to remove some of these edges, such that the disconnected subtrees that remain each have an even number of nodes.
+You are given a tree with an even number of nodes. 
+Consider each connection between a parent and child node to be an "edge". 
+You would like to remove some of these edges, such that the disconnected subtrees that remain each have an even number of nodes.
 
 For example, suppose your input was the following tree:
 
