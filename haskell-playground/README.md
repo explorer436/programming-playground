@@ -22,4 +22,6 @@ Revisit the descriptions in the test files and fix them if necessary.
 
 References:
 
-[stack](https://docs.haskellstack.org/en/stable/README/)
+[The Haskell Tool Stack](https://docs.haskellstack.org/en/stable/README/)
+
+[stack user guide](https://docs.haskellstack.org/en/stable/GUIDE/)
