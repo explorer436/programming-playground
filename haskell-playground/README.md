@@ -19,3 +19,7 @@ TODO:
 Move all the tests into the test directory. 
 That way, the source code will be free of tests and, we will be able to run all the tests using a single command.
 Revisit the descriptions in the test files and fix them if necessary.
+
+References:
+
+[stack](https://docs.haskellstack.org/en/stable/README/)
