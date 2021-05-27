@@ -21,3 +21,8 @@ Reinstalling a package after just deleting the node module works with: yarn inst
 How to generate JSDoc comments for Javascript functions?
 Using Webstorm, position the caret before the declaration of the method/function or field to document, type the opening block comment `/**`, and press `Enter`. Describe the listed parameters, return values, and so on.
 
+
+Disabling TLS in NodeJS:
+If value equals '0', certificate validation is disabled for TLS connections. This makes TLS, and HTTPS by extension, insecure. The use of this environment variable is strongly discouraged.
+This can be set using the local ".env" file or using process.env.NODE_TLS_REJECT_UNAUTHORIZED=0
+NODE_TLS_REJECT_UNAUTHORIZED=0NODE_TLS_REJECT_UNAUTHORIZED=0
