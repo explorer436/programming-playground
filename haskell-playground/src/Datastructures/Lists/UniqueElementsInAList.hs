@@ -1,4 +1,4 @@
-module Datastructures.Arrays.FindUniqueNumbersInAnArray (removeDuplicateEntriesFromList) where
+module Datastructures.Lists.UniqueElementsInAList (removeElementsWithMultipleFrequency) where
 
 import Data.List ( nub )
 import Datastructures.Lists.CountFrequencyOfElementsInAList (countFrequencyOfAnElementUsingRecursion)
@@ -6,15 +6,9 @@ import Datastructures.Lists.CountFrequencyOfElementsInAList (countFrequencyOfAnE
 -- How to find the unique numbers in an array
 -- e.g. input [1, 2, 1, 3], the result should be [2, 3]
 
-removeDuplicateEntriesFromList :: Eq a => [a] -> [a]
-removeDuplicateEntriesFromList inputList = [x | x <- inputList, countFrequencyOfAnElementUsingRecursion inputList x == 1]
--- tests
+removeElementsWithMultipleFrequency :: Eq a => [a] -> [a]
+removeElementsWithMultipleFrequency inputList = [x | x <- inputList, countFrequencyOfAnElementUsingRecursion inputList x == 1]
 
-removeDuplicateEntriesFromListTest1 = removeDuplicateEntriesFromList [1,2,3,4,5,1,2]
--- [3,4,5]
-
-removeDuplicateEntriesFromListTest2 = removeDuplicateEntriesFromList [1,2,1,3]
--- [2,3]
 
 ------------------------------------------------------------------------
 

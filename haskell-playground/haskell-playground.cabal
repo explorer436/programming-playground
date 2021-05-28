@@ -25,7 +25,6 @@ source-repository head
 
 library
   exposed-modules:
-      Datastructures.Arrays.FindUniqueNumbersInAnArray
       Datastructures.Lists.CountFrequencyOfElementsInAList
       Datastructures.Lists.EveryNthElementInAList
       Datastructures.Lists.FindFirstDuplicate
@@ -33,6 +32,7 @@ library
       Datastructures.Lists.LengthOfAList
       Datastructures.Lists.MaxAndMinElementsInAListAndTheirIndices
       Datastructures.Lists.RemoveDuplicatesFromList
+      Datastructures.Lists.UniqueElementsInAList
       Datastructures.Trees.AppendOneTreeToAnotherTree
       Datastructures.Trees.ArithmeticBinaryTree
       Datastructures.Trees.BinaryTreeSumsByEachLevel
@@ -160,6 +160,7 @@ test-suite haskell-playground-test
       Datastructures.Lists.CountFrequencyOfElementsInAListSpec
       Datastructures.Lists.IsListSymmetricSpec
       Datastructures.Lists.RemoveDuplicatesFromListSpec
+      Datastructures.Lists.UniqueElementsInAListSpec
       Datastructures.Trees.AppendOneTreeToAnotherTreeSpec
       Datastructures.Trees.ArithmeticBinaryTreeSpec
       Datastructures.Trees.BinaryTreeSumsByEachLevelSpec
