@@ -1,9 +1,21 @@
-main :: IO ()
-main =
+module LearningHaskell/10InputAndOutput/03GetInputFromTheUser where
+
+import Data.Char (toUpper)
+
+greet1 :: IO ()
+greet1 =
   do
     putStrLn "What is your name? "
     theName <- getLine
     putStrLn ("You said your name is " ++ theName)
+
+greet2 :: IO ()
+greet2 =
+  do
+    putStrLn "What is your name? "
+    theName <- getLine
+    let uname = map toUpper theName
+    putStrLn ("Hello " ++ uname ++ ".")
 
 -- Ok here we’re sequencing three actions together. 
 -- We can get input from the user in Haskell with getLine. 
@@ -11,4 +23,5 @@ main =
 -- Once they do that, it will have bound that text into the getLine action, pulled that value out as theName, and printed out the last line which includes that text the user entered!
 
 -- The type of getLine is IO String, which means it’s an IO action that “contains” a String when it’s executed. 
--- When we use <-, we can think about it like it’s extracting the String value from the action (note that this applies only when we’re in an IO action, though).
+-- When we use <-, we can think about it like it’s extracting the String value from the action 
+-- (note that this applies only when we’re in an IO action, though).
