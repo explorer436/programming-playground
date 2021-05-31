@@ -2,7 +2,7 @@ module Datastructures.Lists.GetTheMiddleElementsOfAListSpec where
 
 import Datastructures.Lists.GetTheMiddleElementsOfAList (getMiddleElementsOfAList)
 
-import Test.Hspec
+import Test.Hspec ( describe, it, shouldBe, Spec )
 
 spec :: Spec
 spec = do

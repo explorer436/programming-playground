@@ -78,6 +78,7 @@ library
       Hackerrank.AppleAndOrange
       Hackerrank.BetweenTwoSets
       Hackerrank.GradingStudents
+      Hackerrank.NumberLineJumps
       Hackerrank.SimpleArraySum
       Hackerrank.SolveMeFirst
       Hackerrank.VeryBigArraySum
