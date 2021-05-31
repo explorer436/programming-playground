@@ -18,5 +18,7 @@ divisibleSumPairs xs = [ (xi, xj)  |
                              elements = drop 2 xs
 
 
+main :: IO()
+main = interact $ show . solution . map read . tail . words
 
 test01 = solution [6,3,1,3,2,6,1,2]

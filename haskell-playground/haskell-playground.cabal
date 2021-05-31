@@ -80,8 +80,10 @@ library
       Hackerrank.BreakingTheRecords
       Hackerrank.DivisibleSumPairs
       Hackerrank.GradingStudents
+      Hackerrank.MigratoryBirds
       Hackerrank.NumberLineJumps
       Hackerrank.SimpleArraySum
+      Hackerrank.SockMerchant
       Hackerrank.SolveMeFirst
       Hackerrank.VeryBigArraySum
       Lib
