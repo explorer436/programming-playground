@@ -11,16 +11,29 @@ spec = do
 
     it "returns the correct tree structure when inorder and preorder lists are provided as input" $
       reconstruct "ABCDEFGHIJK" "FBADCEGIHJK" `shouldBe` Node 'F' 
-         (Node 'B' 
-               (Node 'A' EmptyTree EmptyTree) 
-               (Node 'D' 
-                     (Node 'C' EmptyTree EmptyTree) 
-                     (Node 'E' EmptyTree EmptyTree))) 
-         (Node 'G' 
-               EmptyTree 
-               (Node 'I' 
-                     (Node 'H' EmptyTree EmptyTree) 
-                     (Node 'J' 
-                           EmptyTree 
-                           (Node 'K' EmptyTree EmptyTree)))
-         )
+                                                              (Node 'B' 
+                                                                    (Node 'A' EmptyTree EmptyTree) 
+                                                                    (Node 'D' 
+                                                                          (Node 'C' EmptyTree EmptyTree) 
+                                                                          (Node 'E' EmptyTree EmptyTree))) 
+                                                              (Node 'G' 
+                                                                    EmptyTree 
+                                                                    (Node 'I' 
+                                                                          (Node 'H' EmptyTree EmptyTree) 
+                                                                          (Node 'J' 
+                                                                                EmptyTree 
+                                                                                (Node 'K' EmptyTree EmptyTree)))
+                                                              )
+
+    {- 
+    it "returns the correct tree structure when inorder and preorder lists are provided as input" $
+      reconstruct "ABCDEFG" "DBEAFCG" `shouldBe` Node 'A' 
+                                                      (Node 'B' 
+                                                            (Node 'D' EmptyTree EmptyTree)
+                                                            (Node 'E' EmptyTree EmptyTree) 
+                                                      )
+                                                      (Node 'C' 
+                                                            (Node 'F' EmptyTree EmptyTree) 
+                                                            (Node 'G' EmptyTree EmptyTree)
+                                                      )
+    -}

@@ -1,4 +1,3 @@
 Move tests out.
 
-NumberOfCousinsInLevelOrder.hs
-ReconstrunctBinaryTreeFromPreorderAndInorderTraversals.hs
+fix the second test case in ReconstrunctBinaryTreeFromPreorderAndInorderTraversalsSpec.hs

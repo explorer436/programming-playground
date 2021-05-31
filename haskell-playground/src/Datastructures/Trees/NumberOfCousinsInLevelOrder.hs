@@ -1,11 +1,12 @@
-module Datastructures.Trees.NumberOfCousinsInLevelOrder where
+module Datastructures.Trees.NumberOfCousinsInLevelOrder (numberOfCousinsInLevelOrder) where
 
 import Data.Maybe (fromJust)
 import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, leftAndRightTrees)
 import Data.List (delete)
 
 {- |
-    Hi, here's your problem today. This problem was recently asked by Amazon:
+    Hi, here's your problem today. 
+    This problem was recently asked by Amazon:
     
     Given a binary tree and a given node value, return all of the node's cousins. 
     Two nodes are considered cousins if they are on the same level of the tree with different parents. 
@@ -39,7 +40,8 @@ import Data.List (delete)
     # [4, 6]
 -}
 
-solution x tree = helper x [tree]
+numberOfCousinsInLevelOrder :: Eq t => t -> Tree t -> [t]
+numberOfCousinsInLevelOrder x tree = helper x [tree]
 
 -- helper x [] = []
 helper x listOfTrees = if (x `elem` currentLevelValues) 
@@ -47,15 +49,3 @@ helper x listOfTrees = if (x `elem` currentLevelValues)
                        else
                         helper x (concat (map leftAndRightTrees listOfTrees))
                        where currentLevelValues = map (fromJust . rootValue) listOfTrees
-
--- tests
-test = solution 5 (Node 1 
-                        (Node 2 
-                              (Node 4 EmptyTree EmptyTree)
-                              (Node 6 EmptyTree EmptyTree)
-                        )      
-                        (Node 3 
-                              EmptyTree
-                              (Node 5 EmptyTree EmptyTree)
-                        )      
-                  )

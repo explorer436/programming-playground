@@ -1,3 +1,5 @@
+Find out the reason for the following error and figure out how to solve it.
+
 /home/explorer436/Downloads/GitRepositories/programming-playground/haskell-playground/test/Datastructures/Trees/FindAllDuplicateSubtreesSpec.hs:13:35: error:
     • Ambiguous type variable ‘a20’ arising from the literal ‘1’
       prevents the constraint ‘(Num a20)’ from being solved.
