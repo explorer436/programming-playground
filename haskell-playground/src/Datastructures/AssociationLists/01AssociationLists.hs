@@ -10,6 +10,7 @@ An association list is just a normal list containing (key, value) tuples. The ty
 We can build association lists just we do any other list. Haskell comes with one built-in function called Data.List.lookup to look up data in an association list. Its type is Eq a => a -> [(a, b)] -> Maybe b.
 -}
 
+al :: [(Integer, [Char])]
 al = [(1, "one"), (2, "two"), (3, "three"), (4, "four")]
 
 -- lookup 1 al
