@@ -6,7 +6,11 @@
 -- Note that x1 < x2
 solve [x1, v1, x2, v2]
     | v2 < v1 && (x2 - x1) `mod` (v1 - v2) ==0 = "YES"
-    | otherwise                                  "NO"
+    | otherwise                                = "NO"
 
 main :: IO()
 main = interact $ solve . map read . words
+
+-- tests
+test01 = solve [0,3,4,2]
+-- YES

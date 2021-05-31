@@ -77,6 +77,7 @@ library
       Datastructures.Trees.ZigZagBinaryTree
       Hackerrank.AppleAndOrange
       Hackerrank.BetweenTwoSets
+      Hackerrank.BreakingTheRecords
       Hackerrank.GradingStudents
       Hackerrank.NumberLineJumps
       Hackerrank.SimpleArraySum
