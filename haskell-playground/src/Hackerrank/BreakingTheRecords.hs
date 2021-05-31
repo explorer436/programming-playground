@@ -1,4 +1,6 @@
-import Data.List
+module Hackerrank.BreakingTheRecords where
+
+import Data.List ( group, inits )
 
 solve :: [Int] -> [Int]
 solve xs = [best, worst]
@@ -11,4 +13,4 @@ main = interact $ unwords . map show . solve . map read . words
 
 -- tests
 test01 = solve [9,10,5,20,20,4,5,2,25,1]
--- [3,4]
+-- [2,4]
