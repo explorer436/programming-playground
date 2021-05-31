@@ -1,8 +1,6 @@
 
------------------------------------------------------------------------------------------
 -- Typesclasses101
 
-{- |
   A typeclass is a sort of interface that defines some behaviour.
   If a type is a part of a typeclass, 
     it means that it supports and implements the behaviour the typeclass describes.
@@ -244,4 +242,3 @@
     The class constraints are separated by commas inside parantheses.
 
 
--}

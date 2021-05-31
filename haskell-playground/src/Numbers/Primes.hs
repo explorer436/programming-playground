@@ -1,4 +1,3 @@
-
 module Numbers.Primes where
 
 import Data.List

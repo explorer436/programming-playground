@@ -1,8 +1,5 @@
-
------------------------------------------------------------------------------------------
 -- Types variables
 
-{- |
   What is the type of the head function?
   head takes a list of any type and returns the first element of the list.
   Lets check.
@@ -38,5 +35,4 @@
   Note that just because a and b are different type variables, 
   they don't have to be different types. 
   It just states that the first component's type and the return value's type are the same.
--}
 
