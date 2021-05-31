@@ -28,6 +28,7 @@ library
       Datastructures.Lists.CountFrequencyOfElementsInAList
       Datastructures.Lists.EveryNthElementInAList
       Datastructures.Lists.FindFirstDuplicate
+      Datastructures.Lists.GetTheMiddleElementsOfAList
       Datastructures.Lists.IsListSymmetric
       Datastructures.Lists.LengthOfAList
       Datastructures.Lists.MaxAndMinElementsInAListAndTheirIndices
@@ -158,6 +159,7 @@ test-suite haskell-playground-test
   main-is: Spec.hs
   other-modules:
       Datastructures.Lists.CountFrequencyOfElementsInAListSpec
+      Datastructures.Lists.GetTheMiddleElementsOfAListSpec
       Datastructures.Lists.IsListSymmetricSpec
       Datastructures.Lists.RemoveDuplicatesFromListSpec
       Datastructures.Lists.UniqueElementsInAListSpec
