@@ -1,4 +1,4 @@
-module Strings.Pangram where
+module Strings.Pangram (pangram) where
 
 import Data.Char (toUpper)
 
@@ -41,11 +41,3 @@ doesCharacterExistInString input c
     | (c `elem` input || (toUpper c) `elem` input) = True
     | otherwise = False
 
-
--- tests    
-pangramTest01 = pangram "The quick brown fox jumps over the lazy dog"                 -- True
-pangramTest02 = pangram "test"                                                        -- False
-pangramTest03 = pangram "Pack my box with five dozen liquor jugs"                     -- True
-pangramTest04 = pangram "We promptly judged antique ivory buckles for the next prize" -- True
-pangramTest05 = pangram "Sixty zippers were quickly picked from the woven jute bag"   -- True
-pangramTest06 = pangram "Sphinx of black quartz: judge my vow"                        -- True

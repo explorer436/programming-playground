@@ -10,7 +10,6 @@ AssessMovies.hs
 CaesarCipher.hs
 CheckIfAllCharsOfAStringAreInAnotherString.hs
 ISBNVerifier.hs
-Palindrome.hs
 Pangram.hs
 RailFenceCipher.hs
 RemoveSubstringFromAString.hs
