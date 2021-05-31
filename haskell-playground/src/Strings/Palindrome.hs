@@ -1,4 +1,4 @@
-module Strings.Palindrome where
+module Strings.Palindrome (caseSensitivePalindrome, caseInsensitivePalindrome) where
 
 import Data.Char
 
@@ -12,11 +12,6 @@ caseSensitivePalindrome [x] = True
 caseSensitivePalindrome xs 
     | xs == reverse xs = True
     | otherwise        = False
-caseSensitivePalindromeTest1 = caseSensitivePalindrome ""
-caseSensitivePalindromeTest2 = caseSensitivePalindrome "a"
-caseSensitivePalindromeTest3 = caseSensitivePalindrome "abc"
-caseSensitivePalindromeTest4 = caseSensitivePalindrome "deleveled"
-caseSensitivePalindromeTest5 = caseSensitivePalindrome "Deleveled"
 
 ------------------------------------------------------------
 -- notice the differences in signature between caseSensitivePalindrome and caseInsensitivePalindrome.
@@ -30,10 +25,5 @@ caseInsensitivePalindrome xs
     | otherwise                                      = False
     where lowerCasedString = map toLower xs
 --    where lowerCasedString = [ toLower c | c <- xs ]
-caseInsensitivePalindromeTest1 = caseInsensitivePalindrome ""
-caseInsensitivePalindromeTest2 = caseInsensitivePalindrome "a"
-caseInsensitivePalindromeTest3 = caseInsensitivePalindrome "abc"
-caseInsensitivePalindromeTest4 = caseInsensitivePalindrome "deleveled"
-caseInsensitivePalindromeTest5 = caseInsensitivePalindrome "Deleveled"
 
 ------------------------------------------------------------

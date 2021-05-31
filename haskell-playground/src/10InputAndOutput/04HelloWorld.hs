@@ -323,6 +323,7 @@ main = do   print True
             print "haha"  
             print 3.2  
             print [3,4,3]  
+
 $ runhaskell print_test.hs  
 True  
 2  

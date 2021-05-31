@@ -203,6 +203,7 @@ test-suite haskell-playground-test
       Strings.AnagramSpec
       Strings.AnglesOfAClockSpec
       Strings.LongestCommonSubsequenceBetweenTwoStringsSpec
+      Strings.PalindromeSpec
       Paths_haskell_playground
   hs-source-dirs:
       test
