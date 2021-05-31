@@ -13,6 +13,7 @@ round5 x
     | (nextMultipleOf5Forx - x) < 3 = nextMultipleOf5Forx
     | otherwise = x
     where nextMultipleOf5Forx = x + (5 - x `mod` 5)
+
 --tests
 testRound5_01 = round5 73  
 -- 75  
