@@ -1,4 +1,4 @@
-Input and Output
+*** Input and Output
 
 We've mentioned that Haskell is a purely functional language. 
 Whereas in imperative languages you usually get things done by giving the computer a series of steps to execute, 
