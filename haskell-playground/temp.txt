@@ -33,3 +33,5 @@ SumOfFirstNMultiplesOf3Or5
 SumOfIntegersInAList
 SumOfMultiplesOf3Or5SmallerThanN
 SumSquareDifference
+
+InvertABinaryTree
