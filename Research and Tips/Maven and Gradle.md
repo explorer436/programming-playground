@@ -33,3 +33,10 @@ You can exclude the cyclic dependencies by using the <exclusions> tag in your po
 Reference: https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html
 
 ----------------------------------
+
+How to understand maven dependency tree for a project?
+Use this command to look at the dependency tree and make changes if necessary:
+
+`mvn dependency:tree`
+
+---------------------------------
