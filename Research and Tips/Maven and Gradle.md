@@ -16,17 +16,19 @@ How to force a maven project to use older version of a dependency instead of a n
 
 You can exclude the cyclic dependencies by using the <exclusions> tag in your pom.xml like this:
 
-<dependency>
-  <groupId>sample.ProjectB</groupId>
-  <artifactId>Project-B</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <exclusions>
-    <exclusion>
-      <groupId>sample.ProjectE</groupId> <!-- Exclude Project-E from Project-B -->
-      <artifactId>Project-E</artifactId>
-    </exclusion>
-  </exclusions>
-</dependency>
+  ```
+  <dependency>
+    <groupId>sample.ProjectB</groupId>
+    <artifactId>Project-B</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <exclusions>
+      <exclusion>
+        <groupId>sample.ProjectE</groupId> <!-- Exclude Project-E from Project-B -->
+        <artifactId>Project-E</artifactId>
+      </exclusion>
+    </exclusions>
+  </dependency>
+  ```
 
 Reference: https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html
 
