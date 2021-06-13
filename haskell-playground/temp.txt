@@ -1,6 +1,7 @@
-Move tests out.
+Fix the second test case in ReconstrunctBinaryTreeFromPreorderAndInorderTraversalsSpec.hs
 
-fix the second test case in ReconstrunctBinaryTreeFromPreorderAndInorderTraversalsSpec.hs
+Move tests out for the following files:
+
 SimpleArraySum.hs
 VeryBigArraySum.hs
 GradingStudents.hs
@@ -10,12 +11,9 @@ AssessMovies.hs
 CaesarCipher.hs
 CheckIfAllCharsOfAStringAreInAnotherString.hs
 ISBNVerifier.hs
-Pangram.hs
 RailFenceCipher.hs
 RemoveSubstringFromAString.hs
-
 Quicksort.hs
-
 CalculateEndTimeByStartTimeAndDuration.hs
 CollatzSequences.hs
 ConvertListToDecimalNumber.hs
@@ -33,5 +31,4 @@ SumOfFirstNMultiplesOf3Or5
 SumOfIntegersInAList
 SumOfMultiplesOf3Or5SmallerThanN
 SumSquareDifference
-
 InvertABinaryTree

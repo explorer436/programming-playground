@@ -1,4 +1,4 @@
-Lists - not arrays
+*** Lists - not arrays
 
 An important point to keep at the back-of-your-mind (for now), is that C/Java arrays do not correspond 1:1 with the [Int], [Float], [Bool], etc. in Haskell. 
 In C/Java, usually when you declare an array a continuous area in memory is reserved for it. 
