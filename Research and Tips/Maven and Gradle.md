@@ -40,3 +40,10 @@ Use this command to look at the dependency tree and make changes if necessary:
 `mvn dependency:tree`
 
 ---------------------------------
+
+Displaying Available Updates:
+
+To simply know if and how we can update our project, the right tool for the job is this command: mvn versions:display-dependency-updates
+This command checks and shows if there are updates to the versions of the dependencies.
+
+---------------------------------
