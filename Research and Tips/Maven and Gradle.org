@@ -1,5 +1,11 @@
 * My thoughts about using Maven or Gradle as build tools for java applications:
 
+*** Create an empty java project from terminal using maven
+
+    mvn archetype:generate -DgroupId=com.my.company -DartifactId=test-java-project -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+    Reference: https://maven.apache.org/guides/mini/guide-creating-archetypes.html
+
 *** Maven installation in a Linux computer
 
     See SettingJavaHomeInLinux.org and then use the same pattern to add maven bin folder to PATH.
