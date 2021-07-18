@@ -1,14 +1,17 @@
 * How to set JAVA_HOME in Linux for all users
 
+#+begin_src 
 find /usr/lib/jvm/java-1.x.x-openjdk
 vim /etc/profile
+#+end_src
 
 Prepend sudo if logged in as not-privileged user, ie. sudo vim
 
-Press 'i' to get in insert mode
-add:
+Press 'i' to get in insert mode and add this to the file:
 
+#+begin_src 
 export JAVA_HOME="path that you found"
-
 export PATH=$JAVA_HOME/bin:$PATH
+#+end_src
+
 logout and login again, reboot, or use source /etc/profile to apply changes immediately in your current shell 
