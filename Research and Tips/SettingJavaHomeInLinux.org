@@ -15,3 +15,20 @@ export PATH=$JAVA_HOME/bin:$PATH
 #+end_src
 
 logout and login again, reboot, or use source /etc/profile to apply changes immediately in your current shell 
+
+* Checking JAVA_HOME on Linux
+
+Open a terminal and type:
+#+begin_src 
+> $JAVA_HOME/bin/javac -version
+#+end_src
+
+If JAVA_HOME points to a JDK, the output should look like:
+#+begin_src 
+> javac 1.X.0_XX
+#+end_src
+
+If JAVA_HOME doesn't point to a JDK, the OS will throw an error message:
+#+begin_src 
+> bash: /bin/javac: No such file or directory
+#+end_src
