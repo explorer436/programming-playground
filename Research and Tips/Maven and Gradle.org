@@ -52,7 +52,9 @@ Reference: https://maven.apache.org/guides/introduction/introduction-to-optional
 How to understand maven dependency tree for a project?
 Use this command to look at the dependency tree and make changes if necessary:
 
-`mvn dependency:tree`
+#+begin_src 
+mvn dependency:tree
+#+end_src
 
 *** Displaying available Maven dependency updates:
 
