@@ -1,7 +1,24 @@
 * How to set JAVA_HOME in Linux for all users
 
+** How to find out where Java is installed?
+
+If Java is installed using package managers or by using any other ways other than downloading the JDK from https://openjdk.java.net/install/ , it can get tricky to find out where it is installed.
+
+Here is one way to find it.
+
 #+begin_src 
 find /usr/lib/jvm/java-1.x.x-openjdk
+#+end_src
+
+** Download Java from openjdk website
+
+A more straight-forward way is to download it from openjdk install page and extracting it using the command:
+#+begin_src 
+$ tar xvf openjdk-13*_bin.tar.gz
+#+end_src
+
+** How to set JAVA_HOME after figuring out where the jdk is?
+#+begin_src 
 vim /etc/profile
 #+end_src
 
