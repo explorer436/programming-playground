@@ -13,6 +13,16 @@
     See SettingJavaHomeInLinux.org and then use the same pattern to add maven bin folder to PATH.
 
     https://maven.apache.org/install.html
+    
+*** Run a single test class with maven    
+    #+begin_src 
+    mvn test -Dtest=classname
+    #+end_src
+    
+*** Run a single test method with maven  
+    #+begin_src 
+    mvn test -Dtest=classname#methodname
+    #+end_src
 
 *** Maven vs Gradle
 
