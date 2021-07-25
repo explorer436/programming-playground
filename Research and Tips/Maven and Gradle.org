@@ -2,7 +2,9 @@
 
 *** Create an empty java project from terminal using maven
 
+    #+begin_src 
     mvn archetype:generate -DgroupId=com.my.company -DartifactId=test-java-project -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+    #+end_src
 
     Reference: https://maven.apache.org/guides/mini/guide-creating-archetypes.html
 
@@ -29,7 +31,7 @@ How to force a maven project to use older version of a dependency instead of a n
 
 You can exclude the cyclic dependencies by using the <exclusions> tag in your pom.xml like this:
 
-  ```
+  #+begin_src 
   <dependency>
     <groupId>sample.ProjectB</groupId>
     <artifactId>Project-B</artifactId>
@@ -41,7 +43,7 @@ You can exclude the cyclic dependencies by using the <exclusions> tag in your po
       </exclusion>
     </exclusions>
   </dependency>
-  ```
+  #+end_src
 
 Reference: https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html
 
