@@ -4,11 +4,17 @@
 
 If Java is installed using package managers or by using any other ways other than downloading the JDK from https://openjdk.java.net/install/ , it can get tricky to find out where it is installed.
 
-Here is one way to find it.
+1. The following command will tell you a lot of information about your java version, including the vendor. It works on Windows, Mac, and Linux.
 
-#+begin_src 
-find /usr/lib/jvm/java-1.x.x-openjdk
-#+end_src
+  #+begin_src 
+  java -XshowSettings:properties -version
+  #+end_src
+
+2. Here is another way to find it.
+
+  #+begin_src 
+  find /usr/lib/jvm/java-1.x.x-openjdk
+  #+end_src
 
 ** Download Java from openjdk website
 
