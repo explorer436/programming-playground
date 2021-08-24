@@ -24,6 +24,10 @@ $ tar xvf openjdk-13*_bin.tar.gz
 #+end_src
 
 ** How to set JAVA_HOME after figuring out where the jdk is?
+
+Look at LinuxTips.org for details about how the path can be set in .bashrc
+
+You can also set it in /etc/profile. Try the .bashrc option before trying this.
 #+begin_src 
 vim /etc/profile
 #+end_src
