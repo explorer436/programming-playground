@@ -10,7 +10,9 @@
 
 *** Maven installation in a Linux computer
 
-    See SettingJavaHomeInLinux.org and then use the same pattern to add maven bin folder to PATH.
+    See LinuxTips.org and then use the same pattern to add maven bin folder to PATH in .bashrc file.
+
+    Or set it in /etc/profile. See SettingJavaHomeInLinux.org and then use the same pattern to add maven bin folder to PATH. Try the .bashrc option first.
 
     https://maven.apache.org/install.html
     
@@ -71,7 +73,6 @@ mvn dependency:tree
 To simply know if and how we can update our project, the right tool for the job is this command: `mvn versions:display-dependency-updates`
 This command checks and shows if there are updates to the versions of the dependencies.
 
-
 *** Issues with refreshing Gradle dependencies in Eclipse
 
 If there is trouble refreshing the dependencies in Eclipse after making changes to the build.gradle file, follow the steps below:
@@ -114,7 +115,6 @@ Windows command to copy the EAR from a source folder to a destination folder:
     #+BEGIN_EXAMPLE
     xcopy C:\WASLP_dev\workspaces\git_repo\services-property-insurance-partner-exchange\PiAcordSalesMediationServiceEAR\build\distributions C:\WASLP_dev\tools\WASLP8559\wlp\usr\servers\default\dropins
     #+END_EXAMPLE
-
 
 *** To exclude a few tasks from the Gradle build process : 
     #+BEGIN_EXAMPLE
