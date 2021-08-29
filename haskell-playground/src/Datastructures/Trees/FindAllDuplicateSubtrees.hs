@@ -39,6 +39,7 @@ import Datastructures.Trees.BuildAllPossibleTrees (buildTreeList)
     n3_2 = Node(3)
     n2_2 = Node(2, n3_2)
     n1 = Node(1, n2_1, n2_2)
+
     # Looks like
     #     1
     #    / \
@@ -59,4 +60,5 @@ import Datastructures.Trees.BuildAllPossibleTrees (buildTreeList)
 
 -}
 
+findDuplicateSubtrees :: (Num a1, Ord a1, Ord a2, Enum a1) => Tree a2 -> [(Tree a2, a1)]
 findDuplicateSubtrees tree = filter (\x -> snd x > 1) $ countFrequencyOfAllElements (buildTreeList tree)

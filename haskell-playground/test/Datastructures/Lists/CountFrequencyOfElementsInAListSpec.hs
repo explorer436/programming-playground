@@ -46,18 +46,21 @@ spec = do
     it "returns the frequency of all the elements in the input list when the input list has characters" $
       countFrequencyOfAllElements ['a','b','c','d','a'] `shouldBe` [('a',2),('b',1),('c',1),('d',1)]
 
-    -- FIXME why is this not working?
-    {- |
     it "returns the frequency of all the elements in the input list when the input is a list of trees" $
       countFrequencyOfAllElements [
                                   Node 1 (Node 2 (Node 3 EmptyTree EmptyTree) EmptyTree) (Node 2 (Node 3 EmptyTree EmptyTree) EmptyTree),
                                   Node 2 (Node 3 EmptyTree EmptyTree) EmptyTree,
                                   Node 3 EmptyTree EmptyTree,
                                   Node 2 (Node 3 EmptyTree EmptyTree) EmptyTree,
-                                  Node 3 EmptyTree EmptyTree] `shouldBe` [(EmptyTree,2)]
-    -}
+                                  Node 3 EmptyTree EmptyTree] `shouldBe`
+                                                              [
+                                                                (Node 1 (Node 2 (Node 3 EmptyTree EmptyTree) EmptyTree) (Node 2 (Node 3 EmptyTree EmptyTree) EmptyTree),1),
+                                                                (Node 2 (Node 3 EmptyTree EmptyTree) EmptyTree,2),
+                                                                (Node 3 EmptyTree EmptyTree,2)
+                                                              ]
 
-    {- |
     it "returns the frequency of all the elements in the input list when the input list has trees" $
-      countFrequencyOfAllElements [EmptyTree,(Node (5) EmptyTree EmptyTree)] `shouldBe` [(EmptyTree,2),((Node (5) EmptyTree EmptyTree),1)]
-    -}
+      countFrequencyOfAllElements [EmptyTree,(Node 'a' EmptyTree EmptyTree)] `shouldBe` [(EmptyTree,1),((Node 'a' EmptyTree EmptyTree),1)]
+
+    it "returns the frequency of all the elements in the input list when the input list has trees" $
+      countFrequencyOfAllElements [EmptyTree,(Node 5 EmptyTree EmptyTree)] `shouldBe` [(EmptyTree,1),((Node 5 EmptyTree EmptyTree),1)]

@@ -1,4 +1,4 @@
-module Datastructures.Trees.ValidateBinarySearchTree (isBST) where
+module Datastructures.Trees.IsGivenTreeBinarySearchTree (isBST) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue)
 import Data.Maybe (fromJust)

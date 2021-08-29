@@ -1,4 +1,3 @@
-{- |
 module Datastructures.Trees.FindAllDuplicateSubtreesSpec where
 
 import Test.Hspec ( describe, it, shouldBe, Spec )
@@ -9,8 +8,9 @@ import Datastructures.Trees.FindAllDuplicateSubtrees (findDuplicateSubtrees)
 spec :: Spec
 spec = do
 
-  describe "fullBinaryTree" $ do
+  describe "findDuplicateSubtrees" $ do
 
+    {- |
     it "returns a tree that has tree2 appended to the right of tree1" $
       findDuplicateSubtrees (Node 1
                                   (Node 2
@@ -22,14 +22,16 @@ spec = do
                                         EmptyTree
                                   )
                             ) `shouldBe` [(EmptyTree,2)]
+    -}
 
-    --     1
-    --    / \
-    --   2   2
-    --  /   /
-    -- 3   3
+{- |
+           1
+          / \
+         2   2
+        /   /
+       3   3
+-}
 
-    {- |
     it "returns a tree that has tree2 appended to the right of tree1" $
       findDuplicateSubtrees (Node 'a'
                                   (Node 'b'
@@ -40,8 +42,10 @@ spec = do
                                         (Node 'c' EmptyTree EmptyTree)
                                         EmptyTree
                                   )
-                            ) `shouldBe` [(EmptyTree,2)]
-    -}
+                            ) `shouldBe` [
+                                           (Node 'b' (Node 'c' EmptyTree EmptyTree) EmptyTree,2),
+                                           (Node 'c' EmptyTree EmptyTree,2)
+                                         ]
 
 {- |
            a
@@ -49,5 +53,4 @@ spec = do
          b   b
         /   /
        c   c
--}
 -}

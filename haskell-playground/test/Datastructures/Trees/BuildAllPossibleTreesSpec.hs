@@ -9,7 +9,16 @@ spec = do
   
   describe "buildTreeList" $ do
 
-    it "returns 45 for the input tree" $
+    it "should build all possible trees from the elements in a tree" $
+
+    {-|
+          1
+         / \
+        2   2
+       /   /
+      3   3
+    -}
+
       buildTreeList (Node 1 
                           (Node 2
                                 (Node 3 EmptyTree EmptyTree)
@@ -27,10 +36,30 @@ spec = do
                                   Node 3 EmptyTree EmptyTree]
 
 
-    {-|
-          1
-         / \
-        2   2
-       /   /
-      3   3
-    -}
+
+    it "should build all possible trees from the elements in a tree" $
+
+{- |
+           a
+          / \
+         b   b
+        /   /
+       c   c
+-}
+
+      buildTreeList (Node 'a'
+                                  (Node 'b'
+                                        (Node 'c' EmptyTree EmptyTree)
+                                        EmptyTree
+                                  )
+                                  (Node 'b'
+                                        (Node 'c' EmptyTree EmptyTree)
+                                        EmptyTree
+                                  )
+                            ) `shouldBe` [
+                              Node 'a' (Node 'b' (Node 'c' EmptyTree EmptyTree) EmptyTree) (Node 'b' (Node 'c' EmptyTree EmptyTree) EmptyTree),
+                              Node 'b' (Node 'c' EmptyTree EmptyTree) EmptyTree,
+                              Node 'c' EmptyTree EmptyTree,
+                              Node 'b' (Node 'c' EmptyTree EmptyTree) EmptyTree,
+                              Node 'c' EmptyTree EmptyTree
+                              ]
