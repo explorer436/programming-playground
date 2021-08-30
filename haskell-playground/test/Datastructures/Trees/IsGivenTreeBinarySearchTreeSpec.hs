@@ -1,7 +1,7 @@
-module Datastructures.Trees.ValidateBinarySearchTreeSpec where
+module Datastructures.Trees.IsGivenTreeBinarySearchTreeSpec where
 
 import Test.Hspec
-import Datastructures.Trees.ValidateBinarySearchTree (isBST)
+import Datastructures.Trees.IsGivenTreeBinarySearchTree (isBST)
 import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec

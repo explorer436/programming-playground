@@ -33,7 +33,7 @@ countFrequencyOfAnElementUsingRecursion (x:xs) elementToBeFound
 
 
 -- countFrequencyOfAllElements :: (Ord k, Num a, Enum a) => [k] -> Map.Map k a
-countFrequencyOfAllElements :: (Ord k, Num a, Enum a) => [k] -> [(k, a)]
+-- countFrequencyOfAllElements :: (Ord k, Num a, Enum a) => [k] -> [(k, a)]
 countFrequencyOfAllElements xs = Map.toList $ Map.fromListWith (\count1 count2 -> count1 + count2) (zip xs[1,1..])
 -- This could also be written as follows:
 -- countFrequencyOfAllElements xs = Map.fromListWith (+) (zip xs[1,1..])

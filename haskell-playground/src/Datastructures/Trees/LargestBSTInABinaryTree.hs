@@ -47,7 +47,7 @@
 module Datastructures.Trees.LargestBSTInABinaryTree (largestBSTTree) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..), treeSize, largerTreeBySize)
-import Datastructures.Trees.ValidateBinarySearchTree (isBST)
+import Datastructures.Trees.IsGivenTreeBinarySearchTree (isBST)
 import Data.List (foldl')
 
 largestBSTTree EmptyTree                         = EmptyTree

@@ -53,6 +53,7 @@ library
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTree
       Datastructures.Trees.HeightBalancedBinaryTree
       Datastructures.Trees.InvertABinaryTree
+      Datastructures.Trees.IsGivenTreeBinarySearchTree
       Datastructures.Trees.LargestBSTInABinaryTree
       Datastructures.Trees.LargestPathSumFromRootToLeaf
       Datastructures.Trees.LevelOfTreeWithMaximumSum
@@ -73,7 +74,6 @@ library
       Datastructures.Trees.RootToLeafNumbersSummed
       Datastructures.Trees.TargetSumFromRootToLeaf
       Datastructures.Trees.UnivalSubtrees
-      Datastructures.Trees.ValidateBinarySearchTree
       Datastructures.Trees.ZigZagBinaryTree
       Hackerrank.AppleAndOrange
       Hackerrank.BetweenTwoSets
@@ -180,6 +180,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.CreateABalancedBinarySearchTreeSpec
       Datastructures.Trees.DeepestNodeInABinaryTreeSpec
       Datastructures.Trees.FilterBinaryTreeLeavesSpec
+      Datastructures.Trees.FindAllDuplicateSubtreesSpec
       Datastructures.Trees.FindIfASubreeExistsInAnotherTreeSpec
       Datastructures.Trees.FlattenBinaryTreeSpec
       Datastructures.Trees.FloorOfAnElementInAGivenBSTSpec
@@ -187,6 +188,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTreeSpec
       Datastructures.Trees.HeightBalancedBinaryTreeSpec
       Datastructures.Trees.InvertABinaryTreeSpec
+      Datastructures.Trees.IsGivenTreeBinarySearchTreeSpec
       Datastructures.Trees.LargestBSTInABinaryTreeSpec
       Datastructures.Trees.LargestPathSumFromRootToLeafSpec
       Datastructures.Trees.LevelOfTreeWithMaximumSumSpec
@@ -205,7 +207,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.TargetSumFromRootToLeafSpec
       Datastructures.Trees.TreeSizeSpec
       Datastructures.Trees.UnivalSubtreesSpec
-      Datastructures.Trees.ValidateBinarySearchTreeSpec
+      Datastructures.Trees.ZigZagBinaryTreeSpec
       Numbers.AbsoluteSpec
       Numbers.GenerateAListOfAllEvenNumbersTillNSpec
       Strings.AnagramSpec

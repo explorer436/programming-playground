@@ -39,7 +39,7 @@ module Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, areTreesEqual, l
     This is a perfect fit for an algebraic data type in Haskell!
 -}
 
-data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Show, Read, Eq) 
+data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Show, Read, Eq, Ord) 
 
 rootValue :: Tree a -> Maybe a
 rootValue (Node a _ _) = Just a

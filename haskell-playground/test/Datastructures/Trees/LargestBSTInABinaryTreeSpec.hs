@@ -18,7 +18,7 @@ spec = do
       2   4   9
     -}
 
-    it "returns True when the input tree is a valid binary search tree" $
+    it "returns the largest binary tree from the input tree" $
       largestBSTTree (Node 5 
                         (Node 6
                               (Node 2 EmptyTree EmptyTree)
@@ -49,7 +49,7 @@ spec = do
  
     -}
 
-    it "returns True when the input tree is a valid binary search tree" $
+    it "returns the largest binary tree from the input tree" $
       largestBSTTree (Node 4 
                         (Node 2
                               (Node 1 EmptyTree EmptyTree)

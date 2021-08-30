@@ -1,4 +1,4 @@
-module Datastructures.Trees.ZigZagBinaryTree where
+module Datastructures.Trees.ZigZagBinaryTree (zigzagBinaryTree) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..))
 
@@ -47,13 +47,3 @@ zigzagBinaryTree tree = concat (invertListsAtOddPositions (zip [0..] (listsByEac
 
 -- using list comprehension instead of a map
 invertListsAtOddPositions xs = [if (odd (fst x)) then (reverse (snd x)) else (snd x) | x <- xs]
-
--- tests
-test01 = zigzagBinaryTree (Node 1
-                               (Node 2
-                                     (Node 4 EmptyTree EmptyTree)
-                                     (Node 5 EmptyTree EmptyTree))
-                               (Node 3
-                                     (Node 6 EmptyTree EmptyTree)
-                                     (Node 7 EmptyTree EmptyTree)))
--- [1,3,2,4,5,6,7]                        
