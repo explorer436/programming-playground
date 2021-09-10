@@ -1,3 +1,8 @@
+module Datastructures.Trees.PrintNodesInBoustrophedonOrder (printNodesInBoustrophedonOrder) where
+
+import Datastructures.Trees.ZigZagBinaryTree (zigzagBinaryTree)
+
+{- |
 (Easy)
 
 Good morning! Here's your coding interview problem for today.
@@ -17,3 +22,7 @@ For example, given the following tree:
 4   5     6   7
 
 You should return [1, 3, 2, 4, 5, 6, 7].
+-}
+
+
+printNodesInBoustrophedonOrder tree = zigzagBinaryTree tree

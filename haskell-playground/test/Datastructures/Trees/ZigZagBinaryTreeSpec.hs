@@ -17,4 +17,14 @@ spec = do
                                      (Node 5 EmptyTree EmptyTree))
                                (Node 3
                                      (Node 6 EmptyTree EmptyTree)
-                                     (Node 7 EmptyTree EmptyTree))) `shouldBe` [1,3,2,4,5,6,7]                        
+                                     (Node 7 EmptyTree EmptyTree))) `shouldBe` [1,3,2,4,5,6,7]
+{-|
+      Input:
+              1
+            /   \
+           2     3
+          / \   / \
+         4   5 6   7
+     
+      Output: [1, 3, 2, 4, 5, 6, 7]
+-}

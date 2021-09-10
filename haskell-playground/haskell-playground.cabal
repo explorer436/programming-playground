@@ -39,6 +39,7 @@ library
       Datastructures.Trees.BinaryTreeSumsByEachLevel
       Datastructures.Trees.BuildAllPossibleTrees
       Datastructures.Trees.CeilingOfAnElementInAGivenBST
+      Datastructures.Trees.ConvertBinaryTreeToFullBinaryTree
       Datastructures.Trees.CountFullNodesInABinaryTree
       Datastructures.Trees.CountTheNumberOfNodesInACompleteBinaryTree
       Datastructures.Trees.CountTheNumberOfNodesInAFullBinaryTree
@@ -70,6 +71,7 @@ library
       Datastructures.Trees.MyBinaryTree
       Datastructures.Trees.NumberOfCousinsInLevelOrder
       Datastructures.Trees.PathsFromRootToAllLeaves
+      Datastructures.Trees.PrintNodesInBoustrophedonOrder
       Datastructures.Trees.ReconstrunctBinaryTreeFromPreorderAndInorderTraversals
       Datastructures.Trees.RootToLeafNumbersSummed
       Datastructures.Trees.TargetSumFromRootToLeaf
@@ -174,6 +176,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.BinaryTreeSumsByEachLevelSpec
       Datastructures.Trees.BuildAllPossibleTreesSpec
       Datastructures.Trees.CeilingOfAnElementInAGivenBSTSpec
+      Datastructures.Trees.ConvertBinaryTreeToFullBinaryTreeSpec
       Datastructures.Trees.CountFullNodesInABinaryTreeSpec
       Datastructures.Trees.CountTheNumberOfNodesInACompleteBinaryTreeSpec
       Datastructures.Trees.CountTheNumberOfNodesInAFullBinaryTreeSpec
@@ -202,6 +205,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.MyBinarySearchTree_RightHeightSpec
       Datastructures.Trees.NumberOfCousinsInLevelOrderSpec
       Datastructures.Trees.PathsFromRootToAllLeavesSpec
+      Datastructures.Trees.PrintNodesInBoustrophedonOrderSpec
       Datastructures.Trees.ReconstrunctBinaryTreeFromPreorderAndInorderTraversalsSpec
       Datastructures.Trees.RootToLeafNumbersSummedSpec
       Datastructures.Trees.TargetSumFromRootToLeafSpec
