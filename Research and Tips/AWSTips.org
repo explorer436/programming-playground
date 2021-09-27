@@ -13,3 +13,6 @@
 1. Done
 
 
+* How to find out what the current active environment is?
+
+  We have to use Route53.
