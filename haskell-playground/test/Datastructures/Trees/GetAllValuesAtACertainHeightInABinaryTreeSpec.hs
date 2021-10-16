@@ -33,3 +33,11 @@ testTree = Node 1
                  (Node 3
                        EmptyTree
                        (Node 7 EmptyTree EmptyTree))
+
+{- |
+          1
+         / \
+        2   3
+       / \   \
+      4   5   7
+-}

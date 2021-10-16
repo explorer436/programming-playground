@@ -52,6 +52,7 @@ library
       Datastructures.Trees.FloorOfAnElementInAGivenBST
       Datastructures.Trees.FullBinaryTree
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTree
+      Datastructures.Trees.GetParentOfANode
       Datastructures.Trees.HeightBalancedBinaryTree
       Datastructures.Trees.InvertABinaryTree
       Datastructures.Trees.IsGivenTreeBinarySearchTree
@@ -189,6 +190,7 @@ test-suite haskell-playground-test
       Datastructures.Trees.FloorOfAnElementInAGivenBSTSpec
       Datastructures.Trees.FullBinaryTreeSpec
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTreeSpec
+      Datastructures.Trees.GetParentOfANodeSpec
       Datastructures.Trees.HeightBalancedBinaryTreeSpec
       Datastructures.Trees.InvertABinaryTreeSpec
       Datastructures.Trees.IsGivenTreeBinarySearchTreeSpec
