@@ -20,3 +20,11 @@ spec = do
                                               (Node 5 EmptyTree EmptyTree)
                                         )      
                                   ) `shouldBe` [4,6]
+
+{- |
+          1
+         / \
+        2   3
+       / \   \
+      4   6   5
+-}
