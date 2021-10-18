@@ -1,3 +1,7 @@
+module Datastructures.Trees.HeightBalancedBinaryTree (isTreeHeightBalanced) where
+  
+import Datastructures.Trees.MyBinaryTree (Tree (..), treeHeight)
+
 {- |
     Hi, here's your problem today. This problem was recently asked by Twitter:
     
@@ -53,9 +57,6 @@
    A height-balanced binary tree is defined as: a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
 -}
 
-module Datastructures.Trees.HeightBalancedBinaryTree (isTreeHeightBalanced) where
-  
-import Datastructures.Trees.MyBinaryTree (Tree (..), treeHeight)
 
 -- Ideally, the depth of the tree should be used instead of "height". But at the tree level, the values for the depth and height are exactly the same. See MyBinarySearchTree_Depth.txt
 

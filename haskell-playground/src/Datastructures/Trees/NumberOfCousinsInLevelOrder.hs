@@ -37,7 +37,7 @@ import Data.List (delete)
     root.right.right = Node(5)
     
     print Solution().list_cousins(root, 5)
-    # [4, 6]
+    # [4, 6 
 -}
 
 numberOfCousinsInLevelOrder :: Eq t => t -> Tree t -> [t]
