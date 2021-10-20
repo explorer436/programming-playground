@@ -94,8 +94,3 @@ treeSize :: Num p => Tree a -> p
 treeSize EmptyTree = 0
 treeSize (Node a EmptyTree EmptyTree ) = 1
 treeSize tree@(Node a left right) = 1 + treeSize left + treeSize right
-
-largerTreeBySize tree1 tree2
-    | treeSize tree1 == treeSize tree2 = tree1
-    | treeSize tree1 > treeSize tree2  = tree1
-    | treeSize tree1 < treeSize tree2  = tree2
