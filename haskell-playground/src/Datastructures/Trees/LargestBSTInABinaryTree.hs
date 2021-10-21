@@ -1,7 +1,8 @@
 module Datastructures.Trees.LargestBSTInABinaryTree (largestBSTTree) where
 
-import Datastructures.Trees.MyBinaryTree (Tree (..), treeSize, largerTreeBySize)
+import Datastructures.Trees.MyBinaryTree (Tree (..), treeSize)
 import Datastructures.Trees.IsGivenTreeBinarySearchTree (isBST)
+import Datastructures.Trees.CompareTreesBySize (largerTreeBySize)
 import Data.List (foldl')
 
 {- |

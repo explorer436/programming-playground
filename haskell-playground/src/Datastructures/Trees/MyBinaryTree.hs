@@ -1,4 +1,4 @@
-module Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, areTreesEqual, leftAndRightTrees, leftSubtree, rightSubtree, leftNodeValue, rightNodeValue, treeHeight, treeLeftHeight, treeRightHeight, treeSize, largerTreeBySize) where
+module Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, areTreesEqual, leftAndRightTrees, leftSubtree, rightSubtree, leftNodeValue, rightNodeValue, treeHeight, treeLeftHeight, treeRightHeight, treeSize) where
 
 {- |
 
