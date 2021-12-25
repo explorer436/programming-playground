@@ -88,18 +88,3 @@ invertTree :: Tree a -> Tree a
 invertTree EmptyTree = EmptyTree
 invertTree tree@(Node a EmptyTree EmptyTree) = tree
 invertTree (Node a left right) = Node a (invertTree right) (invertTree left)
-
-test01 = invertTree (Node 'a'
-                            (Node 'b'
-                                  (Node 'd' EmptyTree EmptyTree)
-                                  (Node 'e' EmptyTree EmptyTree))
-                            (Node 'c'
-                                  (Node 'f' EmptyTree EmptyTree)
-                                  EmptyTree))
--- Node 'a' 
---      (Node 'c' 
---            EmptyTree 
---            (Node 'f' EmptyTree EmptyTree)) 
---      (Node 'b' 
---            (Node 'e' EmptyTree EmptyTree) 
---            (Node 'd' EmptyTree EmptyTree))

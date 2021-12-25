@@ -1,6 +1,7 @@
-module Datastructures.Trees.ReconstrunctBinaryTreeFromPreorderAndInorderTraversals (reconstruct) where
+module Datastructures.Trees.ReconstrunctBinaryTreeFromPreorderAndInorderTraversals (reconstruct, leftHalfInOrder, leftHalfPreOrder, rightHalfInOrder, rightHalfPreOrder) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..))
+import Debug.Trace ( trace, traceShow )
 
 {- |
     Hi, here's your problem today. This problem was recently asked by Microsoft:
@@ -81,50 +82,62 @@ import Datastructures.Trees.MyBinaryTree (Tree (..))
     d  e f  g
 -}
 
-reconstruct :: Ord a => [a] -> [a] -> Tree a
-reconstruct [] [] = EmptyTree
-reconstruct inorderList preorderList = Node rootValue (reconstruct leftHalfInOrder leftHalfPreOrder) (reconstruct rightHalfInOrder rightHalfPreOrder)
-                                       where leftHalfInOrder = takeWhile (< rootValue) inorderList
-                                             rightHalfInOrder = dropWhile (<= rootValue) inorderList
-                                             rootValue = head preorderList
-                                             rightHalfPreOrder = drop (length leftHalfInOrder) (tail preorderList)
-                                             leftHalfPreOrder = take (length leftHalfInOrder) (tail preorderList)
+{-
 
--- SEPARATING THESE FOR DEBUGGING PURPOSES. 
--- These are not needed because they are already defined in the where clause.
+In a Preorder sequence, the leftmost element is the root of the tree. So we know ‘A’ is the root for given sequences. By searching ‘A’ in the Inorder sequence, we can find out all elements on the left side of ‘A’ is in the left subtree, and elements on right in the right subtree. So we know the below structure now. 
 
-leftHalfInOrder :: Ord a => [a] -> [a] -> [a]
-leftHalfInOrder inorderList preorderList = takeWhile (< rootValue) inorderList
-                                           where rootValue = head preorderList
+                 A
+               /   \
+             /       \
+           D B E     F C
+We recursively follow the above steps and get the following tree.
 
-rightHalfInOrder :: Ord a => [a] -> [a] -> [a]
-rightHalfInOrder inorderList preorderList = dropWhile (<= rootValue) inorderList
-                                            where rootValue = head preorderList
+         A
+       /   \
+     /       \
+    B         C
+   / \        /
+ /     \    /
+D       E  F
 
-rightHalfPreOrder :: Ord a => [a] -> [a] -> [a]
-rightHalfPreOrder inorderList preorderList = drop (length (leftHalfInOrder inorderList preorderList)) (tail preorderList)
-
-leftHalfPreOrder :: Ord a => [a] -> [a] -> [a]
-leftHalfPreOrder inorderList preorderList = take (length (leftHalfInOrder inorderList preorderList)) (tail preorderList)
-
-
-{- |
-    Node 'F' 
-         (Node 'B' 
-               (Node 'A' EmptyTree EmptyTree) 
-               (Node 'D' 
-                     (Node 'C' EmptyTree EmptyTree) 
-                     (Node 'E' EmptyTree EmptyTree))) 
-         (Node 'G' 
-               EmptyTree 
-               (Node 'I' 
-                     (Node 'H' EmptyTree EmptyTree) 
-                     (Node 'J' 
-                           EmptyTree 
-                           (Node 'K' EmptyTree EmptyTree)))
-         )
 -}
 
--- tests
-testReconstruct :: Tree Char
-testReconstruct = reconstruct "ABCDEFGHIJK" "FBADCEGIHJK"
+reconstruct [] [] = EmptyTree
+reconstruct [] _ = EmptyTree
+reconstruct _ [] = EmptyTree
+reconstruct inorderList preorderList = trace ("DEBUG: reconstruct - inorderList:" ++ show inorderList)
+                                       trace ("DEBUG: reconstruct - preorderList:" ++ show preorderList)
+                                       trace ("DEBUG: reconstruct - leftHalfInOrder:" ++ show leftHalfInOrder)
+                                       Node rootValue 
+                                            (reconstruct leftHalfInOrder leftHalfPreOrder)
+                                            (reconstruct rightHalfInOrder rightHalfPreOrder)
+                                       where leftHalfPreOrder = take (length leftHalfInOrder) (tail preorderList)
+                                             rightHalfPreOrder = drop (length leftHalfInOrder) (tail preorderList)
+                                             leftHalfInOrder = takeWhile (/= rootValue) inorderList
+                                             rightHalfInOrder = tail $ dropWhile (/= rootValue) inorderList
+                                             rootValue = head preorderList
+
+-- SEPARATING THESE FOR DEBUGGING AND UNIT TESTING PURPOSES. 
+
+-- leftHalfInOrder :: Ord a => [a] -> [a] -> [a]
+leftHalfInOrder inorderList preorderList = trace ("DEBUG: leftHalfInOrder - inorderList:" ++ show inorderList)
+                                           trace ("DEBUG: leftHalfInOrder - preorderList:" ++ show preorderList)
+                                           takeWhile (/= rootValue) inorderList
+                                           where rootValue = head preorderList
+
+-- rightHalfInOrder :: Ord a => [a] -> [a] -> [a]
+rightHalfInOrder inorderList preorderList = trace ("DEBUG: rightHalfInOrder - inorderList:" ++ show inorderList)
+                                            trace ("DEBUG: rightHalfInOrder - preorderList:" ++ show preorderList)
+                                            tail $ dropWhile (/= rootValue) inorderList
+                                            where rootValue = head preorderList
+
+-- rightHalfPreOrder :: Ord a => [a] -> [a] -> [a]
+rightHalfPreOrder inorderList preorderList = trace ("DEBUG: rightHalfPreOrder - inorderList:" ++ show inorderList)
+                                             trace ("DEBUG: rightHalfPreOrder - preorderList:" ++ show preorderList)
+                                             drop (length (leftHalfInOrder inorderList preorderList)) (tail preorderList)
+
+-- leftHalfPreOrder :: Ord a => [a] -> [a] -> [a]
+leftHalfPreOrder inorderList preorderList = trace ("DEBUG: leftHalfPreOrder - inorderList:" ++ show inorderList)
+                                            trace ("DEBUG: leftHalfPreOrder - preorderList:" ++ show preorderList)
+                                            take (length (leftHalfInOrder inorderList preorderList)) (tail preorderList)
+

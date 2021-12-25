@@ -105,29 +105,3 @@ countUnivalSubtrees (Node a EmptyTree EmptyTree) = 1
 countUnivalSubtrees tree@(Node a left right) 
     | isUnival tree == True                               = 1 + countUnivalSubtrees left + countUnivalSubtrees right
     | isUnival tree /= True                               = countUnivalSubtrees left + countUnivalSubtrees right
-
-testCountUnivalSubtrees01 = countUnivalSubtrees (Node 4 EmptyTree EmptyTree) -- 1
-testCountUnivalSubtrees02 = countUnivalSubtrees (Node 4
-                                                       (Node 4
-                                                             (Node 4 EmptyTree EmptyTree)
-                                                             (Node 4 EmptyTree EmptyTree))
-                                                       (Node 4
-                                                             (Node 4 EmptyTree EmptyTree)
-                                                             (Node 4 EmptyTree EmptyTree))) -- 7
-testCountUnivalSubtrees03 = countUnivalSubtrees (Node 1
-                                                       (Node 4
-                                                             (Node 3 EmptyTree EmptyTree)
-                                                             (Node 2 EmptyTree EmptyTree))
-                                                       (Node 5
-                                                             (Node 4 EmptyTree EmptyTree)
-                                                             (Node (-1) EmptyTree EmptyTree))) -- 4
-testCountUnivalSubtrees04 = countUnivalSubtrees (Node 0
-                                                        (Node 1 EmptyTree EmptyTree)
-                                                        (Node 0
-                                                              (Node 1 
-                                                                    (Node 1 EmptyTree EmptyTree)
-                                                                    (Node 1 EmptyTree EmptyTree) 
-                                                              )
-                                                              (Node 0 EmptyTree EmptyTree)
-                                                        )
-                                                ) -- 5
