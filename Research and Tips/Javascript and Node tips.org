@@ -40,3 +40,23 @@ Using Webstorm, position the caret before the declaration of the method/function
   #+begin_src 
   NODE_TLS_REJECT_UNAUTHORIZED=0
   #+end_src
+
+
+*** Jest testing tips:
+
+If you need to chain more than one call after another you can do something like this:
+
+  #+begin_src 
+  const callAService(value) => {
+      const firstResponse = serviceOne(value)
+      return serviceTwo(firstResponse)
+}
+
+it('should behave some way when provided a value', ()=> {
+      serviceOne.mockImplementation((value)=> if(value === 1) return 2 )
+      serviceTwo.mockImplementation((value)=> if(value === 2) return 3)
+      
+      const actual = callAService(1)
+      expect(actual).toEqual(3)
+})
+  #+end_src

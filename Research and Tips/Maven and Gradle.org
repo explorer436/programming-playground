@@ -8,6 +8,26 @@
 
     Reference: https://maven.apache.org/guides/mini/guide-creating-archetypes.html
 
+*** Using custom jvm-config with maven
+
+    If maven is having trouble working with the jdk version installed in the machine, and if you need to use custom jvm-config with maven in a project, this is the way to do it:
+    
+    In the project, create a directory with this name: ".mvn"
+    In this directory, create a file with this name: "jvm.config"
+    Add your custom config in that file:
+
+    #+begin_src 
+    --add-opens=java.base/java.util=ALL-UNNAMED
+    #+end_src
+    
+*** How to generate maven settings.xml in an enterprise environment?
+
+    You can generate the settings.xml file from the artifactory.
+    If you have the link the artifactory, follow these steps to generate the settings.xml
+    url for JFrog artifactory -> Set Me Up -> Tool - Maven -> Type password (if the artifactory is protected) and click on "generate the code snippet" and download the file. If the artifactory needs a password, the downloaded file will have a hash of the password.
+    Drop this file in your .m2 directory and the applications in local computer should be able to connect to the artifactory.
+
+
 *** Maven installation in a Linux computer
 
     See LinuxTips.org and then use the same pattern to add maven bin folder to PATH in .bashrc file.
