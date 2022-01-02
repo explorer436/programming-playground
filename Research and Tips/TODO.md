@@ -47,7 +47,7 @@ List of things that we need to be able to do without looking up on the internet:
 	* Put some values in a HashMap and loop through the key value pairs.
 	* Use java 8 collections more effectively.
 	
-Practise:
+Practice:
 1. Write a small Java application that uses the String class to input one word at a time and
 outputs a complete sentence when a terminating punctuation mark is entered.
 2. Write an application similar to the one in exercise 1, but output the words in the sentence in
