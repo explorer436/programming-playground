@@ -39,6 +39,8 @@ Write your own logic for MooshakCatchingCheese.java
 
 Codility classes.
 
+Project Euler - solve the challenges
+
 Implement the logic for the problems specified in the "preparation" folder.
 
 Understand how CustomHashCreatorUtil.java is working.
