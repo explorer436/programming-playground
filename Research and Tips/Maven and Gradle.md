@@ -1,14 +1,14 @@
-* My thoughts about using Maven or Gradle as build tools for java applications:
+# My thoughts about using Maven or Gradle as build tools for java applications:
 
-*** Create an empty java project from terminal using maven
+### Create an empty java project from terminal using maven
 
-    #+begin_src 
+    ``` 
     mvn archetype:generate -DgroupId=com.my.company -DartifactId=test-java-project -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
-    #+end_src
+    ```
 
     Reference: https://maven.apache.org/guides/mini/guide-creating-archetypes.html
 
-*** Using custom jvm-config with maven
+### Using custom jvm-config with maven
 
     If maven is having trouble working with the jdk version installed in the machine, and if you need to use custom jvm-config with maven in a project, this is the way to do it:
     
@@ -16,11 +16,11 @@
     In this directory, create a file with this name: "jvm.config"
     Add your custom config in that file:
 
-    #+begin_src 
+    ``` 
     --add-opens=java.base/java.util=ALL-UNNAMED
-    #+end_src
+    ```
     
-*** How to generate maven settings.xml in an enterprise environment?
+### How to generate maven settings.xml in an enterprise environment?
 
     You can generate the settings.xml file from the artifactory.
     If you have the link the artifactory, follow these steps to generate the settings.xml
@@ -28,7 +28,7 @@
     Drop this file in your .m2 directory and the applications in local computer should be able to connect to the artifactory.
 
 
-*** Maven installation in a Linux computer
+### Maven installation in a Linux computer
 
     See LinuxTips.org and then use the same pattern to add maven bin folder to PATH in .bashrc file.
 
@@ -36,17 +36,17 @@
 
     https://maven.apache.org/install.html
     
-*** Run a single test class with maven    
-    #+begin_src 
+### Run a single test class with maven    
+    ``` 
     mvn test -Dtest=classname
-    #+end_src
+    ```
     
-*** Run a single test method with maven  
-    #+begin_src 
+### Run a single test method with maven  
+    ``` 
     mvn test -Dtest=classname#methodname
-    #+end_src
+    ```
 
-*** Maven vs Gradle
+### Maven vs Gradle
 
 Starting out with Gradle may seem easy, but based on previous experiences, using Maven will give us much more flexibility.
 When it comes to Maven's power at confuguring profiles, environment variables, etc. the time spent to learn it once will be a good investment.
@@ -57,13 +57,13 @@ Based on what I have seen so far, Maven is much more powerful and flexible if yo
 
 Spend some time to understand further differences between the two.
 
-*** Using a specific version of dependency in Maven
+### Using a specific version of dependency in Maven
 
 How to force a maven project to use older version of a dependency instead of a new version from another dependency?
 
 You can exclude the cyclic dependencies by using the <exclusions> tag in your pom.xml like this:
 
-  #+begin_src 
+  ``` 
   <dependency>
     <groupId>sample.ProjectB</groupId>
     <artifactId>Project-B</artifactId>
@@ -75,28 +75,28 @@ You can exclude the cyclic dependencies by using the <exclusions> tag in your po
       </exclusion>
     </exclusions>
   </dependency>
-  #+end_src
+  ```
 
 Reference: https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html
 
-*** Understanding dependencies used by a project using Maven
+### Understanding dependencies used by a project using Maven
 
 How to understand maven dependency tree for a project?
 Use this command to look at the dependency tree and make changes if necessary:
 
-#+begin_src 
+``` 
 mvn dependency:tree
-#+end_src
+```
 
-*** Displaying available Maven dependency updates:
+### Displaying available Maven dependency updates:
 
 To simply know if and how we can update our project, the right tool for the job is this command:
-#+begin_src
+```
 mvn versions:display-dependency-updates
-#+end_src
+```
 This command checks and shows if there are updates to the versions of the dependencies.
 
-*** Issues with refreshing Gradle dependencies in Eclipse
+### Issues with refreshing Gradle dependencies in Eclipse
 
 If there is trouble refreshing the dependencies in Eclipse after making changes to the build.gradle file, follow the steps below:
 
@@ -110,36 +110,50 @@ If there is trouble refreshing the dependencies in Eclipse after making changes 
 
 This should bring all the latest dependencies down and you should see them in the `Referenced Libraries` section.
 
-*** Helpful Gradle commands
+### Helpful Gradle commands
+
+##### List all tasks
+
+To look at all the available tasks for a gradle project, use this: 
+
+`gradlew tasks --all`
+
+##### Publish to maven local
+
+`gradlew publishToMavenLocal`
+
+##### Working with EAR projects
 
 Go to the EAR folder in command prompt:
 
-    #+BEGIN_EXAMPLE
+    ```
     C:\XXXXXXXXXXXXXEAR
-    #+END_EXAMPLE
+    ```
 And use this command to build EAR.
 
-    #+BEGIN_EXAMPLE
+    ```
     gradle clean ear --info
     gradle clean testall --info
     gradle clean testAll ear –-info
-    #+END_EXAMPLE
+    ```
 
-From folder :      C:\XXXXXXXXXXEAR\build\distributions
-To folder :        C:\WASLP_dev\tools\WASLP8559\wlp\usr\servers\default\dropins
+From folder :      `C:\XXXXXXXXXXEAR\build\distributions`
+To folder :        `C:\WASLP_dev\tools\WASLP8559\wlp\usr\servers\default\dropins`
+
 Windows command to copy the EAR from a source folder to a destination folder:
-    #+BEGIN_EXAMPLE
+    ```
     xcopy C:\XXXXXXXXXXXXXXEAR\build\distributions C:\WASLP_dev\tools\WASLP8559\wlp\usr\servers\default\dropins
-    #+END_EXAMPLE
+    ```
 
-From folder :      C:\Users\n0281526\Documents\services-property-insurance-partner-exchange\PiAcordSalesMediationServiceEAR
-To folder :        C:\WASLP_dev\tools\WASLP8559\wlp\usr\servers\default\dropins
+From folder :      `C:\Users\n0281526\Documents\services-property-insurance-partner-exchange\PiAcordSalesMediationServiceEAR`
+To folder :        `C:\WASLP_dev\tools\WASLP8559\wlp\usr\servers\default\dropins`
+
 Windows command to copy the EAR from a source folder to a destination folder:
-    #+BEGIN_EXAMPLE
+    ```
     xcopy C:\WASLP_dev\workspaces\git_repo\services-property-insurance-partner-exchange\PiAcordSalesMediationServiceEAR\build\distributions C:\WASLP_dev\tools\WASLP8559\wlp\usr\servers\default\dropins
-    #+END_EXAMPLE
+    ```
 
-*** To exclude a few tasks from the Gradle build process : 
-    #+BEGIN_EXAMPLE
+### To exclude a few tasks from the Gradle build process : 
+    ```
     ./gradlew build -x checkstyleMain -x findbugsMain -x test -x jacocoTestCoverageVerification -x pmdMain
-    #+END_EXAMPLE
+    ```
