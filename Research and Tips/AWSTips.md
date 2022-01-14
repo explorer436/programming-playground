@@ -1,4 +1,4 @@
-* How to manually delete a cluster in case the pipelines do not work?
+# How to manually delete a cluster in case the pipelines do not work?
 
 1. Find the target cluster to delete -> Go to Tasks tab -> Hit Stop All button
 1. Go back to Services tab -> Click on the service -> Hit Delete button
@@ -13,6 +13,6 @@
 1. Done
 
 
-* How to find out what the current active environment is?
+# How to find out what the current active environment is?
 
   We have to use Route53.
