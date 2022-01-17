@@ -1,6 +1,28 @@
 # My thoughts about using Maven or Gradle as build tools for java applications:
 
-### Create an empty java project from terminal using maven
+### Maven Archetypes
+
+https://maven.apache.org/guides/introduction/introduction-to-archetypes.html
+
+If you have an existing application and wish to use it as a template for some other new applications that are not created yet, you can create an archetype from the existing application and then use that archetype to generate new applications using the command below.
+
+```
+mvn archetype: generate
+-DarchetypeGroupId=com.companyName.domainName
+-DarchetypeArtifactId=domain-archetype
+-DarchetypeVersion=1.0.0-SNAPSHOT
+-DgroupId=com.companyname.domainname
+-DartifactId=application-name
+-Dversion=1.0.0-SNAPSHOT
+-Dpackage=com.companyname.domainname.application.whateverelseyouwanttoaddhere
+-Dinvoker=ApplicationName
+-DspecName=application-name
+-Dport=8002
+-Dtitle="Application Name API"
+-B
+```
+
+### Create an empty java project from terminal using maven archetypes
 
     ``` 
     mvn archetype:generate -DgroupId=com.my.company -DartifactId=test-java-project -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -19,7 +41,7 @@
     ``` 
     --add-opens=java.base/java.util=ALL-UNNAMED
     ```
-    
+
 ### How to generate maven settings.xml in an enterprise environment?
 
     You can generate the settings.xml file from the artifactory.
@@ -35,12 +57,12 @@
     Or set it in /etc/profile. See SettingJavaHomeInLinux.org and then use the same pattern to add maven bin folder to PATH. Try the .bashrc option first.
 
     https://maven.apache.org/install.html
-    
+
 ### Run a single test class with maven    
     ``` 
     mvn test -Dtest=classname
     ```
-    
+
 ### Run a single test method with maven  
     ``` 
     mvn test -Dtest=classname#methodname
