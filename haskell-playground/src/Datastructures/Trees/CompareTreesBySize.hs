@@ -1,8 +1,8 @@
-module Datastructures.Trees.CompareTreesBySize (largerTreeBySize) where
+module Datastructures.Trees.CompareTreesBySize (compareTreeBySize) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..), treeSize)
 
-largerTreeBySize tree1 tree2
+compareTreeBySize tree1 tree2
     | treeSize tree1 == treeSize tree2 = tree1
     | treeSize tree1 > treeSize tree2  = tree1
     | treeSize tree1 < treeSize tree2  = tree2
