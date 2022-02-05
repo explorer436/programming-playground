@@ -1,4 +1,4 @@
-module Datastructures.Trees.MyBinarySearchTree_Search where
+module Datastructures.Trees.MyBinarySearchTree_Search (treeElem) where
   
 import Datastructures.Trees.MyBinaryTree (Tree (..))
 

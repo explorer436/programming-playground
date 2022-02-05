@@ -1,7 +1,6 @@
 module Datastructures.Trees.MyBinarySearchTree_Insert where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..))
-import Datastructures.Trees.MyBinarySearchTree_Search (treeElem)
 
 import Data.List (permutations, foldl')
 
@@ -97,12 +96,6 @@ numsTreeFromRight = treeFromRight nums
     The root node is 5 and then it has two sub-trees, 
     one of which has the root node of 3 and the other a 7, etc.
 -}
-
--- Checking for membership also works nicely.
-testTreeFromRightElement01 =  8 `treeElem` numsTreeFromRight   -- True  
-testTreeFromRightElement02 =  100 `treeElem` numsTreeFromRight -- False  
-testTreeFromRightElement03 =  1 `treeElem` numsTreeFromRight   -- True  
-testTreeFromRightElement04 =  10 `treeElem` numsTreeFromRight  --  False  
 
 ----------------------------------------------------------------------------------------------------
 
