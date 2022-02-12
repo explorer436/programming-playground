@@ -162,3 +162,9 @@ Luhn algorithm
 https://www.geeksforgeeks.org/luhn-algorithm/
 
 ----------------------
+
+https://kislayverma.com/programming/asynchronous-programming-with-thread-pools-2/
+
+https://howtodoinjava.com/java/multi-threading/when-to-use-countdownlatch-java-concurrency-example-tutorial/
+
+----------------------
