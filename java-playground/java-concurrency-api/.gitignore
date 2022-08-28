@@ -1,0 +1,21 @@
+/bin/
+*.class
+**/.idea/*
+*.backup
+*~
+**/stack.yaml.lock
+**/.stack-work/*
+
+#vim
+## Swap
+*~
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+## Session
+Session.vim
+
+tags
