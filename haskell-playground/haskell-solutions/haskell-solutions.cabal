@@ -1,0 +1,238 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+
+name:           haskell-solutions
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/haskell-solutions#readme>
+homepage:       https://github.com/githubuser/haskell-solutions#readme
+bug-reports:    https://github.com/githubuser/haskell-solutions/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2020 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/haskell-solutions
+
+library
+  exposed-modules:
+      Datastructures.Lists.CountFrequencyOfElementsInAList
+      Datastructures.Lists.EveryNthElementInAList
+      Datastructures.Lists.FindFirstDuplicate
+      Datastructures.Lists.GetTheMiddleElementsOfAList
+      Datastructures.Lists.IsListSymmetric
+      Datastructures.Lists.LengthOfAList
+      Datastructures.Lists.MaxAndMinElementsInAListAndTheirIndices
+      Datastructures.Lists.RemoveDuplicatesFromList
+      Datastructures.Lists.UniqueElementsInAList
+      Datastructures.Trees.AppendOneTreeToAnotherTree
+      Datastructures.Trees.ArithmeticBinaryTree
+      Datastructures.Trees.BinaryTreeSumsByEachLevel
+      Datastructures.Trees.BuildAllPossibleTrees
+      Datastructures.Trees.CeilingOfAnElementInAGivenBST
+      Datastructures.Trees.CompareTreesBySize
+      Datastructures.Trees.ConvertBinaryTreeToFullBinaryTree
+      Datastructures.Trees.CountFullNodesInABinaryTree
+      Datastructures.Trees.CountTheNumberOfNodesInACompleteBinaryTree
+      Datastructures.Trees.CountTheNumberOfNodesInAFullBinaryTree
+      Datastructures.Trees.CreateABalancedBinarySearchTree
+      Datastructures.Trees.DeepestNodeInABinaryTree
+      Datastructures.Trees.FilterBinaryTreeLeaves
+      Datastructures.Trees.FindAllDuplicateSubtrees
+      Datastructures.Trees.FindIfASubreeExistsInAnotherTree
+      Datastructures.Trees.FlattenBinaryTree
+      Datastructures.Trees.FloorOfAnElementInAGivenBST
+      Datastructures.Trees.FullBinaryTree
+      Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTree
+      Datastructures.Trees.GetParentOfANode
+      Datastructures.Trees.HeightBalancedBinaryTree
+      Datastructures.Trees.InvertABinaryTree
+      Datastructures.Trees.IsGivenTreeBinarySearchTree
+      Datastructures.Trees.LargestBSTInABinaryTree
+      Datastructures.Trees.LargestPathSumFromRootToLeaf
+      Datastructures.Trees.LevelOfTreeWithMaximumSum
+      Datastructures.Trees.LevelOfTreeWithMinimumSum
+      Datastructures.Trees.MinimumHeightOfNodesInBinaryTree
+      Datastructures.Trees.MinimumPathSumFromRootToLeaf
+      Datastructures.Trees.MyBinarySearchTree_Delete
+      Datastructures.Trees.MyBinarySearchTree_Insert
+      Datastructures.Trees.MyBinarySearchTree_MaximumAndMinimumElements
+      Datastructures.Trees.MyBinarySearchTree_Search
+      Datastructures.Trees.MyBinarySearchTreeTraversals_BreadthFirst_ListsByLevel
+      Datastructures.Trees.MyBinarySearchTreeTraversals_BreadthFirst_SingleList
+      Datastructures.Trees.MyBinarySearchTreeTraversals_DepthFirst
+      Datastructures.Trees.MyBinaryTree
+      Datastructures.Trees.NumberOfCousinsInLevelOrder
+      Datastructures.Trees.PathsFromRootToAllLeaves
+      Datastructures.Trees.PrintNodesInBoustrophedonOrder
+      Datastructures.Trees.ReconstrunctBinaryTreeFromPreorderAndInorderTraversals
+      Datastructures.Trees.RootToLeafNumbersSummed
+      Datastructures.Trees.TargetSumFromRootToLeaf
+      Datastructures.Trees.UnivalSubtrees
+      Datastructures.Trees.ZigZagBinaryTree
+      Hackerrank.AppleAndOrange
+      Hackerrank.BetweenTwoSets
+      Hackerrank.BreakingTheRecords
+      Hackerrank.DayOfTheProgrammer
+      Hackerrank.DivisibleSumPairs
+      Hackerrank.GradingStudents
+      Hackerrank.MigratoryBirds
+      Hackerrank.NumberLineJumps
+      Hackerrank.SimpleArraySum
+      Hackerrank.SockMerchant
+      Hackerrank.SolveMeFirst
+      Hackerrank.VeryBigArraySum
+      Lib
+      Numbers.Absolute
+      Numbers.AddTwoNumbers
+      Numbers.CalculateEndTimeByStartTimeAndDuration
+      Numbers.CollatzSequences
+      Numbers.ConvertListToDecimalNumber
+      Numbers.DoubleAllNumbersInAListOfIntegers
+      Numbers.EvenFibonacciSequence
+      Numbers.EvenOrOddNumbers
+      Numbers.FibonacciSequence
+      Numbers.GenerateAListOfAllEvenNumbersTillN
+      Numbers.GenerateAListOfFirstNEvenNumbers
+      Numbers.LargestNumberUnderNDivisibleByAGivenNumber
+      Numbers.LeapYear
+      Numbers.Primes
+      Numbers.RightTriangle
+      Numbers.SumOfAllEvenNumbersInAListOfIntegers
+      Numbers.SumOfAllOddSquaresSmallerThanN
+      Numbers.SumOfEvenValuedFibonacciTermsLessThanMaxValue
+      Numbers.SumOfFirstNMultiplesOf3Or5
+      Numbers.SumOfIntegersInAList
+      Numbers.SumOfMultiplesOf3Or5SmallerThanN
+      Numbers.SumSquareDifference
+      Recursion.Factorial
+      Sorting.LinearTimeSort
+      Sorting.Quicksort
+      Strings.AddLineNumbersToSourceCode
+      Strings.Anagram
+      Strings.AnglesOfAClock
+      Strings.AssessMovies
+      Strings.CaesarCipher
+      Strings.CheckIfAllCharsOfAStringAreInAnotherString
+      Strings.ConvertAStringToLowerCase
+      Strings.ExamScoreProcessing
+      Strings.FizzBuzz
+      Strings.GeneralizedFibonacciSelector
+      Strings.GroupNamesByAlphabets
+      Strings.ISBNVerifier
+      Strings.LongestCommonSubsequenceBetweenTwoStrings
+      Strings.Pagination
+      Strings.Palindrome
+      Strings.Pangram
+      Strings.RailFenceCipher
+      Strings.RemoveSubstringFromAString
+      WordCount.WordCount
+  other-modules:
+      Paths_haskell_solutions
+  hs-source-dirs:
+      src
+  build-depends:
+      HUnit
+    , array
+    , base >=4.7 && <5
+    , containers
+    , hspec
+  default-language: Haskell2010
+
+executable haskell-solutions-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_haskell_solutions
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      HUnit
+    , array
+    , base >=4.7 && <5
+    , containers
+    , haskell-solutions
+    , hspec
+  default-language: Haskell2010
+
+test-suite haskell-solutions-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Datastructures.Lists.CountFrequencyOfElementsInAListSpec
+      Datastructures.Lists.GetTheMiddleElementsOfAListSpec
+      Datastructures.Lists.IsListSymmetricSpec
+      Datastructures.Lists.RemoveDuplicatesFromListSpec
+      Datastructures.Lists.UniqueElementsInAListSpec
+      Datastructures.Trees.AppendOneTreeToAnotherTreeSpec
+      Datastructures.Trees.ArithmeticBinaryTreeSpec
+      Datastructures.Trees.BinaryTreeSumsByEachLevelSpec
+      Datastructures.Trees.BuildAllPossibleTreesSpec
+      Datastructures.Trees.CeilingOfAnElementInAGivenBSTSpec
+      Datastructures.Trees.CompareTreesBySizeSpec
+      Datastructures.Trees.ConvertBinaryTreeToFullBinaryTreeSpec
+      Datastructures.Trees.CountFullNodesInABinaryTreeSpec
+      Datastructures.Trees.CountTheNumberOfNodesInACompleteBinaryTreeSpec
+      Datastructures.Trees.CountTheNumberOfNodesInAFullBinaryTreeSpec
+      Datastructures.Trees.CreateABalancedBinarySearchTreeSpec
+      Datastructures.Trees.DeepestNodeInABinaryTreeSpec
+      Datastructures.Trees.FilterBinaryTreeLeavesSpec
+      Datastructures.Trees.FindAllDuplicateSubtreesSpec
+      Datastructures.Trees.FindIfASubreeExistsInAnotherTreeSpec
+      Datastructures.Trees.FlattenBinaryTreeSpec
+      Datastructures.Trees.FloorOfAnElementInAGivenBSTSpec
+      Datastructures.Trees.FullBinaryTreeSpec
+      Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTreeSpec
+      Datastructures.Trees.GetParentOfANodeSpec
+      Datastructures.Trees.HeightBalancedBinaryTreeSpec
+      Datastructures.Trees.InvertABinaryTreeSpec
+      Datastructures.Trees.IsGivenTreeBinarySearchTreeSpec
+      Datastructures.Trees.LargestBSTInABinaryTreeSpec
+      Datastructures.Trees.LargestPathSumFromRootToLeafSpec
+      Datastructures.Trees.LevelOfTreeWithMaximumSumSpec
+      Datastructures.Trees.LevelOfTreeWithMinimumSumSpec
+      Datastructures.Trees.MinimumHeightOfNodesInBinaryTreeSpec
+      Datastructures.Trees.MinimumPathSumFromRootToLeafSpec
+      Datastructures.Trees.MyBinarySearchTree_DeleteSpec
+      Datastructures.Trees.MyBinarySearchTree_HeightSpec
+      Datastructures.Trees.MyBinarySearchTree_LeftHeightSpec
+      Datastructures.Trees.MyBinarySearchTree_MaximumAndMinimumElementsSpec
+      Datastructures.Trees.MyBinarySearchTree_RightHeightSpec
+      Datastructures.Trees.MyBinarySearchTree_SearchSpec
+      Datastructures.Trees.NumberOfCousinsInLevelOrderSpec
+      Datastructures.Trees.PathsFromRootToAllLeavesSpec
+      Datastructures.Trees.PrintNodesInBoustrophedonOrderSpec
+      Datastructures.Trees.ReconstrunctBinaryTreeFromPreorderAndInorderTraversalsSpec
+      Datastructures.Trees.RootToLeafNumbersSummedSpec
+      Datastructures.Trees.TargetSumFromRootToLeafSpec
+      Datastructures.Trees.TreeSizeSpec
+      Datastructures.Trees.UnivalSubtreesSpec
+      Datastructures.Trees.ZigZagBinaryTreeSpec
+      Numbers.AbsoluteSpec
+      Numbers.GenerateAListOfAllEvenNumbersTillNSpec
+      Strings.AnagramSpec
+      Strings.AnglesOfAClockSpec
+      Strings.LongestCommonSubsequenceBetweenTwoStringsSpec
+      Strings.PalindromeSpec
+      Strings.PangramSpec
+      Paths_haskell_solutions
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      HUnit
+    , array
+    , base >=4.7 && <5
+    , containers
+    , haskell-solutions
+    , hspec
+  default-language: Haskell2010

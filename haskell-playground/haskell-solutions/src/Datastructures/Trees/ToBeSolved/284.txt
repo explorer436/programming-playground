@@ -1,0 +1,21 @@
+(Medium)
+
+Good morning! Here's your coding interview problem for today.
+
+This problem was asked by Yext.
+
+Two nodes in a binary tree can be called cousins if they are on the same level of the tree but have different parents. For example, in the following diagram 4 and 6 are cousins.
+
+    1
+   / \
+  2   3
+ / \   \
+4   5   6
+
+Given a binary tree and a particular node, find all cousins of that node.
+
+Approach:
+1. Use NumberOfCousinsInLevelOrder.hs
+2. Get the parent of 5 using GetParentOfANode.hs
+3. Get the parents of all nodes in the list from step 1 and filter out the rest.
+4. The result from step 4 is what we are looking for.

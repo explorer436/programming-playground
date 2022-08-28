@@ -1,0 +1,23 @@
+{- |
+    Source: https://www.haskelltutorials.com/without-theory/lambdas.html
+
+    What the hell is going on? Can I print the value of this variable?
+
+    You have been explicitly forbidden to write output to the terminal - GHCi will automtically print the return value of your function. 
+    There is a reason for doing this, which we will cover later. 
+    However, if, for debugging you need to print values to the terminal use various functions from the Debug.Trace module.
+    
+    For example, here’s how you can use traceShow to print the values passed to your lambda, while summing a list of itnegers:
+    
+    GHCi> import Debug.Trace (traceShow)
+    GHCi> import Data.List (foldl')
+    GHCi> foldl' (\total x -> traceShow (total, x) (total + x)) 0 [1, 2, 3, 4, 5]
+    The simplified type-signature of traceShow is:
+    
+    traceShow :: a -> b -> b
+    You can pass it two arguments of any type, it will print the first argument to the console, and will return the second argument as it is. 
+    Which means that traceShow will always evaluate to the second argument passed to it. 
+    So, in our example above (total, x) is being printed, but the function call to traceShow is evaluating to total + x; and, as a result, the entire lambda is evaluating to total + x – thus our summation logic is not changing. 
+    In other words, (total, x), which is being printed has absolutely no effect on the “return value” of traceShow. 
+    The “return value” of traceShow will always be the second argument you pass to it.
+-}
