@@ -1,0 +1,3160 @@
+.
+├── createTableOfContents.sh
+├── createTableOfContents.sh~
+├── docker
+│   ├── README.md
+│   └── springboot-docker-demo
+│       ├── Dockerfile
+│       ├── mvnw
+│       ├── mvnw.cmd
+│       ├── pom.xml
+│       ├── README.md
+│       └── src
+│           ├── main
+│           │   ├── java
+│           │   │   └── com
+│           │   │       └── example
+│           │   │           └── springbootdockerdemo
+│           │   │               ├── SampleRestfulController.java
+│           │   │               └── SpringbootDockerDemoApplication.java
+│           │   └── resources
+│           │       └── application.properties
+│           └── test
+│               └── java
+│                   └── com
+│                       └── example
+│                           └── springbootdockerdemo
+│                               └── SpringbootDockerDemoApplicationTests.java
+├── Erlang
+│   ├── LearnErlang.iml
+│   └── src
+│       ├── age2.erl
+│       ├── age.erl
+│       ├── calendar.erl
+│       ├── cardealer.erl
+│       ├── factorial.erl
+│       ├── greet.erl
+│       ├── helloworld.erl
+│       ├── higherorderfunction.erl
+│       ├── speak.erl
+│       ├── talkByPassingMessages.erl
+│       ├── talkUsingDistributedProgramming.erl
+│       ├── talkUsingProcessNames.erl
+│       └── temperature.erl
+├── Git
+│   ├── 01Configure Tooling.org
+│   ├── Conflicts while rebasing.md
+│   ├── Diff And Merge Tools For Git.md
+│   ├── Git Authentication Issues.md
+│   ├── Git power user tips.org
+│   ├── Git squashing commits using commands.org
+│   ├── GitSquasingCommitsImages
+│   │   ├── 01.png
+│   │   ├── 02.png
+│   │   ├── 03.png
+│   │   ├── 04.png
+│   │   ├── 05.png
+│   │   └── 06.png
+│   ├── Git tips.md
+│   ├── Git Worktrees.md
+│   ├── How to change a Git commit message.org
+│   ├── If the command prompt does not recognize git in Windows machines.md
+│   ├── LearningGitBranching.org
+│   ├── Things to learn.md
+│   └── Working with Branches.org
+├── haskell-playground
+│   ├── app
+│   │   └── Main.hs
+│   ├── ChangeLog.md
+│   ├── docs
+│   │   ├── BuiltInTypesAndFunctions.md
+│   │   ├── DebuggingInHaskell.md
+│   │   ├── MyReasonsForLearningHaskell.md
+│   │   ├── Notes.md
+│   │   └── TODO.md
+│   ├── haskell-playground.cabal
+│   ├── LICENSE
+│   ├── package.yaml
+│   ├── README.md
+│   ├── Setup.hs
+│   ├── src
+│   │   ├── 01SettingUpYourHaskellDevelopmentEnvironment
+│   │   │   ├── 01Prerequisities.md
+│   │   │   ├── 02InstallingHaskell.md
+│   │   │   ├── 03AQuickPrimerOnStack.md
+│   │   │   ├── 04SetUpYourFirstThrowAwayProject.md
+│   │   │   ├── 05MakeSureYouAreReadingTheCorrectDocs.m
+│   │   │   └── 06HackagevsStackageAndCabalvsStack.md
+│   │   ├── 02IntroToFunctions
+│   │   │   ├── 01FirstMainProgram.hs
+│   │   │   ├── 01Helloworld.hs
+│   │   │   └── 02Function.hs
+│   │   ├── 03startingout
+│   │   │   ├── 01BasicDataTypes.org
+│   │   │   ├── 02ListsAndNotArrays.org
+│   │   │   ├── 03BasicOperators.org
+│   │   │   ├── 04StartingOut.hs
+│   │   │   ├── 05IntroductionToArrays.hs
+│   │   │   ├── 06IntroductionToLists.hs
+│   │   │   ├── 07Ranges.hs
+│   │   │   ├── 08InfiniteLists.hs
+│   │   │   ├── 09ListComprehensions.hs
+│   │   │   └── 10Tuples.hs
+│   │   ├── 04typesandtypeclasses
+│   │   │   ├── 01BelieveTheType.md
+│   │   │   ├── 02TypeVariables.md
+│   │   │   ├── 03It.md
+│   │   │   └── 04Typeclasses101.md
+│   │   ├── 05syntaxinfunctions
+│   │   │   ├── 07PatternMatching.hs
+│   │   │   ├── 08Guards.hs
+│   │   │   ├── 09Where.hs
+│   │   │   ├── 10Let.hs
+│   │   │   └── 11CaseExpressions.hs
+│   │   ├── 06recursion
+│   │   │   ├── 11Recursion.hs
+│   │   │   └── 12Quicksort.hs
+│   │   ├── 07higherorderfunctions
+│   │   │   ├── 11EtaConversion.md
+│   │   │   ├── 12ANoteAboutListEfficiency.md
+│   │   │   ├── 13CurriedFunctions.hs
+│   │   │   ├── 14SomeHigherOrderismIsInOrder.hs
+│   │   │   ├── 15MapsAndFilters.hs
+│   │   │   ├── 16Lambdas.hs
+│   │   │   ├── 17Folds.hs
+│   │   │   ├── 18Scans.hs
+│   │   │   ├── 19FunctionApplicationWith$.md
+│   │   │   ├── 20FunctionComposition01.md
+│   │   │   └── 21FunctionComposition.hs
+│   │   ├── 08modules
+│   │   │   ├── 21Modules.hs
+│   │   │   ├── 22DataList.hs
+│   │   │   ├── 23DataListMaybe.hs
+│   │   │   ├── 24DataChar.hs
+│   │   │   ├── 25DataMap.hs
+│   │   │   ├── 26DataSet.hs
+│   │   │   ├── 27MakingOurOwnModules.hs
+│   │   │   ├── Geometry
+│   │   │   │   ├── Cube.hs
+│   │   │   │   ├── Cuboid.hs
+│   │   │   │   └── Sphere.hs
+│   │   │   └── Geometry.hs
+│   │   ├── 09makingourowntypesandtypeclasses
+│   │   │   ├── 01AlgebraicDataTypesIntro.hs
+│   │   │   ├── 02ADTSumTypes.hs
+│   │   │   ├── 03ADTProductTypes.hs
+│   │   │   ├── 04RecordSyntax.hs
+│   │   │   ├── 05RecordUpdateSyntax.hs
+│   │   │   ├── 06TypeParameters.hs
+│   │   │   ├── 07DerivedInstances.hs
+│   │   │   ├── 08TypeSynonyms.hs
+│   │   │   ├── 09TypeSynonymsExample.hs
+│   │   │   ├── 10RecursiveDataStructure.hs
+│   │   │   ├── 11Typeclasses102.hs
+│   │   │   ├── 12Note.txt
+│   │   │   ├── 13TheFunctorTypeclass.hs
+│   │   │   ├── 14AYesNoTypeclass.hs
+│   │   │   └── 15KindsAndSomeTypefoo.hs
+│   │   ├── 10InputAndOutput
+│   │   │   ├── 01InputAndOutput.org
+│   │   │   ├── 02DoBlocks.org
+│   │   │   ├── 03GetInputFromTheUser.org
+│   │   │   ├── 04HelloWorld.org
+│   │   │   ├── 06TimeTableTrainOfTerror.hs
+│   │   │   ├── 07SqwakTheSquirrel.hs
+│   │   │   └── 08FilesAndStreams.org
+│   │   ├── Datastructures
+│   │   │   ├── AssociationLists
+│   │   │   │   ├── 01AssociationLists.hs
+│   │   │   │   └── 02AssociationLists.hs
+│   │   │   ├── Lists
+│   │   │   │   ├── CountFrequencyOfElementsInAList.hs
+│   │   │   │   ├── EveryNthElementInAList.hs
+│   │   │   │   ├── FindFirstDuplicate.hs
+│   │   │   │   ├── GetTheMiddleElementsOfAList.hs
+│   │   │   │   ├── IsListSymmetric.hs
+│   │   │   │   ├── LengthOfAList.hs
+│   │   │   │   ├── MaxAndMinElementsInAListAndTheirIndices.hs
+│   │   │   │   ├── RemoveDuplicatesFromList.hs
+│   │   │   │   └── UniqueElementsInAList.hs
+│   │   │   ├── Maps
+│   │   │   │   ├── 01Maps.hs
+│   │   │   │   ├── 02Maps.hs
+│   │   │   │   ├── 03Maps.hs
+│   │   │   │   └── 04Maps_ExtendedExample.hs
+│   │   │   └── Trees
+│   │   │       ├── AppendOneTreeToAnotherTree.hs
+│   │   │       ├── ArithmeticBinaryTree.hs
+│   │   │       ├── BinaryTreeBasedCodingProblems.md
+│   │   │       ├── BinaryTreeSumsByEachLevel.hs
+│   │   │       ├── BuildAllPossibleTrees.hs
+│   │   │       ├── CeilingOfAnElementInAGivenBST.hs
+│   │   │       ├── CompareTreesBySize.hs
+│   │   │       ├── ConvertBinaryTreeToFullBinaryTree.hs
+│   │   │       ├── CountFullNodesInABinaryTree.hs
+│   │   │       ├── CountTheNumberOfNodesInACompleteBinaryTree.hs
+│   │   │       ├── CountTheNumberOfNodesInAFullBinaryTree.hs
+│   │   │       ├── CreateABalancedBinarySearchTree.hs
+│   │   │       ├── DeepestNodeInABinaryTree.hs
+│   │   │       ├── FilterBinaryTreeLeaves.hs
+│   │   │       ├── FindAllDuplicateSubtrees.hs
+│   │   │       ├── FindIfASubreeExistsInAnotherTree.hs
+│   │   │       ├── FlattenBinaryTree.hs
+│   │   │       ├── FloorOfAnElementInAGivenBST.hs
+│   │   │       ├── FullBinaryTree.hs
+│   │   │       ├── GetAllValuesAtACertainHeightInABinaryTree.hs
+│   │   │       ├── GetParentOfANode.hs
+│   │   │       ├── HeightAndDepthOfBinaryTree.txt
+│   │   │       ├── HeightBalancedBinaryTree.hs
+│   │   │       ├── How To Formulaically Solve Tree Interview Questions.md
+│   │   │       ├── InvertABinaryTree.hs
+│   │   │       ├── IsGivenTreeBinarySearchTree.hs
+│   │   │       ├── LargestBSTInABinaryTree.hs
+│   │   │       ├── LargestPathSumFromRootToLeaf.hs
+│   │   │       ├── LevelOfTreeWithMaximumSum.hs
+│   │   │       ├── LevelOfTreeWithMinimumSum.hs
+│   │   │       ├── MinimumDepthOfNodesInBinaryTree.txt
+│   │   │       ├── MinimumHeightOfNodesInBinaryTree.hs
+│   │   │       ├── MinimumPathSumFromRootToLeaf.hs
+│   │   │       ├── MyBinarySearchTree_Delete.hs
+│   │   │       ├── MyBinarySearchTree_Depth.txt
+│   │   │       ├── MyBinarySearchTree_Height.txt
+│   │   │       ├── MyBinarySearchTree_Insert.hs
+│   │   │       ├── MyBinarySearchTree_MaximumAndMinimumElements.hs
+│   │   │       ├── MyBinarySearchTree_Search.hs
+│   │   │       ├── MyBinarySearchTreeTraversals_BreadthFirst_ListsByLevel.hs
+│   │   │       ├── MyBinarySearchTreeTraversals_BreadthFirst_SingleList.hs
+│   │   │       ├── MyBinarySearchTreeTraversals_DepthFirst.hs
+│   │   │       ├── MyBinaryTree.hs
+│   │   │       ├── NumberOfCousinsInLevelOrder.hs
+│   │   │       ├── PathsFromRootToAllLeaves.hs
+│   │   │       ├── PrintNodesInBoustrophedonOrder.hs
+│   │   │       ├── ReconstrunctBinaryTreeFromPreorderAndInorderTraversals.hs
+│   │   │       ├── RootToLeafNumbersSummed.hs
+│   │   │       ├── TargetSumFromRootToLeaf.hs
+│   │   │       ├── ToBeSolved
+│   │   │       │   ├── 215.txt
+│   │   │       │   ├── 223.txt
+│   │   │       │   ├── 261.txt
+│   │   │       │   ├── 284.txt
+│   │   │       │   ├── 326.txt
+│   │   │       │   ├── 357.txt
+│   │   │       │   ├── 394.txt
+│   │   │       │   ├── 422.txt
+│   │   │       │   ├── 426.txt
+│   │   │       │   ├── 435.txt
+│   │   │       │   ├── 442.txt
+│   │   │       │   ├── CloneTrees.txt
+│   │   │       │   ├── ConstructAllPossibleBSTs.txt
+│   │   │       │   ├── GenerateAFiniteTreeInConstantTime.txt
+│   │   │       │   ├── ImplementLockingInABinaryTreee.txt
+│   │   │       │   ├── LeafSimilarTrees.txt
+│   │   │       │   ├── LowestCommonAncestorOfTwoGivenNodes.txt
+│   │   │       │   ├── MakingAHeightBalancedBinarySearchTree.txt
+│   │   │       │   ├── MaximumPathSumInBinaryTree.txt
+│   │   │       │   ├── MergeTwoBinaryTreesBasedOnCriteria.txt
+│   │   │       │   ├── MostFrequentSubtreeSum.txt
+│   │   │       │   ├── RemoveEdgesInATree.txt
+│   │   │       │   ├── SplitABinarySearchTree.txt
+│   │   │       │   ├── SymmetricKaryTree.txt
+│   │   │       │   └── TreeSerialization.txt
+│   │   │       ├── UnivalSubtrees.hs
+│   │   │       └── ZigZagBinaryTree.hs
+│   │   ├── Hackerrank
+│   │   │   ├── AppleAndOrange.hs
+│   │   │   ├── AppleAndOrange.pdf
+│   │   │   ├── BetweenTwoSets.hs
+│   │   │   ├── BreakingTheRecords.hs
+│   │   │   ├── BreakingTheRecords.pdf
+│   │   │   ├── DayOfTheProgrammer.hs
+│   │   │   ├── DayOfTheProgrammer.pdf
+│   │   │   ├── DivisibleSumPairs.hs
+│   │   │   ├── DivisibleSumPairs.pdf
+│   │   │   ├── GradingStudents.hs
+│   │   │   ├── GradingStudents.pdf
+│   │   │   ├── MigratoryBirds.hs
+│   │   │   ├── MigratoryBirds.pdf
+│   │   │   ├── NumberLineJumps.hs
+│   │   │   ├── NumberLineJumps.pdf
+│   │   │   ├── SimpleArraySum.hs
+│   │   │   ├── SockMerchant.hs
+│   │   │   ├── SockMerchant.pdf
+│   │   │   ├── SolveMeFirst.hs
+│   │   │   └── VeryBigArraySum.hs
+│   │   ├── Lib.hs
+│   │   ├── Numbers
+│   │   │   ├── Absolute.hs
+│   │   │   ├── AddTwoNumbers.hs
+│   │   │   ├── CalculateEndTimeByStartTimeAndDuration.hs
+│   │   │   ├── CollatzSequences.hs
+│   │   │   ├── ConvertListToDecimalNumber.hs
+│   │   │   ├── DoubleAllNumbersInAListOfIntegers.hs
+│   │   │   ├── EvenFibonacciSequence.hs
+│   │   │   ├── EvenOrOddNumbers.hs
+│   │   │   ├── FibonacciSequence.hs
+│   │   │   ├── GenerateAListOfAllEvenNumbersTillN.hs
+│   │   │   ├── GenerateAListOfFirstNEvenNumbers.hs
+│   │   │   ├── LargestNumberUnderNDivisibleByAGivenNumber.hs
+│   │   │   ├── LeapYear.hs
+│   │   │   ├── Notes.md
+│   │   │   ├── Primes.hs
+│   │   │   ├── RightTriangle.hs
+│   │   │   ├── SumOfAllEvenNumbersInAListOfIntegers.hs
+│   │   │   ├── SumOfAllOddSquaresSmallerThanN.hs
+│   │   │   ├── SumOfEvenValuedFibonacciTermsLessThanMaxValue.hs
+│   │   │   ├── SumOfFirstNMultiplesOf3Or5.hs
+│   │   │   ├── SumOfIntegersInAList.hs
+│   │   │   ├── SumOfMultiplesOf3Or5SmallerThanN.hs
+│   │   │   └── SumSquareDifference.hs
+│   │   ├── Recursion
+│   │   │   └── Factorial.hs
+│   │   ├── Sorting
+│   │   │   ├── LinearTimeSort.hs
+│   │   │   └── Quicksort.hs
+│   │   ├── Strings
+│   │   │   ├── AddLineNumbersToSourceCode.hs
+│   │   │   ├── Anagram.hs
+│   │   │   ├── AnglesOfAClock.hs
+│   │   │   ├── AssessMovies.hs
+│   │   │   ├── CaesarCipher.hs
+│   │   │   ├── CheckIfAllCharsOfAStringAreInAnotherString.hs
+│   │   │   ├── ConvertAStringToLowerCase.hs
+│   │   │   ├── ExamScoreProcessing.hs
+│   │   │   ├── FizzBuzz.hs
+│   │   │   ├── GeneralizedFibonacciSelector.hs
+│   │   │   ├── GetTheMiddleCharactersOfAString.md
+│   │   │   ├── GroupNamesByAlphabets.hs
+│   │   │   ├── ISBNVerifier.hs
+│   │   │   ├── LongestCommonSubsequenceBetweenTwoStrings.hs
+│   │   │   ├── Pagination.hs
+│   │   │   ├── Palindrome.hs
+│   │   │   ├── Pangram.hs
+│   │   │   ├── RailFenceCipher.hs
+│   │   │   └── RemoveSubstringFromAString.hs
+│   │   └── WordCount
+│   │       ├── quux.txt
+│   │       └── WordCount.hs
+│   ├── stack.yaml
+│   ├── temp.txt
+│   └── test
+│       ├── Datastructures
+│       │   ├── Lists
+│       │   │   ├── CountFrequencyOfElementsInAListSpec.hs
+│       │   │   ├── GetTheMiddleElementsOfAListSpec.hs
+│       │   │   ├── IsListSymmetricSpec.hs
+│       │   │   ├── RemoveDuplicatesFromListSpec.hs
+│       │   │   └── UniqueElementsInAListSpec.hs
+│       │   └── Trees
+│       │       ├── AppendOneTreeToAnotherTreeSpec.hs
+│       │       ├── ArithmeticBinaryTreeSpec.hs
+│       │       ├── BinaryTreeSumsByEachLevelSpec.hs
+│       │       ├── BuildAllPossibleTreesSpec.hs
+│       │       ├── CeilingOfAnElementInAGivenBSTSpec.hs
+│       │       ├── CompareTreesBySizeSpec.hs
+│       │       ├── ConvertBinaryTreeToFullBinaryTreeSpec.hs
+│       │       ├── CountFullNodesInABinaryTreeSpec.hs
+│       │       ├── CountTheNumberOfNodesInACompleteBinaryTreeSpec.hs
+│       │       ├── CountTheNumberOfNodesInAFullBinaryTreeSpec.hs
+│       │       ├── CreateABalancedBinarySearchTreeSpec.hs
+│       │       ├── DeepestNodeInABinaryTreeSpec.hs
+│       │       ├── FilterBinaryTreeLeavesSpec.hs
+│       │       ├── FindAllDuplicateSubtreesSpec.hs
+│       │       ├── FindIfASubreeExistsInAnotherTreeSpec.hs
+│       │       ├── FlattenBinaryTreeSpec.hs
+│       │       ├── FloorOfAnElementInAGivenBSTSpec.hs
+│       │       ├── FullBinaryTreeSpec.hs
+│       │       ├── GetAllValuesAtACertainHeightInABinaryTreeSpec.hs
+│       │       ├── GetParentOfANodeSpec.hs
+│       │       ├── HeightBalancedBinaryTreeSpec.hs
+│       │       ├── InvertABinaryTreeSpec.hs
+│       │       ├── IsGivenTreeBinarySearchTreeSpec.hs
+│       │       ├── LargestBSTInABinaryTreeSpec.hs
+│       │       ├── LargestPathSumFromRootToLeafSpec.hs
+│       │       ├── LevelOfTreeWithMaximumSumSpec.hs
+│       │       ├── LevelOfTreeWithMinimumSumSpec.hs
+│       │       ├── MinimumHeightOfNodesInBinaryTreeSpec.hs
+│       │       ├── MinimumPathSumFromRootToLeafSpec.hs
+│       │       ├── MyBinarySearchTree_DeleteSpec.hs
+│       │       ├── MyBinarySearchTree_HeightSpec.hs
+│       │       ├── MyBinarySearchTree_LeftHeightSpec.hs
+│       │       ├── MyBinarySearchTree_MaximumAndMinimumElementsSpec.hs
+│       │       ├── MyBinarySearchTree_RightHeightSpec.hs
+│       │       ├── MyBinarySearchTree_SearchSpec.hs
+│       │       ├── NumberOfCousinsInLevelOrderSpec.hs
+│       │       ├── PathsFromRootToAllLeavesSpec.hs
+│       │       ├── PrintNodesInBoustrophedonOrderSpec.hs
+│       │       ├── ReconstrunctBinaryTreeFromPreorderAndInorderTraversalsSpec.hs
+│       │       ├── RootToLeafNumbersSummedSpec.hs
+│       │       ├── TargetSumFromRootToLeafSpec.hs
+│       │       ├── TreeSizeSpec.hs
+│       │       ├── UnivalSubtreesSpec.hs
+│       │       └── ZigZagBinaryTreeSpec.hs
+│       ├── Numbers
+│       │   ├── AbsoluteSpec.hs
+│       │   └── GenerateAListOfAllEvenNumbersTillNSpec.hs
+│       ├── Spec.hs
+│       └── Strings
+│           ├── AnagramSpec.hs
+│           ├── AnglesOfAClockSpec.hs
+│           ├── LongestCommonSubsequenceBetweenTwoStringsSpec.hs
+│           ├── PalindromeSpec.hs
+│           └── PangramSpec.hs
+├── java-playground
+│   ├── download-images-from-urls
+│   │   └── src
+│   │       └── com
+│   │           └── download
+│   │               └── image
+│   │                   └── from
+│   │                       └── url
+│   │                           └── DownloadImagesFromUrls.java
+│   ├── my-personal-utilities
+│   │   ├── bin
+│   │   │   ├── codility
+│   │   │   │   ├── arrays
+│   │   │   │   │   ├── 0-Arrays.pdf
+│   │   │   │   │   ├── ArrayCyclicRotation.class
+│   │   │   │   │   └── OddNumberOfAnArray.class
+│   │   │   │   ├── BinarySearchAlgorithm
+│   │   │   │   │   ├── 12-BinarySearch.pdf
+│   │   │   │   │   ├── MinMaxDivision.txt
+│   │   │   │   │   └── NailingPlanks.txt
+│   │   │   │   ├── CaterpillarMethod
+│   │   │   │   │   ├── 13-CaterpillarMethod.pdf
+│   │   │   │   │   ├── AbsDistinct.txt
+│   │   │   │   │   ├── CountDistinctSlices.txt
+│   │   │   │   │   ├── CountTriangles.txt
+│   │   │   │   │   └── MinAbsSumOfTwo.txt
+│   │   │   │   ├── countingelements
+│   │   │   │   │   ├── 2-CountingElements.pdf
+│   │   │   │   │   ├── FrogRiverOne.class
+│   │   │   │   │   ├── MaxCounters.class
+│   │   │   │   │   ├── PermutationCheck.class
+│   │   │   │   │   └── SmallestPositiveNumberMissingFromArray.class
+│   │   │   │   ├── DynamicProgramming
+│   │   │   │   │   ├── 15-DynamicProgramming.pdf
+│   │   │   │   │   ├── MinAbsSum.txt
+│   │   │   │   │   └── NumberSolitaire.txt
+│   │   │   │   ├── EuclideanAlgorithm
+│   │   │   │   │   ├── 10-Gcd.pdf
+│   │   │   │   │   ├── ChocolatesByNumbers.txt
+│   │   │   │   │   └── CommonPrimeDivisors.txt
+│   │   │   │   ├── FibonacciNumbers
+│   │   │   │   │   ├── 11-Fibonacci.pdf
+│   │   │   │   │   ├── FibFrog.txt
+│   │   │   │   │   └── Ladder.txt
+│   │   │   │   ├── Futuretraining
+│   │   │   │   │   ├── ArrayInversionCount.txt
+│   │   │   │   │   ├── PolygonConcavityIndex1.png
+│   │   │   │   │   ├── PolygonConcavityIndex2.png
+│   │   │   │   │   ├── PolygonConcavityIndex3.png
+│   │   │   │   │   ├── PolygonConcavityIndex.txt
+│   │   │   │   │   ├── SqlSum.txt
+│   │   │   │   │   └── StrSymmetryPoint.txt
+│   │   │   │   ├── GreedyAlgorithms
+│   │   │   │   │   ├── 14-GreedyAlgorithms.pdf
+│   │   │   │   │   ├── MaxNonOverlappingSegments.png
+│   │   │   │   │   ├── MaxNonOverlappingSegments.txt
+│   │   │   │   │   ├── TieRopes.png
+│   │   │   │   │   └── TieRopes.txt
+│   │   │   │   ├── iterations
+│   │   │   │   │   └── BinaryGap.class
+│   │   │   │   ├── Leader
+│   │   │   │   │   ├── 6-Leader.pdf
+│   │   │   │   │   ├── Dominator.txt
+│   │   │   │   │   └── EquiLeader.txt
+│   │   │   │   ├── MaximumSliceProblem
+│   │   │   │   │   ├── 7-MaxSlice.pdf
+│   │   │   │   │   ├── MaxDoubleSliceSum.txt
+│   │   │   │   │   ├── MaxProfit.txt
+│   │   │   │   │   └── MaxSliceSum.txt
+│   │   │   │   ├── orderOfFolders.md
+│   │   │   │   ├── prefixsums
+│   │   │   │   │   ├── 3-PrefixSums.pdf
+│   │   │   │   │   ├── CountDiv.class
+│   │   │   │   │   ├── GenomicRangeQuery.class
+│   │   │   │   │   ├── MaxOrMinAvgSubArrayOfSpecifiedSize.class
+│   │   │   │   │   ├── MinAvgTwoSlice2.class
+│   │   │   │   │   ├── MinAvgTwoSlice3.class
+│   │   │   │   │   ├── MinAvgTwoSlice.class
+│   │   │   │   │   ├── MinAvgTwoSliceProof.pdf
+│   │   │   │   │   ├── MushroomPicker.class
+│   │   │   │   │   ├── PassingCars.class
+│   │   │   │   │   └── PrefixSums.class
+│   │   │   │   ├── PrimeAndCompositeNumbers
+│   │   │   │   │   ├── 8-PrimeNumbers.pdf
+│   │   │   │   │   ├── CountFactors.txt
+│   │   │   │   │   ├── Flags.png
+│   │   │   │   │   ├── Flags.txt
+│   │   │   │   │   ├── MinPerimeterRectangle.txt
+│   │   │   │   │   └── Peaks.txt
+│   │   │   │   ├── SieveOfEratosthenes
+│   │   │   │   │   ├── 9-Sieve.pdf
+│   │   │   │   │   ├── CountNonDivisible.txt
+│   │   │   │   │   └── CountSemiprimes.txt
+│   │   │   │   ├── sorting
+│   │   │   │   │   ├── 4-Sorting.pdf
+│   │   │   │   │   ├── Distinct.txt
+│   │   │   │   │   ├── MaxProductOfThree.txt
+│   │   │   │   │   ├── NumberOfDiscIntersections.png
+│   │   │   │   │   ├── NumberOfDiscIntersections.txt
+│   │   │   │   │   └── Triangle.txt
+│   │   │   │   ├── StacksAndQueues
+│   │   │   │   │   ├── 5-Stacks.pdf
+│   │   │   │   │   ├── Brackets.txt
+│   │   │   │   │   ├── Fish.txt
+│   │   │   │   │   ├── Nesting.txt
+│   │   │   │   │   ├── StoneWall.png
+│   │   │   │   │   └── StoneWall.txt
+│   │   │   │   ├── TasksFromIndeedPrime2015challenge
+│   │   │   │   │   ├── FloodDepth.png
+│   │   │   │   │   ├── FloodDepth.txt
+│   │   │   │   │   ├── LongestPassword.txt
+│   │   │   │   │   ├── SlalomSkiing.png
+│   │   │   │   │   └── SlalomSkiing.txt
+│   │   │   │   ├── Tasksfromindeedprime2016challenge
+│   │   │   │   │   ├── DwarfsRafting1.png
+│   │   │   │   │   ├── DwarfsRafting2.png
+│   │   │   │   │   ├── DwarfsRafting.txt
+│   │   │   │   │   ├── HilbertMaze1.png
+│   │   │   │   │   ├── HilbertMaze2.png
+│   │   │   │   │   ├── HilbertMaze3.png
+│   │   │   │   │   ├── HilbertMaze4.png
+│   │   │   │   │   ├── HilbertMaze5.png
+│   │   │   │   │   ├── HilbertMaze6.png
+│   │   │   │   │   ├── HilbertMaze.txt
+│   │   │   │   │   ├── RectangleBuilderGreaterArea.png
+│   │   │   │   │   ├── RectangleBuilderGreaterArea.txt
+│   │   │   │   │   ├── TreeProduct.png
+│   │   │   │   │   └── TreeProduct.txt
+│   │   │   │   ├── Tasksfromindeedprime2016collegecoderschallenge
+│   │   │   │   │   ├── ArrayRecovery.txt
+│   │   │   │   │   ├── DiamondsCount1.png
+│   │   │   │   │   ├── DiamondsCount2.png
+│   │   │   │   │   ├── DiamondsCount.txt
+│   │   │   │   │   ├── SocksLaundering.png
+│   │   │   │   │   ├── SocksLaundering.txt
+│   │   │   │   │   └── TennisTournament.txt
+│   │   │   │   └── timecomplexity
+│   │   │   │       ├── 1-TimeComplexity.pdf
+│   │   │   │       ├── FrogJumps.class
+│   │   │   │       ├── PermMissingElem.class
+│   │   │   │       └── TapeEquilibrium.class
+│   │   │   ├── collections
+│   │   │   │   ├── BinaryOperatorSamples$Developer.class
+│   │   │   │   ├── BinaryOperatorSamples.class
+│   │   │   │   ├── CollectExamples.class
+│   │   │   │   ├── CollectorTeeing$Range.class
+│   │   │   │   ├── CollectorTeeing.class
+│   │   │   │   ├── Person.class
+│   │   │   │   ├── StreamAPI.class
+│   │   │   │   ├── StreamCollect$Averager.class
+│   │   │   │   ├── StreamCollect.class
+│   │   │   │   └── StreamReduce.class
+│   │   │   ├── datastructures
+│   │   │   │   ├── AbstractDataTypes.md
+│   │   │   │   ├── arrays
+│   │   │   │   │   ├── ArrayResizing.class
+│   │   │   │   │   ├── BirthdayCakeCandles.class
+│   │   │   │   │   ├── DropFirstNElementsOfAnArray.class
+│   │   │   │   │   ├── EquilibriumIndexOfArray.class
+│   │   │   │   │   ├── GenericArrayCreationIsDisallowedInJava.md
+│   │   │   │   │   ├── KadanesAlgorithm.pdf
+│   │   │   │   │   ├── LargestSumSubarray.class
+│   │   │   │   │   ├── MaximumAndMinimumElementsInAnArray.class
+│   │   │   │   │   ├── MaximumContiguousSubarraySumProblems.pdf
+│   │   │   │   │   ├── MoveNegativeElementsToTheLeft.class
+│   │   │   │   │   ├── Notes.md
+│   │   │   │   │   ├── ReverseArrayIterator.md
+│   │   │   │   │   ├── SearchForANumberInAnArray.class
+│   │   │   │   │   ├── SequentialParallelAlgorithms4MaxSubarrayProblem.pdf
+│   │   │   │   │   ├── SimpleArraySum.class
+│   │   │   │   │   ├── SmallestIndexInAnArrayThatHasAllTheElements.class
+│   │   │   │   │   ├── SubarraysWithNegativeSum.class
+│   │   │   │   │   ├── SumOfNaturalNumbersUptoN.class
+│   │   │   │   │   ├── SwapElementsToMakeSumEqual.class
+│   │   │   │   │   ├── TwoSum.class
+│   │   │   │   │   ├── TwoSumFromTwoDifferentArrays$IndexPair.class
+│   │   │   │   │   ├── TwoSumFromTwoDifferentArrays.class
+│   │   │   │   │   ├── TwoSumInputArrayIsSorted.class
+│   │   │   │   │   ├── UniqueNumbersInAnArray.class
+│   │   │   │   │   ├── VeryBigArraySum.class
+│   │   │   │   │   └── WriteArrayBackwards.class
+│   │   │   │   ├── bags
+│   │   │   │   │   ├── BagImplementationUsingLinkedList$ListIterator.class
+│   │   │   │   │   ├── BagImplementationUsingLinkedList$Node.class
+│   │   │   │   │   ├── BagImplementationUsingLinkedList.class
+│   │   │   │   │   └── StatisticsUsingBags.class
+│   │   │   │   ├── hashtables
+│   │   │   │   │   ├── ChainingHashTableClient.class
+│   │   │   │   │   ├── LinearProbingHashTableClient.class
+│   │   │   │   │   ├── SimpleHashTable_Chaining$Employee.class
+│   │   │   │   │   ├── SimpleHashTable_Chaining$StoredEmployee.class
+│   │   │   │   │   ├── SimpleHashTable_Chaining.class
+│   │   │   │   │   ├── SimpleHashTable_LinearProbing$Employee.class
+│   │   │   │   │   ├── SimpleHashTable_LinearProbing$StoredEmployee.class
+│   │   │   │   │   └── SimpleHashTable_LinearProbing.class
+│   │   │   │   ├── heap
+│   │   │   │   │   ├── Heap.class
+│   │   │   │   │   ├── HeapClient.class
+│   │   │   │   │   ├── Notes.md
+│   │   │   │   │   └── PriorityQueueClient.class
+│   │   │   │   ├── linkedlist
+│   │   │   │   │   ├── doublyLinkedEmployeeList
+│   │   │   │   │   │   ├── EmployeeDoublyLinkedList.class
+│   │   │   │   │   │   ├── EmployeeLinkedListClient.class
+│   │   │   │   │   │   ├── EmployeeNode$Employee.class
+│   │   │   │   │   │   └── EmployeeNode.class
+│   │   │   │   │   ├── jdk
+│   │   │   │   │   │   └── JdkLinkedListClient.class
+│   │   │   │   │   ├── LinkedList.md
+│   │   │   │   │   ├── singlyLinkedEmployeeList
+│   │   │   │   │   │   ├── EmployeeLinkedListClient.class
+│   │   │   │   │   │   ├── EmployeeNode$Employee.class
+│   │   │   │   │   │   ├── EmployeeNode.class
+│   │   │   │   │   │   └── EmployeeSinglyLinkedList.class
+│   │   │   │   │   └── singlyLinkedIntegerList
+│   │   │   │   │       ├── IntegerLinkedListClient.class
+│   │   │   │   │       ├── Node.class
+│   │   │   │   │       └── SortedIntegerLinkedList.class
+│   │   │   │   ├── lists
+│   │   │   │   │   └── CompareTriplets.class
+│   │   │   │   ├── queues
+│   │   │   │   │   ├── QueueImplementationUsingLinkedList$Node.class
+│   │   │   │   │   ├── QueueImplementationUsingLinkedList.class
+│   │   │   │   │   └── ReadNumbersFromFileIntoQueue.class
+│   │   │   │   ├── stack
+│   │   │   │   │   ├── EvaluatePostfixExpression.class
+│   │   │   │   │   ├── ExpressionEvaluation.class
+│   │   │   │   │   ├── FixedCapacityStack.class
+│   │   │   │   │   ├── FixedCapacityStackOfStrings.class
+│   │   │   │   │   ├── FullyParenthesizedArithmeticExpressionEvaluation.class
+│   │   │   │   │   ├── ResizingArrayStack$ReverseArrayIterator.class
+│   │   │   │   │   ├── ResizingArrayStack.class
+│   │   │   │   │   ├── ReverseAGivenStack.class
+│   │   │   │   │   ├── ReverseUsingStack.class
+│   │   │   │   │   ├── Shunting_yard.jpg
+│   │   │   │   │   ├── StackImplementationUsingDoubleLinkedList$Node.class
+│   │   │   │   │   ├── StackImplementationUsingDoubleLinkedList.class
+│   │   │   │   │   ├── StackImplementationUsingLinkedList$Node.class
+│   │   │   │   │   ├── StackImplementationUsingLinkedList.class
+│   │   │   │   │   └── TransformAnInfixExpressionToPostfixNotation.class
+│   │   │   │   ├── trees
+│   │   │   │   │   ├── Tree.class
+│   │   │   │   │   ├── TreeClient.class
+│   │   │   │   │   └── TreeNode.class
+│   │   │   │   └── vectors
+│   │   │   │       └── Notes.md
+│   │   │   ├── fractions
+│   │   │   │   ├── CropRatio.class
+│   │   │   │   └── PlusMinus.class
+│   │   │   ├── hackerrank
+│   │   │   │   ├── 3DSurfaceArea.pdf
+│   │   │   │   ├── AbsolutePermutation.pdf
+│   │   │   │   ├── ACM-ICPC-Team.pdf
+│   │   │   │   ├── AlmostSorted.pdf
+│   │   │   │   ├── AngryProfessor.class
+│   │   │   │   ├── AppendAndDelete.pdf
+│   │   │   │   ├── AppleAndOrange.class
+│   │   │   │   ├── AppleAndOrange.pdf
+│   │   │   │   ├── BeautifulDaysAtTheMovies.class
+│   │   │   │   ├── BeautifulTriplets.pdf
+│   │   │   │   ├── BetweenTwoSets.class
+│   │   │   │   ├── BiggerIsGreater.pdf
+│   │   │   │   ├── BirthdayChocolate.pdf
+│   │   │   │   ├── BonAppetit.pdf
+│   │   │   │   ├── BreakingTheRecords.pdf
+│   │   │   │   ├── CatsAndAMouse.pdf
+│   │   │   │   ├── CavityMap.pdf
+│   │   │   │   ├── ChocolateFeast.pdf
+│   │   │   │   ├── CircularArrayRotation.pdf
+│   │   │   │   ├── ClimbingTheLeaderboard.pdf
+│   │   │   │   ├── CountingValleys.pdf
+│   │   │   │   ├── CutTheSticks.pdf
+│   │   │   │   ├── DayOfTheProgrammer.pdf
+│   │   │   │   ├── DesignerPdfViewer.pdf
+│   │   │   │   ├── DivisibleSumPairs.pdf
+│   │   │   │   ├── DrawingBook.pdf
+│   │   │   │   ├── ElectronicsShop.pdf
+│   │   │   │   ├── EmasSupercomputer.pdf
+│   │   │   │   ├── Encryption.pdf
+│   │   │   │   ├── EqualiseTheArray.pdf
+│   │   │   │   ├── ExtraLongFactorials.pdf
+│   │   │   │   ├── FairRations.pdf
+│   │   │   │   ├── FindDigits.pdf
+│   │   │   │   ├── FlatlandSpaceStations.pdf
+│   │   │   │   ├── FormingAMagicSquare.pdf
+│   │   │   │   ├── GradingStudents.class
+│   │   │   │   ├── GradingStudents.pdf
+│   │   │   │   ├── HalloweenSale.pdf
+│   │   │   │   ├── HappyLadybugs.pdf
+│   │   │   │   ├── JumpingOnTheClouds.pdf
+│   │   │   │   ├── JumpingOnTheCloudsRevisited.pdf
+│   │   │   │   ├── Kangaroo.class
+│   │   │   │   ├── Kangaroo.pdf
+│   │   │   │   ├── LarrysArray.pdf
+│   │   │   │   ├── LibraryFine.pdf
+│   │   │   │   ├── LisasWorkbook.pdf
+│   │   │   │   ├── ManasaAndStones.pdf
+│   │   │   │   ├── MatrixLayerRotation.pdf
+│   │   │   │   ├── MigratoryBirds.pdf
+│   │   │   │   ├── MinimumDistances.pdf
+│   │   │   │   ├── ModifiedKaprekarNumbers.pdf
+│   │   │   │   ├── NonDivisibleSubset.pdf
+│   │   │   │   ├── OrganizingContainersOfBalls.pdf
+│   │   │   │   ├── PickingNumbers.pdf
+│   │   │   │   ├── QueensAttack2.pdf
+│   │   │   │   ├── RepeatedString.pdf
+│   │   │   │   ├── SaveThePrisoner.pdf
+│   │   │   │   ├── SequenceEquation.pdf
+│   │   │   │   ├── ServiceLane.pdf
+│   │   │   │   ├── SherlockAndSquares.pdf
+│   │   │   │   ├── SimpleArraySum.class
+│   │   │   │   ├── SockMerchant.pdf
+│   │   │   │   ├── StrangeCounter.pdf
+│   │   │   │   ├── TaumAndBday.pdf
+│   │   │   │   ├── TheBombermanGame.pdf
+│   │   │   │   ├── TheGridSearch.pdf
+│   │   │   │   ├── TheHurdleRace.pdf
+│   │   │   │   ├── TheTimeInWords.pdf
+│   │   │   │   ├── UtopianTree.pdf
+│   │   │   │   ├── VeryBigArraySum.class
+│   │   │   │   └── ViralAdvertising.pdf
+│   │   │   ├── krogerCoupons
+│   │   │   │   ├── PersonalizedCoupons$CouponComparisonUsingComparator.class
+│   │   │   │   └── PersonalizedCoupons.class
+│   │   │   ├── lru_cache_implementation
+│   │   │   │   ├── LRU2.png
+│   │   │   │   ├── LRUCache.class
+│   │   │   │   ├── Node.class
+│   │   │   │   └── TestLRUCache.class
+│   │   │   ├── matrix
+│   │   │   │   └── DiagonalDifference.class
+│   │   │   ├── module-info.class
+│   │   │   ├── mycustomclasses
+│   │   │   │   ├── ArrangeBooks_Mac.class
+│   │   │   │   ├── ConvertTextfilesInAFolderToPDF.class
+│   │   │   │   ├── CreditCardValidation.class
+│   │   │   │   ├── CustomHashCreatorUtil.class
+│   │   │   │   ├── DeleteFileBasedOnExtension
+│   │   │   │   ├── Hashids.class
+│   │   │   │   ├── JHashIds$Hashes.class
+│   │   │   │   ├── JHashIds.class
+│   │   │   │   ├── ListAllTheImportsFromJavaClassesInAProject.class
+│   │   │   │   ├── MooshakCatchingCheese.class
+│   │   │   │   ├── NIOGrep.class
+│   │   │   │   ├── PrintFileNamesInAFolder.class
+│   │   │   │   ├── ReadFileNamesAndOrganizeIntoFolders.class
+│   │   │   │   ├── RenameFiles.class
+│   │   │   │   ├── RtfToPdf.class
+│   │   │   │   ├── SearchTextInFile2.class
+│   │   │   │   ├── SearchTextInFile.class
+│   │   │   │   ├── Unzip.class
+│   │   │   │   ├── ValidateXMLagainstXSD.class
+│   │   │   │   ├── XMLDOMCreator.class
+│   │   │   │   └── XMLValidationAgainstWSDL.class
+│   │   │   ├── notes
+│   │   │   │   └── PassByValuePassByReference.md
+│   │   │   ├── numbers
+│   │   │   │   ├── CollatzSequences.class
+│   │   │   │   ├── FindOddNumbersBetweenLAndR.class
+│   │   │   │   ├── GCDOfNumbersInAnArray.class
+│   │   │   │   ├── GCDOfTwoNumbersUsingEuclideanAlgorithm.class
+│   │   │   │   ├── IntegerPalindrome.class
+│   │   │   │   ├── IntegerToRoman.class
+│   │   │   │   ├── LargestNumberUnderNDivisibleByAGivenNumber.class
+│   │   │   │   ├── LCMOfNumbersInAnArray.class
+│   │   │   │   ├── LCMOfTwoNumbers.class
+│   │   │   │   ├── MiniMaxSum.class
+│   │   │   │   ├── ReverseInteger.class
+│   │   │   │   ├── RightTriange.class
+│   │   │   │   ├── RomanToInteger.class
+│   │   │   │   ├── SumOfAllOddSquaresSmallerThanN.class
+│   │   │   │   ├── SwapIntegersWithoutUsingATempVariable$Pair.class
+│   │   │   │   └── SwapIntegersWithoutUsingATempVariable.class
+│   │   │   ├── recursion
+│   │   │   │   ├── ChoosingKOutOfNThings.class
+│   │   │   │   ├── Factorial.class
+│   │   │   │   ├── FindTheKthSmallestValueOfAnArray.class
+│   │   │   │   ├── MultiplyingRabbits.class
+│   │   │   │   ├── Notes.md
+│   │   │   │   ├── OrganizingAParade.class
+│   │   │   │   ├── ProductOfFirstNRealNumbersInArrayUsingRecurson.class
+│   │   │   │   ├── ProductOfIntegersInArrayUsingRecursion.class
+│   │   │   │   ├── TowersOfHanoi.class
+│   │   │   │   └── TowersOfHanoi.png
+│   │   │   ├── search
+│   │   │   │   ├── BinarySearch.class
+│   │   │   │   └── LinearSearch.class
+│   │   │   ├── sorting
+│   │   │   │   ├── ArraysAndListsComparator$Fruit$1.class
+│   │   │   │   ├── ArraysAndListsComparator$Fruit$2.class
+│   │   │   │   ├── ArraysAndListsComparator$Fruit.class
+│   │   │   │   ├── ArraysAndListsComparator$NameCompare.class
+│   │   │   │   ├── ArraysAndListsComparator$QuantityCompare.class
+│   │   │   │   ├── ArraysAndListsComparator$RatingAndNameCompare.class
+│   │   │   │   ├── ArraysAndListsComparator.class
+│   │   │   │   ├── BubbleSort.class
+│   │   │   │   ├── BucketSort.class
+│   │   │   │   ├── CountingSort.class
+│   │   │   │   ├── HeapSort.class
+│   │   │   │   ├── InsertionSort.class
+│   │   │   │   ├── InsertionSort.png
+│   │   │   │   ├── MergeSort.class
+│   │   │   │   ├── Notes.md
+│   │   │   │   ├── Quicksort.class
+│   │   │   │   ├── RadixSort.class
+│   │   │   │   ├── SelectionSort.class
+│   │   │   │   └── ShellSort.class
+│   │   │   ├── strings
+│   │   │   │   ├── BalancedParanthesis.class
+│   │   │   │   ├── FizzBuzz.class
+│   │   │   │   ├── FizzBuzzMultithreaded.class
+│   │   │   │   ├── MostCommonCharacterInString.class
+│   │   │   │   ├── Permutations.class
+│   │   │   │   ├── ReverseWordsInASentence.class
+│   │   │   │   ├── Staircase.class
+│   │   │   │   ├── StringPalindrome.class
+│   │   │   │   ├── StringReversal.class
+│   │   │   │   ├── TimeConversion.class
+│   │   │   │   └── ToCamelCase.class
+│   │   │   └── utility
+│   │   │       ├── ArrayUtils.class
+│   │   │       └── PrintUtils.class
+│   │   ├── docs
+│   │   │   ├── ErrorCouldNotFindOrLoadMainClassInJava.txt
+│   │   │   ├── HowToSetClasspathForJava.txt
+│   │   │   └── Research.txt
+│   │   ├── MyCodeStyleFormat.xml
+│   │   ├── README.md
+│   │   └── src
+│   │       ├── codility
+│   │       │   ├── arrays
+│   │       │   │   ├── 0-Arrays.pdf
+│   │       │   │   ├── ArrayCyclicRotation.java
+│   │       │   │   └── OddNumberOfAnArray.java
+│   │       │   ├── BinarySearchAlgorithm
+│   │       │   │   ├── 12-BinarySearch.pdf
+│   │       │   │   ├── MinMaxDivision.txt
+│   │       │   │   └── NailingPlanks.txt
+│   │       │   ├── CaterpillarMethod
+│   │       │   │   ├── 13-CaterpillarMethod.pdf
+│   │       │   │   ├── AbsDistinct.txt
+│   │       │   │   ├── CountDistinctSlices.txt
+│   │       │   │   ├── CountTriangles.txt
+│   │       │   │   └── MinAbsSumOfTwo.txt
+│   │       │   ├── countingelements
+│   │       │   │   ├── 2-CountingElements.pdf
+│   │       │   │   ├── FrogRiverOne.java
+│   │       │   │   ├── MaxCounters.java
+│   │       │   │   ├── PermutationCheck.java
+│   │       │   │   └── SmallestPositiveNumberMissingFromArray.java
+│   │       │   ├── DynamicProgramming
+│   │       │   │   ├── 15-DynamicProgramming.pdf
+│   │       │   │   ├── MinAbsSum.txt
+│   │       │   │   └── NumberSolitaire.txt
+│   │       │   ├── EuclideanAlgorithm
+│   │       │   │   ├── 10-Gcd.pdf
+│   │       │   │   ├── ChocolatesByNumbers.txt
+│   │       │   │   └── CommonPrimeDivisors.txt
+│   │       │   ├── FibonacciNumbers
+│   │       │   │   ├── 11-Fibonacci.pdf
+│   │       │   │   ├── FibFrog.txt
+│   │       │   │   └── Ladder.txt
+│   │       │   ├── Futuretraining
+│   │       │   │   ├── ArrayInversionCount.txt
+│   │       │   │   ├── PolygonConcavityIndex1.png
+│   │       │   │   ├── PolygonConcavityIndex2.png
+│   │       │   │   ├── PolygonConcavityIndex3.png
+│   │       │   │   ├── PolygonConcavityIndex.txt
+│   │       │   │   ├── SqlSum.txt
+│   │       │   │   └── StrSymmetryPoint.txt
+│   │       │   ├── GreedyAlgorithms
+│   │       │   │   ├── 14-GreedyAlgorithms.pdf
+│   │       │   │   ├── MaxNonOverlappingSegments.png
+│   │       │   │   ├── MaxNonOverlappingSegments.txt
+│   │       │   │   ├── TieRopes.png
+│   │       │   │   └── TieRopes.txt
+│   │       │   ├── iterations
+│   │       │   │   └── BinaryGap.java
+│   │       │   ├── Leader
+│   │       │   │   ├── 6-Leader.pdf
+│   │       │   │   ├── Dominator.txt
+│   │       │   │   └── EquiLeader.txt
+│   │       │   ├── MaximumSliceProblem
+│   │       │   │   ├── 7-MaxSlice.pdf
+│   │       │   │   ├── MaxDoubleSliceSum.txt
+│   │       │   │   ├── MaxProfit.txt
+│   │       │   │   └── MaxSliceSum.txt
+│   │       │   ├── orderOfFolders.md
+│   │       │   ├── prefixsums
+│   │       │   │   ├── 3-PrefixSums.pdf
+│   │       │   │   ├── CountDiv.java
+│   │       │   │   ├── GenomicRangeQuery.java
+│   │       │   │   ├── MaxOrMinAvgSubArrayOfSpecifiedSize.java
+│   │       │   │   ├── MinAvgTwoSlice2.java
+│   │       │   │   ├── MinAvgTwoSlice3.java
+│   │       │   │   ├── MinAvgTwoSlice.java
+│   │       │   │   ├── MinAvgTwoSliceProof.pdf
+│   │       │   │   ├── MushroomPicker.java
+│   │       │   │   ├── PassingCars.java
+│   │       │   │   └── PrefixSums.java
+│   │       │   ├── PrimeAndCompositeNumbers
+│   │       │   │   ├── 8-PrimeNumbers.pdf
+│   │       │   │   ├── CountFactors.txt
+│   │       │   │   ├── Flags.png
+│   │       │   │   ├── Flags.txt
+│   │       │   │   ├── MinPerimeterRectangle.txt
+│   │       │   │   └── Peaks.txt
+│   │       │   ├── SieveOfEratosthenes
+│   │       │   │   ├── 9-Sieve.pdf
+│   │       │   │   ├── CountNonDivisible.txt
+│   │       │   │   └── CountSemiprimes.txt
+│   │       │   ├── sorting
+│   │       │   │   ├── 4-Sorting.pdf
+│   │       │   │   ├── Distinct.txt
+│   │       │   │   ├── MaxProductOfThree.txt
+│   │       │   │   ├── NumberOfDiscIntersections.png
+│   │       │   │   ├── NumberOfDiscIntersections.txt
+│   │       │   │   └── Triangle.txt
+│   │       │   ├── StacksAndQueues
+│   │       │   │   ├── 5-Stacks.pdf
+│   │       │   │   ├── Brackets.txt
+│   │       │   │   ├── Fish.txt
+│   │       │   │   ├── Nesting.txt
+│   │       │   │   ├── StoneWall.png
+│   │       │   │   └── StoneWall.txt
+│   │       │   ├── TasksFromIndeedPrime2015challenge
+│   │       │   │   ├── FloodDepth.png
+│   │       │   │   ├── FloodDepth.txt
+│   │       │   │   ├── LongestPassword.txt
+│   │       │   │   ├── SlalomSkiing.png
+│   │       │   │   └── SlalomSkiing.txt
+│   │       │   ├── Tasksfromindeedprime2016challenge
+│   │       │   │   ├── DwarfsRafting1.png
+│   │       │   │   ├── DwarfsRafting2.png
+│   │       │   │   ├── DwarfsRafting.txt
+│   │       │   │   ├── HilbertMaze1.png
+│   │       │   │   ├── HilbertMaze2.png
+│   │       │   │   ├── HilbertMaze3.png
+│   │       │   │   ├── HilbertMaze4.png
+│   │       │   │   ├── HilbertMaze5.png
+│   │       │   │   ├── HilbertMaze6.png
+│   │       │   │   ├── HilbertMaze.txt
+│   │       │   │   ├── RectangleBuilderGreaterArea.png
+│   │       │   │   ├── RectangleBuilderGreaterArea.txt
+│   │       │   │   ├── TreeProduct.png
+│   │       │   │   └── TreeProduct.txt
+│   │       │   ├── Tasksfromindeedprime2016collegecoderschallenge
+│   │       │   │   ├── ArrayRecovery.txt
+│   │       │   │   ├── DiamondsCount1.png
+│   │       │   │   ├── DiamondsCount2.png
+│   │       │   │   ├── DiamondsCount.txt
+│   │       │   │   ├── SocksLaundering.png
+│   │       │   │   ├── SocksLaundering.txt
+│   │       │   │   └── TennisTournament.txt
+│   │       │   └── timecomplexity
+│   │       │       ├── 1-TimeComplexity.pdf
+│   │       │       ├── FrogJumps.java
+│   │       │       ├── PermMissingElem.java
+│   │       │       └── TapeEquilibrium.java
+│   │       ├── collections
+│   │       │   ├── BinaryOperatorSamples.java
+│   │       │   ├── CollectExamples.java
+│   │       │   ├── CollectorTeeing.java
+│   │       │   ├── Person.java
+│   │       │   ├── StreamAPI.java
+│   │       │   ├── StreamCollect.java
+│   │       │   └── StreamReduce.java
+│   │       ├── datastructures
+│   │       │   ├── AbstractDataTypes.md
+│   │       │   ├── arrays
+│   │       │   │   ├── ArrayResizing.java
+│   │       │   │   ├── BirthdayCakeCandles.java
+│   │       │   │   ├── DropFirstNElementsOfAnArray.java
+│   │       │   │   ├── EquilibriumIndexOfArray.java
+│   │       │   │   ├── GenericArrayCreationIsDisallowedInJava.md
+│   │       │   │   ├── KadanesAlgorithm.pdf
+│   │       │   │   ├── LargestSumSubarray.java
+│   │       │   │   ├── MaximumAndMinimumElementsInAnArray.java
+│   │       │   │   ├── MaximumContiguousSubarraySumProblems.pdf
+│   │       │   │   ├── MoveNegativeElementsToTheLeft.java
+│   │       │   │   ├── Notes.md
+│   │       │   │   ├── ReverseArrayIterator.md
+│   │       │   │   ├── SearchForANumberInAnArray.java
+│   │       │   │   ├── SequentialParallelAlgorithms4MaxSubarrayProblem.pdf
+│   │       │   │   ├── SimpleArraySum.java
+│   │       │   │   ├── SmallestIndexInAnArrayThatHasAllTheElements.java
+│   │       │   │   ├── SubarraysWithNegativeSum.java
+│   │       │   │   ├── SumOfNaturalNumbersUptoN.java
+│   │       │   │   ├── SwapElementsToMakeSumEqual.java
+│   │       │   │   ├── TwoSumFromTwoDifferentArrays.java
+│   │       │   │   ├── TwoSumInputArrayIsSorted.java
+│   │       │   │   ├── TwoSum.java
+│   │       │   │   ├── UniqueNumbersInAnArray.java
+│   │       │   │   ├── VeryBigArraySum.java
+│   │       │   │   └── WriteArrayBackwards.java
+│   │       │   ├── bags
+│   │       │   │   ├── BagImplementationUsingLinkedList.java
+│   │       │   │   └── StatisticsUsingBags.java
+│   │       │   ├── hashtables
+│   │       │   │   ├── ChainingHashTableClient.java
+│   │       │   │   ├── LinearProbingHashTableClient.java
+│   │       │   │   ├── SimpleHashTable_Chaining.java
+│   │       │   │   └── SimpleHashTable_LinearProbing.java
+│   │       │   ├── heap
+│   │       │   │   ├── HeapClient.java
+│   │       │   │   ├── Heap.java
+│   │       │   │   ├── Notes.md
+│   │       │   │   └── PriorityQueueClient.java
+│   │       │   ├── linkedlist
+│   │       │   │   ├── doublyLinkedEmployeeList
+│   │       │   │   │   ├── EmployeeDoublyLinkedList.java
+│   │       │   │   │   ├── EmployeeLinkedListClient.java
+│   │       │   │   │   └── EmployeeNode.java
+│   │       │   │   ├── jdk
+│   │       │   │   │   └── JdkLinkedListClient.java
+│   │       │   │   ├── LinkedList.md
+│   │       │   │   ├── singlyLinkedEmployeeList
+│   │       │   │   │   ├── EmployeeLinkedListClient.java
+│   │       │   │   │   ├── EmployeeNode.java
+│   │       │   │   │   └── EmployeeSinglyLinkedList.java
+│   │       │   │   └── singlyLinkedIntegerList
+│   │       │   │       ├── IntegerLinkedListClient.java
+│   │       │   │       ├── Node.java
+│   │       │   │       └── SortedIntegerLinkedList.java
+│   │       │   ├── lists
+│   │       │   │   └── CompareTriplets.java
+│   │       │   ├── queues
+│   │       │   │   ├── QueueImplementationUsingLinkedList.java
+│   │       │   │   └── ReadNumbersFromFileIntoQueue.java
+│   │       │   ├── stack
+│   │       │   │   ├── EvaluatePostfixExpression.java
+│   │       │   │   ├── ExpressionEvaluation.java
+│   │       │   │   ├── FixedCapacityStack.java
+│   │       │   │   ├── FixedCapacityStackOfStrings.java
+│   │       │   │   ├── FullyParenthesizedArithmeticExpressionEvaluation.java
+│   │       │   │   ├── ResizingArrayStack.java
+│   │       │   │   ├── ReverseAGivenStack.java
+│   │       │   │   ├── ReverseUsingStack.java
+│   │       │   │   ├── Shunting_yard.jpg
+│   │       │   │   ├── StackImplementationUsingDoubleLinkedList.java
+│   │       │   │   ├── StackImplementationUsingLinkedList.java
+│   │       │   │   └── TransformAnInfixExpressionToPostfixNotation.java
+│   │       │   ├── trees
+│   │       │   │   ├── TreeClient.java
+│   │       │   │   ├── Tree.java
+│   │       │   │   └── TreeNode.java
+│   │       │   └── vectors
+│   │       │       └── Notes.md
+│   │       ├── fractions
+│   │       │   ├── CropRatio.java
+│   │       │   └── PlusMinus.java
+│   │       ├── hackerrank
+│   │       │   ├── 3DSurfaceArea.pdf
+│   │       │   ├── AbsolutePermutation.pdf
+│   │       │   ├── ACM-ICPC-Team.pdf
+│   │       │   ├── AlmostSorted.pdf
+│   │       │   ├── AngryProfessor.java
+│   │       │   ├── AppendAndDelete.pdf
+│   │       │   ├── AppleAndOrange.java
+│   │       │   ├── AppleAndOrange.pdf
+│   │       │   ├── BeautifulDaysAtTheMovies.java
+│   │       │   ├── BeautifulTriplets.pdf
+│   │       │   ├── BetweenTwoSets.java
+│   │       │   ├── BiggerIsGreater.pdf
+│   │       │   ├── BirthdayChocolate.pdf
+│   │       │   ├── BonAppetit.pdf
+│   │       │   ├── BreakingTheRecords.pdf
+│   │       │   ├── CatsAndAMouse.pdf
+│   │       │   ├── CavityMap.pdf
+│   │       │   ├── ChocolateFeast.pdf
+│   │       │   ├── CircularArrayRotation.pdf
+│   │       │   ├── ClimbingTheLeaderboard.pdf
+│   │       │   ├── CountingValleys.pdf
+│   │       │   ├── CutTheSticks.pdf
+│   │       │   ├── DayOfTheProgrammer.pdf
+│   │       │   ├── DesignerPdfViewer.pdf
+│   │       │   ├── DivisibleSumPairs.pdf
+│   │       │   ├── DrawingBook.pdf
+│   │       │   ├── ElectronicsShop.pdf
+│   │       │   ├── EmasSupercomputer.pdf
+│   │       │   ├── Encryption.pdf
+│   │       │   ├── EqualiseTheArray.pdf
+│   │       │   ├── ExtraLongFactorials.pdf
+│   │       │   ├── FairRations.pdf
+│   │       │   ├── FindDigits.pdf
+│   │       │   ├── FlatlandSpaceStations.pdf
+│   │       │   ├── FormingAMagicSquare.pdf
+│   │       │   ├── GradingStudents.java
+│   │       │   ├── GradingStudents.pdf
+│   │       │   ├── HalloweenSale.pdf
+│   │       │   ├── HappyLadybugs.pdf
+│   │       │   ├── JumpingOnTheClouds.pdf
+│   │       │   ├── JumpingOnTheCloudsRevisited.pdf
+│   │       │   ├── Kangaroo.java
+│   │       │   ├── Kangaroo.pdf
+│   │       │   ├── LarrysArray.pdf
+│   │       │   ├── LibraryFine.pdf
+│   │       │   ├── LisasWorkbook.pdf
+│   │       │   ├── ManasaAndStones.pdf
+│   │       │   ├── MatrixLayerRotation.pdf
+│   │       │   ├── MigratoryBirds.pdf
+│   │       │   ├── MinimumDistances.pdf
+│   │       │   ├── ModifiedKaprekarNumbers.pdf
+│   │       │   ├── NonDivisibleSubset.pdf
+│   │       │   ├── OrganizingContainersOfBalls.pdf
+│   │       │   ├── PickingNumbers.pdf
+│   │       │   ├── QueensAttack2.pdf
+│   │       │   ├── RepeatedString.pdf
+│   │       │   ├── SaveThePrisoner.pdf
+│   │       │   ├── SequenceEquation.pdf
+│   │       │   ├── ServiceLane.pdf
+│   │       │   ├── SherlockAndSquares.pdf
+│   │       │   ├── SimpleArraySum.java
+│   │       │   ├── SockMerchant.pdf
+│   │       │   ├── StrangeCounter.pdf
+│   │       │   ├── TaumAndBday.pdf
+│   │       │   ├── TheBombermanGame.pdf
+│   │       │   ├── TheGridSearch.pdf
+│   │       │   ├── TheHurdleRace.pdf
+│   │       │   ├── TheTimeInWords.pdf
+│   │       │   ├── UtopianTree.pdf
+│   │       │   ├── VeryBigArraySum.java
+│   │       │   └── ViralAdvertising.pdf
+│   │       ├── krogerCoupons
+│   │       │   └── PersonalizedCoupons.java
+│   │       ├── lru_cache_implementation
+│   │       │   ├── LRU2.png
+│   │       │   ├── LRUCache.java
+│   │       │   ├── Node.java
+│   │       │   └── TestLRUCache.java
+│   │       ├── matrix
+│   │       │   └── DiagonalDifference.java
+│   │       ├── module-info.java
+│   │       ├── mycustomclasses
+│   │       │   ├── ArrangeBooks_Mac.java
+│   │       │   ├── ConvertTextfilesInAFolderToPDF.java
+│   │       │   ├── CreditCardValidation.java
+│   │       │   ├── CustomHashCreatorUtil.java
+│   │       │   ├── DeleteFileBasedOnExtension
+│   │       │   ├── Hashids.java
+│   │       │   ├── JHashIds.java
+│   │       │   ├── ListAllTheImportsFromJavaClassesInAProject.java
+│   │       │   ├── MooshakCatchingCheese.java
+│   │       │   ├── NIOGrep.java
+│   │       │   ├── PrintFileNamesInAFolder.java
+│   │       │   ├── ReadFileNamesAndOrganizeIntoFolders.java
+│   │       │   ├── RenameFiles.java
+│   │       │   ├── RtfToPdf.java
+│   │       │   ├── SearchTextInFile2.java
+│   │       │   ├── SearchTextInFile.java
+│   │       │   ├── Unzip.java
+│   │       │   ├── ValidateXMLagainstXSD.java
+│   │       │   ├── XMLDOMCreator.java
+│   │       │   └── XMLValidationAgainstWSDL.java
+│   │       ├── notes
+│   │       │   └── PassByValuePassByReference.md
+│   │       ├── numbers
+│   │       │   ├── CollatzSequences.java
+│   │       │   ├── FindOddNumbersBetweenLAndR.java
+│   │       │   ├── GCDOfNumbersInAnArray.java
+│   │       │   ├── GCDOfTwoNumbersUsingEuclideanAlgorithm.java
+│   │       │   ├── IntegerPalindrome.java
+│   │       │   ├── IntegerToRoman.java
+│   │       │   ├── LargestNumberUnderNDivisibleByAGivenNumber.java
+│   │       │   ├── LCMOfNumbersInAnArray.java
+│   │       │   ├── LCMOfTwoNumbers.java
+│   │       │   ├── MiniMaxSum.java
+│   │       │   ├── ReverseInteger.java
+│   │       │   ├── RightTriange.java
+│   │       │   ├── RomanToInteger.java
+│   │       │   ├── SumOfAllOddSquaresSmallerThanN.java
+│   │       │   └── SwapIntegersWithoutUsingATempVariable.java
+│   │       ├── recursion
+│   │       │   ├── ChoosingKOutOfNThings.java
+│   │       │   ├── Factorial.java
+│   │       │   ├── FindTheKthSmallestValueOfAnArray.java
+│   │       │   ├── MultiplyingRabbits.java
+│   │       │   ├── Notes.md
+│   │       │   ├── OrganizingAParade.java
+│   │       │   ├── ProductOfFirstNRealNumbersInArrayUsingRecurson.java
+│   │       │   ├── ProductOfIntegersInArrayUsingRecursion.java
+│   │       │   ├── TowersOfHanoi.java
+│   │       │   └── TowersOfHanoi.png
+│   │       ├── search
+│   │       │   ├── BinarySearch.java
+│   │       │   └── LinearSearch.java
+│   │       ├── sorting
+│   │       │   ├── ArraysAndListsComparator.java
+│   │       │   ├── BubbleSort.java
+│   │       │   ├── BucketSort.java
+│   │       │   ├── CountingSort.java
+│   │       │   ├── HeapSort.java
+│   │       │   ├── InsertionSort.java
+│   │       │   ├── InsertionSort.png
+│   │       │   ├── MergeSort.java
+│   │       │   ├── Notes.md
+│   │       │   ├── Quicksort.java
+│   │       │   ├── RadixSort.java
+│   │       │   ├── SelectionSort.java
+│   │       │   └── ShellSort.java
+│   │       ├── strings
+│   │       │   ├── BalancedParanthesis.java
+│   │       │   ├── FizzBuzz.java
+│   │       │   ├── FizzBuzzMultithreaded.java
+│   │       │   ├── MostCommonCharacterInString.java
+│   │       │   ├── Permutations.java
+│   │       │   ├── ReverseWordsInASentence.java
+│   │       │   ├── Staircase.java
+│   │       │   ├── StringPalindrome.java
+│   │       │   ├── StringReversal.java
+│   │       │   ├── TimeConversion.java
+│   │       │   └── ToCamelCase.java
+│   │       └── utility
+│   │           ├── ArrayUtils.java
+│   │           └── PrintUtils.java
+│   ├── openapi-generator-maven-plugin-poc
+│   │   ├── generated-sources
+│   │   │   └── src
+│   │   │       └── main
+│   │   │           ├── java
+│   │   │           │   ├── com
+│   │   │           │   │   └── example
+│   │   │           │   │       └── assignment
+│   │   │           │   │           └── rewards
+│   │   │           │   │               ├── api
+│   │   │           │   │               │   ├── ApiUtil.java
+│   │   │           │   │               │   ├── RewardsApiController.java
+│   │   │           │   │               │   ├── RewardsApiDelegate.java
+│   │   │           │   │               │   └── RewardsApi.java
+│   │   │           │   │               └── model
+│   │   │           │   │                   ├── ErrorResponse.java
+│   │   │           │   │                   ├── Reward.java
+│   │   │           │   │                   └── Rewards.java
+│   │   │           │   └── org
+│   │   │           │       └── openapitools
+│   │   │           │           └── configuration
+│   │   │           └── resources
+│   │   ├── HELP.md
+│   │   ├── mvnw
+│   │   ├── mvnw.cmd
+│   │   ├── pom.xml
+│   │   ├── README.org
+│   │   ├── README.org~
+│   │   ├── spec
+│   │   │   └── specification.yml
+│   │   ├── src
+│   │   │   ├── main
+│   │   │   │   ├── java
+│   │   │   │   │   └── com
+│   │   │   │   │       └── example
+│   │   │   │   │           └── assignment
+│   │   │   │   │               ├── api
+│   │   │   │   │               │   └── impl
+│   │   │   │   │               │       ├── HelperUtility.java
+│   │   │   │   │               │       └── RewardsApiDelegateImpl.java
+│   │   │   │   │               ├── AssignmentApplication.java
+│   │   │   │   │               └── model
+│   │   │   │   │                   └── Transaction.java
+│   │   │   │   └── resources
+│   │   │   │       └── application.yml
+│   │   │   └── test
+│   │   │       └── java
+│   │   │           └── com
+│   │   │               └── example
+│   │   │                   └── assignment
+│   │   │                       ├── api
+│   │   │                       │   └── impl
+│   │   │                       │       ├── HelperUtilityTests.java
+│   │   │                       │       └── RewardsApiDelegateImplTests.java
+│   │   │                       └── AssignmentApplicationTests.java
+│   │   └── target
+│   │       ├── assignment-0.0.1-SNAPSHOT.jar
+│   │       ├── assignment-0.0.1-SNAPSHOT.jar.original
+│   │       ├── classes
+│   │       │   ├── application.yml
+│   │       │   ├── com
+│   │       │   │   └── example
+│   │       │   │       └── assignment
+│   │       │   │           ├── api
+│   │       │   │           │   └── impl
+│   │       │   │           │       ├── HelperUtility.class
+│   │       │   │           │       └── RewardsApiDelegateImpl.class
+│   │       │   │           ├── AssignmentApplication.class
+│   │       │   │           ├── model
+│   │       │   │           │   ├── Transaction$TransactionBuilder.class
+│   │       │   │           │   └── Transaction.class
+│   │       │   │           └── rewards
+│   │       │   │               ├── api
+│   │       │   │               │   ├── ApiUtil.class
+│   │       │   │               │   ├── RewardsApi$1.class
+│   │       │   │               │   ├── RewardsApi.class
+│   │       │   │               │   ├── RewardsApiController$1.class
+│   │       │   │               │   ├── RewardsApiController.class
+│   │       │   │               │   └── RewardsApiDelegate.class
+│   │       │   │               └── model
+│   │       │   │                   ├── ErrorResponse.class
+│   │       │   │                   ├── Reward.class
+│   │       │   │                   └── Rewards.class
+│   │       │   └── org
+│   │       │       └── openapitools
+│   │       │           └── configuration
+│   │       ├── generated-sources
+│   │       │   └── annotations
+│   │       ├── generated-test-sources
+│   │       │   └── test-annotations
+│   │       ├── maven-archiver
+│   │       │   └── pom.properties
+│   │       ├── maven-status
+│   │       │   └── maven-compiler-plugin
+│   │       │       ├── compile
+│   │       │       │   └── default-compile
+│   │       │       │       ├── createdFiles.lst
+│   │       │       │       └── inputFiles.lst
+│   │       │       └── testCompile
+│   │       │           └── default-testCompile
+│   │       │               ├── createdFiles.lst
+│   │       │               └── inputFiles.lst
+│   │       ├── surefire-reports
+│   │       │   ├── com.example.assignment.api.impl.HelperUtilityTests.txt
+│   │       │   ├── com.example.assignment.AssignmentApplicationTests.txt
+│   │       │   ├── TEST-com.example.assignment.api.impl.HelperUtilityTests.xml
+│   │       │   └── TEST-com.example.assignment.AssignmentApplicationTests.xml
+│   │       └── test-classes
+│   │           └── com
+│   │               └── example
+│   │                   └── assignment
+│   │                       ├── api
+│   │                       │   └── impl
+│   │                       │       ├── HelperUtilityTests.class
+│   │                       │       └── RewardsApiDelegateImplTests.class
+│   │                       └── AssignmentApplicationTests.class
+│   ├── redis-caching-using-lettuce
+│   │   ├── build.gradle
+│   │   ├── gradle
+│   │   │   └── wrapper
+│   │   │       ├── gradle-wrapper.jar
+│   │   │       └── gradle-wrapper.properties
+│   │   ├── gradlew
+│   │   ├── gradlew.bat
+│   │   ├── settings.gradle
+│   │   ├── src
+│   │   │   └── main
+│   │   │       ├── java
+│   │   │       │   └── poc
+│   │   │       │       ├── App.java
+│   │   │       │       ├── core
+│   │   │       │       │   ├── CustomCacheConfiguration.java
+│   │   │       │       │   └── CustomCacheErrorHandler.java
+│   │   │       │       ├── module
+│   │   │       │       │   ├── cache
+│   │   │       │       │   │   ├── ClearCacheController.java
+│   │   │       │       │   │   └── ClearCacheService.java
+│   │   │       │       │   └── referenceData
+│   │   │       │       │       ├── ReferenceDataController.java
+│   │   │       │       │       ├── ReferenceDataRepository.java
+│   │   │       │       │       └── ReferenceDataService.java
+│   │   │       │       └── shared
+│   │   │       │           ├── Environment.java
+│   │   │       │           └── EnvironmentLookup.java
+│   │   │       └── resources
+│   │   │           ├── application.properties
+│   │   │           └── libs
+│   │   │               └── ReferenceDataLoad.jar
+│   │   └── test.json
+│   ├── redis-cacing-using-jedis
+│   │   ├── build.gradle
+│   │   ├── gradle
+│   │   │   └── wrapper
+│   │   │       ├── gradle-wrapper.jar
+│   │   │       └── gradle-wrapper.properties
+│   │   ├── gradlew
+│   │   ├── gradlew.bat
+│   │   ├── settings.gradle
+│   │   └── src
+│   │       ├── main
+│   │       │   ├── java
+│   │       │   │   └── io
+│   │       │   │       └── redis
+│   │       │   │           └── jedis
+│   │       │   │               └── jedisdemo
+│   │       │   │                   ├── configuration
+│   │       │   │                   │   ├── CacheReloadScheduler.java
+│   │       │   │                   │   ├── CustomCacheErrorHandler.java
+│   │       │   │                   │   └── RedisConfiguration.java
+│   │       │   │                   ├── controller
+│   │       │   │                   │   ├── QuoteIdController.java
+│   │       │   │                   │   └── ReferenceDataController.java
+│   │       │   │                   ├── helper
+│   │       │   │                   │   ├── AcordMediationReferenceDataFacade.java
+│   │       │   │                   │   ├── AcordMediationReferenceTableType.java
+│   │       │   │                   │   ├── AcordSalesMediationReferenceDataFacade.java
+│   │       │   │                   │   ├── EnvironmentConfig.java
+│   │       │   │                   │   ├── EnvironmentType.java
+│   │       │   │                   │   ├── FileUtils.java
+│   │       │   │                   │   ├── ReferenceDataAccessor.java
+│   │       │   │                   │   ├── ReferenceDataLoadClient.java
+│   │       │   │                   │   ├── ReferenceTableType.java
+│   │       │   │                   │   └── WebServiceRecorderHandler.java
+│   │       │   │                   ├── JedisDemoApplication.java
+│   │       │   │                   ├── service
+│   │       │   │                   │   ├── asyncfailures
+│   │       │   │                   │   │   ├── QuoteIdRepositoryImpl.java
+│   │       │   │                   │   │   ├── QuoteIdRepository.java
+│   │       │   │                   │   │   ├── QuoteIdServiceImpl.java
+│   │       │   │                   │   │   └── QuoteIdService.java
+│   │       │   │                   │   └── refdata
+│   │       │   │                   │       └── ReferenceDataService.java
+│   │       │   │                   └── webserviceclient
+│   │       │   │                       └── webservices
+│   │       │   │                           ├── WebServiceClientException.java
+│   │       │   │                           ├── WebServiceClient.java
+│   │       │   │                           ├── WebServiceConfiguration.java
+│   │       │   │                           ├── WebServiceConfigurationProperties.java
+│   │       │   │                           └── WebServiceEndpoints.java
+│   │       │   └── resources
+│   │       │       └── application.yml
+│   │       └── test
+│   │           └── java
+│   │               └── io
+│   │                   └── redis
+│   │                       └── jedis
+│   │                           └── jedisdemo
+│   │                               └── JedisDemoApplicationTests.java
+│   ├── spring-cloud-circuit-breaker
+│   │   ├── book-recommendations
+│   │   │   ├── com
+│   │   │   │   └── example
+│   │   │   │       └── bookrecommendations
+│   │   │   │           └── controller
+│   │   │   │               └── BookRecommendationsController.class
+│   │   │   ├── mvnw
+│   │   │   ├── mvnw.cmd
+│   │   │   ├── pom.xml
+│   │   │   └── src
+│   │   │       ├── main
+│   │   │       │   ├── java
+│   │   │       │   │   └── com
+│   │   │       │   │       └── example
+│   │   │       │   │           └── bookrecommendations
+│   │   │       │   │               ├── BookRecommendationsApplication.java
+│   │   │       │   │               └── controller
+│   │   │       │   │                   └── BookRecommendationsController.java
+│   │   │       │   └── resources
+│   │   │       │       └── application.properties
+│   │   │       └── test
+│   │   │           └── java
+│   │   │               └── com
+│   │   │                   └── example
+│   │   │                       └── bookrecommendations
+│   │   │                           └── BookRecommendationsApplicationTests.java
+│   │   ├── my-books-to-read
+│   │   │   ├── mvnw
+│   │   │   ├── mvnw.cmd
+│   │   │   ├── pom.xml
+│   │   │   └── src
+│   │   │       ├── main
+│   │   │       │   ├── java
+│   │   │       │   │   └── my
+│   │   │       │   │       └── to
+│   │   │       │   │           └── read
+│   │   │       │   │               └── list
+│   │   │       │   │                   └── mybookstoread
+│   │   │       │   │                       ├── controller
+│   │   │       │   │                       │   └── BooksToReadController.java
+│   │   │       │   │                       ├── MyBooksToReadApplication.java
+│   │   │       │   │                       └── service
+│   │   │       │   │                           └── BookService.java
+│   │   │       │   └── resources
+│   │   │       │       └── application.properties
+│   │   │       └── test
+│   │   │           └── java
+│   │   │               └── my
+│   │   │                   └── to
+│   │   │                       └── read
+│   │   │                           └── list
+│   │   │                               └── mybookstoread
+│   │   │                                   └── MyBooksToReadApplicationTests.java
+│   │   └── README.md
+│   ├── spring-cloud-stream
+│   │   ├── README.md
+│   │   ├── Spring Cloud Stream.pdf
+│   │   ├── Stream Processing with Apache Kafka.pdf
+│   │   ├── Stream Processing with RabbitMQ.pdf
+│   │   ├── TODO.md
+│   │   ├── usage-cost-logger-kafka
+│   │   │   ├── mvnw
+│   │   │   ├── mvnw.cmd
+│   │   │   ├── pom.xml
+│   │   │   ├── src
+│   │   │   │   ├── main
+│   │   │   │   │   ├── java
+│   │   │   │   │   │   └── io
+│   │   │   │   │   │       └── spring
+│   │   │   │   │   │           └── dataflow
+│   │   │   │   │   │               └── sample
+│   │   │   │   │   │                   └── usagecostloggerkafka
+│   │   │   │   │   │                       ├── UsageCostDetail.java
+│   │   │   │   │   │                       ├── UsageCostLogger.java
+│   │   │   │   │   │                       └── UsageCostLoggerKafkaApplication.java
+│   │   │   │   │   └── resources
+│   │   │   │   │       └── application.yml
+│   │   │   │   └── test
+│   │   │   │       └── java
+│   │   │   │           └── io
+│   │   │   │               └── spring
+│   │   │   │                   └── dataflow
+│   │   │   │                       └── sample
+│   │   │   │                           └── usagecostloggerkafka
+│   │   │   │                               └── UsageCostLoggerKafkaApplicationTests.java
+│   │   │   └── target
+│   │   │       ├── classes
+│   │   │       │   ├── application.yml
+│   │   │       │   └── io
+│   │   │       │       └── spring
+│   │   │       │           └── dataflow
+│   │   │       │               └── sample
+│   │   │       │                   └── usagecostloggerkafka
+│   │   │       │                       ├── UsageCostDetail.class
+│   │   │       │                       ├── UsageCostLogger.class
+│   │   │       │                       └── UsageCostLoggerKafkaApplication.class
+│   │   │       ├── generated-sources
+│   │   │       │   └── annotations
+│   │   │       ├── generated-test-sources
+│   │   │       │   └── test-annotations
+│   │   │       ├── maven-status
+│   │   │       │   └── maven-compiler-plugin
+│   │   │       │       ├── compile
+│   │   │       │       │   └── default-compile
+│   │   │       │       │       ├── createdFiles.lst
+│   │   │       │       │       └── inputFiles.lst
+│   │   │       │       └── testCompile
+│   │   │       │           └── default-testCompile
+│   │   │       │               ├── createdFiles.lst
+│   │   │       │               └── inputFiles.lst
+│   │   │       └── test-classes
+│   │   │           └── io
+│   │   │               └── spring
+│   │   │                   └── dataflow
+│   │   │                       └── sample
+│   │   │                           └── usagecostloggerkafka
+│   │   │                               └── UsageCostLoggerKafkaApplicationTests.class
+│   │   ├── usage-cost-logger-rabbit
+│   │   │   ├── mvnw
+│   │   │   ├── mvnw.cmd
+│   │   │   ├── pom.xml
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   ├── main
+│   │   │   │   │   ├── java
+│   │   │   │   │   │   └── io
+│   │   │   │   │   │       └── spring
+│   │   │   │   │   │           └── dataflow
+│   │   │   │   │   │               └── usagecostloggerrabbit
+│   │   │   │   │   │                   ├── UsageCostDetail.java
+│   │   │   │   │   │                   ├── UsageCostLogger.java
+│   │   │   │   │   │                   └── UsageCostLoggerRabbitApplication.java
+│   │   │   │   │   └── resources
+│   │   │   │   │       └── application.yml
+│   │   │   │   └── test
+│   │   │   │       └── java
+│   │   │   │           └── io
+│   │   │   │               └── spring
+│   │   │   │                   └── dataflow
+│   │   │   │                       └── usagecostloggerrabbit
+│   │   │   │                           └── UsageCostLoggerRabbitApplicationTests.java
+│   │   │   └── target
+│   │   │       ├── classes
+│   │   │       │   ├── application.yml
+│   │   │       │   └── io
+│   │   │       │       └── spring
+│   │   │       │           └── dataflow
+│   │   │       │               └── usagecostloggerrabbit
+│   │   │       │                   ├── UsageCostDetail.class
+│   │   │       │                   ├── UsageCostLogger.class
+│   │   │       │                   └── UsageCostLoggerRabbitApplication.class
+│   │   │       └── test-classes
+│   │   │           └── io
+│   │   │               └── spring
+│   │   │                   └── dataflow
+│   │   │                       └── usagecostloggerrabbit
+│   │   │                           ├── UsageCostLoggerRabbitApplicationTests$TestConfig.class
+│   │   │                           └── UsageCostLoggerRabbitApplicationTests.class
+│   │   ├── usage-cost-processor-kafka
+│   │   │   ├── mvnw
+│   │   │   ├── mvnw.cmd
+│   │   │   ├── pom.xml
+│   │   │   ├── src
+│   │   │   │   ├── main
+│   │   │   │   │   ├── java
+│   │   │   │   │   │   └── io
+│   │   │   │   │   │       └── spring
+│   │   │   │   │   │           └── dataflow
+│   │   │   │   │   │               └── sample
+│   │   │   │   │   │                   └── usagecostprocessorkafka
+│   │   │   │   │   │                       ├── UsageCostDetail.java
+│   │   │   │   │   │                       ├── UsageCostProcessor.java
+│   │   │   │   │   │                       ├── UsageCostProcessorKafkaApplication.java
+│   │   │   │   │   │                       └── UsageDetail.java
+│   │   │   │   │   └── resources
+│   │   │   │   │       └── application.yml
+│   │   │   │   └── test
+│   │   │   │       └── java
+│   │   │   │           └── io
+│   │   │   │               └── spring
+│   │   │   │                   └── dataflow
+│   │   │   │                       └── sample
+│   │   │   │                           └── usagecostprocessorkafka
+│   │   │   │                               └── UsageCostProcessorKafkaApplicationTests.java
+│   │   │   └── target
+│   │   │       ├── classes
+│   │   │       │   ├── application.yml
+│   │   │       │   └── io
+│   │   │       │       └── spring
+│   │   │       │           └── dataflow
+│   │   │       │               └── sample
+│   │   │       │                   └── usagecostprocessorkafka
+│   │   │       │                       ├── UsageCostDetail.class
+│   │   │       │                       ├── UsageCostProcessor.class
+│   │   │       │                       ├── UsageCostProcessorKafkaApplication.class
+│   │   │       │                       └── UsageDetail.class
+│   │   │       ├── generated-sources
+│   │   │       │   └── annotations
+│   │   │       ├── generated-test-sources
+│   │   │       │   └── test-annotations
+│   │   │       ├── maven-status
+│   │   │       │   └── maven-compiler-plugin
+│   │   │       │       ├── compile
+│   │   │       │       │   └── default-compile
+│   │   │       │       │       ├── createdFiles.lst
+│   │   │       │       │       └── inputFiles.lst
+│   │   │       │       └── testCompile
+│   │   │       │           └── default-testCompile
+│   │   │       │               ├── createdFiles.lst
+│   │   │       │               └── inputFiles.lst
+│   │   │       ├── surefire-reports
+│   │   │       │   ├── io.spring.dataflow.sample.usagecostprocessorkafka.UsageCostProcessorKafkaApplicationTests.txt
+│   │   │       │   └── TEST-io.spring.dataflow.sample.usagecostprocessorkafka.UsageCostProcessorKafkaApplicationTests.xml
+│   │   │       └── test-classes
+│   │   │           └── io
+│   │   │               └── spring
+│   │   │                   └── dataflow
+│   │   │                       └── sample
+│   │   │                           └── usagecostprocessorkafka
+│   │   │                               └── UsageCostProcessorKafkaApplicationTests.class
+│   │   ├── usage-cost-processor-rabbit
+│   │   │   ├── mvnw
+│   │   │   ├── mvnw.cmd
+│   │   │   ├── pom.xml
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   ├── main
+│   │   │   │   │   ├── java
+│   │   │   │   │   │   └── io
+│   │   │   │   │   │       └── spring
+│   │   │   │   │   │           └── dataflow
+│   │   │   │   │   │               └── sample
+│   │   │   │   │   │                   └── usagecostprocessorrabbit
+│   │   │   │   │   │                       ├── UsageCostDetail.java
+│   │   │   │   │   │                       ├── UsageCostProcessor.java
+│   │   │   │   │   │                       ├── UsageCostProcessorRabbitApplication.java
+│   │   │   │   │   │                       └── UsageDetail.java
+│   │   │   │   │   └── resources
+│   │   │   │   │       └── application.yml
+│   │   │   │   └── test
+│   │   │   │       └── java
+│   │   │   │           └── io
+│   │   │   │               └── spring
+│   │   │   │                   └── dataflow
+│   │   │   │                       └── sample
+│   │   │   │                           └── usagecostprocessorrabbit
+│   │   │   │                               └── UsageCostProcessorRabbitApplicationTests.java
+│   │   │   └── target
+│   │   │       ├── classes
+│   │   │       │   ├── application.yml
+│   │   │       │   └── io
+│   │   │       │       └── spring
+│   │   │       │           └── dataflow
+│   │   │       │               └── sample
+│   │   │       │                   └── usagecostprocessorrabbit
+│   │   │       │                       ├── UsageCostDetail.class
+│   │   │       │                       ├── UsageCostProcessor.class
+│   │   │       │                       ├── UsageCostProcessorRabbitApplication.class
+│   │   │       │                       └── UsageDetail.class
+│   │   │       └── test-classes
+│   │   │           └── io
+│   │   │               └── spring
+│   │   │                   └── dataflow
+│   │   │                       └── sample
+│   │   │                           └── usagecostprocessorrabbit
+│   │   │                               └── UsageCostProcessorRabbitApplicationTests.class
+│   │   ├── usage-detail-sender-kafka
+│   │   │   ├── mvnw
+│   │   │   ├── mvnw.cmd
+│   │   │   ├── pom.xml
+│   │   │   ├── src
+│   │   │   │   ├── main
+│   │   │   │   │   ├── java
+│   │   │   │   │   │   └── io
+│   │   │   │   │   │       └── spring
+│   │   │   │   │   │           └── dataflow
+│   │   │   │   │   │               └── sample
+│   │   │   │   │   │                   └── usagedetailsenderkafka
+│   │   │   │   │   │                       ├── UsageDetail.java
+│   │   │   │   │   │                       ├── UsageDetailSender.java
+│   │   │   │   │   │                       └── UsageDetailSenderKafkaApplication.java
+│   │   │   │   │   └── resources
+│   │   │   │   │       └── application.yml
+│   │   │   │   └── test
+│   │   │   │       └── java
+│   │   │   │           └── io
+│   │   │   │               └── spring
+│   │   │   │                   └── dataflow
+│   │   │   │                       └── sample
+│   │   │   │                           └── usagedetailsenderkafka
+│   │   │   │                               └── UsageDetailSenderKafkaApplicationTests.java
+│   │   │   └── target
+│   │   │       ├── classes
+│   │   │       │   ├── application.yml
+│   │   │       │   └── io
+│   │   │       │       └── spring
+│   │   │       │           └── dataflow
+│   │   │       │               └── sample
+│   │   │       │                   └── usagedetailsenderkafka
+│   │   │       │                       ├── UsageDetail.class
+│   │   │       │                       ├── UsageDetailSender.class
+│   │   │       │                       └── UsageDetailSenderKafkaApplication.class
+│   │   │       ├── generated-sources
+│   │   │       │   └── annotations
+│   │   │       ├── generated-test-sources
+│   │   │       │   └── test-annotations
+│   │   │       ├── maven-status
+│   │   │       │   └── maven-compiler-plugin
+│   │   │       │       ├── compile
+│   │   │       │       │   └── default-compile
+│   │   │       │       │       ├── createdFiles.lst
+│   │   │       │       │       └── inputFiles.lst
+│   │   │       │       └── testCompile
+│   │   │       │           └── default-testCompile
+│   │   │       │               ├── createdFiles.lst
+│   │   │       │               └── inputFiles.lst
+│   │   │       └── test-classes
+│   │   │           └── io
+│   │   │               └── spring
+│   │   │                   └── dataflow
+│   │   │                       └── sample
+│   │   │                           └── usagedetailsenderkafka
+│   │   │                               └── UsageDetailSenderKafkaApplicationTests.class
+│   │   └── usage-detail-sender-rabbit
+│   │       ├── mvnw
+│   │       ├── mvnw.cmd
+│   │       ├── pom.xml
+│   │       ├── README.md
+│   │       ├── src
+│   │       │   ├── main
+│   │       │   │   ├── java
+│   │       │   │   │   └── io
+│   │       │   │   │       └── spring
+│   │       │   │   │           └── dataflow
+│   │       │   │   │               └── sample
+│   │       │   │   │                   └── usagedetailsenderrabbit
+│   │       │   │   │                       ├── UsageDetail.java
+│   │       │   │   │                       ├── UsageDetailSender.java
+│   │       │   │   │                       └── UsageDetailSenderRabbitApplication.java
+│   │       │   │   └── resources
+│   │       │   │       └── application.yml
+│   │       │   └── test
+│   │       │       └── java
+│   │       │           └── io
+│   │       │               └── spring
+│   │       │                   └── dataflow
+│   │       │                       └── sample
+│   │       │                           └── usagedetailsenderrabbit
+│   │       │                               └── UsageDetailSenderRabbitApplicationTests.java
+│   │       └── target
+│   │           ├── classes
+│   │           │   ├── application.yml
+│   │           │   └── io
+│   │           │       └── spring
+│   │           │           └── dataflow
+│   │           │               └── sample
+│   │           │                   └── usagedetailsenderrabbit
+│   │           │                       ├── UsageDetail.class
+│   │           │                       ├── UsageDetailSender.class
+│   │           │                       └── UsageDetailSenderRabbitApplication.class
+│   │           └── test-classes
+│   │               └── io
+│   │                   └── spring
+│   │                       └── dataflow
+│   │                           └── sample
+│   │                               └── usagedetailsenderrabbit
+│   │                                   └── UsageDetailSenderRabbitApplicationTests.class
+│   ├── spring-data-mongodb-rest
+│   │   ├── HELP.md
+│   │   ├── mongodb
+│   │   │   ├── docker-compose-with-mongo-and-mongo-express.yml
+│   │   │   ├── docker-compose-with-mongo.yml
+│   │   │   └── mongo-init.js
+│   │   ├── mvnw
+│   │   ├── mvnw.cmd
+│   │   ├── pom.xml
+│   │   ├── README.org
+│   │   └── src
+│   │       ├── main
+│   │       │   ├── java
+│   │       │   │   └── com
+│   │       │   │       └── springdatamongodbrest
+│   │       │   │           ├── models
+│   │       │   │           │   └── Person.java
+│   │       │   │           ├── repository
+│   │       │   │           │   └── PersonRepository.java
+│   │       │   │           └── SpringDataMongodbRestApplication.java
+│   │       │   └── resources
+│   │       │       └── application.properties
+│   │       └── test
+│   │           └── java
+│   │               └── com
+│   │                   └── springdatamongodbrest
+│   │                       └── SpringDataMongodbRestApplicationTests.java
+│   ├── spring-hateoas-rest-service
+│   │   ├── HELP.md
+│   │   ├── mvnw
+│   │   ├── mvnw.cmd
+│   │   ├── pom.xml
+│   │   ├── README.md
+│   │   └── src
+│   │       ├── main
+│   │       │   ├── java
+│   │       │   │   └── com
+│   │       │   │       └── hateoas
+│   │       │   │           └── service
+│   │       │   │               ├── controller
+│   │       │   │               │   └── GreetingController.java
+│   │       │   │               ├── model
+│   │       │   │               │   └── Greeting.java
+│   │       │   │               └── SpringHateoasRestServiceApplication.java
+│   │       │   └── resources
+│   │       │       └── application.properties
+│   │       └── test
+│   │           └── java
+│   │               └── com
+│   │                   └── hateoas
+│   │                       └── service
+│   │                           └── SpringHateoasRestServiceApplicationTests.java
+│   ├── spring-rest-template
+│   │   ├── build.gradle
+│   │   ├── gradle
+│   │   │   └── wrapper
+│   │   │       ├── gradle-wrapper.jar
+│   │   │       └── gradle-wrapper.properties
+│   │   ├── gradlew
+│   │   ├── gradlew.bat
+│   │   ├── README.org
+│   │   ├── settings.gradle
+│   │   └── src
+│   │       ├── main
+│   │       │   ├── java
+│   │       │   │   └── com
+│   │       │   │       └── example
+│   │       │   │           └── springresttemplate
+│   │       │   │               ├── model
+│   │       │   │               │   ├── Quote.java
+│   │       │   │               │   └── Value.java
+│   │       │   │               └── SpringRestTemplateApplication.java
+│   │       │   └── resources
+│   │       │       └── application.properties
+│   │       └── test
+│   │           └── java
+│   │               └── com
+│   │                   └── example
+│   │                       └── springresttemplate
+│   │                           └── SpringRestTemplateApplicationTests.java
+│   ├── spring-security
+│   │   ├── Basic Authentication in Spring WebClient.org
+│   │   ├── Basic Authentication in Spring WebClient.org~
+│   │   ├── Using Spring OAuth2 RestTemplate.org
+│   │   └── Using Spring OAuth2 RestTemplate.org~
+│   └── spring-web-client
+│       ├── Usage and test cases.org
+│       └── Usage and test cases.org~
+├── kafka
+│   ├── docker-compose-kafka-cluster-setup.yml
+│   ├── docker-compose-single-node-setup.yml
+│   ├── docker-compose-wurstmeister.yml
+│   ├── kafka-producer-wikimedia
+│   │   ├── bin
+│   │   ├── pom.xml
+│   │   ├── src
+│   │   └── target
+│   │       ├── classes
+│   │       └── test-classes
+│   ├── README.org
+│   ├── README.org~
+│   └── spring-kafka
+│       ├── HELP.md
+│       ├── mvnw
+│       ├── mvnw.cmd
+│       ├── pom.xml
+│       ├── README.md~
+│       ├── README.org
+│       ├── README.org~
+│       ├── src
+│       │   ├── main
+│       │   │   ├── java
+│       │   │   │   └── com
+│       │   │   │       └── example
+│       │   │   │           └── springkafka
+│       │   │   │               ├── config
+│       │   │   │               │   ├── MyCustomListenerConfig.java
+│       │   │   │               │   └── MyCustomProducerConfig.java
+│       │   │   │               ├── controller
+│       │   │   │               │   └── KafkaController.java
+│       │   │   │               ├── model
+│       │   │   │               │   └── Greeting.java
+│       │   │   │               ├── services
+│       │   │   │               │   ├── ListenerService.java
+│       │   │   │               │   └── ProducerService.java
+│       │   │   │               └── SpringKafkaApplication.java
+│       │   │   └── resources
+│       │   │       └── application.yml
+│       │   └── test
+│       │       └── java
+│       │           └── com
+│       │               └── example
+│       │                   └── springkafka
+│       │                       └── SpringKafkaApplicationTests.java
+│       └── target
+│           ├── classes
+│           │   ├── application.yml
+│           │   └── com
+│           │       └── example
+│           │           └── springkafka
+│           │               ├── config
+│           │               │   ├── MyCustomListenerConfig.class
+│           │               │   └── MyCustomProducerConfig.class
+│           │               ├── controller
+│           │               │   └── KafkaController.class
+│           │               ├── model
+│           │               │   └── Greeting.class
+│           │               ├── services
+│           │               │   ├── ListenerService.class
+│           │               │   ├── ProducerService$1.class
+│           │               │   ├── ProducerService$2.class
+│           │               │   └── ProducerService.class
+│           │               └── SpringKafkaApplication.class
+│           ├── generated-sources
+│           │   └── annotations
+│           ├── generated-test-sources
+│           │   └── test-annotations
+│           ├── maven-status
+│           │   └── maven-compiler-plugin
+│           │       ├── compile
+│           │       │   └── default-compile
+│           │       │       ├── createdFiles.lst
+│           │       │       └── inputFiles.lst
+│           │       └── testCompile
+│           │           └── default-testCompile
+│           │               ├── createdFiles.lst
+│           │               └── inputFiles.lst
+│           └── test-classes
+│               └── com
+│                   └── example
+│                       └── springkafka
+│                           └── SpringKafkaApplicationTests.class
+├── mongodb
+│   ├── How To Run MongoDB as a Docker Container.pdf
+│   └── README.org
+├── Research and Tips
+│   ├── Api versioning.md
+│   ├── Certifications
+│   │   ├── certifications.md
+│   │   ├── GeneralThoughts.md
+│   │   ├── Look into these.md
+│   │   └── Resources.md
+│   ├── Checklist for pull requests.md
+│   ├── Concepts about Hacking.md
+│   ├── Definition of done.md
+│   ├── Non technical skills
+│   │   ├── Bad code.md
+│   │   ├── Common developer pitfalls that even seniors struggle with.md
+│   │   ├── Critical soft skills for software developers.md
+│   │   ├── Five important lessons from four years as a software developer.md
+│   │   ├── Fundamentals of a good developer mindset.md
+│   │   ├── How do programmers manage stress.md
+│   │   ├── Tech lead.md
+│   │   └── When is constructive criticism not helpful.md
+│   ├── Open source
+│   │   ├── ChadFowler.md
+│   │   └── Resources.md
+│   ├── Preparation
+│   │   ├── 6 Types of questions you need to know to ace any coding interview.md
+│   │   ├── 75 interview questions.md
+│   │   ├── AMCAT Automata Questions with Answers _ Articles - FACE Prep.pdf
+│   │   ├── Balance brackets in a string
+│   │   │   ├── image1.png
+│   │   │   └── image2.png
+│   │   ├── Best way to prepare for interview in three months.md
+│   │   ├── Books
+│   │   │   ├── Does studying CLRS help.md
+│   │   │   └── Good books for Algorithms DS and Interviews.md
+│   │   ├── Can you cheat recruitment process by practicing Algorithmic Puzzles.md
+│   │   ├── DailyCodingProblem
+│   │   │   ├── 100.txt
+│   │   │   ├── 101.txt
+│   │   │   ├── 102.txt
+│   │   │   ├── 103.txt
+│   │   │   ├── 104.txt
+│   │   │   ├── 105.txt
+│   │   │   ├── 106.txt
+│   │   │   ├── 108.txt
+│   │   │   ├── 109.txt
+│   │   │   ├── 10.txt
+│   │   │   ├── 113.txt
+│   │   │   ├── 114.txt
+│   │   │   ├── 118.txt
+│   │   │   ├── 119.txt
+│   │   │   ├── 11.txt
+│   │   │   ├── 120.txt
+│   │   │   ├── 121.txt
+│   │   │   ├── 122.txt
+│   │   │   ├── 123.txt
+│   │   │   ├── 126.txt
+│   │   │   ├── 127.txt
+│   │   │   ├── 128.txt
+│   │   │   ├── 129.txt
+│   │   │   ├── 12.txt
+│   │   │   ├── 130.txt
+│   │   │   ├── 131.txt
+│   │   │   ├── 132.txt
+│   │   │   ├── 133.txt
+│   │   │   ├── 134.txt
+│   │   │   ├── 136.txt
+│   │   │   ├── 137.txt
+│   │   │   ├── 138.txt
+│   │   │   ├── 139.txt
+│   │   │   ├── 13.txt
+│   │   │   ├── 140.txt
+│   │   │   ├── 141.txt
+│   │   │   ├── 142.txt
+│   │   │   ├── 143.txt
+│   │   │   ├── 144.txt
+│   │   │   ├── 145.txt
+│   │   │   ├── 147.txt
+│   │   │   ├── 148.txt
+│   │   │   ├── 149.txt
+│   │   │   ├── 14.txt
+│   │   │   ├── 150.txt
+│   │   │   ├── 151.txt
+│   │   │   ├── 152.txt
+│   │   │   ├── 153.txt
+│   │   │   ├── 154.txt
+│   │   │   ├── 155.txt
+│   │   │   ├── 156.txt
+│   │   │   ├── 157.txt
+│   │   │   ├── 158.txt
+│   │   │   ├── 159.txt
+│   │   │   ├── 15.txt
+│   │   │   ├── 160.txt
+│   │   │   ├── 161.txt
+│   │   │   ├── 162.txt
+│   │   │   ├── 163.txt
+│   │   │   ├── 164.txt
+│   │   │   ├── 165.txt
+│   │   │   ├── 166.txt
+│   │   │   ├── 167.txt
+│   │   │   ├── 168.txt
+│   │   │   ├── 169.txt
+│   │   │   ├── 16.txt
+│   │   │   ├── 170.txt
+│   │   │   ├── 171.txt
+│   │   │   ├── 172.txt
+│   │   │   ├── 173.txt
+│   │   │   ├── 174.txt
+│   │   │   ├── 175.txt
+│   │   │   ├── 176.txt
+│   │   │   ├── 177.txt
+│   │   │   ├── 178.txt
+│   │   │   ├── 179.txt
+│   │   │   ├── 17.txt
+│   │   │   ├── 180.txt
+│   │   │   ├── 181.txt
+│   │   │   ├── 182.txt
+│   │   │   ├── 183.txt
+│   │   │   ├── 184.txt
+│   │   │   ├── 185.txt
+│   │   │   ├── 186.txt
+│   │   │   ├── 187.txt
+│   │   │   ├── 188.txt
+│   │   │   ├── 189.txt
+│   │   │   ├── 18.txt
+│   │   │   ├── 190.txt
+│   │   │   ├── 191.txt
+│   │   │   ├── 192.txt
+│   │   │   ├── 193.txt
+│   │   │   ├── 194.txt
+│   │   │   ├── 195.txt
+│   │   │   ├── 197.txt
+│   │   │   ├── 198.txt
+│   │   │   ├── 199.txt
+│   │   │   ├── 19.txt
+│   │   │   ├── 200.txt
+│   │   │   ├── 201.txt
+│   │   │   ├── 202.txt
+│   │   │   ├── 203.txt
+│   │   │   ├── 205.txt
+│   │   │   ├── 206.txt
+│   │   │   ├── 207.txt
+│   │   │   ├── 208.txt
+│   │   │   ├── 209.txt
+│   │   │   ├── 20.txt
+│   │   │   ├── 210.txt
+│   │   │   ├── 211.txt
+│   │   │   ├── 212.txt
+│   │   │   ├── 213.txt
+│   │   │   ├── 214.txt
+│   │   │   ├── 216.txt
+│   │   │   ├── 217.txt
+│   │   │   ├── 218.txt
+│   │   │   ├── 219.txt
+│   │   │   ├── 21.txt
+│   │   │   ├── 220.txt
+│   │   │   ├── 221.txt
+│   │   │   ├── 222.txt
+│   │   │   ├── 224.txt
+│   │   │   ├── 225.txt
+│   │   │   ├── 226.txt
+│   │   │   ├── 227.txt
+│   │   │   ├── 228.txt
+│   │   │   ├── 229.txt
+│   │   │   ├── 22.txt
+│   │   │   ├── 230.txt
+│   │   │   ├── 231.txt
+│   │   │   ├── 232.txt
+│   │   │   ├── 233.txt
+│   │   │   ├── 234.txt
+│   │   │   ├── 235.txt
+│   │   │   ├── 236.txt
+│   │   │   ├── 237.txt
+│   │   │   ├── 238.txt
+│   │   │   ├── 239.txt
+│   │   │   ├── 23.txt
+│   │   │   ├── 240.txt
+│   │   │   ├── 241.txt
+│   │   │   ├── 242.txt
+│   │   │   ├── 243.txt
+│   │   │   ├── 244.txt
+│   │   │   ├── 245.txt
+│   │   │   ├── 246.txt
+│   │   │   ├── 248.txt
+│   │   │   ├── 249.txt
+│   │   │   ├── 250.txt
+│   │   │   ├── 251.txt
+│   │   │   ├── 252.txt
+│   │   │   ├── 253.txt
+│   │   │   ├── 255.txt
+│   │   │   ├── 256.txt
+│   │   │   ├── 257.txt
+│   │   │   ├── 259.txt
+│   │   │   ├── 25.txt
+│   │   │   ├── 260.txt
+│   │   │   ├── 262.txt
+│   │   │   ├── 263.txt
+│   │   │   ├── 264.txt
+│   │   │   ├── 265.txt
+│   │   │   ├── 266.txt
+│   │   │   ├── 267.txt
+│   │   │   ├── 268.txt
+│   │   │   ├── 269.txt
+│   │   │   ├── 26.txt
+│   │   │   ├── 270.txt
+│   │   │   ├── 271.txt
+│   │   │   ├── 272.txt
+│   │   │   ├── 273.txt
+│   │   │   ├── 274.txt
+│   │   │   ├── 275.txt
+│   │   │   ├── 276.txt
+│   │   │   ├── 277.txt
+│   │   │   ├── 279.txt
+│   │   │   ├── 27.txt
+│   │   │   ├── 280.txt
+│   │   │   ├── 281.txt
+│   │   │   ├── 282.txt
+│   │   │   ├── 283.txt
+│   │   │   ├── 285.txt
+│   │   │   ├── 286.txt
+│   │   │   ├── 287.txt
+│   │   │   ├── 288.txt
+│   │   │   ├── 289.txt
+│   │   │   ├── 28.txt
+│   │   │   ├── 290.txt
+│   │   │   ├── 291.txt
+│   │   │   ├── 292.txt
+│   │   │   ├── 293.txt
+│   │   │   ├── 294.txt
+│   │   │   ├── 295.txt
+│   │   │   ├── 296.txt
+│   │   │   ├── 297.txt
+│   │   │   ├── 298.txt
+│   │   │   ├── 299.txt
+│   │   │   ├── 29.txt
+│   │   │   ├── 2.txt
+│   │   │   ├── 300.txt
+│   │   │   ├── 301.txt
+│   │   │   ├── 302.txt
+│   │   │   ├── 303.txt
+│   │   │   ├── 304.txt
+│   │   │   ├── 305.txt
+│   │   │   ├── 306.txt
+│   │   │   ├── 307.txt
+│   │   │   ├── 308.txt
+│   │   │   ├── 309.txt
+│   │   │   ├── 30.txt
+│   │   │   ├── 310.txt
+│   │   │   ├── 311.txt
+│   │   │   ├── 312.txt
+│   │   │   ├── 313.txt
+│   │   │   ├── 314.txt
+│   │   │   ├── 315.txt
+│   │   │   ├── 316.txt
+│   │   │   ├── 317.txt
+│   │   │   ├── 318.txt
+│   │   │   ├── 319.txt
+│   │   │   ├── 31.txt
+│   │   │   ├── 320.txt
+│   │   │   ├── 321.txt
+│   │   │   ├── 322.txt
+│   │   │   ├── 323.txt
+│   │   │   ├── 324.txt
+│   │   │   ├── 325.txt
+│   │   │   ├── 328.txt
+│   │   │   ├── 329.txt
+│   │   │   ├── 32.txt
+│   │   │   ├── 330.txt
+│   │   │   ├── 331.txt
+│   │   │   ├── 332.txt
+│   │   │   ├── 333.txt
+│   │   │   ├── 334.txt
+│   │   │   ├── 335.txt
+│   │   │   ├── 336.txt
+│   │   │   ├── 337.txt
+│   │   │   ├── 338.txt
+│   │   │   ├── 339.txt
+│   │   │   ├── 33.txt
+│   │   │   ├── 340.txt
+│   │   │   ├── 341.txt
+│   │   │   ├── 342.txt
+│   │   │   ├── 343.txt
+│   │   │   ├── 345.txt
+│   │   │   ├── 346.txt
+│   │   │   ├── 347.txt
+│   │   │   ├── 348.txt
+│   │   │   ├── 349.txt
+│   │   │   ├── 34.txt
+│   │   │   ├── 350.txt
+│   │   │   ├── 351.txt
+│   │   │   ├── 352.txt
+│   │   │   ├── 353.txt
+│   │   │   ├── 354.txt
+│   │   │   ├── 355.txt
+│   │   │   ├── 356.txt
+│   │   │   ├── 358.txt
+│   │   │   ├── 359.txt
+│   │   │   ├── 35.txt
+│   │   │   ├── 360.txt
+│   │   │   ├── 361.txt
+│   │   │   ├── 362.txt
+│   │   │   ├── 363.txt
+│   │   │   ├── 364.txt
+│   │   │   ├── 365.txt
+│   │   │   ├── 366.txt
+│   │   │   ├── 367.txt
+│   │   │   ├── 368.txt
+│   │   │   ├── 369.txt
+│   │   │   ├── 36.txt
+│   │   │   ├── 370.txt
+│   │   │   ├── 371.txt
+│   │   │   ├── 372.txt
+│   │   │   ├── 373.txt
+│   │   │   ├── 374.txt
+│   │   │   ├── 375.txt
+│   │   │   ├── 376.txt
+│   │   │   ├── 377.txt
+│   │   │   ├── 378.txt
+│   │   │   ├── 379.txt
+│   │   │   ├── 37.txt
+│   │   │   ├── 380.txt
+│   │   │   ├── 381.txt
+│   │   │   ├── 382.txt
+│   │   │   ├── 383.txt
+│   │   │   ├── 384.txt
+│   │   │   ├── 385.txt
+│   │   │   ├── 386.txt
+│   │   │   ├── 387.txt
+│   │   │   ├── 388.txt
+│   │   │   ├── 389.txt
+│   │   │   ├── 38.txt
+│   │   │   ├── 390.txt
+│   │   │   ├── 391.txt
+│   │   │   ├── 392.txt
+│   │   │   ├── 393.txt
+│   │   │   ├── 395.txt
+│   │   │   ├── 396.txt
+│   │   │   ├── 397.txt
+│   │   │   ├── 398.txt
+│   │   │   ├── 399.txt
+│   │   │   ├── 39.txt
+│   │   │   ├── 400.txt
+│   │   │   ├── 401.txt
+│   │   │   ├── 402.txt
+│   │   │   ├── 403.txt
+│   │   │   ├── 404.txt
+│   │   │   ├── 405.txt
+│   │   │   ├── 406.txt
+│   │   │   ├── 407.txt
+│   │   │   ├── 408.txt
+│   │   │   ├── 409.txt
+│   │   │   ├── 40.txt
+│   │   │   ├── 410.txt
+│   │   │   ├── 411.txt
+│   │   │   ├── 412.txt
+│   │   │   ├── 413.txt
+│   │   │   ├── 414.txt
+│   │   │   ├── 415.txt
+│   │   │   ├── 416.txt
+│   │   │   ├── 417.txt
+│   │   │   ├── 418.txt
+│   │   │   ├── 419.txt
+│   │   │   ├── 41.txt
+│   │   │   ├── 420.txt
+│   │   │   ├── 421.txt
+│   │   │   ├── 423.txt
+│   │   │   ├── 424.txt
+│   │   │   ├── 425.txt
+│   │   │   ├── 427.txt
+│   │   │   ├── 428.txt
+│   │   │   ├── 429.txt
+│   │   │   ├── 42.txt
+│   │   │   ├── 430.txt
+│   │   │   ├── 431.txt
+│   │   │   ├── 432.txt
+│   │   │   ├── 433.txt
+│   │   │   ├── 434.txt
+│   │   │   ├── 436.txt
+│   │   │   ├── 437.txt
+│   │   │   ├── 438.txt
+│   │   │   ├── 439.txt
+│   │   │   ├── 43.txt
+│   │   │   ├── 440.txt
+│   │   │   ├── 441.txt
+│   │   │   ├── 443.txt
+│   │   │   ├── 444.txt
+│   │   │   ├── 445.txt
+│   │   │   ├── 446.txt
+│   │   │   ├── 447.txt
+│   │   │   ├── 448.txt
+│   │   │   ├── 449.txt
+│   │   │   ├── 44.txt
+│   │   │   ├── 450.txt
+│   │   │   ├── 451.txt
+│   │   │   ├── 452.txt
+│   │   │   ├── 453.txt
+│   │   │   ├── 454.txt
+│   │   │   ├── 455.txt
+│   │   │   ├── 456.txt
+│   │   │   ├── 457.txt
+│   │   │   ├── 458.txt
+│   │   │   ├── 459.txt
+│   │   │   ├── 45.txt
+│   │   │   ├── 460.txt
+│   │   │   ├── 461.txt
+│   │   │   ├── 462.txt
+│   │   │   ├── 463.txt
+│   │   │   ├── 464.txt
+│   │   │   ├── 465.txt
+│   │   │   ├── 466.txt
+│   │   │   ├── 467.txt
+│   │   │   ├── 468.txt
+│   │   │   ├── 469.txt
+│   │   │   ├── 46.txt
+│   │   │   ├── 470.txt
+│   │   │   ├── 471.txt
+│   │   │   ├── 472.txt
+│   │   │   ├── 473.txt
+│   │   │   ├── 474.txt
+│   │   │   ├── 475.txt
+│   │   │   ├── 476.txt
+│   │   │   ├── 477.txt
+│   │   │   ├── 478.txt
+│   │   │   ├── 479.txt
+│   │   │   ├── 47.txt
+│   │   │   ├── 480.txt
+│   │   │   ├── 481.txt
+│   │   │   ├── 482.txt
+│   │   │   ├── 483.txt
+│   │   │   ├── 484.txt
+│   │   │   ├── 485.txt
+│   │   │   ├── 486.txt
+│   │   │   ├── 487.txt
+│   │   │   ├── 488.txt
+│   │   │   ├── 489.txt
+│   │   │   ├── 490.txt
+│   │   │   ├── 491.txt
+│   │   │   ├── 492.txt
+│   │   │   ├── 493.txt
+│   │   │   ├── 494.txt
+│   │   │   ├── 495.txt
+│   │   │   ├── 496.txt
+│   │   │   ├── 497.txt
+│   │   │   ├── 498.txt
+│   │   │   ├── 499.txt
+│   │   │   ├── 49.txt
+│   │   │   ├── 4.txt
+│   │   │   ├── 500.txt
+│   │   │   ├── 501.txt
+│   │   │   ├── 502.txt
+│   │   │   ├── 503.txt
+│   │   │   ├── 504.txt
+│   │   │   ├── 505.txt
+│   │   │   ├── 506.txt
+│   │   │   ├── 507.txt
+│   │   │   ├── 508.txt
+│   │   │   ├── 509.txt
+│   │   │   ├── 510.txt
+│   │   │   ├── 511.txt
+│   │   │   ├── 512.txt
+│   │   │   ├── 513.txt
+│   │   │   ├── 514.txt
+│   │   │   ├── 515.txt
+│   │   │   ├── 516.txt
+│   │   │   ├── 517.txt
+│   │   │   ├── 518.txt
+│   │   │   ├── 519.txt
+│   │   │   ├── 51.txt
+│   │   │   ├── 520.txt
+│   │   │   ├── 521.txt
+│   │   │   ├── 522.txt
+│   │   │   ├── 523.txt
+│   │   │   ├── 524.txt
+│   │   │   ├── 525.txt
+│   │   │   ├── 526.txt
+│   │   │   ├── 527.txt
+│   │   │   ├── 528.txt
+│   │   │   ├── 529.txt
+│   │   │   ├── 52.txt
+│   │   │   ├── 530.txt
+│   │   │   ├── 531.txt
+│   │   │   ├── 532.txt
+│   │   │   ├── 533.txt
+│   │   │   ├── 534.txt
+│   │   │   ├── 535.txt
+│   │   │   ├── 536.txt
+│   │   │   ├── 537.txt
+│   │   │   ├── 538.txt
+│   │   │   ├── 539.txt
+│   │   │   ├── 53.txt
+│   │   │   ├── 540.txt
+│   │   │   ├── 541.txt
+│   │   │   ├── 542.txt
+│   │   │   ├── 543.txt
+│   │   │   ├── 544.txt
+│   │   │   ├── 545.txt
+│   │   │   ├── 546.txt
+│   │   │   ├── 547.txt
+│   │   │   ├── 548.txt
+│   │   │   ├── 549.txt
+│   │   │   ├── 54.txt
+│   │   │   ├── 550.txt
+│   │   │   ├── 551.txt
+│   │   │   ├── 552.txt
+│   │   │   ├── 553.txt
+│   │   │   ├── 554.txt
+│   │   │   ├── 555.txt
+│   │   │   ├── 556.txt
+│   │   │   ├── 557.txt
+│   │   │   ├── 558.txt
+│   │   │   ├── 559.txt
+│   │   │   ├── 55.txt
+│   │   │   ├── 560.txt
+│   │   │   ├── 561.txt
+│   │   │   ├── 562.txt
+│   │   │   ├── 563.txt
+│   │   │   ├── 564.txt
+│   │   │   ├── 565.txt
+│   │   │   ├── 566.txt
+│   │   │   ├── 567.txt
+│   │   │   ├── 568.txt
+│   │   │   ├── 569.txt
+│   │   │   ├── 56.txt
+│   │   │   ├── 570.txt
+│   │   │   ├── 571.txt
+│   │   │   ├── 572.txt
+│   │   │   ├── 573.txt
+│   │   │   ├── 574.txt
+│   │   │   ├── 575.txt
+│   │   │   ├── 576.txt
+│   │   │   ├── 577.txt
+│   │   │   ├── 578.txt
+│   │   │   ├── 579.txt
+│   │   │   ├── 57.txt
+│   │   │   ├── 580.txt
+│   │   │   ├── 581.txt
+│   │   │   ├── 582.txt
+│   │   │   ├── 583.txt
+│   │   │   ├── 584.txt
+│   │   │   ├── 585.txt
+│   │   │   ├── 586.txt
+│   │   │   ├── 587.txt
+│   │   │   ├── 588.txt
+│   │   │   ├── 589.txt
+│   │   │   ├── 58.txt
+│   │   │   ├── 590.txt
+│   │   │   ├── 591.txt
+│   │   │   ├── 592.txt
+│   │   │   ├── 593.txt
+│   │   │   ├── 594.txt
+│   │   │   ├── 595.txt
+│   │   │   ├── 596.txt
+│   │   │   ├── 597.txt
+│   │   │   ├── 598.txt
+│   │   │   ├── 599.txt
+│   │   │   ├── 59.txt
+│   │   │   ├── 5.txt
+│   │   │   ├── 600.txt
+│   │   │   ├── 601.txt
+│   │   │   ├── 602.txt
+│   │   │   ├── 603.txt
+│   │   │   ├── 604.txt
+│   │   │   ├── 605.txt
+│   │   │   ├── 606.txt
+│   │   │   ├── 607.txt
+│   │   │   ├── 608.txt
+│   │   │   ├── 609.txt
+│   │   │   ├── 609.txt~
+│   │   │   ├── 60.txt
+│   │   │   ├── 610.txt
+│   │   │   ├── 611.txt
+│   │   │   ├── 611.txt~
+│   │   │   ├── 612.txt
+│   │   │   ├── 613.txt
+│   │   │   ├── 613.txt~
+│   │   │   ├── 614.txt
+│   │   │   ├── 614.txt~
+│   │   │   ├── 615.txt
+│   │   │   ├── 615.txt~
+│   │   │   ├── 616.txt
+│   │   │   ├── 616.txt~
+│   │   │   ├── 617.txt
+│   │   │   ├── 617.txt~
+│   │   │   ├── 618.txt
+│   │   │   ├── 619.txt
+│   │   │   ├── 619.txt~
+│   │   │   ├── 61.txt
+│   │   │   ├── 620.txt
+│   │   │   ├── 620.txt~
+│   │   │   ├── 621.txt
+│   │   │   ├── 621.txt~
+│   │   │   ├── 622.txt
+│   │   │   ├── 623.txt
+│   │   │   ├── 624.txt
+│   │   │   ├── 625.txt
+│   │   │   ├── 626.txt
+│   │   │   ├── 627.txt
+│   │   │   ├── 628.txt
+│   │   │   ├── 629.txt
+│   │   │   ├── 62.txt
+│   │   │   ├── 630.txt
+│   │   │   ├── 631.txt
+│   │   │   ├── 631.txt~
+│   │   │   ├── 632.txt
+│   │   │   ├── 633.txt
+│   │   │   ├── 634.txt
+│   │   │   ├── 634.txt~
+│   │   │   ├── 635.txt
+│   │   │   ├── 636.txt
+│   │   │   ├── 637.txt
+│   │   │   ├── 638.txt
+│   │   │   ├── 639.txt
+│   │   │   ├── 63.txt
+│   │   │   ├── 640.txt
+│   │   │   ├── 640.txt~
+│   │   │   ├── 641.txt
+│   │   │   ├── 642.txt
+│   │   │   ├── 643.txt
+│   │   │   ├── 644.txt
+│   │   │   ├── 645.txt
+│   │   │   ├── 645.txt~
+│   │   │   ├── 646.txt
+│   │   │   ├── 646.txt~
+│   │   │   ├── 647.txt
+│   │   │   ├── 648.txt
+│   │   │   ├── 649.txt
+│   │   │   ├── 64.txt
+│   │   │   ├── 650.txt
+│   │   │   ├── 650.txt~
+│   │   │   ├── 651.txt
+│   │   │   ├── 652.txt
+│   │   │   ├── 653.txt
+│   │   │   ├── 654.txt
+│   │   │   ├── 655.txt
+│   │   │   ├── 656.txt
+│   │   │   ├── 657.txt
+│   │   │   ├── 658.txt
+│   │   │   ├── 659.txt
+│   │   │   ├── 65.txt
+│   │   │   ├── 660.txt
+│   │   │   ├── 661.txt
+│   │   │   ├── 662.tx
+│   │   │   ├── 663.txt
+│   │   │   ├── 664.txt
+│   │   │   ├── 665.txt
+│   │   │   ├── 666.txt
+│   │   │   ├── 667.txt
+│   │   │   ├── 668.txt
+│   │   │   ├── 669.txt
+│   │   │   ├── 66.txt
+│   │   │   ├── 670.txt
+│   │   │   ├── 671.txt
+│   │   │   ├── 672.txt
+│   │   │   ├── 673.txt
+│   │   │   ├── 674.txt
+│   │   │   ├── 675.txt
+│   │   │   ├── 676.txt
+│   │   │   ├── 677.txt
+│   │   │   ├── 678.txt
+│   │   │   ├── 679.txt
+│   │   │   ├── 67.txt
+│   │   │   ├── 680.txt
+│   │   │   ├── 681.txt
+│   │   │   ├── 682.txt
+│   │   │   ├── 683.txt
+│   │   │   ├── 684.txt
+│   │   │   ├── 685.txt
+│   │   │   ├── 686.txt
+│   │   │   ├── 687.txt
+│   │   │   ├── 688.txt
+│   │   │   ├── 689.txt
+│   │   │   ├── 68.txt
+│   │   │   ├── 690.txt
+│   │   │   ├── 691.txt
+│   │   │   ├── 692.txt
+│   │   │   ├── 693.txt
+│   │   │   ├── 694.txt
+│   │   │   ├── 695.txt
+│   │   │   ├── 696.txt
+│   │   │   ├── 697.txt
+│   │   │   ├── 698.txt
+│   │   │   ├── 699.txt
+│   │   │   ├── 69.txt
+│   │   │   ├── 6.txt
+│   │   │   ├── 700.txt
+│   │   │   ├── 701.txt
+│   │   │   ├── 702.txt
+│   │   │   ├── 703.txt
+│   │   │   ├── 704.txt
+│   │   │   ├── 705.txt
+│   │   │   ├── 706.txt
+│   │   │   ├── 707.txt
+│   │   │   ├── 708.txt
+│   │   │   ├── 709.txt
+│   │   │   ├── 70.txt
+│   │   │   ├── 710.txt
+│   │   │   ├── 710.txt~
+│   │   │   ├── 711.txt
+│   │   │   ├── 711.txt~
+│   │   │   ├── 712.txt
+│   │   │   ├── 712.txt~
+│   │   │   ├── 713.txt
+│   │   │   ├── 714.txt
+│   │   │   ├── 714.txt~
+│   │   │   ├── 715.txt
+│   │   │   ├── 715.txt~
+│   │   │   ├── 716.txt
+│   │   │   ├── 716.txt~
+│   │   │   ├── 717.txt
+│   │   │   ├── 717.txt~
+│   │   │   ├── 718.txt
+│   │   │   ├── 718.txt~
+│   │   │   ├── 719.txt
+│   │   │   ├── 719.txt~
+│   │   │   ├── 71.txt
+│   │   │   ├── 720.txt
+│   │   │   ├── 720.txt~
+│   │   │   ├── 721.txt
+│   │   │   ├── 721.txt~
+│   │   │   ├── 722.txt
+│   │   │   ├── 722.txt~
+│   │   │   ├── 723.txt
+│   │   │   ├── 723.txt~
+│   │   │   ├── 724.txt
+│   │   │   ├── 725.txt
+│   │   │   ├── 726.tx
+│   │   │   ├── 727.txt
+│   │   │   ├── 728.txt
+│   │   │   ├── 729.txt
+│   │   │   ├── 72.txt
+│   │   │   ├── 730.txt
+│   │   │   ├── 731.tx
+│   │   │   ├── 732.txt
+│   │   │   ├── 733.txt
+│   │   │   ├── 734.txt
+│   │   │   ├── 735.txt
+│   │   │   ├── 736.txt
+│   │   │   ├── 737.txt
+│   │   │   ├── 738.txt
+│   │   │   ├── 739.txt
+│   │   │   ├── 73.txt
+│   │   │   ├── 740.txt
+│   │   │   ├── 741.txt
+│   │   │   ├── 742.tx
+│   │   │   ├── 743.txt
+│   │   │   ├── 744.txt
+│   │   │   ├── 745.txt
+│   │   │   ├── 746.txt
+│   │   │   ├── 747.txt
+│   │   │   ├── 748.txt
+│   │   │   ├── 749.txt
+│   │   │   ├── 74.txt
+│   │   │   ├── 750.txt
+│   │   │   ├── 751.txt
+│   │   │   ├── 752.txt
+│   │   │   ├── 753.txt
+│   │   │   ├── 754.txt
+│   │   │   ├── 755.txt
+│   │   │   ├── 756.txt
+│   │   │   ├── 757.txt
+│   │   │   ├── 758.txt
+│   │   │   ├── 759.txt
+│   │   │   ├── 75.txt
+│   │   │   ├── 760.txt
+│   │   │   ├── 761.txt
+│   │   │   ├── 762.txt
+│   │   │   ├── 763.txt
+│   │   │   ├── 764.txt
+│   │   │   ├── 765.txt
+│   │   │   ├── 766.txt
+│   │   │   ├── 767.txt
+│   │   │   ├── 768.txt
+│   │   │   ├── 769.txt
+│   │   │   ├── 76.txt
+│   │   │   ├── 770.txt
+│   │   │   ├── 771.txt
+│   │   │   ├── 772.txt
+│   │   │   ├── 773.txt
+│   │   │   ├── 774.txt
+│   │   │   ├── 775.tx
+│   │   │   ├── 776.txt
+│   │   │   ├── 777.txt
+│   │   │   ├── 778.txt
+│   │   │   ├── 779.txt
+│   │   │   ├── 77.txt
+│   │   │   ├── 780.txt
+│   │   │   ├── 781.txt
+│   │   │   ├── 782.txt
+│   │   │   ├── 783.txt
+│   │   │   ├── 784.txt
+│   │   │   ├── 785.txt
+│   │   │   ├── 786.txt
+│   │   │   ├── 787.txt
+│   │   │   ├── 788.txt
+│   │   │   ├── 789.txt
+│   │   │   ├── 78.txt
+│   │   │   ├── 790.txt
+│   │   │   ├── 791.txt
+│   │   │   ├── 792.txt
+│   │   │   ├── 793.txt
+│   │   │   ├── 794.txt
+│   │   │   ├── 795.txt
+│   │   │   ├── 796.txt
+│   │   │   ├── 797.txt
+│   │   │   ├── 798.txt
+│   │   │   ├── 799.txt
+│   │   │   ├── 79.txt
+│   │   │   ├── 7.txt
+│   │   │   ├── 800.txt
+│   │   │   ├── 801.tx
+│   │   │   ├── 802.txt
+│   │   │   ├── 803.tx
+│   │   │   ├── 804.txt
+│   │   │   ├── 805.txt
+│   │   │   ├── 806.txt
+│   │   │   ├── 807.txt
+│   │   │   ├── 808.txt
+│   │   │   ├── 81.txt
+│   │   │   ├── 82.txt
+│   │   │   ├── 84.txt
+│   │   │   ├── 85.txt
+│   │   │   ├── 86.txt
+│   │   │   ├── 87.txt
+│   │   │   ├── 88.txt
+│   │   │   ├── 89.txt
+│   │   │   ├── 90.txt
+│   │   │   ├── 91.txt
+│   │   │   ├── 92.txt
+│   │   │   ├── 93.txt
+│   │   │   ├── 95.txt
+│   │   │   ├── 96.txt
+│   │   │   ├── 97.txt
+│   │   │   ├── 98.txt
+│   │   │   ├── 99.txt
+│   │   │   ├── 9.txt
+│   │   │   ├── AnIntroToBacktracking.txt
+│   │   │   ├── HowToPickARandomElementFromAnInfiniteStream.txt
+│   │   │   ├── HowToSolveAHardProgrammingInterviewQuestion.txt
+│   │   │   ├── MyStory.txt
+│   │   │   └── Welcome.txt
+│   │   ├── DailyInterviewPro
+│   │   │   ├── AbsolutePath.txt
+│   │   │   ├── AddDigits.txt
+│   │   │   ├── AddTwoNumbersAsALinkedList.txt
+│   │   │   ├── Autocompletion.txt
+│   │   │   ├── BuddyStrings.txt
+│   │   │   ├── CharacterMap.txt
+│   │   │   ├── CheckForPalindrome.txt
+│   │   │   ├── CircleOfChainedWords.txt
+│   │   │   ├── CitySkyline.txt
+│   │   │   ├── ClosestPointsToOrigin.txt
+│   │   │   ├── ClosestTo3Sum.txt
+│   │   │   ├── CommonCharacters.txt
+│   │   │   ├── CompareVersionNumbers.txt
+│   │   │   ├── ConcatenatedWords.txt
+│   │   │   ├── ConnectedColorsInAGrid.txt
+│   │   │   ├── ConsecutiveOnes.txt
+│   │   │   ├── ContiguousSubArrayWithMaximumSum.txt
+│   │   │   ├── ConvertFractionToDecimal.txt
+│   │   │   ├── ConvertRomanNumeralsToDecimal.txt
+│   │   │   ├── ConvertToBaseTwo.txt
+│   │   │   ├── ConvertToHexadecimal.txt
+│   │   │   ├── CoursePrerequisites.txt
+│   │   │   ├── CreateASimpleCalculator.txt
+│   │   │   ├── DecimalToRoman.hs
+│   │   │   ├── DecodeString.txt
+│   │   │   ├── DeepCopyGraph.txt
+│   │   │   ├── DesignTicTacToe.txt
+│   │   │   ├── DetectLinkedListCycle.txt
+│   │   │   ├── DetermineIfLinkedListIsPalindrome.txt
+│   │   │   ├── DetermineIfNumber.txt
+│   │   │   ├── DistributeBonuses.txt
+│   │   │   ├── EditDistance.txt
+│   │   │   ├── FallingDominoes.txt
+│   │   │   ├── FindClosestPoints.txt
+│   │   │   ├── FindCyclesInAGraph.txt
+│   │   │   ├── FindDuplicates.txt
+│   │   │   ├── FindKthLargestElementInAList.txt
+│   │   │   ├── FindNonDuplicateNumber.txt
+│   │   │   ├── FindTheKthLargestNumber.txt
+│   │   │   ├── FindTheNumberOfIslands.txt
+│   │   │   ├── FindTheSingleElementInAnArrayOfDuplicates.txt
+│   │   │   ├── FirstAndLastIndicesOfAnElementInSortedArray.txt
+│   │   │   ├── FirstMissingPositiveInteger.txt
+│   │   │   ├── FirstRecurringCharacter.txt
+│   │   │   ├── FixBrackets.txt
+│   │   │   ├── FixedPoint.txt
+│   │   │   ├── FlattenDictionary.txt
+│   │   │   ├── FourSum.hs
+│   │   │   ├── GenerateAllIPAddresses.txt
+│   │   │   ├── GenerateAllSubsets.hs
+│   │   │   ├── GenerateBrackets.hs
+│   │   │   ├── HIndex.txt
+│   │   │   ├── IndexOfLargestNextNumber.txt
+│   │   │   ├── InorderSuccessor.txt
+│   │   │   ├── IntersectionOfLinkedLists.txt
+│   │   │   ├── IntersectionOfLists.txt
+│   │   │   ├── IntersectionOfTwoArrays.txt
+│   │   │   ├── JumpToTheEnd.txt
+│   │   │   ├── KaprekarsConstant.txt
+│   │   │   ├── KClosestElements.txt
+│   │   │   ├── LargestProductOfThreeElements.txt
+│   │   │   ├── LongestCommonPrefix.txt
+│   │   │   ├── LongestConsecutiveSequence.txt
+│   │   │   ├── LongestIncreasingSubsequenct.txt
+│   │   │   ├── LongestPalindromicSubstring.txt
+│   │   │   ├── LongestSubstringWithKDistinctCharacters.txt
+│   │   │   ├── LongestSubstrWithoutRepeatingCharacters.txt
+│   │   │   ├── LookAndSaySequence.txt
+│   │   │   ├── LRUCache.txt
+│   │   │   ├── MajorityElement.txt
+│   │   │   ├── MakeTheLargestNumber.txt
+│   │   │   ├── MakingChange.txt
+│   │   │   ├── MaxAndMinWithMinimumComparisons.txt
+│   │   │   ├── MaximumInAStact.txt
+│   │   │   ├── MaximumNonAdjacentSum.txt
+│   │   │   ├── MaximumProfitFromStocks.txt
+│   │   │   ├── MazePaths.txt
+│   │   │   ├── MergeKSortedLinkedLists.txt
+│   │   │   ├── MergeListOfNumberIntoRanges.txt
+│   │   │   ├── MergeOverlappingIntervals.txt
+│   │   │   ├── MinimumNumberOfOperations.txt
+│   │   │   ├── MinimumRemovalsForValidParanthesis.txt
+│   │   │   ├── MinimumSizeSubarraySum.txt
+│   │   │   ├── MinRangeNeededToSort.txt
+│   │   │   ├── MinStack.txt
+│   │   │   ├── MissingRanges.txt
+│   │   │   ├── MoveZeroes.txt
+│   │   │   ├── Multiply.txt
+│   │   │   ├── Multitasking.txt
+│   │   │   ├── NearestPoints.txt
+│   │   │   ├── NoAdjacentRepeatingCharacters.txt
+│   │   │   ├── NonDecreasingArrayWithSingleModification.txt
+│   │   │   ├── NthFibbonacciNumber.txt
+│   │   │   ├── NumberOf1Bits.txt
+│   │   │   ├── NumberOfConnectedComponents.txt
+│   │   │   ├── NumberOfMeetingRooms.txt
+│   │   │   ├── NumberOfWaysToClimbStairs.txt
+│   │   │   ├── OptimizedListSum.txt
+│   │   │   ├── PartitionAList.txt
+│   │   │   ├── PascalsTriangle.txt
+│   │   │   ├── PerfectNumber.txt
+│   │   │   ├── PermutationsOfNumbers.txt
+│   │   │   ├── PhoneNumbers.txt
+│   │   │   ├── PickingUpChange.txt
+│   │   │   ├── PlusOne.txt
+│   │   │   ├── PostorderTraversal.txt
+│   │   │   ├── PowerFunction.txt
+│   │   │   ├── PrintATreeLevelByLevelWithLineBreaks.txt
+│   │   │   ├── ProductOfArrayExceptSelf.txt
+│   │   │   ├── PythagoreanTriplets.txt
+│   │   │   ├── QueensOnAChessboard.txt
+│   │   │   ├── QueueUsingTwoStacks.txt
+│   │   │   ├── RangeSearchingInASortedList.txt
+│   │   │   ├── RansonNote.txt
+│   │   │   ├── RectangleIntersection.txt
+│   │   │   ├── RemoveAdjacentDuplicateCharacters.txt
+│   │   │   ├── RemoveCharacterToCreatePalindrome.txt
+│   │   │   ├── RemoveConsecutiveNodesThatSumToZero.txt
+│   │   │   ├── RemoveDuplicateFromLinkedList.txt
+│   │   │   ├── RemoveDuplicatesFromSortedList.txt
+│   │   │   ├── RemovekthLastElementFromLinkedList.txt
+│   │   │   ├── RemoveOneLayerOfParanthesis.txt
+│   │   │   ├── ReshapingMatrix.txt
+│   │   │   ├── ReverseADirectedGraph.txt
+│   │   │   ├── ReverseALinkedList.txt
+│   │   │   ├── ReverseBits.txt
+│   │   │   ├── ReverseInteger.hs
+│   │   │   ├── ReverseInteger.txt
+│   │   │   ├── ReversePolishNotationCalculator.txt
+│   │   │   ├── ReverseWordsInAString.txt
+│   │   │   ├── ReverseWords.txt
+│   │   │   ├── RoomScheduling.txt
+│   │   │   ├── RotateArray.txt
+│   │   │   ├── RotateLinkedList.txt
+│   │   │   ├── RotateMatrix.txt
+│   │   │   ├── RunningMedian.txt
+│   │   │   ├── ScheduleTasks.txt
+│   │   │   ├── SearchingAMatrix.hs
+│   │   │   ├── ShiftedString.txt
+│   │   │   ├── ShortestDistanceToCharacter.txt
+│   │   │   ├── ShortestUniquePrefix.txt
+│   │   │   ├── SmallestNumberThatIsNotASumOfASubsetOfList.txt
+│   │   │   ├── SortAListWithThreeUniqueNumbers.txt
+│   │   │   ├── SortAPartiallySortedList.txt
+│   │   │   ├── SortColors.txt
+│   │   │   ├── SortedSquareNumbers.txt
+│   │   │   ├── SortingWindowRange.txt
+│   │   │   ├── SpiralTraversalOfGrid.txt
+│   │   │   ├── SpreadsheetColumns.txt
+│   │   │   ├── SpreadsheetColumnTitle.txt
+│   │   │   ├── Squareroot.txt
+│   │   │   ├── StayingOnAChessBoard.txt
+│   │   │   ├── StringCompression.txt
+│   │   │   ├── StringToInteger.txt
+│   │   │   ├── SubArrayWithTargetSum.txt
+│   │   │   ├── SudokuCheck.txt
+│   │   │   ├── SumBinaryNumbers.txt
+│   │   │   ├── SumOfSquares.txt
+│   │   │   ├── SwapBits.txt
+│   │   │   ├── SwapEveryTwoNodesInALinkedList.txt
+│   │   │   ├── TheBiggestMistakeInTheCodingInterviewsCandidatesMake.txt
+│   │   │   ├── TheRealSecretToGettingAJobAtATopCompany.txt
+│   │   │   ├── ThreeSum.txt
+│   │   │   ├── TopKFrequenntWords.txt
+│   │   │   ├── TransposeMatrix.txt
+│   │   │   ├── TrappingRainwater.txt
+│   │   │   ├── UniqueSumCombinations.hs
+│   │   │   ├── ValidateBalancedParantheses.txt
+│   │   │   ├── ValidMountainArray.txt
+│   │   │   ├── WaysToTraverseAGrid.txt
+│   │   │   ├── Welcome.txt
+│   │   │   ├── WhyPython.txt
+│   │   │   ├── WitnessOfTheTallPeople.txt
+│   │   │   ├── WordConcatenation.txt
+│   │   │   ├── WordOrderingInADifferentAlphabeticalOrder.txt
+│   │   │   └── WordSearch.txt
+│   │   ├── Data Structures topics from educative course.md
+│   │   ├── First circular tour that visits all petrol pumps.pdf
+│   │   ├── General coding interview questions.md
+│   │   ├── How can I prepare for interviews in any big software company.md
+│   │   ├── How often do companies ask leetcode hard questions.md
+│   │   ├── How to code on paper.md
+│   │   ├── How to interview engineers.md
+│   │   ├── How to prepare for the amazon online coding interview.md
+│   │   ├── Implement queue using stacks.pdf
+│   │   ├── Implement stack using queues.pdf
+│   │   ├── Is there a difference between algorithms in interviews and implementation.md
+│   │   ├── LeetCode vs CodeChef.md
+│   │   ├── printArrayAsTable
+│   │   │   ├── image1.png
+│   │   │   ├── image2.png
+│   │   │   ├── image3.png
+│   │   │   └── image4.png
+│   │   ├── Questions asked in FANG interviews.md
+│   │   ├── Some tips for coding interviews.md
+│   │   ├── Some useful resources for coding interviews.md
+│   │   ├── Substring question.pdf
+│   │   ├── Ten steps to high quality Java developer.md
+│   │   ├── Top ten Algorithmic concepts.md
+│   │   ├── What does it take to crack googles interview.md
+│   │   ├── What is a list of data structures that a competitive programmer must know.md
+│   │   └── What made you good at competitive programming.md
+│   ├── Production incidents.md
+│   ├── Software development tips
+│   │   ├── 10X software developers.md
+│   │   ├── Are beginners getting obsessed with DS and algorithms.md
+│   │   ├── Best way to implement multithreading in Java.md
+│   │   ├── Companies using Haskell.md
+│   │   ├── Cool programming projects.md
+│   │   ├── Criteria to look for in a language.md
+│   │   ├── Erlang vs Haskell.md
+│   │   ├── Functional vs Procedural languages.md
+│   │   ├── Haskell vs Simpler languages.md
+│   │   ├── How can I get better at Concurrency and Parallel programming in Java.md
+│   │   ├── How does a Compiler break down code into Assembly language.md
+│   │   ├── How fast is Haskell among the static typing languages.md
+│   │   ├── Is software development one of the most intellectually mentally rigorous careers in the world.md
+│   │   ├── IT skills one must learn to sustain.md
+│   │   ├── Languages for Concurrent programming.pdf
+│   │   ├── Microsoft engineers.md
+│   │   ├── Mini project for better understanding of Multithreading.md
+│   │   ├── PowerSerious_PowerSeries in ten one liners.pdf
+│   │   ├── Referential transparency.md
+│   │   ├── Senior engineers at Google.md
+│   │   ├── Some programs every programmer should make atLeast once.md
+│   │   ├── The 25 best programming books of all time.md
+│   │   ├── The 25 best startup books of all time.md
+│   │   ├── Top programming language for Parallel processing.md
+│   │   ├── Useful concepts I can get from Haskell.md
+│   │   ├── What are the best resources for learning Haskell.md
+│   │   ├── What did JonVonNeumann contribute to Computers in contrast to AlanTuring.md
+│   │   ├── What is Concurrency in programming.md
+│   │   ├── What is Haskell actually useful for.md
+│   │   ├── What is Haskell used for.md
+│   │   ├── What is the next step for a five plus year software engineer.md
+│   │   ├── What kind of thought process do you need to understand programming.md
+│   │   ├── What single book has increased your programming skills the most.pdf
+│   │   ├── Whats wrong with Javascript.md
+│   │   ├── What to do in order to become a great software engineer.md
+│   │   ├── Which book has provided you the most tangible benefits in your life as a computer scientist.md
+│   │   ├── Why do people say that software engineering is becoming a blue collar job.md
+│   │   ├── Why is Java losing popularity.md
+│   │   ├── Why should one learn Haskell.hs
+│   │   └── Wrong turns in IT and CS in the past years.md
+│   └── Springboot references.md
+├── rust-playground
+│   ├── guessing_game
+│   │   ├── Cargo.lock
+│   │   ├── Cargo.toml
+│   │   ├── src
+│   │   │   ├── main.rs
+│   │   │   └── main.rs~
+│   │   └── target
+│   │       ├── CACHEDIR.TAG
+│   │       └── debug
+│   │           ├── build
+│   │           ├── deps
+│   │           │   ├── guessing_game-2d6625024b393322
+│   │           │   └── guessing_game-2d6625024b393322.d
+│   │           ├── examples
+│   │           ├── guessing_game
+│   │           ├── guessing_game.d
+│   │           └── incremental
+│   │               └── guessing_game-27t4ozrlii21m
+│   │                   ├── s-ga22zt9y0m-1bpelz9-15djxvonwawua
+│   │                   │   ├── 113is7kwmo740r3p.o
+│   │                   │   ├── 15o6xw2b265nvs98.o
+│   │                   │   ├── 18l3d621pletpsl9.o
+│   │                   │   ├── 18svnflz1oew5jws.o
+│   │                   │   ├── 1bew5etdqvpuj0fb.o
+│   │                   │   ├── 1h1t0p6qr4jk2yyv.o
+│   │                   │   ├── 1ifd7ay5qbzqdfs8.o
+│   │                   │   ├── 1jcj5yuil5ggd338.o
+│   │                   │   ├── 1me7m1pz3mofnj99.o
+│   │                   │   ├── 27nqtehkymfpepew.o
+│   │                   │   ├── 2e9jfd7snfzvto16.o
+│   │                   │   ├── 2iokvmzole4pd9cl.o
+│   │                   │   ├── 2k2gw5ronf3cggfy.o
+│   │                   │   ├── 2rd8bxt5hm1fozcm.o
+│   │                   │   ├── 2tpre44ii1oba78i.o
+│   │                   │   ├── 3h8h106akz1rgwjz.o
+│   │                   │   ├── 3ju8i2afx1omccz0.o
+│   │                   │   ├── 3mwpwfaolyhiouym.o
+│   │                   │   ├── 3n1bh0lko3kiblpc.o
+│   │                   │   ├── 3xectp68l0z2dgd0.o
+│   │                   │   ├── 4av9v4p4c4c1xex6.o
+│   │                   │   ├── 4kegfcy30v903m2y.o
+│   │                   │   ├── 4m2yovvnc356nkdm.o
+│   │                   │   ├── 4q711d72p44iqgqk.o
+│   │                   │   ├── 4r2ck5jwdj9mvuqz.o
+│   │                   │   ├── 4vcc9mqt0tv98et4.o
+│   │                   │   ├── 51355swskqrtszqh.o
+│   │                   │   ├── 55t6yq7tr6aaar8a.o
+│   │                   │   ├── dep-graph.bin
+│   │                   │   ├── gqs1meccnm01qyw.o
+│   │                   │   ├── io6xlkl4mufcn1y.o
+│   │                   │   ├── query-cache.bin
+│   │                   │   ├── uo8epin68fox0g0.o
+│   │                   │   ├── work-products.bin
+│   │                   │   └── ytf2887amgh3a0x.o
+│   │                   └── s-ga22zt9y0m-1bpelz9.lock
+│   ├── hello_cargo
+│   │   ├── Cargo.lock
+│   │   ├── Cargo.toml
+│   │   ├── src
+│   │   │   └── main.rs
+│   │   └── target
+│   │       ├── CACHEDIR.TAG
+│   │       └── debug
+│   │           ├── build
+│   │           ├── deps
+│   │           │   ├── hello_cargo-c07a0ff8681db89a
+│   │           │   └── hello_cargo-c07a0ff8681db89a.d
+│   │           ├── examples
+│   │           ├── hello_cargo
+│   │           ├── hello_cargo.d
+│   │           └── incremental
+│   │               └── hello_cargo-1zo0f1dq7l2tm
+│   │                   ├── s-ga1cl2lg7j-46m2xl-2639uak4fnzkk
+│   │                   │   ├── 1oyzda1jvxanyxy0.o
+│   │                   │   ├── 2w17y7h0klc4okic.o
+│   │                   │   ├── 33bbmjw5d7dhvhjp.o
+│   │                   │   ├── 38hjqnqqad1p7bu3.o
+│   │                   │   ├── 3uptvte00u2dde7y.o
+│   │                   │   ├── 4rwl42eekc3un4ag.o
+│   │                   │   ├── 5180cdkqe41xsfwh.o
+│   │                   │   ├── dep-graph.bin
+│   │                   │   ├── query-cache.bin
+│   │                   │   ├── udfkbfcz3re3q71.o
+│   │                   │   └── work-products.bin
+│   │                   └── s-ga1cl2lg7j-46m2xl.lock
+│   ├── hello_world
+│   │   └── main.rs
+│   ├── README.org
+│   └── variables
+│       ├── Cargo.toml
+│       └── src
+│           └── main.rs
+├── TableOfContents.txt
+└── Understanding-ID-Token
+    ├── images
+    │   ├── alg_Header_Parameter_Values_for_JWE.png
+    │   ├── alg_Header_Parameter_Values_for_JWS.png
+    │   ├── enc_Header_Parameter_Values_for_JWE.png
+    │   ├── encrypting_party_decrypting_party.png
+    │   ├── ID_Token.png
+    │   ├── JWT_in_JWE_format.png
+    │   ├── JWT_in_JWS_format.png
+    │   ├── Nested_JWT.png
+    │   └── Summary_of_decoding_JWS.png
+    ├── README.md
+    └── Understanding ID Token.pdf
+
+647 directories, 2510 files
