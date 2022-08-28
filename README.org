@@ -1970,6 +1970,7 @@
 ├── mongodb
 │   ├── How To Run MongoDB as a Docker Container.pdf
 │   └── README.org
+├── README.org
 ├── Research and Tips
 │   ├── Api versioning.md
 │   ├── Certifications
@@ -3146,8 +3147,6 @@
 │       ├── Cargo.toml
 │       └── src
 │           └── main.rs
-├── TableOfContents.org
-├── TableOfContents.txt
 └── Understanding-ID-Token
     ├── images
     │   ├── alg_Header_Parameter_Values_for_JWE.png
@@ -3162,4 +3161,4 @@
     ├── README.md
     └── Understanding ID Token.pdf
 
-648 directories, 2514 files
+648 directories, 2513 files
