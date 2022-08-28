@@ -1,0 +1,22 @@
+#The output binding destination (RabbitMQ exchange) where the producer publishes the data.
+#The spring.cloud.stream.bindings.output.destination property binds the UsageDetailSender object's output to the usage-detail RabbitMQ exchange.
+
+#The requiredGroups to specify the consumer groups to ensure the message delivery to consumer applications.
+#The spring.cloud.stream.bindings.output.producer.requiredGroups property makes sure to create a durable queue named usage-detail.usage-cost-consumer, which consumes from the usage-detail RabbitMQ exchange.
+
+spring:
+  application:
+    name: usage-detail-sender-rabbit
+#  rabbitmq:
+#    host: 192.168.99.100
+#    port: 5672
+  cloud:
+    stream:
+      bindings:
+        output:
+          destination: usage-detail
+          producer:
+            requiredGroups: usage-cost-consumer
+
+server:
+  port : 9001

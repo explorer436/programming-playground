@@ -1,0 +1,125 @@
+* Using Spring OAuth2 RestTemplate
+
+Spring provides a library called ~RestTemplate~ which developers rely on to make a HTTP REST API call. 
+
+This tutorial will focus on a nuanced aspect of ~RestTemplate~ which is the ~OAuth2RestTemplate~.
+
+*** WHEN SHOULD OAUTH2RESTTEMPLATE BE USED ?
+
+- When an OAuth2 based api call needs to be made
+- When you find yourself doing the following:
+  1. REST API call to obtain the OAuth2 token
+  2. Cache the OAuth2 and time it is expected to expire
+  3. Check if the OAuth2 token has not expired and use it as the authorization for the actual API call
+
+*** WHAT DOES THE OAUTH2RESTTEMPLATE DO ?
+
+As a developer it provides an abstraction where you just need to focus on making the REST API call and the authorizatiom, OAuth2 token caching is handled by the ~OAuth2RestTemplate~
+
+*** HOW DO I CONFIGURE IT ?
+
+Include the ~spring-security-oauth2~ dependency in the ~pom.xml~
+
+#+begin_src 
+<dependency>
+    <groupId>org.springframework.security.oauth</groupId>
+    <artifactId>spring-security-oauth2</artifactId>
+    <version>1.0.5.RELEASE</version>
+</dependency>  
+#+end_src
+
+Now lets say you have the following
+
+1. Token url: ~https://<auth-server>/oauth2/token~
+2. ClientId
+3. ClientSecret
+
+One would need to configure the ~OAuth2RestTemplate~ as follows:   
+
+#+begin_src 
+package org.yourapp.config;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.security.oauth2.client.DefaultOAuth2ClientContext;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
+import org.springframework.security.oauth2.client.token.AccessTokenRequest;
+import org.springframework.security.oauth2.client.token.DefaultAccessTokenRequest;
+import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsResourceDetails;
+import org.springframework.security.oauth2.common.AuthenticationScheme;
+
+
+@Configuration
+public class OAuth2Config {
+
+    @Value("${clientId}")
+    private String clientId;
+
+    @Value("${clientSecret}")
+    private String clientSecret;
+
+    @Value("${tokenUrl}")
+    private String tokenUrl;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(OAuth2Config.class);
+
+    @Bean
+    protected OAuth2ProtectedResourceDetails oauth2Resource() {
+        ClientCredentialsResourceDetails clientCredentialsResourceDetails = new ClientCredentialsResourceDetails();
+        clientCredentialsResourceDetails.setAccessTokenUri(tokenUrl);
+        clientCredentialsResourceDetails.setClientId(clientId);
+        clientCredentialsResourceDetails.setClientSecret(clientSecret);
+        clientCredentialsResourceDetails.setGrantType("client_credentials"); //this depends on your specific OAuth2 server
+        clientCredentialsResourceDetails.setAuthenticationScheme(AuthenticationScheme.header); //this again depends on the OAuth2 server specifications
+        return clientCredentialsResourceDetails;
+    }
+    @Bean
+    public OAuth2RestTemplate oauth2RestTemplate() {
+        AccessTokenRequest atr = new DefaultAccessTokenRequest();
+        OAuth2RestTemplate oauth2RestTemplate = new OAuth2RestTemplate(oauth2Resource(), new DefaultOAuth2ClientContext(atr));
+        oauth2RestTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+        return oauth2RestTemplate;
+    }
+}  
+#+end_src
+
+In order to inject the properties you would need to have it in your properties file
+
+#+begin_src 
+tokenUrl=https://<auth-server>/oauth2/token
+clientId=apiUser
+clientSecret=apiPassword  
+#+end_src
+
+*** FINALLY HOW DOES ONE USE IT
+
+Since the ~OAuth2RestTemplate~ bean has been configured, it can be injected in whichever service needs to make a call to the API that is authorized by the ~OAuth2~ server.
+
+Lets say one needs to make a ~GET~ call to ~https://<oauth2-secured-api>/<resource-path>~, an example of that would be    
+
+#+begin_src 
+package org.yourapp.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+
+public class Service {
+    
+    @Autowired
+    OAuth2RestTemplate oauth2RestTemplate;
+
+    public String getResource() {
+        String apiUrl = "https://<oauth2-secured-api>/<resource-path>";
+        //the simplicity lies in this line of code
+        //where a developer make a call like a regular RestTemplate 
+        //and under the hood all the token fetching is handled
+        return oauth2RestTemplate.getForEntity(apiUrl, String.class);
+    }
+}  
+#+end_src
+

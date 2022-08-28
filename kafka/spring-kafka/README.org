@@ -1,0 +1,40 @@
+* Overview of the project
+
+*** A springboot application that shows the following
+
+    1. How to write custom producer config
+    1. How to write custom consumer config
+    1. How to write a producer that uses the custom producer config
+    1. How to write a consumer that uses the custom consumer config
+
+    This does not use kafka streams.
+
+*** Application structure
+
+This application has a REST endpoint that we can call.
+The Producer in the application will put a message on a kafka topic.
+And the Consumer in the application will read that message from the same kafka topic.
+Log statements show the details about the activity.
+* Developer set-up
+
+*** Docker set-up
+
+Used docker-compose-wurstmeister.yml for this application.
+
+Every time you make changes to the topics or the groups or anything related to kafka, you will have to destroy the containers and create them again. If not, the docker containers will not have the infrastructure (related to topics, groups, etc.) that the java application is looking for.
+
+*** Endpoints for testing:
+
+curl -X POST http://localhost:9000/kafka/publishMessage -d message='I am publishing a message!'
+
+curl -X POST http://localhost:9000/kafka/publishGreeting
+
+curl -X POST http://localhost:9000/kafka/publishToPartition
+
+curl -X POST http://localhost:9000/kafka/publishToFiltered
+
+*** References:
+
+https://www.baeldung.com/spring-kafka
+
+https://www.maestralsolutions.com/spring-boot-implementation-for-apache-kafka-with-kafka-tool/

@@ -1,0 +1,7 @@
+points:
+  tier1:
+    purchaseAmount: 50
+    perDollar: 1
+  tier2:
+    purchaseAmount: 50
+    perDollar: 2

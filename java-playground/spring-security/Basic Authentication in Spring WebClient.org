@@ -1,0 +1,49 @@
+* Basic Authentication in Spring WebClient
+
+Lets see how to setup Basic Authentication in Spring WebClient while invoking external APIs. 
+
+WebClient provides different ways of injecting HTTP headers, query params etc while making external call. In this example we will check how to specify Basic Authentication in Webclient.
+
+Until Spring 5.1, basic authentication was setup using a custom ExchangeFilterFunction. This way of setting up Basic auth was only available while creating WebClient since it relies on WebClient filters.
+
+#+begin_src 
+private WebClient client = WebClient.builder()
+            .filter(ExchangeFilterFunctions
+                .basicAuthentication(username, token))
+            .build();
+#+end_src
+
+Alternatively if we want to provide the Basic auth while calling the API, we have to set the Authorization header manually which is not great!
+
+#+begin_src 
+webClient.get()
+            .uri("/customers")
+            .header("Authorization", "Basic " + Base64Utils
+                    .encodeToString((username + ":" + token).getBytes(UTF_8)))
+            .retrieve()
+            .bodyToFlux(String.class);
+#+end_src
+
+Thankfully, Spring provided some helper methods to make this easy and consistent in Spring 5.1.
+
+The above way of setting Basic authentication using custom ExchangeFilterFunction is deprecated in Spring 5.1. A new method ~setBasicAuth~ is introduced in ~HttpHeaders~ class that can be used to set basic authentication.
+
+Below we set use ~defaultHeaders~ in WebClient builder to setup Basic auth while creating WebClient instance:
+
+#+begin_src 
+private WebClient client = WebClient.builder()
+            .defaultHeaders(header -> header.setBasicAuth(userName, password))
+            .build();  
+#+end_src
+
+Alternately the basic auth can also be setup while calling any API:
+
+#+begin_src 
+Mono<String> response = client.get()
+                    .url("/customers")
+                    .headers(headers -> headers.setBasicAuth(userName, password))
+                    .retrieve()
+                    .bodyToFlux(String.class);
+#+end_src
+
+

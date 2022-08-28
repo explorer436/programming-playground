@@ -1,0 +1,70 @@
+openapi: 3.0.1
+info:
+  title: "Rewards calculator"
+  description: "API to show the rewards for customers based on recorded purchases."
+  version: "1.0.0"
+servers:
+- url: http://localhost:8080
+paths:
+  /rewards/{customerId}:
+    get:
+      tags:
+      - "rewards"
+      summary: "Returns rewards by customer Id"
+      description: "Returns rewards by customer Id"
+      operationId: "getRewardsByCustomerId"
+      parameters:
+        - in: path
+          name: customerId
+          description: customer id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rewards'
+        400: 
+          $ref: '#/components/schemas/ErrorResponse'
+        401: 
+          $ref: '#/components/schemas/ErrorResponse'
+        403: 
+          $ref: '#/components/schemas/ErrorResponse'
+        404: 
+          $ref: '#/components/schemas/ErrorResponse'
+        500: 
+          $ref: '#/components/schemas/ErrorResponse'          
+components:
+  schemas:
+    Reward:
+      type: "object"
+      properties:
+        rewardPoints:
+          type: integer
+        purchaseAmount:
+          type: number
+          format: double
+        month:
+          type: string	  
+    Rewards:
+      type: "object"
+      properties:
+        customerId:
+          type: string
+        totalRewardPointsForPastThreeMonths:
+          type: integer
+        totalPurchaseAmountForPastThreeMonths:
+          type: number
+          format: double
+        rewards:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reward'
+    ErrorResponse:
+      type: "object"
+      properties:
+        id:
+          type: "string"

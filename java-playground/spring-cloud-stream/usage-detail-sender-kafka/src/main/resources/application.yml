@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    stream:
+      function:
+        bindings:
+          sendEvents-out-0: output
+      bindings:
+        output:
+          destination: usage-detail
+
+#spring.cloud.stream.function.bindings.sendEvents-out-0=output
+#spring.cloud.stream.bindings.output.destination=usage-detail
+
+# The first property will override the default binding name to output and the second one will set destination on that binding.
+
+
+server:
+  port : 9001

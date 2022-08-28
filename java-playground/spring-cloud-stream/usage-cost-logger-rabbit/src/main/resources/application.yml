@@ -1,0 +1,15 @@
+# The input binding destination (RabbitMQ exchange) to which this application is subscribed through an anonymous auto-delete or durable queue.
+# The group to specify the consumer group to which this consumer application belongs.
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: usage-cost
+          group: logger
+
+# The spring.cloud.stream.bindings.input.destination and spring.cloud.stream.bindings.input.group properties bind the UsageCostLogger object's input to the usage-cost RabbitMQ exchange through the usage-cost.logger durable queue.
+
+server:
+  port : 9003

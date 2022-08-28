@@ -1,0 +1,52 @@
+# https://hub.docker.com/r/wurstmeister/kafka
+# https://wurstmeister.github.io/kafka-docker/
+#
+# Command to spin up the containers
+# $docker-compose --file docker-compose-wurstmeister.yml up -d 
+---
+version: '3'
+
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+  kafka:
+    image: wurstmeister/kafka
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+
+
+##### kafka shell
+
+#Once Zookeeper and Kafka containers are running, you can execute the following Terminal command to start a Kafka shell:
+
+#Just replace kafka with the value of container_name, if you’ve decided to name it differently in the docker-compose.yml file.
+
+#docker exec -it kafka /bin/sh
+#ls
+
+#How to create your first Kafka topic?
+
+#All Kafka shell scripts are located in `/opt/kafka_<version>/bin`
+#cd /opt/kafka_2.13-2.8.1/bin
+
+#Here’s the command to create a Kafka topic:
+#kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic first_kafka_topic
+
+#You can list all Kafka topics with the following command:
+#kafka-topics.sh --list --zookeeper zookeeper:2181
+
+#To describe an existing topic:
+#./kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic usage-detail
+#
+#To lauch the consumer window and monitor it:
+#./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic usage-detail --from-beginning
+#
+#To lauch the producer window:
+#./kafka-console-producer.sh --bootstrap-server localhost:9092 --topic usage-detail

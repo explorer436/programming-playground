@@ -1,0 +1,30 @@
+* An example showing how to consume a simple GET endpoint of a RESTful service using Spring RestTemplate.
+
+In spring initializer, in ~Dependencies~ and select ~Spring Web~.
+
+Spring provides a convenient template class called ~RestTemplate~.
+
+The domain class is annotated with ~@JsonIgnoreProperties~ from the Jackson JSON processing library to indicate that any properties not bound in this type should be ignored.
+
+To directly bind your data to your custom types, you need to specify the variable name to be exactly the same as the key in the JSON document returned from the API. In case your variable name and key in JSON doc do not match, you can use ~@JsonProperty~ annotation to specify the exact key of the JSON document.
+
+We need to add a ~RestTemplate~ , which uses the Jackson JSON processing library to process the incoming data to the main class with ~@SpringBootApplication~ annotation.
+
+#+begin_src 
+    @Bean
+	public RestTemplate restTemplate(RestTemplateBuilder builder) {
+		return builder.build();
+	}  
+#+end_src
+
+
+Using the RestTemplate:
+
+#+begin_src 
+Quote quote = restTemplate.getForObject("https://quoters.apps.pcfone.io/api/random", Quote.class);  
+#+end_src
+
+
+*** Reference:
+
+https://spring.io/guides/gs/consuming-rest/

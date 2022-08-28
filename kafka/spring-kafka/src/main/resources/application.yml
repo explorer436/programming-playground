@@ -1,0 +1,17 @@
+server:
+  port: 9000
+
+kafka:
+  bootstrapAddress: localhost:9092
+  message:
+    topic:
+      name: messageTopic
+  greeting:
+    topic:
+      name: greetingTopic
+  filtered:
+    topic:
+      name: filteredTopic
+  partitioned:
+    topic:
+      name: partitionedTopic

@@ -1,0 +1,145 @@
+* Usage of spring WebClient and setting up test cases for it
+
+If you have to use WebClient in a client class in the application, do it this way:
+
+#+begin_src 
+
+@Component
+public class ClientClassName {
+    private WebClient webClient;
+
+    @Value("$endpointUrl")
+    private String endpointUrl;
+
+    @Value("$username")
+    private String username;
+
+    @Value("$password")
+    private String password;
+
+    public ClientClassName(WebClient webClient) {
+        this.webClient = webClient;
+    }
+
+    @PostConstruct
+    private void init() {
+        webClient = WebClient.builder()
+                             .baseUrl(endpointUrl)
+                             .defaultHeaders(header -> header.setBasicAuth(username, password))
+                             .build();
+    }
+
+    public TestResponse callExternalService(TestRequest testRequest) {
+
+       TestResponse resp = null;
+   
+       try {
+           resp = webClient.post()
+                           .body(Mono.just(testRequest), TestRequest.class)
+                           .retrieve()
+                           .bodyToMono(TestResponse.class)
+                           .toFuture()
+                           .get();
+       } catch (Exception1 | Exception2 ex) {
+           handleException(ex);
+       }
+
+       return resp;
+    }
+}
+  
+#+end_src
+
+*** How to define WebClient bean?
+
+#+begin_src 
+@Configuration
+public class WebClientConfig {
+    @Bean
+    public WebClient configureWebClient() {
+        return WebClient.builder().build();
+    }
+}  
+#+end_src
+
+*** How to set up test cases for ClientClassName?
+
+#+begin_src 
+@RequiredArgsConstructor
+public class ClientClassNameTests {
+    ClientClassName clientClassName;
+
+    public static MockWebServer mockWebServer;
+
+    @BeforeAll
+    static void setUp() throws IOException {
+        mockWebServer = new MockWebServer();
+        mockWebServer.start();
+    }
+
+    @BeforeEach
+    void initialize() {
+        String baseUrl = String.format("http://localhost:%s", mockWebServer.getPort());
+        clientClassName = new ClientClassName(WebClient.builder().baseUrl(baseUrl).build());
+    }
+
+    @AfterAll
+    static void tearDown() throws IOException {
+        mockWebServer.shutdown();
+    }
+
+    @Test
+    void test1() throws JsonProcessingException {
+        TestResponse mockedTestResponse = new TestResponse();
+        // set dummy values to mockedTestResponse here
+
+        mockWebServer.enqueue(new MockResponse()
+                                               .setHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                                               .setBody(MAPPER.writeValueAsString(mockedTestResponse))
+        );
+
+        TestRequest testReq = new TestRequest();
+        // set dummy values to testReq here
+
+        TestResponse actualResult = clientClassName.callExternalService(testReq);
+
+        RecordedRequest request = mockWebServer.takeRequest();
+
+
+        assertAll(() -> {
+
+            // verify the response
+            assertNotNull(actualResult);
+            assertThat(actualResult).usingRecursiveComparison().isEqualTo(mockedTestResponse));
+
+            // verify the request
+            assertThat(request.getMethod()).isEqualTo("POST");
+            assertThat(request.getPath()).isEqualTo("/Accounts/ACd936ed6d/Messages.json");
+        });
+    }
+}  
+#+end_src
+
+*** Required dependencies in pom.xml
+
+#+begin_src 
+<dependency>
+    <groupId>com.squareup.okhttp3</groupId>
+    <artifactId>okhttp</artifactId>
+    <version>4.0.1</version>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>com.squareup.okhttp3</groupId>
+    <artifactId>mockwebserver</artifactId>
+    <version>4.0.1</version>
+    <scope>test</scope>
+</dependency>   
+#+end_src
+
+    
+
+References:
+
+https://www.arhohuttunen.com/spring-boot-webclient-mockwebserver/
+https://www.baeldung.com/spring-mocking-webclient

@@ -1,0 +1,25 @@
+spring:
+  cloud:
+    stream:
+      function:
+        bindings:
+          processUsageCost-in-0: input
+          processUsageCost-out-0: output
+        input:
+          destination: usage-detail
+        output:
+          destination: usage-cost
+
+
+# spring.cloud.stream.function.bindings.processUsageCost-in-0=input
+# spring.cloud.stream.function.bindings.processUsageCost-out-0=output
+# spring.cloud.stream.bindings.input.destination=usage-detail
+# spring.cloud.stream.bindings.output.destination=usage-cost
+
+# The spring.cloud.stream.function.bindings.processUsageCost-in-0 overrides the binding name to input.
+# The spring.cloud.stream.function.bindings.processUsageCost-out-0 overrides the binding name to output.
+# The spring.cloud.stream.bindings.processUsageCost-in-0.destination sets the destination to the usage-detail Kafka topic.
+# The spring.cloud.stream.bindings.processUsageCost-out-0.destination sets the destination to the usage-cost Kafka topic.
+
+server:
+  port: 9002

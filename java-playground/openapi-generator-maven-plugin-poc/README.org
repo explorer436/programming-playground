@@ -1,0 +1,106 @@
+* Developer set-up instructions:
+
+*** Tools used:
+    1. openjdk18
+    1. mvn
+    1. springboot
+    1. openapi-generator-maven-plugin
+    1. build-helper-maven-plugin
+    1. springdoc-openapi
+
+To install the package into the local repository, for use as a dependency in other projects locally: ~mvn clean install~
+
+Plugin used to generate the artifacts from the OpenAPI specification file:
+https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator-maven-plugin
+
+To generate sources from the specification file: ~mvn clean generate-sources~
+
+To run the application: ~mvn spring-boot:run~
+
+To view the OpenAPI specification in a browser when the application is running, paste this in a browser: ~http://localhost:8080/v3/api-docs/~
+
+To test the application from terminal, use this command:
+#+begin_src 
+curl -X 'GET' \
+  'http://localhost:8080/rewards/1' \
+  -H 'accept: application/json'  
+#+end_src
+
+You can use this for testing if you use httpie: ~http GET http://localhost:8080/rewards/1~
+
+Valid customerIds that would give you results: ~1,2,3,4~
+
+***** Sample response from the application:
+
+#+begin_src 
+http GET http://localhost:8080/rewards/1
+HTTP/1.1 200 
+Connection: keep-alive
+Content-Type: application/json
+Date: Wed, 11 May 2022 18:55:48 GMT
+Keep-Alive: timeout=60
+Transfer-Encoding: chunked
+
+{
+    "customerId": "1",
+    "rewards": [
+        {
+            "month": "APRIL",
+            "purchaseAmount": 120.0,
+            "rewardPoints": 90
+        },
+        {
+            "month": "MARCH",
+            "purchaseAmount": 130.0,
+            "rewardPoints": 110
+        },
+        {
+            "month": "FEBRUARY",
+            "purchaseAmount": 140.0,
+            "rewardPoints": 130
+        }
+    ],
+    "totalPurchaseAmountForPastThreeMonths": 390.0,
+    "totalRewardPointsForPastThreeMonths": 330
+}
+#+end_src
+
+* Assignment description - Coding Guidelines for Java/Spring submissions
+ 
+
+*** Assignment and Instructions:
+A retailer offers a rewards program to its customers, awarding points based on each recorded purchase.
+ 
+A customer receives 2 points for every dollar spent over $100 in each transaction, plus 1 point for every dollar spent over $50 in each transaction
+(e.g. a $120 purchase = 2x$20 + 1x$50 = 90 points).
+ 
+Given a record of every transaction during a three month period, calculate the reward points earned for each customer per month and total.
+ 
+1. Make up a data set to best demonstrate your solution
+1. Check solution into GitHub and share the URL(Make it Public)
+1. Solution should be built using ReactJS or Spring(Spring Boot)
+1. Instructions for running the solution should be uploaded in ReadMe file on GitHub
+
+*** Mandatory
+ 
+    1. Must expose  RESTful endpoint – for accepting a customer id and returning reward points [At a  minimum]  . Refer to the assignment for calculation logic of reward points 
+    1. Do not use hard coded/magic  numbers in the code. 
+    1. Ensure there is no unused variables in the project; that demonstrates the coding style. Try to close warnings from the project.
+    1. Calculate awards points from the purchase amount. Don't exclude cents/decimal part while calculating.
+    1. API responses should return appropriate payload and HTTP code for both Success and failed requests
+    1. Create appropriate test data covering scenarios
+    1. Include appropriate test cases
+    1. Avoid pre-requisites like DB etc. Use In memory DB or other in memory option for data
+    1. Readme file is mandatory – must contain the steps required to build and run/test the code
+    1. The solution must be checked into Github (provide a public github url)
+    1. Binary Files should not be checked into github
+    1.  Calculate awards points from the purchase amount. Don't exclude cents/decimal part while calculating.
+
+*** The following are nice to have and demonstrates our knowledge of the framework
+   
+    1. We can also add an Exception Handler which serves as a catch all and send back INTERNAL_SERVER_ERROR in case of uncaught exceptions 
+    1. In Spring, since the framework creates a proxy interface, we do not have to create an interface explicitly especially if there is only one implementation. 
+    1. Try to use lombok for pojos, since the definition of a pojo comes across more precisely and it also provides useful annotations for the log4j bridge for logging
+    1. Functional Programming constructs of Java 8 as appropriate.
+    1. Please ensure to mention in Readme about build dependencies. Explicitly mention if its Maven or Gradle project.
+ 
