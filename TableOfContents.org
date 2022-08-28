@@ -1,4 +1,7 @@
 .
+├── cloud
+│   ├── README.org
+│   └── README.org~
 ├── createTableOfContents.sh
 ├── createTableOfContents.sh~
 ├── docker
@@ -1422,6 +1425,7 @@
 │   │                       └── jedis
 │   │                           └── jedisdemo
 │   │                               └── JedisDemoApplicationTests.java
+│   ├── Springboot references.md
 │   ├── spring-cloud-circuit-breaker
 │   │   ├── book-recommendations
 │   │   │   ├── com
@@ -1882,6 +1886,7 @@
 │   ├── docker-compose-kafka-cluster-setup.yml
 │   ├── docker-compose-single-node-setup.yml
 │   ├── docker-compose-wurstmeister.yml
+│   ├── KafkaCourseSeries.png
 │   ├── kafka-producer-wikimedia
 │   │   ├── bin
 │   │   ├── pom.xml
@@ -3007,48 +3012,47 @@
 │   │   ├── What is a list of data structures that a competitive programmer must know.md
 │   │   └── What made you good at competitive programming.md
 │   ├── Production incidents.md
-│   ├── Software development tips
-│   │   ├── 10X software developers.md
-│   │   ├── Are beginners getting obsessed with DS and algorithms.md
-│   │   ├── Best way to implement multithreading in Java.md
-│   │   ├── Companies using Haskell.md
-│   │   ├── Cool programming projects.md
-│   │   ├── Criteria to look for in a language.md
-│   │   ├── Erlang vs Haskell.md
-│   │   ├── Functional vs Procedural languages.md
-│   │   ├── Haskell vs Simpler languages.md
-│   │   ├── How can I get better at Concurrency and Parallel programming in Java.md
-│   │   ├── How does a Compiler break down code into Assembly language.md
-│   │   ├── How fast is Haskell among the static typing languages.md
-│   │   ├── Is software development one of the most intellectually mentally rigorous careers in the world.md
-│   │   ├── IT skills one must learn to sustain.md
-│   │   ├── Languages for Concurrent programming.pdf
-│   │   ├── Microsoft engineers.md
-│   │   ├── Mini project for better understanding of Multithreading.md
-│   │   ├── PowerSerious_PowerSeries in ten one liners.pdf
-│   │   ├── Referential transparency.md
-│   │   ├── Senior engineers at Google.md
-│   │   ├── Some programs every programmer should make atLeast once.md
-│   │   ├── The 25 best programming books of all time.md
-│   │   ├── The 25 best startup books of all time.md
-│   │   ├── Top programming language for Parallel processing.md
-│   │   ├── Useful concepts I can get from Haskell.md
-│   │   ├── What are the best resources for learning Haskell.md
-│   │   ├── What did JonVonNeumann contribute to Computers in contrast to AlanTuring.md
-│   │   ├── What is Concurrency in programming.md
-│   │   ├── What is Haskell actually useful for.md
-│   │   ├── What is Haskell used for.md
-│   │   ├── What is the next step for a five plus year software engineer.md
-│   │   ├── What kind of thought process do you need to understand programming.md
-│   │   ├── What single book has increased your programming skills the most.pdf
-│   │   ├── Whats wrong with Javascript.md
-│   │   ├── What to do in order to become a great software engineer.md
-│   │   ├── Which book has provided you the most tangible benefits in your life as a computer scientist.md
-│   │   ├── Why do people say that software engineering is becoming a blue collar job.md
-│   │   ├── Why is Java losing popularity.md
-│   │   ├── Why should one learn Haskell.hs
-│   │   └── Wrong turns in IT and CS in the past years.md
-│   └── Springboot references.md
+│   └── Software development tips
+│       ├── 10X software developers.md
+│       ├── Are beginners getting obsessed with DS and algorithms.md
+│       ├── Best way to implement multithreading in Java.md
+│       ├── Companies using Haskell.md
+│       ├── Cool programming projects.md
+│       ├── Criteria to look for in a language.md
+│       ├── Erlang vs Haskell.md
+│       ├── Functional vs Procedural languages.md
+│       ├── Haskell vs Simpler languages.md
+│       ├── How can I get better at Concurrency and Parallel programming in Java.md
+│       ├── How does a Compiler break down code into Assembly language.md
+│       ├── How fast is Haskell among the static typing languages.md
+│       ├── Is software development one of the most intellectually mentally rigorous careers in the world.md
+│       ├── IT skills one must learn to sustain.md
+│       ├── Languages for Concurrent programming.pdf
+│       ├── Microsoft engineers.md
+│       ├── Mini project for better understanding of Multithreading.md
+│       ├── PowerSerious_PowerSeries in ten one liners.pdf
+│       ├── Referential transparency.md
+│       ├── Senior engineers at Google.md
+│       ├── Some programs every programmer should make atLeast once.md
+│       ├── The 25 best programming books of all time.md
+│       ├── The 25 best startup books of all time.md
+│       ├── Top programming language for Parallel processing.md
+│       ├── Useful concepts I can get from Haskell.md
+│       ├── What are the best resources for learning Haskell.md
+│       ├── What did JonVonNeumann contribute to Computers in contrast to AlanTuring.md
+│       ├── What is Concurrency in programming.md
+│       ├── What is Haskell actually useful for.md
+│       ├── What is Haskell used for.md
+│       ├── What is the next step for a five plus year software engineer.md
+│       ├── What kind of thought process do you need to understand programming.md
+│       ├── What single book has increased your programming skills the most.pdf
+│       ├── Whats wrong with Javascript.md
+│       ├── What to do in order to become a great software engineer.md
+│       ├── Which book has provided you the most tangible benefits in your life as a computer scientist.md
+│       ├── Why do people say that software engineering is becoming a blue collar job.md
+│       ├── Why is Java losing popularity.md
+│       ├── Why should one learn Haskell.hs
+│       └── Wrong turns in IT and CS in the past years.md
 ├── rust-playground
 │   ├── guessing_game
 │   │   ├── Cargo.lock
@@ -3142,6 +3146,7 @@
 │       ├── Cargo.toml
 │       └── src
 │           └── main.rs
+├── TableOfContents.org
 ├── TableOfContents.txt
 └── Understanding-ID-Token
     ├── images
@@ -3157,4 +3162,4 @@
     ├── README.md
     └── Understanding ID Token.pdf
 
-647 directories, 2510 files
+648 directories, 2514 files
