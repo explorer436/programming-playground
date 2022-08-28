@@ -1,0 +1,66 @@
+# Overview
+
+For technical information and troubleshooting see [this guide](Technical.md).
+
+For testing instruction see [this guide](Testing.md).
+
+# Getting Started
+
+## Setting up Local Environment
+
+### Install GIT
+
+### Setup Docker
+Why Docker? The SAM tool uses Docker to simulate an AWS environment. You need to have docker installed and running but you won't need to run any docker commands. SAM will take care of the interactions with docker.
+
+Linux
+- The Docker daemon binds to a Unix socket instead of a TCP port. By default that Unix socket is owned by the user root and other users can only access it using sudo. The Docker daemon always runs as the root user.
+- With the default set-up, you might see an error that says "Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json?all=1: dial unix /var/run/docker.sock: connect: permission denied".
+- In this case, change the access permissions on "/var/run/docker.sock" using the command "sudo chmod 666 /var/run/docker.sock"
+- https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user
+
+
+### NVM (node version manager)
+
+*Non-Windows OS*
+
+To install the required version of NodeJS required by the project run the following command. `nvm install`
+
+and then run the following command to use the required version `nvm use`
+
+This will switch to the version defined in the .nvmrc file for the project.
+
+### Install Yarn
+
+### CDK (Cloud Development Kit)
+
+The CDK is used to interact with AWS
+
+`npm i --global aws-cdk`
+
+Test this works by running either of the following commands `cdk --version` or `cdk synth` from the project root folder.
+
+### Setup your AWS credentials
+
+To interact with the AWS console you will need to be logged in.
+ 
+Utilize the following guide to help setup your AWS credentials locally: TBD
+ 
+**Note** of the expiry date and time. You will have to login again when this expires. Some users have had to delete the credentials file 
+
+After running through these steps we want to change the configuration to point to a "default" profile. By default the script above chooses to store your credentials in a profile called "saml". If you leave it like this, it will require you to add `--profile saml` at the end of every CDK command. If you only have one login to AWS, changing to "default" means you can omit having to use the command line argument for profile.
+
+To do this, open the file `~/.aws/credentials` and change the tag `[saml]` to `[default]`
+
+To test that this is working you should be able to now run the command `cdk diff`
+
+
+### Setup SAM
+
+Installing the AWS SAM CLI - https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html
+
+The above link will take you to a page where you can pick the setup guide for your particular operating System. Setup SAM based on that guide.
+
+Note - You can skip the parts about setting up an AWS account and/or Docker. That is already complete.
+
+You only need to follow the steps about setting up sam

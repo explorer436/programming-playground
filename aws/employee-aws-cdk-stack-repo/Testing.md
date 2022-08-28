@@ -1,0 +1,123 @@
+# Overview
+
+This document attempts to show how to test the application
+
+# Testing through API Gateway
+
+Use your favorite REST client like Postman, Insomnia or ReadyAPI. Setup a new test case and enter the following information.
+
+Example VPC Endpoint - vpce-0a65e5d27ad21a9d0-kmk0ra23.execute-api.us-east-1.vpce.amazonaws.com <br />
+Example Host Header - 0rdq6lojwl.execute-api.us-east-1.amazonaws.com <br />
+Example Stage - prod <br />
+Example Resource - briefs <br />
+
+```
+POST - https://<VPC Endpoint>/<stage>/<resource>
+Headers
+   - Host
+   - Content-Type application/json
+Body
+{
+  "firstName": "bob",
+  "lastName": "alice"
+}
+```
+
+## Where to find the VPC Endpoint
+
+Go To the AWS Console, Search for the VPC Dashboard <br />
+On the left hand menu, choose Endpoints <br/>
+Filter the list by "API" <br/>
+Click the checkbox beside the VPC Endpoint used by the code <br />
+Look for the Section DNS Names. Pick the first one.
+
+## Where to Find the Host Header, Stage and Resource
+
+Go To the AWS Console, Search for the API Gateway <br />
+In the Search Box, type the name of your API Gateway service, and click the link when you find it <br/>
+IN the left hand menu, choose Stages <br/>
+Expand the stage to see all the endpoints (Note this is the stage, and resources) <br />
+There is an info bubble containing the URL that can be used as the host header
+
+# Local Development Testing
+
+### Prerequisites
+
+- Docker is Setup and running
+- SAM is setup
+
+if these are not setup, see the [Setup document](Setup.md) for more details
+
+### Testing locally - via API Gateway
+
+open a command line to the application folder. Run `yarn start`. This will build the application and deploy it to the running docker instance.
+
+After the command starts, the output in the console will list all of the endpoints that are exposed. You can take these endpoints and set them up in a testing tool of your choice (curl/insomnia/postman).
+
+hitting `https://127.0.0.1/health` in your browser should give you a message that the service is up and running.
+
+The start command will also watch for any changes to the code and auto deploy the changes to the local running instance. Changes to the CDK stack or configuration files will require a restart of the application.
+
+### Testing locally - Isolate a Lambda
+
+Most functions are exposed via the previous command. If you need to test, for example Authorization Lambda, you can not do so via api gateway. That endpoint is not exposed via api gateway and the SAM tool does not support Authorization via API gateway at this time. In order to test a lambda directly you will need to utilizes two commands.
+
+`npm run prestart` and `sam local invoke <lambda to execute> <event>`
+
+prestart will run the build and generate the necessary template files for you. Running the sam local command does take some extra effort to setup.
+
+After `prestart` finishes, open up the `template.yml` file that is generated at the root of the application. Search for `AWS::Lambda::Function`. You will see a few search results that looks like the following
+
+```
+hello26396490:
+    Type: AWS::Lambda::Function
+```
+
+The first line is the name of the Lambda. Copy that name for later
+
+Run the following command to execute the lambda (replace the name with the name of your lambda)
+
+```
+sam local invoke hello26396490 --no-event
+```
+
+The above command works by not sending any event details to the lambda. In most cases you will want to send event details to the lambda. Below are a few examples of sending event details to the lambda.
+
+```
+sam local invoke nameOfTheLambdaE3E69214 -e test/sam/testMyLambdaAPIGatewayEvent.json
+echo '{"body": {"firstname": "John"}}' | sam local invoke hello26396490
+```
+
+The commands above are equivalent. In the first case the event details would be provided in a file. This is good when working with bigger data sets. If you are working with smaller data sets, the second option may be better as you do not have the overhead of creating a file.
+
+_Tip_ - Utilize the templates in the AWS console to help generate the event data.
+
+_Note_ - The first run of this command will take a few minutes as the docker container image is downloaded.
+
+### Testing locally with Environment Variables
+
+To test locally using environment variables, perform the following steps
+
+1. Create a file called env.json in the folder test/sam (may already exist)
+2. In the file place the following contents
+
+```javascript
+{
+  myLambdaNameE3E69214 : {
+  }
+}
+```
+
+3. Follow the instructions to invoke a lambda (see Testing locally - Isolate a Lambda) adding --env-vars to the command
+
+```
+sam local invoke --env-vars test/sam/env.json myLambdaNameE3E69214
+```
+
+or if using the start command
+
+```
+npm start -- --env-vars test/sam/env.json
+```
+
+Reference: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-using-invoke.html
