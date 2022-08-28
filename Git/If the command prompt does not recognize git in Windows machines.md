@@ -1,0 +1,15 @@
+
+### If the command prompt does not recognize git in Windows machines
+
+    I have an installation of Git for Windows, but when I try to use the git command in Command Prompt, I get the following error: 'git' is not recognized as an internal or external command, operable program or batch file. How to fix this problem?
+    
+    
+    Have you correctly set your PATH to point at your Git installation?
+    
+    You need to add the following paths to PATH:
+    
+    ```
+    C:\Program Files\Git\bin\
+    
+    C:\Program Files\Git\cmd\
+    ```

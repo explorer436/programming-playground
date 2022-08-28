@@ -1,0 +1,75 @@
+* Configure Tooling
+
+Where is the global git config data stored?
+To figure out the location of the config file, use this: ~git config --list --show-origin --show-scope~
+
+Location of ~.gitconfig~ file in Windows: ~C:\Users\username\.gitconfig~
+
+Just paste this in the ~.gitconfig~ file.
+
+#+begin_src
+   [push]
+	default = simple
+   [user]
+	name = your name
+	email = your email id
+   [merge]
+	conflictstyle = diff3
+   [color]
+	ui = auto
+   [core]
+	autocrlf = true
+   [alias]
+        ;; reference: https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git/git.plugin.zsh
+	la = "!git config -l | grep alias | cut -c 7-"  ;; list all the local aliases
+        co = checkout                                   ;; git checkout
+	s = status
+	rup = remote update --prune
+	;; working with logs
+;;  	lol = log --color --graph --pretty=format:'%C(yellow)%h %C(green)%cd %C(cyan)[%an] %Creset%s' --date=format:'%F %T'
+        lol = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(yellow)%cd %C(bold blue)<%an>%Creset' --abbrev-commit --                                      ;; customize the log command
+	;; working with stashes
+	gstu = stash --include-untracked                ;; To stash everything, whether or not it is staged for commit
+	gstp = stash pop                                ;; To restore everything you've stashed
+        ;; working with branches        
+        b = branch -l             ;; list local branches
+        ba = branch -a            ;; list all branches
+        bd = branch -d            ;; Delete a local branch. The branch must be fully merged in its upstream branch.
+        bdd = branch -D           ;; Force the deletion of a local branch even if it’s not merged with upstream.
+        br = branch -r
+	;; git add
+	a = add
+        ai = add -i
+        aa = add --all
+#+end_src
+
+Set this to ~false~ unless you are really picky about the way the git tree looks. Some people prefer `merge` to `rebase` for simplicity.
+~git config --global pull.rebase false~
+
+*** What is `merge.conflictStyle`?
+
+1. Specify the style in which conflicted hunks are written out to working tree files upon merge.
+1. The default is `merge`, which shows a `<<<<<<<` conflict marker, changes made by one side, a `=======` marker, changes made by the other side, and then a `>>>>>>>` marker.
+1. An alternate style, `diff3`, adds a `|||||||` marker and the original text before the `=======` marker.
+
+*** Checking Your Settings
+
+If you want to check your configuration settings, you can use the git config --list command to list all the settings Git can find at that point.
+
+https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup#:~:text=Checking%20Your%20Settings,johndoe%40example.com%20color.
+
+*** Line ending settings
+
+https://docs.github.com/en/get-started/getting-started-with-git/configuring-git-to-handle-line-endings
+
+From the page above:
+
+Git allows you to set the line ending properties for a repo directly using the [text attribute](http://git-scm.com/docs/gitattributes#_checking-out_and_checking-in)  in the .gitattributes file. This file is committed into the repo and overrides the core.autocrlf setting, allowing you to ensure consistent behaviour for all users regardless of their git settings.
+
+The advantage of this is that your end of line configuration now travels with your repository and you don't need to worry about whether or not collaborators have the proper global settings.
+
+There is a sample on the page above.
+
+There is a convenient [collection of ready to use .gitattributes files](https://github.com/Danimoth/gitattributes) for the most popular programming languages. It's useful to get you started.
+
+Finally, the [Mind the End of Your Line](http://adaptivepatchwork.com/2012/03/01/mind-the-end-of-your-line/) article provides more background and explains how Git has evolved on the matters at hand. I consider this required reading.
