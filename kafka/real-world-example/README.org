@@ -1,0 +1,25 @@
+* Overview of the real world example
+
+We are going to read data from wikimedia recent change stream using the endpoint: https://stream.wikimedia.org/v2/stream/recentchange
+This is a real-time stream that is accessible from a web-browser.
+
+https://codepen.io/Krinkle/pen/BwEKgW - shows that same data in a nice visual way.
+
+https://esjewett.github.io/wm-eventsource-demo/ - a real-time chart view for that same data.
+
+This service will be a kafka producer that will write the wikimedia data into (our own) kafka topics.
+After that, we will write a consumer to read the events from the kafka topics.
+The kafka consumer will send that data to Opensearch.
+
+We will also use kafka connect and kafka streams.
+
+Wikimedia -> Kafka Connect SSE Source Connector -> our own kafka topics -> Kafka Connect ElasticSearch Sink -> OpenSearch
+                                                           |
+                                                Kafka streams counter application
+
+
+OpenSearch is an open-source fork of ElasticSearch. That is the reason we are using ElasticSearch Sink for this scenario.
+
+*** Docker set-up
+
+Used docker-compose-wurstmeister.yml for this application.

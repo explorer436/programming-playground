@@ -1,0 +1,9 @@
+** How to generate the project?
+
+   mvn archetype:generate 
+	-DgroupId=com.example
+	-DartifactId=kafka-producer-wikimedia
+	-DarchetypeArtifactId=maven-archetype-quickstart
+        -DinteractiveMode=false
+
+	

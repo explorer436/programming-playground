@@ -21,6 +21,7 @@ services:
       KAFKA_ADVERTISED_HOST_NAME: localhost
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
 
+# Instead of using the shell, you can use one of the tools listed in the README file for GUI access to local kafka topics.
 
 ##### kafka shell
 

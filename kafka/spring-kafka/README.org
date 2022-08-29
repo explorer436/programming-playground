@@ -15,6 +15,7 @@ This application has a REST endpoint that we can call.
 The Producer in the application will put a message on a kafka topic.
 And the Consumer in the application will read that message from the same kafka topic.
 Log statements show the details about the activity.
+
 * Developer set-up
 
 *** Docker set-up
