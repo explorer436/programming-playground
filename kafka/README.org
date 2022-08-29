@@ -464,6 +464,8 @@ See docker-compose-wurstmeister.yml for these details
 
        And use the browser: http://localhost:8080/topics
 
+    3. There are more tools listed here: https://dev.to/dariusx/recommend-a-simple-kafka-ui-tool-5gob
+
 ** Helpful resources
 
 https://medium.com/@TimvanBaarsen/apache-kafka-cli-commands-cheat-sheet-a6f06eac01b
