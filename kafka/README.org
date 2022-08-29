@@ -126,6 +126,8 @@ Consumers can consume data from this topic and do whatever they want to do with 
 
 **** Producer acknowledgements (ack)
 
+     Kafka Producer Acks Deep Dive - https://www.conduktor.io/kafka/kafka-producer-acks-deep-dive
+
      Producers send data into kafka brokers.
 
      Producers can choose to receive acknowledgements of data writes:
