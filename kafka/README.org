@@ -470,6 +470,8 @@ See docker-compose-wurstmeister.yml for these details
 
 ** Helpful resources
 
+https://www.conduktor.io/kafka - This is very good.
+
 https://medium.com/@TimvanBaarsen/apache-kafka-cli-commands-cheat-sheet-a6f06eac01b
 
 https://www.gentlydownthe.stream/ - A cute children’s book explaining Kafka.

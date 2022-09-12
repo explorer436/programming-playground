@@ -1,5 +1,20 @@
 * Usage of spring WebClient and setting up test cases for it
 
+** Maven dependency
+
+In order to use WebClients in a Spring Boot project include a starter dependency for Spring WebFlux.
+
+#+begin_src 
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-webflux</artifactId>
+</dependency>  
+#+end_src
+
+This dependency implicitly sets all the required dependencies including underlying Netty server.
+
+** Usage
+
 If you have to use WebClient in a client class in the application, do it this way:
 
 #+begin_src 
@@ -44,13 +59,16 @@ public class ClientClassName {
            handleException(ex);
        }
 
-       return resp;
+        return resp;
     }
 }
   
 #+end_src
 
 *** How to define WebClient bean?
+
+If you are not using the bean in individual client files, you have to add custom configuration in the WebClients defined in each of the classes.
+If you are defining custom WebClient in a class and not using the WebClient bean (like the example shown above), the configuration that you put on the bean will not be applicable in those individual classes.
 
 #+begin_src 
 @Configuration
@@ -120,7 +138,7 @@ public class ClientClassNameTests {
 }  
 #+end_src
 
-*** Required dependencies in pom.xml
+**** Required dependencies in pom.xml for the test case
 
 #+begin_src 
 <dependency>
@@ -137,9 +155,53 @@ public class ClientClassNameTests {
 </dependency>   
 #+end_src
 
-    
+** Issues or exceptions
 
-References:
+https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/codec/CodecConfigurer.DefaultCodecs.html#maxInMemorySize-int-
+
+#+begin_src 
+org.springframework.core.io.buffer.DataBufferLimitException: Exceeded limit on max bytes to buffer : 262144
+    at org.springframework.core.io.buffer.LimitedDataBufferList.raiseLimitException(LimitedDataBufferList.java:101)
+    Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException  
+#+end_src
+
+Option 1:
+
+You can increase the xx like this:
+
+#+begin_src 
+public WebClient webClient() {
+    final int size = 16 * 1024 * 1024;
+    final ExchangeStrategies strategies = ExchangeStrategies.builder()
+        .codecs(codecs -> codecs.defaultCodecs().maxInMemorySize(size))
+        .build();
+    return WebClient.builder()
+        .exchangeStrategies(strategies)
+        .build();
+}  
+#+end_src
+
+Option 2:
+
+I suppose this issue is about adding a new spring.codec.max-in-memory-size configuration property in Spring Boot. Add it to the application.yml file like:
+
+#+begin_src 
+spring:
+  codec:
+    max-in-memory-size: 10MB  
+#+end_src
+
+** Need further research
+
+3 techniques to stream JSON in Spring WebFlux - https://nurkiewicz.com/2021/08/json-streaming-in-webflux.html
+
+Processing streaming data with Spring WebFlux - https://medium.com/@nithinmallya4/processing-streaming-data-with-spring-webflux-ed0fc68a14de
+
+How to Retry in Spring WebFlux Web Client - https://www.amitph.com/spring-webflux-retry/
+
+Making Fully Asynchronous Requests - https://reflectoring.io/spring-webclient/ (Making Fully Asynchronous Requests)
+
+** References:
 
 https://www.arhohuttunen.com/spring-boot-webclient-mockwebserver/
 https://www.baeldung.com/spring-mocking-webclient
