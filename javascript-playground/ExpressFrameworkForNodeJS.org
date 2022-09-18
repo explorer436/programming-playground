@@ -1,7 +1,7 @@
-* ExpressJS
+* Express Web Framework for Node.js
 
 Prerequisites:
-Node runtime
+Node.js
 
 https://expressjs.com/en/starter/installing.html
 
@@ -184,6 +184,23 @@ router.param('id', (req, res, next, id) => {
 
 The way it works is, when I call the next() function, run the next thing in line.
 
+Call next() to move on to the next middleware, allowing for stacking and fall-backs.
+
+As soon as the function that next() calls is done running, it will get back to that specific point and the next lines will be executed.
+
+If you do not want that to happen, you need to do something like this. If you don't put the ~return~ statement there, ~No auth~ will always be run - which is not what we want when ~req.query.admin~ is true.
+
+#+BEGIN_SRC <javascript>
+function auth(req, res, next) {
+  if (req.query.admin === 'true') {
+    req.admin = true
+    next()
+    return
+  }
+  res.send('No auth')
+}
+#+END_SRC
+
 ** middleware
 
 https://expressjs.com/en/guide/writing-middleware.html
@@ -192,9 +209,29 @@ https://expressjs.com/en/guide/using-middleware.html
 
 Middleware in express js is code that runs between when a request is sent to the server and an actual response being returned to the user.
 
-The code inside of the get, delete, put and post operations for the user is the response that will be sent to the user.
+The code inside of the get, delete, put and post operations for the user is run before a response that will be sent to the user. So, it is middleware.
 
-These helps by saving us from writing a ton of code inside of each route to implement the same functionality. Write code in one single place and use it wherever it is needed.
+So, from this block,
+
+#+BEGIN_SRC <javascript>
+app.get('/', logger, (req, res) => {
+  console.log('Here')
+  res.status(200).send('Hi')
+})
+#+END_SRC
+
+this is middleware:
+
+#+BEGIN_SRC <javascript>
+(req, res) => {
+  console.log('Here')
+  res.status(200).send('Hi')
+})
+#+END_SRC
+
+But typically, when thinking about middleware, we don't think about the regular code that is supposed to be run for each specific route. Instead, we think about other functions (like loggers) when thinking about middleware.
+
+Middleware functions help by saving us from writing a ton of code inside of each route to implement the same functionality. Write code in one single place and use it wherever it is needed.
 
 One common example of this is to log out something.
 
