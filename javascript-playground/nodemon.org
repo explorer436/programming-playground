@@ -1,0 +1,7 @@
+** nodemon
+
+To install and use it in an application, run ~npm i --save-dev nodemon~
+
+This is to make things easy during the development process.
+
+It will restart the server anytime we make changes (instead of having to do it manually).
