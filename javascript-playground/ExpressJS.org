@@ -3,6 +3,8 @@
 Prerequisites:
 Node runtime
 
+https://expressjs.com/en/starter/installing.html
+
 After node is installed, run ~npm init -y~
 
 It will set-up a basic package.json for you.
@@ -55,6 +57,8 @@ To pass a file to the user to download, do ~res.download('pathToTheFile')~
 To pass a file to the user to render, do ~res.render('pathToTheFile')~
 
 ** Router
+
+https://expressjs.com/en/guide/routing.html
 
 If we have hundreds of different routes defined in server.js, this file will become huge and difficult to maintain. The solution to this problem is a ~router~.
 
@@ -138,7 +142,8 @@ To access them in the route, we need to use ~req.params.id~
 
 Static routes always need to go above dynamic routes in the list of routes.
 
-** router.route
+**
+router.route
 
 You can chain repetitive routes using ~router.route~. You can define the route only in one location and chain different request paths on to it.
 
@@ -160,7 +165,7 @@ router
     })
 #+END_SRC
 
-** router.param
+** Route parameters
 
 This function is going to run anytime it finds a param that matches the name you pass in.
 
@@ -181,14 +186,51 @@ The way it works is, when I call the next() function, run the next thing in line
 
 ** middleware
 
+https://expressjs.com/en/guide/writing-middleware.html
+
+https://expressjs.com/en/guide/using-middleware.html
+
 Middleware in express js is code that runs between when a request is sent to the server and an actual response being returned to the user.
 
 The code inside of the get, delete, put and post operations for the user is the response that will be sent to the user.
 
-These helps by saving us from writing a ton of code inside of each route to implement the same functionality.
+These helps by saving us from writing a ton of code inside of each route to implement the same functionality. Write code in one single place and use it wherever it is needed.
 
 One common example of this is to log out something.
 
-Similar to other routes, if you need the middleware to be used by all the routes in a file, you need to put it at the top.
+#+BEGIN_SRC <javascript>
+function  logger(req, res, next) {
+  console.log(req.originalUrl)
+  next()
+}
+#+END_SRC
 
-You can also define it like this: ~router.use(loggerMiddleware)~
+If you want the entire application to use the middleware function, in server.js, you can use this by saying, ~app.use(logger)~
+
+If you want only a router to use the middleware function, in the router, use this: ~router.use(loggerMiddleware)~
+
+Similar to other routes, if you need the middleware to be used by all the routes in a file, you need to put it at the top. Functions defined before the ~.use(logger)~ line will not be able to use the middleware function because they do not know about it.
+
+There can be scanarios where you do not want to use a middleware function everywhere. You want to use it only on specific functions.
+
+e.g. if you want ~logger~ to be used only by app.get, you do it like this:
+
+#+BEGIN_SRC <javascript>
+app.get('/', logger, (req, res) => {
+  console.log('Here')
+  res.status(200).send('Hi')
+})
+#+END_SRC
+
+When you do this, it will run the ~logger~ function first and then do whatever is defined in app.get
+
+You can pass multiple middleware functions into app.get, like this:
+
+#+BEGIN_SRC <javascript>
+app.get('/', logger, logger, logger, (req, res) => {
+  console.log('Here')
+  res.status(200).send('Hi')
+})
+#+END_SRC
+
+In this case, it will run that middleware function three times. If you pass three different middleware functions into app.get, all three of them will be run in sequence.
