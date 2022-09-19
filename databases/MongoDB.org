@@ -1,0 +1,8 @@
+*** Issues encountered while working with MongoDB
+
+Issues encountered while working on Employee Lambdas using MongoDB : 
+
+mongodb is refusing connections:
+go to AWS security group and open up port 27107 (port range 0 - 65535)
+
+-----------------------------------------------------------------------------------------
