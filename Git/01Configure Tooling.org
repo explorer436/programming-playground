@@ -5,46 +5,7 @@ To figure out the location of the config file, use this: ~git config --list --sh
 
 Location of ~.gitconfig~ file in Windows: ~C:\Users\username\.gitconfig~
 
-Just paste this in the ~.gitconfig~ file.
-
-#+begin_src
-   [push]
-	default = simple
-   [user]
-	name = your name
-	email = your email id
-   [merge]
-	conflictstyle = diff3
-   [color]
-	ui = auto
-   [core]
-	autocrlf = true
-   [alias]
-        ;; reference: https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git/git.plugin.zsh
-	la = "!git config -l | grep alias | cut -c 7-"  ;; list all the local aliases
-        co = checkout                                   ;; git checkout
-	s = status
-	rup = remote update --prune
-	;; working with logs
-;;  	lol = log --color --graph --pretty=format:'%C(yellow)%h %C(green)%cd %C(cyan)[%an] %Creset%s' --date=format:'%F %T'
-        lol = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(yellow)%cd %C(bold blue)<%an>%Creset' --abbrev-commit --                                      ;; customize the log command
-	;; working with stashes
-	gstu = stash --include-untracked                ;; To stash everything, whether or not it is staged for commit
-	gstp = stash pop                                ;; To restore everything you've stashed
-        ;; working with branches        
-        b = branch -l             ;; list local branches
-        ba = branch -a            ;; list all branches
-        bd = branch -d            ;; Delete a local branch. The branch must be fully merged in its upstream branch.
-        bdd = branch -D           ;; Force the deletion of a local branch even if it’s not merged with upstream.
-        br = branch -r
-	;; git add
-	a = add
-        ai = add -i
-        aa = add --all
-#+end_src
-
-Set this to ~false~ unless you are really picky about the way the git tree looks. Some people prefer `merge` to `rebase` for simplicity.
-~git config --global pull.rebase false~
+Just paste this in the ~.gitconfig~ file. https://github.com/explorer436/Dotfiles2/blob/master/.gitconfig
 
 *** What is `merge.conflictStyle`?
 
