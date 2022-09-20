@@ -1,4 +1,4 @@
-package com.example;
+package io.conduktor.demos.kafka.opensearch;
 
 import com.google.gson.JsonParser;
 import org.apache.http.HttpHost;
@@ -31,43 +31,41 @@ import java.time.Duration;
 import java.util.Collections;
 import java.util.Properties;
 
-
-
 public class OpenSearchConsumer {
 
-	public static RestHighLevelClient createOpenSearchClient() {
-		String connString = "http://localhost:9200";
+    public static RestHighLevelClient createOpenSearchClient() {
+        String connString = "http://localhost:9200";
 //        String connString = "https://c9p5mwld41:45zeygn9hy@kafka-course-2322630105.eu-west-1.bonsaisearch.net:443";
 
-		// we build a URI from the connection string
-		RestHighLevelClient restHighLevelClient;
-		URI connUri = URI.create(connString);
-		// extract login information if it exists
-		String userInfo = connUri.getUserInfo();
+        // we build a URI from the connection string
+        RestHighLevelClient restHighLevelClient;
+        URI connUri = URI.create(connString);
+        // extract login information if it exists
+        String userInfo = connUri.getUserInfo();
 
-		if (userInfo == null) {
-			// REST client without security
-			restHighLevelClient = new RestHighLevelClient(
-					RestClient.builder(new HttpHost(connUri.getHost(), connUri.getPort(), "http")));
+        if (userInfo == null) {
+            // REST client without security
+            restHighLevelClient = new RestHighLevelClient(RestClient.builder(new HttpHost(connUri.getHost(), connUri.getPort(), "http")));
 
-		} else {
-			// REST client with security
-			String[] auth = userInfo.split(":");
+        } else {
+            // REST client with security
+            String[] auth = userInfo.split(":");
 
-			CredentialsProvider cp = new BasicCredentialsProvider();
-			cp.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials(auth[0], auth[1]));
+            CredentialsProvider cp = new BasicCredentialsProvider();
+            cp.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials(auth[0], auth[1]));
 
-			restHighLevelClient = new RestHighLevelClient(
-					RestClient.builder(new HttpHost(connUri.getHost(), connUri.getPort(), connUri.getScheme()))
-							.setHttpClientConfigCallback(
-									httpAsyncClientBuilder -> httpAsyncClientBuilder.setDefaultCredentialsProvider(cp)
-											.setKeepAliveStrategy(new DefaultConnectionKeepAliveStrategy())));
+            restHighLevelClient = new RestHighLevelClient(
+                    RestClient.builder(new HttpHost(connUri.getHost(), connUri.getPort(), connUri.getScheme()))
+                            .setHttpClientConfigCallback(
+                                    httpAsyncClientBuilder -> httpAsyncClientBuilder.setDefaultCredentialsProvider(cp)
+                                            .setKeepAliveStrategy(new DefaultConnectionKeepAliveStrategy())));
 
-		}
 
-		return restHighLevelClient;
-	}
-	
+        }
+
+        return restHighLevelClient;
+    }
+
     private static KafkaConsumer<String, String> createKafkaConsumer(){
 
         String boostrapServers = "127.0.0.1:9092";
@@ -86,7 +84,7 @@ public class OpenSearchConsumer {
         return new KafkaConsumer<>(properties);
 
     }
-    
+
     private static String extractId(String json){
         // gson library
         return JsonParser.parseString(json)
@@ -96,7 +94,7 @@ public class OpenSearchConsumer {
                 .get("id")
                 .getAsString();
     }
-    
+
     public static void main(String[] args) throws IOException {
 
         Logger log = LoggerFactory.getLogger(OpenSearchConsumer.class.getSimpleName());
@@ -118,7 +116,7 @@ public class OpenSearchConsumer {
                 openSearchClient.indices().create(createIndexRequest, RequestOptions.DEFAULT);
                 log.info("The Wikimedia Index has been created!");
             } else {
-                log.info("The Wikimedia Index already exists");
+                log.info("The Wikimedia Index already exits");
             }
 
             // we subscribe the consumer
@@ -159,6 +157,7 @@ public class OpenSearchConsumer {
                     } catch (Exception e){
 
                     }
+
                 }
 
 
@@ -176,12 +175,18 @@ public class OpenSearchConsumer {
                     consumer.commitSync();
                     log.info("Offsets have been committed!");
                 }
+
+
+
+
             }
+
+
         }
+
 
         // main code logic
 
         // close things
     }
-
 }

@@ -456,17 +456,21 @@ See docker-compose-wurstmeister.yml for these details
 
 *** GUI Tool
 
-    1. GUI tool to explore kafka setup: https://www.kafkamagic.com/
+    1. Use this tool for GUI views of local kafka cluster: https://github.com/redpanda-data/console
 
-    2. Use this tool for GUI views of local kafka cluster: https://github.com/redpanda-data/console
+       Command to run it:
 
-       Command to run it: ~docker run -p 8080:8080 -e KAFKA_BROKERS=host.docker.internal:9092 docker.redpanda.com/vectorized/console:latest~
-
+       #+BEGIN_SRC <language> <switches> <header arguments>
+       docker run --network=host -p 8080:8080 -e KAFKA_BROKERS=localhost:9092 docker.redpanda.com/vectorized/console:latest
+       #+END_SRC
+       
        It runs at port 8080
 
        And use the browser: http://localhost:8080/topics
 
-    3. There are more tools listed here: https://dev.to/dariusx/recommend-a-simple-kafka-ui-tool-5gob
+    1. GUI tool to explore kafka setup: https://www.kafkamagic.com/ (never used this myself - don't know how this works)
+
+    1. There are more tools listed here: https://dev.to/dariusx/recommend-a-simple-kafka-ui-tool-5gob
 
 ** Helpful resources
 
