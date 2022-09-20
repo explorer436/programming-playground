@@ -2,7 +2,7 @@
 
 Things that need to be set-up in order to run the applications from this repo.
 
-1. docker
+1. docker and docker-compose
 1. jdk
 1. haskell (follow the instructions from haskell stack websit) and hledger
 1. rust
