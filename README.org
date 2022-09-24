@@ -1,4 +1,4 @@
-#+BEGIN_SRC sh :results output
+#+BEGIN_SRC sh :results output :exports both
 find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/" 
 #+END_SRC
 
@@ -32,6 +32,7 @@ find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
  |-.gitignore
  |-.git
  | |-packed-refs
+ | |-COMMIT_EDITMSG
  | |-FETCH_HEAD
  | |-info
  | | |-exclude
@@ -83,12 +84,22 @@ find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
  | |-HEAD
  | |-config
  | |-objects
+ | | |-6d
+ | | | |-c12679be628f4f81f89999b7e7ecc2779edcd4
+ | | |-59
+ | | | |-96e9dbde2d40b16362f694ebdbdd89d8d124aa
  | | |-info
+ | | |-fe
+ | | | |-9265dbb0f7cd00897c4f7871ad178e602d80c6
+ | | |-40
+ | | | |-8e4aa4e09da51f4ff9e1770dd8650c9746a4b5
  | | |-pack
  | | | |-pack-6e6b00cd1ecd82711125f3f0448617a98251bd8e.idx
  | | | |-pack-158a138acf10a2a25438e7021ddb684465bd373b.idx
  | | | |-pack-6e6b00cd1ecd82711125f3f0448617a98251bd8e.pack
  | | | |-pack-158a138acf10a2a25438e7021ddb684465bd373b.pack
+ | | |-79
+ | | | |-f474df02a80e9b0c706b06870392de14473c8b
  | |-hooks
  | | |-applypatch-msg.sample
  | | |-pre-rebase.sample
@@ -2681,5 +2692,4 @@ find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
  | | | | | | | | |-SpringKafkaApplicationTests.java
  |-cloud
  | |-README.org
- |-createTableOfContents.sh
 #+end_example
