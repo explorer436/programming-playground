@@ -1,4 +1,4 @@
-# Git Worktrees
+* Git Worktrees
 
 https://git-scm.com/docs/git-worktree
 

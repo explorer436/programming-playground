@@ -1,19 +1,19 @@
 Reference: https://darutk.medium.com/understanding-id-token-5f83f50fa02e
 
-# Understanding ID Token
+* Understanding ID Token
 
 
-## 1. Introduction
+** 1. Introduction
 
 From an engineer's point of view, an abstract explanation like “ID Token is a token issued as a result of user authentication” is not so valuable because engineers cannot imagine how to implement ID Token at all by the explanation. Instead, what engineers want to know first, at least what I should have known before diving into reading OpenID Connect Core 1.0, is what an ID token looks like.
 
 Knowledge about ID Token greatly helps engineers understand what OpenID Connect is. It's because “OpenID Connect is a specification as to how to request and issue ID tokens”.
 
-## 2. What ID Token Looks Like
+** 2. What ID Token Looks Like
 
 The following is an example of an ID token excerpted from “A.2. Example using response_type=id_token” in OpenID Connect Core 1.0.
 
-```
+#+BEGIN_SRC
 eyJraWQiOiIxZTlnZGs3IiwiYWxnIjoiUlMyNTYifQ.ewogImlz
 cyI6ICJodHRwOi8vc2VydmVyLmV4YW1wbGUuY29tIiwKICJzdWIiOiAiMjQ4
 Mjg5NzYxMDAxIiwKICJhdWQiOiAiczZCaGRSa3F0MyIsCiAibm9uY2UiOiAi
@@ -29,23 +29,23 @@ AAgNCUwtik6SjoSUZRcf-O5lygIyLENx882p6MtmwaL1hd6qn5RZOQ0TLrOY
 u0532g9Exxcm-ChymrB4xLykpDj3lUivJt63eEGGN6DH5K6o33TcxkIjNrCD
 4XB1CKKumZvCedgHHF3IAK4dVEDSUoGlH9z4pP_eWYNXvqQOjGs-rDaQzUHl
 6cQQWNiDpWOl_lxXjQEvQ
-```
+#+END_SRC
 
 In this example, there are two periods. One is the 9th character from the right on the 1st line. The other is the 22nd character from the right on the 9th line. By the two periods, an ID token is split into three fields. (The case where the number of fields is not 3 will be explained later.)
 
 The three fields represent a header, a payload and a signature. That is, the format of an ID token is as follows:
 
-`Header.Payload.Signature`
+~Header.Payload.Signature~
 
 In the case of the example excerpted above, the header, the payload and the signature are as follows:
 
 Header 
 
-`eyJraWQiOiIxZTlnZGs3IiwiYWxnIjoiUlMyNTYifQ`
+~eyJraWQiOiIxZTlnZGs3IiwiYWxnIjoiUlMyNTYifQ~
 
 Payload
 
-```
+#+BEGIN_SRC
 ewogImlz
 cyI6ICJodHRwOi8vc2VydmVyLmV4YW1wbGUuY29tIiwKICJzdWIiOiAiMjQ4
 Mjg5NzYxMDAxIiwKICJhdWQiOiAiczZCaGRSa3F0MyIsCiAibm9uY2UiOiAi
@@ -55,60 +55,60 @@ ICJKYW5lIiwKICJmYW1pbHlfbmFtZSI6ICJEb2UiLAogImdlbmRlciI6ICJm
 ZW1hbGUiLAogImJpcnRoZGF0ZSI6ICIwMDAwLTEwLTMxIiwKICJlbWFpbCI6
 ICJqYW5lZG9lQGV4YW1wbGUuY29tIiwKICJwaWN0dXJlIjogImh0dHA6Ly9l
 eGFtcGxlLmNvbS9qYW5lZG9lL21lLmpwZyIKfQ
-```
+#+END_SRC
 
 Signature
 
-```
+#+begin_src 
 rHQjEmBqn9Jre0OLykYNn
 spA10Qql2rvx4FsD00jwlB0Sym4NzpgvPKsDjn_wMkHxcp6CilPcoKrWHcip
 R2iAjzLvDNAReF97zoJqq880ZD1bwY82JDauCXELVR9O6_B0w3K-E7yM2mac
 AAgNCUwtik6SjoSUZRcf-O5lygIyLENx882p6MtmwaL1hd6qn5RZOQ0TLrOY
 u0532g9Exxcm-ChymrB4xLykpDj3lUivJt63eEGGN6DH5K6o33TcxkIjNrCD
 4XB1CKKumZvCedgHHF3IAK4dVEDSUoGlH9z4pP_eWYNXvqQOjGs-rDaQzUHl
-6cQQWNiDpWOl_lxXjQEvQ
-```
+6cQQWNiDpWOl_lxXjQEvQ  
+#+end_src
 
-##3. JSON Web Signature (JWS)
+** 3. JSON Web Signature (JWS)
 
 The format of Header.Payload.Signature shown in the previous section is the format defined in “7.1. JWS Compact Serialization" in RFC 7515, JSON Web Signature (JWS). The concrete definition described in the specification is as follows:
 
-```
+#+begin_src 
 BASE64URL(UTF8(JWS Protected Header)) || '.' ||
 BASE64URL(JWS Payload) || '.' ||
-BASE64URL(JWS Signature)
-```
+BASE64URL(JWS Signature)  
+#+end_src
 
 The definition tells that each field is encoded by base64url (RFC 4648, 5. Base 64 Encoding with URL and Filename Safe Alphabet). This means that we can get original contents by decoding the fields by base64url. Let's do it.
 
-#### 3.1. Decoding JWS Header
+**** 3.1. Decoding JWS Header
 
 First, let's decode the header field. Here I install base64-url-cli and decode the header on the command line.
 
-```
+#+begin_src 
 $ npm install -g base64-url-cli
-$ base64url decode eyJraWQiOiIxZTlnZGs3IiwiYWxnIjoiUlMyNTYifQ
-```
+$ base64url decode eyJraWQiOiIxZTlnZGs3IiwiYWxnIjoiUlMyNTYifQ  
+#+end_src
 
 As a result, we can get this JSON.
 
-```
-{"kid":"1e9gdk7","alg":"RS256"}
-```
+#+begin_src 
+{"kid":"1e9gdk7","alg":"RS256"}  
+#+end_src
 
-The JSON includes two parameters, `kid` and `alg`. Parameters that a JWS header may include are listed in “4.1. Registered Header Parameter Names” in RFC 7515.
+The JSON includes two parameters, ~kid~ and ~alg~. Parameters that a JWS header may include are listed in “4.1. Registered Header Parameter Names” in RFC 7515.
 
-Among the parameters, `alg` is important. It represents the algorithm of the signature.
+Among the parameters, ~alg~ is important. It represents the algorithm of the signature.
 
-#### 3.2. Decoding JWS Payload
+**** 3.2. Decoding JWS Payload
 
 Next, let's decode the payload field.
 
-`$ base64url decode ewogImlzcy......LmpwZyIKfQ`
+~$ base64url decode ewogImlzcy......LmpwZyIKfQ~
 
 The output will become as follows:
 
-```
+#+begin_src 
 {
  "iss": "http://server.example.com",
  "sub": "248289761001",
@@ -123,35 +123,35 @@ The output will become as follows:
  "birthdate": "0000-10-31",
  "email": "janedoe@example.com",
  "picture": "http://example.com/janedoe/me.jpg"
-}
-```
+}  
+#+end_src
 
 The content of this JSON will be explained later, but one note: RFC 7515 does not require the content be JSON. The specification says the content can be “an arbitrary sequence of octets”.
 
-#### 3.3. Decoding JWS Signature
+**** 3.3. Decoding JWS Signature
 
 The alg parameter in the header represents the algorithm of the signature. Valid values of alg are listed not in RFC 7515 but in “3.1. "alg" (Algorithm) Header Parameter Values for JWS” in RFC 7518, JSON Web Algorithms (JWA).
 
 ![“alg” (Algorithm) Header Parameter Values for JWS](./images/alg_Header_Parameter_Values_for_JWS.png)
 
-The result of decoding the header says that the value of `alg` is `RS256`. Referring to the table in “3.1. “alg” (Algorithm) Header Parameter Values for JWS”, we can find `RS256` represents “RSASSA-PKCS1-v1_5 using SHA-256”.
+The result of decoding the header says that the value of ~alg~ is ~RS256~. Referring to the table in “3.1. “alg” (Algorithm) Header Parameter Values for JWS”, we can find ~RS256~ represents “RSASSA-PKCS1-v1_5 using SHA-256”.
 
 Because the signature by RSA algorithm is binary data, even if we decode the signature field by base64url, what we can get is binary data.
 
-```
+#+begin_src 
 $ base64url decode rHQjEmBqn9......l_lxXjQEvQ | od -tu1 -An
  239 191 189 116  35  18  96 106 239 191 189 239 191 189 107 123
   67 239 191 189 239 191 189  70  13 239 191 189 239 191 189  64
  ...............................................................
   14 239 191 189 239 191 189 239 191 189 239 191 189 113  94  52
-   4 239 191 189  10
-```
+   4 239 191 189  10  
+#+end_src
 
-#### 3.4. Input for Signature
+**** 3.4. Input for Signature
 
-Input data for signature is `Header.Payload`. In the case of the example we've used so far, the input data is as follows:
+Input data for signature is ~Header.Payload~. In the case of the example we've used so far, the input data is as follows:
 
-```
+#+begin_src 
 eyJraWQiOiIxZTlnZGs3IiwiYWxnIjoiUlMyNTYifQ.ewogImlz
 cyI6ICJodHRwOi8vc2VydmVyLmV4YW1wbGUuY29tIiwKICJzdWIiOiAiMjQ4
 Mjg5NzYxMDAxIiwKICJhdWQiOiAiczZCaGRSa3F0MyIsCiAibm9uY2UiOiAi
@@ -160,58 +160,58 @@ MTEyODA5NzAsCiAibmFtZSI6ICJKYW5lIERvZSIsCiAiZ2l2ZW5fbmFtZSI6
 ICJKYW5lIiwKICJmYW1pbHlfbmFtZSI6ICJEb2UiLAogImdlbmRlciI6ICJm
 ZW1hbGUiLAogImJpcnRoZGF0ZSI6ICIwMDAwLTEwLTMxIiwKICJlbWFpbCI6
 ICJqYW5lZG9lQGV4YW1wbGUuY29tIiwKICJwaWN0dXJlIjogImh0dHA6Ly9l
-eGFtcGxlLmNvbS9qYW5lZG9lL21lLmpwZyIKfQ
-```
+eGFtcGxlLmNvbS9qYW5lZG9lL21lLmpwZyIKfQ  
+#+end_src
 
-#### 3.5. Summary of Decoding JWS
+**** 3.5. Summary of Decoding JWS
 
 ![Summary_of_decoding_JWS](./images/Summary_of_decoding_JWS.png)
 
-#### 3.6. Unsecured JWS
+**** 3.6. Unsecured JWS
 
 Unsecured JWS is a JWS without a signature. Below is an example excerpted from “A.5. Example Unsecured JWS” in RFC 7515.
 
-```
+#+begin_src 
 eyJhbGciOiJub25lIn0
 .
 eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQogImh0dHA6Ly9leGFt
 cGxlLmNvbS9pc19yb290Ijp0cnVlfQ
-.
-```
+.  
+#+end_src
 
 The format of unsecured JWS is as follows. The signature field is empty.
 
-`Header.Payload`
+~Header.Payload~
 
 Because a signature is missing, any algorithm for a signature is not needed. Therefore, if we decode the header field of an unsecured JWS,
 
-`$ base64url decode eyJhbGciOiJub25lIn0`
+~$ base64url decode eyJhbGciOiJub25lIn0~
 
 the output tells that the algorithm is none.
 
-`{"alg":"none"}`
+~{"alg":"none"}~
 
-## 4. JSON Web Encryption (JWE)
+** 4. JSON Web Encryption (JWE)
 
 In addition to the format of Header.Payload.Signature, there is one more format for ID Token which has 5 fields as shown below.
 
-`Header.Key.Vector.Payload.Tag`
+~Header.Key.Vector.Payload.Tag~
 
 This format is defined in “7.1. JWE Compact Serialization” in RFC 7516, JSON Web Encryption (JWE). The concrete definition described in the specification is as follows:
 
-```
+#+begin_src 
 BASE64URL(UTF8(JWE Protected Header)) || '.' ||
 BASE64URL(JWE Encrypted Key) || '.' ||
 BASE64URL(JWE Initialization Vector) || '.' ||
 BASE64URL(JWE Ciphertext) || '.' ||
-BASE64URL(JWE Authentication Tag)
-```
+BASE64URL(JWE Authentication Tag)  
+#+end_src
 
 This format is used when ID tokens need to be encrypted.
 
 Data are encrypted and then put in the 4th field. RFC 7516 says that any data can be used as the input. However, in the context of ID Token, the data has to be a JWS. That is, a JWS is nested in a JWE.
 
-#### 4.1. Two-Step Encryption
+**** 4.1. Two-Step Encryption
 
 According to “7.1. JWE Compact Serialization”, the 2nd field of a JWE (in the format of compact serialization) is “JWE Encrypted Key”. It's not “Encryption Key” but “Encrypted Key”. There is a reason for this.
 
@@ -226,7 +226,7 @@ The diagram below illustrates two-step encryption and the animation version of t
 
 ![encrypting_party_decrypting_party](./images/encrypting_party_decrypting_party.png)
 
-#### 4.2. Encryption Algorithms
+**** 4.2. Encryption Algorithms
 
 JWE uses two-step encryption. Therefore, two encryption algorithms are used.
 
@@ -239,7 +239,7 @@ On the other hand, algorithms used to encrypt shared keys are listed in “4.1. 
 ![alg (Algorithm) Header Parameter Values for JWE](./images/alg_Header_Parameter_Values_for_JWE.png) 
 
 
-#### 4.3. Algorithm “dir”
+**** 4.3. Algorithm “dir”
 
 Among the identifiers of algorithms for key encryption, “dir” is special because it is not two-step encryption but direct encryption using a shared key. “4.5. Direct Encryption with a Shared Symmetric Key” in RFC 7518 states as follows:
 
@@ -251,11 +251,11 @@ Symmetric Encryption
 
 The symmetric encryption key is derived from the client_secret value by using a left truncated SHA-2 hash of the octets of the UTF-8 representation of the client_secret. For keys of 256 or fewer bits, SHA-256 is used; for keys of 257-384 bits, SHA-384 is used; for keys of 385-512 bits, SHA-512 is used. The hash value MUST be left truncated to the appropriate bit length for the AES key wrapping or direct encryption algorithm used, for instance, truncating the SHA-256 hash to 128 bits for A128KW. If a symmetric key with greater than 512 bits is needed, a different method of deriving the key from the client_secret would have to be defined by an extension. Symmetric encryption MUST NOT be used by public (non-confidential) Clients because of their inability to keep secrets.
 
-#### 4.4. JWE Example
+**** 4.4. JWE Example
 
 The following is a JWE example excerpted from “A.1.7. Complete Representation” in RFC 7516. Newlines in the example exist there just for readability and an actual JWE does not include any newline.
 
-```
+#+begin_src 
 eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZHQ00ifQ.
 OKOawDo13gRp2ojaHV7LFpZcgV7T6DVZKTyKOMTYUmKoTCVJRgckCL9kiMT03JGe
 ipsEdY3mx_etLbbWSrFr05kLzcSr4qKAq7YN7e9jwQRb23nfa6c9d-StnImGyFDb
@@ -266,24 +266,24 @@ mqgfwX7XWRxv2322i-vDxRfqNzo_tETKzpVLzfiwQyeyPGLBIO56YJ7eObdv0je8
 48V1_ALb6US04U3b.
 5eym8TW_c8SuK0ltJ3rpYIzOeDQz7TALvtu6UG9oMo4vpzs9tX_EFShS8iB7j6ji
 SdiwkIr3ajwQzaBtQD_A.
-XFBoMYUZodetZdvTiFvSkQ
-```
+XFBoMYUZodetZdvTiFvSkQ  
+#+end_src
 
 Note that this JWE is not an ID token. The embedded data before being encrypted is this text: “The true sign of intelligence is not knowledge but imagination.”
 
-#### 4.5. Decoding JWE Header
+**** 4.5. Decoding JWE Header
 
 Among the 5 fields of JWE, the first one is a JWE header. It is encoded by base64url but not encrypted, so let's decode it.
 
-`$ base64url decode eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZHQ00ifQ`
+~$ base64url decode eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZHQ00ifQ~
 
 We will get this output:
 
-`{"alg":"RSA-OAEP","enc":"A256GCM"}`
+~{"alg":"RSA-OAEP","enc":"A256GCM"}~
 
-`alg` is an algorithm for key encryption, and `enc` is an algorithm for data encryption. Parameters that a JWE header may include are listed in “4.1. Registered Header Parameter Names” in RFC 7516.
+~alg~ is an algorithm for key encryption, and ~enc~ is an algorithm for data encryption. Parameters that a JWE header may include are listed in “4.1. Registered Header Parameter Names” in RFC 7516.
 
-## 5. JSON Web Token (JWT)
+** 5. JSON Web Token (JWT)
 
 As we have learned JWS and JWE, we are ready to learn JWT.
 
@@ -295,20 +295,20 @@ To put it simply, JWT is either JWS or JWE which contains a collection of “cla
 
 Before explaining what “claims” are, let me explain how the JSON (a collection of “claims”) is embedded in JWS or JWE.
 
-#### 5.1. JWT in JWS format
+**** 5.1. JWT in JWS format
 
 In the case of “JWT in JWS format”, a collection of claims in JSON format is encoded by base64url and then put in the 2nd field of JWS.
 
 ![JWT in JWS format](./images/JWT_in_JWS_format.png) 
 
-#### 5.2. JWT in JWE format
+**** 5.2. JWT in JWE format
 
 In the case of “JWT in JWE format”, a collection of claims in JSON format is first encrypted, then encoded by base64url, and finally put in the 4th field of JWE.
 
 ![JWT in JWE format](./images/JWT_in_JWE_format.png) 
 
 
-#### 5.3. Nested JWT
+**** 5.3. Nested JWT
 
 How can we do both signing and encrypting? It can be achieved by either wrapping a JWS in a JWE or wrapping a JWE in a JWS. JWT which wraps JWS or JWE inside it is called “Nested JWT”. The figure below illustrates a Nested JWT in the pattern of “JWS in JWE”.
 
@@ -321,37 +321,37 @@ ID Tokens MUST be signed using JWS and optionally both signed and then encrypted
 
 Therefore, if an ID token is encrypted, its format is “JWS in JWE” as just illustrated in the figure above.
 
-#### 5.4. JWT Claims
+**** 5.4. JWT Claims
 
 JWT contains a collection of “claims”. Claims in this context are pieces of information each of which is represented as a key-value pair in JSON format. Therefore, a collection of claims looks like the following.
 
-```
+#+begin_src 
 {
     "ClaimName": ClaimValue,
     "ClaimName": ClaimValue,
     ......
-}
-```
+}  
+#+end_src
 
 The JSON below is an example of a collection of claims excerpted from “3.1. Example JWT” in RFC 7519.
 
-```
+#+begin_src 
 {"iss":"joe",
  "exp":1300819380,
- "http://example.com/is_root":true}
- ```
+ "http://example.com/is_root":true}  
+#+end_src
 
 RFC 7519 defines some standard claim names in “4.1. Registered Claim Names”.
 
-```
+#+begin_src 
 iss - Issuer
 sub - Subject
 aud - Audience
 exp - Expiration
 nbf - Not Before
 iat - Issued At
-jti - JWT ID
-```
+jti - JWT ID  
+#+end_src
 
 As shown in the example excerpted from “3.1. Example JWT”, non-standard claims can be included in a JWT, but consideration should be given so that claim names don't conflict.
 
@@ -361,7 +361,7 @@ The set of claims that a JWT must contain to be considered valid is context depe
 
 From a viewpoint of RFC 7519, ID Token defined in OpenID Connect Core 1.0 is one of application examples of JWT. In the context of ID Token, some of the standard claims defined in RFC 7519 are mandatory. To be concrete, iss, sub, aud, exp, and iat are mandatory.
 
-## 6. ID Token
+** 6. ID Token
 
 As we have learned JWT, we are ready to learn ID Token.
 
@@ -377,7 +377,7 @@ ID Token contains claims about user authentication and other claims. Main claims
 
 Let's look into the specifications of claims one by one.
 
-#### 6.1. iss Claim
+**** 6.1. iss Claim
 
 RFC 7519
 
@@ -391,19 +391,19 @@ iss is a claim to identify the issuer of the JWT. In RFC 7519, the value of iss 
 
 The following is a valid example as a value of iss.
 
-`https://example.com`
+~https://example.com~
 
 A server which issues ID tokens (= OpenID provider) should use only domains which the server eligibly manages in order to avoid conflicts.
 
 In addition, if you want to support OpenID Connect Discovery 1.0, be careful when you decide the value of iss because the server has to be able to accept HTTP requests at {value-of-iss}/.well-known/openid-configuration. For example, if the value of iss is https://example.com, the URL below has to be able to accept HTTP GET requests and return an appropriate JSON.
 
-`https://example.com/.well-known/openid-configuration`
+~https://example.com/.well-known/openid-configuration~
 
 As a reference, a real example by Google is here:
 
-`https://accounts.google.com/.well-known/openid-configuration`
+~https://accounts.google.com/.well-known/openid-configuration~
 
-#### 6.2. sub Claim
+**** 6.2. sub Claim
 
 RFC 7519
 
@@ -417,7 +417,7 @@ sub claim represents the identifier of the authenticated user. In RFC 7519, the 
 
 An ID token is issued as a result of user authentication, and the identifier of the authenticated user is included in the ID token as the value of the sub claim.
 
-#### 6.3. aud Claim
+**** 6.3. aud Claim
 
 RFC 7519
 
@@ -429,7 +429,7 @@ REQUIRED. Audience(s) that this ID Token is intended for. It MUST contain the OA
 
 aud claim lists expected receivers of the JWT. In the case of ID Token, aud claim includes the client ID of the client application which has requested the ID token.
 
-#### 6.4. exp Claim
+**** 6.4. exp Claim
 
 RFC 7519
 
@@ -441,7 +441,7 @@ REQUIRED. Expiration time on or after which the ID Token MUST NOT be accepted fo
 
 exp claim denotes when the JWT will expire. The value is represented as seconds since the Unix epoch (1970-Jan-01). Note that the unit is not milliseconds but seconds.
 
-#### 6.5. iat Claim
+**** 6.5. iat Claim
 
 RFC 7519
 
@@ -453,7 +453,7 @@ REQUIRED. Time at which the JWT was issued. Its value is a JSON number represent
 
 iat claim denotes when the JWT was issued. The value is represented as seconds since the Unix epoch as the value of exp is.
 
-#### 6.6. auth_time Claim
+**** 6.6. auth_time Claim
 
 OpenID Connect Core 1.0
 
@@ -468,7 +468,7 @@ Inclusion of the auth_time claim is mandatory when any one of the following cond
 1. The request for the ID token includes a max_age request parameter.
 2. The value of require_auth_time of the client application istrue. (See “2. Client Metadata” in “OpenID Connect Dynamic Client Registration 1.0” for details)
 
-#### 6.7. nonce Claim
+**** 6.7. nonce Claim
 
 OpenID Connect Core 1.0
 
@@ -476,7 +476,7 @@ String value used to associate a Client session with an ID Token, and to mitigat
 
 ID token requests may come with a nonce request parameter to protect from replay attacks. When the request parameter is included, the server will embed a nonce claim in the issued ID token with the same value of the request parameter.
 
-#### 6.8. acr Claim
+**** 6.8. acr Claim
 
 OpenID Connect Core 1.0
 
@@ -484,7 +484,7 @@ OPTIONAL. Authentication Context Class Reference. String specifying an Authentic
 
 acr claim denotes the authentication contexts that the user authentication has satisfied.
 
-#### 6.9. amr Claim
+**** 6.9. amr Claim
 
 OpenID Connect Core 1.0
 
@@ -492,7 +492,7 @@ OPTIONAL. Authentication Methods References. JSON array of strings that are iden
 
 amr claim denotes the methods of the user authentication. In the specification of OpenID Connect Core 1.0, values for the amr claim are not defined. But in June 2017, RFC 8176 (Authentication Method Reference Values) that standardizes some values of the amr claim was released.
 
-#### 6.10. azp Claim
+**** 6.10. azp Claim
 
 OpenID Connect Core 1.0
 
@@ -500,7 +500,7 @@ OPTIONAL. Authorized party — the party to which the ID Token was issued. If pr
 
 azp claim denotes the authorized party. To be concrete, the value of the claim is the client ID which has requested the ID token.
 
-#### 6.11. User Attribute Claims
+**** 6.11. User Attribute Claims
 
 Claims related to user attributes are defined in “5.1. Standard Claims” in OpenID Connect Core 1.0.
 
@@ -525,43 +525,43 @@ phone_number_verified - whether the phone number has been verified
 address - postal address; the format is defined in “5.1.1. Address Claim”
 updated_at - last time the user's information was updated at
 
-Some claims listed above can have localized values. For example, in the case of `family_name`, “Kawasaki” in English can be localized to “川崎” (Japanese Kanji) and “カワサキ” (Japanese Katakana). To support localization of claims, “#LanguageTag” can be appended after claim names. Details are described in “5.2. Claims Languages and Scripts”.
+Some claims listed above can have localized values. For example, in the case of ~family_name~, “Kawasaki” in English can be localized to “川崎” (Japanese Kanji) and “カワサキ” (Japanese Katakana). To support localization of claims, “*LanguageTag” can be appended after claim names. Details are described in “5.2. Claims Languages and Scripts”.
 
 The following are examples of claims with a language tag.
 
-```
+#+begin_src 
 "family_name": "Kawasaki",
-"family_name#ja-Hani-JP": "川崎",
-"family_name#ja-Kana-JP": "カワサキ",
-```
+"family_name*ja-Hani-JP": "川崎",
+"family_name*ja-Kana-JP": "カワサキ",  
+#+end_src
 
 As for “Language Tag”, please refer to RFC 5646 (Tags for Identifying Languages).
 
-#### 6.12. Hash Claims
+**** 6.12. Hash Claims
 
 Depending on the value of the response_type request parameter, an access token and/or an authorization code may be issued together with an ID token (See “Diagrams of All The OpenID Connect Flows” for details). In this case, at_hash claim and/or c_hash claim may be added to the ID token. Under some conditions, the claims are mandatory. Details are described in “3.3.2.11. ID Token”.
 
-`at_hash`
+~at_hash~
 
 Access Token hash value. Its value is the base64url encoding of the left-most half of the hash of the octets of the ASCII representation of the access_token value, where the hash algorithm used is the hash algorithm used in the alg Header Parameter of the ID Token's JOSE Header. For instance, if the alg is RS256, hash the access_token value with SHA-256, then take the left-most 128 bits and base64url encode them. The at_hash value is a case sensitive string. If the ID Token is issued from the Authorization Endpoint with an access_token value, which is the case for the response_type value code id_token token, this is REQUIRED; otherwise, its inclusion is OPTIONAL.
 
-`c_hash`
+~c_hash~
 
 Code hash value. Its value is the base64url encoding of the left-most half of the hash of the octets of the ASCII representation of the code value, where the hash algorithm used is the hash algorithm used in the alg Header Parameter of the ID Token's JOSE Header. For instance, if the alg is HS512, hash the code value with SHA-512, then take the left-most 256 bits and base64url encode them. The c_hash value is a case sensitive string. If the ID Token is issued from the Authorization Endpoint with a code, which is the case for the response_type values code id_token and code id_token token, this is REQUIRED; otherwise, its inclusion is OPTIONAL.
 
 In addition, Financial API (which is being discussed and defined by Financial API Working Group of OpenID Foundation) has added s_hash claim. It is defined in “5.1. Introduction” in Financial API Part 2.
 
-`s_hash`
+~s_hash~
 
 State hash value. Its value is the base64url encoding of the left-most half of the hash of the octets of the ASCII representation of the state value, where the hash algorithm used is the hash algorithm used in the alg Header Parameter of the ID Token’s JOSE Header. For instance, if the alg is HS512, hash the code value with SHA-512, then take the left-mots 256 bits and base64url encode them. The s_hash value is a case sensitive string.
 
-# Summary
+* Summary
 
 ID Token is a kind of JWT.
 ID Token is always signed and optionally encrypted.
 ID Token conveys a collection of claims in a verifiable manner.
 Claims are mainly related to user authentication and user attributes.
 
-# Finally
+* Finally
 
 If you are looking for an implementation of OpenID provider, please consider Authlete. Read “New Architecture of OAuth 2.0 and OpenID Connect implementation”, and you will love the architecture of Authlete
