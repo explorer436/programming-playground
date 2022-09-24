@@ -23,4 +23,6 @@ OpenSearch is an open-source fork of ElasticSearch. That is the reason we are us
 
 *** Docker set-up
 
-Used docker-compose-wurstmeister.yml for this application.
+Used docker-compose-wurstmeister.yml for this application for docker.
+
+For details about opensearch docker set-up, look at the opensearch folder.

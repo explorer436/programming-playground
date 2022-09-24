@@ -35,6 +35,8 @@ import java.util.Properties;
 
 public class OpenSearchConsumer {
 
+	private static final String OPENSEARCH_INDEX_NAME = "wikimedia";
+
 	public static RestHighLevelClient createOpenSearchClient() {
 		String connString = "http://localhost:9200";
 //        String connString = "https://c9p5mwld41:45zeygn9hy@kafka-course-2322630105.eu-west-1.bonsaisearch.net:443";
@@ -111,10 +113,10 @@ public class OpenSearchConsumer {
 
         try(openSearchClient; consumer){
 
-            boolean indexExists = openSearchClient.indices().exists(new GetIndexRequest("wikimedia"), RequestOptions.DEFAULT);
+            boolean indexExists = openSearchClient.indices().exists(new GetIndexRequest(OPENSEARCH_INDEX_NAME), RequestOptions.DEFAULT);
 
             if (!indexExists){
-                CreateIndexRequest createIndexRequest = new CreateIndexRequest("wikimedia");
+                CreateIndexRequest createIndexRequest = new CreateIndexRequest(OPENSEARCH_INDEX_NAME);
                 openSearchClient.indices().create(createIndexRequest, RequestOptions.DEFAULT);
                 log.info("The Wikimedia Index has been created!");
             } else {
@@ -125,29 +127,37 @@ public class OpenSearchConsumer {
             consumer.subscribe(Collections.singleton("wikimedia.recentchange"));
 
 
+            // now, consume data from the kafka topic
             while(true) {
 
+            	// In case there is no data, lets block on this line for 3000 seconds.
                 ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(3000));
 
                 int recordCount = records.count();
                 log.info("Received " + recordCount + " record(s)");
 
+                
                 BulkRequest bulkRequest = new BulkRequest();
 
                 for (ConsumerRecord<String, String> record : records) {
 
                     // send the record into OpenSearch
 
-                    // strategy 1
+                    // strategy 1 - use the id that is built from kafka record data.
                     // define an ID using Kafka Record coordinates
-//                    String id = record.topic() + "_" + record.partition() + "_" + record.offset();
+                    // String id = record.topic() + "_" + record.partition() + "_" + record.offset();
 
                     try {
-                        // strategy 2
-                        // we extract the ID from the JSON value
+                        // strategy 2 - use the id that already exists in the record that is retrieved from kafka. Extract the ID from the JSON value.
                         String id = extractId(record.value());
 
-                        IndexRequest indexRequest = new IndexRequest("wikimedia")
+                        // sending each record from kafka is done by using "IndexRequest"
+                        
+                        // Why are we setting the id in the IndexRequest?
+                        // We need to make the consumer application idempotent.
+                        // If we don't send an id into OpenSearch, if we insert a duplicate record into OpenSearch, it will get a new/different id. That is duplication of data.
+                        // So, we need to send the id into OpenSearch.
+                        IndexRequest indexRequest = new IndexRequest(OPENSEARCH_INDEX_NAME)
                                 .source(record.value(), XContentType.JSON)
                                 .id(id);
 
@@ -157,7 +167,7 @@ public class OpenSearchConsumer {
 
 //                        log.info(response.getId());
                     } catch (Exception e){
-
+                    	e.printStackTrace();
                     }
                 }
 

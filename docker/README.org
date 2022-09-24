@@ -72,10 +72,10 @@ Delete an image from the local image store: ~docker image rm alpine:3.4~
 
 Run a container from the Alpine version 3.9 image, name the running container "web" and expose port 5000 externally, mapped to port 0 inside the container: ~docker container run --name web -p 5000:80 alpine:3.9~
 
-~~~
+#+BEGIN_SRC
 docker run -p 5000:5000 nameOfTheDockerRepository/nameOfTheApplication
 docker run -p {HostPort}:{ContainerPort} nameOfTheDockerRepository/nameOfTheApplication
-~~~
+#+END_SRC
  
 (docker run is a shortcut for docker container run)
 
@@ -97,6 +97,29 @@ stop -> SIGTERM -> graceful shutdown
 
 To kil a container based on containerId : ~docker container kill containerId~
 
+To stop all docker containers
+
+#+BEGIN_SRC
+docker stop $(docker ps -a -q)
+#+END_SRC
+
+To remove all docker containers
+
+#+BEGIN_SRC
+docker container prune
+or
+docker rm $(docker ps -a -q)
+#+END_SRC
+
+We can do it using a one-liner:
+
+#+BEGIN_SRC
+docker container rm $(docker container ls -aq) -f
+
+docker container ls -aq lists container's ids only
+docker container rm $(..) -f forcibly removes all container's ids
+#+END_SRC
+
 - Kill the container and the application that is running in it right away.
 - kill -> SIGKILL  -> immediately terminate the process
 
@@ -115,13 +138,13 @@ docker system df         * Show docker disk usage, including space reclaimable b
 
 **** Removing containers
 
-~~~
+#+BEGIN_SRC
 docker container prune                     * Remove all stopped containers
 docker volume prune                        * Remove all unused volumes
 docker image prune                         * Remove unused images
 docker system prune                        * All of the above, in this order: containers, volumes, images
 docker container rm -f $(docker ps -aq)    * Delete all running and stopped containers
-~~~
+#+END_SRC
 
 When there is "not enough space" error from Docker, use this command to clean up the stopped and running containers: ~docker system prune -a~
 
@@ -138,11 +161,10 @@ To display a live stream of container(s) resource usage statistics: ~docker stat
 Every container that runs is a part of the bridge network in Docker - it is an internal Docker network. Nobody will be able to access it unless we specifically expose it on to the host system where the container is running.
 
 List the networks
-~~~
+#+BEGIN_SRC
 docker network
 docker network ls
-
-~~~
+#+END_SRC
 
 *** Logs
 

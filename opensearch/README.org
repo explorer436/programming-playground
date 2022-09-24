@@ -2,7 +2,24 @@
 
 Use the docker-compose file in this directory to get it running in local computer.
 
-https://opensearch.org/docs/latest/ - Docker quickstart
+The commands that need to be run to look at data in OpenSearch are in this link: https://opensearch.org/docs/latest/ - Docker quickstart
+
+How To Return All Documents From An Index In Elasticsearch/OpenSearch?
+
+#+BEGIN_SRC
+GET /wikimedia/_search
+{
+    "query": {
+        "match_all": {}
+    }
+}
+#+END_SRC
+
+or
+
+#+BEGIN_SRC
+curl -X GET "https://{YOUR_SERVER}:9200/{YOUR_INDEX}_search" -H 'Content-Type: application/json' -d
+#+END_SRC
 
 https://www.knowi.com/blog/what-is-elastic-search/
 
