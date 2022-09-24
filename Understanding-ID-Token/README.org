@@ -167,7 +167,9 @@ eGFtcGxlLmNvbS9qYW5lZG9lL21lLmpwZyIKfQ
 
 **** 3.5. Summary of Decoding JWS
 
-![Summary_of_decoding_JWS](./images/Summary_of_decoding_JWS.png)
+#+CAPTION: Summary_of_decoding_JWS
+#+NAME: Summary_of_decoding_JWS
+[[./images/Summary_of_decoding_JWS.png]]
 
 **** 3.6. Unsecured JWS
 
@@ -226,7 +228,10 @@ By using two-step encryption, we can minimize the time needed to encrypt data by
 
 The diagram below illustrates two-step encryption and the animation version of the diagram is here. JWE Encrypted Key is the “encrypted shared key” in the diagram.
 
-![encrypting_party_decrypting_party](./images/encrypting_party_decrypting_party.png)
+#+CAPTION: encrypting_party_decrypting_party
+#+NAME: encrypting_party_decrypting_party
+[[./images/encrypting_party_decrypting_party.png]]
+
 
 **** 4.2. Encryption Algorithms
 
@@ -234,12 +239,15 @@ JWE uses two-step encryption. Therefore, two encryption algorithms are used.
 
 Algorithms used to encrypt data are listed in “5.1. "enc" (Encryption Algorithm) Header Parameter Values for JWE” in RFC 7518.
 
-![ enc (Encryption Algorithm) Header Parameter Values for JWE](./images/enc_Header_Parameter_Values_for_JWE.png) 
+#+CAPTION: enc (Encryption Algorithm) Header Parameter Values for JWE
+#+NAME: enc (Encryption Algorithm) Header Parameter Values for JWE
+[[./images/enc_Header_Parameter_Values_for_JWE.png]]
 
 On the other hand, algorithms used to encrypt shared keys are listed in “4.1. "alg" (Algorithm) Header Parameter Values for JWE” in RFC 7518.
 
-![alg (Algorithm) Header Parameter Values for JWE](./images/alg_Header_Parameter_Values_for_JWE.png) 
-
+#+CAPTION: alg (Algorithm) Header Parameter Values for JWE
+#+NAME: alg (Algorithm) Header Parameter Values for JWE
+[[./images/alg_Header_Parameter_Values_for_JWE.png]]
 
 **** 4.3. Algorithm “dir”
 
@@ -301,21 +309,25 @@ Before explaining what “claims” are, let me explain how the JSON (a collecti
 
 In the case of “JWT in JWS format”, a collection of claims in JSON format is encoded by base64url and then put in the 2nd field of JWS.
 
-![JWT in JWS format](./images/JWT_in_JWS_format.png) 
+#+CAPTION: JWT in JWS format
+#+NAME: JWT in JWS format
+[[./images/JWT_in_JWS_format.png]]
 
 **** 5.2. JWT in JWE format
 
 In the case of “JWT in JWE format”, a collection of claims in JSON format is first encrypted, then encoded by base64url, and finally put in the 4th field of JWE.
 
-![JWT in JWE format](./images/JWT_in_JWE_format.png) 
-
+#+CAPTION: JWT in JWE format
+#+NAME: JWT in JWE format
+[[./images/JWT_in_JWE_format.png]]
 
 **** 5.3. Nested JWT
 
 How can we do both signing and encrypting? It can be achieved by either wrapping a JWS in a JWE or wrapping a JWE in a JWS. JWT which wraps JWS or JWE inside it is called “Nested JWT”. The figure below illustrates a Nested JWT in the pattern of “JWS in JWE”.
 
-
-![Nested JWT (JWS in JWE pattern)](./images/Nested_JWT.png) 
+#+CAPTION: Nested JWT (JWS in JWE pattern)
+#+NAME: Nested JWT (JWS in JWE pattern)
+[[./images/Nested_JWT.png]]
 
 ID Token is a kind of JWT. In the context of ID Token, signing is mandatory. As a result, ID Token is verifiable. On the other hand, encrypting is optional, but if encryption is performed, the order must be “signed and then encrypted” as stated in “2. ID Token” in OpenID Connect Core 1.0.
 
@@ -369,7 +381,9 @@ As we have learned JWT, we are ready to learn ID Token.
 
 Once again, ID Token is a kind of JWT.
 
-![ID_Token](./images/ID_Token.png) 
+#+CAPTION: ID_Token
+#+NAME: ID_Token
+[[./images/ID_Token.png]]
 
 The first paragraph of “2. ID Token” in OpenID Connect Core 1.0 says as follows:
 
