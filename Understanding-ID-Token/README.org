@@ -132,13 +132,9 @@ The content of this JSON will be explained later, but one note: RFC 7515 does no
 
 The alg parameter in the header represents the algorithm of the signature. Valid values of alg are listed not in RFC 7515 but in “3.1. "alg" (Algorithm) Header Parameter Values for JWS” in RFC 7518, JSON Web Algorithms (JWA).
 
-![“alg” (Algorithm) Header Parameter Values for JWS](./images/alg_Header_Parameter_Values_for_JWS.png)
-
-![“alg” (Algorithm) Header Parameter Values for JWS](g)
-
 #+CAPTION: “alg” (Algorithm) Header Parameter Values for JWS
 #+NAME: fig:SED-HR4049
-./images/alg_Header_Parameter_Values_for_JWS.png
+[[./images/alg_Header_Parameter_Values_for_JWS.png]]
 
 The result of decoding the header says that the value of ~alg~ is ~RS256~. Referring to the table in “3.1. “alg” (Algorithm) Header Parameter Values for JWS”, we can find ~RS256~ represents “RSASSA-PKCS1-v1_5 using SHA-256”.
 
