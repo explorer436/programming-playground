@@ -1,4 +1,4 @@
-Learn the fundamentals of a good developer mindset in 15 minutes
+* Learn the fundamentals of a good developer mindset in 15 minutes
 
 Huseyin Polat Yuruk
 

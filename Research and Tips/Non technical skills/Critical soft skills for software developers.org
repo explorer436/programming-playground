@@ -1,4 +1,4 @@
-Critical soft skills for software developers
+* Critical soft skills for software developers
 
 What formal education should have taught me but did not
 Bruce Flow Mar 11, 2019 · 8 min read
@@ -17,7 +17,7 @@ Unfortunately, his career progress was sluggish. It was hampered by the fact tha
 
 Since formal education did not teach me much about these skills, I began to take notes about what successful software developers were doing. I did that in order to emulate them.
 
-### Skill #1: Marketing your work
+*** Skill #1: Marketing your work
 
 In an ideal world, your work would speak for itself. Unfortunately, we do not live in an ideal world.
 
@@ -48,7 +48,7 @@ For me personally, I have found the following actions to be effective:
 
 Never communicate wrong or fake information to management in order to get ahead. You might get away in the short run. One fine day the issue will come back and bite you in the “backend”. I have seen this happen first hand to some colleagues.
 
-### Skill #2: Time management
+*** Skill #2: Time management
 
 As software developers, we have the luxury of being afforded a lot of freedom. Much more freedom than many other professions. Part of this freedom is the opportunity to manage our time to a certain degree.
 
@@ -70,7 +70,7 @@ We have to know when to log off and head home for the day. When we are not at wo
 
 In our bubble, it is too easy to feel peer pressured into burning the midnight oil or feeling guilty that we are not checking emails on vacation. We have to remind ourselves that taking time off actually improves our productivity, not reduce it.
 
-### Skill #3: Networking
+*** Skill #3: Networking
 
 I had the opportunity of getting the job I currently have because of networking. A couple of years back in a company-internal tech conference, I attended a very fascinating talk. I got in touch with the speaker. One thing led to another and I ended up working on the same team as the speaker.
 
@@ -104,7 +104,7 @@ I do enjoy keeping in touch with people to nurture relationships. Some ways that
 
 I also enjoy “cross-pollinating” my contacts by introducing them to each other when I see the opportunity. I found out by experience that it is a good idea to ask both parties if they are interested before I introduced them to each other. I have had a couple of bad experiences where one side was not interested in talking at all and it reflected badly on me.
 
-### Skill #4: Open-mindedness
+*** Skill #4: Open-mindedness
 
 In tech, open-mindedness is key. Open-mindedness ensures that we are able to adapt ourselves to the dynamic nature of our jobs.
 
@@ -121,7 +121,7 @@ Open-mindedness does not mean we have to accept everything that is crammed down 
 
 Being open-minded means we are able to defer our opinions and judgment. At times, it is all too easy to be overly skeptical of a new idea or a new way of doing something just because we are not familiar with it. This could relate to a new project management method, a software tool or an organizational change.
 
-### Conclusion
+*** Conclusion
 
 Just like with technical skills, there is no end to improving our soft-skills. As software developers, we are technically inclined. After all, that is the reason why we chose this path in the first place.
 

@@ -1,4 +1,4 @@
-Five important lessons from four years as a software developer
+* Five important lessons from four years as a software developer
 
 by Stephen McLean
 
