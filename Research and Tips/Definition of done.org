@@ -1,4 +1,4 @@
-### Definition of done
+*** Definition of done
     
 Putting a DoD on paper is simple. The difficulty often lies in having the development team actually respect the contract. So what can a team do to ensure that the DoD and acceptance criteria are respected? Start by embedding them in the team’s natural workflow. 
 
@@ -7,7 +7,7 @@ technical tasks,
 user stories, and 
 bugs. 
 
-##### Good development practises
+***** Good development practises
 
 1. Code changes need to be checked into the version control system
 1. Tests (unit and integration) that run as part of the build are created or updated for all new code and code that may have been impacted by changes
@@ -19,7 +19,7 @@ bugs.
 1. Sonarcube does not introduce any new code smells and Sonarcube build passes
 1. Integration test suites are passing
 
-##### Maintaining paperwork
+***** Maintaining paperwork
 
 1. Documentation written/updated and details about it are mentioned in the Jira story.
 1. Stories satisfy acceptance criteria before being closed.
