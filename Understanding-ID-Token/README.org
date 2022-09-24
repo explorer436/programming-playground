@@ -134,6 +134,12 @@ The alg parameter in the header represents the algorithm of the signature. Valid
 
 ![“alg” (Algorithm) Header Parameter Values for JWS](./images/alg_Header_Parameter_Values_for_JWS.png)
 
+![“alg” (Algorithm) Header Parameter Values for JWS](g)
+
+#+CAPTION: “alg” (Algorithm) Header Parameter Values for JWS
+#+NAME: fig:SED-HR4049
+./images/alg_Header_Parameter_Values_for_JWS.png
+
 The result of decoding the header says that the value of ~alg~ is ~RS256~. Referring to the table in “3.1. “alg” (Algorithm) Header Parameter Values for JWS”, we can find ~RS256~ represents “RSASSA-PKCS1-v1_5 using SHA-256”.
 
 Because the signature by RSA algorithm is binary data, even if we decode the signature field by base64url, what we can get is binary data.
