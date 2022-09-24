@@ -1,11 +1,11 @@
-### Helpful resources
+* Helpful resources for reference for dealing with pull requests
 
 https://github.com/google/eng-practices
 
 https://github.com/google/eng-practices/tree/master/review
 
 
-### This is a checklist that could be helpful when submitting and dealing with pull requests:
+*** This is a checklist that could be helpful when submitting and dealing with pull requests:
 
 1. Check if the work in the pull request is in alignment with the description and acceptance criteria in the story. If they are not, update the Jira ticket with the description about the work that is being done on the task. If the scope or the direction of the task changes mid-way through the implementation process, make sure that the Jira ticket is updated. This will serve as good documentation and help avoid having to answer multiple people on multiple occasions. This will prevent having to explain each and every change to each and every person reviewing the pull request. For anyone looking to find out why a change was made, the Jira ticket will have all the answers.
 2. Pull from master/develop - whichever one is supposed to be used according to team norms.
@@ -30,7 +30,7 @@ https://github.com/google/eng-practices/tree/master/review
 21. Do not forget the usefulness of comparing the local branch with master (or whatever branch you are going to create a pull request against). Figure out how to do this using various tools like Eclipse, git terminal, Visual Studio Code, emacs, etc.
 22. Create pull request and send it out for review.
 
-### How to handle reviewer comments
+*** How to handle reviewer comments
 
     https://github.com/google/eng-practices/blob/master/review/developer/handling-comments.md
 

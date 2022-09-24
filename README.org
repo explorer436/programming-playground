@@ -1,5 +1,2703 @@
-#+BEGIN_SRC sh
-tree -o README.org
+#+BEGIN_SRC sh :results output :exports both
+find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/" 
 #+END_SRC
 
 #+RESULTS:
+#+begin_example
+.
+ |-databases
+ | |-DynamoDB.org
+ | |-MongoDB.org
+ |-SETUP.org
+ |-javascript-playground
+ | |-nodemon.org
+ | |-ExpressFrameworkForNodeJS.org
+ |-rust-playground
+ | |-hello_cargo
+ | | |-Cargo.toml
+ | | |-src
+ | | | |-main.rs
+ | |-.gitignore
+ | |-variables
+ | | |-Cargo.toml
+ | | |-src
+ | | | |-main.rs
+ | |-README.org
+ | |-hello_world
+ | | |-main.rs
+ | |-guessing_game
+ | | |-Cargo.toml
+ | | |-src
+ | | | |-main.rs
+ |-.gitignore
+ |-.git
+ | |-packed-refs
+ | |-COMMIT_EDITMSG
+ | |-FETCH_HEAD
+ | |-info
+ | | |-exclude
+ | |-description
+ | |-index
+ | |-logs
+ | | |-refs
+ | | | |-heads
+ | | | | |-master
+ | | | |-remotes
+ | | | | |-origin
+ | | | | | |-dependabot
+ | | | | | | |-npm_and_yarn
+ | | | | | | | |-aws
+ | | | | | | | | |-employee-aws-cdk-stack-repo
+ | | | | | | | | | |-aws-sdk-2.1222.0
+ | | | | | | | | | |-path-parse-1.0.7
+ | | | | | | | | | |-netmask-and-aws-cdk--removed
+ | | | | | | | | | |-y18n-4.0.3
+ | | | | | | | | | |-pac-resolver-and-aws-cdk--removed
+ | | | | | | | | | |-hosted-git-info-2.8.9
+ | | | | | | | | | |-jsdom-and-jest--removed
+ | | | | | | | | | |-ajv-6.12.6
+ | | | | | |-HEAD
+ | | | | | |-master
+ | | |-HEAD
+ | |-branches
+ | |-ORIG_HEAD
+ | |-refs
+ | | |-heads
+ | | | |-master
+ | | |-tags
+ | | |-remotes
+ | | | |-origin
+ | | | | |-dependabot
+ | | | | | |-npm_and_yarn
+ | | | | | | |-aws
+ | | | | | | | |-employee-aws-cdk-stack-repo
+ | | | | | | | | |-aws-sdk-2.1222.0
+ | | | | | | | | |-path-parse-1.0.7
+ | | | | | | | | |-netmask-and-aws-cdk--removed
+ | | | | | | | | |-y18n-4.0.3
+ | | | | | | | | |-pac-resolver-and-aws-cdk--removed
+ | | | | | | | | |-hosted-git-info-2.8.9
+ | | | | | | | | |-jsdom-and-jest--removed
+ | | | | | | | | |-ajv-6.12.6
+ | | | | |-HEAD
+ | | | | |-master
+ | |-HEAD
+ | |-config
+ | |-objects
+ | | |-6d
+ | | | |-c12679be628f4f81f89999b7e7ecc2779edcd4
+ | | |-fd
+ | | | |-45b2b4e46cbef80348932bc16cbd1c48691702
+ | | |-59
+ | | | |-96e9dbde2d40b16362f694ebdbdd89d8d124aa
+ | | |-info
+ | | |-19
+ | | | |-519b6e1c74b9f52dc9c0f6cba019df28c77621
+ | | |-1b
+ | | | |-ef2be597dcc5e48df07e467afb13df2be6bd18
+ | | |-fe
+ | | | |-9265dbb0f7cd00897c4f7871ad178e602d80c6
+ | | |-40
+ | | | |-8e4aa4e09da51f4ff9e1770dd8650c9746a4b5
+ | | |-pack
+ | | | |-pack-6e6b00cd1ecd82711125f3f0448617a98251bd8e.idx
+ | | | |-pack-158a138acf10a2a25438e7021ddb684465bd373b.idx
+ | | | |-pack-6e6b00cd1ecd82711125f3f0448617a98251bd8e.pack
+ | | | |-pack-158a138acf10a2a25438e7021ddb684465bd373b.pack
+ | | |-79
+ | | | |-f474df02a80e9b0c706b06870392de14473c8b
+ | |-hooks
+ | | |-applypatch-msg.sample
+ | | |-pre-rebase.sample
+ | | |-pre-applypatch.sample
+ | | |-prepare-commit-msg.sample
+ | | |-post-update.sample
+ | | |-fsmonitor-watchman.sample
+ | | |-commit-msg.sample
+ | | |-pre-commit.sample
+ | | |-push-to-checkout.sample
+ | | |-pre-receive.sample
+ | | |-pre-merge-commit.sample
+ | | |-pre-push.sample
+ | | |-update.sample
+ |-README.org
+ |-mongodb
+ | |-README.org
+ | |-How To Run MongoDB as a Docker Container.pdf
+ |-Research and Tips
+ | |-Certifications
+ | | |-GeneralThoughts.md
+ | | |-certifications.md
+ | | |-Resources.md
+ | | |-Look into these.md
+ | |-Definition of done.org
+ | |-Non technical skills
+ | | |-Tech lead.md
+ | | |-When is constructive criticism not helpful.md
+ | | |-Critical soft skills for software developers.md
+ | | |-How do programmers manage stress.md
+ | | |-Common developer pitfalls that even seniors struggle with.md
+ | | |-Fundamentals of a good developer mindset.md
+ | | |-Bad code.md
+ | | |-Five important lessons from four years as a software developer.md
+ | |-Concepts about Hacking.org
+ | |-Production incidents.org
+ | |-Checklist for pull requests.org~
+ | |-Preparation
+ | | |-General coding interview questions.md
+ | | |-Implement stack using queues.pdf
+ | | |-6 Types of questions you need to know to ace any coding interview.md
+ | | |-Data Structures topics from educative course.md
+ | | |-DailyCodingProblem
+ | | | |-716.txt
+ | | | |-72.txt
+ | | | |-549.txt
+ | | | |-762.txt
+ | | | |-632.txt
+ | | | |-325.txt
+ | | | |-542.txt
+ | | | |-61.txt
+ | | | |-365.txt
+ | | | |-153.txt
+ | | | |-446.txt
+ | | | |-235.txt
+ | | | |-628.txt
+ | | | |-46.txt
+ | | | |-614.txt
+ | | | |-503.txt
+ | | | |-98.txt
+ | | | |-527.txt
+ | | | |-683.txt
+ | | | |-578.txt
+ | | | |-641.txt
+ | | | |-150.txt
+ | | | |-790.txt
+ | | | |-373.txt
+ | | | |-225.txt
+ | | | |-531.txt
+ | | | |-567.txt
+ | | | |-33.txt
+ | | | |-517.txt
+ | | | |-128.txt
+ | | | |-209.txt
+ | | | |-557.txt
+ | | | |-434.txt
+ | | | |-638.txt
+ | | | |-691.txt
+ | | | |-130.txt
+ | | | |-222.txt
+ | | | |-309.txt
+ | | | |-756.txt
+ | | | |-738.txt
+ | | | |-495.txt
+ | | | |-760.txt
+ | | | |-155.txt
+ | | | |-771.txt
+ | | | |-236.txt
+ | | | |-82.txt
+ | | | |-275.txt
+ | | | |-661.txt
+ | | | |-302.txt
+ | | | |-323.txt
+ | | | |-170.txt
+ | | | |-319.txt
+ | | | |-11.txt
+ | | | |-456.txt
+ | | | |-88.txt
+ | | | |-207.txt
+ | | | |-390.txt
+ | | | |-701.txt
+ | | | |-506.txt
+ | | | |-732.txt
+ | | | |-276.txt
+ | | | |-289.txt
+ | | | |-606.txt
+ | | | |-52.txt
+ | | | |-308.txt
+ | | | |-758.txt
+ | | | |-452.txt
+ | | | |-526.txt
+ | | | |-157.txt
+ | | | |-587.txt
+ | | | |-55.txt
+ | | | |-786.txt
+ | | | |-791.txt
+ | | | |-568.txt
+ | | | |-187.txt
+ | | | |-268.txt
+ | | | |-13.txt
+ | | | |-180.txt
+ | | | |-28.txt
+ | | | |-298.txt
+ | | | |-57.txt
+ | | | |-45.txt
+ | | | |-633.txt
+ | | | |-707.txt
+ | | | |-772.txt
+ | | | |-246.txt
+ | | | |-658.txt
+ | | | |-231.txt
+ | | | |-360.txt
+ | | | |-580.txt
+ | | | |-95.txt
+ | | | |-200.txt
+ | | | |-14.txt
+ | | | |-584.txt
+ | | | |-720.txt
+ | | | |-201.txt
+ | | | |-523.txt
+ | | | |-269.txt
+ | | | |-636.txt
+ | | | |-137.txt
+ | | | |-474.txt
+ | | | |-624.txt
+ | | | |-272.txt
+ | | | |-648.txt
+ | | | |-26.txt
+ | | | |-205.txt
+ | | | |-251.txt
+ | | | |-721.txt
+ | | | |-384.txt
+ | | | |-793.txt
+ | | | |-316.txt
+ | | | |-328.txt
+ | | | |-AnIntroToBacktracking.txt
+ | | | |-374.txt
+ | | | |-292.txt
+ | | | |-79.txt
+ | | | |-515.txt
+ | | | |-285.txt
+ | | | |-496.txt
+ | | | |-608.txt
+ | | | |-483.txt
+ | | | |-726.tx
+ | | | |-739.txt
+ | | | |-563.txt
+ | | | |-457.txt
+ | | | |-314.txt
+ | | | |-743.txt
+ | | | |-796.txt
+ | | | |-6.txt
+ | | | |-245.txt
+ | | | |-622.txt
+ | | | |-801.tx
+ | | | |-436.txt
+ | | | |-807.txt
+ | | | |-644.txt
+ | | | |-657.txt
+ | | | |-552.txt
+ | | | |-787.txt
+ | | | |-678.txt
+ | | | |-736.txt
+ | | | |-490.txt
+ | | | |-664.txt
+ | | | |-331.txt
+ | | | |-573.txt
+ | | | |-177.txt
+ | | | |-18.txt
+ | | | |-163.txt
+ | | | |-283.txt
+ | | | |-109.txt
+ | | | |-607.txt
+ | | | |-242.txt
+ | | | |-131.txt
+ | | | |-558.txt
+ | | | |-152.txt
+ | | | |-623.txt
+ | | | |-424.txt
+ | | | |-415.txt
+ | | | |-184.txt
+ | | | |-687.txt
+ | | | |-689.txt
+ | | | |-87.txt
+ | | | |-362.txt
+ | | | |-70.txt
+ | | | |-407.txt
+ | | | |-403.txt
+ | | | |-654.txt
+ | | | |-591.txt
+ | | | |-333.txt
+ | | | |-677.txt
+ | | | |-723.txt
+ | | | |-695.txt
+ | | | |-696.txt
+ | | | |-350.txt
+ | | | |-562.txt
+ | | | |-770.txt
+ | | | |-487.txt
+ | | | |-132.txt
+ | | | |-740.txt
+ | | | |-310.txt
+ | | | |-603.txt
+ | | | |-550.txt
+ | | | |-659.txt
+ | | | |-336.txt
+ | | | |-370.txt
+ | | | |-477.txt
+ | | | |-280.txt
+ | | | |-353.txt
+ | | | |-688.txt
+ | | | |-92.txt
+ | | | |-239.txt
+ | | | |-660.txt
+ | | | |-478.txt
+ | | | |-525.txt
+ | | | |-44.txt
+ | | | |-484.txt
+ | | | |-199.txt
+ | | | |-229.txt
+ | | | |-202.txt
+ | | | |-90.txt
+ | | | |-513.txt
+ | | | |-566.txt
+ | | | |-38.txt
+ | | | |-347.txt
+ | | | |-692.txt
+ | | | |-764.txt
+ | | | |-217.txt
+ | | | |-171.txt
+ | | | |-792.txt
+ | | | |-737.txt
+ | | | |-74.txt
+ | | | |-729.txt
+ | | | |-668.txt
+ | | | |-671.txt
+ | | | |-681.txt
+ | | | |-646.txt
+ | | | |-656.txt
+ | | | |-667.txt
+ | | | |-598.txt
+ | | | |-318.txt
+ | | | |-273.txt
+ | | | |-611.txt
+ | | | |-423.txt
+ | | | |-396.txt
+ | | | |-593.txt
+ | | | |-544.txt
+ | | | |-448.txt
+ | | | |-287.txt
+ | | | |-409.txt
+ | | | |-307.txt
+ | | | |-100.txt
+ | | | |-800.txt
+ | | | |-139.txt
+ | | | |-785.txt
+ | | | |-364.txt
+ | | | |-699.txt
+ | | | |-252.txt
+ | | | |-411.txt
+ | | | |-439.txt
+ | | | |-485.txt
+ | | | |-141.txt
+ | | | |-250.txt
+ | | | |-653.txt
+ | | | |-380.txt
+ | | | |-704.txt
+ | | | |-15.txt
+ | | | |-441.txt
+ | | | |-127.txt
+ | | | |-592.txt
+ | | | |-600.txt
+ | | | |-616.txt
+ | | | |-Welcome.txt
+ | | | |-104.txt
+ | | | |-191.txt
+ | | | |-655.txt
+ | | | |-709.txt
+ | | | |-464.txt
+ | | | |-330.txt
+ | | | |-381.txt
+ | | | |-351.txt
+ | | | |-714.txt
+ | | | |-719.txt
+ | | | |-539.txt
+ | | | |-53.txt
+ | | | |-228.txt
+ | | | |-493.txt
+ | | | |-89.txt
+ | | | |-320.txt
+ | | | |-718.txt
+ | | | |-731.tx
+ | | | |-206.txt
+ | | | |-334.txt
+ | | | |-590.txt
+ | | | |-91.txt
+ | | | |-346.txt
+ | | | |-101.txt
+ | | | |-453.txt
+ | | | |-418.txt
+ | | | |-700.txt
+ | | | |-429.txt
+ | | | |-342.txt
+ | | | |-626.txt
+ | | | |-431.txt
+ | | | |-244.txt
+ | | | |-173.txt
+ | | | |-358.txt
+ | | | |-241.txt
+ | | | |-581.txt
+ | | | |-467.txt
+ | | | |-375.txt
+ | | | |-260.txt
+ | | | |-570.txt
+ | | | |-748.txt
+ | | | |-750.txt
+ | | | |-713.txt
+ | | | |-706.txt
+ | | | |-417.txt
+ | | | |-186.txt
+ | | | |-371.txt
+ | | | |-775.tx
+ | | | |-136.txt
+ | | | |-652.txt
+ | | | |-596.txt
+ | | | |-103.txt
+ | | | |-221.txt
+ | | | |-516.txt
+ | | | |-797.txt
+ | | | |-763.txt
+ | | | |-359.txt
+ | | | |-494.txt
+ | | | |-140.txt
+ | | | |-372.txt
+ | | | |-425.txt
+ | | | |-378.txt
+ | | | |-274.txt
+ | | | |-627.txt
+ | | | |-282.txt
+ | | | |-511.txt
+ | | | |-175.txt
+ | | | |-25.txt
+ | | | |-565.txt
+ | | | |-293.txt
+ | | | |-724.txt
+ | | | |-629.txt
+ | | | |-296.txt
+ | | | |-227.txt
+ | | | |-651.txt
+ | | | |-303.txt
+ | | | |-486.txt
+ | | | |-398.txt
+ | | | |-20.txt
+ | | | |-744.txt
+ | | | |-129.txt
+ | | | |-705.txt
+ | | | |-172.txt
+ | | | |-5.txt
+ | | | |-559.txt
+ | | | |-728.txt
+ | | | |-666.txt
+ | | | |-402.txt
+ | | | |-301.txt
+ | | | |-22.txt
+ | | | |-122.txt
+ | | | |-149.txt
+ | | | |-297.txt
+ | | | |-383.txt
+ | | | |-682.txt
+ | | | |-754.txt
+ | | | |-31.txt
+ | | | |-670.txt
+ | | | |-698.txt
+ | | | |-460.txt
+ | | | |-588.txt
+ | | | |-145.txt
+ | | | |-410.txt
+ | | | |-482.txt
+ | | | |-589.txt
+ | | | |-551.txt
+ | | | |-339.txt
+ | | | |-264.txt
+ | | | |-78.txt
+ | | | |-643.txt
+ | | | |-585.txt
+ | | | |-256.txt
+ | | | |-440.txt
+ | | | |-304.txt
+ | | | |-686.txt
+ | | | |-114.txt
+ | | | |-405.txt
+ | | | |-468.txt
+ | | | |-708.txt
+ | | | |-393.txt
+ | | | |-99.txt
+ | | | |-808.txt
+ | | | |-67.txt
+ | | | |-751.txt
+ | | | |-450.txt
+ | | | |-561.txt
+ | | | |-121.txt
+ | | | |-473.txt
+ | | | |-725.txt
+ | | | |-335.txt
+ | | | |-491.txt
+ | | | |-475.txt
+ | | | |-631.txt
+ | | | |-63.txt
+ | | | |-58.txt
+ | | | |-601.txt
+ | | | |-219.txt
+ | | | |-438.txt
+ | | | |-779.txt
+ | | | |-279.txt
+ | | | |-238.txt
+ | | | |-722.txt
+ | | | |-481.txt
+ | | | |-35.txt
+ | | | |-430.txt
+ | | | |-194.txt
+ | | | |-249.txt
+ | | | |-773.txt
+ | | | |-674.txt
+ | | | |-553.txt
+ | | | |-733.txt
+ | | | |-97.txt
+ | | | |-142.txt
+ | | | |-30.txt
+ | | | |-386.txt
+ | | | |-502.txt
+ | | | |-676.txt
+ | | | |-193.txt
+ | | | |-312.txt
+ | | | |-27.txt
+ | | | |-126.txt
+ | | | |-322.txt
+ | | | |-392.txt
+ | | | |-164.txt
+ | | | |-29.txt
+ | | | |-192.txt
+ | | | |-805.txt
+ | | | |-77.txt
+ | | | |-735.txt
+ | | | |-69.txt
+ | | | |-447.txt
+ | | | |-768.txt
+ | | | |-93.txt
+ | | | |-195.txt
+ | | | |-340.txt
+ | | | |-432.txt
+ | | | |-617.txt
+ | | | |-774.txt
+ | | | |-634.txt
+ | | | |-576.txt
+ | | | |-259.txt
+ | | | |-154.txt
+ | | | |-313.txt
+ | | | |-277.txt
+ | | | |-697.txt
+ | | | |-488.txt
+ | | | |-182.txt
+ | | | |-778.txt
+ | | | |-96.txt
+ | | | |-466.txt
+ | | | |-367.txt
+ | | | |-12.txt
+ | | | |-317.txt
+ | | | |-498.txt
+ | | | |-151.txt
+ | | | |-508.txt
+ | | | |-332.txt
+ | | | |-19.txt
+ | | | |-271.txt
+ | | | |-42.txt
+ | | | |-766.txt
+ | | | |-639.txt
+ | | | |-510.txt
+ | | | |-39.txt
+ | | | |-253.txt
+ | | | |-752.txt
+ | | | |-395.txt
+ | | | |-618.txt
+ | | | |-620.txt
+ | | | |-798.txt
+ | | | |-761.txt
+ | | | |-288.txt
+ | | | |-500.txt
+ | | | |-582.txt
+ | | | |-783.txt
+ | | | |-789.txt
+ | | | |-240.txt
+ | | | |-203.txt
+ | | | |-174.txt
+ | | | |-265.txt
+ | | | |-572.txt
+ | | | |-445.txt
+ | | | |-799.txt
+ | | | |-179.txt
+ | | | |-66.txt
+ | | | |-144.txt
+ | | | |-400.txt
+ | | | |-17.txt
+ | | | |-727.txt
+ | | | |-54.txt
+ | | | |-543.txt
+ | | | |-746.txt
+ | | | |-158.txt
+ | | | |-755.txt
+ | | | |-4.txt
+ | | | |-300.txt
+ | | | |-597.txt
+ | | | |-609.txt
+ | | | |-749.txt
+ | | | |-162.txt
+ | | | |-540.txt
+ | | | |-703.txt
+ | | | |-341.txt
+ | | | |-71.txt
+ | | | |-579.txt
+ | | | |-143.txt
+ | | | |-642.txt
+ | | | |-108.txt
+ | | | |-167.txt
+ | | | |-406.txt
+ | | | |-586.txt
+ | | | |-266.txt
+ | | | |-747.txt
+ | | | |-397.txt
+ | | | |-64.txt
+ | | | |-571.txt
+ | | | |-243.txt
+ | | | |-185.txt
+ | | | |-270.txt
+ | | | |-535.txt
+ | | | |-161.txt
+ | | | |-522.txt
+ | | | |-76.txt
+ | | | |-742.tx
+ | | | |-803.tx
+ | | | |-291.txt
+ | | | |-505.txt
+ | | | |-183.txt
+ | | | |-178.txt
+ | | | |-382.txt
+ | | | |-385.txt
+ | | | |-458.txt
+ | | | |-524.txt
+ | | | |-534.txt
+ | | | |-784.txt
+ | | | |-741.txt
+ | | | |-213.txt
+ | | | |-355.txt
+ | | | |-649.txt
+ | | | |-717.txt
+ | | | |-461.txt
+ | | | |-507.txt
+ | | | |-32.txt
+ | | | |-37.txt
+ | | | |-7.txt
+ | | | |-147.txt
+ | | | |-338.txt
+ | | | |-41.txt
+ | | | |-647.txt
+ | | | |-218.txt
+ | | | |-232.txt
+ | | | |-165.txt
+ | | | |-497.txt
+ | | | |-420.txt
+ | | | |-281.txt
+ | | | |-377.txt
+ | | | |-449.txt
+ | | | |-711.txt
+ | | | |-569.txt
+ | | | |-462.txt
+ | | | |-504.txt
+ | | | |-210.txt
+ | | | |-532.txt
+ | | | |-181.txt
+ | | | |-413.txt
+ | | | |-159.txt
+ | | | |-594.txt
+ | | | |-267.txt
+ | | | |-388.txt
+ | | | |-321.txt
+ | | | |-564.txt
+ | | | |-519.txt
+ | | | |-412.txt
+ | | | |-337.txt
+ | | | |-669.txt
+ | | | |-134.txt
+ | | | |-189.txt
+ | | | |-176.txt
+ | | | |-530.txt
+ | | | |-51.txt
+ | | | |-694.txt
+ | | | |-401.txt
+ | | | |-533.txt
+ | | | |-555.txt
+ | | | |-198.txt
+ | | | |-469.txt
+ | | | |-419.txt
+ | | | |-356.txt
+ | | | |-138.txt
+ | | | |-765.txt
+ | | | |-348.txt
+ | | | |-263.txt
+ | | | |-710.txt
+ | | | |-804.txt
+ | | | |-23.txt
+ | | | |-234.txt
+ | | | |-324.txt
+ | | | |-547.txt
+ | | | |-363.txt
+ | | | |-315.txt
+ | | | |-421.txt
+ | | | |-311.txt
+ | | | |-612.txt
+ | | | |-512.txt
+ | | | |-574.txt
+ | | | |-610.txt
+ | | | |-133.txt
+ | | | |-399.txt
+ | | | |-36.txt
+ | | | |-604.txt
+ | | | |-437.txt
+ | | | |-780.txt
+ | | | |-HowToSolveAHardProgrammingInterviewQuestion.txt
+ | | | |-369.txt
+ | | | |-528.txt
+ | | | |-602.txt
+ | | | |-10.txt
+ | | | |-389.txt
+ | | | |-86.txt
+ | | | |-290.txt
+ | | | |-480.txt
+ | | | |-188.txt
+ | | | |-105.txt
+ | | | |-663.txt
+ | | | |-148.txt
+ | | | |-60.txt
+ | | | |-459.txt
+ | | | |-9.txt
+ | | | |-168.txt
+ | | | |-665.txt
+ | | | |-520.txt
+ | | | |-208.txt
+ | | | |-521.txt
+ | | | |-119.txt
+ | | | |-518.txt
+ | | | |-702.txt
+ | | | |-75.txt
+ | | | |-637.txt
+ | | | |-645.txt
+ | | | |-619.txt
+ | | | |-118.txt
+ | | | |-455.txt
+ | | | |-613.txt
+ | | | |-352.txt
+ | | | |-509.txt
+ | | | |-454.txt
+ | | | |-68.txt
+ | | | |-286.txt
+ | | | |-546.txt
+ | | | |-226.txt
+ | | | |-16.txt
+ | | | |-349.txt
+ | | | |-662.tx
+ | | | |-49.txt
+ | | | |-788.txt
+ | | | |-538.txt
+ | | | |-21.txt
+ | | | |-MyStory.txt
+ | | | |-113.txt
+ | | | |-685.txt
+ | | | |-408.txt
+ | | | |-583.txt
+ | | | |-255.txt
+ | | | |-492.txt
+ | | | |-575.txt
+ | | | |-715.txt
+ | | | |-366.txt
+ | | | |-361.txt
+ | | | |-615.txt
+ | | | |-214.txt
+ | | | |-605.txt
+ | | | |-216.txt
+ | | | |-444.txt
+ | | | |-554.txt
+ | | | |-248.txt
+ | | | |-595.txt
+ | | | |-81.txt
+ | | | |-156.txt
+ | | | |-465.txt
+ | | | |-759.txt
+ | | | |-753.txt
+ | | | |-757.txt
+ | | | |-541.txt
+ | | | |-479.txt
+ | | | |-354.txt
+ | | | |-806.txt
+ | | | |-43.txt
+ | | | |-47.txt
+ | | | |-224.txt
+ | | | |-433.txt
+ | | | |-197.txt
+ | | | |-777.txt
+ | | | |-212.txt
+ | | | |-501.txt
+ | | | |-782.txt
+ | | | |-416.txt
+ | | | |-387.txt
+ | | | |-548.txt
+ | | | |-211.txt
+ | | | |-802.txt
+ | | | |-650.txt
+ | | | |-376.txt
+ | | | |-345.txt
+ | | | |-343.txt
+ | | | |-257.txt
+ | | | |-767.txt
+ | | | |-106.txt
+ | | | |-169.txt
+ | | | |-625.txt
+ | | | |-693.txt
+ | | | |-769.txt
+ | | | |-730.txt
+ | | | |-640.txt
+ | | | |-537.txt
+ | | | |-679.txt
+ | | | |-379.txt
+ | | | |-781.txt
+ | | | |-160.txt
+ | | | |-776.txt
+ | | | |-299.txt
+ | | | |-476.txt
+ | | | |-233.txt
+ | | | |-621.txt
+ | | | |-123.txt
+ | | | |-463.txt
+ | | | |-414.txt
+ | | | |-220.txt
+ | | | |-2.txt
+ | | | |-237.txt
+ | | | |-734.txt
+ | | | |-514.txt
+ | | | |-472.txt
+ | | | |-56.txt
+ | | | |-73.txt
+ | | | |-745.txt
+ | | | |-635.txt
+ | | | |-529.txt
+ | | | |-391.txt
+ | | | |-166.txt
+ | | | |-294.txt
+ | | | |-489.txt
+ | | | |-84.txt
+ | | | |-712.txt
+ | | | |-536.txt
+ | | | |-577.txt
+ | | | |-329.txt
+ | | | |-560.txt
+ | | | |-443.txt
+ | | | |-62.txt
+ | | | |-85.txt
+ | | | |-684.txt
+ | | | |-40.txt
+ | | | |-690.txt
+ | | | |-794.txt
+ | | | |-545.txt
+ | | | |-190.txt
+ | | | |-230.txt
+ | | | |-470.txt
+ | | | |-672.txt
+ | | | |-404.txt
+ | | | |-59.txt
+ | | | |-673.txt
+ | | | |-102.txt
+ | | | |-471.txt
+ | | | |-306.txt
+ | | | |-795.txt
+ | | | |-556.txt
+ | | | |-630.txt
+ | | | |-34.txt
+ | | | |-427.txt
+ | | | |-368.txt
+ | | | |-65.txt
+ | | | |-262.txt
+ | | | |-305.txt
+ | | | |-120.txt
+ | | | |-680.txt
+ | | | |-599.txt
+ | | | |-499.txt
+ | | | |-295.txt
+ | | | |-428.txt
+ | | | |-HowToPickARandomElementFromAnInfiniteStream.txt
+ | | | |-675.txt
+ | | | |-451.txt
+ | | |-Best way to prepare for interview in three months.md
+ | | |-How to interview engineers.md
+ | | |-LeetCode vs CodeChef.md
+ | | |-How often do companies ask leetcode hard questions.md
+ | | |-AMCAT Automata Questions with Answers _ Articles - FACE Prep.pdf
+ | | |-What is a list of data structures that a competitive programmer must know.md
+ | | |-Top ten Algorithmic concepts.md
+ | | |-How to prepare for the amazon online coding interview.md
+ | | |-What does it take to crack googles interview.md
+ | | |-Some useful resources for coding interviews.md
+ | | |-.projectile
+ | | |-First circular tour that visits all petrol pumps.pdf
+ | | |-What made you good at competitive programming.md
+ | | |-How can I prepare for interviews in any big software company.md
+ | | |-Ten steps to high quality Java developer.md
+ | | |-Is there a difference between algorithms in interviews and implementation.md
+ | | |-printArrayAsTable
+ | | | |-image4.png
+ | | | |-image3.png
+ | | | |-image1.png
+ | | | |-image2.png
+ | | |-Implement queue using stacks.pdf
+ | | |-Books
+ | | | |-Good books for Algorithms DS and Interviews.md
+ | | | |-Does studying CLRS help.md
+ | | |-Questions asked in FANG interviews.md
+ | | |-75 interview questions.md
+ | | |-DailyInterviewPro
+ | | | |-DetermineIfLinkedListIsPalindrome.txt
+ | | | |-FindTheKthLargestNumber.txt
+ | | | |-FindClosestPoints.txt
+ | | | |-LongestSubstrWithoutRepeatingCharacters.txt
+ | | | |-MinRangeNeededToSort.txt
+ | | | |-CheckForPalindrome.txt
+ | | | |-PlusOne.txt
+ | | | |-DetermineIfNumber.txt
+ | | | |-WhyPython.txt
+ | | | |-PascalsTriangle.txt
+ | | | |-ShortestUniquePrefix.txt
+ | | | |-FirstAndLastIndicesOfAnElementInSortedArray.txt
+ | | | |-PartitionAList.txt
+ | | | |-RangeSearchingInASortedList.txt
+ | | | |-IntersectionOfLists.txt
+ | | | |-ShortestDistanceToCharacter.txt
+ | | | |-ReverseWords.txt
+ | | | |-SpreadsheetColumnTitle.txt
+ | | | |-FirstMissingPositiveInteger.txt
+ | | | |-FixBrackets.txt
+ | | | |-MinimumNumberOfOperations.txt
+ | | | |-PythagoreanTriplets.txt
+ | | | |-RoomScheduling.txt
+ | | | |-SortingWindowRange.txt
+ | | | |-RotateMatrix.txt
+ | | | |-TheRealSecretToGettingAJobAtATopCompany.txt
+ | | | |-DesignTicTacToe.txt
+ | | | |-SumBinaryNumbers.txt
+ | | | |-IntersectionOfLinkedLists.txt
+ | | | |-RansonNote.txt
+ | | | |-RotateLinkedList.txt
+ | | | |-MazePaths.txt
+ | | | |-SearchingAMatrix.hs
+ | | | |-AddTwoNumbersAsALinkedList.txt
+ | | | |-AddDigits.txt
+ | | | |-WordOrderingInADifferentAlphabeticalOrder.txt
+ | | | |-RemoveAdjacentDuplicateCharacters.txt
+ | | | |-ReverseInteger.hs
+ | | | |-NoAdjacentRepeatingCharacters.txt
+ | | | |-SudokuCheck.txt
+ | | | |-FixedPoint.txt
+ | | | |-PermutationsOfNumbers.txt
+ | | | |-FlattenDictionary.txt
+ | | | |-MaximumNonAdjacentSum.txt
+ | | | |-PickingUpChange.txt
+ | | | |-SortedSquareNumbers.txt
+ | | | |-ConvertFractionToDecimal.txt
+ | | | |-TrappingRainwater.txt
+ | | | |-TopKFrequenntWords.txt
+ | | | |-IndexOfLargestNextNumber.txt
+ | | | |-UniqueSumCombinations.hs
+ | | | |-QueueUsingTwoStacks.txt
+ | | | |-Welcome.txt
+ | | | |-PerfectNumber.txt
+ | | | |-StayingOnAChessBoard.txt
+ | | | |-RemoveOneLayerOfParanthesis.txt
+ | | | |-CitySkyline.txt
+ | | | |-RemoveDuplicateFromLinkedList.txt
+ | | | |-RunningMedian.txt
+ | | | |-FindKthLargestElementInAList.txt
+ | | | |-ReverseInteger.txt
+ | | | |-NumberOfWaysToClimbStairs.txt
+ | | | |-EditDistance.txt
+ | | | |-HIndex.txt
+ | | | |-StringToInteger.txt
+ | | | |-Squareroot.txt
+ | | | |-RectangleIntersection.txt
+ | | | |-NumberOfConnectedComponents.txt
+ | | | |-IntersectionOfTwoArrays.txt
+ | | | |-RemoveDuplicatesFromSortedList.txt
+ | | | |-MaximumProfitFromStocks.txt
+ | | | |-LargestProductOfThreeElements.txt
+ | | | |-CreateASimpleCalculator.txt
+ | | | |-FourSum.hs
+ | | | |-FindCyclesInAGraph.txt
+ | | | |-SortAListWithThreeUniqueNumbers.txt
+ | | | |-MakeTheLargestNumber.txt
+ | | | |-ShiftedString.txt
+ | | | |-BuddyStrings.txt
+ | | | |-WitnessOfTheTallPeople.txt
+ | | | |-InorderSuccessor.txt
+ | | | |-NearestPoints.txt
+ | | | |-ReversePolishNotationCalculator.txt
+ | | | |-SortColors.txt
+ | | | |-LookAndSaySequence.txt
+ | | | |-ConnectedColorsInAGrid.txt
+ | | | |-Multitasking.txt
+ | | | |-ClosestTo3Sum.txt
+ | | | |-MoveZeroes.txt
+ | | | |-Multiply.txt
+ | | | |-FallingDominoes.txt
+ | | | |-SumOfSquares.txt
+ | | | |-CircleOfChainedWords.txt
+ | | | |-FindTheNumberOfIslands.txt
+ | | | |-SwapBits.txt
+ | | | |-CharacterMap.txt
+ | | | |-FindNonDuplicateNumber.txt
+ | | | |-LongestSubstringWithKDistinctCharacters.txt
+ | | | |-DecimalToRoman.hs
+ | | | |-LongestCommonPrefix.txt
+ | | | |-KaprekarsConstant.txt
+ | | | |-WordSearch.txt
+ | | | |-ThreeSum.txt
+ | | | |-ConvertToBaseTwo.txt
+ | | | |-ConsecutiveOnes.txt
+ | | | |-MergeOverlappingIntervals.txt
+ | | | |-MaximumInAStact.txt
+ | | | |-JumpToTheEnd.txt
+ | | | |-OptimizedListSum.txt
+ | | | |-PhoneNumbers.txt
+ | | | |-GenerateAllIPAddresses.txt
+ | | | |-LongestPalindromicSubstring.txt
+ | | | |-DecodeString.txt
+ | | | |-NumberOfMeetingRooms.txt
+ | | | |-LongestConsecutiveSequence.txt
+ | | | |-RemoveCharacterToCreatePalindrome.txt
+ | | | |-CoursePrerequisites.txt
+ | | | |-MinimumSizeSubarraySum.txt
+ | | | |-Autocompletion.txt
+ | | | |-SmallestNumberThatIsNotASumOfASubsetOfList.txt
+ | | | |-ReverseADirectedGraph.txt
+ | | | |-MaxAndMinWithMinimumComparisons.txt
+ | | | |-CommonCharacters.txt
+ | | | |-TheBiggestMistakeInTheCodingInterviewsCandidatesMake.txt
+ | | | |-ConvertToHexadecimal.txt
+ | | | |-GenerateBrackets.hs
+ | | | |-SpreadsheetColumns.txt
+ | | | |-PrintATreeLevelByLevelWithLineBreaks.txt
+ | | | |-LongestIncreasingSubsequenct.txt
+ | | | |-RotateArray.txt
+ | | | |-MakingChange.txt
+ | | | |-ReverseWordsInAString.txt
+ | | | |-WordConcatenation.txt
+ | | | |-SpiralTraversalOfGrid.txt
+ | | | |-KClosestElements.txt
+ | | | |-ProductOfArrayExceptSelf.txt
+ | | | |-PowerFunction.txt
+ | | | |-FirstRecurringCharacter.txt
+ | | | |-GenerateAllSubsets.hs
+ | | | |-ReverseALinkedList.txt
+ | | | |-ScheduleTasks.txt
+ | | | |-DeepCopyGraph.txt
+ | | | |-StringCompression.txt
+ | | | |-MissingRanges.txt
+ | | | |-NthFibbonacciNumber.txt
+ | | | |-MinimumRemovalsForValidParanthesis.txt
+ | | | |-TransposeMatrix.txt
+ | | | |-MajorityElement.txt
+ | | | |-ValidMountainArray.txt
+ | | | |-QueensOnAChessboard.txt
+ | | | |-ConcatenatedWords.txt
+ | | | |-AbsolutePath.txt
+ | | | |-DistributeBonuses.txt
+ | | | |-MergeKSortedLinkedLists.txt
+ | | | |-SubArrayWithTargetSum.txt
+ | | | |-MergeListOfNumberIntoRanges.txt
+ | | | |-NonDecreasingArrayWithSingleModification.txt
+ | | | |-ReverseBits.txt
+ | | | |-ReshapingMatrix.txt
+ | | | |-FindTheSingleElementInAnArrayOfDuplicates.txt
+ | | | |-WaysToTraverseAGrid.txt
+ | | | |-ConvertRomanNumeralsToDecimal.txt
+ | | | |-ContiguousSubArrayWithMaximumSum.txt
+ | | | |-LRUCache.txt
+ | | | |-SwapEveryTwoNodesInALinkedList.txt
+ | | | |-PostorderTraversal.txt
+ | | | |-DetectLinkedListCycle.txt
+ | | | |-RemovekthLastElementFromLinkedList.txt
+ | | | |-ValidateBalancedParantheses.txt
+ | | | |-MinStack.txt
+ | | | |-RemoveConsecutiveNodesThatSumToZero.txt
+ | | | |-CompareVersionNumbers.txt
+ | | | |-SortAPartiallySortedList.txt
+ | | | |-ClosestPointsToOrigin.txt
+ | | | |-FindDuplicates.txt
+ | | | |-NumberOf1Bits.txt
+ | | |-Can you cheat recruitment process by practicing Algorithmic Puzzles.md
+ | | |-How to code on paper.md
+ | | |-Substring question.pdf
+ | | |-Balance brackets in a string
+ | | | |-image1.png
+ | | | |-image2.png
+ | | |-Some tips for coding interviews.md
+ | |-Open source
+ | | |-ChadFowler.md
+ | | |-Resources.md
+ | |-Api versioning.org~
+ | |-Checklist for pull requests.org
+ | |-Software development tips
+ | | |-Which book has provided you the most tangible benefits in your life as a computer scientist.md
+ | | |-Why should one learn Haskell.hs
+ | | |-How fast is Haskell among the static typing languages.md
+ | | |-What is Haskell used for.md
+ | | |-Are beginners getting obsessed with DS and algorithms.md
+ | | |-Senior engineers at Google.md
+ | | |-Is software development one of the most intellectually mentally rigorous careers in the world.md
+ | | |-Some programs every programmer should make atLeast once.md
+ | | |-Mini project for better understanding of Multithreading.md
+ | | |-What is the next step for a five plus year software engineer.md
+ | | |-The 25 best programming books of all time.md
+ | | |-What kind of thought process do you need to understand programming.md
+ | | |-What did JonVonNeumann contribute to Computers in contrast to AlanTuring.md
+ | | |-Microsoft engineers.md
+ | | |-Whats wrong with Javascript.md
+ | | |-Companies using Haskell.md
+ | | |-What are the best resources for learning Haskell.md
+ | | |-10X software developers.md
+ | | |-The 25 best startup books of all time.md
+ | | |-Haskell vs Simpler languages.md
+ | | |-What is Haskell actually useful for.md
+ | | |-Top programming language for Parallel processing.md
+ | | |-Languages for Concurrent programming.pdf
+ | | |-Best way to implement multithreading in Java.md
+ | | |-Wrong turns in IT and CS in the past years.md
+ | | |-Criteria to look for in a language.md
+ | | |-What is Concurrency in programming.md
+ | | |-How can I get better at Concurrency and Parallel programming in Java.md
+ | | |-Why do people say that software engineering is becoming a blue collar job.md
+ | | |-What to do in order to become a great software engineer.md
+ | | |-IT skills one must learn to sustain.md
+ | | |-Cool programming projects.md
+ | | |-How does a Compiler break down code into Assembly language.md
+ | | |-Useful concepts I can get from Haskell.md
+ | | |-What single book has increased your programming skills the most.pdf
+ | | |-Erlang vs Haskell.md
+ | | |-Functional vs Procedural languages.md
+ | | |-Referential transparency.md
+ | | |-PowerSerious_PowerSeries in ten one liners.pdf
+ | | |-Why is Java losing popularity.md
+ | |-Api versioning.org
+ |-opensearch
+ | |-README.org
+ | |-docker-compose-opensearch.yml
+ |-haskell-playground
+ | |-haskell-solutions
+ | | |-temp.txt
+ | | |-LICENSE
+ | | |-.gitignore
+ | | |-Setup.hs
+ | | |-app
+ | | | |-Main.hs
+ | | |-.projectile
+ | | |-stack.yaml
+ | | |-package.yaml
+ | | |-README.md
+ | | |-src
+ | | | |-Strings
+ | | | | |-Pagination.hs
+ | | | | |-LongestCommonSubsequenceBetweenTwoStrings.hs
+ | | | | |-CaesarCipher.hs
+ | | | | |-AnglesOfAClock.hs
+ | | | | |-GeneralizedFibonacciSelector.hs
+ | | | | |-AddLineNumbersToSourceCode.hs
+ | | | | |-GroupNamesByAlphabets.hs
+ | | | | |-GetTheMiddleCharactersOfAString.md
+ | | | | |-Anagram.hs
+ | | | | |-FizzBuzz.hs
+ | | | | |-CheckIfAllCharsOfAStringAreInAnotherString.hs
+ | | | | |-ISBNVerifier.hs
+ | | | | |-Pangram.hs
+ | | | | |-AssessMovies.hs
+ | | | | |-ConvertAStringToLowerCase.hs
+ | | | | |-RailFenceCipher.hs
+ | | | | |-ExamScoreProcessing.hs
+ | | | | |-Palindrome.hs
+ | | | | |-RemoveSubstringFromAString.hs
+ | | | |-Recursion
+ | | | | |-Factorial.hs
+ | | | |-Sorting
+ | | | | |-Quicksort.hs
+ | | | | |-LinearTimeSort.hs
+ | | | |-Lib.hs
+ | | | |-10InputAndOutput
+ | | | | |-03GetInputFromTheUser.org
+ | | | | |-08FilesAndStreams.org
+ | | | | |-04HelloWorld.org
+ | | | | |-06TimeTableTrainOfTerror.hs
+ | | | | |-07SqwakTheSquirrel.hs
+ | | | | |-01InputAndOutput.org
+ | | | | |-02DoBlocks.org
+ | | | |-02IntroToFunctions
+ | | | | |-01Helloworld.hs
+ | | | | |-01FirstMainProgram.hs
+ | | | | |-02Function.hs
+ | | | |-07higherorderfunctions
+ | | | | |-11EtaConversion.md
+ | | | | |-14SomeHigherOrderismIsInOrder.hs
+ | | | | |-17Folds.hs
+ | | | | |-19FunctionApplicationWith$.md
+ | | | | |-18Scans.hs
+ | | | | |-16Lambdas.hs
+ | | | | |-21FunctionComposition.hs
+ | | | | |-15MapsAndFilters.hs
+ | | | | |-13CurriedFunctions.hs
+ | | | | |-12ANoteAboutListEfficiency.md
+ | | | | |-20FunctionComposition01.md
+ | | | |-Datastructures
+ | | | | |-Maps
+ | | | | | |-03Maps.hs
+ | | | | | |-01Maps.hs
+ | | | | | |-02Maps.hs
+ | | | | | |-04Maps_ExtendedExample.hs
+ | | | | |-AssociationLists
+ | | | | | |-01AssociationLists.hs
+ | | | | | |-02AssociationLists.hs
+ | | | | |-Trees
+ | | | | | |-DeepestNodeInABinaryTree.hs
+ | | | | | |-How To Formulaically Solve Tree Interview Questions.md
+ | | | | | |-MyBinarySearchTreeTraversals_BreadthFirst_ListsByLevel.hs
+ | | | | | |-LargestBSTInABinaryTree.hs
+ | | | | | |-MyBinarySearchTree_Insert.hs
+ | | | | | |-LevelOfTreeWithMinimumSum.hs
+ | | | | | |-HeightBalancedBinaryTree.hs
+ | | | | | |-CountFullNodesInABinaryTree.hs
+ | | | | | |-LargestPathSumFromRootToLeaf.hs
+ | | | | | |-CompareTreesBySize.hs
+ | | | | | |-CountTheNumberOfNodesInACompleteBinaryTree.hs
+ | | | | | |-ToBeSolved
+ | | | | | | |-422.txt
+ | | | | | | |-ConstructAllPossibleBSTs.txt
+ | | | | | | |-223.txt
+ | | | | | | |-LowestCommonAncestorOfTwoGivenNodes.txt
+ | | | | | | |-TreeSerialization.txt
+ | | | | | | |-261.txt
+ | | | | | | |-326.txt
+ | | | | | | |-CloneTrees.txt
+ | | | | | | |-SplitABinarySearchTree.txt
+ | | | | | | |-426.txt
+ | | | | | | |-MostFrequentSubtreeSum.txt
+ | | | | | | |-GenerateAFiniteTreeInConstantTime.txt
+ | | | | | | |-284.txt
+ | | | | | | |-442.txt
+ | | | | | | |-LeafSimilarTrees.txt
+ | | | | | | |-MergeTwoBinaryTreesBasedOnCriteria.txt
+ | | | | | | |-ImplementLockingInABinaryTreee.txt
+ | | | | | | |-394.txt
+ | | | | | | |-357.txt
+ | | | | | | |-SymmetricKaryTree.txt
+ | | | | | | |-435.txt
+ | | | | | | |-MaximumPathSumInBinaryTree.txt
+ | | | | | | |-215.txt
+ | | | | | | |-RemoveEdgesInATree.txt
+ | | | | | | |-MakingAHeightBalancedBinarySearchTree.txt
+ | | | | | |-ConvertBinaryTreeToFullBinaryTree.hs
+ | | | | | |-ReconstrunctBinaryTreeFromPreorderAndInorderTraversals.hs
+ | | | | | |-HeightAndDepthOfBinaryTree.txt
+ | | | | | |-FlattenBinaryTree.hs
+ | | | | | |-UnivalSubtrees.hs
+ | | | | | |-ArithmeticBinaryTree.hs
+ | | | | | |-MinimumHeightOfNodesInBinaryTree.hs
+ | | | | | |-MyBinarySearchTreeTraversals_DepthFirst.hs
+ | | | | | |-GetAllValuesAtACertainHeightInABinaryTree.hs
+ | | | | | |-MyBinarySearchTree_MaximumAndMinimumElements.hs
+ | | | | | |-BuildAllPossibleTrees.hs
+ | | | | | |-PathsFromRootToAllLeaves.hs
+ | | | | | |-FloorOfAnElementInAGivenBST.hs
+ | | | | | |-MinimumPathSumFromRootToLeaf.hs
+ | | | | | |-ZigZagBinaryTree.hs
+ | | | | | |-FindAllDuplicateSubtrees.hs
+ | | | | | |-TargetSumFromRootToLeaf.hs
+ | | | | | |-PrintNodesInBoustrophedonOrder.hs
+ | | | | | |-AppendOneTreeToAnotherTree.hs
+ | | | | | |-FilterBinaryTreeLeaves.hs
+ | | | | | |-MyBinarySearchTreeTraversals_BreadthFirst_SingleList.hs
+ | | | | | |-NumberOfCousinsInLevelOrder.hs
+ | | | | | |-MyBinarySearchTree_Delete.hs
+ | | | | | |-IsGivenTreeBinarySearchTree.hs
+ | | | | | |-CreateABalancedBinarySearchTree.hs
+ | | | | | |-MyBinaryTree.hs
+ | | | | | |-CountTheNumberOfNodesInAFullBinaryTree.hs
+ | | | | | |-MyBinarySearchTree_Depth.txt
+ | | | | | |-LevelOfTreeWithMaximumSum.hs
+ | | | | | |-CeilingOfAnElementInAGivenBST.hs
+ | | | | | |-BinaryTreeSumsByEachLevel.hs
+ | | | | | |-FullBinaryTree.hs
+ | | | | | |-BinaryTreeBasedCodingProblems.md
+ | | | | | |-FindIfASubreeExistsInAnotherTree.hs
+ | | | | | |-GetParentOfANode.hs
+ | | | | | |-MyBinarySearchTree_Search.hs
+ | | | | | |-MyBinarySearchTree_Height.txt
+ | | | | | |-RootToLeafNumbersSummed.hs
+ | | | | | |-MinimumDepthOfNodesInBinaryTree.txt
+ | | | | | |-InvertABinaryTree.hs
+ | | | | |-Lists
+ | | | | | |-RemoveDuplicatesFromList.hs
+ | | | | | |-LengthOfAList.hs
+ | | | | | |-CountFrequencyOfElementsInAList.hs
+ | | | | | |-GetTheMiddleElementsOfAList.hs
+ | | | | | |-MaxAndMinElementsInAListAndTheirIndices.hs
+ | | | | | |-FindFirstDuplicate.hs
+ | | | | | |-EveryNthElementInAList.hs
+ | | | | | |-UniqueElementsInAList.hs
+ | | | | | |-IsListSymmetric.hs
+ | | | |-05syntaxinfunctions
+ | | | | |-10Let.hs
+ | | | | |-07PatternMatching.hs
+ | | | | |-09Where.hs
+ | | | | |-11CaseExpressions.hs
+ | | | | |-08Guards.hs
+ | | | |-WordCount
+ | | | | |-WordCount.hs
+ | | | | |-quux.txt
+ | | | |-09makingourowntypesandtypeclasses
+ | | | | |-12Note.txt
+ | | | | |-02ADTSumTypes.hs
+ | | | | |-03ADTProductTypes.hs
+ | | | | |-06TypeParameters.hs
+ | | | | |-14AYesNoTypeclass.hs
+ | | | | |-09TypeSynonymsExample.hs
+ | | | | |-15KindsAndSomeTypefoo.hs
+ | | | | |-04RecordSyntax.hs
+ | | | | |-08TypeSynonyms.hs
+ | | | | |-01AlgebraicDataTypesIntro.hs
+ | | | | |-13TheFunctorTypeclass.hs
+ | | | | |-07DerivedInstances.hs
+ | | | | |-05RecordUpdateSyntax.hs
+ | | | | |-10RecursiveDataStructure.hs
+ | | | | |-11Typeclasses102.hs
+ | | | |-06recursion
+ | | | | |-11Recursion.hs
+ | | | | |-12Quicksort.hs
+ | | | |-08modules
+ | | | | |-Geometry.hs
+ | | | | |-21Modules.hs
+ | | | | |-23DataListMaybe.hs
+ | | | | |-26DataSet.hs
+ | | | | |-Geometry
+ | | | | | |-Cube.hs
+ | | | | | |-Cuboid.hs
+ | | | | | |-Sphere.hs
+ | | | | |-22DataList.hs
+ | | | | |-27MakingOurOwnModules.hs
+ | | | | |-25DataMap.hs
+ | | | | |-24DataChar.hs
+ | | | |-03startingout
+ | | | | |-09ListComprehensions.hs
+ | | | | |-07Ranges.hs
+ | | | | |-03BasicOperators.org
+ | | | | |-06IntroductionToLists.hs
+ | | | | |-02ListsAndNotArrays.org
+ | | | | |-08InfiniteLists.hs
+ | | | | |-05IntroductionToArrays.hs
+ | | | | |-10Tuples.hs
+ | | | | |-04StartingOut.hs
+ | | | | |-01BasicDataTypes.org
+ | | | |-01SettingUpYourHaskellDevelopmentEnvironment
+ | | | | |-01Prerequisities.md
+ | | | | |-06HackagevsStackageAndCabalvsStack.md
+ | | | | |-02InstallingHaskell.md
+ | | | | |-04SetUpYourFirstThrowAwayProject.md
+ | | | | |-05MakeSureYouAreReadingTheCorrectDocs.m
+ | | | | |-03AQuickPrimerOnStack.md
+ | | | |-Numbers
+ | | | | |-SumOfIntegersInAList.hs
+ | | | | |-SumOfAllEvenNumbersInAListOfIntegers.hs
+ | | | | |-SumOfMultiplesOf3Or5SmallerThanN.hs
+ | | | | |-Primes.hs
+ | | | | |-LeapYear.hs
+ | | | | |-LargestNumberUnderNDivisibleByAGivenNumber.hs
+ | | | | |-DoubleAllNumbersInAListOfIntegers.hs
+ | | | | |-CollatzSequences.hs
+ | | | | |-EvenOrOddNumbers.hs
+ | | | | |-SumOfEvenValuedFibonacciTermsLessThanMaxValue.hs
+ | | | | |-SumSquareDifference.hs
+ | | | | |-AddTwoNumbers.hs
+ | | | | |-Notes.md
+ | | | | |-CalculateEndTimeByStartTimeAndDuration.hs
+ | | | | |-RightTriangle.hs
+ | | | | |-FibonacciSequence.hs
+ | | | | |-ConvertListToDecimalNumber.hs
+ | | | | |-Absolute.hs
+ | | | | |-SumOfFirstNMultiplesOf3Or5.hs
+ | | | | |-SumOfAllOddSquaresSmallerThanN.hs
+ | | | | |-GenerateAListOfAllEvenNumbersTillN.hs
+ | | | | |-GenerateAListOfFirstNEvenNumbers.hs
+ | | | | |-EvenFibonacciSequence.hs
+ | | | |-04typesandtypeclasses
+ | | | | |-02TypeVariables.md
+ | | | | |-04Typeclasses101.md
+ | | | | |-03It.md
+ | | | | |-01BelieveTheType.md
+ | | | |-Hackerrank
+ | | | | |-DayOfTheProgrammer.pdf
+ | | | | |-AppleAndOrange.hs
+ | | | | |-NumberLineJumps.pdf
+ | | | | |-SockMerchant.pdf
+ | | | | |-VeryBigArraySum.hs
+ | | | | |-BetweenTwoSets.hs
+ | | | | |-DivisibleSumPairs.pdf
+ | | | | |-SolveMeFirst.hs
+ | | | | |-SockMerchant.hs
+ | | | | |-AppleAndOrange.pdf
+ | | | | |-BreakingTheRecords.hs
+ | | | | |-MigratoryBirds.pdf
+ | | | | |-DivisibleSumPairs.hs
+ | | | | |-NumberLineJumps.hs
+ | | | | |-DayOfTheProgrammer.hs
+ | | | | |-BreakingTheRecords.pdf
+ | | | | |-GradingStudents.pdf
+ | | | | |-GradingStudents.hs
+ | | | | |-MigratoryBirds.hs
+ | | | | |-SimpleArraySum.hs
+ | | |-test
+ | | | |-Strings
+ | | | | |-PangramSpec.hs
+ | | | | |-LongestCommonSubsequenceBetweenTwoStringsSpec.hs
+ | | | | |-AnglesOfAClockSpec.hs
+ | | | | |-PalindromeSpec.hs
+ | | | | |-AnagramSpec.hs
+ | | | |-Datastructures
+ | | | | |-Trees
+ | | | | | |-ConvertBinaryTreeToFullBinaryTreeSpec.hs
+ | | | | | |-CountTheNumberOfNodesInACompleteBinaryTreeSpec.hs
+ | | | | | |-MyBinarySearchTree_DeleteSpec.hs
+ | | | | | |-MyBinarySearchTree_SearchSpec.hs
+ | | | | | |-HeightBalancedBinaryTreeSpec.hs
+ | | | | | |-ArithmeticBinaryTreeSpec.hs
+ | | | | | |-MinimumPathSumFromRootToLeafSpec.hs
+ | | | | | |-LevelOfTreeWithMaximumSumSpec.hs
+ | | | | | |-FloorOfAnElementInAGivenBSTSpec.hs
+ | | | | | |-LargestBSTInABinaryTreeSpec.hs
+ | | | | | |-RootToLeafNumbersSummedSpec.hs
+ | | | | | |-BinaryTreeSumsByEachLevelSpec.hs
+ | | | | | |-CeilingOfAnElementInAGivenBSTSpec.hs
+ | | | | | |-TreeSizeSpec.hs
+ | | | | | |-MyBinarySearchTree_LeftHeightSpec.hs
+ | | | | | |-MyBinarySearchTree_HeightSpec.hs
+ | | | | | |-ZigZagBinaryTreeSpec.hs
+ | | | | | |-LevelOfTreeWithMinimumSumSpec.hs
+ | | | | | |-FindIfASubreeExistsInAnotherTreeSpec.hs
+ | | | | | |-FlattenBinaryTreeSpec.hs
+ | | | | | |-CountFullNodesInABinaryTreeSpec.hs
+ | | | | | |-GetParentOfANodeSpec.hs
+ | | | | | |-GetAllValuesAtACertainHeightInABinaryTreeSpec.hs
+ | | | | | |-FilterBinaryTreeLeavesSpec.hs
+ | | | | | |-LargestPathSumFromRootToLeafSpec.hs
+ | | | | | |-FindAllDuplicateSubtreesSpec.hs
+ | | | | | |-CompareTreesBySizeSpec.hs
+ | | | | | |-MinimumHeightOfNodesInBinaryTreeSpec.hs
+ | | | | | |-IsGivenTreeBinarySearchTreeSpec.hs
+ | | | | | |-DeepestNodeInABinaryTreeSpec.hs
+ | | | | | |-PathsFromRootToAllLeavesSpec.hs
+ | | | | | |-FullBinaryTreeSpec.hs
+ | | | | | |-CountTheNumberOfNodesInAFullBinaryTreeSpec.hs
+ | | | | | |-ReconstrunctBinaryTreeFromPreorderAndInorderTraversalsSpec.hs
+ | | | | | |-InvertABinaryTreeSpec.hs
+ | | | | | |-BuildAllPossibleTreesSpec.hs
+ | | | | | |-AppendOneTreeToAnotherTreeSpec.hs
+ | | | | | |-PrintNodesInBoustrophedonOrderSpec.hs
+ | | | | | |-MyBinarySearchTree_RightHeightSpec.hs
+ | | | | | |-TargetSumFromRootToLeafSpec.hs
+ | | | | | |-NumberOfCousinsInLevelOrderSpec.hs
+ | | | | | |-CreateABalancedBinarySearchTreeSpec.hs
+ | | | | | |-UnivalSubtreesSpec.hs
+ | | | | | |-MyBinarySearchTree_MaximumAndMinimumElementsSpec.hs
+ | | | | |-Lists
+ | | | | | |-GetTheMiddleElementsOfAListSpec.hs
+ | | | | | |-RemoveDuplicatesFromListSpec.hs
+ | | | | | |-CountFrequencyOfElementsInAListSpec.hs
+ | | | | | |-IsListSymmetricSpec.hs
+ | | | | | |-UniqueElementsInAListSpec.hs
+ | | | |-Numbers
+ | | | | |-GenerateAListOfAllEvenNumbersTillNSpec.hs
+ | | | | |-AbsoluteSpec.hs
+ | | | |-Spec.hs
+ | | |-haskell-solutions.cabal
+ | | |-ChangeLog.md
+ | | |-docs
+ | | | |-MyReasonsForLearningHaskell.md
+ | | | |-TODO.md
+ | | | |-Notes.md
+ | | | |-DebuggingInHaskell.md
+ | | | |-BuiltInTypesAndFunctions.md
+ | |-haskell-rest-service
+ | | |-haskell-rest-service.cabal
+ | | |-LICENSE
+ | | |-.gitignore
+ | | |-Setup.hs
+ | | |-app
+ | | | |-Main.hs
+ | | |-stack.yaml
+ | | |-package.yaml
+ | | |-README.md
+ | | |-src
+ | | | |-Lib.hs
+ | | | |-Model
+ | | | | |-Article.hs
+ | | |-test
+ | | | |-Spec.hs
+ | | |-ChangeLog.md
+ |-Git
+ | |-If the command prompt does not recognize git in Windows machines.md
+ | |-Git tips.org
+ | |-Conflicts while rebasing.md
+ | |-Diff And Merge Tools For Git.md
+ | |-How to change a Git commit message.org
+ | |-Git squashing commits using commands.org
+ | |-GitSquasingCommitsImages
+ | | |-01.png
+ | | |-05.png
+ | | |-04.png
+ | | |-06.png
+ | | |-03.png
+ | | |-02.png
+ | |-LearningGitBranching.org
+ | |-Working with Branches.org
+ | |-01Configure Tooling.org
+ | |-Git Authentication Issues.org
+ | |-Things to learn.md
+ | |-Git power user tips.org
+ | |-Git Worktrees.md
+ |-Understanding-ID-Token
+ | |-images
+ | | |-alg_Header_Parameter_Values_for_JWS.png
+ | | |-Summary_of_decoding_JWS.png
+ | | |-enc_Header_Parameter_Values_for_JWE.png
+ | | |-encrypting_party_decrypting_party.png
+ | | |-alg_Header_Parameter_Values_for_JWE.png
+ | | |-ID_Token.png
+ | | |-Nested_JWT.png
+ | | |-JWT_in_JWS_format.png
+ | | |-JWT_in_JWE_format.png
+ | |-Understanding ID Token.pdf
+ | |-README.md
+ |-docker
+ | |-springboot-docker-demo
+ | | |-.gitignore
+ | | |-pom.xml
+ | | |-Dockerfile
+ | | |-mvnw.cmd
+ | | |-.mvn
+ | | | |-wrapper
+ | | | | |-maven-wrapper.jar
+ | | | | |-maven-wrapper.properties
+ | | |-mvnw
+ | | |-README.md
+ | | |-src
+ | | | |-main
+ | | | | |-java
+ | | | | | |-com
+ | | | | | | |-example
+ | | | | | | | |-springbootdockerdemo
+ | | | | | | | | |-SampleRestfulController.java
+ | | | | | | | | |-SpringbootDockerDemoApplication.java
+ | | | | |-resources
+ | | | | | |-application.properties
+ | | | |-test
+ | | | | |-java
+ | | | | | |-com
+ | | | | | | |-example
+ | | | | | | | |-springbootdockerdemo
+ | | | | | | | | |-SpringbootDockerDemoApplicationTests.java
+ | |-README.org
+ |-aws
+ | |-employee-aws-cdk-stack-repo
+ | | |-tsconfig.json
+ | | |-.gitignore
+ | | |-.npmignore
+ | | |-package.json
+ | | |-jest.config.js
+ | | |-package-lock.json
+ | | |-aws-cli.pdf
+ | | |-cdk.json
+ | | |-lib
+ | | | |-employee-cdk-stack.ts
+ | | | |-HitCounter.ts
+ | | | |-EmployeeConstruct.ts
+ | | | |-UserConstruct.ts
+ | | |-cdk.context.json
+ | | |-README.md
+ | | |-Technical.md
+ | | |-AWS_Account_For_Experimentation.pdf
+ | | |-test
+ | | | |-cdk-workshop.test.ts
+ | | |-.settings
+ | | | |-org.eclipse.m2e.core.prefs
+ | | | |-org.eclipse.jdt.core.prefs
+ | | |-bin
+ | | | |-cdk-workshop.ts
+ | | |-lambdas
+ | | | |-getEmployee.js
+ | | | |-getAllEmployees.js
+ | | | |-getUser.js
+ | | | |-saveUser.js
+ | | | |-saveEmployee.js
+ | | | |-getAllUsers.js
+ | | | |-hitCounter.js
+ | | | |-hello.js
+ | | |-SETUp.md
+ | | |-Testing.md
+ |-java-playground
+ | |-redis-caching-using-lettuce
+ | | |-.gitignore
+ | | |-gradlew.bat
+ | | |-gradle
+ | | | |-wrapper
+ | | | | |-gradle-wrapper.jar
+ | | | | |-gradle-wrapper.properties
+ | | |-build.gradle
+ | | |-src
+ | | | |-main
+ | | | | |-java
+ | | | | | |-poc
+ | | | | | | |-module
+ | | | | | | | |-cache
+ | | | | | | | | |-ClearCacheController.java
+ | | | | | | | | |-ClearCacheService.java
+ | | | | | | | |-referenceData
+ | | | | | | | | |-ReferenceDataService.java
+ | | | | | | | | |-ReferenceDataRepository.java
+ | | | | | | | | |-ReferenceDataController.java
+ | | | | | | |-App.java
+ | | | | | | |-shared
+ | | | | | | | |-Environment.java
+ | | | | | | | |-EnvironmentLookup.java
+ | | | | | | |-core
+ | | | | | | | |-CustomCacheErrorHandler.java
+ | | | | | | | |-CustomCacheConfiguration.java
+ | | | | |-resources
+ | | | | | |-application.properties
+ | | | | | |-libs
+ | | | | | | |-ReferenceDataLoad.jar
+ | | |-settings.gradle
+ | | |-.gitattributes
+ | | |-gradlew
+ | | |-test.json
+ | |-redis-cacing-using-jedis
+ | | |-.gitignore
+ | | |-gradlew.bat
+ | | |-gradle
+ | | | |-wrapper
+ | | | | |-gradle-wrapper.jar
+ | | | | |-gradle-wrapper.properties
+ | | |-build.gradle
+ | | |-src
+ | | | |-main
+ | | | | |-java
+ | | | | | |-io
+ | | | | | | |-redis
+ | | | | | | | |-jedis
+ | | | | | | | | |-jedisdemo
+ | | | | | | | | | |-controller
+ | | | | | | | | | | |-QuoteIdController.java
+ | | | | | | | | | | |-ReferenceDataController.java
+ | | | | | | | | | |-JedisDemoApplication.java
+ | | | | | | | | | |-webserviceclient
+ | | | | | | | | | | |-webservices
+ | | | | | | | | | | | |-WebServiceClientException.java
+ | | | | | | | | | | | |-WebServiceConfigurationProperties.java
+ | | | | | | | | | | | |-WebServiceEndpoints.java
+ | | | | | | | | | | | |-WebServiceConfiguration.java
+ | | | | | | | | | | | |-WebServiceClient.java
+ | | | | | | | | | |-configuration
+ | | | | | | | | | | |-CustomCacheErrorHandler.java
+ | | | | | | | | | | |-RedisConfiguration.java
+ | | | | | | | | | | |-CacheReloadScheduler.java
+ | | | | | | | | | |-helper
+ | | | | | | | | | | |-ReferenceDataAccessor.java
+ | | | | | | | | | | |-WebServiceRecorderHandler.java
+ | | | | | | | | | | |-AcordMediationReferenceDataFacade.java
+ | | | | | | | | | | |-ReferenceDataLoadClient.java
+ | | | | | | | | | | |-AcordMediationReferenceTableType.java
+ | | | | | | | | | | |-ReferenceTableType.java
+ | | | | | | | | | | |-FileUtils.java
+ | | | | | | | | | | |-EnvironmentType.java
+ | | | | | | | | | | |-AcordSalesMediationReferenceDataFacade.java
+ | | | | | | | | | | |-EnvironmentConfig.java
+ | | | | | | | | | |-service
+ | | | | | | | | | | |-asyncfailures
+ | | | | | | | | | | | |-QuoteIdServiceImpl.java
+ | | | | | | | | | | | |-QuoteIdRepositoryImpl.java
+ | | | | | | | | | | | |-QuoteIdService.java
+ | | | | | | | | | | | |-QuoteIdRepository.java
+ | | | | | | | | | | |-refdata
+ | | | | | | | | | | | |-ReferenceDataService.java
+ | | | | |-resources
+ | | | | | |-application.yml
+ | | | |-test
+ | | | | |-java
+ | | | | | |-io
+ | | | | | | |-redis
+ | | | | | | | |-jedis
+ | | | | | | | | |-jedisdemo
+ | | | | | | | | | |-JedisDemoApplicationTests.java
+ | | |-settings.gradle
+ | | |-gradlew
+ | |-download-images-from-urls
+ | | |-.gitignore
+ | | |-src
+ | | | |-com
+ | | | | |-download
+ | | | | | |-image
+ | | | | | | |-from
+ | | | | | | | |-url
+ | | | | | | | | |-DownloadImagesFromUrls.java
+ | |-spring-data-mongodb-rest
+ | | |-.gitignore
+ | | |-README.org
+ | | |-pom.xml
+ | | |-mongodb
+ | | | |-docker-compose-with-mongo-and-mongo-express.yml
+ | | | |-docker-compose-with-mongo.yml
+ | | | |-mongo-init.js
+ | | |-mvnw.cmd
+ | | |-.mvn
+ | | | |-wrapper
+ | | | | |-maven-wrapper.properties
+ | | | | |-MavenWrapperDownloader.java
+ | | |-mvnw
+ | | |-src
+ | | | |-main
+ | | | | |-java
+ | | | | | |-com
+ | | | | | | |-springdatamongodbrest
+ | | | | | | | |-repository
+ | | | | | | | | |-PersonRepository.java
+ | | | | | | | |-models
+ | | | | | | | | |-Person.java
+ | | | | | | | |-SpringDataMongodbRestApplication.java
+ | | | | |-resources
+ | | | | | |-application.properties
+ | | | |-test
+ | | | | |-java
+ | | | | | |-com
+ | | | | | | |-springdatamongodbrest
+ | | | | | | | |-SpringDataMongodbRestApplicationTests.java
+ | | |-HELP.md
+ | |-my-personal-utilities
+ | | |-.gitignore
+ | | |-.classpath
+ | | |-.project
+ | | |-README.md
+ | | |-MyCodeStyleFormat.xml
+ | | |-src
+ | | | |-sorting
+ | | | | |-CountingSort.java
+ | | | | |-Quicksort.java
+ | | | | |-InsertionSort.png
+ | | | | |-ArraysAndListsComparator.java
+ | | | | |-ShellSort.java
+ | | | | |-BubbleSort.java
+ | | | | |-Notes.md
+ | | | | |-RadixSort.java
+ | | | | |-HeapSort.java
+ | | | | |-BucketSort.java
+ | | | | |-InsertionSort.java
+ | | | | |-SelectionSort.java
+ | | | | |-MergeSort.java
+ | | | |-hackerrank
+ | | | | |-GradingStudents.java
+ | | | | |-SherlockAndSquares.pdf
+ | | | | |-DesignerPdfViewer.pdf
+ | | | | |-ExtraLongFactorials.pdf
+ | | | | |-SequenceEquation.pdf
+ | | | | |-EqualiseTheArray.pdf
+ | | | | |-NonDivisibleSubset.pdf
+ | | | | |-LarrysArray.pdf
+ | | | | |-DayOfTheProgrammer.pdf
+ | | | | |-ServiceLane.pdf
+ | | | | |-SockMerchant.pdf
+ | | | | |-AlmostSorted.pdf
+ | | | | |-AppleAndOrange.java
+ | | | | |-JumpingOnTheClouds.pdf
+ | | | | |-ModifiedKaprekarNumbers.pdf
+ | | | | |-ViralAdvertising.pdf
+ | | | | |-CavityMap.pdf
+ | | | | |-3DSurfaceArea.pdf
+ | | | | |-StrangeCounter.pdf
+ | | | | |-AbsolutePermutation.pdf
+ | | | | |-TheTimeInWords.pdf
+ | | | | |-DivisibleSumPairs.pdf
+ | | | | |-CutTheSticks.pdf
+ | | | | |-TheBombermanGame.pdf
+ | | | | |-CatsAndAMouse.pdf
+ | | | | |-CircularArrayRotation.pdf
+ | | | | |-HappyLadybugs.pdf
+ | | | | |-ElectronicsShop.pdf
+ | | | | |-HalloweenSale.pdf
+ | | | | |-QueensAttack2.pdf
+ | | | | |-BonAppetit.pdf
+ | | | | |-MinimumDistances.pdf
+ | | | | |-OrganizingContainersOfBalls.pdf
+ | | | | |-BetweenTwoSets.java
+ | | | | |-FindDigits.pdf
+ | | | | |-FlatlandSpaceStations.pdf
+ | | | | |-JumpingOnTheCloudsRevisited.pdf
+ | | | | |-Kangaroo.pdf
+ | | | | |-TaumAndBday.pdf
+ | | | | |-AppleAndOrange.pdf
+ | | | | |-BeautifulTriplets.pdf
+ | | | | |-AngryProfessor.java
+ | | | | |-MatrixLayerRotation.pdf
+ | | | | |-UtopianTree.pdf
+ | | | | |-AppendAndDelete.pdf
+ | | | | |-BiggerIsGreater.pdf
+ | | | | |-Kangaroo.java
+ | | | | |-MigratoryBirds.pdf
+ | | | | |-ChocolateFeast.pdf
+ | | | | |-ClimbingTheLeaderboard.pdf
+ | | | | |-LisasWorkbook.pdf
+ | | | | |-TheGridSearch.pdf
+ | | | | |-BirthdayChocolate.pdf
+ | | | | |-PickingNumbers.pdf
+ | | | | |-Encryption.pdf
+ | | | | |-BeautifulDaysAtTheMovies.java
+ | | | | |-CountingValleys.pdf
+ | | | | |-DrawingBook.pdf
+ | | | | |-SimpleArraySum.java
+ | | | | |-BreakingTheRecords.pdf
+ | | | | |-RepeatedString.pdf
+ | | | | |-ACM-ICPC-Team.pdf
+ | | | | |-FairRations.pdf
+ | | | | |-GradingStudents.pdf
+ | | | | |-ManasaAndStones.pdf
+ | | | | |-LibraryFine.pdf
+ | | | | |-TheHurdleRace.pdf
+ | | | | |-EmasSupercomputer.pdf
+ | | | | |-VeryBigArraySum.java
+ | | | | |-SaveThePrisoner.pdf
+ | | | | |-FormingAMagicSquare.pdf
+ | | | |-collections
+ | | | | |-CollectorTeeing.java
+ | | | | |-CollectExamples.java
+ | | | | |-BinaryOperatorSamples.java
+ | | | | |-StreamAPI.java
+ | | | | |-StreamReduce.java
+ | | | | |-StreamCollect.java
+ | | | | |-Person.java
+ | | | |-utility
+ | | | | |-ArrayUtils.java
+ | | | | |-PrintUtils.java
+ | | | |-strings
+ | | | | |-StringReversal.java
+ | | | | |-Staircase.java
+ | | | | |-TimeConversion.java
+ | | | | |-FizzBuzz.java
+ | | | | |-BalancedParanthesis.java
+ | | | | |-FizzBuzzMultithreaded.java
+ | | | | |-ToCamelCase.java
+ | | | | |-MostCommonCharacterInString.java
+ | | | | |-Permutations.java
+ | | | | |-ReverseWordsInASentence.java
+ | | | | |-StringPalindrome.java
+ | | | |-datastructures
+ | | | | |-lists
+ | | | | | |-CompareTriplets.java
+ | | | | |-AbstractDataTypes.md
+ | | | | |-queues
+ | | | | | |-QueueImplementationUsingLinkedList.java
+ | | | | | |-ReadNumbersFromFileIntoQueue.java
+ | | | | |-bags
+ | | | | | |-StatisticsUsingBags.java
+ | | | | | |-BagImplementationUsingLinkedList.java
+ | | | | |-trees
+ | | | | | |-TreeClient.java
+ | | | | | |-Tree.java
+ | | | | | |-TreeNode.java
+ | | | | |-linkedlist
+ | | | | | |-singlyLinkedIntegerList
+ | | | | | | |-IntegerLinkedListClient.java
+ | | | | | | |-SortedIntegerLinkedList.java
+ | | | | | | |-Node.java
+ | | | | | |-doublyLinkedEmployeeList
+ | | | | | | |-EmployeeLinkedListClient.java
+ | | | | | | |-EmployeeDoublyLinkedList.java
+ | | | | | | |-EmployeeNode.java
+ | | | | | |-singlyLinkedEmployeeList
+ | | | | | | |-EmployeeLinkedListClient.java
+ | | | | | | |-EmployeeSinglyLinkedList.java
+ | | | | | | |-EmployeeNode.java
+ | | | | | |-LinkedList.md
+ | | | | | |-jdk
+ | | | | | | |-JdkLinkedListClient.java
+ | | | | |-arrays
+ | | | | | |-SwapElementsToMakeSumEqual.java
+ | | | | | |-KadanesAlgorithm.pdf
+ | | | | | |-SumOfNaturalNumbersUptoN.java
+ | | | | | |-EquilibriumIndexOfArray.java
+ | | | | | |-SubarraysWithNegativeSum.java
+ | | | | | |-UniqueNumbersInAnArray.java
+ | | | | | |-SequentialParallelAlgorithms4MaxSubarrayProblem.pdf
+ | | | | | |-TwoSum.java
+ | | | | | |-SmallestIndexInAnArrayThatHasAllTheElements.java
+ | | | | | |-MoveNegativeElementsToTheLeft.java
+ | | | | | |-WriteArrayBackwards.java
+ | | | | | |-ReverseArrayIterator.md
+ | | | | | |-BirthdayCakeCandles.java
+ | | | | | |-LargestSumSubarray.java
+ | | | | | |-TwoSumInputArrayIsSorted.java
+ | | | | | |-Notes.md
+ | | | | | |-TwoSumFromTwoDifferentArrays.java
+ | | | | | |-MaximumAndMinimumElementsInAnArray.java
+ | | | | | |-DropFirstNElementsOfAnArray.java
+ | | | | | |-MaximumContiguousSubarraySumProblems.pdf
+ | | | | | |-ArrayResizing.java
+ | | | | | |-SimpleArraySum.java
+ | | | | | |-SearchForANumberInAnArray.java
+ | | | | | |-GenericArrayCreationIsDisallowedInJava.md
+ | | | | | |-VeryBigArraySum.java
+ | | | | |-vectors
+ | | | | | |-Notes.md
+ | | | | |-hashtables
+ | | | | | |-SimpleHashTable_LinearProbing.java
+ | | | | | |-ChainingHashTableClient.java
+ | | | | | |-SimpleHashTable_Chaining.java
+ | | | | | |-LinearProbingHashTableClient.java
+ | | | | |-heap
+ | | | | | |-Heap.java
+ | | | | | |-Notes.md
+ | | | | | |-HeapClient.java
+ | | | | | |-PriorityQueueClient.java
+ | | | | |-stack
+ | | | | | |-Shunting_yard.jpg
+ | | | | | |-TransformAnInfixExpressionToPostfixNotation.java
+ | | | | | |-StackImplementationUsingLinkedList.java
+ | | | | | |-FullyParenthesizedArithmeticExpressionEvaluation.java
+ | | | | | |-ExpressionEvaluation.java
+ | | | | | |-ReverseUsingStack.java
+ | | | | | |-StackImplementationUsingDoubleLinkedList.java
+ | | | | | |-ReverseAGivenStack.java
+ | | | | | |-FixedCapacityStack.java
+ | | | | | |-ResizingArrayStack.java
+ | | | | | |-EvaluatePostfixExpression.java
+ | | | | | |-FixedCapacityStackOfStrings.java
+ | | | |-codility
+ | | | | |-sorting
+ | | | | | |-Triangle.txt
+ | | | | | |-NumberOfDiscIntersections.txt
+ | | | | | |-Distinct.txt
+ | | | | | |-4-Sorting.pdf
+ | | | | | |-MaxProductOfThree.txt
+ | | | | | |-NumberOfDiscIntersections.png
+ | | | | |-iterations
+ | | | | | |-BinaryGap.java
+ | | | | |-DynamicProgramming
+ | | | | | |-15-DynamicProgramming.pdf
+ | | | | | |-MinAbsSum.txt
+ | | | | | |-NumberSolitaire.txt
+ | | | | |-timecomplexity
+ | | | | | |-TapeEquilibrium.java
+ | | | | | |-FrogJumps.java
+ | | | | | |-PermMissingElem.java
+ | | | | | |-1-TimeComplexity.pdf
+ | | | | |-SieveOfEratosthenes
+ | | | | | |-9-Sieve.pdf
+ | | | | | |-CountSemiprimes.txt
+ | | | | | |-CountNonDivisible.txt
+ | | | | |-BinarySearchAlgorithm
+ | | | | | |-12-BinarySearch.pdf
+ | | | | | |-NailingPlanks.txt
+ | | | | | |-MinMaxDivision.txt
+ | | | | |-countingelements
+ | | | | | |-2-CountingElements.pdf
+ | | | | | |-MaxCounters.java
+ | | | | | |-PermutationCheck.java
+ | | | | | |-FrogRiverOne.java
+ | | | | | |-SmallestPositiveNumberMissingFromArray.java
+ | | | | |-TasksFromIndeedPrime2015challenge
+ | | | | | |-FloodDepth.png
+ | | | | | |-SlalomSkiing.txt
+ | | | | | |-SlalomSkiing.png
+ | | | | | |-LongestPassword.txt
+ | | | | | |-FloodDepth.txt
+ | | | | |-GreedyAlgorithms
+ | | | | | |-14-GreedyAlgorithms.pdf
+ | | | | | |-TieRopes.txt
+ | | | | | |-MaxNonOverlappingSegments.txt
+ | | | | | |-MaxNonOverlappingSegments.png
+ | | | | | |-TieRopes.png
+ | | | | |-StacksAndQueues
+ | | | | | |-Brackets.txt
+ | | | | | |-Fish.txt
+ | | | | | |-StoneWall.txt
+ | | | | | |-5-Stacks.pdf
+ | | | | | |-Nesting.txt
+ | | | | | |-StoneWall.png
+ | | | | |-Leader
+ | | | | | |-Dominator.txt
+ | | | | | |-6-Leader.pdf
+ | | | | | |-EquiLeader.txt
+ | | | | |-EuclideanAlgorithm
+ | | | | | |-ChocolatesByNumbers.txt
+ | | | | | |-10-Gcd.pdf
+ | | | | | |-CommonPrimeDivisors.txt
+ | | | | |-Futuretraining
+ | | | | | |-ArrayInversionCount.txt
+ | | | | | |-PolygonConcavityIndex.txt
+ | | | | | |-PolygonConcavityIndex2.png
+ | | | | | |-StrSymmetryPoint.txt
+ | | | | | |-PolygonConcavityIndex3.png
+ | | | | | |-PolygonConcavityIndex1.png
+ | | | | | |-SqlSum.txt
+ | | | | |-PrimeAndCompositeNumbers
+ | | | | | |-MinPerimeterRectangle.txt
+ | | | | | |-Peaks.txt
+ | | | | | |-8-PrimeNumbers.pdf
+ | | | | | |-Flags.txt
+ | | | | | |-Flags.png
+ | | | | | |-CountFactors.txt
+ | | | | |-arrays
+ | | | | | |-OddNumberOfAnArray.java
+ | | | | | |-0-Arrays.pdf
+ | | | | | |-ArrayCyclicRotation.java
+ | | | | |-Tasksfromindeedprime2016collegecoderschallenge
+ | | | | | |-DiamondsCount1.png
+ | | | | | |-DiamondsCount2.png
+ | | | | | |-DiamondsCount.txt
+ | | | | | |-SocksLaundering.png
+ | | | | | |-SocksLaundering.txt
+ | | | | | |-ArrayRecovery.txt
+ | | | | | |-TennisTournament.txt
+ | | | | |-Tasksfromindeedprime2016challenge
+ | | | | | |-HilbertMaze2.png
+ | | | | | |-DwarfsRafting1.png
+ | | | | | |-HilbertMaze3.png
+ | | | | | |-TreeProduct.png
+ | | | | | |-RectangleBuilderGreaterArea.txt
+ | | | | | |-TreeProduct.txt
+ | | | | | |-DwarfsRafting.txt
+ | | | | | |-HilbertMaze1.png
+ | | | | | |-HilbertMaze6.png
+ | | | | | |-DwarfsRafting2.png
+ | | | | | |-HilbertMaze.txt
+ | | | | | |-HilbertMaze4.png
+ | | | | | |-HilbertMaze5.png
+ | | | | | |-RectangleBuilderGreaterArea.png
+ | | | | |-orderOfFolders.md
+ | | | | |-MaximumSliceProblem
+ | | | | | |-7-MaxSlice.pdf
+ | | | | | |-MaxDoubleSliceSum.txt
+ | | | | | |-MaxProfit.txt
+ | | | | | |-MaxSliceSum.txt
+ | | | | |-CaterpillarMethod
+ | | | | | |-MinAbsSumOfTwo.txt
+ | | | | | |-13-CaterpillarMethod.pdf
+ | | | | | |-CountDistinctSlices.txt
+ | | | | | |-AbsDistinct.txt
+ | | | | | |-CountTriangles.txt
+ | | | | |-prefixsums
+ | | | | | |-CountDiv.java
+ | | | | | |-MinAvgTwoSlice.java
+ | | | | | |-PassingCars.java
+ | | | | | |-MinAvgTwoSliceProof.pdf
+ | | | | | |-MaxOrMinAvgSubArrayOfSpecifiedSize.java
+ | | | | | |-MinAvgTwoSlice3.java
+ | | | | | |-GenomicRangeQuery.java
+ | | | | | |-MinAvgTwoSlice2.java
+ | | | | | |-PrefixSums.java
+ | | | | | |-3-PrefixSums.pdf
+ | | | | | |-MushroomPicker.java
+ | | | | |-FibonacciNumbers
+ | | | | | |-Ladder.txt
+ | | | | | |-11-Fibonacci.pdf
+ | | | | | |-FibFrog.txt
+ | | | |-mycustomclasses
+ | | | | |-PrintFileNamesInAFolder.java
+ | | | | |-SearchTextInFile.java
+ | | | | |-Hashids.java
+ | | | | |-ValidateXMLagainstXSD.java
+ | | | | |-CreditCardValidation.java
+ | | | | |-Unzip.java
+ | | | | |-RenameFiles.java
+ | | | | |-ReadFileNamesAndOrganizeIntoFolders.java
+ | | | | |-ConvertTextfilesInAFolderToPDF.java
+ | | | | |-NIOGrep.java
+ | | | | |-SearchTextInFile2.java
+ | | | | |-JHashIds.java
+ | | | | |-RtfToPdf.java
+ | | | | |-DeleteFileBasedOnExtension
+ | | | | |-MooshakCatchingCheese.java
+ | | | | |-ArrangeBooks_Mac.java
+ | | | | |-CustomHashCreatorUtil.java
+ | | | | |-XMLDOMCreator.java
+ | | | | |-XMLValidationAgainstWSDL.java
+ | | | | |-ListAllTheImportsFromJavaClassesInAProject.java
+ | | | |-notes
+ | | | | |-PassByValuePassByReference.md
+ | | | |-lru_cache_implementation
+ | | | | |-TestLRUCache.java
+ | | | | |-LRU2.png
+ | | | | |-LRUCache.java
+ | | | | |-Node.java
+ | | | |-numbers
+ | | | | |-SumOfAllOddSquaresSmallerThanN.java
+ | | | | |-LCMOfNumbersInAnArray.java
+ | | | | |-FindOddNumbersBetweenLAndR.java
+ | | | | |-CollatzSequences.java
+ | | | | |-MiniMaxSum.java
+ | | | | |-SwapIntegersWithoutUsingATempVariable.java
+ | | | | |-GCDOfTwoNumbersUsingEuclideanAlgorithm.java
+ | | | | |-ReverseInteger.java
+ | | | | |-GCDOfNumbersInAnArray.java
+ | | | | |-LargestNumberUnderNDivisibleByAGivenNumber.java
+ | | | | |-LCMOfTwoNumbers.java
+ | | | | |-RightTriange.java
+ | | | | |-IntegerPalindrome.java
+ | | | | |-RomanToInteger.java
+ | | | | |-IntegerToRoman.java
+ | | | |-fractions
+ | | | | |-CropRatio.java
+ | | | | |-PlusMinus.java
+ | | | |-matrix
+ | | | | |-DiagonalDifference.java
+ | | | |-recursion
+ | | | | |-ProductOfIntegersInArrayUsingRecursion.java
+ | | | | |-OrganizingAParade.java
+ | | | | |-ChoosingKOutOfNThings.java
+ | | | | |-Factorial.java
+ | | | | |-ProductOfFirstNRealNumbersInArrayUsingRecurson.java
+ | | | | |-Notes.md
+ | | | | |-TowersOfHanoi.java
+ | | | | |-MultiplyingRabbits.java
+ | | | | |-TowersOfHanoi.png
+ | | | | |-FindTheKthSmallestValueOfAnArray.java
+ | | | |-krogerCoupons
+ | | | | |-PersonalizedCoupons.java
+ | | | |-module-info.java
+ | | | |-search
+ | | | | |-BinarySearch.java
+ | | | | |-LinearSearch.java
+ | | |-docs
+ | | | |-Research.txt
+ | | | |-ErrorCouldNotFindOrLoadMainClassInJava.txt
+ | | | |-HowToSetClasspathForJava.txt
+ | |-Springboot references.md
+ | |-spring-cloud-stream
+ | | |-Stream Processing with RabbitMQ.pdf
+ | | |-Spring Cloud Stream.pdf
+ | | |-usage-detail-sender-rabbit
+ | | | |-.gitignore
+ | | | |-pom.xml
+ | | | |-mvnw.cmd
+ | | | |-.mvn
+ | | | | |-wrapper
+ | | | | | |-maven-wrapper.jar
+ | | | | | |-maven-wrapper.properties
+ | | | | | |-MavenWrapperDownloader.java
+ | | | |-mvnw
+ | | | |-README.md
+ | | | |-src
+ | | | | |-main
+ | | | | | |-java
+ | | | | | | |-io
+ | | | | | | | |-spring
+ | | | | | | | | |-dataflow
+ | | | | | | | | | |-sample
+ | | | | | | | | | | |-usagedetailsenderrabbit
+ | | | | | | | | | | | |-UsageDetailSender.java
+ | | | | | | | | | | | |-UsageDetailSenderRabbitApplication.java
+ | | | | | | | | | | | |-UsageDetail.java
+ | | | | | |-resources
+ | | | | | | |-application.yml
+ | | | | |-test
+ | | | | | |-java
+ | | | | | | |-io
+ | | | | | | | |-spring
+ | | | | | | | | |-dataflow
+ | | | | | | | | | |-sample
+ | | | | | | | | | | |-usagedetailsenderrabbit
+ | | | | | | | | | | | |-UsageDetailSenderRabbitApplicationTests.java
+ | | |-TODO.md
+ | | |-Stream Processing with Apache Kafka.pdf
+ | | |-usage-cost-processor-rabbit
+ | | | |-.gitignore
+ | | | |-pom.xml
+ | | | |-mvnw.cmd
+ | | | |-.mvn
+ | | | | |-wrapper
+ | | | | | |-maven-wrapper.jar
+ | | | | | |-maven-wrapper.properties
+ | | | | | |-MavenWrapperDownloader.java
+ | | | |-mvnw
+ | | | |-README.md
+ | | | |-src
+ | | | | |-main
+ | | | | | |-java
+ | | | | | | |-io
+ | | | | | | | |-spring
+ | | | | | | | | |-dataflow
+ | | | | | | | | | |-sample
+ | | | | | | | | | | |-usagecostprocessorrabbit
+ | | | | | | | | | | | |-UsageCostDetail.java
+ | | | | | | | | | | | |-UsageCostProcessorRabbitApplication.java
+ | | | | | | | | | | | |-UsageCostProcessor.java
+ | | | | | | | | | | | |-UsageDetail.java
+ | | | | | |-resources
+ | | | | | | |-application.yml
+ | | | | |-test
+ | | | | | |-java
+ | | | | | | |-io
+ | | | | | | | |-spring
+ | | | | | | | | |-dataflow
+ | | | | | | | | | |-sample
+ | | | | | | | | | | |-usagecostprocessorrabbit
+ | | | | | | | | | | | |-UsageCostProcessorRabbitApplicationTests.java
+ | | |-usage-cost-logger-kafka
+ | | | |-.gitignore
+ | | | |-pom.xml
+ | | | |-mvnw.cmd
+ | | | |-.mvn
+ | | | | |-wrapper
+ | | | | | |-maven-wrapper.jar
+ | | | | | |-maven-wrapper.properties
+ | | | | | |-MavenWrapperDownloader.java
+ | | | |-mvnw
+ | | | |-src
+ | | | | |-main
+ | | | | | |-java
+ | | | | | | |-io
+ | | | | | | | |-spring
+ | | | | | | | | |-dataflow
+ | | | | | | | | | |-sample
+ | | | | | | | | | | |-usagecostloggerkafka
+ | | | | | | | | | | | |-UsageCostDetail.java
+ | | | | | | | | | | | |-UsageCostLogger.java
+ | | | | | | | | | | | |-UsageCostLoggerKafkaApplication.java
+ | | | | | |-resources
+ | | | | | | |-application.yml
+ | | | | |-test
+ | | | | | |-java
+ | | | | | | |-io
+ | | | | | | | |-spring
+ | | | | | | | | |-dataflow
+ | | | | | | | | | |-sample
+ | | | | | | | | | | |-usagecostloggerkafka
+ | | | | | | | | | | | |-UsageCostLoggerKafkaApplicationTests.java
+ | | |-usage-detail-sender-kafka
+ | | | |-.gitignore
+ | | | |-pom.xml
+ | | | |-mvnw.cmd
+ | | | |-.mvn
+ | | | | |-wrapper
+ | | | | | |-maven-wrapper.jar
+ | | | | | |-maven-wrapper.properties
+ | | | | | |-MavenWrapperDownloader.java
+ | | | |-mvnw
+ | | | |-src
+ | | | | |-main
+ | | | | | |-java
+ | | | | | | |-io
+ | | | | | | | |-spring
+ | | | | | | | | |-dataflow
+ | | | | | | | | | |-sample
+ | | | | | | | | | | |-usagedetailsenderkafka
+ | | | | | | | | | | | |-UsageDetailSender.java
+ | | | | | | | | | | | |-UsageDetailSenderKafkaApplication.java
+ | | | | | | | | | | | |-UsageDetail.java
+ | | | | | |-resources
+ | | | | | | |-application.yml
+ | | | | |-test
+ | | | | | |-java
+ | | | | | | |-io
+ | | | | | | | |-spring
+ | | | | | | | | |-dataflow
+ | | | | | | | | | |-sample
+ | | | | | | | | | | |-usagedetailsenderkafka
+ | | | | | | | | | | | |-UsageDetailSenderKafkaApplicationTests.java
+ | | |-README.md
+ | | |-usage-cost-processor-kafka
+ | | | |-.gitignore
+ | | | |-pom.xml
+ | | | |-mvnw.cmd
+ | | | |-.mvn
+ | | | | |-wrapper
+ | | | | | |-maven-wrapper.jar
+ | | | | | |-maven-wrapper.properties
+ | | | | | |-MavenWrapperDownloader.java
+ | | | |-mvnw
+ | | | |-src
+ | | | | |-main
+ | | | | | |-java
+ | | | | | | |-io
+ | | | | | | | |-spring
+ | | | | | | | | |-dataflow
+ | | | | | | | | | |-sample
+ | | | | | | | | | | |-usagecostprocessorkafka
+ | | | | | | | | | | | |-UsageCostDetail.java
+ | | | | | | | | | | | |-UsageCostProcessor.java
+ | | | | | | | | | | | |-UsageDetail.java
+ | | | | | | | | | | | |-UsageCostProcessorKafkaApplication.java
+ | | | | | |-resources
+ | | | | | | |-application.yml
+ | | | | |-test
+ | | | | | |-java
+ | | | | | | |-io
+ | | | | | | | |-spring
+ | | | | | | | | |-dataflow
+ | | | | | | | | | |-sample
+ | | | | | | | | | | |-usagecostprocessorkafka
+ | | | | | | | | | | | |-UsageCostProcessorKafkaApplicationTests.java
+ | | |-usage-cost-logger-rabbit
+ | | | |-.gitignore
+ | | | |-pom.xml
+ | | | |-mvnw.cmd
+ | | | |-.mvn
+ | | | | |-wrapper
+ | | | | | |-maven-wrapper.jar
+ | | | | | |-maven-wrapper.properties
+ | | | | | |-MavenWrapperDownloader.java
+ | | | |-mvnw
+ | | | |-README.md
+ | | | |-src
+ | | | | |-main
+ | | | | | |-java
+ | | | | | | |-io
+ | | | | | | | |-spring
+ | | | | | | | | |-dataflow
+ | | | | | | | | | |-usagecostloggerrabbit
+ | | | | | | | | | | |-UsageCostDetail.java
+ | | | | | | | | | | |-UsageCostLogger.java
+ | | | | | | | | | | |-UsageCostLoggerRabbitApplication.java
+ | | | | | |-resources
+ | | | | | | |-application.yml
+ | | | | |-test
+ | | | | | |-java
+ | | | | | | |-io
+ | | | | | | | |-spring
+ | | | | | | | | |-dataflow
+ | | | | | | | | | |-usagecostloggerrabbit
+ | | | | | | | | | | |-UsageCostLoggerRabbitApplicationTests.java
+ | |-java-concurrency-api
+ | | |-.gitignore
+ | | |-README.org
+ | | |-src
+ | | | |-asyncMethods
+ | | | | |-AsyncMethods.java
+ | | | |-processingResultsOfAsynchronousComputations
+ | | | | |-ProcessingResultsOfAsynchronousComputations.java
+ | | | |-completableFutureWithEncapsulatedComputationLogic
+ | | | | |-CompletableFutureWithEncapsulatedComputationLogic.java
+ | | | |-usingCompletableFutureAsASimpleFuture
+ | | | | |-UsingCompletableFutureAsASimpleFuture.java
+ | | | |-handlingErrors
+ | | | | |-CancellingAComputation.java
+ | | | | |-HandlingErrors.java
+ | | | |-runningMultipleFuturesInParallel
+ | | | | |-RunningMultipleFuturesInParallel.java
+ | | | | |-CompletableFutureAnyOf.java
+ | | | |-combiningFutures
+ | | | | |-CombiningFutures.java
+ | | | |-differenceBetweenThenApplyAndThenCompose
+ | | | | |-UserService.java
+ | | | | |-DifferenceBetweenThenApplyAndThenCompose.java
+ | | | | |-User.java
+ | | | | |-CreditRatingService.java
+ | |-spring-rest-template
+ | | |-.gitignore
+ | | |-gradlew.bat
+ | | |-README.org
+ | | |-gradle
+ | | | |-wrapper
+ | | | | |-gradle-wrapper.jar
+ | | | | |-gradle-wrapper.properties
+ | | |-build.gradle
+ | | |-src
+ | | | |-main
+ | | | | |-java
+ | | | | | |-com
+ | | | | | | |-example
+ | | | | | | | |-springresttemplate
+ | | | | | | | | |-model
+ | | | | | | | | | |-Value.java
+ | | | | | | | | | |-Quote.java
+ | | | | | | | | |-SpringRestTemplateApplication.java
+ | | | | |-resources
+ | | | | | |-application.properties
+ | | | |-test
+ | | | | |-java
+ | | | | | |-com
+ | | | | | | |-example
+ | | | | | | | |-springresttemplate
+ | | | | | | | | |-SpringRestTemplateApplicationTests.java
+ | | |-settings.gradle
+ | | |-gradlew
+ | |-spring-security
+ | | |-Using Spring OAuth2 RestTemplate.org
+ | | |-Basic Authentication in Spring WebClient.org
+ | |-spring-hateoas-rest-service
+ | | |-.gitignore
+ | | |-pom.xml
+ | | |-mvnw.cmd
+ | | |-.mvn
+ | | | |-wrapper
+ | | | | |-maven-wrapper.properties
+ | | | | |-MavenWrapperDownloader.java
+ | | |-mvnw
+ | | |-README.md
+ | | |-src
+ | | | |-main
+ | | | | |-java
+ | | | | | |-com
+ | | | | | | |-hateoas
+ | | | | | | | |-service
+ | | | | | | | | |-controller
+ | | | | | | | | | |-GreetingController.java
+ | | | | | | | | |-model
+ | | | | | | | | | |-Greeting.java
+ | | | | | | | | |-SpringHateoasRestServiceApplication.java
+ | | | | |-resources
+ | | | | | |-application.properties
+ | | | |-test
+ | | | | |-java
+ | | | | | |-com
+ | | | | | | |-hateoas
+ | | | | | | | |-service
+ | | | | | | | | |-SpringHateoasRestServiceApplicationTests.java
+ | | |-HELP.md
+ | |-spring-webflux
+ | | |-WebClient Usage and test cases.org
+ | |-spring-cloud-circuit-breaker
+ | | |-my-books-to-read
+ | | | |-.gitignore
+ | | | |-pom.xml
+ | | | |-mvnw.cmd
+ | | | |-.mvn
+ | | | | |-wrapper
+ | | | | | |-maven-wrapper.jar
+ | | | | | |-maven-wrapper.properties
+ | | | | | |-MavenWrapperDownloader.java
+ | | | |-mvnw
+ | | | |-src
+ | | | | |-main
+ | | | | | |-java
+ | | | | | | |-my
+ | | | | | | | |-to
+ | | | | | | | | |-read
+ | | | | | | | | | |-list
+ | | | | | | | | | | |-mybookstoread
+ | | | | | | | | | | | |-controller
+ | | | | | | | | | | | | |-BooksToReadController.java
+ | | | | | | | | | | | |-MyBooksToReadApplication.java
+ | | | | | | | | | | | |-service
+ | | | | | | | | | | | | |-BookService.java
+ | | | | | |-resources
+ | | | | | | |-application.properties
+ | | | | |-test
+ | | | | | |-java
+ | | | | | | |-my
+ | | | | | | | |-to
+ | | | | | | | | |-read
+ | | | | | | | | | |-list
+ | | | | | | | | | | |-mybookstoread
+ | | | | | | | | | | | |-MyBooksToReadApplicationTests.java
+ | | |-README.md
+ | | |-book-recommendations
+ | | | |-.gitignore
+ | | | |-pom.xml
+ | | | |-mvnw.cmd
+ | | | |-.mvn
+ | | | | |-wrapper
+ | | | | | |-maven-wrapper.jar
+ | | | | | |-maven-wrapper.properties
+ | | | | | |-MavenWrapperDownloader.java
+ | | | |-mvnw
+ | | | |-src
+ | | | | |-main
+ | | | | | |-java
+ | | | | | | |-com
+ | | | | | | | |-example
+ | | | | | | | | |-bookrecommendations
+ | | | | | | | | | |-controller
+ | | | | | | | | | | |-BookRecommendationsController.java
+ | | | | | | | | | |-BookRecommendationsApplication.java
+ | | | | | |-resources
+ | | | | | | |-application.properties
+ | | | | |-test
+ | | | | | |-java
+ | | | | | | |-com
+ | | | | | | | |-example
+ | | | | | | | | |-bookrecommendations
+ | | | | | | | | | |-BookRecommendationsApplicationTests.java
+ | |-openapi-generator-maven-plugin-poc
+ | | |-generated-sources
+ | | | |-.openapi-generator
+ | | | | |-FILES
+ | | | | |-specification.yml-generate-server.sha256
+ | | | | |-VERSION
+ | | | |-src
+ | | | | |-main
+ | | | | | |-java
+ | | | | | | |-com
+ | | | | | | | |-example
+ | | | | | | | | |-assignment
+ | | | | | | | | | |-rewards
+ | | | | | | | | | | |-api
+ | | | | | | | | | | | |-RewardsApiController.java
+ | | | | | | | | | | | |-RewardsApiDelegate.java
+ | | | | | | | | | | | |-RewardsApi.java
+ | | | | | | | | | | | |-ApiUtil.java
+ | | | | | | | | | | |-model
+ | | | | | | | | | | | |-ErrorResponse.java
+ | | | | | | | | | | | |-Reward.java
+ | | | | | | | | | | | |-Rewards.java
+ | | |-.gitignore
+ | | |-README.org
+ | | |-pom.xml
+ | | |-mvnw.cmd
+ | | |-.mvn
+ | | | |-wrapper
+ | | | | |-maven-wrapper.jar
+ | | | | |-maven-wrapper.properties
+ | | |-spec
+ | | | |-specification.yml
+ | | |-mvnw
+ | | |-src
+ | | | |-main
+ | | | | |-java
+ | | | | | |-com
+ | | | | | | |-example
+ | | | | | | | |-assignment
+ | | | | | | | | |-api
+ | | | | | | | | | |-impl
+ | | | | | | | | | | |-RewardsApiDelegateImpl.java
+ | | | | | | | | | | |-HelperUtility.java
+ | | | | | | | | |-model
+ | | | | | | | | | |-Transaction.java
+ | | | | | | | | |-AssignmentApplication.java
+ | | | | |-resources
+ | | | | | |-application.yml
+ | | | |-test
+ | | | | |-java
+ | | | | | |-com
+ | | | | | | |-example
+ | | | | | | | |-assignment
+ | | | | | | | | |-api
+ | | | | | | | | | |-impl
+ | | | | | | | | | | |-HelperUtilityTests.java
+ | | | | | | | | | | |-RewardsApiDelegateImplTests.java
+ | | | | | | | | |-AssignmentApplicationTests.java
+ |-Erlang
+ | |-LearnErlang.iml
+ | |-src
+ | | |-speak.erl
+ | | |-talkByPassingMessages.erl
+ | | |-.gitignore
+ | | |-age2.erl
+ | | |-factorial.erl
+ | | |-temperature.erl
+ | | |-talkUsingProcessNames.erl
+ | | |-higherorderfunction.erl
+ | | |-helloworld.erl
+ | | |-talkUsingDistributedProgramming.erl
+ | | |-cardealer.erl
+ | | |-age.erl
+ | | |-greet.erl
+ | | |-calendar.erl
+ |-kafka
+ | |-README.org
+ | |-real-world-example
+ | | |-SetUp.sh
+ | | |-README.org
+ | | |-kafka-consumer-opensearch
+ | | | |-.gitignore
+ | | | |-pom.xml
+ | | | |-src
+ | | | | |-main
+ | | | | | |-java
+ | | | | | | |-com
+ | | | | | | | |-example
+ | | | | | | | | |-App.java
+ | | | | | | | | |-OpenSearchConsumer.java
+ | | | | |-test
+ | | | | | |-java
+ | | | | | | |-com
+ | | | | | | | |-example
+ | | | | | | | | |-AppTest.java
+ | | | |-.settings
+ | | | | |-org.eclipse.m2e.core.prefs
+ | | | | |-org.eclipse.jdt.core.prefs
+ | | | | |-org.eclipse.core.resources.prefs
+ | | |-kafka-producer-wikimedia
+ | | | |-.gitignore
+ | | | |-README.org
+ | | | |-pom.xml
+ | | | |-src
+ | | | | |-main
+ | | | | | |-java
+ | | | | | | |-com
+ | | | | | | | |-example
+ | | | | | | | | |-App.java
+ | | | | | | | | |-WikimediaChangeHandler.java
+ | | | | | | | | |-WikimediaChangesProducer.java
+ | | | | |-test
+ | | | | | |-java
+ | | | | | | |-com
+ | | | | | | | |-example
+ | | | | | | | | |-AppTest.java
+ | | | |-.settings
+ | | | | |-org.eclipse.m2e.core.prefs
+ | | | | |-org.eclipse.jdt.core.prefs
+ | | | | |-org.eclipse.core.resources.prefs
+ | | |-kafka-beginners-course-main
+ | | | |-kafka-streams-wikimedia
+ | | | | |-build.gradle
+ | | | | |-src
+ | | | | | |-main
+ | | | | | | |-java
+ | | | | | | | |-io
+ | | | | | | | | |-conduktor
+ | | | | | | | | | |-demos
+ | | | | | | | | | | |-kafka
+ | | | | | | | | | | | |-streams
+ | | | | | | | | | | | | |-wikimedia
+ | | | | | | | | | | | | | |-processor
+ | | | | | | | | | | | | | | |-BotCountStreamBuilder.java
+ | | | | | | | | | | | | | | |-EventCountTimeseriesBuilder.java
+ | | | | | | | | | | | | | | |-WebsiteCountStreamBuilder.java
+ | | | | | | | | | | | | | |-WikimediaStreamsApp.java
+ | |-docker-compose-single-node-setup.yml
+ | |-KafkaCourseSeries.png
+ | |-docker-compose-kafka-cluster-setup.yml
+ | |-docker-compose-wurstmeister.yml
+ | |-spring-kafka
+ | | |-.gitignore
+ | | |-README.org
+ | | |-pom.xml
+ | | |-mvnw.cmd
+ | | |-.mvn
+ | | | |-wrapper
+ | | | | |-maven-wrapper.jar
+ | | | | |-maven-wrapper.properties
+ | | |-mvnw
+ | | |-src
+ | | | |-main
+ | | | | |-java
+ | | | | | |-com
+ | | | | | | |-example
+ | | | | | | | |-springkafka
+ | | | | | | | | |-controller
+ | | | | | | | | | |-KafkaController.java
+ | | | | | | | | |-model
+ | | | | | | | | | |-Greeting.java
+ | | | | | | | | |-services
+ | | | | | | | | | |-ProducerService.java
+ | | | | | | | | | |-ListenerService.java
+ | | | | | | | | |-config
+ | | | | | | | | | |-MyCustomProducerConfig.java
+ | | | | | | | | | |-MyCustomListenerConfig.java
+ | | | | | | | | |-SpringKafkaApplication.java
+ | | | | |-resources
+ | | | | | |-application.yml
+ | | | |-test
+ | | | | |-java
+ | | | | | |-com
+ | | | | | | |-example
+ | | | | | | | |-springkafka
+ | | | | | | | | |-SpringKafkaApplicationTests.java
+ |-cloud
+ | |-README.org
+#+end_example
