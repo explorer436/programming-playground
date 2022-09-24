@@ -86,9 +86,15 @@ find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
  | |-objects
  | | |-6d
  | | | |-c12679be628f4f81f89999b7e7ecc2779edcd4
+ | | |-fd
+ | | | |-45b2b4e46cbef80348932bc16cbd1c48691702
  | | |-59
  | | | |-96e9dbde2d40b16362f694ebdbdd89d8d124aa
  | | |-info
+ | | |-19
+ | | | |-519b6e1c74b9f52dc9c0f6cba019df28c77621
+ | | |-1b
+ | | | |-ef2be597dcc5e48df07e467afb13df2be6bd18
  | | |-fe
  | | | |-9265dbb0f7cd00897c4f7871ad178e602d80c6
  | | |-40
@@ -119,13 +125,12 @@ find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
  | |-README.org
  | |-How To Run MongoDB as a Docker Container.pdf
  |-Research and Tips
- | |-Checklist for pull requests.md
- | |-Production incidents.md
  | |-Certifications
  | | |-GeneralThoughts.md
  | | |-certifications.md
  | | |-Resources.md
  | | |-Look into these.md
+ | |-Definition of done.org
  | |-Non technical skills
  | | |-Tech lead.md
  | | |-When is constructive criticism not helpful.md
@@ -135,7 +140,9 @@ find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
  | | |-Fundamentals of a good developer mindset.md
  | | |-Bad code.md
  | | |-Five important lessons from four years as a software developer.md
- | |-Concepts about Hacking.md
+ | |-Concepts about Hacking.org
+ | |-Production incidents.org
+ | |-Checklist for pull requests.org~
  | |-Preparation
  | | |-General coding interview questions.md
  | | |-Implement stack using queues.pdf
@@ -1130,8 +1137,8 @@ find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
  | |-Open source
  | | |-ChadFowler.md
  | | |-Resources.md
- | |-Api versioning.md
- | |-Definition of done.md
+ | |-Api versioning.org~
+ | |-Checklist for pull requests.org
  | |-Software development tips
  | | |-Which book has provided you the most tangible benefits in your life as a computer scientist.md
  | | |-Why should one learn Haskell.hs
@@ -1173,6 +1180,7 @@ find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
  | | |-Referential transparency.md
  | | |-PowerSerious_PowerSeries in ten one liners.pdf
  | | |-Why is Java losing popularity.md
+ | |-Api versioning.org
  |-opensearch
  | |-README.org
  | |-docker-compose-opensearch.yml
