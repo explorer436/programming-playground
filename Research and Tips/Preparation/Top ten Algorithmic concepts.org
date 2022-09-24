@@ -1,4 +1,4 @@
-Top 10 algorithms or algorithmic concepts for coding interviews - by Techlead and algoexpert
+* Top 10 algorithms or algorithmic concepts for coding interviews - by Techlead and algoexpert
 
 1.  depth first search - 
 

@@ -1,4 +1,4 @@
-### Linked lists:
+*** Linked lists:
 
 
 This use of linked lists for building stacks and queues achieves optimum design goals:
@@ -20,7 +20,7 @@ dition to the node reference that characterizes its role in building linked list
 recursive program, the concept of a recursive data structure can be a bit mindbending
 at first, but is of great value because of its simplicity.
 
-#### Node record:
+**** Node record:
 With object-oriented programming, implementing linked lists is not dif-
 ficult. We start with a nested class that defines the node abstraction:
 	
@@ -46,7 +46,7 @@ ment abstract data types because we refer directly to instance variables. Howeve
 and its client code are in the same class in all of our implementations and not accessible
 by clients of that class, so we still enjoy the benefits of data abstraction.
 	
-#### Building a linked list:
+**** Building a linked list:
 Now, from the recursive definition, we can represent a linked
 list with a variable of type Node simply by ensuring that its value is either null or a ref-
 erence to a Node whose next field is a reference to a linked list. For example, to build a
@@ -139,7 +139,7 @@ to represent the same sequence of strings. The difference is that it is easier t
 items into the sequence and to remove items from the sequence with linked lists. Next,
 we consider code to accomplish these tasks.
 	
-#### Insert at the beginning
+**** Insert at the beginning
 
 In Linked lists, new Nodes are inserted at the beginning of the linked lists. This is done in constant time since there is no overhead of reshuffling any other nodes. If we want to insert nodes at some position that is not the beginning of the linked list, the time it takes is not linear. Instead, it will get linear depending upon the position at which the node is to be inserted/removed/updated.
 
@@ -186,7 +186,7 @@ set the instance variables in the new node:
 			 |       |---    |       | ---------      |       | ---------      |null   |
 			  _______         _______                  _______	              _______
 			  
-#### Remove from the beginning
+**** Remove from the beginning
 Next, suppose that you want to remove the first node from a list. 
 This operation is even easier: simply assign to first the value first.next. 
 Before we do this, we would retrieve the value of
@@ -196,7 +196,7 @@ Again, this operation just involves one assignment statement, so its running tim
 independent of the length of the list.
 If we want to insert nodes at some position that is not the beginning of the linked list, the time it takes is not linear. Instead, it will get linear depending upon the position at which the node is to be inserted/removed/updated.
 
-#### Insert at the end
+**** Insert at the end
 How do we add a node to the end of a linked list? To do so, we need
 a link to the last node in the list, because that node’s link has to be changed to refer-
 ence a new node containing the item to be inserted. Maintaining an extra link is not
@@ -213,7 +213,7 @@ a null link) in the case that the list is empty.
 Details like these make linked-list code noto-
 riously difficult to debug.
 
-#### Insert/remove at other positions
+**** Insert/remove at other positions
 In sum-
 mary, we have shown that we can implement
 the following operations on linked lists with
@@ -239,7 +239,7 @@ Such a solution is undesirable because it takes time proportional to the length
 of the list. The standard solution to enable arbitrary insertions and deletions is to use
 a doubly-linked list, where each node has two links, one in each direction. 
 
-#### Traversal
+**** Traversal
 To examine every item in an array, we use familiar code like the following
 loop for processing the items in an array a[] :
 
@@ -278,7 +278,7 @@ In modern code, the use of safe pointers, automatic garbage collection (see page
 ADTs allows us to encapsulate list-processing code in just a few classes such as the ones
 presented here.
 
-#### Overview
+**** Overview
 The implementations of bags, queues, and stacks that support generics
 and iteration that we considered in this package provide a level of abstraction that
 allows us to write compact client programs that manipulate collections of objects. De-
@@ -296,7 +296,7 @@ Third, the focus of several of
 our implementations is on ADTs that support more powerful operations on collections
 of objects, and we use the implementations here as starting points.
 
-#### Data structures
+**** Data structures
 We now have two ways to represent collections of objects, arrays and
 linked lists. Arrays are built in to Java; linked lists are easy to build with standard Java
 records. These two alternatives, often referred to as sequential allocation and linked al-
@@ -315,14 +315,14 @@ Our treatment of BAGS, queues, and STACKS in this section is a prototypical ex-
 ample of the approach that we use throughout this book to describe data structures
 and algorithms. In approaching a new applications domain, we identify computational
 challenges and use data abstraction to address them, proceeding as follows:
-* Specify an API.
-* Develop client code with reference to specific applications.
-* Describe a data structure (representation of the set of values) that can serve as
-the basis for the instance variables in a class that will implement an ADT that
-meets the specification in the API.
-* Describe algorithms (approaches to implementing the set of operations) that
-can serve as the basis for implementing the instance methods in the class.
-* Analyze the performance characteristics of the algorithms.
+1. Specify an API.
+1. Develop client code with reference to specific applications.
+1. Describe a data structure (representation of the set of values) that can serve as
+1. the basis for the instance variables in a class that will implement an ADT that
+1. meets the specification in the API.
+1. Describe algorithms (approaches to implementing the set of operations) that
+1. can serve as the basis for implementing the instance methods in the class.
+1. Analyze the performance characteristics of the algorithms.
 
 The difference between Single linked lists and double linked lists is, with double linked lists,
 insertion at the beginning or at the end will take constant time. Removing elements from the beginning or from the end will take linear time. We don't have to traverse through the entire linked list because the Node has references to both 'next' and 'previous' nodes.

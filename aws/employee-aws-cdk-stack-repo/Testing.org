@@ -1,8 +1,8 @@
-# Overview
+* Overview
 
 This document attempts to show how to test the application
 
-# Testing through API Gateway
+* Testing through API Gateway
 
 Use your favorite REST client like Postman, Insomnia or ReadyAPI. Setup a new test case and enter the following information.
 
@@ -23,7 +23,7 @@ Body
 }
 ```
 
-## Where to find the VPC Endpoint
+** Where to find the VPC Endpoint
 
 Go To the AWS Console, Search for the VPC Dashboard <br />
 On the left hand menu, choose Endpoints <br/>
@@ -31,7 +31,7 @@ Filter the list by "API" <br/>
 Click the checkbox beside the VPC Endpoint used by the code <br />
 Look for the Section DNS Names. Pick the first one.
 
-## Where to Find the Host Header, Stage and Resource
+** Where to Find the Host Header, Stage and Resource
 
 Go To the AWS Console, Search for the API Gateway <br />
 In the Search Box, type the name of your API Gateway service, and click the link when you find it <br/>
@@ -39,16 +39,16 @@ IN the left hand menu, choose Stages <br/>
 Expand the stage to see all the endpoints (Note this is the stage, and resources) <br />
 There is an info bubble containing the URL that can be used as the host header
 
-# Local Development Testing
+* Local Development Testing
 
-### Prerequisites
+*** Prerequisites
 
 - Docker is Setup and running
 - SAM is setup
 
 if these are not setup, see the [Setup document](Setup.md) for more details
 
-### Testing locally - via API Gateway
+*** Testing locally - via API Gateway
 
 open a command line to the application folder. Run `yarn start`. This will build the application and deploy it to the running docker instance.
 
@@ -58,7 +58,7 @@ hitting `https://127.0.0.1/health` in your browser should give you a message tha
 
 The start command will also watch for any changes to the code and auto deploy the changes to the local running instance. Changes to the CDK stack or configuration files will require a restart of the application.
 
-### Testing locally - Isolate a Lambda
+*** Testing locally - Isolate a Lambda
 
 Most functions are exposed via the previous command. If you need to test, for example Authorization Lambda, you can not do so via api gateway. That endpoint is not exposed via api gateway and the SAM tool does not support Authorization via API gateway at this time. In order to test a lambda directly you will need to utilizes two commands.
 
@@ -94,7 +94,7 @@ _Tip_ - Utilize the templates in the AWS console to help generate the event data
 
 _Note_ - The first run of this command will take a few minutes as the docker container image is downloaded.
 
-### Testing locally with Environment Variables
+*** Testing locally with Environment Variables
 
 To test locally using environment variables, perform the following steps
 

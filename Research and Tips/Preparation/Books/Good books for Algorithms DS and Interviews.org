@@ -12,7 +12,7 @@ Data Structures & Algorithm Analysis in C++: Mark A. Weiss (note that it's the 4
 But that is probably not enough to develop problem-solving skills.
 There are (at least) two excellent books to use when preparing for tech interviews:
 
-* Cracking the Coding Interview: 150 Programming Questions and Solutions: Gayle Laakmann McDowell
-* Elements of Programming Interviews: 300 Questions and Solutions: Adnan Aziz, Amit Prakash, Tsung-Hsien Lee
+1. Cracking the Coding Interview: 150 Programming Questions and Solutions: Gayle Laakmann McDowell
+1. Elements of Programming Interviews: 300 Questions and Solutions: Adnan Aziz, Amit Prakash, Tsung-Hsien Lee
 
 There are several other books targeting interviews in the financial industry.

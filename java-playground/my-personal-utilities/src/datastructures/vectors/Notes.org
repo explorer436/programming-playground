@@ -9,7 +9,7 @@ A vector is a generic extensible array type.
 
 TODO : Are they used extensively today? This may not be worth too much attention.
 
-#### What Are Vectors?
+**** What Are Vectors?
 
 A vector is a type-safe, dynamic collection class similar to an array with advanced
 data-handling features. In a vector, the size of the collection is dynamic. Storage space can be
@@ -213,7 +213,7 @@ the general public. elementData is a generic Object array handle that holds the 
 array storage for the collection. The elementCount member field is self-explanatory, and
 capacityIncrement was covered earlier.
 
-#### Vectors Versus Arrays:
+**** Vectors Versus Arrays:
 
 In many cases, a vector and an array may be used interchangeably. Generally, though, one is
 preferred over the other for any given circumstance. As a good general rule of thumb, we
@@ -248,7 +248,7 @@ The advantages of a vector are flexibility and control. The methods available in
 enable the programmer to manipulate the collection at will. It is a simple matter to insert or
 move an element in the collection.
 
-#### Extending the Vector
+**** Extending the Vector
 
 In the Java Vector class, most of the methods are defined as final; this prohibits us from
 modifying the behavior of the class by preventing us from overriding the methods. This

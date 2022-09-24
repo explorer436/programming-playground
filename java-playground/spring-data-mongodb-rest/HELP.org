@@ -1,0 +1,24 @@
+* Read Me First
+The following was discovered as part of building this project:
+
+1. The original package name 'com.spring-data-mongodb-rest' is invalid and this project uses 'com.springdatamongodbrest' instead.
+
+* Getting Started
+
+*** Reference Documentation
+For further reference, please consider the following sections:
+
+1. [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
+1. [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.5.1/maven-plugin/reference/html/)
+1. [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.5.1/maven-plugin/reference/html/*build-image)
+1. [Spring Data MongoDB](https://docs.spring.io/spring-boot/docs/2.5.1/reference/htmlsingle/*boot-features-mongodb)
+1. [Rest Repositories](https://docs.spring.io/spring-boot/docs/2.5.1/reference/htmlsingle/*howto-use-exposing-spring-data-repositories-rest-endpoint)
+
+*** Guides
+The following guides illustrate how to use some features concretely:
+
+1. [Accessing Data with MongoDB](https://spring.io/guides/gs/accessing-data-mongodb/)
+1. [Accessing JPA Data with REST](https://spring.io/guides/gs/accessing-data-rest/)
+1. [Accessing Neo4j Data with REST](https://spring.io/guides/gs/accessing-neo4j-data-rest/)
+1. [Accessing MongoDB Data with REST](https://spring.io/guides/gs/accessing-mongodb-data-rest/)
+

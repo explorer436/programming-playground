@@ -1,4 +1,4 @@
-# haskell-rest-service
+* haskell-rest-service
 
 Install Stack.
 Install GHC

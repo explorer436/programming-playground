@@ -1,26 +1,26 @@
-# Overview
+* Overview
 
 For technical information and troubleshooting see [this guide](Technical.md).
 
 For testing instruction see [this guide](Testing.md).
 
-# Getting Started
+* Getting Started
 
-## Setting up Local Environment
+** Setting up Local Environment
 
-### Install GIT
+*** Install GIT
 
-### Setup Docker
+*** Setup Docker
 Why Docker? The SAM tool uses Docker to simulate an AWS environment. You need to have docker installed and running but you won't need to run any docker commands. SAM will take care of the interactions with docker.
 
 Linux
 - The Docker daemon binds to a Unix socket instead of a TCP port. By default that Unix socket is owned by the user root and other users can only access it using sudo. The Docker daemon always runs as the root user.
 - With the default set-up, you might see an error that says "Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json?all=1: dial unix /var/run/docker.sock: connect: permission denied".
 - In this case, change the access permissions on "/var/run/docker.sock" using the command "sudo chmod 666 /var/run/docker.sock"
-- https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user
+- https://docs.docker.com/install/linux/linux-postinstall/*manage-docker-as-a-non-root-user
 
 
-### NVM (node version manager)
+*** NVM (node version manager)
 
 *Non-Windows OS*
 
@@ -30,9 +30,9 @@ and then run the following command to use the required version `nvm use`
 
 This will switch to the version defined in the .nvmrc file for the project.
 
-### Install Yarn
+*** Install Yarn
 
-### CDK (Cloud Development Kit)
+*** CDK (Cloud Development Kit)
 
 The CDK is used to interact with AWS
 
@@ -40,7 +40,7 @@ The CDK is used to interact with AWS
 
 Test this works by running either of the following commands `cdk --version` or `cdk synth` from the project root folder.
 
-### Setup your AWS credentials
+*** Setup your AWS credentials
 
 To interact with the AWS console you will need to be logged in.
  
@@ -55,7 +55,7 @@ To do this, open the file `~/.aws/credentials` and change the tag `[saml]` to `[
 To test that this is working you should be able to now run the command `cdk diff`
 
 
-### Setup SAM
+*** Setup SAM
 
 Installing the AWS SAM CLI - https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html
 
