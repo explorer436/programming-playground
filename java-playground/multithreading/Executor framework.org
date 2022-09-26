@@ -18,4 +18,4 @@ The problem with Runnables is, after the thread task is completed, we do not hav
 There are a few different ways to delegate tasks for execution to an ExecutorService.
 
 1. ~execute(Runnable task):void~ crates new thread but not blocks main thread or caller thread as this method return void.
-1. ~submit(Callable<?>):Future<?>~, ~submit(Runnable):Future<?>~ crates new thread and blocks main thread when you are using future.get().
+1. ~submit(Callable<?>):Future<?>~, ~submit(Runnable):Future<?>~ crates new thread and blocks main thread when you are using ~future.get()~
