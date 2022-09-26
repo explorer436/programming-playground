@@ -10,3 +10,4 @@ The other way to create a thread is by subclassing the Thread class. A class imp
 
 [[../multithreading/src/main/java/com/example/EdPressoRunnable.java]]
 
+TODO - example of creating thread using the second method
