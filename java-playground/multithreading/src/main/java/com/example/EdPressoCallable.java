@@ -53,7 +53,7 @@ public class EdPressoCallable implements Callable<String> {
 	}
 }
 
-// The code in run() is executed before the main() method completes its execution. 
+// The code in call() is executed before the main() method completes its execution. 
 
 // Output:
 // Hello from a thread! - date: Mon Sep 26 00:34:40 EDT 2022:: Thread name is pool-1-thread-1

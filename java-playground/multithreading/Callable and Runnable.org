@@ -2,7 +2,7 @@
 
 Multithreading is a major aspect of java language.
 
-Both of these interfaces are implemented by the classes who wish to execute something (a piece of work) in a different thread of execution (than the thread that the class is running in). Runnable and Callable both run on a different thread than the calling thread. But Callable can return a value and Runnable cannot.
+Both interfaces are designed to represent a task that can be run by multiple threads. They are implemented by the classes who wish to execute something (a piece of work) in a different thread of execution (than the thread that the class is running in). Runnable and Callable both run on a different thread than the calling thread. But Callable can return a value and Runnable cannot.
 
 Runnable is the core interface provided for representing multithreaded tasks.
 
@@ -25,6 +25,10 @@ In theory, the Java team could have changed the signature of the ~Runnable.run()
 ~Runnable~ interface cannot do everything that ~Callable~ does.
 
 There are use-cases where a task doesn't need to return a result or throw a checked exception. For those use-cases, using Runnable is more concise than using Callable<Void> and returning a dummy (null) value from the call() method.
+
+For use-cases where catching and handling exceptions is important, use Callable.
+
+[[../multithreading/src/main/java/com/example/LaunchingCallableUsingExecutorService.java]]
 
 Use Runnable for fire and forget calls. Use Callable to verify the result.
 

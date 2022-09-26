@@ -15,6 +15,9 @@ public class MainThread_Wait_TillWorkerThreadsComplete {
 
 		runnableThreads();
 		callableThreads();
+		
+		System.out.println("");
+		System.out.println("");
 
 		Instant endInstant = java.time.Instant.now();
 		Duration between = java.time.Duration.between(startInstant, endInstant);
@@ -25,29 +28,37 @@ public class MainThread_Wait_TillWorkerThreadsComplete {
 	}
 
 	public static void runnableThreads() throws InterruptedException, ExecutionException {
+		
+		System.out.println("");
+		System.out.println("");
+		
 		ExecutorService executor = Executors.newFixedThreadPool(4);
 		Future<?> f1 = executor.submit(new RunnableTask(5));
 		Future<?> f2 = executor.submit(new RunnableTask(2));
 		Future<?> f3 = executor.submit(new RunnableTask(1));
 
 		// Waits until pool-thread complete, return null upon successful completion.
-		System.out.println("runnableThreads - F1 : " + f1.get());
-		System.out.println("runnableThreads - F2 : " + f2.get());
-		System.out.println("runnableThreads - F3 : " + f3.get());
+		System.out.println("Return value from runnableThread - F1 is : " + f1.get());
+		System.out.println("Return value from runnableThread - F2 is : " + f2.get());
+		System.out.println("Return value from runnableThread - F3 is : " + f3.get());
 
 		executor.shutdown();
 	}
 
 	public static void callableThreads() throws InterruptedException, ExecutionException {
+		
+		System.out.println("");
+		System.out.println("");
+		
 		ExecutorService executor = Executors.newFixedThreadPool(4);
 		Future<Integer> f1 = executor.submit(new CallableTask(5));
 		Future<Integer> f2 = executor.submit(new CallableTask(2));
 		Future<Integer> f3 = executor.submit(new CallableTask(1));
 
 		// Waits until pool-thread complete, returns the result.
-		System.out.println("callableThreads - F1 : " + f1.get());
-		System.out.println("callableThreads - F2 : " + f2.get());
-		System.out.println("callableThreads - F3 : " + f3.get());
+		System.out.println("Return value from callableThread - F1 is : " + f1.get());
+		System.out.println("Return value from callableThread - F2 is : " + f2.get());
+		System.out.println("Return value from callableThread - F3 is : " + f3.get());
 
 		executor.shutdown();
 	}
@@ -63,14 +74,14 @@ class CallableTask implements Callable<Integer> {
 	@Override
 	public Integer call() throws Exception {
 		String threadName = Thread.currentThread().getName();
-		System.out.println(threadName + " : Started Task...");
+		System.out.println("Started Callable Task... threadName is " + threadName);
 
 		for (int i = 0; i < 5; i++) {
-			System.out.println(i + " : " + threadName + " : " + num);
+			System.out.println("Looping in CallableTask for" + i + "th time with threadName : " + threadName + " : " + num);
 			num = num + i;
 			Thread.sleep(1);
 		}
-		System.out.println(threadName + " : Completed Task. Final Value : " + num);
+		System.out.println("Completed Callable Task... threadName is " + threadName + ", Final Value of num is : " + num);
 
 		return num;
 	}
@@ -86,10 +97,10 @@ class RunnableTask implements Runnable {
 	@Override
 	public void run() {
 		String threadName = Thread.currentThread().getName();
-		System.out.println(threadName + " : Started Task...");
+		System.out.println("Started Runnable Task... threadName is " + threadName);
 
 		for (int i = 0; i < 5; i++) {
-			System.out.println(i + " : " + threadName + " : " + num);
+			System.out.println("Looping in RunnableTask for" + i + "th time with threadName : " + threadName + " : " + num);
 			num = num + i;
 			try {
 				Thread.sleep(1);
@@ -97,6 +108,6 @@ class RunnableTask implements Runnable {
 				e.printStackTrace();
 			}
 		}
-		System.out.println(threadName + " : Completed Task. Final Value : " + num);
+		System.out.println("Completed Runnable Task... threadName is " + threadName + ", Final Value of num is : " + num);
 	}
 }
