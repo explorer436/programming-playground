@@ -1,6 +1,3 @@
-
-[[Callable and Runnable.org]]
-
 * What is the difference between runnable and callable in Java?
 
 Multithreading is a major aspect of java language.

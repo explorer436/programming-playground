@@ -7,6 +7,7 @@ public class HelloRunnable implements Runnable {
     }   
 
     public static void main(String args[]) {
+    	// You can pass Runnable to create a Thread.
         (new Thread(new HelloRunnable())).start();
         System.out.println("Hello from main");
     }

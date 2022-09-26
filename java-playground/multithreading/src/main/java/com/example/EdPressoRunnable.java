@@ -3,6 +3,8 @@ package com.example;
 public class EdPressoRunnable implements Runnable {
     public static void main(String[] args) {
         EdPressoRunnable edpressoRunnable = new EdPressoRunnable();
+        
+        // You can pass Runnable to create a Thread.
         Thread thread = new Thread(edpressoRunnable);
         thread.start();
         System.out.println("Thread name: " + Thread.currentThread().getName() + ", Thread id: "
