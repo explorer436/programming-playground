@@ -8,6 +8,15 @@ Runnable is the core interface provided for representing multithreaded tasks.
 
 Callable was introduced in Java 1.5 to handle use-cases that ~Runnable~ does not support.
 
+#+begin_src 
+java.util.concurrent
+Interface Callable<V>
+
+Type Parameters:
+V - the result type of method call  
+#+end_src
+
+
 In theory, the Java team could have changed the signature of the ~Runnable.run()~ method instead of introducing the ~Callable~ interface, but this would have broken binary compatiblity with pre-1.5 code.
 
 ~Runnable~ interface cannot do everything that ~Callable~ does.
@@ -23,11 +32,12 @@ There are use-cases where a task doesn't need to return a result or throw a chec
 | Runnable                                                                   | Callable<T>                                                                                             |
 |----------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------|
 | Introduced in Java 1.0 of java.lang                                        | Introduced in Java 1.5 of java.util.concurrent library                                                  |
+| ~java.lang~ package                                                        | ~java.util.concurrent~ package                                                                          |
 | Runnable tasks can be run using the Thread class or ExecutorService        | Callables can be run only using ExecutorService                                                         |
 | Runnable has run() method                                                  | Callable has call() method                                                                              |
 | Runnable.run() does not return anyting (returns void)                      | Callable.call() can return a value                                                                      |
 | No way to propagate checked exceptions                                     | Callable's call()“throws Exception” clause so we can easily propagate checked exceptions further        |
-| Runnable cannot be parametrized                                            | Callable is a parametrized type whose type parameter indicates the return type of its run method        |
+| Runnable cannot be parametrized                                            | Callable is a parametrized type whose type parameter indicates the return type of its run method. call() method takes no arguments and returns a result of type V.    |
 | ExecutorService.execute(Runnable) or ExecutorService.submit(Runnable task) | Executor.submit(Callable<T> task) or ExecutorService#invokeXXX(Collection<? extends Callable<T>> tasks) |
 
 ** Use cases
