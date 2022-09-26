@@ -1,0 +1,12 @@
+Runnable interface is implemented by the Thread class.
+A common protocol for all the objects that wish to execute in a different thread (than the calling thread) is to extend Runnable interface.
+It is one of the ways of creating threads in Java.
+
+The other way to create a thread is by subclassing the Thread class. A class implementing Runnable interface can simply pass itself to create a Thread instance and can run thereafter. This eliminates the need of subclassing the Thread class for the purpose of executing the code in a separate thread.
+
+[[https://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html]]
+
+[[../multithreading/src/main/java/com/example/HelloRunnableFromNewThread.java]]
+
+[[../multithreading/src/main/java/com/example/EdPressoRunnable.java]]
+

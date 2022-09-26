@@ -1,6 +1,6 @@
 package com.example;
 
-public class HelloRunnable implements Runnable {
+public class HelloRunnableFromSameThread implements Runnable {
 
     public void run() {
         System.out.println("Hello from a thread!");
@@ -8,14 +8,14 @@ public class HelloRunnable implements Runnable {
 
     public static void main(String args[]) {
     	// You can pass Runnable to create a Thread.
-        (new Thread(new HelloRunnable())).start();
+        (new HelloRunnableFromSameThread()).run();
         System.out.println("Hello from main");
     }
 
 }  
 
 // Output:
-// Hello from main
 // Hello from a thread!
+// Hello from main
 
-// The code in run() is executed after the main() method completes its execution. 
+// The code in run() is executed in the same thread where main() is running. 

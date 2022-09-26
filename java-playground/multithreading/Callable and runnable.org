@@ -20,7 +20,6 @@ Type Parameters:
 V - the result type of method call  
 #+end_src
 
-
 In theory, the Java team could have changed the signature of the ~Runnable.run()~ method instead of introducing the ~Callable~ interface, but this would have broken binary compatiblity with pre-1.5 code.
 
 ~Runnable~ interface cannot do everything that ~Callable~ does.
@@ -62,5 +61,13 @@ NOTE : Inside your target class you can make the calls to Callable and Runnable 
 
 You can pass Runnable to create a Thread. But you can't create new Thread by passing Callable as parameter. You can pass Callable only to ExecutorService instances.
 
+We can not pass/use Callable to an individual thread for execution i.e. Callable can be used only in Executor Framework. But, Runnable can be passed to an individual thread for execution (new Thread(new CustomRunnable())), as well as can be used in Executor Framework.
 
+** Gotcha's
+
+   What happens when you call run() method of a Runnable class without creating a new class or creating an ExecutorService?
+
+   It will run in the same thread where main() is running.
+
+   [[../multithreading/src/main/java/com/example/HelloRunnableFromSameThread.java]]
 
