@@ -4,3 +4,7 @@
 [[../multithreading/How to create threads in java.org]]
 
 [[../multithreading/Executor framework.org]]
+
+[[../multithreading/ThreadSafety.org]]
+
+[[../multithreading/How to Kill a Java Thread.org]]
