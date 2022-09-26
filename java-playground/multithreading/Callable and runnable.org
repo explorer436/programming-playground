@@ -10,7 +10,7 @@ This interface is implemented by the Thread class as well and it's a common prot
 
 As long as we don't wish to override other methods of the Thread class, it may be a better idea to implement the Runnable interface to enable multithreading capabilities to a class than enabling the same by extending the Thread class.
 
-Callable was introduced in Java 1.5 to handle use-cases that ~Runnable~ does not support.
+Callable was introduced in Java 1.5 as part of the Executor framework to handle use-cases that ~Runnable~ does not support.
 
 #+begin_src 
 java.util.concurrent
@@ -26,22 +26,25 @@ In theory, the Java team could have changed the signature of the ~Runnable.run()
 
 There are use-cases where a task doesn't need to return a result or throw a checked exception. For those use-cases, using Runnable is more concise than using Callable<Void> and returning a dummy (null) value from the call() method.
 
+Use Runnable for fire and forget calls. Use Callable to verify the result.
+
 1. Instances of the classes that implement Runnable or Callable interfaces are potentially executed by another thread.
 1. Instance of both Callable and Runnable interfaces can be executed by ExecutorService via submit() method.
 1. Both are functional interfaces and can be used in Lambda expressions since Java8.
-1. Use Runnable for fire and forget calls. Use Callable to verify the result.
 
-|----------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------|
-| Runnable                                                                   | Callable<T>                                                                                             |
-|----------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------|
-| Introduced in Java 1.0 of java.lang                                        | Introduced in Java 1.5 of java.util.concurrent library                                                  |
-| ~java.lang~ package                                                        | ~java.util.concurrent~ package                                                                          |
-| Runnable tasks can be run using the Thread class or ExecutorService        | Callables can be run only using ExecutorService                                                         |
-| Runnable has run() method                                                  | Callable has call() method                                                                              |
-| Runnable.run() does not return anyting (returns void)                      | Callable.call() can return a value                                                                      |
-| No way to propagate checked exceptions                                     | Callable's call()“throws Exception” clause so we can easily propagate checked exceptions further        |
-| Runnable cannot be parametrized                                            | Callable is a parametrized type whose type parameter indicates the return type of its run method. call() method takes no arguments and returns a result of type V.    |
-| ExecutorService.execute(Runnable) or ExecutorService.submit(Runnable task) | Executor.submit(Callable<T> task) or ExecutorService#invokeXXX(Collection<? extends Callable<T>> tasks) |
+
+|----------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Runnable                                                                   | Callable<T>                                                                                                                                                        |
+|----------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Introduced in Java 1.0 of java.lang                                        | Introduced in Java 1.5 of java.util.concurrent library                                                                                                             |
+| ~java.lang~ package                                                        | ~java.util.concurrent~ package                                                                                                                                     |
+| Runnable tasks can be run using the Thread class or ExecutorService        | Callables can be run only using ExecutorService                                                                                                                    |
+| Runnable has run() method                                                  | Callable has call() method                                                                                                                                         |
+| Runnable.run() does not return anyting (returns void)                      | Callable.call() can return a value                                                                                                                                 |
+| No way to propagate checked exceptions                                     | Callable's call()“throws Exception” clause so we can easily propagate checked exceptions further                                                                   |
+| Runnable use execute() method to put in task queue                         | Callable use submit() method to put in task queue                                                                                                                  |
+| Runnable cannot be parametrized                                            | Callable is a parametrized type whose type parameter indicates the return type of its run method. call() method takes no arguments and returns a result of type V. |
+| ExecutorService.execute(Runnable) or ExecutorService.submit(Runnable task) | Executor.submit(Callable<T> task) or ExecutorService#invokeXXX(Collection<? extends Callable<T>> tasks)                                                            |
 
 ** Use cases
 
@@ -57,9 +60,15 @@ So think about an interface to a target class where you have both Runnable and C
 
 NOTE : Inside your target class you can make the calls to Callable and Runnable on a single thread executor, making this mechanism similar to a serial dispatch queue. So as long as the caller calls your Runnable wrapped methods the calling thread will execute really fast without blocking. As soon as it calls a Callable wrapped in Future method it will have to block till all the other queued items are executed. Only then the method will return with values. This is a synchronization mechanism.
 
+Callable is relatively new interface and it was introduced as a part of concurrency package. Both Callable and Runnable can be used with executors. Class Thread (that implements Runnable itself) supports Runnable only.
+
+You can still use Runnable with executors. The advantage of Callable that you can send it to executor and immediately get back Future result that will be updated when the execution is finished. The same may be implemented with Runnable, but in this case you have to manage the results yourself. For example you can create results queue that will hold all results. Other thread can wait on this queue and deal with results that arrive.
+
 ** Other differences
 
 You can pass Runnable to create a Thread. But you can't create new Thread by passing Callable as parameter. You can pass Callable only to ExecutorService instances.
+
+Callable can be passed to invokeAll method unlike Runnable. Methods invokeAny and invokeAll perform the most commonly useful forms of bulk execution, executing a collection of tasks and then waiting for at least one, or all, to complete
 
 We can not pass/use Callable to an individual thread for execution i.e. Callable can be used only in Executor Framework. But, Runnable can be passed to an individual thread for execution (new Thread(new CustomRunnable())), as well as can be used in Executor Framework.
 
