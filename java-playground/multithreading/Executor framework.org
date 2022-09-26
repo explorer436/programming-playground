@@ -1,0 +1,21 @@
+* Executor framework
+
+Started since java 1.5
+
+[[../multithreading/Callable and Runnable.org]]
+
+Runnable (vs) Callable comes into point when we are using Executer framework.
+
+ExecutorService is a subinterface of [[https://docs.oracle.com/javase/tutorial/essential/concurrency/exinter.html][Executor]], which accepts both Runnable and Callable tasks.
+
+Before java 1.5, multi-threading was implemented using Interface Runnable.
+Runnable was part of java since 1.0
+
+The problem with Runnables is, after the thread task is completed, we do not have a way to collect the Threads information (the results from the execution of those threads).
+
+~Callables~ were introduced to solve this problem.
+
+There are a few different ways to delegate tasks for execution to an ExecutorService.
+
+1. ~execute(Runnable task):void~ crates new thread but not blocks main thread or caller thread as this method return void.
+1. ~submit(Callable<?>):Future<?>~, ~submit(Runnable):Future<?>~ crates new thread and blocks main thread when you are using future.get().

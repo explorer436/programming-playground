@@ -1,4 +1,4 @@
-* What is the difference between runnable and callable in Java?
+* What is the difference between Runnable and Callable in Java?
 
 Multithreading is a major aspect of java language.
 
@@ -30,7 +30,7 @@ Use Runnable for fire and forget calls. Use Callable to verify the result.
 
 1. Instances of the classes that implement Runnable or Callable interfaces are potentially executed by another thread.
 1. Instance of both Callable and Runnable interfaces can be executed by ExecutorService via submit() method.
-1. Both are functional interfaces and can be used in Lambda expressions since Java8.
+1. Both are functional interfaces (that provide single abstract methods called run and call respectively) and can be used in Lambda expressions since Java8.
 
 
 |----------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
