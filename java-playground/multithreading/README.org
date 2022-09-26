@@ -1,4 +1,4 @@
 
-[[../multithreading/Callable and runnable.org]]
+[[../multithreading/Callable and Runnable.org]]
 
 [[../multithreading/How to create threads in java.org]]
