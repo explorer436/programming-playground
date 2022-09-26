@@ -1,5 +1,5 @@
 
-[[Callable and Runnable.org]]
+[[../multithreading/Callable and runnable.org]]
 
 * What is the difference between runnable and callable in Java?
 
