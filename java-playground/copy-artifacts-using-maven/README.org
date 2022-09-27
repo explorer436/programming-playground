@@ -1,0 +1,15 @@
+
+
+#+begin_src 
+
+  +--------------------------+        +----------------------------------------------+  +---------------------------------------------------+ 
+  |  This is a library.      |        |  This is an application using that library.  |  |  This is another application using that library.  |
+  |                          |        |                                              |  |                                                   |
+  |  It has a components file|        |  It has an OpenApi spec file.                |  |  It has an OpenApi spec file.                     |
+  |  that needs to be        |        |  The OpenApi spec file needs to              |  |  The OpenApi spec file needs to                   |
+  |  copied into all the     |        |  point to some components                    |  |  point to some components                         |
+  |  projects that are       |        |  defined in the library                      |  |  defined in the library                           |
+  |  using this libray       |        |                                              |  |                                                   |
+  +--------------------------+        +----------------------------------------------+  +---------------------------------------------------+
+  
+#+end_src
