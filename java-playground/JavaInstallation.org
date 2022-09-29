@@ -42,10 +42,10 @@ OpenJDK 64-Bit Server VM (build 18+36-2087, mixed mode, sharing)
 
 Look at Linux/Path.org for details about how the path can be set in .bashrc
 
-You can also set it in /etc/profile. Try the .bashrc option before trying this.
-#+begin_src 
-vim /etc/profile  
-#+end_src
++You can also set it in /etc/profile. Try the .bashrc option before trying this.+
++#+begin_src+
++vim /etc/profile  +
++#+end_src+
 
 Prepend sudo if logged in as not-privileged user, ie. sudo vim
 
@@ -64,6 +64,21 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 logout and login again, reboot, or use source /etc/profile to apply changes immediately in your current shell 
 
+Test if they are set correctly:
+#+begin_src 
+echo $JAVA_HOME  
+echo $path
+#+end_src
+
+*** Macbook
+
+#+begin_src 
+echo "export JAVA_HOME=/opt/homebrew/opt/openjdk" >> ~/.zshrc
+echo "export PATH=/opt/homebrew/opt/openjdk/bin:$PATH" >> ~/.zshrc
+source ~/.zshrc
+java -version
+#+end_src
+
 * Checking JAVA_HOME on Linux
 
 Open a terminal and type:
@@ -80,3 +95,10 @@ If JAVA_HOME doesn't point to a JDK, the OS will throw an error message:
 #+begin_src 
 > bash: /bin/javac: No such file or directory  
 #+end_src
+
+* Troubleshooting installation
+
+Even if you install openjdk using HomeBrew in Macbook, make sure to run the commands to set ~JAVA_HOME~ and ~PATH~ using the commands from terminal.
+If not, installation of other components like ~maven~ will have issues.
+
+This will also help with the scenario where you have multiple jdk versions installed in the computer and you have to switch between them from time to time.
