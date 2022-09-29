@@ -1,5 +1,7 @@
 * OpenSearch
 
+https://www.opensearch.org/
+
 OpenSearch is a family of software consisting of a search engine (also named OpenSearch), and OpenSearch Dashboards, a data visualization dashboard for that search engine. The software started in 2021 as a fork of Elasticsearch and Kibana, with development led by Amazon Web Services.
 
 Use the docker-compose file in this directory to get it running in local computer.
@@ -29,9 +31,12 @@ https://logz.io/blog/elasticsearch-tutorial/
 
 Seeing so many references on the internet for springboot and elastic stack. Can we do a POC about it?
 
-elatic.co/what-is/elk-stack
+https://www.elastic.co/elastic-stack/
+
 Elasticsearch, Logstash and Kibana
 
 Getting Started with Elasticsearch: https://medium.com/expedia-group-tech/getting-started-with-elastic-search-6af62d7df8dd
 
 Elasticsearch guide: https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html
+
+Details about docker set-up here: https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html

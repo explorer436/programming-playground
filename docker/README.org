@@ -2,9 +2,9 @@
 
 *** Verify installation and set-up
 
-To check if docker is installed in your computer, try to check for its version:
+To check if docker is installed in your computer, try to check for its version: ~docker --version~
 
-~docker --version~
+To check if docker-compose is installed in your computer, try to check for its version: ~docker compose version~
 
 Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
 
