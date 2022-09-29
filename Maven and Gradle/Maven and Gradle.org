@@ -144,6 +144,70 @@ Spend some time to understand further differences between the two.
     [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
     #+end_src
 
+*** dependencyManagement vs dependencies
+
+    A dependency defined under the ~dependencyManagement~ can be used in its child modules without specifying the version.
+
+    A parent project (Pro-par) defines a dependency under the dependencyManagement:
+
+    #+begin_src 
+    <dependencyManagement>
+      <dependencies>
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>3.8</version>
+        </dependency>
+     </dependencies>
+    </dependencyManagement>  
+    #+end_src
+
+    Then in the child of Pro-par, I can use the junit:
+
+    #+begin_src 
+      <dependencies>
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+        </dependency>
+     </dependencies>
+    #+end_src
+
+    What problem does this solve? Is it necessary to define junit in the parent pom? Why not define it directly in the needed module?
+
+    Dependency Management allows to consolidate and centralize the management of dependency versions without adding dependencies which are inherited by all children. This is especially useful when you have a set of projects (i.e. more than one) that inherits a common parent.
+
+    Another extremely important use case of dependencyManagement is the control of versions of artifacts used in transitive dependencies.
+
+***** Unwanted inheritance.
+
+      Here's an incremental example:
+      
+      I declare in my parent pom:
+
+      #+begin_src 
+            <dependencies>
+              <dependency>
+                  <groupId>com.google.guava</groupId>
+                  <artifactId>guava</artifactId>
+                  <version>19.0</version>
+              </dependency>
+      </dependencies>  
+      #+end_src
+
+      boom! I have it in my Child A, Child B and Child C modules:
+      
+      Implicilty inherited by child poms
+      A single place to manage
+      No need to redeclare anything in child poms
+      I can still redelcare and override to version 18.0 in a Child B if I want to.
+      But what if I end up not needing guava in Child C, and neither in the future Child D and Child E modules?
+      
+      They will still inherit it and this is undesired! This is just like Java God Object code smell, where you inherit some useful bits from a class, and a tonn of unwanted stuff as well.
+      
+      This is where <dependencyManagement> comes into play. When you add this to your parent pom, all of your child modules STOP seeing it. And thus you are forced to go into each individual module that DOES need it and declare it again (Child A and Child B, without the version though).
+      
+      And, obviously, you don't do it for Child C, and thus your module remains lean.
 
 ** Gradle
 *** Using a specific version of dependency in Maven

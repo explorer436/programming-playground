@@ -1,0 +1,4 @@
+* SQL topics
+
+What is the difference between outer join and full outer join?
+
