@@ -108,7 +108,9 @@ Spend some time to understand further differences between the two.
 
     See LinuxTips.org and then use the same pattern to add maven bin folder to PATH in .bashrc file.
 
-    Or set it in /etc/profile. See SettingJavaHomeInLinux.org and then use the same pattern to add maven bin folder to PATH. Try the .bashrc option first.
+    See SettingJavaHomeInLinux.org and then use the same pattern to add maven bin folder to PATH.
+
+    Use .bashrc for Linux computers and .zshrc for Macbooks.
 
     https://maven.apache.org/install.html
 
