@@ -15,7 +15,7 @@ Spend some time to understand further differences between the two.
 
 ** Maven
 
-*** Installation in Linux
+*** Installation details
 
     Prerequisites: jdk
 
@@ -33,7 +33,15 @@ Spend some time to understand further differences between the two.
 
 **** Step 2: Setting M2_HOME and Path Variables
 
-    Add the following lines to the user profile file (.profile).
+    See LinuxTips.org and then use the same pattern to add maven bin folder to PATH in .bashrc file.
+
+    See SettingJavaHomeInLinux.org and then use the same pattern to add maven bin folder to PATH.
+
+    Use ~.bashrc~ for Linux computers and ~.zshrc~ for Macbooks.
+
+    https://maven.apache.org/install.html
+
+    Add the following lines to .bashrc or .zshrc
 
     #+begin_src 
     export M2_HOME=/home/h/Documents/apache-maven-3.8.6
@@ -103,16 +111,6 @@ Spend some time to understand further differences between the two.
     If you have the link the artifactory, follow these steps to generate the settings.xml
     url for JFrog artifactory -> Set Me Up -> Tool - Maven -> Type password (if the artifactory is protected) and click on "generate the code snippet" and download the file. If the artifactory needs a password, the downloaded file will have a hash of the password.
     Drop this file in your .m2 directory and the applications in local computer should be able to connect to the artifactory.
-
-*** Maven installation in a Linux computer
-
-    See LinuxTips.org and then use the same pattern to add maven bin folder to PATH in .bashrc file.
-
-    See SettingJavaHomeInLinux.org and then use the same pattern to add maven bin folder to PATH.
-
-    Use .bashrc for Linux computers and .zshrc for Macbooks.
-
-    https://maven.apache.org/install.html
 
 *** Run a single test class with maven
     #+begin_src 
