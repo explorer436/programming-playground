@@ -1,4 +1,8 @@
+First, the files need to be included in the generated jar file of the library.
 
+See how this is done in the pom.xml file using ~build-helper-maven-plugin~
+
+After the jar for the library is ready, the file can be copied into the application using ~maven-dependency-plugin~ and it's ~unpack~ goal.
 
 #+begin_src 
 

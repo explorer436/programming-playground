@@ -1,0 +1,3 @@
+#+begin_src 
+mvn archetype:generate -DgroupId=com.example -DartifactId=app-using-components-from-library -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+#+end_src
