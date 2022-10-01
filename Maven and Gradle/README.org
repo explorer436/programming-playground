@@ -2,34 +2,24 @@
 
 ** Maven
 
-[[../Maven and Gradle/Maven vs Gradle.org]]
-
-[[../Maven and Gradle/Maven Installation details.org]]
-
-[[../Maven and Gradle/Maven Archetypes.org]]
+[[../java-playground/copy-artifacts-using-maven]]
+[[../java-playground/openapi-generator-maven-plugin-poc]]
 
 [[../Maven and Gradle/Create an empty java project from terminal using maven archetypes.org]]
-
-[[../Maven and Gradle/Using custom jvm-config with maven.org]]
-
-[[../Maven and Gradle/How to generate maven settings.xml in an enterprise environment.org]]
-
-[[../Maven and Gradle/Running tests with maven.org]]
-
-[[../Maven and Gradle/Errors when running maven commands.org]]
-
-[[../Maven and Gradle/Maven dependencyManagement vs dependencies.org]]
-
-[[../Maven and Gradle/Maven How to use a specific version of dependency.org]]
-
-[[../Maven and Gradle/Understanding dependencies used by a project using Maven.org]]
-
 [[../Maven and Gradle/Displaying available Maven dependency updates.org]]
+[[../Maven and Gradle/Errors when running maven commands.org]]
+[[../Maven and Gradle/How to generate maven settings.xml in an enterprise environment.org]]
+[[../Maven and Gradle/Maven Archetypes.org]]
+[[../Maven and Gradle/Maven How to use a specific version of dependency.org]]
+[[../Maven and Gradle/Maven Installation details.org]]
+[[../Maven and Gradle/Maven dependencyManagement vs dependencies.org]]
+[[../Maven and Gradle/Maven vs Gradle.org]]
+[[../Maven and Gradle/Running tests with maven.org]]
+[[../Maven and Gradle/Understanding dependencies used by a project using Maven.org]]
+[[../Maven and Gradle/Using custom jvm-config with maven.org]]
 
 ** Gradle
 
 [[../Maven and Gradle/Gradle - Issues with refreshing dependencies in Eclipse.org]]
-
 [[../Maven and Gradle/Helpful Gradle commands.org]]
-
 [[../Maven and Gradle/How to exclude a few tasks from the Gradle build process.org]]

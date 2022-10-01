@@ -8,5 +8,4 @@ https://github.com/donnemartin/system-design-primer
 
 [[https://java-design-patterns.com/principles/][Programming principles]]
 
-
 [[../Design patterns, programming principles and system design/Strategy pattern.org]]
