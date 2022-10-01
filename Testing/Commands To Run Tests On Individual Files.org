@@ -1,0 +1,18 @@
+*** Commands to run tests on individual files
+
+** Maven
+
+   [[../Maven and Gradle/Running tests with maven.org]]
+
+** Gradle
+
+   #+begin_src 
+    ./gradlew test --tests pagro.project.RunCukesTest*
+   #+end_src
+
+** for a javascript project
+
+   #+begin_src 
+    npx jest ./src/main/module/Operation/OperationService.test.ts
+    npm run test -- ./src/main/module/Operation/OperationService.test.ts
+   #+end_src

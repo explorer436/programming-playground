@@ -6,30 +6,30 @@
 
 [[../Maven and Gradle/Maven Installation details.org]]
 
-Maven Archetypes
+[[../Maven and Gradle/Maven Archetypes.org]]
 
-Create an empty java project from terminal using maven archetypes
+[[../Maven and Gradle/Create an empty java project from terminal using maven archetypes.org]]
 
-Using custom jvm-config with maven
+[[../Maven and Gradle/Using custom jvm-config with maven.org]]
 
-How to generate maven settings.xml in an enterprise environment?
+[[../Maven and Gradle/How to generate maven settings.xml in an enterprise environment.org]]
 
-Running tests with maven
+[[../Maven and Gradle/Running tests with maven.org]]
 
-Errors when running maven commands
+[[../Maven and Gradle/Errors when running maven commands.org]]
 
-Maven dependencyManagement vs dependencies
+[[../Maven and Gradle/Maven dependencyManagement vs dependencies.org]]
 
-Maven How to use a specific version of dependency
+[[../Maven and Gradle/Maven How to use a specific version of dependency.org]]
 
-Understanding dependencies used by a project using Maven
+[[../Maven and Gradle/Understanding dependencies used by a project using Maven.org]]
 
-Displaying available Maven dependency updates:
+[[../Maven and Gradle/Displaying available Maven dependency updates.org]]
 
 ** Gradle
 
-Gradle - Issues with refreshing dependencies in Eclipse
+[[../Maven and Gradle/Gradle - Issues with refreshing dependencies in Eclipse.org]]
 
-Helpful Gradle commands
+[[../Maven and Gradle/Helpful Gradle commands.org]]
 
-How to exclude a few tasks from the Gradle build process
+[[../Maven and Gradle/How to exclude a few tasks from the Gradle build process.org]]
