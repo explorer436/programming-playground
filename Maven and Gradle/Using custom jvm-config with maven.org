@@ -1,0 +1,11 @@
+* Using custom jvm-config with maven
+
+  If maven is having trouble working with the jdk version installed in the machine, and if you need to use custom jvm-config with maven in a project, this is the way to do it:
+  
+  In the project, create a directory with this name: ".mvn"
+  In this directory, create a file with this name: "jvm.config"
+  Add your custom config in that file:
+
+  #+begin_src 
+  --add-opens=java.base/java.util=ALL-UNNAMED
+  #+end_src

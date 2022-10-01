@@ -1,0 +1,11 @@
+* Running tests with maven
+
+*** Run a single test class with maven
+    #+begin_src 
+    mvn test -Dtest=classname
+    #+end_src
+
+*** Run a single test method with maven
+    #+begin_src 
+    mvn test -Dtest=classname#methodname
+    #+end_src

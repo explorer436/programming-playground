@@ -1,0 +1,21 @@
+* Maven How to use a specific version of dependency
+
+  How to force a maven project to use older version of a dependency instead of a new version from another dependency?
+  
+  You can exclude the cyclic dependencies by using the <exclusions> tag in your pom.xml like this:
+  
+  #+begin_src 
+    <dependency>
+      <groupId>sample.ProjectB</groupId>
+      <artifactId>Project-B</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <exclusions>
+        <exclusion>
+          <groupId>sample.ProjectE</groupId> <!-- Exclude Project-E from Project-B -->
+          <artifactId>Project-E</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>  
+  #+end_src
+  
+  Reference: https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html

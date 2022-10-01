@@ -1,0 +1,4 @@
+* How to exclude a few tasks from the Gradle build process :
+  #+begin_src 
+  ./gradlew build -x checkstyleMain -x findbugsMain -x test -x jacocoTestCoverageVerification -x pmdMain
+  #+end_src
