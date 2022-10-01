@@ -1,0 +1,11 @@
+* Design patterns, programming principles and system design
+
+** References
+
+https://github.com/DovAmir/awesome-design-patterns
+
+https://github.com/donnemartin/system-design-primer
+
+[[https://java-design-patterns.com/principles/][Programming principles]]
+
+[[../Design patterns/Stratege pattern.org]]

@@ -1,0 +1,7 @@
+* Strategy pattern
+
+*** References
+
+https://java-design-patterns.com/patterns/strategy/
+
+https://www.digitalocean.com/community/tutorials/strategy-design-pattern-in-java-example-tutorial
