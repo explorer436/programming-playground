@@ -1,4 +1,4 @@
-* My thoughts about using Maven or Gradle as build tools for java applications:
+* Tips about using Maven or Gradle as build tools
 
 ** Maven
 
