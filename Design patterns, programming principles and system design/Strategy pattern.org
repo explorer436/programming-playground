@@ -1,7 +1,230 @@
 * Strategy pattern
 
-*** References
+(Use case from Head First Design Patterns)
+
+** Problem statement:
+
+1. Duck pond simulation game.
+1. The game can show a large variety of duck species swimming and making quacking sounds.
+
+** Initial design:
+
+#+begin_src 
+  
+                                 ┌────────────────────────────────────────────────────────────┐
+                                 │Duck (superclass)                                           │
+                                 │quack() - has implementation code                           │
+                                 │swim() - has implementation code                            │
+                                 │display() - abstract method because all ducks look different│
+                                 │// other duck-like methods                                  │
+                                 └────────────────────────────────────────────────────────────┘
+
+
+               ┌──────────────────────────────┐     ┌──────────────────────────┐      ┌───────────────────────────────────┐
+               │MallardDuck                   │	    │RedheadDuck               │      │and a lot of other type of ducks   │
+               │display() {                   │	    │display() {               │      │that inherit from the duck class.  │
+               │  //looks like a mallard duck │	    │  //looks like a redhead  │      │                                   │
+               │}                             │	    │}                         │      └───────────────────────────────────┘
+               └──────────────────────────────┘	    └──────────────────────────┘
+#+end_src
+
+1. But now we need the ducks to fly().
+1. How to solve for it?
+1. We could put a fly() method in Duck superclass. But, not all ducks can fly. We cannot add behavior in the superclass that is not appropriate for some duck classes.
+1. We could ask the duck classes that don't want the fly() behavior to override it and not do anything in that method.
+1. But what if we have some duck classes that don't want the quack() or swim() behavior either?
+
+Not all subclasses should have flying or quacking behavior. So, inheritance is not the right answer.
+
+How about an interface? We can take the fly() out of the Duck superclass and make a Flyable interface with a fly() method in it. That way, only the ducks that are supposed to fly will implement the Flyable interface and have a fly() method.
+
+That is not a good idea because of the following reasons.
+1. Interfaces don't have implementation. So, no code reuse.
+1. What if we need to make a little change to the flying behavior? If there are many subclasses that are inheriting the Flyable interface, all those subclasses will have to be updated to take the new change into consideration. This approach completely destroys code reuse for those behaviors.
+1. Also, there can be more than one kind of flying behavior even for the ducks that do fly.
+
+** Design principle: Encapsulate what varies. Identify the aspects of your application that vary and separate them from what stays the same
+#+begin_src 
+Design principle: Identify the aspects of your application that vary and separate them from what stays the same. In other words, take the parts that vary and encapsulate them, so that later you can alter or extend the parts that vary without affecting those that don't.
+#+end_src
+
+Other than the problems with fly() and quack(), the Duck class is working fine. There are no other parts of it that appear to vary or change based on the type of duck subclasses.
+
+** Family or algorithms (or Set of behaviors):
+
+We are going to create a set of classes for fly(). They will implement an interface called FlyBehavior.
+This set of classes will hold all the implementations of fly() behavior.
+
+#+begin_src 
+                                                ┌─────────────────────────┐
+                                                │                         │
+                                                │ FlyBehavior (interface) │
+                                                │ fly()                   │
+                                                │                         │
+                                                └─────────────────────────┘
+
+                           ┌───────────────────────────┐             ┌───────────────────┐
+                           │ FlyWithWings (class)      │	     │ FlyNoWay (class)  │
+                           │ fly() {                   │	     │ fly() {           │
+                           │   // one type of behavior │	     │   // do not fly   │
+                           │ }                         │	     │ }                 │
+                           └───────────────────────────┘	     └───────────────────┘
+#+end_src
+
+We are going to create a set of classes for quack(). They will implement an interface called QuackBehavior.
+One of these classes will implement "quacking" behavior, another will implement "squeaking" behavior and another will implement "silence" behavior.
+
+For these set of classes, the entire reason for their existence is to represent a behavior (e.g. quacking, squeaking, silence, etc.)
+
+This is different from the initial design where a behavior comes from a concrete implementation in the Duck superclass, or by providing a specialized implementation in each subclass.
+
+With the new design, each duck subclass will use a behavior represented by an interface (FlyBehavior, QuackBehavior, etc.). The actual implementation of the behavior will not be locked into each or any of the duck subclasses.
+
+The key is that a duck will now delegate its flying and quacking behavior, instead of using quacking and flying methods defined in Duck superclass (or subclass).
+
+#+begin_src 
+      ┌─────────────────────────────┐
+      │ Duck (superclass)           │
+      │                             │
+      │ FlyBehavior flyBehaviour    │
+      │ QuackBehavior quackBehavior │
+      │                             │
+      │ performFly()                │
+      │ performQuack                │
+      │ swim()                      │
+      │ display()                   │
+      │ // other duck-like methods  │
+      └─────────────────────────────┘
+#+end_src
+
+How will the flyBehaviour and quackBehavior instance variables be set?
+Like this:
+#+begin_src 
+public class MallardDuck extends Duck {
+
+  public MallardDuck() {
+    quackBehavior = new Quack();
+    flyBehaviour = new FlyWithWings();
+  }
+
+  // and other methods that need to be implemented in MallardDuck
+}  
+#+end_src
+When a MallardDuck is instantiated, its constructor initializes the MallardDuck's inherited quackBehavior instance variable to a new instance of type Quack and it's inherited flyBehaviour instance variable to a new instance of type FlyWithWings.
+
+But didn't we say we should not program to an implementation? Isn't that what we are doing in the constructor? We are making a new instance of a concrete Quack implementation class and a concrete FlyWithWings class.
+
+Yes, for now. There are other patterns that can help fix it.
+
+How can we set behavior dynamically?
+
+By adding two new methods to the Duck class:
+#+begin_src 
+public void setFlyBehavior(FlyBehavior fb) {
+  flyBehaviour = fb;
+}
+public void setQuackBehavior(QuackBehavior qb) {
+  quackBehavior = qb;
+}
+#+end_src
+
+In the duck subclasses, 
+#+begin_src 
+public class ModelDuck extends Duck {
+  public ModelDuck() {
+    flyBehaviour = new FlyNoWay();
+    quackBehavior = new Quack();
+  }
+  // and other methods that need to be implemented in MallardDuck
+}  
+#+end_src
+
+Make a new FlyBehavior type
+#+begin_src 
+public class FlyRocketPowered implements FlyBehavior {
+  public void fly() {
+    System.out.println("I am flying with a rocket!")
+  }
+}
+#+end_src
+
+To change a duck's behavior at runtime, just call the duck's setter method for that behavior.
+Make the ModelDuck rocket-enabled:
+#+begin_src 
+Duck model = new ModelDuck();
+model.performFly();
+model.setFlyBehavior(new FlyRocketPowered());
+model.performFly();
+#+end_src
+
+** Design principle: Program to an interface, not an implementation
+#+begin_src 
+Design principle: Program to an interface, not an implementation. "Program to an interface" really means "Program to a supertype."
+#+end_src
+
+The point is to exploit polymorphism by programming to a supertype so that the actual runtime object is not locked into the code.
+We could re-phrase it like this:
+The declared type of the variables should be a supertype, usually an abstract class or interface, so that the objects assigned to those variables can be of any concrete implementation of the supertype, which means the class declaring them doesn't need to know about the actual object types.
+
+Programming to an implementation:
+#+begin_src 
+Dog d = new Dog();
+d.bark();
+#+end_src
+Dog is a concrete implementation of Animal.
+
+Programming to an interface or supertype:
+#+begin_src 
+Animal a = new Dog();
+a.makeSound();
+#+end_src
+Using the Animal reference polymorphically.
+
+Even better, do not hard-code the instantiation of the subtype:
+#+begin_src 
+a = getAnimal();
+a.makeSound();
+#+end_src
+Assign the concrete implementation object at runtime.
+
+Another advantage with this approach is, other types of objects can reuse the fly and quack behaviors because these behaviors are no longer hidden away in the duck classes. And we can add new behaviors without modifying any of the existing behavior classes or touching any of the duck classes that use flying behaviors.
+
+** Design principle: Favor composition over inheritance
+
+*** HAS-A is better than IS-A
+
+    Each duck has a FlyBehavior and QuackBehavior to which it delegates flying and quacking.
+
+    When you put classes together like this, you are using ~composition~. Instead of inheriting their behavior, the ducks get their behavior by being composed with the right behavior object.
+
+    Creating systems using composition gives you a lot more flexibility. Not only does it let you encapsulate a family of algorithms into their own set of classes, it also lets you change behavior at runtime as long as the object you are composing with implements the correct behavior interface.
+
+    Composition is used in many design patterns and we will see a lot more about its advantages and disadvantages.
+
+#+begin_src 
+Design principle: Favor composition over inheritance
+#+end_src
+
+** Definition
+
+   The Strategy Pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. Strategy lets the algorithm vary independently from the clients that use it.
+
+** OO Basics used in this:
+
+1. Abstraction
+1. Encapsulation
+1. Polymorphism
+1. Inheritance
+
+** OO Principles   
+
+1. Encapsulate what varies. Identify the aspects of your application that vary and separate them from what stays the same.
+1. Program to an interface, not an implementation
+1. Favor composition over inheritance
+
+***** References
 
 https://java-design-patterns.com/patterns/strategy/
 
 https://www.digitalocean.com/community/tutorials/strategy-design-pattern-in-java-example-tutorial
+

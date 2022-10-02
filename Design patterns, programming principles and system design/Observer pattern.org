@@ -1,0 +1,5 @@
+* Observer pattern
+
+Person1: So I created a broadcast class. It keeps track of all the objects listening to it, and anytime a new piece of data comes along, it sends a message to each listener. Whats cool is that the listeners can join the broadcast at any time or they can even remove themselves. It is really dynamic and loosely coupled.
+
+Person2: Why didn't you judt say you are using the Observer pattern?
