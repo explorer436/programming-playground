@@ -20,12 +20,12 @@
                                  └────────────────────────────────────────────────────────────┘
 
 
-               ┌──────────────────────────────┐     ┌──────────────────────────┐      ┌───────────────────────────────────┐
-               │MallardDuck                   │	    │RedheadDuck               │      │and a lot of other type of ducks   │
-               │display() {                   │	    │display() {               │      │that inherit from the duck class.  │
-               │  //looks like a mallard duck │	    │  //looks like a redhead  │      │                                   │
-               │}                             │	    │}                         │      └───────────────────────────────────┘
-               └──────────────────────────────┘	    └──────────────────────────┘
+               ┌──────────────────────────────┐    ┌──────────────────────────┐    ┌───────────────────────────────────┐
+               │MallardDuck                   │    │RedheadDuck               │    │and a lot of other type of ducks   │
+               │display() {                   │    │display() {               │    │that inherit from the duck class.  │
+               │  //looks like a mallard duck │    │  //looks like a redhead  │    │                                   │
+               │}                             │    │}                         │    └───────────────────────────────────┘
+               └──────────────────────────────┘    └──────────────────────────┘
 #+end_src
 
 1. But now we need the ducks to fly().
