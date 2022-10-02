@@ -63,12 +63,12 @@ This set of classes will hold all the implementations of fly() behavior.
                                                 │                         │
                                                 └─────────────────────────┘
 
-                           ┌───────────────────────────┐             ┌───────────────────┐
-                           │ FlyWithWings (class)      │	     │ FlyNoWay (class)  │
-                           │ fly() {                   │	     │ fly() {           │
-                           │   // one type of behavior │	     │   // do not fly   │
-                           │ }                         │	     │ }                 │
-                           └───────────────────────────┘	     └───────────────────┘
+                           ┌───────────────────────────┐       ┌───────────────────┐
+                           │ FlyWithWings (class)      │       │ FlyNoWay (class)  │
+                           │ fly() {                   │       │ fly() {           │
+                           │   // one type of behavior │       │   // do not fly   │
+                           │ }                         │       │ }                 │
+                           └───────────────────────────┘       └───────────────────┘
 #+end_src
 
 We are going to create a set of classes for quack(). They will implement an interface called QuackBehavior.
