@@ -222,7 +222,7 @@ Design principle: Favor composition over inheritance
 1. Program to an interface, not an implementation
 1. Favor composition over inheritance
 
-***** References
+***** Other examples and references
 
 https://java-design-patterns.com/patterns/strategy/
 
