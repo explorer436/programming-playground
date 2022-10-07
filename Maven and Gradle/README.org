@@ -30,6 +30,8 @@
 
 [[../Maven and Gradle/Using custom jvm-config with maven.org]]
 
+[[../Maven and Gradle/Maven package vs install.org]]
+
 ** Gradle
 
 [[../Maven and Gradle/Gradle - Issues with refreshing dependencies in Eclipse.org]]

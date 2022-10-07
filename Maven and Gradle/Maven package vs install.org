@@ -1,0 +1,7 @@
+* How are "mvn clean package" and "mvn clean install" different?
+
+Both will clean. That means they'll remove the target folder. The real question is what's the difference between package and install?
+
+package will compile your code and also package it. For example, if your pom says the project is a jar, it will create a jar for you when you package it and put it somewhere in the target directory (by default).
+
+install will compile and package, but it will also put the package in your local repository. This will make it so other projects can refer to it and grab it from your local repository.
