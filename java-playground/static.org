@@ -1,0 +1,206 @@
+* static keyword in java
+
+In the Java programming language, the keyword static means that the particular member belongs to a type itself, rather than to an instance of that type.
+
+This means we'll create only one instance of that static member that's shared across all instances of the class.
+
+The static keyword can be applied to variables, methods, blocks, and nested classes.
+
+** static fields
+
+When we declare a field static, exactly a single copy of that field is created and shared among all instances of that class.
+
+It doesn't matter how many times we instantiate a class. There will always be only one copy of static field belonging to it. The value of this static field is shared across all objects of either the same class.
+
+From the memory perspective, static variables are stored in the heap memory.
+
+Since static variables belong to a class, we can access them directly using the class name. So, we don't need any object reference.
+
+We can only declare static variables at the class level.
+
+We can access static fields without object initialization.
+
+We can access static fields using an object reference (such as ford.numberOfCars++). But we should avoid this because it becomes difficult to figure out if it’s an instance variable or a class variable. Instead, we should always refer to static variables using the class name (Car.numberOfCars++).
+
+Example:
+
+#+begin_src 
+public class Car {
+    private String name;
+    private String engine;
+    
+    public static int numberOfCars;
+    
+    public Car(String name, String engine) {
+        this.name = name;
+        this.engine = engine;
+        numberOfCars++;
+    }
+}
+#+end_src
+
+We want a variable that holds the count of the number of instantiated Car objects and is shared across all instances so they can access it and increment it upon their initialization.
+
+Now for every object of this class that we instantiate, the same copy of the numberOfCars variable is incremented.
+
+#+begin_src 
+@Test
+public void whenNumberOfCarObjectsInitialized_thenStaticCounterIncreases() {
+    new Car("Jaguar", "V8");
+    new Car("Bugatti", "W16");
+ 
+    assertEquals(2, Car.numberOfCars);
+}
+#+end_src
+
+*** Reasons for when we would want to Use static Fields
+
+    1. when the value of the variable is independent of objects
+    1. when the value is supposed to be shared across all objects
+       
+** static methods (or class methods)
+   
+static methods also belong to a class instead of an object. So, we can call them without creating the object of the class in which they reside.
+
+static methods are also used to create utility or helper classes so that we can get them and use them without creating a new object of these classes.
+
+For example, look at Collections or Math utility classes from JDK, StringUtils from Apache, or CollectionUtils from Spring framework. All their utility methods are static.
+
+static methods in Java are resolved at compile time. Since method overriding is part of Runtime Polymorphism, static methods can't be overridden.
+
+Abstract methods can't be static.
+
+static methods can't use ~this~ or ~super~ keywords.
+
+The following combinations of the instance, class methods, and variables are valid:
+
+instance methods can directly access both instance methods and instance variables
+instance methods can also access static variables and static methods directly
+static methods can access all static variables and other static methods
+static methods can't access instance variables and instance methods directly. They need some object reference to do so.
+
+
+Example:
+
+#+begin_src 
+static void setNumberOfCars(int numberOfCars) {
+    Car.numberOfCars = numberOfCars;
+}
+#+end_src
+
+*** Compelling Reasons to Use static Methods
+
+    1. to access/manipulate static variables and other static methods that don't depend upon objects.
+    1. static methods are widely used in utility and helper classes.
+       
+** static block
+   
+We use a static block to initialize static variables. Although we can initialize static variables directly during declaration, there are situations when we need to do multiline processing. In such cases, static blocks come in handy.
+
+If static variables require additional, multi-statement logic during initialization, we can use a static block.
+
+A class can have multiple static blocks.
+
+static fields and static blocks are resolved and run in the same order as they are present in the class.
+
+Example:
+
+If we want to initialize a List object with some predefined values, it wouldn't be possible to initialize a List object with all the initial values along with declaration. So, this is why we've utilized the static block here.
+
+#+begin_src 
+public class StaticBlockDemo {
+    public static List<String> ranks = new LinkedList<>();
+
+    static {
+        ranks.add("Lieutenant");
+        ranks.add("Captain");
+        ranks.add("Major");
+    }
+    
+    static {
+        ranks.add("Colonel");
+        ranks.add("General");
+    }
+}
+#+end_src
+
+*** Compelling Reasons to Use static Blocks
+
+    1. if the initialization of static variables needs some additional logic apart from the assignment
+    1. if the initialization of static variables is error-prone and needs exception handling
+
+** static class
+   
+Java allows us to create a class within a class. It provides a way of grouping elements that we'll only use in one place. This helps to keep our code more organized and readable.
+
+In general, the nested class architecture is divided into two types:
+
+1. nested classes that we declare static are called static nested classes
+1. nested classes that are non-static are called inner classes
+
+The main difference between these two is that the inner classes have access to all members of the enclosing class (including private ones), whereas the static nested classes only have access to static members of the outer class.
+
+In fact, static nested classes behave exactly like any other top-level class, but are enclosed in the only class that will access it, to provide better packaging convenience.
+
+A static nested class doesn't have access to any instance members of the enclosing outer class. It can only access them through an object's reference.
+
+static nested classes can access all static members of the enclosing class, including private ones.
+
+Java programming specification doesn't allow us to declare the top-level class as static. Only classes within the classes (nested classes) can be made as static.
+
+Example:
+
+The most widely used approach to create singleton objects is through a static nested class. We use this method because it doesn't require any synchronization and is easy to learn and implement.
+
+#+begin_src
+public class Singleton  {
+    private Singleton() {}
+
+    private static class SingletonHolder {
+        public static final Singleton instance = new Singleton();
+    }
+
+    public static Singleton getInstance() {
+        return SingletonHolder.instance;
+    }
+}
+#+end_src
+
+*** Compelling Reasons to Use a static Inner Class
+
+    1. grouping classes that will be used only in one place increases encapsulation
+    1. we bring the code closer to the only place that will use it. This increases readability, and the code is more maintainable.
+    1. if a nested class doesn't require any access to its enclosing class instance members, it's better to declare it as static. This way, it won't be coupled to the outer class and is therefore more optimal, as they won't require any heap or stack memory. 
+       
+** Understanding the Error “Non-static variable cannot be referenced from a static context”
+   
+Typically, this error occurs when we use a non-static variable inside a static context.
+
+As we saw earlier, static variables belong to the class and are loaded at class load time. On the other hand, we need to create an object in order to refer to non-static variables.
+
+So, the Java compiler complains because there's a need for an object to call or use non-static variables.
+   
+Example:
+
+#+begin_src 
+public class MyClass { 
+    int instanceVariable = 0; 
+    
+    public static void staticMethod() { 
+        System.out.println(instanceVariable); 
+    } 
+    
+    public static void main(String[] args) {
+        MyClass.staticMethod();
+    }
+} 
+#+end_src
+
+We used instanceVariable, which is a non-static variable, inside the static method staticMethod.
+
+As a result, we will get the error Non-static variable cannot be referenced from a static context.
+
+
+* References:
+
+https://www.baeldung.com/java-static#:~:text=In%20the%20Java%20programming%20language,all%20instances%20of%20the%20class.
