@@ -32,6 +32,8 @@
 
 [[../Maven and Gradle/Maven package vs install.org]]
 
+[[../Maven and Gradle/Maven reading list.org]]
+
 ** Gradle
 
 [[../Maven and Gradle/Gradle - Issues with refreshing dependencies in Eclipse.org]]
