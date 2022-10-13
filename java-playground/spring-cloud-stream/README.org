@@ -1,12 +1,12 @@
 *** Spring Cloud Stream programming model
 
-To enable connectivity to a message broker for your application, annotate the main class with `@EnableBinding`. The `@EnableBinding` annotation takes one or more interfaces as parameters. You may choose between three interfaces provided by Spring Cloud Stream:
+To enable connectivity to a message broker for your application, annotate the main class with ~@EnableBinding~. The ~@EnableBinding~ annotation takes one or more interfaces as parameters. You may choose between three interfaces provided by Spring Cloud Stream:
 
-- `Sink`: This is used for marking a service that receives messages from the inbound channel.
-- `Source`: This is used for sending messages to the outbound channel.
-- `Processor`: This can be used in case you need both an inbound channel and an outbound channel, as it extends the Source and Sink interfaces.
+- ~Sink~: This is used for marking a service that receives messages from the inbound channel.
+- ~Source~: This is used for sending messages to the outbound channel.
+- ~Processor~: This can be used in case you need both an inbound channel and an outbound channel, as it extends the Source and Sink interfaces.
 
-In Spring Cloud Stream nomenclature the implementation responsible for integration with the specific message broker is called `binder`. By default, Spring Cloud Stream provides binder implementations for Kafka and RabbitMQ. It is able to automatically detect and use a binder found on the classpath. Any middleware-specific settings can be overridden through external configuration properties in the form supported by Spring Boot, such as application arguments, environment variables, or just the application.yml file. To include support for RabbitMQ you should add the following dependency to the project.
+In Spring Cloud Stream nomenclature the implementation responsible for integration with the specific message broker is called ~binder~. By default, Spring Cloud Stream provides binder implementations for Kafka and RabbitMQ. It is able to automatically detect and use a binder found on the classpath. Any middleware-specific settings can be overridden through external configuration properties in the form supported by Spring Boot, such as application arguments, environment variables, or just the application.yml file. To include support for RabbitMQ you should add the following dependency to the project.
 
 #+begin_src 
 <dependency>
@@ -19,7 +19,7 @@ In Spring Cloud Stream nomenclature the implementation responsible for integrati
 
 To scale up our Spring Cloud Stream applications we need to launch additional instances of each microservice. When we do that, a single order is received by all the running instances of every microservice. This is exactly how topic exchanges work – the message sent to the topic is received by all consumers, which are listening on that topic. Fortunately, Spring Cloud Stream is able to solve that problem by providing a solution called consumer group. It is responsible for guaranteeing that only one of the instances is expected to handle a given message if they are placed in a competing consumer relationship.
 
-Configuration of a consumer group mechanism is not very difficult. We just have to set a `group` parameter with the name of the group for the given destination.
+Configuration of a consumer group mechanism is not very difficult. We just have to set a ~group~ parameter with the name of the group for the given destination.
 
 Consumer group mechanisms is a concept taken from Apache Kafka, and implemented in Spring Cloud Stream also for RabbitMQ broker, which does not natively support it.
 
@@ -37,7 +37,7 @@ You can easily test your microservice without connecting to a message broker. To
 </dependency>  
 #+end_src
 
-In the test class we need to declare `MessageCollector` bean, which is responsible for receiving messages retained by `TestSupportBinder`. 
+In the test class we need to declare ~MessageCollector~ bean, which is responsible for receiving messages retained by ~TestSupportBinder~. 
 
 *** Business scenario for these applications:
 
@@ -68,23 +68,23 @@ Once installed, you can log in to the RabbitMQ management console on your local 
 
 By default, the Spring Cloud Stream consumer application creates an anonymous auto-delete queue. This can result in a message not being stored and forwarded by the producer if the producer application started before the consumer application. Even though the exchange is durable, we need a durable queue to be bound to the exchange for the message to be stored for later consumption. Hence, for guaranteed message delivery, you need a durable queue.
 
-To pre-create durable queues and bind them to the exchange, the producer application should set the following property: `spring.cloud.stream.bindings.<channelName>.producer.requiredGroups`
+To pre-create durable queues and bind them to the exchange, the producer application should set the following property: ~spring.cloud.stream.bindings.<channelName>.producer.requiredGroups~
 
-The requiredGroups property accepts a comma-separated list of groups to which the producer must ensure message delivery. When this property is set, a durable queue is created by using the `<exchange>.<requiredGroup>` format.
+The requiredGroups property accepts a comma-separated list of groups to which the producer must ensure message delivery. When this property is set, a durable queue is created by using the ~<exchange>.<requiredGroup>~ format.
 
 *** Message flow
 
 When you deploy these three applications (UsageDetailSender, UsageCostProcessor, and UsageCostLogger), the flow of message is as follows:
 
-`UsageDetailSender -> UsageCostProcessor -> UsageCostLogger`
+~UsageDetailSender -> UsageCostProcessor -> UsageCostLogger~
 
-The `UsageDetailSender` source application's output is connected to the `UsageCostProcessor` processor application's input. The `UsageCostProcessor` application's output is connected to the `UsageCostLogger` sink application's input.
+The ~UsageDetailSender~ source application's output is connected to the ~UsageCostProcessor~ processor application's input. The ~UsageCostProcessor~ application's output is connected to the ~UsageCostLogger~ sink application's input.
 
 When these applications run, the RabbitMQ binder binds the applications' output and input boundaries into the corresponding exchanges and queues at RabbitMQ message broker.
 
 *** Running the applications:
 
-Start each of them by using `mvn spring-boot:run`. The port number to be used by each of them is specified in their application.yml file.
+Start each of them by using ~mvn spring-boot:run~. The port number to be used by each of them is specified in their application.yml file.
 
 *** Apache Kafka-binder documentation
 
