@@ -9,6 +9,8 @@
 
     (When you're prompted to ~Enter a file in which to save the key~, press Enter. This accepts the default file location.) Now add this SSH ket to bitbucket server.
 
+    Files with names other than ~id_rsa~ may not be automatically picked up by the ssh agent in your computer.
+
     If you want to add an SSH key generated from Git console to the ssh-agent in your computer : 
 
     You might need to start ssh-agent before you run the ssh-add command: ~eval `ssh-agent -s`~
