@@ -4,8 +4,10 @@ https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-
 
 * To do
 
-Implement employee-cdk-stack using Java and Rust and Go
+Implement employee-cdk-stack using Java and Rust and Go and Python
 
 https://cdkworkshop.com/50-java.html
 
 https://cdkworkshop.com/60-go.html
+
+https://cdkworkshop.com/30-python.html
