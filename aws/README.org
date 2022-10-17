@@ -1,0 +1,11 @@
+* Reading material
+
+https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html
+
+* To do
+
+Implement employee-cdk-stack using Java and Rust and Go
+
+https://cdkworkshop.com/50-java.html
+
+https://cdkworkshop.com/60-go.html
