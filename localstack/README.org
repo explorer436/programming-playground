@@ -1,0 +1,6 @@
+* localstack
+
+It is an interesting project.
+It provides a local cloud stack so that your applications can run just by connecting to local stack without having to connect to a real AWS account.
+
+https://localstack.cloud/
