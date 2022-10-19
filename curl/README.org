@@ -23,7 +23,7 @@ https://everything.curl.dev/http/post
 
 https://everything.curl.dev/http/put
 
-** DElete
+** DELETE
 
 #+begin_src 
 curl --request "DELETE" http://www.example.com/page -v | json_pp
