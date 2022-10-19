@@ -34,3 +34,8 @@ Pretty print output json:
 curl http://localhost:8080/users  -verbose | json_pp
 #+end_src
 
+Delete records using userId:
+#+begin_src 
+curl --request "DELETE" http://localhost:8080/users/634f6de9e5d2eb3a186b05d4 -v | json_pp
+#+end_src
+

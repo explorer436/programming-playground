@@ -26,7 +26,7 @@ public class UserController {
         return ResponseEntity.ok().body(userService.getAllUsers());
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/users/{userId}")
     public ResponseEntity < User > getUserById(@PathVariable String userId) {
         return ResponseEntity.ok().body(userService.getUserById(userId));
     }
@@ -36,13 +36,13 @@ public class UserController {
         return ResponseEntity.ok().body(this.userService.createUser(user));
     }
 
-    @PutMapping("/users/{id}")
+    @PutMapping("/users/{userId}")
     public ResponseEntity < User > updateUser(@PathVariable String userId, @RequestBody User user) {
         user.setId(userId);
         return ResponseEntity.ok().body(this.userService.updateUser(user));
     }
 
-    @DeleteMapping("/users/{id}")
+    @DeleteMapping("/users/{userId}")
     public HttpStatus deleteUser(@PathVariable String userId) {
         this.userService.deleteUser(userId);
         return HttpStatus.OK;

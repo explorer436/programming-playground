@@ -21,6 +21,12 @@ https://everything.curl.dev/http/post
 
 https://everything.curl.dev/http/put
 
+** DElete
+
+#+begin_src 
+curl --request "DELETE" http://www.example.com/page -v | json_pp
+#+end_src
+
 ** Display headers
 
 We can use ~curl -v~ or ~curl -verbose~ to display the request headers and response headers in the cURL command.
@@ -57,6 +63,6 @@ In cURL requests, the default JSON output is in compact format.
 In cURL, we can use or pipe the json_pp to pretty print the JSON output.
 
 #+begin_src 
-curl https://api.cloudflare.com/client/v4/ -verbose | json_pp  
+curl https://api.cloudflare.com/client/v4/ -verbose | json_pp
 #+end_src
 
