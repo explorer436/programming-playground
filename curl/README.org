@@ -12,6 +12,8 @@ Normally however you do not specify the method in the command line, but instead 
 
 ** POST
 #+begin_src 
+curl --request "POST" -H "Content-Type: application/json" -d '{"name": "linuxize", "email": "linuxize@example.com"}'  https://endpoint.com
+or
 curl -X POST -H "Content-Type: application/json" -d '{"name": "linuxize", "email": "linuxize@example.com"}'  https://endpoint.com
 #+end_src
 
