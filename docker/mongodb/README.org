@@ -1,0 +1,7 @@
+* Setting up Mongodb container in docker:
+
+I tried setting up a database and a user for it using the file ~docker-compose-with-mongo-and-mongo-express.yml~. But that approach did not work. Something seems to be going wrong while setting up users for the newly created database in mongodb.
+
+So, I quit following that pattern and instead, I set up mongodb using the file ~docker-compose-with-mongodb.yml~.
+
+To set-up containers using this docker-compose file, use the command: ~docker-compose -f docker-compose-with-mongo.yml up -d~

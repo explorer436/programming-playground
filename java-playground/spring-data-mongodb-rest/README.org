@@ -570,7 +570,7 @@ The issue is that the database user is being created on the admin database inste
 
 Omitting the /dbname from the connection string / mongo shell / etc. means the connection string will authenticate to the admin database. Quoting the docs:
 
-If '/database' is not specified and the connection string includes credentials, the driver will authenticate to the admin database
+If ~/database~ is not specified and the connection string includes credentials, the driver will authenticate to the admin database
 
 (https://docs.mongodb.com/manual/reference/connection-string/#components).
 

@@ -1,0 +1,36 @@
+* local set-up
+
+Spring Boot tries to auto-configure most of the stuff for you based on the dependencies that you have added in the pom.xml file.
+Since we have added a spring-boot-starter-mongodb dependency, Spring Boot tries to build a connection with MongoDB by reading the database configuration from the application.properties file.
+
+Open application.properties file and add the following MongoDB properties:
+#+begin_src 
+# MONGODB (MongoProperties)
+spring.data.mongodb.uri=mongodb://localhost:27017/ProductDB
+#+end_src
+
+As per the configuration in docker-compose file, MongoDB is running locally at default port 27017.
+
+* Things to note
+
+Look at the constraints on ~username~ in ~model.User~ class.
+
+It uses the ~@Indexed~ annotation and marked it as ~unique~. This creates a unique index on name field.
+It also uses the annotations ~@NotBlank~ to make sure that it is not blank.
+
+* Testing
+
+Insert records:
+#+begin_src 
+curl -X POST http://localhost:8080/users -H "content-type: application/json" --data '{"username": "myself", "correctanswer": "right", "numberoftries": 0}' -v
+  
+#+end_src
+
+Retrieve records:
+#+begin_src 
+curl http://localhost:8080/users
+
+Pretty print output json:
+curl http://localhost:8080/users  -verbose | json_pp
+#+end_src
+

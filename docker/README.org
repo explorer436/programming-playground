@@ -32,7 +32,7 @@ docker: Got permission denied while trying to connect to the Docker daemon socke
 
 change the permissions of the files
 #+begin_src 
-$ sudo chmod 666 /var/run/docker.sock   
+$ sudo chmod 666 /var/run/docker.sock
 #+end_src
 
 See ~docker run --help~
