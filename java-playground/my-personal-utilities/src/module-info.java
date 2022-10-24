@@ -13,7 +13,6 @@ module challenges {
 	exports collections;
 	exports sorting;
 	exports recursion;
-	exports lru_cache_implementation;
 	exports datastructures.linkedlist.singlyLinkedEmployeeList;
 	exports mycustomclasses;
 	exports datastructures.stack;
