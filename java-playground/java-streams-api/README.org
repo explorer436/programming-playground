@@ -2,32 +2,25 @@
 
 ** What are Java 8 streams?
 
-A stream is an abstraction to express data processing queries in a declarative way. 
+A stream is an iterator whose function is to accept a set of actions and apply them to each of the elements it contains. A stream represents an object sequence from a collection or other source that supports aggregate operations. Unlike collections, iteration logic implements inside the stream.
 
-A Stream, which represents a sequence of data objects & series of operations on that data is a data pipeline that is not related to Java I/O Streams does not hold any data permanently.
+Also, streams are inherently lazily loaded and processed, unlike collections.
 
-The key interface is ~java.util.stream.Stream<T>~. It accepts Functional Interfaces so that lambdas can be passed. Streams support a fluent interface or chaining. Below is the basic stream timeline marble diagram:
+The key interface is ~java.util.stream.Stream<T>~. It accepts Functional Interfaces so that lambdas can be passed.
 
 ** What are the main components of a Stream?
-
-[[../Interview questions/images/Java_8_Components_of_a_Stream.jpg]]
 
 Components of the stream are:
 
 1. A data source
-1. Set of Intermediate Operations to process the data source
+1. (Optional) set of Intermediate Operations to process the data source
+   e.g.
+   1. Functions (Map)
+   1. Predicates (Filter)
+   1. Comparators (Sorted)
 1. Single Terminal Operation that produces the result
 
-**  What are the sources of data objects a Stream can process?
-
-A Stream can process the following data:
-
-A collection of an Array.
-An I/O channel or an input device.
-A reactive source (e.g., comments in social media or tweets/re-tweets) 
-A stream generator function or a static factory.
-  
-** What are Intermediate and Terminal operations?
+*** What are Intermediate and Terminal operations?
 
 Intermediate Operations:
 
@@ -50,7 +43,7 @@ int count = Stream.of(1, 2, 3, 4, 5)
                 .count(); // Terminal Operation count
 #+end_src
 
-** What are the most commonly used Intermediate operations?
+*** What are the most commonly used Intermediate operations?
 
 *Filter(Predicate<T>)* - Allows selective processing of Stream elements. It returns elements that are satisfying the supplied condition by the predicate.
 
@@ -66,7 +59,7 @@ int count = Stream.of(1, 2, 3, 4, 5)
 
 *flatMap(mapper)* - Transform each element to a stream of its constituent elements and flatten all the streams into a single stream.
 
-** What is the stateful intermediate operation? Give some examples of stateful intermediate operations.
+*** What is the stateful intermediate operation? Give some examples of stateful intermediate operations.
 
 To complete some of the intermediate operations, some state is to be maintained, and such intermediate operations are called stateful intermediate operations. Parallel execution of these types of operations is complex.
 
@@ -74,7 +67,7 @@ For Eg: sorted() , distinct() , limit() , skip() etc.
 
 Sending data elements to further steps in the pipeline stops till all the data is sorted for sorted() and stream data elements are stored in temporary data structures.
 
-** What is the most common type of Terminal operations?
+*** What is the most common type of Terminal operations?
 
 1. collect() - Collects single result from all elements of the stream sequence.
 1. reduce() - Produces a single result from all elements of the stream sequence
@@ -89,6 +82,15 @@ Sending data elements to further steps in the pipeline stops till all the data i
    1. forEach() - Useful to do something with each of the Stream elements. It accepts a consumer.
    1. forEachOrdered() - It is helpful to maintain order in parallel streams.
 
+** What are the sources of data objects a Stream can process?
+
+A Stream can process the following data:
+
+A collection of an Array.
+An I/O channel or an input device.
+A reactive source (e.g., comments in social media or tweets/re-tweets) 
+A stream generator function or a static factory.
+  
 ** What is the difference between findFirst() and findAny()?
 
 1. findFirst()	
