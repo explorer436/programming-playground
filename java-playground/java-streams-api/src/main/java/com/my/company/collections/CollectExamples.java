@@ -1,4 +1,4 @@
-package collections;
+package com.my.company.collections;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import utility.PrintUtils;
+import com.my.company.utility.PrintUtils;
 
 public class CollectExamples {
 

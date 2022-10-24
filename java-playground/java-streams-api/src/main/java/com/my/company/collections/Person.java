@@ -1,4 +1,4 @@
-package collections;
+package com.my.company.collections;
 
 public class Person {
 

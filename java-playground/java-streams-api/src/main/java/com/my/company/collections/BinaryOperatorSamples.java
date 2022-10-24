@@ -1,4 +1,4 @@
-package collections;
+package com.my.company.collections;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
