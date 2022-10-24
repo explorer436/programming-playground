@@ -1,1 +1,112 @@
-* Stream API in Java 8
+* Streams API in Java 8
+
+** What are Java 8 streams?
+
+A stream is an abstraction to express data processing queries in a declarative way. 
+
+A Stream, which represents a sequence of data objects & series of operations on that data is a data pipeline that is not related to Java I/O Streams does not hold any data permanently.
+
+The key interface is ~java.util.stream.Stream<T>~. It accepts Functional Interfaces so that lambdas can be passed. Streams support a fluent interface or chaining. Below is the basic stream timeline marble diagram:
+
+** What are the main components of a Stream?
+
+[[../Interview questions/images/Java_8_Components_of_a_Stream.jpg]]
+
+Components of the stream are:
+
+1. A data source
+1. Set of Intermediate Operations to process the data source
+1. Single Terminal Operation that produces the result
+
+**  What are the sources of data objects a Stream can process?
+
+A Stream can process the following data:
+
+A collection of an Array.
+An I/O channel or an input device.
+A reactive source (e.g., comments in social media or tweets/re-tweets) 
+A stream generator function or a static factory.
+  
+** What are Intermediate and Terminal operations?
+
+Intermediate Operations:
+
+1. Process the stream elements.
+1. Typically transforms a stream into another stream.
+1. Are lazy, i.e., not executed till a terminal operation is invoked.
+1. Does internal iteration of all source elements.
+1. Any number of operations can be chained in the processing pipeline.
+1. Operations are applied as per the defined order.
+1. Intermediate operations are mostly lambda functions.
+
+Terminal Operations:
+
+1. Kick-starts the Stream pipeline.
+1. used to collect the processed Stream data.
+
+#+begin_src 
+int count = Stream.of(1, 2, 3, 4, 5)
+                .filter(i -> i <4) // Intermediate Operation filter
+                .count(); // Terminal Operation count
+#+end_src
+
+** What are the most commonly used Intermediate operations?
+
+*Filter(Predicate<T>)* - Allows selective processing of Stream elements. It returns elements that are satisfying the supplied condition by the predicate.
+
+*map(Funtion<T, R>)* - Returns a new Stream, transforming each of the elements by applying the supplied mapper function.= sorted() - Sorts the input elements and then passes them to the next stage.
+
+*distinct()* - Only pass on elements to the next stage, not passed yet.
+
+*limit(long maxsize)* - Limit the stream size to maxsize.
+
+*skip(long start)* - Skip the initial elements till the start.
+
+*peek(Consumer)* - Apply a consumer without modification to the stream.
+
+*flatMap(mapper)* - Transform each element to a stream of its constituent elements and flatten all the streams into a single stream.
+
+** What is the stateful intermediate operation? Give some examples of stateful intermediate operations.
+
+To complete some of the intermediate operations, some state is to be maintained, and such intermediate operations are called stateful intermediate operations. Parallel execution of these types of operations is complex.
+
+For Eg: sorted() , distinct() , limit() , skip() etc. 
+
+Sending data elements to further steps in the pipeline stops till all the data is sorted for sorted() and stream data elements are stored in temporary data structures.
+
+** What is the most common type of Terminal operations?
+
+1. collect() - Collects single result from all elements of the stream sequence.
+1. reduce() - Produces a single result from all elements of the stream sequence
+   1. count() - Returns the number of elements on the stream.
+   1. min() - Returns the min element from the stream.
+   1. max() - Returns the max element from the stream.
+1. Search/Query operations
+   1. anyMatch() , noneMatch() , allMatch() , ... - Short-circuiting operations.
+   1. Takes a Predicate as input for the match condition.
+   1. Stream processing will be stopped, as and when the result can be determined.
+1. Iterative operations
+   1. forEach() - Useful to do something with each of the Stream elements. It accepts a consumer.
+   1. forEachOrdered() - It is helpful to maintain order in parallel streams.
+
+** What is the difference between findFirst() and findAny()?
+
+1. findFirst()	
+   1. Returns the first element in the Stream	
+   1. Deterministic in nature	
+
+1. findAny()
+   1. Return any element from the Stream
+   1. Non-deterministic in nature
+
+** How are Collections different from Stream?
+
+Collections are the source for the Stream. Java 8 collection API is enhanced with the default methods returning Stream<T> from the collections.
+
+| Collections                                | Streams                                                                                  |
+|--------------------------------------------|------------------------------------------------------------------------------------------|
+| Data structure holds all the data elements | No data is stored. Have the capacity to process an infinite number of elements on demand |
+| External Iteration                         | Internal Iteration                                                                       |
+| Can be processed any number of times       | Traversed only once                                                                      |
+| Elements are easy to access                | No direct way of accessing specific elements                                             |
+| Is a data store                            | Is an API to process the data                                                            |
