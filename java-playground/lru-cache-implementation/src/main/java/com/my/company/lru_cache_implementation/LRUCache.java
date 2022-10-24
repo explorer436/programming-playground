@@ -1,4 +1,4 @@
-package lru_cache_implementation;
+package com.my.company.lru_cache_implementation;
 
 import java.util.HashMap;
 
