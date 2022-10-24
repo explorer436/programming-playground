@@ -8,6 +8,12 @@ Also, streams are inherently lazily loaded and processed, unlike collections.
 
 The key interface is ~java.util.stream.Stream<T>~. It accepts Functional Interfaces so that lambdas can be passed.
 
+** What is stream pipelining?
+
+Stream pipelining is the process of chaining different operations together. Pipelining accomplishes this function by dividing stream operations into two categories, intermediate operations, and terminal operations. When each intermediate operation runs, it returns an instance of the stream. Thus, a user can set up an arbitrary number of intermediate operations to process data, thereby forming a processing pipeline.
+
+At the end of the process, there must be a terminal operation to return a final value and terminate the pipeline.
+
 ** What are the main components of a Stream?
 
 Components of the stream are:
@@ -112,3 +118,11 @@ Collections are the source for the Stream. Java 8 collection API is enhanced wit
 | Can be processed any number of times       | Traversed only once                                                                      |
 | Elements are easy to access                | No direct way of accessing specific elements                                             |
 | Is a data store                            | Is an API to process the data                                                            |
+
+** What is a Spliterator?
+
+The term is a blend of “splittable” and “iterator” and is a new feature in Java SE 8. It is used in Stream API to iterate streams in a parallel or sequential order by internal iteration.
+
+** Explain the difference between predicate and function.
+
+Although they are both functional interfaces, Predicate<T> is a single argument function that returns either true or false. Function<T,R> is also a single argument function, although it returns an object instead. In this case, the “T” represents the type of function input, and the “R” denotes the type of result.
