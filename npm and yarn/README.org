@@ -5,3 +5,5 @@ Helpful commands:
 yarn outdated - https://classic.yarnpkg.com/lang/en/docs/cli/outdated/
 
 yarn link - https://classic.yarnpkg.com/en/docs/cli/link
+
+yarn upgrade - https://classic.yarnpkg.com/en/docs/cli/upgrade
