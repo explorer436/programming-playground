@@ -2,6 +2,8 @@
 
 TODO
 
+The approach in the medium article works best. The approach in the other two articles talk about an intermediate ServerException and that is just confusing and not necessary.
+
 1. https://medium.com/@robert.junklewitz/global-webclient-retry-logic-for-all-endpoints-in-spring-webflux-dbbe54206b63
 1. https://careydevelopment.us/blog/spring-webflux-simple-retry-strategies-with-webclient
 1. https://www.baeldung.com/spring-webflux-retry
