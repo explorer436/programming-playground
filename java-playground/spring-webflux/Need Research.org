@@ -1,0 +1,6 @@
+* Look into these concepts related to WebClient
+
+TODO
+
+1. https://medium.com/@robert.junklewitz/global-webclient-retry-logic-for-all-endpoints-in-spring-webflux-dbbe54206b63
+1. https://careydevelopment.us/blog/spring-webflux-simple-retry-strategies-with-webclient
