@@ -1,0 +1,4 @@
+* System Design and Architecture
+
+TODO
+1. https://medium.com/@nidhiupreti99/understanding-system-design-of-netflix-backend-architecture-and-cloud-services-b077162e45bc
