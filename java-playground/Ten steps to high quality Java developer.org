@@ -2,7 +2,7 @@
 
 You Key to Becoming a High Quality Java Developer
 
-## Basic Design
+** Basic Design
 - 4 Principles of Simple Design
  - Run your tests
  - Minimize Duplication
@@ -13,7 +13,7 @@ You Key to Becoming a High Quality Java Developer
 - Design Patterns
  - Basic Understanding
 
-## Attitude
+** Attitude
 - Learn every day
   - Regularly read good blogs (Atwood, Martin Fowler, etc.), Keep up-to-date with technology news, Follow stuff about interesting new technology. These steps will let me decide if I find anything interesting to further explore.
   - Working with people far smarter than myself
@@ -23,40 +23,40 @@ You Key to Becoming a High Quality Java Developer
 - Boy Scout Rule
 - Question everything
 
-## Master IDE
+** Master IDE
 
-## Automation Testing
+** Automation Testing
 - Unit Testing
 - Integration Testing
 
-## Continous Verification
+** Continous Verification
 - Continuous Integration
 - Continuous Delivery
 - Jenkins
 
-## TDD
+** TDD
 
-## Code Quality Tools
+** Code Quality Tools
 - Sonar
 - Code Coverage
 - Code Review Best Practices
 
-## Build Tool
+** Build Tool
 - Maven
 - Gradle
 
-## Architecture
+** Architecture
 - Frameworks
 - Tools
 - Evolution
 
-## Basics
+** Basics
 - Your Language - Java
 - Deployment Environment
 - Domain
 - Debugging Skills
 
-## Resources
+** Resources
 - 4 Principles of Simple Design
 - SOLID Principles
 - Design Patterns
