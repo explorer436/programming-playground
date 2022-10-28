@@ -198,7 +198,10 @@ the Tech Lead must take time to thoroughly review the project's specifications
 and do their best to break down the specification into trackable tasks with a scope of *1-5 days* of work (outside Code Review / QA), and an optimal timeline of *3 days*. These tasks should then be grouped into Milestones. Each Milestone is a _deliverable_ with a deadline date. (See: [Milestones](*milestones-aka-deliverables))
 
 #+begin_src 
-> **Pro Tip**: Consider enlisting your team to help you break down Milestones into tasks. This is sometimes the _only_ option if you've got a team member with domain knowledge you don't possess. Delegate where it makes sense, but be sure to _review_ all tasks and to _validate_ their scope and/or assumptions. 
+> **Pro Tip**: Consider enlisting your team to help you break down Milestones
+> into tasks. This is sometimes the _only_ option if you've got a team member
+> with domain knowledge you don't possess. Delegate where it makes sense,
+> but be sure to _review_ all tasks and to _validate_ their scope and/or assumptions. 
 #+end_src
 
 Webflow's current practice is to create GitHub issues for every task that are then tracked in a "Master Tracking Issue". The MTI should receive a `[Master Tracking Issue]` label in the issue's title as well as in GitHub's label section.
@@ -317,7 +320,8 @@ It is up to the Tech Lead to maintain the status of the above MTI, though they m
   5. Complete (merged in `dev`)
 
 #+begin_src 
-> **Pro Tip:** If a single MTI grows too long and too unwieldy, it's fine to split them into separate MTIs.
+> **Pro Tip:** If a single MTI grows too long and too unwieldy,
+> it's fine to split them into separate MTIs.
 #+end_src
 
 ***** Milestones (a.k.a. Deliverables)
@@ -368,7 +372,10 @@ long this will take." Clear the haze. Shorten the forecast by breaking down the 
 Be adamant when prioritizing your tasks. Pivot when more information arises. Let your PM know on which of these tasks your team is currently working. Stacking these unknowns is how _actual_ Milestone deadlines are discovered.
 
 #+begin_src 
-> **Pro Tip:** Sometimes new tasks arise from uncovering unknowns that weren't outlined in the original MTI. It's fine to include new tasks if they are absolutely necessary to complete the Milestone. Be sure to inform your Manager if they alter the Milestone's deadline.
+> **Pro Tip:** Sometimes new tasks arise from uncovering unknowns that weren't
+> outlined in the original MTI. It's fine to include new tasks if they are
+> absolutely necessary to complete the Milestone. Be sure to inform your
+> Manager if they alter the Milestone's deadline.
 #+end_src
 
 **** Meetings
@@ -399,7 +406,9 @@ Every engineer is asked to report their `on-track` / `off-track` status each day
 to *status-frontend or *status-backend accordingly, and it is on the Tech Lead to confirm those daily (a Slack "reaction" :thumbsup: is always nice). This holds each engineer accountable to their weekly tasks and it allows the Tech Lead to step in if a task goes wildly `off-track` or beyond 5 days. 
 
 #+begin_src 
-> **Pro Tip:** Help your team members to focus on _one to three_ concurrent tasks at a time. Any more than that is difficult to track, so offer to help reduce or combine their tasks and figure out what's causing the fragmentation. 
+> **Pro Tip:** Help your team members to focus on _one to three_ concurrent tasks at a time.
+> Any more than that is difficult to track, so offer to help reduce or combine
+> their tasks and figure out what's causing the fragmentation. 
 #+end_src
 
 **** Agile? Project Managers?
@@ -812,7 +821,16 @@ feedback, too. Both are crucial. Consider picking up her book for more
 information.
 
 #+begin_src 
-> **Pro Tip:** The way in which we _frame_ feedback can make all the difference to how well it is received. Instead of attacking personal flaws, highlight the _behavior_ that lead to the feedback. Consider using the Situation, Behavior, Impact model for such framing. It works like this: Bring up the situation where the behavior occurred, highlight the behavior, then mention the impact, e.g. "During today's meeting, you interrupted Brian multiple times, and made Brian feel like he couldn't speak up until the meeting's end where he presented the winning idea. This made the meeting longer than it needed to be.". Here's a [great guide](https://www.mindtools.com/pages/article/situation-behavior-impact-feedback.htm) if you'd like to learn more. 
+> **Pro Tip:** The way in which we _frame_ feedback can make all the difference
+> to how well it is received. Instead of attacking personal flaws, highlight
+> the _behavior_ that lead to the feedback. Consider using the Situation, Behavior,
+> Impact model for such framing. It works like this: Bring up the situation where
+> the behavior occurred, highlight the behavior, then mention the impact,
+> e.g. "During today's meeting, you interrupted Brian multiple times, and made
+> Brian feel like he couldn't speak up until the meeting's end where he
+> presented the winning idea. This made the meeting longer than it needed to
+> be.". Here's a [great guide](https://www.mindtools.com/pages/article/situation-behavior-impact-feedback.htm)
+> if you'd like to learn more. 
 #+end_src
 
 **** Flow
@@ -899,3 +917,7 @@ our best to limit these hyperactive periods to one or two times a year.
 [Now Discover Your Strengths](https://www.amazon.com/Discover-Your-Strengths-Marcus-Buckingham/dp/0743201140/ref=sr_1_1?ie=UTF8&qid=1513878430&sr=8-1&keywords=Now+Discover+Your+Strengths)
 
 [The Personal MBA](https://www.amazon.com/Personal-MBA-Master-Art-Business/dp/1591845572/ref=sr_1_1?s=books&ie=UTF8&qid=1513878441&sr=1-1&keywords=The+Personal+MBA)
+
+** Resources
+
+https://medium.com/hackernoon/the-effective-tech-lead-is-a-100x-engineer-fe49c0372a63
