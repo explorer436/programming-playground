@@ -197,7 +197,9 @@ At the onset of a project, or at the onset of a project's continuing milestones,
 the Tech Lead must take time to thoroughly review the project's specifications
 and do their best to break down the specification into trackable tasks with a scope of **1-5 days** of work (outside Code Review / QA), and an optimal timeline of **3 days**. These tasks should then be grouped into Milestones. Each Milestone is a _deliverable_ with a deadline date. (See: [Milestones](*milestones-aka-deliverables))
 
+#+begin_src 
 > **Pro Tip**: Consider enlisting your team to help you break down Milestones into tasks. This is sometimes the _only_ option if you've got a team member with domain knowledge you don't possess. Delegate where it makes sense, but be sure to _review_ all tasks and to _validate_ their scope and/or assumptions. 
+#+end_src
 
 Webflow's current practice is to create GitHub issues for every task that are then tracked in a "Master Tracking Issue". The MTI should receive a `[Master Tracking Issue]` label in the issue's title as well as in GitHub's label section.
 
@@ -264,16 +266,19 @@ upwards of a week or more :scream:. It's fine. Plan for it. Make it happen. Your
 team will thank you. It is crucial to helping your team feel a sense of
 meaningful progress (See: [How do I keep my team motivated?](*how-do-i-keep-my-team-motivated)).
 
+#+begin_src 
 > **Pro Tip:** It can be helpful to keep a document open beside the spec and to
 > write down a list of tasks before beginning the MTI. When you've got a solid
 > brain dump of tasks, open an issue, write a basic description and highlight
 > the specification area, and _then_ go into the codebase to find where to point
 > the issue to.
+#+end_src
 
 ***** Displaying Progress in the MTI
 
 You can think of the MTI as a dashboard that displays the progress of every issue associated with a  milestone. This, in turn, shows the status of _entire_ milestones, and subsequently, the _entire_ deliverable. For instance, here's an example of how an MTI might progress: 
 
+#+begin_src 
 > *** Legend
 >
 > ⬜️ - Hasn't started<br/>
@@ -294,6 +299,7 @@ You can think of the MTI as a dashboard that displays the progress of every issu
 > |    🏁     | *12655 | *12746 | Convert ActionListConfig to InteractionStep |    📝    |
 > |    🚀     | *12653 | *12784 | Create InteractionConfiguration Component |    🚫    |
 > |    🚀     | *12686 |  ???   | Create all Timed InteractionConfiguration items: Mouse Tap, Mouse Hover, Scroll Into View, Page Load, Page Scrolled |    ⬜️    |
+#+end_src
 
 The above gives a PM (or, anyone concerned) a quick way to gauge the progress of a project. For instance, one can see the BETA milestone is about 75% complete, and since tasks are broken into roughly **1-5 day** increments, it is easy to tell if a milestone is going `off-track` (See: [Help! We are behind schedule!](*help-we-are-behind-schedule)). 
 
@@ -310,7 +316,9 @@ It is up to the Tech Lead to maintain the status of the above MTI, though they m
   4. Blocked
   5. Complete (merged in `dev`)
 
+#+begin_src 
 > **Pro Tip:** If a single MTI grows too long and too unwieldy, it's fine to split them into separate MTIs.
+#+end_src
 
 ***** Milestones (a.k.a. Deliverables)
 
@@ -318,16 +326,18 @@ The Tech Lead must keep their Product Manager (or Engineering Manager if no Prod
 
 A "Milestone" is 
 
-* A _major_ deliverable, usually with a six-week timeline (See: [How long should projects take?](*how-long-should-projects-take))
-* Responsible for driving a series of tasks/issues, and is complete when _all_ tasks/issues have been pushed to production
-* Named according to the type of deliverable, e.g. Phase, Launch, Version (See: [Types of Milestones](*types-of-milestones))
-* Assigned a deadline date
+1. A _major_ deliverable, usually with a six-week timeline (See: [How long should projects take?](*how-long-should-projects-take))
+1. Responsible for driving a series of tasks/issues, and is complete when _all_ tasks/issues have been pushed to production
+1. Named according to the type of deliverable, e.g. Phase, Launch, Version (See: [Types of Milestones](*types-of-milestones))
+1. Assigned a deadline date
 
 The planning structure for a large project should only ever consist of two levels: Milestone -> Tasks. The Milestones themselves will be under the purview of a Feature, such as Rich Content Editor or Interactions 2.0, which may take months (or years) to complete. Milestones are "chunks" of continuously delivered work, and are usually accomplished sequentially. It is rare to have a team work on Milestones in parallel unless they are highly interrelated, though some overlap is expected when moving from one Milestone to another.
 
+#+begin_src 
 > **Pro Tip:** Be incredibly wary of scope increases. Scope creep is real.
 > _Always_ use a Milestone's date as the affected factor when scope changes, and
 > clearly communicate the new scope's impact.
+#+end_src
 
 For more info on Milestone timing, See: [How long should projects take?](*how-long-should-projects-take)
 
@@ -335,11 +345,11 @@ For more info on Milestone timing, See: [How long should projects take?](*how-lo
 
 Milestones are _major_ deliverables and are _functionally_ the same to each other, though they can be _semantically_ separated into Phases, Launches, and Versions. It's important not to dwell too much on these differences, but it can be helpful to name them accordingly for Product Managers and Marketing. 
 
-| Term    | Definition                               |
-| ------- | ---------------------------------------- |
+| Term    | Definition                                                                                                                                                                                                                                                                          |
+|---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Phase   | Anything Marketing doesn't need to let users know about. These are nuts and bolts type milestones that don't introduce any major experiential changes to users. Phases take on the name of their goal, e.g. "IX2 Flux Integration", or "Storybook Components for Interactions 2.0". |
-| Launch  | Anything Marketing *needs* to know about so they can drum up the eyeballs. This includes alphas, betas, and official launches, and will require many weeks of lead time to prep marketing materials. |
-| Version | This is another version of a launch for a feature *that has already launched*. So, for IX2, after the initial launch, we labeled the subsequent launches IX2.0.1, and so on. |
+| Launch  | Anything Marketing *needs* to know about so they can drum up the eyeballs. This includes alphas, betas, and official launches, and will require many weeks of lead time to prep marketing materials.                                                                                |
+| Version | This is another version of a launch for a feature *that has already launched*. So, for IX2, after the initial launch, we labeled the subsequent launches IX2.0.1, and so on.                                                                                                        |
 
 ***** Task toward unknowns
 
@@ -357,7 +367,9 @@ long this will take." Clear the haze. Shorten the forecast by breaking down the 
 
 Be adamant when prioritizing your tasks. Pivot when more information arises. Let your PM know on which of these tasks your team is currently working. Stacking these unknowns is how _actual_ Milestone deadlines are discovered.
 
+#+begin_src 
 > **Pro Tip:** Sometimes new tasks arise from uncovering unknowns that weren't outlined in the original MTI. It's fine to include new tasks if they are absolutely necessary to complete the Milestone. Be sure to inform your Manager if they alter the Milestone's deadline.
+#+end_src
 
 **** Meetings
 
@@ -386,7 +398,9 @@ liberally where needed.
 Every engineer is asked to report their `on-track` / `off-track` status each day
 to *status-frontend or *status-backend accordingly, and it is on the Tech Lead to confirm those daily (a Slack "reaction" :thumbsup: is always nice). This holds each engineer accountable to their weekly tasks and it allows the Tech Lead to step in if a task goes wildly `off-track` or beyond 5 days. 
 
+#+begin_src 
 > **Pro Tip:** Help your team members to focus on _one to three_ concurrent tasks at a time. Any more than that is difficult to track, so offer to help reduce or combine their tasks and figure out what's causing the fragmentation. 
+#+end_src
 
 **** Agile? Project Managers?
 
@@ -402,9 +416,9 @@ right now, and we are always open to reevaluating it as we go. :thumbsup:
 Webflow arranges its talented engineers into _Action_ and _Permanent_ teams for
 which a single Tech Lead will be responsible.
 
-| Team      | Description                              |
-| :-------- | ---------------------------------------- |
-| Action    | Assemble around a feature (or prototype) and disband on its completion. |
+| Team      | Description                                                                                                                                                                                    |
+|-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Action    | Assemble around a feature (or prototype) and disband on its completion.                                                                                                                        |
 | Permanent | Assemble around a domain problem and continually work on it without ever disbanding, e.g. the Performance and Stabilization teams. Tech Leads and Team Members can rotate through these teams. |
 
 **** What size team should I expect?
@@ -444,9 +458,11 @@ the Tech Lead optimize for _feature_ efficiency where possible. See
 for more information. [We've replaced "Flow" with "Feature" in this article as
 it's easy to conflate Flow with the "Flow State"]
 
+#+begin_src 
 > **Pro Tip:** Parallelization requires well-defined scope. If you are leading a
 > project that is iterating on design specs _while_ iterative development
 > occurs, it is best to only optimize for _feature_ efficiency.
+#+end_src
 
 ** Help! We are behind schedule!
 
@@ -479,12 +495,12 @@ the lifeblood of motivation.
 Second, there are four levers you can pull to help get a project back
 `on-track`. They are as follows
 
-| Lever     | Description                              |
-| --------- | ---------------------------------------- |
-| Time      | When the deliverable is launched         |
-| Quality   | The craftsmanship put into the deliverable |
+| Lever     | Description                                                |
+|-----------+------------------------------------------------------------|
+| Time      | When the deliverable is launched                           |
+| Quality   | The craftsmanship put into the deliverable                 |
 | Resources | The number of participants contributing to the deliverable |
-| Scope     | The breadth of what the deliverable is and does |
+| Scope     | The breadth of what the deliverable is and does            |
 
 These four levers can change as a project evolves. They are the tools
 effective Project Managers reason with. That said, Webflow produces the highest
@@ -492,6 +508,7 @@ possible quality product and will not sacrifice Quality for Time, Resources, or
 Scope, so we only have those three levers available to us, which we will
 expand on in the next section.
 
+#+begin_src 
 > **Pro Tip:** The Tech Lead role is often an engineer's first foray into trying
 > to meet the bottom-line needs of a business. Their decisions must be framed in
 > the question: "How does this keep the company healthy?" If you've little or no
@@ -500,6 +517,7 @@ expand on in the next section.
 > It's a fantastic crash-course in modern business practices and will help you
 > make better decisions when considering Webflow's needs and the needs of your
 > team.
+#+end_src
 
 **** Rework / Defer / Abandon (Mitigation Strategies for Deferred Progress)
 
@@ -507,9 +525,9 @@ You have three options when confronted with a threatened deadline that should be
 discussed with your Product Manager. Here they are in sorted by order of
 consideration:
 
-* **Rework** the deliverable
-* **Defer** the deadline
-* **Abandon** the project
+1. **Rework** the deliverable
+1. **Defer** the deadline
+1. **Abandon** the project
 
 ***** Rework
 
@@ -525,10 +543,13 @@ initially understaffed to begin with. Adding late-stage resources can
 [even push the deadline out farther](https://en.wikipedia.org/wiki/The_Mythical_Man-Month)!
 So, your next tool is to reduce scope.
 
+#+begin_src 
 > **Pro Tip:** Reducing scope is often the *1 choice when trying to hit a deadline
 > while still providing business value. The likelihood a project requires more
 > resources to hit a deadline is probably in the 10% range. Reduce scope 90% of
 > the time.
+ 
+#+end_src
 
 Reducing scope is usually feasible. As passionate software developers, we tend
 to bite off more than we can chew. This is your opportunity to use a fork and
@@ -566,12 +587,14 @@ special attention when your intuition whispers something's off. It's important
 to get ahead of the problem, and this should be the moment where you
 preemptively strike. Make your manager aware of it.
 
+#+begin_src 
 > **Pro Tip:** The key to making your and everyone else's life easier is to
 > master the art of _managing expectations_. It is wise to under-promise and
 > over-deliver as long as you remain candid and honest. Always state what is
 > true. Announce worries about missing deadlines or losing a key resource.
 > Announce wins about finishing work earlier than expected. Be as truthful as
 > you are skeptical about unknowns.
+#+end_src
 
 ** How can I make better estimates?
 
@@ -788,7 +811,9 @@ road. Also, this doesn't just apply to _negative_ feedback, but also _positive_
 feedback, too. Both are crucial. Consider picking up her book for more
 information.
 
+#+begin_src 
 > **Pro Tip:** The way in which we _frame_ feedback can make all the difference to how well it is received. Instead of attacking personal flaws, highlight the _behavior_ that lead to the feedback. Consider using the Situation, Behavior, Impact model for such framing. It works like this: Bring up the situation where the behavior occurred, highlight the behavior, then mention the impact, e.g. "During today's meeting, you interrupted Brian multiple times, and made Brian feel like he couldn't speak up until the meeting's end where he presented the winning idea. This made the meeting longer than it needed to be.". Here's a [great guide](https://www.mindtools.com/pages/article/situation-behavior-impact-feedback.htm) if you'd like to learn more. 
+#+end_src
 
 **** Flow
 
