@@ -195,7 +195,7 @@ windows (See: [Task toward unknowns](*task-toward-unknowns))
 
 At the onset of a project, or at the onset of a project's continuing milestones,
 the Tech Lead must take time to thoroughly review the project's specifications
-and do their best to break down the specification into trackable tasks with a scope of **1-5 days** of work (outside Code Review / QA), and an optimal timeline of **3 days**. These tasks should then be grouped into Milestones. Each Milestone is a _deliverable_ with a deadline date. (See: [Milestones](*milestones-aka-deliverables))
+and do their best to break down the specification into trackable tasks with a scope of *1-5 days* of work (outside Code Review / QA), and an optimal timeline of *3 days*. These tasks should then be grouped into Milestones. Each Milestone is a _deliverable_ with a deadline date. (See: [Milestones](*milestones-aka-deliverables))
 
 #+begin_src 
 > **Pro Tip**: Consider enlisting your team to help you break down Milestones into tasks. This is sometimes the _only_ option if you've got a team member with domain knowledge you don't possess. Delegate where it makes sense, but be sure to _review_ all tasks and to _validate_ their scope and/or assumptions. 
@@ -213,7 +213,7 @@ The MTI is a centralized and clearly outlined view of GitHub issues that lists M
 
 ****** Tasks
 
-Each issue (or **1-5 day** task) must clearly point to the portion of the specification the
+Each issue (or *1-5 day* task) must clearly point to the portion of the specification the
 issue addresses _and_ to the concerned areas of Webflow's codebase (if they
 exist). We've found it is best for each task to
 
@@ -301,7 +301,7 @@ You can think of the MTI as a dashboard that displays the progress of every issu
 > |    🚀     | *12686 |  ???   | Create all Timed InteractionConfiguration items: Mouse Tap, Mouse Hover, Scroll Into View, Page Load, Page Scrolled |    ⬜️    |
 #+end_src
 
-The above gives a PM (or, anyone concerned) a quick way to gauge the progress of a project. For instance, one can see the BETA milestone is about 75% complete, and since tasks are broken into roughly **1-5 day** increments, it is easy to tell if a milestone is going `off-track` (See: [Help! We are behind schedule!](*help-we-are-behind-schedule)). 
+The above gives a PM (or, anyone concerned) a quick way to gauge the progress of a project. For instance, one can see the BETA milestone is about 75% complete, and since tasks are broken into roughly *1-5 day* increments, it is easy to tell if a milestone is going `off-track` (See: [Help! We are behind schedule!](*help-we-are-behind-schedule)). 
 
 It is up to the Tech Lead to maintain the status of the above MTI, though they may wish to delegate updating the status of each line item to the team member responsible for completing that issue. The important elements to display for each task are
 
@@ -384,7 +384,7 @@ following:
 2. Ask each team member:
    1. What's the current status of your task?
    2. Are you blocked?
-   3. How can I help unblock you? [**Tech Lead**]
+   3. How can I help unblock you? [*Tech Lead*]
 3. Assign new tasks to each team member
 4. Communicate the project's status to the Product Manager
 5. Answer any questions and engage in light and witty banter
@@ -525,9 +525,9 @@ You have three options when confronted with a threatened deadline that should be
 discussed with your Product Manager. Here they are in sorted by order of
 consideration:
 
-1. **Rework** the deliverable
-1. **Defer** the deadline
-1. **Abandon** the project
+1. *Rework* the deliverable
+1. *Defer* the deadline
+1. *Abandon* the project
 
 ***** Rework
 
@@ -538,7 +538,7 @@ Rework consists of asking two questions:
 
 Questioning your resources and scope should be the first tool when evaluating
 how to mitigate a missed deadline. Ask first if more resources can help the
-situation, though this is usually **_not the case_** unless the project was
+situation, though this is usually *_not the case_* unless the project was
 initially understaffed to begin with. Adding late-stage resources can
 [even push the deadline out farther](https://en.wikipedia.org/wiki/The_Mythical_Man-Month)!
 So, your next tool is to reduce scope.
@@ -582,7 +582,7 @@ _productive_ work.
 ***** _An optional fourth strategy:_ Watch it closely
 
 There is a fourth option, too, when the threat of a missed deadline is no more
-than a subtle twang in your gut, and that is to **_watch it closely_**. Pay
+than a subtle twang in your gut, and that is to *_watch it closely_*. Pay
 special attention when your intuition whispers something's off. It's important
 to get ahead of the problem, and this should be the moment where you
 preemptively strike. Make your manager aware of it.
@@ -611,7 +611,7 @@ help estimate tasks:
 **** Pad estimates for the unexpected
 
 Development rarely unfolds as planned. Instead of _precise_ estimates, give your
-best guesstimate for a given task and multiply it times **_four_**, _especially_
+best guesstimate for a given task and multiply it times *_four_*, _especially_
 if that task involves uncovering an unknown. That might sound crazy — and
 sometimes it is; experience helps Tech Leads refine that equation — but it's a
 good starting point that leaves room for dastardly unknowns.
@@ -719,7 +719,7 @@ to mitigating the dreaded stress of _too much_, is to learn the art of time
 management. This can take shape in many ways, and it boils down to your own
 preferences. If you've never picked up a book on time management, we recommend
 starting with
-[David Allen's Getting Things Done](ttps://www.amazon.com/Getting-Things-Done-Stress-Free-Productivity/dp/0143126563/ref=sr_1_1?s=books&ie=UTF8&qid=1513878379&sr=1-1&keywords=Getting+Things+Done).
+[David Allen's Getting Things Done](https://www.amazon.com/Getting-Things-Done-Stress-Free-Productivity/dp/0143126563/ref=sr_1_1?s=books&ie=UTF8&qid=1513878379&sr=1-1&keywords=Getting+Things+Done).
 It's a great first step to learning how to transfer the cacophony of noise in
 your head elsewhere. If his method doesn't work for you, seek to find another
 and share it when you do.
@@ -786,11 +786,11 @@ these questions:
 
 1. Am I giving my team enough room to solve problems on their own terms? Am I
    dishing out commands when I should be providing direction and intent?
-   [**Autonomy**]
+   [*Autonomy*]
 2. Am I placing my team members on the right tasks that can help them grow?
-   [**Mastery**]
+   [*Mastery*]
 3. Am I aligning _why_ we are building this feature with _how_ Webflow wants to
-   help the world? [**Purpose**]
+   help the world? [*Purpose*]
 
 **** Provide Feedback
 
@@ -846,10 +846,10 @@ chat with your manager about what to do next.
 
 If a team can't meet a deadline, it's a _management_ problem, and not the team's
 problem. This means that, somewhere along the way, the project didn't go as
-planned and a course wasn't corrected. So, **_Rule Number 1_** to avoid burnout
+planned and a course wasn't corrected. So, *_Rule Number 1_* to avoid burnout
 is "Manage the project and expectations well" (See: [Help! We are behind schedule!](*help-we-are-behind-schedule)).
 
-**_Rule number 2_**: Never ask more of your team than you would ask of yourself
+*_Rule number 2_*: Never ask more of your team than you would ask of yourself
 (and you mustn't ask yourself to work nights and weekends). Other organizations
 might ask their teams to pull longer hours when the going gets rough. This is a
 laser-focused bullet train to attrition and long-term inefficiencies. Webflow
