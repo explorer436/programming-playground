@@ -223,6 +223,7 @@ exist). We've found it is best for each task to
 
 Below is a task template. This should be located in a GitHub issue and should receive the same title that is tracked in the MTI. 
 
+#+begin_src 
 > Master Tracking Issue: *00000 (Place the Github link here)
 > 
 > *** Objective
@@ -251,6 +252,7 @@ Below is a task template. This should be located in a GitHub issue and should re
 > *** Notes
 > 
 > Any clarifying content unrelated to the above items (Or, just a word of encouragement, like "You're doing great!")
+#+end_src
 
 ****** This is tough
 
