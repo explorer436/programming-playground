@@ -3,19 +3,19 @@
 Huseyin Polat Yuruk
 
 
-“Difficult to make even small changes”
+"Difficult to make even small changes"
 
-“Breaking functionality of the software by making changes”
+"Breaking functionality of the software by making changes"
 
-“Introducing a new bug by fixing another one”
+"Introducing a new bug by fixing another one"
 
-“Implementing code that is unnecessary”
+"Implementing code that is unnecessary"
 
-“Almost impossible to add a new feature because of complicated code”
+"Almost impossible to add a new feature because of complicated code"
 
-“The never-shipping product”
+"The never-shipping product"
 
-“Throwing code away and rewriting it from scratch”
+"Throwing code away and rewriting it from scratch"
 
 Are all the above statements familiar?
 
@@ -31,7 +31,7 @@ To avoid being one of the victims, you should embrace the fundamental laws of so
 
 Here are the key points that every developer must master.
 
-1. Conceiving The Purpose of Software
+** 1. Conceiving The Purpose of Software
 
 First of all, you should understand the purpose of the software. There is, in fact, a single purpose of all software: To help people.
 
@@ -41,11 +41,11 @@ Developers who cannot conceive the purpose of the software will write bad softwa
 
 When you are making decisions about software, you should guide yourself by always keeping this in mind: How we can help? You can even prioritize feature requests this way.
 
-2. The Goals of Software Design
+** 2. The Goals of Software Design
 
 Every programmer is a designer.
 
-When software is hard to create or modify, developers spend most of their time focusing on making things “just work,” and less time focusing on helping users. The design of software aims to make developers job as easy as possible so they can focus on what matters. You will create software that will help users and your software will continue to help them for a long time.
+When software is hard to create or modify, developers spend most of their time focusing on making things "just work," and less time focusing on helping users. The design of software aims to make developers job as easy as possible so they can focus on what matters. You will create software that will help users and your software will continue to help them for a long time.
 
 However, if you design a bad system, your software’s lifetime will be short.
 
@@ -55,7 +55,7 @@ This brings us to the most important goal of the software design:
 
 So there are two key points here: Your design should be easy for you and helpful for others.
 
-3. (Mis)understanding
+** 3. (Mis)understanding
 
 Developers who don’t fully understand their work tend to develop complex systems. It can become a vicious cycle: misunderstanding leads to complexity, which leads to further misunderstanding, and so on.
 
@@ -65,17 +65,17 @@ Actually, one of the best ways to improve your design skills is to be sure that 
 
 Bad developers don’t understand what they are doing, and good developers do. It really is that simple.
 
-4. Simplicity
+** 4. Simplicity
 
     Simplicity is the ultimate sophistication. — Leonardo da Vinci
 
-Programming is the act of reducing complexity to simplicity. A “bad developer” is just somebody who fails to reduce complexity. A “good developer” is doing everything in their power to make the code as simple as possible for other programmers.
+Programming is the act of reducing complexity to simplicity. A "bad developer" is just somebody who fails to reduce complexity. A "good developer" is doing everything in their power to make the code as simple as possible for other programmers.
 
 A good developer creates things that are easy to understand so that it’s really easy to shake out all the bugs.
 
 Now, developers are generally intelligent people and none of them likes to be treated like they are idiots. Ironically, this leads them sometimes to create things that are a bit complicated. They basically think like this:
 
-“Oh, other developers will understand everything I’ve done here. I should write some clever code that is hard to understand so that they can think that I am very smart.”
+"Oh, other developers will understand everything I’ve done here. I should write some clever code that is hard to understand so that they can think that I am very smart."
 
 A mistake caused by a wrong mindset-not necessarily by a lack of programming skills. Most of the programming failures happen because of that mentality.
 
@@ -83,17 +83,17 @@ Showing off that you are smart doesn’t help them.
 
 Developers who are new to your code don’t know anything about it; they have to learn.
 
-So, you should ask this question: “Do I want people to understand this and be happy, or do I want them to be confused and frustrated?”
+So, you should ask this question: "Do I want people to understand this and be happy, or do I want them to be confused and frustrated?"
 
 The truth is that if other developers who read your code can understand it easily it means that you are doing good.
 
     Complexity has nothing to do with intelligence, simplicity does. — Larry Bossidy
 
-The question is: “How simple do you have to be?”
+The question is: "How simple do you have to be?"
 
 Here is your answer: Stupid, dumb simple.
 
-5. Complexity
+** 5. Complexity
 
     Controlling complexity is the essence of computer programming. — Brian Kernighan
 
@@ -113,7 +113,7 @@ There are many factors that will increase complexity but those are the most popu
 
 Your main purpose is to control complexity, not to create it.
 
-6. Maintenance
+** 6. Maintenance
 
 Maintenance is one of the most important things in software development. Unfortunately, developers usually ignore how important it is. Quick coding and fast shipping look more important than code maintenance. This is the point where they make a mistake — ignorance of future code maintenance.
 
@@ -129,7 +129,7 @@ There will always be some implementation of changes. Not only you have to implem
 
     — Max Kanat-Alexander, Code Simplicity
 
-7. Consistency
+** 7. Consistency
 
     Consistency is a big part of simplicity. If you do something one way in one place, do it that way in every place. For example, if you name a variable thisIsVariable, then all of your variables should be named that way (otherVariable, anAnotherVariable, etc. not other_variable). – Max Kanat-Alexander, Code Simplicity
 
@@ -137,7 +137,7 @@ Code that isn’t consistent becomes harder to understand. Don’t keep forcing 
 
     In any team sport, the best teams have consistency and chemistry. — Roger Staubach
 
-8. Prioritizing
+** 8. Prioritizing
 
 How do you make decisions about your software?
 
@@ -157,7 +157,7 @@ When you prioritize your work, you should follow this rule:
 
 The changes that will bring you a lot of value and require little effort are better than those that will bring little value and require a lot of effort.
 
-9. Solving Problems
+** 9. Solving Problems
 
 The first step is understanding. Know exactly what is being asked. Most hard problems are hard because you don’t understand them. Write down your problem and try to explain it to someone else.
 
@@ -169,15 +169,15 @@ Think before acting.
 
 The third step is dividing. Don’t try to solve one big problem. When you look at the problem as a whole, it can scare you. Divide it into smaller tasks and solve each sub-problem one by one. Once you solve each sub-problem, you connect the dots.
 
-10. Good enough is fine
+** 10. Good enough is fine
 
-    “Perfect is the enemy of good.” — Voltaire
+    "Perfect is the enemy of good." — Voltaire
 
 Whether creating a new project or adding a feature to existing system developers tend to plan everything out in detail from the beginning.
 
 They want the first version to be perfect. They don’t focus on the problem they will solve and how their software will help people.
 
-They start by thinking of every small detail they could think about. Then assumptions and predictions come along followed by “What if” sentences. They have to predict the future because they were now so captivated by the imagination of the project in their mind and their project has to be as perfect as they imagined it.
+They start by thinking of every small detail they could think about. Then assumptions and predictions come along followed by "What if" sentences. They have to predict the future because they were now so captivated by the imagination of the project in their mind and their project has to be as perfect as they imagined it.
 
 Actually, they are not aware of what’s waiting for them and how much it will cost them by chasing perfection.
 
@@ -204,9 +204,9 @@ The incremental design should be your guide. Here is how you would use it to des
     Plan multiplication and repeat step 2 and 3.
     Plan division and repeat step 2 and 3.
 
-11. Predictions
+** 11. Predictions
 
-    “A prediction is simply a forecast that something will happen in the future. It could be factual and based on some kind of objective data or it could be based on an assumption.”
+    "A prediction is simply a forecast that something will happen in the future. It could be factual and based on some kind of objective data or it could be based on an assumption."
 
     When faced with the fact that their code will change in the future, some developers attempt to solve the problem by designing a solution so generic that (they believe) it will accommodate to every possible future situation. – Code Simplicity
 
@@ -216,11 +216,11 @@ You can’t predict the future, so no matter how generic your solution is, it wi
 
 Don’t predict to future. Be only as generic as you know you need to be right now.
 
-12. Assumptions
+** 12. Assumptions
 
 What is the assumption?
 
-    “An assumption is something that you accept as true or suppose to be true, although you have no conclusive proof.”
+    "An assumption is something that you accept as true or suppose to be true, although you have no conclusive proof."
 
 One of the great killers of a software project is assumptions. Let’s see how an assumption can kill a software project.
 
@@ -232,23 +232,23 @@ To avoid being a victim like this developer, follow this simple rule:
 
     Code should be designed based on what you know now, not on what you think will happen in the future. —  Code Simplicity
 
-13. Stop Reinventing
+** 13. Stop Reinventing
 
 If, for example, you invent your own garbage collector when a perfectly good one exists, you’re going to be spending a lot of time working on the garbage collector, when you could just be working on your software.
 
 The only times it’s okay to reinvent the wheel is when any of the following are true:
 
     You need something that doesn’t exist yet
-    All of the existing “wheels” are bad technologies or incapable of handling your needs
-    The existing “wheels” aren’t being properly maintained
+    All of the existing "wheels" are bad technologies or incapable of handling your needs
+    The existing "wheels" aren’t being properly maintained
 
 Simple rule:
 
 Don’t reinvent the wheel.
 
-14. Resistance
+** 14. Resistance
 
-As a developer, your first reaction to changing requests should be “NO’’.
+As a developer, your first reaction to changing requests should be "NO’’.
 
 Always resist adding more code, more features until you are convinced that they are required and there is a need to implement them. Because unnecessary changes will increase defects in your software.
 
@@ -262,13 +262,13 @@ Date: Thu, 8 May 2003 04:05:31 GMT
 I'm confident that tomorrow's Unix will look like today's Unix, only cruftier.
 Russ
 
-15. Automation
+** 15. Automation
 
 Don’t spend your time on repetitive tasks. Set them up and forget about them. They can work while you are sleeping. When you realize that you are doing something again and again, just remember this rule:
 
 If you can automate it, automate it.
 
-16. Code measurement
+** 16. Code measurement
 
     Measuring programming progress by lines of code is like measuring aircraft building progress by weight.
     — Bill Gates
@@ -283,17 +283,17 @@ I’m not saying that fewer lines of code is always better. While you want to av
 
 The optimum code is a small bunch of code that is easy to understand, easy to read.
 
-17. Productivity
+** 17. Productivity
 
 How do you measure your productivity?
 
 By writing more lines of code or by throwing hundreds of lines of code away?!
 
-Your main goal should be keeping your code base as small as possible. The question is not “How can I write more code?” rather it should be “How can I remove more code?”
+Your main goal should be keeping your code base as small as possible. The question is not "How can I write more code?" rather it should be "How can I remove more code?"
 
-    “One of my most productive days was throwing away 1000 lines of code.” — Ken Thompson
+    "One of my most productive days was throwing away 1000 lines of code." — Ken Thompson
 
-18. Testing
+** 18. Testing
 
 When should you add logging and error handling to your project?
 
@@ -309,7 +309,7 @@ You should be reliable. When other developers in your team see that you committe
 
 Untested code is the code that doesn’t work.
 
-19. (Under)Estimation
+** 19. (Under)Estimation
 
 Developers’ estimation sucks.
 
@@ -321,7 +321,7 @@ Remember:
 
 Everything takes longer than you think.
 
-20. Running Away From Rewriting
+** 20. Running Away From Rewriting
 
 I believe that when you embrace the fundamental principles of software development mentioned in that article, you won’t come to this point. However, if, somehow you make these mistakes and find yourself thinking about rewriting your code, here is the main thing that you should know:
 
@@ -329,27 +329,27 @@ Rewriting code is often a developer delusion, not the solution in most cases.
 
 Why is it a delusion?
 
-Well, because it’s harder to read code than to write it. This is why it is so hard to reuse code. This is why our subconscious mind whispers to us “Throw it away and start over” when we read another developer’s code.
+Well, because it’s harder to read code than to write it. This is why it is so hard to reuse code. This is why our subconscious mind whispers to us "Throw it away and start over" when we read another developer’s code.
 
 There are many cases that you should consider to rewrite your code from scratch and you can read them here. But, here is simple advice for you:
 
 Refactoring should be the first option.
 
-21. Documentation and Commenting
+** 21. Documentation and Commenting
 
 One of the common misconceptions about commenting is that developers add comments that say what code is doing. This is wrong. That should be obvious from reading the code. If it’s not obvious, it means that it is not readable and it should be made simpler.
 
 When you can’t make the code simpler then you should add the comment to explain this complexity.
 
-    The real purpose of comments is to explain “WHY” you did something, not “WHAT” the code is doing. If you don’t explain this, other programmers may be confused and when they go to change your code they might remove important parts of it. – Code Simplicity
+    The real purpose of comments is to explain "WHY" you did something, not "WHAT" the code is doing. If you don’t explain this, other programmers may be confused and when they go to change your code they might remove important parts of it. – Code Simplicity
 
-Write a comment to explain “WHY”, not to explain “WHAT”.
+Write a comment to explain "WHY", not to explain "WHAT".
 
 Another thing is documenting. It is important to have documentation to explain your software’s architecture and every module and components. This is required to see the high-level picture of your software.
 
 When a new developer joins your team, it will be easier for them to understand the software as a whole. When developers don’t have any clue about other parts of the software, they could easily make a mistake in their own part which can affect other parts also.
 
-22. Picking Technologies (Tools, Libraries, etc.)
+** 22. Picking Technologies (Tools, Libraries, etc.)
 
 First things first, always remember this rule:
 
@@ -368,7 +368,7 @@ There are a few factors you should consider before you start using some technolo
 
 If you can find the right answer these questions, you can reduce the risk of picking the wrong technology.
 
-23. Self-Development
+** 23. Self-Development
 
 Keep learning. Try out different programming languages and tools, read books on software development. They will give you another perspective. Every day small improvements will make a real difference in your knowledge and skills.
 
@@ -376,17 +376,17 @@ Be open-minded. Don’t be obsessive about one technology. Use the required tech
 
 Know that every specific problem has its own specific solution.
 
-24. Don’t be a hero
+** 24. Don’t be a hero
 
 A lot of times it’s better to be a quitter than a hero. As Jason Fried explains,
 
-    For example, let’s say you think a task can be done in two hours. But four hours into it, you’re still only a quarter of the way done. The natural instinct is to think, “But I can’t give up now, I’ve already spent four hours on this!” 
+    For example, let’s say you think a task can be done in two hours. But four hours into it, you’re still only a quarter of the way done. The natural instinct is to think, "But I can’t give up now, I’ve already spent four hours on this!" 
 
     So you go into hero mode. You’re determined to make it work (and slightly embarrassed that it isn’t already working). You grab your cape and shut yourself off from the world. – Jason Fried
 
 Don’t be obsessive. Know when to quit. Don’t hesitate to ask for help.
 
-25. Don’t Ask Questions… Ask For Help
+** 25. Don’t Ask Questions… Ask For Help
 
 When you have something to implement and you are not sure about the solutions, don’t ask others how to do it …at least not immediately. Instead, try anything and everything you can think of. This is more important the less comfortable you are with a concept or language.
 
@@ -396,9 +396,6 @@ When you can’t think of anything on your own, search! Find answers and try the
 
 When you have tried everything, and preferably after you have a working solution, now is the best time to seek advice. Look to peers and senior developers to review your code.
 
-I tried to explain the fundamentals of a good developer mindset in this article. I used some part from Code Simplicity book which has a big impact on my thinking process as a developer. When I read this book, there was a lot of moment that I reacted “ohh I did this mistake, I did that too.” I mentioned some important parts of the book and combine them with my experience.
+I tried to explain the fundamentals of a good developer mindset in this article. I used some part from Code Simplicity book which has a big impact on my thinking process as a developer. When I read this book, there was a lot of moment that I reacted "ohh I did this mistake, I did that too." I mentioned some important parts of the book and combine them with my experience.
 
 I strongly recommend you to read Code Simplicity from Max Kanat-Alexander.
-
-Thanks for reading! I hope this guide helped you out!
-
