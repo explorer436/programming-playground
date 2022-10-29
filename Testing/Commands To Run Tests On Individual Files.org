@@ -2,11 +2,11 @@
 
 ** Maven
 
-   [[../Maven and Gradle/Running tests with maven.org]]
+   [[../java-playground/Maven and Gradle/Running tests with Maven.org]]
 
 ** Gradle
 
-   [[../Maven and Gradle/Running tests with Gradle.org]]
+   [[../java-playground/Maven and Gradle/Running tests with Gradle.org]]
 
 ** for a javascript project
    

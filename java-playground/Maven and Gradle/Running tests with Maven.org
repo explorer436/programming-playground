@@ -1,4 +1,4 @@
-* Running tests with maven
+* Running tests with Maven
 
 *** Run a single test class with maven
     #+begin_src 

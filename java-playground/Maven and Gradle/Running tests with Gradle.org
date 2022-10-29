@@ -1,6 +1,4 @@
-*** Commands to run tests on individual files
-
-** Gradle
+*** Commands to run tests on individual files using Gradle
 
    #+begin_src 
     ./gradlew test --tests pagro.project.RunCukesTest*
