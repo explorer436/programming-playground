@@ -1,4 +1,4 @@
-What's the best way to implement multi threading in Java aside the usual Runnable interface or Thread base class?
+** What's the best way to implement multi threading in Java aside the usual Runnable interface or Thread base class?
 
 Vladislav Zorov · July 16, 2015 programming enthusiast.
 
