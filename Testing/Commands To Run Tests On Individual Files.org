@@ -6,13 +6,8 @@
 
 ** Gradle
 
-   #+begin_src 
-    ./gradlew test --tests pagro.project.RunCukesTest*
-   #+end_src
+   [[../Maven and Gradle/Running tests with Gradle.org]]
 
 ** for a javascript project
-
-   #+begin_src 
-    npx jest ./src/main/module/Operation/OperationService.test.ts
-    npm run test -- ./src/main/module/Operation/OperationService.test.ts
-   #+end_src
+   
+   [[../npm and yarn/README.org]]

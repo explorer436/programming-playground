@@ -7,3 +7,10 @@ yarn outdated - https://classic.yarnpkg.com/lang/en/docs/cli/outdated/
 yarn link - https://classic.yarnpkg.com/en/docs/cli/link
 
 yarn upgrade - https://classic.yarnpkg.com/en/docs/cli/upgrade
+
+*** Commands to run tests on individual files
+
+   #+begin_src 
+    npx jest ./src/main/module/Operation/OperationService.test.ts
+    npm run test -- ./src/main/module/Operation/OperationService.test.ts
+   #+end_src
