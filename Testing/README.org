@@ -1,7 +1,19 @@
 * Testing
 
-[[../Testing/Commands To Run Tests On Individual Files.org]]
-
 TODO
 
 1. Junit testing using WireMock: https://wiremock.org/docs/junit-jupiter/
+
+*** Commands to run tests on individual files
+
+** Maven
+
+   [[../java-playground/Maven and Gradle/Running tests with Maven.org]]
+
+** Gradle
+
+   [[../java-playground/Maven and Gradle/Running tests with Gradle.org]]
+
+** for a javascript project
+   
+   [[../npm and yarn/README.org]]
