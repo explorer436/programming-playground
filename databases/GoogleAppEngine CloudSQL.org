@@ -180,7 +180,7 @@ It is like the computer you built at home to run your SQL instance, except it is
      
      Lots of NoSQL databases don't even support transactions.
      
-     What good are the DataStore transactions if they are broken by cross data center replication? We all know that DataStore is built on top of BigTable. And BigTable has this weird, out-of-order, eventually consistent replication that nobody really understands. Actually, DataStore uses MegaStore Replication.
+     What good are the DataStore transactions if they are broken by cross data center replication? We all know that DataStore is built on top of Bigtable. And BigTable has this weird, out-of-order, eventually consistent replication that nobody really understands. Actually, DataStore uses Megastore Replication.
 
      But there are those other use cases where you want to transact ove the entire world, and in CloudSQL, you can do that. Lets say that you want to give gold away to your friends. Again, you start your transaction, you run your queries and then you commit.
      
@@ -297,15 +297,121 @@ It is like the computer you built at home to run your SQL instance, except it is
 
      *DataStore on Megastore on Bigtable on ...*
      
+     1. All the best features of each layer
+     
      #+begin_src 
      ┌──────---─┐
      │DataStore │
      └──────---─┘
-     │DataStore │
+     │Megastore │
+     └──────---─┘
+     │Bigtable  │
+     └──────---─┘
+     │GFS v2    │
      └──────---─┘
      #+end_src
-    
+
      DataStore is built on top of Google infrastructure. And each one of these layers adds a key component to the DataStore scalability.
+     
+     *GFS v2 (Google File System)*
+
+     1. Huge Capacity
+     1. Durable
+	
+     GFS allows your application to get as large as it needs to get.
+     
+     *Bigtable*
+
+     On top of that, we have Bigtable. Bigtable automatically splits your data based on loads and balances them on the machines that we have available. So, say your traffic changes. All of a sudden, you have a spike of writes in one part of your data. What Bigtable will do is it will take down that one shard, or tablet, and split it into two pieces and then load those on different machines.
+     
+     On top of that is Megastore.
+    
+     *Megastore*
+
+     1. Works at scale
+	1. See 2011 talk "More 9s Please: Under The Covers of the High Replication DataStore"
+	1. 9's are important at scale
+     1. Not reliant on a single datacenter
+     1. Handles local issues
+     1. Handles catastrophic failures
+	
+     It is a truly distributed database system because it spans multiple data centers and multiple geographic regions. That is the level it operates.
+
+     At scale, the reliability of the DataStore is hugely important, because even small local issues can cause outages for many, many users. And Megastore just handles it by automatically failing over to a different data center and reading the data from there. And it is guaranteed, if you are using the entity groups, to always have that strong consistency, because it makes sure that whatever replica you are reading from is up-to-date. It also handles catastrophic failures. So it one or more data centers all of a sudden goes offline, they fall into the ocean of the power outage happens nearby, those types of failures are still hidden from your users.
+     
+*** Management
+    
+    Benefits of the cloud. No software patches to worry about. No hard drives to replace. No systems to purchase. All of that applies equally to DataStore and CloudSQL as well.
+
+**** CloudSQL
+
+     It is very easy to get started with CloudSQL. The very first thing we need to do is create an App Engine Application. So we go to the AppEngine website where we have the form for creating an application. We need to pick an Application Identifier, Application Title, and create an application. And go to the dashboard. For a newly created App, there isn't going to be much data in the dashboard. The next step is, go to the APIs console. If you used the Maps API or the Translate API, you probably have this already set up. We need to set-up billing. Go through the billing flow, enter credit card info. After that, go to the main page and set-up CloudSQL instance. And go to the CloudSQL tab, and create a new instance, pick an instance name, pick a size. The size controls how much CPU and RAM you are going to allocate to the MySQL process. Authorize the instance to access the Application Identifier. After a few seconds, the MySQL instance is provisioned and you will see a dashboard for it. There will be a little bit of storage usage already because MySQL needs to format some of its data files. Now  we want to get  started using our CloudSQL instance. We have  a SQL prompt built into the web UI that we can easily use for simple queries. So, first thing we need to do is create a database. CREATE DATABASE test; And then create a table. CREATE TABLE t1(c1 INT, c2 VARCHAR(256)); We can continue to use this to populate data as well as query the data as well. If we need to create development or staging instances, just go through those last few steps and everything will be provisioned for you.
+
+**** DataStore
+     
+     When we create the App initially, the DataStore was ready right then to accept writes from your application. There is nothing to provision, nothing to configure. You just start writing data. And if you want to use different tables - or in the DataStore, they are called "kinds" - you just define those kinds in your code. You don't have to tell DataStore about them ahead of time. And you just start putting data. If you want isolation, you can use Namespaces for multi-tenancy or to isolate a development instance. Or you can even use an entirely different app to completely isolate your staging instance from everything else.
+     
+     1. No configuration needed
+     1. Just start writing data
+     1. Entity 'Kinds' for table
+     1. Namespaces for multi-tenancy/isolation
+
+*** Schema
+     
+    Schema defines what your data looks like. What are the data types. What are the relationships between the data.
+
+**** CloudSQL
+
+     In CloudSQL, the schema is strictly enforced. And that means you have to create the table before you can start working with your data. And some people think of this as a benefit of having this strictly enforced schema. It means that you don't have typos in your code where you write to some non-existent column, and then when you try to read from the column that you are supposed to read from, there is no data there.
+     
+     CREATE TABLE Player (name VARCHAR(256), health int);
+
+     Lets see an example of how to do a schema change. Lets go to our previous example of a player with a name and some integer amount of health. We are going to want to add magic to this game.
+
+     ALTER TABLE Player ADD COLUMN magic int;
+     
+     We do have to be careful with these ALTER TABLE statements, because they can lock up the table for the duration of the change. There are some tricks that we can play to minimize this lock time or even hide it entirely. It is called on Online Schema Change. What we do is we have our old table, and we have a new table. We do a background copy of the data from the old table to the new table. And while that background copy is going on, we don't want to miss any changes that are happening to the old table. So we set-up a trigger on the old table so that if any of those changes come through, they will get propagated to the new table. Once everything is copied, we just do an atomic rename and it just works. So if you want to see how that works, there is a company called Percona. And they have a tool called pt-online-schema-change that works with MySQL to make that very, very easy.
+     
+     *SQL Schema Change*
+
+     1. ALTER TABLE
+	1. Locks the table - the reason this happens is MySQL has tightly packed the row data so that one row is right adjacent to the next. And when we add that extra columm, there is not room for that new field in that tightly packed space. So it needs to copy everything to a new location. So for the duration of the time that it takes to copy everything, you are going to lock the table up.
+	1. Copies entire table
+     1. Online Schema Change
+	1. Write to new and old table
+	1. Bulk copy
+	1. Rename new table
+
+**** DataStore
+     
+     In DataStore, schema changes are actually magical. Well, they are not magical. You have to do something. But the schema enforcement actually happens - or you can enable a schema enforcement in your code. The DataStore doesn't actually enforce this schema for you. What this means is if you want to add that magic field to Player, all you do it change your code and it's there. You can set a default value, and you can just start using the new stuff. If you need to backfill any of the previously stored entities to, say, do some sort of complicated calculation to figure out what initial magic every character should have, you can do that using the powerful MapReduce framework.
+     
+     *DataStore Schema Change*
+     1. Update code
+     1. Optionally write MapReduce to backfill
+	
+     #+begin_src 
+     class Player(db.Model) 
+       name = db.StringProperty()
+       health = db.IntegerProperty()
+     #+end_src
+     
+     Add the new magic field.
+
+     #+begin_src 
+       magic = db.IntegerProperty(default=0)
+     #+end_src
+     
+*** Scoreboard
+    
+    |              | DataStore | CloudSQL |
+    |--------------+-----------+----------|
+    | Queries      | Y         | Y+       |
+    | Transactions | Y         | Y+       |
+    | Consistency  | Y         | Y+       |
+    | Scalability  | Y+        | Y        |
+    | Management   | Y+        | Y        |
+    | Schema       | Y+        | Y        |
 
 ** References
 Google I/O 2012 - SQL vs NoSQL: Battle of the Backends
