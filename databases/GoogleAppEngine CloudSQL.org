@@ -1,0 +1,202 @@
+* Google App Engine Cloud SQL
+
+*** Fully managed
+*** Pure MySQL
+
+It is like the computer you built at home to run your SQL instance, except it is in the cloud.
+
+*** Advantages
+    1. CloudSQL supports SQL.
+    1. The expressiveness of a MySQL database.
+    1. Easy to get started and easy to manage.
+    1. Don't have to use NoSQL DataStore stuff.
+
+* Google App Engine DataStore
+  
+   NoSQL is a misnomer (a wrong or inaccurate use of a name or term) for DataStore.
+   
+** No-SQL?
+
+*** DataStore supports an evergrowing subset of a structured query language similar to SQL.
+
+    1. Filters
+       1. SELECT * FROM table WHERE A=1 and (B=2 OR C=3) 
+    1. Sorting
+       1. SELECT * FROM table ORDER BY A,B DESC
+    1. Projections/Index-Only Queries
+       1. SELECT A, B FROM table
+
+*** Beyond SQL
+
+    1. Repeated properties
+       1. Contains all(==)/any(IN) - very useful when building tools like labels in Gmail or tags for photos
+        
+    1. Scales in the size of the result set.
+       1. You never have to worry if the performance of your queries is going to degrade over time if your database grows.
+       
+* Comparison between CloudSQL and DataStore (SQL and NoSQL):
+
+*** Queries
+
+**** CloudSQL
+
+     Queries are important because they are the way that you access your data. If you don't have a powerful query language, you can't get the data that you want and you can't get it quickly.
+    
+**** DataStore
+
+     The DataStore actually has a wide variety of queries that support most use cases. But if you want to query anything and everything, or in fact all of your data when you do these aggregations, you really have to use CloudSQL.
+
+*** Aggregation
+    
+**** CloudSQL
+     
+***** Lets say that you want to compute the average age of people living in each city
+
+      #+begin_src 
+      SELECT people.city_id, AVG(people.age) 
+      FROM people
+      GROUP BY people.city_id;
+      #+end_src
+
+***** Lets say that you want to put this average city age information on a map. Well, you need to be able to have joins to do that. You probably have a table for people and a table for cities, and the cities table will contain the latitude and longitude.
+
+      #+begin_src 
+      SELECT AVG(people.age), cities.name, cities.latitude, cities.longitude
+      FROM people, cities
+      WHERE people.city_id = cities.city_id
+      GROUP BY people.city_id;
+      #+end_src
+    
+**** DataStore
+    
+***** Lets say that you want to compute the average age of people living in each city.
+
+      *MapReduce*
+
+      There is a powerful framework called MapReduce.
+      
+      The example below requires mapping over all your data.
+      And MapReduce is a very powerful framework to do that because it computes this in parallel.
+      This follows a basic scatter gather algorithm.
+      
+      
+      #+begin_src 
+      city=3,age=5
+      city=1,age=2
+      city=3,age=7
+      city=4,age=9
+      city=4,age=9
+      city=1,age=3
+      city=4,age=8
+      city=2,age=3
+      #+end_src
+      
+      We map this to a key-value pair - in this case, the key is the cityID and the value is the age.
+      
+      #+begin_src 
+      3,5
+      1,2
+      3,7
+      4,9
+      4,9
+      1,3
+      4,8
+      2,3
+      #+end_src
+      
+      Then, we shuffle to group by cityID
+       
+      #+begin_src 
+      1 - 2,3
+      2 - 3
+      3 - 5,7
+      4 - 9,9,8
+      #+end_src
+      
+      And then reduce
+      
+      #+begin_src 
+      1 - 5/2=2.5
+      2 - 3/1=3
+      3 - 12/2=6
+      4 - 26/3=8.66
+      #+end_src
+      
+      If you want to keep the result set up to date as your entities in the database change, you can do that using something called a Materialized View. What you do is, track changes in your entities and you store them in a separate entity. And then, asynchronously, fan in those changes and apply them to your result set. This way, the results will always be up to date.
+
+***** Lets say that you want to put this average city age information on a map. Well, you need to be able to have joins to do that. You probably have a table for people and a table for cities, and the cities table will contain the latitude and longitude.
+     
+      In DataStore, it not as easy as it was in CloudSQL.
+     
+*** Transactions
+    
+    Transactions are important because they ensure that you have atomically made changes to your database. You don't want your machine to crash in the middle and partially apply some changes.
+
+    Lots of NoSQL databases don't even support transactions.
+
+    DataStore does support transactions. You can do transactions on a single row. But it could be said that it is not a real transaction. DataStore supports transactions across rows using something called Entity Group. These are groupings of entities under a single transaction log. They are great at providing ACID semantics at scale. So all of these entity groups can have transactions occurring simultaneously, and you can have any number of these entity groups in your application.
+    
+    #+begin_src 
+                              ┌─────────┐
+                              │   EG    │
+                              ├─────────┤
+    ┌───────────────┐         │         │
+    │ Entity Groups │         │ Entity  │
+    └───────────────┘         │         │
+                              ├─────────┤
+                              │ Entity  │
+                              └─────────┘ 
+    #+end_src
+    
+    1. Groupings of entities under a single transaction log
+    1. Many entity groups = scalable ACID semantics
+
+    For example, if you have a game, and you have a player entity, and then you have entities for items in that player's inventory, as long as you structure it in such a way that the items in the player's inventory are in the same entity group as the player, you can act upon these transactionally. This is very important, because you never want a player to use an item and have the item still be in their inventory afterwards or try to use an item and have the effect not work. 
+
+    #+begin_src 
+   ┌───────────────┐  
+   │ Player        │  id, Health, Gold
+   └───────────────┘
+       ┌───────────────┐  
+       │ Potion        │  Health
+       └───────────────┘
+       ┌───────────────┐  
+       │ Sword         │  Power, Durability
+       └───────────────┘
+   #+end_src
+
+    Multi-row transactions:
+
+    For example, if a player wanted to drink a potion, we have the player as the root entity and the potion as a child entity. They are in the same entity group. And so we can easily act upon these transactionally. It is as easy as decorating the funtion/method in ~db.transactional~, and it makes everything in that function/method happen atomically. You get the player, you get the potion from his inventory, you transfer the health and the potion to the player, you remove the potion from the player's inventory, and you put the player in. It all happens atomically.
+
+    What happens when you want to move a potion atomically from one player to another?
+    
+    DataStore also supports cross-entity group transactions. So, if you have two players, and one player wants to sell a potion to that other player, you can do so simply by setting the ~XG~ flag to true. Now, in the same scenario, you can load the buyer, you load the seller, you load the potion from the seller's inventory, you transfer the money from the buyer to the seller, you store the potion in the buyer's inventory, you remove the potion from the seller's inventory and then you save both to the buyer and seller, and it happens atomically.
+    
+    Are there any limitations to cross entity group transactions?
+
+    Yes, we had to do something called two-phase commit to make sure that we commit to all the transaction logs atomically. And this doesn't actually scale very well with the number of transaction logs involved. So currently, we have a limit of five entity groups that you can use in these cross-entity group transactions, which is more than enough for most use cases.
+
+    But there are those other use cases where you want to transact ove the entire world, and in CloudSQL, you can do that.
+
+    Transactions in SQL:
+
+    In CloudSQL, you can do the same thing but you don't have to define those relationships in advance.
+    
+    Sell a potion to another player
+
+    #+begin_src
+    START TRANSACTION;
+    SELECT gold from players where id in (1,2);
+    SELECT COUNT(*) from inventory WHERE player_id = 1 AND type = 'potion';
+    UPDATE players SET gold = gold + 25 WHERE id = 1;
+    UPDATE players SET gold = gold - 25 WHERE id = 2;
+    UPDATE inventory SET player_id = 2 WHERE player_id = 1 AND type = 'potion' LIMIT 1;
+    COMMIT;
+    #+end_src
+
+    All you need is ~START TRANSACTION~, you run your queries and then commit. It is as simple as that. 
+    
+
+** References
+Google I/O 2012 - SQL vs NoSQL: Battle of the Backends

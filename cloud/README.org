@@ -14,3 +14,6 @@ https://a.walktothe.cloud/ - A cute children’s book explaining cloud.
 *** Accessibility
     1. Always on, always available (as long as you have an internet connection)
     1. Local development environments
+
+** References
+Google I/O 2012 - SQL vs NoSQL: Battle of the Backends
