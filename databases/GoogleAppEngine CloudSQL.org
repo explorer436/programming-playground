@@ -57,7 +57,7 @@ It is like the computer you built at home to run your SQL instance, except it is
       FROM people
       GROUP BY people.city_id;
       #+end_src
-
+      
 ***** Lets say that you want to put this average city age information on a map. Well, you need to be able to have joins to do that. You probably have a table for people and a table for cities, and the cities table will contain the latitude and longitude.
 
       #+begin_src 
@@ -78,7 +78,6 @@ It is like the computer you built at home to run your SQL instance, except it is
       The example below requires mapping over all your data.
       And MapReduce is a very powerful framework to do that because it computes this in parallel.
       This follows a basic scatter gather algorithm.
-      
       
       #+begin_src 
       city=3,age=5
@@ -132,71 +131,181 @@ It is like the computer you built at home to run your SQL instance, except it is
     
     Transactions are important because they ensure that you have atomically made changes to your database. You don't want your machine to crash in the middle and partially apply some changes.
 
-    Lots of NoSQL databases don't even support transactions.
+**** DataStore
 
-    DataStore does support transactions. You can do transactions on a single row. But it could be said that it is not a real transaction. DataStore supports transactions across rows using something called Entity Group. These are groupings of entities under a single transaction log. They are great at providing ACID semantics at scale. So all of these entity groups can have transactions occurring simultaneously, and you can have any number of these entity groups in your application.
+     DataStore does support transactions. You can do transactions on a single row. But it could be said that it is not a real transaction. DataStore supports transactions across rows using something called Entity Group. These are groupings of entities under a single transaction log. They are great at providing ACID semantics at scale. So all of these entity groups can have transactions occurring simultaneously, and you can have any number of these entity groups in your application.
+     
+     #+begin_src 
+                               ┌─────────┐
+                               │   EG    │
+                               ├─────────┤
+     ┌───────────────┐         │         │
+     │ Entity Groups │         │ Entity  │
+     └───────────────┘         │         │
+                               ├─────────┤
+                               │ Entity  │
+                               └─────────┘ 
+     #+end_src
+     
+     1. Groupings of entities under a single transaction log
+     1. Many entity groups = scalable ACID semantics
+     
+     For example, if you have a game, and you have a player entity, and then you have entities for items in that player's inventory, as long as you structure it in such a way that the items in the player's inventory are in the same entity group as the player, you can act upon these transactionally. This is very important, because you never want a player to use an item and have the item still be in their inventory afterwards or try to use an item and have the effect not work. 
+
+      #+begin_src 
+     ┌───────────────┐  
+     │ Player        │  id, Health, Gold
+     └───────────────┘
+         ┌───────────────┐  
+         │ Potion        │  Health
+         └───────────────┘
+         ┌───────────────┐  
+         │ Sword         │  Power, Durability
+         └───────────────┘
+     #+end_src
+
+     *Multi-row transactions*
+     
+     For example, if a player wanted to drink a potion, we have the player as the root entity and the potion as a child entity. They are in the same entity group. And so we can easily act upon these transactionally. It is as easy as decorating the funtion/method in ~db.transactional~, and it makes everything in that function/method happen atomically. You get the player, you get the potion from his inventory, you transfer the health and the potion to the player, you remove the potion from the player's inventory, and you put the player in. It all happens atomically.
+     
+     What happens when you want to move a potion atomically from one player to another?
+     
+     DataStore also supports cross-entity group transactions. So, if you have two players, and one player wants to sell a potion to that other player, you can do so simply by setting the ~XG~ flag to true. Now, in the same scenario, you can load the buyer, you load the seller, you load the potion from the seller's inventory, you transfer the money from the buyer to the seller, you store the potion in the buyer's inventory, you remove the potion from the seller's inventory and then you save both to the buyer and seller, and it happens atomically.
+     
+     Are there any limitations to cross entity group transactions?
+     
+     Yes, we had to do something called two-phase commit to make sure that we commit to all the transaction logs atomically. And this doesn't actually scale very well with the number of transaction logs involved. So currently, we have a limit of five entity groups that you can use in these cross-entity group transactions, which is more than enough for most use cases.
+     
+**** CloudSQL
+     
+     Lots of NoSQL databases don't even support transactions.
+     
+     What good are the DataStore transactions if they are broken by cross data center replication? We all know that DataStore is built on top of BigTable. And BigTable has this weird, out-of-order, eventually consistent replication that nobody really understands. Actually, DataStore uses MegaStore Replication.
+
+     But there are those other use cases where you want to transact ove the entire world, and in CloudSQL, you can do that. Lets say that you want to give gold away to your friends. Again, you start your transaction, you run your queries and then you commit.
+     
+     *Transactions in MySQL*
+
+     #+begin_src 
+     START TRANSACTION;
+     SELECT gold from players where id = 1;
+     SELECT COUNT(*) from friends WHERE player_id = 1;
+     UPDATE players SET gold = <amount to give away> WHERE id = 1;
+     UPDATE players, friends SET players.gold = players.gold + 25
+         WHERE  friends.player_id = 1 AND players.id = friends.friend_id;
+     COMMIT;
+     #+end_src
+     
+     There is no limitations in the number of entity groups or the number of rows that can be involved in a transaction.
+     
+     In CloudSQL, you can do the same thing but you don't have to define those relationships in advance.
+     
+     Sell a potion to another player
+     
+     #+begin_src
+     START TRANSACTION;
+     SELECT gold from players where id in (1,2);
+     SELECT COUNT(*) from inventory WHERE player_id = 1 AND type = 'potion';
+     UPDATE players SET gold = gold + 25 WHERE id = 1;
+     UPDATE players SET gold = gold - 25 WHERE id = 2;
+     UPDATE inventory SET player_id = 2 WHERE player_id = 1 AND type = 'potion' LIMIT 1;
+     COMMIT;
+     #+end_src
+     
+     All you need is ~START TRANSACTION~, you run your queries and then commit. It is as simple as that. 
     
-    #+begin_src 
-                              ┌─────────┐
-                              │   EG    │
-                              ├─────────┤
-    ┌───────────────┐         │         │
-    │ Entity Groups │         │ Entity  │
-    └───────────────┘         │         │
-                              ├─────────┤
-                              │ Entity  │
-                              └─────────┘ 
-    #+end_src
+*** Consistency
+
+**** DataStore
+
+    1. Megastore replication
+    1. Entity groups
+       1. Parallel transaction logs
+       1. Parallel replication
+    1. No Master - but this is not a disadvantage. If the queries from the application uses transactions, the data is written to and read from a replica that has the most up-to-date replication.
+    1. Strong within an entity group
+       1. Get
+       1. Ancestor Query
+    1. Eventual across entity groups
+       1. Global Queries
+	  
+    Speaking of replication, MySQL uses a single master to guarantee strong consistency but then asynchronously replicates changes to a slave. And if there is a lot of changes queued up on a master and the master crashes, you lose that data. If there is a data center outage, the developers lose their data. No, in CloudSQL, it uses synchronous replication. 
+
+**** CloudSQL
+
+     *Master + Synchronous replication*
+     
+     #+begin_src 
+     
+      ┌──────--─┐
+      |Client   │
+      └─-------─┘
+      
+      ┌──────--------------------─┐
+      |DataCenter A               |
+      |---------------------------|
+      |MySQL         ┌───────┐    |
+      |		  │Master │    |
+      |		  └───────┘    |
+      └─----------- ──────────────┘
+      
+      ┌──────--------------------─┐      ┌──────--------------------─┐
+      |DataCenter B               |      |DataCenter C               |
+      |---------------------------|      |---------------------------|
+      |              ┌───────┐    |      |              ┌───────┐    |
+      |              │Slave  │    |      |              │ Slave │    |
+      |              └───────┘    |      |              └───────┘    |
+      └─----------- ──────────────┘      └─----------- ──────────────┘
+     
+     #+end_src
+     
+     A client sends some data to the MySQL server. Before responding to the client, we synchronously replicate the data to the other data centers, and then we respond to the client. What this means is that if we lose the machine that is running the MySQL server, or even if we lose the entirety of DataCenter A, we can quickly restart the MySQL server in a different DataCenter without any data loss.
+     
+*** Scalability
     
-    1. Groupings of entities under a single transaction log
-    1. Many entity groups = scalable ACID semantics
+**** CloudSQL
 
-    For example, if you have a game, and you have a player entity, and then you have entities for items in that player's inventory, as long as you structure it in such a way that the items in the player's inventory are in the same entity group as the player, you can act upon these transactionally. This is very important, because you never want a player to use an item and have the item still be in their inventory afterwards or try to use an item and have the effect not work. 
+     Lets look at some examples from within Google about how CloudSQL is used.
+     
+     Example 1:
+     
+     Google Time Keeper
+     1. Used by Goodle AdWord's sales and support team
+     1. Tracks time spent on 
+        1. Chat support
+        1. Email support
+        1. Campaign optimization
+     
+     This is a large organization within Google and they use CloudSQL for their day-to-day jobs and it works really well for them.
+     They use this data to optimize their own workflow.
+     
+     Example 2:
+     
+     Google Org Chart
+     1. Tracks 30k+ employees
+     1. 10-100 QPS
+        
+     This keeps track of the data about employees, their relationships to each other, and what they are working on. To give you idea of the kind of load that we can handle, picture this. We have these company all-hands meetings. So all 30,000 employees are listening to our upper management. And the upper management reminds everyone, alright, I want you to go onto the org chart application and update what you are working on. So everybody simultaneously opens their laptop and goes to this website. Tens of thousands of employees hammering on this website all of a sudden. We get tens to hundreds of QPS on the backend. And CloudSQL handles it just fine. 
+     
+     CloudSQL works very well for these sorts of large corporate environments.
 
-    #+begin_src 
-   ┌───────────────┐  
-   │ Player        │  id, Health, Gold
-   └───────────────┘
-       ┌───────────────┐  
-       │ Potion        │  Health
-       └───────────────┘
-       ┌───────────────┐  
-       │ Sword         │  Power, Durability
-       └───────────────┘
-   #+end_src
+**** DataStore
 
-    Multi-row transactions:
+     Say you are building a hugely popular mobile application. We are talking about thousands and thousands of QPS and millions and millions of users and billions of ruffled feathers. With DataStore, there's no headaches. There is no provisioning. It just scales to your use case and it just works.
 
-    For example, if a player wanted to drink a potion, we have the player as the root entity and the potion as a child entity. They are in the same entity group. And so we can easily act upon these transactionally. It is as easy as decorating the funtion/method in ~db.transactional~, and it makes everything in that function/method happen atomically. You get the player, you get the potion from his inventory, you transfer the health and the potion to the player, you remove the potion from the player's inventory, and you put the player in. It all happens atomically.
+     Lets see how.
 
-    What happens when you want to move a potion atomically from one player to another?
+     *DataStore on Megastore on Bigtable on ...*
+     
+     #+begin_src 
+     ┌──────---─┐
+     │DataStore │
+     └──────---─┘
+     │DataStore │
+     └──────---─┘
+     #+end_src
     
-    DataStore also supports cross-entity group transactions. So, if you have two players, and one player wants to sell a potion to that other player, you can do so simply by setting the ~XG~ flag to true. Now, in the same scenario, you can load the buyer, you load the seller, you load the potion from the seller's inventory, you transfer the money from the buyer to the seller, you store the potion in the buyer's inventory, you remove the potion from the seller's inventory and then you save both to the buyer and seller, and it happens atomically.
-    
-    Are there any limitations to cross entity group transactions?
-
-    Yes, we had to do something called two-phase commit to make sure that we commit to all the transaction logs atomically. And this doesn't actually scale very well with the number of transaction logs involved. So currently, we have a limit of five entity groups that you can use in these cross-entity group transactions, which is more than enough for most use cases.
-
-    But there are those other use cases where you want to transact ove the entire world, and in CloudSQL, you can do that.
-
-    Transactions in SQL:
-
-    In CloudSQL, you can do the same thing but you don't have to define those relationships in advance.
-    
-    Sell a potion to another player
-
-    #+begin_src
-    START TRANSACTION;
-    SELECT gold from players where id in (1,2);
-    SELECT COUNT(*) from inventory WHERE player_id = 1 AND type = 'potion';
-    UPDATE players SET gold = gold + 25 WHERE id = 1;
-    UPDATE players SET gold = gold - 25 WHERE id = 2;
-    UPDATE inventory SET player_id = 2 WHERE player_id = 1 AND type = 'potion' LIMIT 1;
-    COMMIT;
-    #+end_src
-
-    All you need is ~START TRANSACTION~, you run your queries and then commit. It is as simple as that. 
-    
+     DataStore is built on top of Google infrastructure. And each one of these layers adds a key component to the DataStore scalability.
 
 ** References
 Google I/O 2012 - SQL vs NoSQL: Battle of the Backends
