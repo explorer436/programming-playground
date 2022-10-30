@@ -231,6 +231,8 @@ It is like the computer you built at home to run your SQL instance, except it is
 	  
     Speaking of replication, MySQL uses a single master to guarantee strong consistency but then asynchronously replicates changes to a slave. And if there is a lot of changes queued up on a master and the master crashes, you lose that data. If there is a data center outage, the developers lose their data. No, in CloudSQL, it uses synchronous replication. 
 
+    What is the latency that the applications should expect and how does that compare to DataStore? They are pretty comparable. The latency would be somewhere between 50 and 100 milliseconds. Although, since CloudSQL uses a single master, it can commit a whole bunch of inserts at one time, so the bandwidth is much larger.
+
 **** CloudSQL
 
      *Master + Synchronous replication*
@@ -412,6 +414,56 @@ It is like the computer you built at home to run your SQL instance, except it is
     | Scalability  | Y+        | Y        |
     | Management   | Y+        | Y        |
     | Schema       | Y+        | Y        |
+
+    Maybe, there is room for both of these products in the world.
+    
+**** Where can the DataStore probably be a better fit than CloudSQL
+
+     File sharing applications are popular now-a-days. If we wanted to build one, first we need to come up with a good name. e.g. DropRectangle.net.
+
+     *DropRectangle.net SQL*
+     
+     #+begin_src 
+     ┌──────────┐    ┌──────────┐     ┌──────────--┐
+     │ Users    │    │ Files    │     │ ACL        │
+     └──────────┘    └──────────┘     └──────────--┘
+     | user_id  |    | file_id  |     | file_id    |
+     | name     |    | owner_id |     | user_id    |
+     |          |    | name     |     | permission |
+     └──────────┘    └──────────┘     └─────────--─┘
+     #+end_src
+     
+     If you were to use CloudSQL to store this data, this is probably how you would structure your schema. You would have a table for your users. With this schema, you can run queries like, show me all of the files that I have access to, or atomically transfer ownership of this file from one owner to another. This works great until your site gets popular and you have lots and lots of users and lots and lots of files. And the data no longer fits on a single machine. At that point, you can shard your data. And the natural way to shard the data would be by user. Unfortunately, we have this operation of transferring ownership between users. And if you shard your data by user, you don't know whether the two users are on the same shard. If they are not on the same shard, it gets hard to atomically move that file ownership between shards. And this is where the DataStore will probably do better than CloudSQL.
+
+     You structure the user as the root entity. You have files beneath that and access control underneath that. So with global queries, you could easily find all the files that you have access to. And if you want to atomically transfer files between users, you can use the cross-entity group transactions.
+     
+     What are some use cases for CloudSQL?
+
+     Full support of off-the-shelf
+     1. Frameworks - The entire ecosystem built by frameworks that are available that were built to work with relational databases. And it doesn't always make sense to modify these solutions or roll your own solutions.
+        1. Hibernate
+        1. JDO/JPA
+        1. Spring
+        1. Django
+     1. WordPress
+     1. Standards Based Existing Applications
+	
+     Are there use-cases where these two products could work together?
+
+     We have this product manager on our team. He sends a lot of emails about the stuff that he is selling. It would be great if he had some sort of web application where he could post things for sale or list things for sale, and people could search for what they want to buy.
+
+     #+begin_src 
+      
+     ┌────────────----───┐      ┌────────────------───┐
+     │ CloudSQL          │    	│ DataStore           │
+     │ (active listings) │    	│ (archived listings) │
+     │                   │    	│ (disk)              │
+     └─────────────----──┘    	└─────────────------──┘
+     
+     #+end_src
+
+     What he could do is he could use CloudSQL to store all of his active listings so that he has all the speed of the in-memory operations and in-memory performance of a single machine. And when a listing expires or is sold, he can use the DataStore to archive all those listings. And they are always available, and he can still query against them, and he could still use them. One of the big benefits of putting the active listings in CloudSQL would be that he gets to take advantage of the powerful query language and all of those aggregations and lots of flexibility so that he could run queries like, show me the average price of a sofa in San Fransisco. And CloudSQL works best when your entire data set fits into memory so it doesn't have to page the disk or do any sort of heavy lifting there. And the active set of listings is relatively small to all the listings throughout time. So it really makes a lot of sense to keep them in CloudSQL. And storing the archive listings in the DataStore makes sense, because when you have schema changes, you want to apply it to the data that you are actually going to be working with, the stuff that is in CloudSQL. But all of those archive listings, you don't really want to apply the schema changes and do the backfill and everything. And so with the flexible schema of the DataStore, you can get that to work as well.
+
 
 ** References
 Google I/O 2012 - SQL vs NoSQL: Battle of the Backends
