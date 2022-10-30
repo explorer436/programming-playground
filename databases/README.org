@@ -1,0 +1,17 @@
+* SQL topics
+
+What is the difference between ~outer join~ and ~full outer join~?
+
+What is ~Cartesion join~ or ~cross join~?
+
+What are the different levels of normalization?
+
+What is the difference between ~union~ and ~union all~?
+
+No lock in MS SQL?
+
+Stored procedure writing
+
+Difference between Stored procedures and views, in what scenarios will you use Stored procedures and in what scenarios will you use Views?
+
+Nth highest salary
