@@ -1,9 +1,97 @@
-* Look into these concepts related to WebClient
-
-TODO
+* WebFlux retry logic
 
 The approach in the medium article works best. The approach in the other two articles talk about an intermediate ServerException and that is just confusing and not necessary.
 
 1. https://medium.com/@robert.junklewitz/global-webclient-retry-logic-for-all-endpoints-in-spring-webflux-dbbe54206b63
-1. https://careydevelopment.us/blog/spring-webflux-simple-retry-strategies-with-webclient
-1. https://www.baeldung.com/spring-webflux-retry
+1. https://careydevelopment.us/blog/spring-webflux-simple-retry-strategies-with-webclient (TODO take notes from this article)
+1. https://www.baeldung.com/spring-webflux-retry (TODO take notes from this article)
+
+** Global WebClient Retry Logic for all Endpoints in Spring WebFlux
+   -- How to stop copy-pasting .retryWhen() for every endpoint
+
+Reference: https://medium.com/@robert.junklewitz/global-webclient-retry-logic-for-all-endpoints-in-spring-webflux-dbbe54206b63   
+
+I wrote this article because I was desperately looking for a clean and reusable solution for my problem and hope that maybe someone else can profit from this.
+
+In short, the problem is about having a global retry mechanism for a WebClient, so if you are just interested in the solution just jump straight to the part “Solution for a global retry logic for the WebClient”.
+
+*** Problem
+
+I am using Spring Reactive with WebFlux and have the following scenario. I am using a WebClient to be able to send REST API calls to another external API. As I am processing a lot of data, I have to send a lot of requests in a very short amount of time. The other API I have to consult unfortunately is not as resilient to a high number of requests. So they build in a mechanism to return a 429 error code when I am throwing too many requests at once.
+
+The definition according to the Mozilla docs for the 429 error code is following:
+
+The HTTP 429 Too Many Requests response status code indicates the user has sent too many requests in a given amount of time (“rate limiting”).
+
+This is one of those error codes that get probably resolved by just trying it again at some later point in time. (We have different error codes where a retry logic might help).
+
+*** Solution for a retry per endpoint
+
+The easiest solution with Reactive Spring would be to jump to the ApiClient and just introduce a retryWhen as shown in the following example.
+
+#+begin_src 
+private final WebClient someWebClient; 
+ 
+public Mono<SomeResponse[]> getData(final Integer dataId) { 
+ return someWebClient.get() 
+ .uri(buildUrl(dataId)) 
+ .retrieve() 
+ .bodyToMono(SomeResponse[].class) 
+ .retryWhen(retryWhenTooManyRequests());
+}
+private RetryBackoffSpec retryWhenTooManyRequests() { 
+ return Retry.backoff(4, Duration.ofSeconds(2)) 
+ .filter(this::isTooManyRequestsException) 
+ .doBeforeRetry(this::logRetryAttemptsWithErrorMessage) 
+ .onRetryExhaustedThrow((retryBackoffSpec, retrySignal) -> retrySignal.failure()); 
+}
+private boolean isTooManyRequestsException(final Throwable throwable) { 
+ return throwable instanceof WebClientResponseException.TooManyRequests; 
+}   
+#+end_src
+
+This approach will certainly work. The advantage is of course that you can have retry logic that is very specific to this one endpoint.
+
+But now comes the problem, when you connect to multiple different endpoints from this API. You will have to add this retryWhen(..) logic consistently for every endpoint which can be very annoying and this is a big smell for me because I don’t want to repeat myself and copy-paste code.
+
+In another scenario I encountered, I was connecting to two different APIs and both had the chance of returning a 429. Even more copy-pasting.
+
+I wanted a solution, where I can define retry logic globally for my WebClient where I define the retry only once and forget about it.
+
+*** Solution for a global retry logic for the WebClient
+
+The solution for this is ExchangeFilterFunctions. ExchangeFilterFunctions are a nice feature of WebClients where you can inspect, act on and modify incoming requests and the corresponding responses. This is very helpful for example for authentication, where in every request you can append a Bearer Token to authenticate yourself or in our case to act on the response and initiate a retry when an error got returned.
+
+After a lot of googling, headaches and try-and-error I came up with this in my opinion pretty neat solution where you can react on any exceptions with a retry, but don’t swallow any errors that you don’t want to act on.
+
+#+begin_src 
+private ExchangeFilterFunction buildRetryExchangeFilterFunction() { 
+ return (request, next) -> next.exchange(request) 
+ .flatMap(clientResponse -> Mono.just(clientResponse) (1)
+ .filter(response -> clientResponse.statusCode().isError()) (2)
+ .flatMap(response -> clientResponse.createException()) (3)
+ .flatMap(Mono::error) (4)
+ .thenReturn(clientResponse)) (5)
+ .retryWhen(ApiRetryConfig.retryWhenTooManyRequests()); (6)
+}  
+#+end_src
+
+Let’s go through what is happening step by step.
+
+(1) I wrap the whole logic in a dedicated flatMap so that I still have access to the clientResponse object in step 5.
+(2) I check if the clientResponse returned with an error code. That means if the response code was a 4xx or 5xx error. If there is no error I just want to proceed to step (5) because thenReturn returns this value after the Mono ended successfully. And if everything gets filtered out, the resulting empty Mono counts as successful.
+(3) Now we are in the error processing mode. The clientResponse has a createException() method which will create an exception object (WebClientResponseException) and return a Mono of it. This is important because at this point the response is only a response object, no exception. Usually, when you look at the first code sample I posted, according to the documentation the retrieve() method will eventually map 4xx and 5xx responses to exceptions.
+(4) This step also took me a bit to figure out. We have now a Mono of the exception, but the retryWhen still didn’t trigger. This happened because we didn’t trigger an onError signal yet. After all, we didn’t throw this exception. This flatMap will take care of it.
+(5) Here we just return the clientResponse in case, we didn’t have an error in the first place, so logic continues as expected.
+(6) Here we have our actual retry logic. This retryWhen mustn't be in the inner Mono definition, because you would just retry everything since Mono.just(clientResponse) which would just lead to a useless loop.
+
+This ExchangeFilterFunction now just has to be included in the definition of the WebClient as shown in the following code snippet
+
+#+begin_src 
+ @Bean
+public WebClient someWebClient(final WebClient.Builder webClientBuilder) {
+    return webClientBuilder.baseUrl(baseUrl)
+        .filter(buildRetryExchangeFilterFunction()).build();
+} 
+#+end_src
+
