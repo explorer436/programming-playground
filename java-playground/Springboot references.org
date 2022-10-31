@@ -2,7 +2,10 @@ Official website: https://spring.io/projects
 
 ----------------------------------------------------------------------------------------
 
-Springboot best practices : https://www.e4developer.com/2018/08/06/spring-boot-best-practices/
+TODO
+Springboot best practices : 
+1. https://www.e4developer.com/2018/08/06/spring-boot-best-practices/
+1. https://medium.com/@raviyasas/spring-boot-best-practices-for-developers-3f3bdffa0090
 
 ----------------------------------------------------------------------------------------
 
