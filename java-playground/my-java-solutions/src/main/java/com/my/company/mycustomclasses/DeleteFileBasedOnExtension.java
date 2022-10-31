@@ -1,4 +1,4 @@
-package clean.up;
+package com.my.company.mycustomclasses;
 
 import java.io.File;
 import java.io.IOException;
@@ -62,7 +62,7 @@ public class DeleteFileBasedOnExtension {
 					}
 					catch (Exception e)
 					{
-						// TODO Auto-generated catch block
+						// Auto-generated catch block
 						e.printStackTrace();
 					}
 				}

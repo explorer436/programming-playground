@@ -45,7 +45,7 @@ public final class FileUtils {
 	 */
 	public static void clearDirectory(String directory) {
 		// Assert preconditions
-		// TODO Validate.notEmpty(directory, "Directory cannot be empty");
+		// Validate.notEmpty(directory, "Directory cannot be empty");
 
 		StringBuffer filePathBuffer = new StringBuffer(getDefaultTempDir());
 		filePathBuffer.append(File.separatorChar + directory);
@@ -70,7 +70,7 @@ public final class FileUtils {
 	 */
 	public static void createDirectory(String directory) {
 		// Assert preconditions
-		// TODO Validate.notEmpty(directory, "Directory cannot be empty");
+		// Validate.notEmpty(directory, "Directory cannot be empty");
 
 		File file = new File(directory);
 		if (file != null && !file.exists()) {
@@ -134,7 +134,7 @@ public final class FileUtils {
 		}
 
 		// Assert preconditions
-		// TODO Validate.notEmpty(tempDir, "Temp Directory cannot be empty");
+		// Validate.notEmpty(tempDir, "Temp Directory cannot be empty");
 
 		return tempDir;
 	}
@@ -157,7 +157,7 @@ public final class FileUtils {
 	public static FileOutputStream getFileOutputStream(
 		String fileName, String subDirectoryName) {
 		// Assert preconditions
-		// TODO Validate.notEmpty(fileName, "File Name cannot be empty");
+		// Validate.notEmpty(fileName, "File Name cannot be empty");
 
 		// Create the full file path.
 		String filePath = createFullDirectoryPath(subDirectoryName);
@@ -200,7 +200,7 @@ public final class FileUtils {
 	public static PrintWriter getPrintWriter(
 		String fileName, String subDirectoryName) {
 		// Assert preconditions
-		// TODO Validate.notEmpty(fileName, "File Name cannot be empty");
+		// Validate.notEmpty(fileName, "File Name cannot be empty");
 
 		// Create the print writer.
 		PrintWriter printWriter = null;

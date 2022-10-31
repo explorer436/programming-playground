@@ -34,7 +34,7 @@ import org.w3c.dom.Node;
 
 /**
  * Handler to output soap messages to file system.
- * TODO: Move to property place
+ * Move to property place
  * 
  * @author Jonathan Lemon (original author for QBE)
  * @author Matthew Duffy (adapted for eSales)
@@ -139,7 +139,7 @@ public class WebServiceRecorderHandler implements SOAPHandler<SOAPMessageContext
 	 */
 	private String getXmlString(SOAPMessageContext soapMessageContext) {
 		// Assert preconditions
-		// TODO Validate.notNull(soapMessageContext, "SOAPMessageContext cannot be null");
+		// Validate.notNull(soapMessageContext, "SOAPMessageContext cannot be null");
 
 		// Serialize to an output stream and then to a String
 		String xmlString = "";
