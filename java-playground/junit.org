@@ -1,0 +1,4 @@
+* junit
+
+TODO take notes
+1. https://stackoverflow.com/questions/29076981/how-to-intercept-slf4j-with-logback-logging-via-a-junit-test
