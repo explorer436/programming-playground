@@ -5,6 +5,7 @@
       - [[#run-a-single-test-method-with-maven][Run a single test method with maven]]
     - [[#gradle][Gradle]]
     - [[#for-a-javascript-project][for a javascript project]]
+  - [[#items-todo][Items TODO]]
 
 ** Commands to run tests on individual files
 
@@ -33,3 +34,6 @@
     npm run test -- ./src/main/module/Operation/OperationService.test.ts
    #+end_src
    
+** Items TODO
+
+Junit testing using WireMock: https://wiremock.org/docs/junit-jupiter/
