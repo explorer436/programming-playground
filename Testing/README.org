@@ -1,10 +1,7 @@
 * Testing                                                               :TOC:
-  
-
-
-TODO
-
-1. Junit testing using WireMock: https://wiremock.org/docs/junit-jupiter/
+  - [[#maven][Maven]]
+  - [[#gradle][Gradle]]
+  - [[#for-a-javascript-project][for a javascript project]]
 
 *** Commands to run tests on individual files
 
