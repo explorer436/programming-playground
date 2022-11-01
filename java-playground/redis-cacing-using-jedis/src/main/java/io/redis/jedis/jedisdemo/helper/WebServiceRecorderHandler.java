@@ -171,7 +171,7 @@ public class WebServiceRecorderHandler implements SOAPHandler<SOAPMessageContext
 	 */
 	private String getOperationName(SOAPMessageContext soapMessageContext) {
 		// Assert preconditions
-		// TODO Validate.notNull(soapMessageContext, "SOAPMessageContext cannot be null");
+		// Validate.notNull(soapMessageContext, "SOAPMessageContext cannot be null");
 
 		// Default operation name
 		String operationName = DEFAULT_OPERATION_NAME;
@@ -219,11 +219,11 @@ public class WebServiceRecorderHandler implements SOAPHandler<SOAPMessageContext
 	public synchronized void sendPayloadToFile(String payload, String serviceOperation) {
 		
 		// Assert preconditions
-		// TODO Validate.notEmpty(payload, "Payload cannot be empty");
-		// TODO Validate.notEmpty(serviceOperation, "Service Operation cannot be empty");
+		// Validate.notEmpty(payload, "Payload cannot be empty");
+		// Validate.notEmpty(serviceOperation, "Service Operation cannot be empty");
 
 		// Retrieve the system name
-		// TODO: Put these in an enum for app.properties
+		// Put these in an enum for app.properties
 		String systemName = System.getProperty("com.lmig.pi.systemname");
 		// Default if empty
 		if (StringUtils.isEmpty(systemName)) {
