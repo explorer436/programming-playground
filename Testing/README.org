@@ -1,34 +1,33 @@
-* Testing                                                               :TOC:
-  - [[#maven][Maven]]
-  - [[#gradle][Gradle]]
-  - [[#for-a-javascript-project][for a javascript project]]
+* Testing                                                               :TOC_4:
+  - [[#commands-to-run-tests-on-individual-files][Commands to run tests on individual files]]
+    - [[#maven][Maven]]
+      - [[#run-a-single-test-class-with-maven][Run a single test class with maven]]
+      - [[#run-a-single-test-method-with-maven][Run a single test method with maven]]
+    - [[#gradle][Gradle]]
+    - [[#for-a-javascript-project][for a javascript project]]
 
-*** Commands to run tests on individual files
+** Commands to run tests on individual files
 
-** Maven
+*** Maven
    
-*** Run a single test class with maven
+**** Run a single test class with maven
     #+begin_src 
     mvn test -Dtest=classname
     #+end_src
 
-*** Run a single test method with maven
+**** Run a single test method with maven
     #+begin_src 
     mvn test -Dtest=classname#methodname
     #+end_src
 
-** Gradle
+*** Gradle
    
-*** Commands to run tests on individual files using Gradle
-
    #+begin_src 
     ./gradlew test --tests pagro.project.RunCukesTest*
    #+end_src
 
-** for a javascript project
+*** for a javascript project
    
-*** Commands to run tests on individual files
-
    #+begin_src 
     npx jest ./src/main/module/Operation/OperationService.test.ts
     npm run test -- ./src/main/module/Operation/OperationService.test.ts
