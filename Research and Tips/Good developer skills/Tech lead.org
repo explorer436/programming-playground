@@ -1,66 +1,23 @@
-* The Webflow Tech Lead Guide
-
-:TOC:
-
-_LAST UPDATED: February 7, 2018_
-
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
-
-- [Welcome](*welcome)
-- [What's a Tech Lead, anyway?](*whats-a-tech-lead-anyway)
-    - [Why management is different at Webflow.](*why-management-is-different-at-webflow)
-- [Why might I want to be a Tech Lead?](*why-might-i-want-to-be-a-tech-lead)
-- [How can I become a tech lead?](*how-can-i-become-a-tech-lead)
-- [What's expected of me when managing a team?](*whats-expected-of-me-when-managing-a-team)
-    - [Working with Other Departments](*working-with-other-departments)
-    - [Tracking Tasks](*tracking-tasks)
-      - [Master Tracking Issue (MTI)](*master-tracking-issue-mti)
-        - [Tasks](*tasks)
-        - [This is tough](*this-is-tough)
-      - [Displaying Progress in the MTI](*displaying-progress-in-the-mti)
-      - [Milestones (a.k.a. Deliverables)](*milestones-aka-deliverables)
-      - [Types of Milestones](*types-of-milestones)
-      - [Task toward unknowns](*task-toward-unknowns)
-    - [Meetings](*meetings)
-    - [Weekly Status](*weekly-status)
-    - [Agile? Project Managers?](*agile-project-managers)
-- [What are the different types of teams a Tech Lead can manage?](*what-are-the-different-types-of-teams-a-tech-lead-can-manage)
-    - [What size team should I expect?](*what-size-team-should-i-expect)
-    - [Team Efficiency and Organization](*team-efficiency-and-organization)
-- [Help! We are behind schedule!](*help-we-are-behind-schedule)
-    - [A Word on Project Management](*a-word-on-project-management)
-    - [Rework / Defer / Abandon (Mitigation Strategies for Deferred Progress)](*rework--defer--abandon-mitigation-strategies-for-deferred-progress)
-      - [Rework](*rework)
-      - [Defer](*defer)
-      - [Abandon](*abandon)
-      - [_An optional fourth strategy:_ Watch it closely](*_an-optional-fourth-strategy_-watch-it-closely)
-- [How can I make better estimates?](*how-can-i-make-better-estimates)
-    - [Pad estimates for the unexpected](*pad-estimates-for-the-unexpected)
-    - [Add up tasks toward unknowns](*add-up-tasks-toward-unknowns)
-    - [The 80/20 Rule](*the-8020-rule)
-    - [Never forget QA](*never-forget-qa)
-    - [Cooldown: Bug fixes after delivery](*cooldown-bug-fixes-after-delivery)
-- [How long should projects take?](*how-long-should-projects-take)
-- [Should I branch off of feature branches or not?](*should-i-branch-off-of-feature-branches-or-not)
-      - [Feature flags](*feature-flags)
-- [How can I stay "centered"?](*how-can-i-stay-centered)
-- [How do I stay organized?](*how-do-i-stay-organized)
-- [How much should I expect to code?](*how-much-should-i-expect-to-code)
-    - [Code Reviews](*code-reviews)
-- [How do I provide status reports to All Hands and Lattice?](*how-do-i-provide-status-reports-to-all-hands-and-lattice)
-    - [Lattice](*lattice)
-- [How do I keep my team motivated?](*how-do-i-keep-my-team-motivated)
-    - [Autonomy, Mastery, and Purpose](*autonomy-mastery-and-purpose)
-    - [Provide Feedback](*provide-feedback)
-    - [Flow](*flow)
-- [I have an under-performing member on my team. What do I do?](*i-have-an-under-performing-member-on-my-team-what-do-i-do)
-- [How can I avoid burning my team out?](*how-can-i-avoid-burning-my-team-out)
-    - [Crunch Time](*crunch-time)
-- [Recommended Books](*recommended-books)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+* The Webflow Tech Lead Guide                                           :TOC:
+  - [[#welcome][Welcome]]
+  - [[#whats-a-tech-lead-anyway][What's a Tech Lead, anyway?]]
+  - [[#why-might-i-want-to-be-a-tech-lead][Why might I want to be a Tech Lead?]]
+  - [[#how-can-i-become-a-tech-lead][How can I become a tech lead?]]
+  - [[#whats-expected-of-me-when-managing-a-team][What's expected of me when managing a team?]]
+  - [[#what-are-the-different-types-of-teams-a-tech-lead-can-manage][What are the different types of teams a Tech Lead can manage?]]
+  - [[#help-we-are-behind-schedule][Help! We are behind schedule!]]
+  - [[#how-can-i-make-better-estimates][How can I make better estimates?]]
+  - [[#how-long-should-projects-take][How long should projects take?]]
+  - [[#should-i-branch-off-of-feature-branches-or-not][Should I branch off of feature branches or not?]]
+  - [[#how-can-i-stay-centered][How can I stay "centered"?]]
+  - [[#how-do-i-stay-organized][How do I stay organized?]]
+  - [[#how-much-should-i-expect-to-code][How much should I expect to code?]]
+  - [[#how-do-i-provide-status-reports-to-all-hands-and-lattice][How do I provide status reports to All Hands and Lattice?]]
+  - [[#how-do-i-keep-my-team-motivated][How do I keep my team motivated?]]
+  - [[#i-have-an-under-performing-member-on-my-team-what-do-i-do][I have an under-performing member on my team. What do I do?]]
+  - [[#how-can-i-avoid-burning-my-team-out][How can I avoid burning my team out?]]
+  - [[#recommended-books][Recommended Books]]
+  - [[#resources][Resources]]
 
 ** Welcome
 
