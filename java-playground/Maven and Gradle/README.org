@@ -1,4 +1,23 @@
-* Maven
+* Maven                                                               :TOC_9:
+- [[#copy-artifacts-using-maven][copy-artifacts-using-maven]]
+- [[#openapi-generator-maven-plugin-poc][openapi-generator-maven-plugin-poc]]
+- [[#create-an-empty-java-project-from-terminal-using-maven-archetypes][Create an empty java project from terminal using maven archetypes]]
+- [[#displaying-available-maven-dependency-updates][Displaying available Maven dependency updates:]]
+- [[#errors-when-running-maven-commands][Errors when running maven commands]]
+- [[#how-to-generate-maven-settingsxml-in-an-enterprise-environment][How to generate maven settings.xml in an enterprise environment?]]
+- [[#maven-archetypes][Maven Archetypes]]
+- [[#maven-how-to-use-a-specific-version-of-dependency][Maven How to use a specific version of dependency]]
+- [[#maven-installation-details][Maven Installation details]]
+    - [[#step-1-download-the-maven-binaries][Step 1: Download the Maven Binaries]]
+    - [[#step-2-setting-m2_home-and-path-variables][Step 2: Setting M2_HOME and Path Variables]]
+    - [[#step-3-verify-the-maven-installation][Step 3: Verify the Maven installation]]
+- [[#maven-dependencymanagement-vs-dependencies][Maven dependencyManagement vs dependencies]]
+    - [[#unwanted-inheritance][Unwanted inheritance.]]
+- [[#maven-vs-gradle][Maven vs Gradle]]
+- [[#understanding-dependencies-used-by-a-project-using-maven][Understanding dependencies used by a project using Maven]]
+- [[#using-custom-jvm-config-with-maven][Using custom jvm-config with maven]]
+- [[#how-are-mvn-clean-package-and-mvn-clean-install-different][How are "mvn clean package" and "mvn clean install" different?]]
+- [[#helpful-documentation][Helpful documentation]]
 
 * [[../java-playground/copy-artifacts-using-maven][copy-artifacts-using-maven]]
 
