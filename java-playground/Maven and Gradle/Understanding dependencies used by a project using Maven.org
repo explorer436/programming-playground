@@ -1,8 +1,0 @@
-* Understanding dependencies used by a project using Maven
-
-  How to understand maven dependency tree for a project?
-  Use this command to look at the dependency tree and make changes if necessary:
-  
-  #+begin_src 
-  mvn dependency:tree  
-  #+end_src

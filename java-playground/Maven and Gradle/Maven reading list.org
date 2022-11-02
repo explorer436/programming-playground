@@ -1,5 +1,0 @@
-* Helpful documentation
-
-   https://maven.apache.org/guides/
-
-   https://www.vogella.com/tutorials/ApacheMaven/article.html#maven-vs-other-build-tools

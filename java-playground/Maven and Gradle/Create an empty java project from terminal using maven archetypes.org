@@ -1,7 +1,0 @@
-* Create an empty java project from terminal using maven archetypes
-
-  #+begin_src 
-  mvn archetype:generate -DgroupId=com.my.company -DartifactId=test-java-project -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
-  #+end_src
-
-  Reference: https://maven.apache.org/guides/mini/guide-creating-archetypes.html

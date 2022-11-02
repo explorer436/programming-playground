@@ -1,8 +1,0 @@
-* Displaying available Maven dependency updates:
-
-  To simply know if and how we can update our project, the right tool for the job is this command:
-  #+begin_src 
-  mvn versions:display-dependency-updates  
-  #+end_src
-  
-  This command checks and shows if there are updates to the versions of the dependencies.
