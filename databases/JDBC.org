@@ -1,0 +1,182 @@
+* Java Database Connectivity (JDBC)
+Java Database Connectivity (JDBC) is a standard Java API to interact with relational databases form Java. JDBC has set
+of classes and interfaces which can use from Java application and talk to database without learning RDBMS details and
+using Database Specific JDBC Drivers.
+An industry standard for database-independent connectivity between the Java platform and a wide range of databases.
+The JDBC provides a call-level API for SQL-based database access.
+** new features added to JDBC 4.0
+The major features added in JDBC 4.0 include :
+• Auto-loading of JDBC driver class
+• Connection management enhancements
+• Support for RowId SQL type
+• DataSet implementation of SQL using Annotations
+• SQL exception handling enhancements
+• SQL XML support
+** Basic Steps in writing a Java program using JDBC
+JDBC makes the interaction with RDBMS simple and intuitive. When a Java application needs to access database :
+• Load the RDBMS specific JDBC driver because this driver actually communicates with the database (Incase of
+JDBC 4.0 this is automatically loaded).
+• Open the connection to database which is then used to send SQL statements and get results back.
+• Create JDBC Statement object. This object contains SQL query.
+• Execute statement which returns resultset(s). ResultSet contains the tuples of database table as a result of SQL
+query.
+• Process the result set.
+• Close the connection.
+** JDBC Architecture
+The JDBC Architecture consists of two layers:
+• The JDBC API, which provides the application-to-JDBC Manager connection.
+• The JDBC Driver API, which supports the JDBC Manager-to-Driver Connection.
+The JDBC API uses a driver manager and database-specific drivers to provide transparent connectivity to heterogeneous
+databases. The JDBC driver manager ensures that the correct driver is used to access each data source. The driver
+manager is capable of supporting multiple concurrent drivers connected to multiple heterogeneous databases. The
+location of the driver manager with respect to the JDBC drivers and the Java application is shown.
+** main components of JDBC
+The life cycle of a servlet consists of the following phases:
+• DriverManager: Manages a list of database drivers. Matches connection requests from the java application with
+the proper database driver using communication subprotocol. The first driver that recognizes a certain
+subprotocol under JDBC will be used to establish a database Connection.
+• Driver: The database communications link, handling all communication with the database. Normally, once the
+driver is loaded, the developer need not call it explicitly.
+• Connection : Interface with all methods for contacting a database.The connection object represents
+communication context, i.e., all communication with database is through connection object only.
+• Statement : Encapsulates an SQL statement which is passed to the database to be parsed, compiled, planned
+and executed.
+• ResultSet: The ResultSet represents set of rows retrieved due to query execution.
+** How the JDBC application works
+A JDBC application can be logically divided into two layers:
+1. Driver layer
+2. Application layer
+• Driver layer consists of DriverManager class and the available JDBC drivers.
+• The application begins with requesting the DriverManager for the connection.
+• An appropriate driver is choosen and is used for establishing the connection. This connection is given to the
+application which falls under the application layer.
+• The application uses this connection to create Statement kind of objects, through which SQL commands are sent
+to backend and obtain the results.
+** How do I load a database driver with JDBC 4.0 / Java 6?
+Provided the JAR file containing the driver is properly configured, just place the JAR file in the classpath. Java
+developers NO longer need to explicitly load JDBC drivers using code likeClass.forName() to register a JDBC
+driver.The DriverManager class takes care of this by automatically locating a suitable driver when the
+DriverManager.getConnection() method is called. This feature is backward-compatible, so no changes are
+needed to the existing JDBC code.
+** JDBC Driver interface
+The JDBC Driver interface provides vendor-specific implementations of the abstract classes provided by the JDBC API.
+Each vendor driver must provide implementations of the java.sql.Connection, Statement,
+PreparedStatement, CallableStatement, ResultSetand Driver.
+** What does the connection object represents
+The connection object represents communication context, i.e., all communication with database is through connection
+object only.
+** Statement
+Statement acts like a vehicle through which SQL commands can be sent. Through the connection object we create
+statement kind of objects.
+Through the connection object we create statement kind of objects.
+ Statement stmt = conn.createStatement();
+This method returns object which implements statement interface.
+** PreparedStatement
+A prepared statement is an SQL statement that is precompiled by the database. Through precompilation, prepared
+statements improve the performance of SQL commands that are executed multiple times (given that the database
+supports prepared statements). Once compiled, prepared statements can be customized prior to each execution by
+altering predefined SQL parameters.
+ PreparedStatement pstmt = conn.prepareStatement("UPDATE EMPLOYEES SET SALARY = ?
+WHERE ID = ?");
+ pstmt.setBigDecimal(1, 153833.00);
+ pstmt.setInt(2, 110592);
+Here: conn is an instance of the Connection class and "?" represents parameters.These parameters must be specified
+before execution.
+An object that represents a precompiled SQL statement.
+A SQL statement is precompiled and stored in a PreparedStatement object. This object can then be used to efficiently
+execute this statement multiple times.
+** PreparedStatementCreator
+• Is one of the most common used interfaces for writing data to database.
+• Has one method –createPreparedStatement(Connection)
+• Responsible for creating a PreparedStatement.
+• Does not need to handle SQLExceptions.
+** Statement vs PreparedStatement
+** callable statements
+Callable statements are used from JDBC application to invoke stored procedures and functions.
+refer: stored procedures
+** How to call a stored procedure from JDBC
+PL/SQL stored procedures are called from within JDBC programs by means of the prepareCall() method of the
+Connection object created. A call to this method takes variable bind parameters as input parameters as well as output
+variables and creates an object instance of the CallableStatement class.
+The following line of code illustrates this:
+ CallableStatement stproc_stmt = conn.prepareCall("{call
+procname(?,?,?)}");
+Here conn is an instance of the Connection class.
+** Types of JDBC drivers
+There are four types of drivers defined by JDBC as follows:
+• Type 1: JDBC/ODBC—These require an ODBC (Open Database Connectivity) driver for the database to be
+installed. This type of driver works by translating the submitted queries into equivalent ODBC queries and
+forwards them via native API calls directly to the ODBC driver. It provides no host redirection capability.
+• Type2: Native API (partly-Java driver)—This type of driver uses a vendor-specific driver or database API to
+interact with the database. An example of such an API is Oracle OCI (Oracle Call Interface). It also provides no
+host redirection.
+• Type 3: Open Protocol-Net—This is not vendor specific and works by forwarding database requests to a remote
+database source using a net server component. How the net server component accesses the database is
+transparent to the client. The client driver communicates with the net server using a database-independent
+protocol and the net server translates this protocol into database calls. This type of driver can access any
+database.
+• Type 4: Proprietary Protocol-Net(pure Java driver)—This has a same configuration as a type 3 driver but uses a
+wire protocol specific to a particular vendor and hence can access only that vendor's database. Again this is all
+transparent to the client.
+Note: Type 4 JDBC driver is most preferred kind of approach in JDBC.
+** Which is the right type of driver to use and when?
+• Type I driver is handy for prototyping
+• Type III driver adds security, caching, and connection control
+• Type III and Type IV drivers need no pre-installation
+** Which type of JDBC driver is the fastest one?
+JDBC Net pure Java driver(Type IV) is the fastest driver because it converts the JDBC calls into vendor specific protocol
+calls and it directly interacts with the database.
+** Does the JDBC-ODBC Bridge support multiple concurrent open statements per connection?
+No. You can open only one Statement object per connection when you are using the JDBC-ODBC Bridge.
+** Standard isolation levels defined by JDBC
+The values are defined in the class java.sql.Connection and are:
+• TRANSACTION_NONE
+• TRANSACTION_READ_COMMITTED
+• TRANSACTION_READ_UNCOMMITTED
+• TRANSACTION_REPEATABLE_READ
+• TRANSACTION_SERIALIZABLE
+Any given database may not support all of these levels.
+** resultset
+The ResultSet represents set of rows retrieved due to query execution.
+ ResultSet rs = stmt.executeQuery(sqlQuery);
+** Types of resultsets
+The values are defined in the class java.sql.Connection and are:
+• TYPE_FORWARD_ONLY specifies that a resultset is not scrollable, that is, rows within it can be advanced only in
+the forward direction.
+• TYPE_SCROLL_INSENSITIVE specifies that a resultset is scrollable in either direction but is insensitive to
+changes committed by other transactions or other statements in the same transaction.
+• TYPE_SCROLL_SENSITIVE specifies that a resultset is scrollable in either direction and is affected by changes
+committed by other transactions or statements within the same transaction.
+Note: A TYPE_FORWARD_ONLY resultset is always insensitive.
+** TYPE_SCROLL_INSENSITIVE vs TYPE_SCROLL_SENSITIVE
+** rowset
+A RowSet is an object that encapsulates a set of rows from either Java Database Connectivity (JDBC) result sets or
+tabular data sources like a file or spreadsheet. RowSets support component-based development models like JavaBeans,
+with a standard set of properties and an event notification mechanism.
+** Types of RowSet
+There are two types of RowSet are there. They are:
+• Connected - A connected RowSet object connects to the database once and remains connected until the
+application terminates.
+• Disconnected - A disconnected RowSet object connects to the database, executes a query to retrieve the data
+from the database and then closes the connection. A program may change the data in a disconnected RowSet
+while it is disconnected. Modified data can be updated in the database after a disconnected RowSet
+reestablishes the connection with the database.
+** BatchUpdates
+The BatchUpdates feature allows us to group SQL statements together and send to database server in one single trip.
+** DataSource
+A DataSource object is the representation of a data source in the Java programming language. In basic terms,
+• A DataSource is a facility for storing data.
+• DataSource can be referenced by JNDI.
+• Data Source may point to RDBMS, file System , any DBMS etc..
+** Advantages of DataSource
+The few advantages of data source are :
+• An application does not need to hardcode driver information, as it does with theDriverManager.
+• The DataSource implementations can easily change the properties of data sources. For example: There is no
+need to modify the application code when making changes to the database details.
+• The DataSource facility allows developers to implement a DataSource class to take advantage of features like
+connection pooling and distributed transactions.
+** connection pooling - Main advantages
+A connection pool is a mechanism to reuse connections created. Connection pooling can increase performance
+dramatically by reusing connections rather than creating a new physical connection each time a connection is
+requested..
+** advantage of Hibernate over jdbc

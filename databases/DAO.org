@@ -1,0 +1,173 @@
+* data access object DAO
+The$DAO$design$pa/ern$completely$hides$the$data$access$implementa7on$from$its$clients.$The$interfaces$given$to$client$do$not$
+change$when$the$underlying$data$source$mechanism$changes.$This$is$the$capability$which$allows$the$DAO$to$adopt$different$access$
+scheme$without$affec7ng$to$business$logic$or$its$clients.$Generally$it$acts$as$an$adapter$between$its$components$and$database.$The$
+DAO$design$pa/ern$consists$of$some$factory$classes,$DAO$interfaces$and$some$DAO$classes$to$implement$those$interfaces.
+The$Data$Access$object$is$the$primary$object$of$this$design$pa/ern.$This$object$abstract$the$data$access$implementa7ons$for$the$
+other$object$to$enable$transparently$access$to$the$database.
+DAO$class$gets$connec7on$from$the$connec7on$factory$class$(It$holds$a$connec7on).$The$bean$class$gives$the$data$on$which$
+opera7on$is$performed.$Finally$DAO$class$performs$the$opera7on$on$the$database$and$returns$the$response$to$the$other$layer$of$the$
+applica7on.
+One$of$the$great$advantage$of$DAO$is$the,$you$do$not$require$to$write$a$code$for$database$connec7on$on$everywhere,$you$just$make$
+an$object$of$DAO$class$and$call$the$required$method$to$perform$opera7on$on$database.
+DAO$provides$the$flexibility$to$change$applica7on$prospec7ve$without$effec7ng$rest$of$the$par$t$of$the$applica7on.$It$provides$a$very$
+simple$and$consistence$API.$Because$of$its$simplicity$it$has$become$a$mandatory$parts$of$a$web$applica7on.
+DAO$design$pa/ern$works$with$Data Transfer Object also$known$as$value$object.$DTO$is$a$java$class$with$proper7es,$ge/er$and$se/er$
+methods.
+Example
+You$are$developing$a$simple$Employee$management$applica7on.$Your$data$is$residing$in$RDBMS,$say$Oracle.$There$is$one$table$called$
+user which$stores$employee$informa7on.
+Table : user
+userid number(5)$PRIMARY$KEY,
+name$varchar2(15)$NOT$NULL,
+designa7on$varchar2(15)$NOT$NULL,
+age$number(2)$NOT$NULL
+Step 1: DBConnection
+import java.sql.*;
+public class DBConnection {
+private static DBConnection dbConnection = null;
+private DBConnection() { try {
+Class.forName(“oracle.jdbc.OracleDriver”); } catch (ClassNotFoundException e) {
+e.printStackTrace();
+} }
+public Connection getConnection() throws SQLException { Connection conn = null;
+String url = “jdbc:oracle:thin:@localhost:1521:xe”; conn =
+DriverManager.getConnection(url, “hr”, “hr”); return conn;
+}
+public static DBConnection getInstance() { if (dbConnection == null) {
+dbConnection = new DBConnection(); return dbConnection;
+} }
+Step 2: DTO Class
+import java.io.Serializable;
+public class User implements Serializable {
+private int userId;
+private String name; private String designation; private int age;
+public int getUserId() { return userId;
+}
+public void setUserId(int userId) {
+this.userId = userId;
+}
+public String getName() {
+return name;
+}
+public void setName(String name) {
+this.name = name;
+public String getDesignation() {
+return designation;
+}
+public void setDesignation(String designation) {
+this.designation = designation;
+}
+public int getAge() {
+return age;
+}
+public void setAge(int age) {
+this.age = age;
+}
+}
+Step 3: Interface
+Well,$our$DTO$is$ready.$Now$let$us$get$into$DAO.$For$implemen7ng$DOA,$we$have$to$implement$the$following$steps.
+An$interface$which$defines$methods$for$various$opera7ons$related$to$DTO.$
+Concrete$classes$which$implement$DAO$interface
+Factory/Abstract$Factory$class$to$get$a$reference$to$DAO$object.
+first$define$interface.$You$can$think$of$various$opera7ons$related$to$user$object$as$follows,
+Get$a$list$of$all$users
+Get$par7cular$user$informa7on$when$we$supply$unique$id.$
+Add/Update/Delete$user.
+public interface UserDAO {
+public void insert(User user);
+public void update(User user)
+public void delete(int userId);
+public User[] findAll();
+public User findByKey(int userId);
+public Connection getConnection() throws SQLException;
+}
+Step 4: DAO Class
+Well,$now$let$us$define$a$derived$class.$For$accessing$data,$we$may$be$using$JDBC,$object$rela7onal$mapping$tools$like$Hibernate$etc.$
+For$each$implementa7on$we$have$to$create$separate$class.$The$skeleton$for$one$such$implementa7on$is$given$below.
+public class UserDAOImpl implements UserDAO { private Connection conn;
+private Connection getConnection() throws SQLException { Connection conn = null;
+conn = DBConnection.getInstance().getConnection(); return conn;
+}
+public void delete(int userId) {
+conn = getConnection();
+// delete user from user table
+}
+public User[] findAll() {
+conn = getConnection();
+// get a list of all users from user table return null;
+}
+public User findByKey(int userId) {
+conn = getConnection();
+// get a user information if we supply unique userid return null;
+}
+public void insert(User user) {
+conn = getConnection();
+// insert user into user table
+}
+public void update(User user) {
+conn = getConnection();
+// update user information in user table
+}
+}
+Step 5: Factory Class
+public class DAOFactory {
+public static UserDAO getUserDAO(String type) {
+if (type.equalsIgnoreCase("jdbc")) { return new UserDAOImpl();}
+else {return new OtherDAOImpl();}
+}
+}
+Step 6: Test Code
+Well$our$DAO$implementa7on$is$ready.$Now$let$us$examine$the$client$code$to$insert$user$informa7on$into$user$table.
+//instantiate user object
+User user=new User();
+user.setUserId(1); user.setName("Harsha"); user.setDesignation("Programmer");
+user.setAge(26);
+//get a reference to UserDAO object
+UserDAO userDAO=UserDAOFactory.getUserDAO("jdbc"); //call insert method by passing user object
+userDAO.insert(user);
+In$the$above$code$snippet,$we$create$user$object$and$assign$proper7es.$Then$we$call$sta7c$method$of$factory$class$to$get$a$reference$
+to$UserDAO$object.$The$factory$class$returns$appropriate$derived$class,$in$our$case$UserDAOImpl.$It$then$calls$the$insert()$method$
+DAO$object.$Here$DAO$provides$a$clean$abstrac7on$for$data$access$from$architecture$point$of$view.
+In$the$above$factory$class$we$define$a$sta7c$method$to$get$a$reference$to$DAO$derived$class$based$on$parameter.$It$returns$
+appropriate$class$based$on$condi7on.
+** DAO vs ORM
+Data Access Object (DAO)
+DAO offers a very simple method of mapping Java objects to Databases. To build a Customer DAO a developer would
+write a Customer class which contains one attribute for each field in the customer table, and a CustomerDao class which
+contains methods for inserting, updating, selecting, and deleting customer rows. The CustomerDao class would typically
+contain JDBC code for executing the necessary SQL statements.
+The DAO design pattern has the following advantages:
+• Simple – can be understood by most Java developers
+• Separation of data (DTO) and behaviour (DAO)
+• Designed for distributed architectures (DTO classes can be passed between tiers and DAO classes can be exposed as
+J2EE Session Beans or Web Services)
+• No runtime container required (DAO code can be unit tested on the client)
+• Can result in highly efficient code if DAO code is designed to take advantage of database capabilities (stored
+procedures, joins, etc).
+The DAO design pattern has the following disadvantages:
+• Requires large volumes of implementation code to be written (unless a DAO Code Generator is being used)
+• Writing code to navigate the object model requires some understanding of the database schema
+Object Relational Mapping (ORM)
+There are many ORM tools on the market and they provide a number of different capabilities and coding styles. Examples
+of ORM technologies/products include EJB, JDO and Hibernate.
+When using an ORM approach it is quite common for the Java object model to be developed first (possibly using a UML
+tool), with relationships between classes modeled as Collections. The mapping between the Java classes and the
+database tables are modeled using a graphical tool and stored in configuration files that will be used by the ORM runtime.
+The ORM approach has the following advantages:
+• Java domain model uses natural Java programming style (uses Collections and Iterators to navigate relationships)
+• ORM runtime can provide capabilities such as Caching, Auditing that would have to be hand-coded using the DAO
+approach
+The ORM approach has the following disadvantages:
+• Data and behaviour are not separated
+• Façade needs to be built if the data model is to be made available in a distributed architecture
+• Each ORM technology/product has a different set of APIs and porting code between them is not easy
+Using DAO with ORM
+It is possible to use both DAO and ORM within the same project (for instance, a DAO tier could be provided to make data
+available to remote clients). It is also possible to build (either by hand or using a code generator) a DAO façade onto an
+ORM domain model, giving the benefits of the ORM runtime and the distributed capabilities of the DAO design pattern.
+Summary
+DAO and ORM are both valid approaches to persistence and the choice between them needs to be considered on a perproject basis.
+refer:$design$pa/erns
+refer: Spring DAO
+refer: ORM
