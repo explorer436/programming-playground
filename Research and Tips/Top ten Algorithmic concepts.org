@@ -1,4 +1,14 @@
-* Top 10 algorithms or algorithmic concepts for coding interviews - by Techlead and algoexpert
+* Top 10 algorithms or algorithmic concepts for coding interviews - by Techlead and algoexpert :TOC_9:
+  - [[#1--depth-first-search--][1.  depth first search -]]
+  - [[#2--breadth-first-search--][2.  breadth first search -]]
+  - [[#3--matching-brackets-problems][3.  matching brackets problems]]
+  - [[#4--making-use-of-hashtables][4.  making use of hashtables]]
+  - [[#5--how-to-manipulate-multiple-variables-or-pointers-at-once][5.  how to manipulate multiple variables or pointers at once:]]
+  - [[#6--reversing-a-linked-list][6.  reversing a linked list]]
+  - [[#7--sorting-fundamentals][7.  sorting fundamentals]]
+  - [[#8--recursion][8.  recursion]]
+  - [[#9--knowing-how-to-construct-custom-datastructures][9.  knowing how to construct custom datastructures.]]
+  - [[#10--binary-search][10.  binary search]]
 
 ** 1.  depth first search - 
 
