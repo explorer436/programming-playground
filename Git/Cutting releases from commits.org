@@ -1,2 +1,12 @@
 cherry picking is an option but it seems tedious.
 
+How to create branch from an old commit:
+Using git bash:
+git branch <branchname> <commitHash>
+
+Process:
+From eclipse eGit, checkout develop.
+Go to history, select the commit and create a branch from the commit.
+Run mvn clean install to make sure everything is good.
+Push the branch.
+Create the pull request.
