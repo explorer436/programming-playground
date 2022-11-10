@@ -5,8 +5,9 @@ Using git bash:
 git branch <branchname> <commitHash>
 
 Process:
-From eclipse eGit, checkout develop.
-Go to history, select the commit and create a branch from the commit.
-Run mvn clean install to make sure everything is good.
-Push the branch.
-Create the pull request.
+1. From eclipse eGit, checkout develop.
+1. Go to history, select the commit and create a branch from the commit.
+1. Run mvn clean install to make sure everything is good.
+1. Push the branch.
+1. Double check to see if any commits are missing. If so, do git cherry-pick
+1. Create the pull request.
