@@ -1,0 +1,5 @@
+* front end technologies
+
+TODO
+
+https://stackoverflow.blog/2022/10/31/comparing-frameworks-for-cross-platform-apps-flutter-vs-react-native/
