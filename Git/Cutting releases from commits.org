@@ -1,4 +1,6 @@
-cherry picking is an option but it seems tedious.
+** cherry picking 
+1. A little tedious.
+1. Works best when there are only a few commits to work with.
 
 How to create branch from an old commit:
 Using git bash:
