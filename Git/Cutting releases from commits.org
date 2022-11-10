@@ -2,11 +2,13 @@
 1. A little tedious.
 1. Works best when there are only a few commits to work with.
 
-How to create branch from an old commit:
+** How to create branch from an old commit:
+
 Using git bash:
 ~git branch <branchname> <commitHash>~
 
-Process:
+** Process:
+
 1. From eclipse eGit, checkout develop.
 1. Go to history, select the commit and create a branch from the commit.
 1. Run mvn clean install to make sure everything is good.
