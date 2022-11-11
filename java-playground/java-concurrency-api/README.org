@@ -85,3 +85,14 @@ https://www.baeldung.com/java-runnable-callable
 
 Baeldung projects:
 https://github.com/eugenp/tutorials/tree/master/core-java-modules/core-java-concurrency-basic
+
+Java/Springboot Blocking vs Non-Blocking REST API Implementation:
+
+https://vimalma1093.medium.com/java-springboot-blocking-vs-non-blocking-rest-api-implementation-fe5643840287
+
+https://segmentfault.com/a/1190000040347139/en#:~:text=2.1%20Java%20thread%20status&text=It%20is%20generally%20called%20%22synchronization,or%20%22non%2Dblocking%22.
+
+TODO
+https://www.alibabacloud.com/blog/how-java-is-used-for-asynchronous-non-blocking-programming_597808
+
+https://www.javatpoint.com/java-nio-vs-input-output
