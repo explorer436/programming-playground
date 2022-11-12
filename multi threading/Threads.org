@@ -238,7 +238,7 @@ tool for exposing race condition in java.
 
 ** Code Example of Race Condition in Java
 
-two code patterns namely "check and act" and "read modify write" can suffer race condition if not synchronized properly. both cases rely on natural assumption that a single line of code will be atomic and execute in one shot which is wrong e.g. ++ is not atomic.
+Two code patterns namely "check and act" and "read modify write" can suffer race condition if not synchronized properly. both cases rely on natural assumption that a single line of code will be atomic and execute in one shot which is wrong e.g. ++ is not atomic.
 
 *** "Check and Act" race condition pattern
 
