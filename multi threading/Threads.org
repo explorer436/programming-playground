@@ -1,9 +1,9 @@
 * Threads                                                             :TOC_9:
-- [[#multithreaded][multithreaded]]
+- [[#multithreaded][Multithreaded]]
 - [[#thread][Thread]]
 - [[#start-vs-run][start() vs run()]]
 - [[#thread-vs-runnable][thread vs runnable]]
-- [[#inter-thread-communication][inter thread communication]]
+- [[#inter-thread-communication][Inter thread communication]]
 - [[#why-wait-notify-and-notifyall-is-declared-in-object-class-instead-of-thread][Why wait, notify and notifyAll is declared in Object Class instead of Thread?]]
 - [[#how-to-write-thread-safe-code-in-java][How to write Thread-Safe Code in Java]]
 - [[#how-to-kill-a-thread-in-java][How to kill a thread in Java?]]
@@ -11,14 +11,15 @@
   - [[#example-of-synchronized-block-in-java][Example of synchronized block in Java]]
   - [[#important-points-of-synchronized-keyword-in-java][Important points of synchronized keyword in Java]]
 - [[#volatile][volatile]]
-- [[#race-condition][race condition]]
+- [[#race-condition][Race condition]]
   - [[#how-to-find-race-conditions-in-java][How to find Race Conditions in Java]]
   - [[#code-example-of-race-condition-in-java][Code Example of Race Condition in Java]]
     - [[#check-and-act-race-condition-pattern]["Check and Act" race condition pattern]]
-    - [[#read-modify-update-race-conditions][read-modify-update race conditions]]
+    - [[#read-modify-update-race-conditions][Read-modify-update race conditions]]
 - [[#references][References]]
 
-* multithreaded
+* Multithreaded
+
 Describes a program that is designed to have parts of its code execute concurrently.
 
 * Thread
@@ -46,7 +47,7 @@ Implement thread either overriding ~run()~ method of ~Thread~ class or implement
 
    Implementing Runnable is better because in Java we can only extend one class so if we extend Thread class we can not extend any other class while by implementing Runnable interface we still have that option open with us. 
 
-* inter thread communication
+* Inter thread communication
 
    Communication between the threads of the same process.
    
@@ -118,6 +119,7 @@ Implement thread either overriding ~run()~ method of ~Thread~ class or implement
    https://www.baeldung.com/java-thread-stop
 
 * synchronized (or synchronization)
+
 A keyword in the Java programming language that, when applied to a method or code block, guarantees that at most one thread at a time executes that code.
 Concurrent access of shared objects in Java introduces to kind of errors: thread interference and memory consistency errors.
 Synchronization in Java will only be needed if shared object is mutable. If your shared object is read only or immutable object you don't need synchronization despite running multiple threads. Same is true with what threads are doing with object if all the threads are only reading value then you don't require synchronization in java. JVM guarantees that Java synchronized code will only be executed by one thread at a time.
@@ -175,46 +177,48 @@ This is a classic example of double checked locking in Singleton. In this exampl
 ** Important points of synchronized keyword in Java
 
 1. Synchronized keyword in Java is used to provide mutual exclusive access of a shared resource with multiple threads in Java. Synchronization in java guarantees that no two threads can execute a synchronized method which requires same lock simultaneously or concurrently.
-2. You can use java synchronized keyword only on synchronized method or synchronized block.
-3. When ever a thread enters into java synchronized method or block it acquires a lock and whenever it leaves java synchronized method or block it releases the lock. Lock is released even if thread leaves synchronized method after completion or due to any Error or Exception.
-4. Java Thread acquires an object level lock when it enters into an instance synchronized java method and acquires a class level lock when it enters into static synchronized java method.
-5.java synchronized keyword is re-entrant in nature it means if a java synchronized method calls another synchronized method which requires same lock then current thread which is holding lock can enter into that method without acquiring lock.
-6. Java Synchronization will throw NullPointerException if object used in java synchronized block is null e.g. synchronized (myInstance) will throws NullPointerException if myInstance is null.
-7. One Major disadvantage of java synchronized keyword is that it doesn't allow concurrent read which you can implement using java.util.concurrent.locks.ReentrantLock.
-8. One limitation of java synchronized keyword is that it can only be used to control access of shared object within the same JVM. If you have more than one JVM and need to synchronized access to a shared file system or database, the java synchronized keyword is not at all sufficient. You need to implement a kind of global lock for that.
-9. Java synchronized keyword incurs performance cost. Synchronized method in Java is very slow and can degrade performance. So use synchronization in java when it absolutely requires and consider using java synchronized block for synchronizing critical section only.
-10. Java synchronized block is better than java synchronized method in java because by using synchronized block you can only lock critical section of code and avoid locking whole method which can possibly degrade performance. A good example of java synchronization around this concept is getInstance() method Singleton class.
-11. Its possible that both static synchronized and non static synchronized method can run simultaneously or concurrently because they lock on different object.
-12. From java 5 after change in Java memory model reads and writes are atomic for all variables declared using volatile keyword (including long and double variables) and simple atomic variable access is more efficient instead of accessing these variables via synchronized java code. But it requires more care and attention from the programmer to avoid memory consistency errors.
-13. Java synchronized code could result in deadlock or starvation while accessing by multiple thread if synchronization is not implemented correctly. To know how to avoid deadlock in java see here.
-14. According to the Java language specification you can not use java synchronized keyword with constructor it’s illegal and result in compilation error. So you can not synchronized constructor in Java which seems logical because other threads cannot see the object being created until the thread creating it has finished it.
-15. You cannot apply java synchronized keyword with variables and can not use java volatile keyword with method.
-16. Java.util.concurrent.locks extends capability provided by java synchronized keyword for writing more sophisticated programs since they offer more capabilities e.g. Reentrancy and interruptible locks.
-17. java synchronized keyword also synchronizes memory. In fact java synchronized synchronizes the whole of thread memory with main memory.
-18. Important method related to synchronization in Java are wait(), notify() and notifyAll() which is defined in Object class.
-19. Do not synchronize on non final field on synchronized block in Java. because reference of non final field may change any time and then different thread might synchronizing on different objects i.e. no synchronization at all. example of synchronizing on non final field :
-private String lock = new String("lock");
-synchronized(lock){
-System.out.println("locking on :" + lock);
-}
-any if you write synchronized code like above in java you may get warning "Synchronization on non-final field" in IDE like Netbeans and InteliJ
-20. Its not recommended to use String object as lock in java synchronized block because string is immutable object and literal string and interned string gets stored in String pool. so by any chance if any other part of code or any third party library used same String as there lock then they both will be locked on same object despite being completely unrelated which could result in unexpected behavior and bad performance. instead of String object its advised to use new Object() for Synchronization in Java on synchronized block.
+1. You can use java synchronized keyword only on synchronized method or synchronized block.
+1. When ever a thread enters into java synchronized method or block it acquires a lock and whenever it leaves java synchronized method or block it releases the lock. Lock is released even if thread leaves synchronized method after completion or due to any Error or Exception.
+1. Java Thread acquires an object level lock when it enters into an instance synchronized java method and acquires a class level lock when it enters into static synchronized java method.
+1.java synchronized keyword is re-entrant in nature it means if a java synchronized method calls another synchronized method which requires same lock then current thread which is holding lock can enter into that method without acquiring lock.
+1. Java Synchronization will throw NullPointerException if object used in java synchronized block is null e.g. synchronized (myInstance) will throws NullPointerException if myInstance is null.
+1. One Major disadvantage of java synchronized keyword is that it doesn't allow concurrent read which you can implement using java.util.concurrent.locks.ReentrantLock.
+1. One limitation of java synchronized keyword is that it can only be used to control access of shared object within the same JVM. If you have more than one JVM and need to synchronized access to a shared file system or database, the java synchronized keyword is not at all sufficient. You need to implement a kind of global lock for that.
+1. Java synchronized keyword incurs performance cost. Synchronized method in Java is very slow and can degrade performance. So use synchronization in java when it absolutely requires and consider using java synchronized block for synchronizing critical section only.
+1. Java synchronized block is better than java synchronized method in java because by using synchronized block you can only lock critical section of code and avoid locking whole method which can possibly degrade performance. A good example of java synchronization around this concept is getInstance() method Singleton class.
+1. Its possible that both static synchronized and non static synchronized method can run simultaneously or concurrently because they lock on different object.
+1. From java 5 after change in Java memory model reads and writes are atomic for all variables declared using volatile keyword (including long and double variables) and simple atomic variable access is more efficient instead of accessing these variables via synchronized java code. But it requires more care and attention from the programmer to avoid memory consistency errors.
+1. Java synchronized code could result in deadlock or starvation while accessing by multiple thread if synchronization is not implemented correctly. To know how to avoid deadlock in java see here.
+1. According to the Java language specification you can not use java synchronized keyword with constructor it’s illegal and result in compilation error. So you can not synchronized constructor in Java which seems logical because other threads cannot see the object being created until the thread creating it has finished it.
+1. You cannot apply java synchronized keyword with variables and can not use java volatile keyword with method.
+1. Java.util.concurrent.locks extends capability provided by java synchronized keyword for writing more sophisticated programs since they offer more capabilities e.g. Reentrancy and interruptible locks.
+1. java synchronized keyword also synchronizes memory. In fact java synchronized synchronizes the whole of thread memory with main memory.
+1. Important method related to synchronization in Java are wait(), notify() and notifyAll() which is defined in Object class.
+1. Do not synchronize on non final field on synchronized block in Java. because reference of non final field may change any time and then different thread might synchronizing on different objects i.e. no synchronization at all. example of synchronizing on non final field :
 
-private static final String LOCK = "lock"; //not recommended
-private static final Object OBJ_LOCK = new Object(); //better
-public void process() {
- synchronized(LOCK) {
- ........
- }
-}
-
-21. From Java library Calendar and SimpleDateFormat classes are not thread-safe and requires external synchronization in Java to be used in multi-threaded environment.
-
+    #+begin_src 
+    private String lock = new String("lock");
+    synchronized(lock){
+    System.out.println("locking on :" + lock);
+    }
+    #+end_src
+If you try to write synchronized code like the above example in java, you may get the warning "Synchronization on non-final field".
+1. Its not recommended to use String object as lock in java synchronized block because string is immutable object and literal string and interned string gets stored in String pool. so by any chance if any other part of code or any third party library used same String as there lock then they both will be locked on same object despite being completely unrelated which could result in unexpected behavior and bad performance. instead of String object its advised to use new Object() for Synchronization in Java on synchronized block.
+   #+begin_src 
+   private static final String LOCK = "lock"; //not recommended
+   private static final Object OBJ_LOCK = new Object(); //better
+   public void process() {
+    synchronized(LOCK) {
+    ........
+    }
+   }
+   #+end_src
+1. From Java library Calendar and SimpleDateFormat classes are not thread-safe and requires external synchronization in Java to be used in multi-threaded environment.
 
 * volatile
 A Java keyword used in variable declarations that specifies that the variable is modified asynchronously by concurrently running threads.
 
-* race condition
+* Race condition
 
 It is a type of concurrency bug or issue which is introduced in your program because parallel execution of your program
 by multiple threads at same time.
@@ -225,17 +229,21 @@ atomic operation and can be further divided into three steps like read, update a
 count at same time and if they read same value because of interleaving of read operation of one thread to update
 operation of another thread, one count will be lost when one thread overwrite increment done by other thread. atomic
 operations are not subject to race conditions because those operation cannot be interleaved.
+
 ** How to find Race Conditions in Java
+
 finding race conditions by unit testing is not reliable due to random nature of race conditions. since race conditions
 surfaces only some time your unit test may passed without facing any race condition. only sure shot way to find race
 condition is reviewing code manually or using code review tools which can alert you on potential race conditions based on
 code pattern and use of synchronization in Java. most people solely rely on code review strategy and yet to find a suitable
 tool for exposing race condition in java.
+
 ** Code Example of Race Condition in Java
-two code patterns namely "check and act" and "read modify write" can suffer race condition if not synchronized
-properly. both cases rely on natural assumption that a single line of code will be atomic and execute in one shot which is
-wrong e.g. ++ is not atomic.
+
+two code patterns namely "check and act" and "read modify write" can suffer race condition if not synchronized properly. both cases rely on natural assumption that a single line of code will be atomic and execute in one shot which is wrong e.g. ++ is not atomic.
+
 *** "Check and Act" race condition pattern
+
 classical example of "check and act" race condition in Java is getInstance() method of Singleton Class.
 getInstace() method first check for whether instance is null and than initialized the instance and return to caller. Whole
 purpose of Singleton is that getInstance should always return same instance of Singleton. if you call getInstance()
@@ -244,22 +252,30 @@ thread sees value of _instance reference variable as null (quite possible in jav
 to initialize and enters into critical section which eventually results in getInstance() returning two separate instance of
 Singleton. This may not happen always because a fraction of delay may result in value of _instance updated in main
 memory. here is a code example
+#+begin_src 
 public Singleton getInstance(){
-if(_instance == null){ //race condition if two threads sees _instance= null
-_instance = new Singleton();
+    if(_instance == null){
+        //race condition if two threads sees _instance= null
+        _instance = new Singleton();
+    }
 }
-}
-an easy way to fix "check and act" race conditions is to synchronized keyword and enforce locking which will make this
-operation atomic and guarantees that block or method will only be executed by one thread and result of operation will be
-visible to all threads once synchronized blocks completed or thread exited form synchronized block.
-*** read-modify-update race conditions
+#+end_src
+
+An easy way to fix "check and act" race conditions is to synchronized keyword and enforce locking which will make this operation atomic and guarantees that block or method will only be executed by one thread and result of operation will be visible to all threads once synchronized blocks completed or thread exited form synchronized block.
+
+*** Read-modify-update race conditions
+
 This is another code pattern in Java which cause race condition, classical example is the non thread safe counter.
 read-modify-update pattern also comes due to improper synchronization of non-atomic operations or combination of two
-individual atomic operations which is not atomic together e.g. put if absent scenario. consider below code
+individual atomic operations which is not atomic together e.g. put if absent scenario. Consider below code
+
+#+begin_src 
 if(!hashtable.contains(key)){
-hashtable.put(key,value);
+    hashtable.put(key,value);
 }
-here we only insert object into hashtable if its not already there. point is both contains() and put() are atomic but still this
+#+end_src
+
+Here we only insert object into hashtable if its not already there. point is both contains() and put() are atomic but still this
 code can result in race condition since both operation together is not atomic. consider thread T1 checks for conditions and
 goes inside if block now CPU is switched from T1 to thread T2 which also checks condition and goes inside if block. now
 we have two thread inside if block which result in either T1 overwriting T2 value or vice-versa based on which thread has
