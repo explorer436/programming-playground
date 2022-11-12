@@ -83,25 +83,24 @@ Implement thread either overriding ~run()~ method of ~Thread~ class or implement
    1. Use ~synchronized~ keyword in Java and lock the getCount() method so that only one thread can execute it at a time which removes possibility of coinciding or interleaving.
    1. use Atomic Integer, which makes this ++ operation atomic and since atomic operations are thread-safe and saves cost of external synchronization.
    
-   #+begin_src 
-   public class Counter {
-       private int count;
-       AtomicInteger atomicCount = new AtomicInteger( 0 );
-       /*
-        * This method thread-safe now because of locking and synchornization
-        */
-       public synchronized int getCount(){
-           return count++;
-       }
-       /*
-        * This method is thread-safe because count is incremented atomically
-        */
-       public int getCountAtomically(){
-           return atomicCount.incrementAndGet();
-       }
-   }
-   #+end_src
-
+      #+begin_src 
+      public class Counter {
+          private int count;
+          AtomicInteger atomicCount = new AtomicInteger( 0 );
+          /*
+           * This method thread-safe now because of locking and synchornization
+           */
+          public synchronized int getCount(){
+              return count++;
+          }
+          /*
+           * This method is thread-safe because count is incremented atomically
+           */
+          public int getCountAtomically(){
+              return atomicCount.incrementAndGet();
+          }
+      }
+      #+end_src
    1. Immutable objects are by default thread-safe because there state can not be modified once created. Since String is immutable in Java, its inherently thread-safe.
    1. Read only or final variables in Java are also thread-safe in Java.
    1. Locking is one way of achieving thread-safety in Java.
@@ -180,7 +179,7 @@ This is a classic example of double checked locking in Singleton. In this exampl
 1. You can use java synchronized keyword only on synchronized method or synchronized block.
 1. When ever a thread enters into java synchronized method or block it acquires a lock and whenever it leaves java synchronized method or block it releases the lock. Lock is released even if thread leaves synchronized method after completion or due to any Error or Exception.
 1. Java Thread acquires an object level lock when it enters into an instance synchronized java method and acquires a class level lock when it enters into static synchronized java method.
-1.java synchronized keyword is re-entrant in nature it means if a java synchronized method calls another synchronized method which requires same lock then current thread which is holding lock can enter into that method without acquiring lock.
+1. java synchronized keyword is re-entrant in nature it means if a java synchronized method calls another synchronized method which requires same lock then current thread which is holding lock can enter into that method without acquiring lock.
 1. Java Synchronization will throw NullPointerException if object used in java synchronized block is null e.g. synchronized (myInstance) will throws NullPointerException if myInstance is null.
 1. One Major disadvantage of java synchronized keyword is that it doesn't allow concurrent read which you can implement using java.util.concurrent.locks.ReentrantLock.
 1. One limitation of java synchronized keyword is that it can only be used to control access of shared object within the same JVM. If you have more than one JVM and need to synchronized access to a shared file system or database, the java synchronized keyword is not at all sufficient. You need to implement a kind of global lock for that.
