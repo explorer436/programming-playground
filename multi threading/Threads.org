@@ -194,7 +194,6 @@ This is a classic example of double checked locking in Singleton. In this exampl
 1. java synchronized keyword also synchronizes memory. In fact java synchronized synchronizes the whole of thread memory with main memory.
 1. Important method related to synchronization in Java are wait(), notify() and notifyAll() which is defined in Object class.
 1. Do not synchronize on non final field on synchronized block in Java. because reference of non final field may change any time and then different thread might synchronizing on different objects i.e. no synchronization at all. example of synchronizing on non final field :
-
     #+begin_src 
     private String lock = new String("lock");
     synchronized(lock){
