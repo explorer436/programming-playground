@@ -645,7 +645,7 @@ For data hiding to users from the data table we use views. Views stores only a p
 View is different perspective to see output from a table.
 View data can not take part in Manipulation.
 We can update or delete view.
-View is nothing but a query file which stores the Sql Query, which is similar to the query file in Foxpro. When executed the query returns the rows from the tables specified in the query which satisfies the conditions (to a dynamic virtual table which has the column names specified in the query). That is why each an every time the view displays different result set depending on the data in the table.
+View is nothing but a query file which stores the Sql Query, which is similar to the query file in Foxpro. When executed the query returns the rows from the tables specified in the query which satisfies the conditions (to a dynamic virtual table which has the column names specified in the query). That is why each and every time the view displays different result set depending on the data in the table.
 View is a subset of data derived from table.
 Update of data in table we can see in in view but update in view can not see in table.
 Views are associated with tables.

@@ -32,6 +32,8 @@ Describes a program that is designed to have parts of its code execute concurren
 
 * start() vs run()
 
+TODO clarify this
+
 Why do one call start method of thread if ~start()~ calls ~run()~ in turn? What is difference by calling ~start()~ over ~run()~ method in java thread?
 
 Implement thread either overriding ~run()~ method of ~Thread~ class or implementing ~Runnable~ interface and than calling ~start()~ method on thread, but with some experience he finds that ~start()~ method calls ~run()~ method internally.
@@ -39,9 +41,9 @@ Implement thread either overriding ~run()~ method of ~Thread~ class or implement
 * thread vs runnable
 
    1. Java doesn't support multiple inheritance, which means you can only extend one class in Java so once you extended Thread class you lost your chance and can not extend or inherit another class in Java.
-   1. In Object oriented programming extending a class generally means adding new functionality, modifying or improving behaviors. If we are not making any modification on Thread than use Runnable interface instead.
-   1. Runnable interface represent a Task which can be executed by either plain Thread or Executors or any other means. so logical separation of Task as Runnable than Thread is good design decision.
-   1. Separating task as Runnable means we can reuse the task and also has liberty to execute it from different means. since you can not restart a Thread once it completes. again Runnable vs Thread for task, Runnable is winner.
+   1. In Object oriented programming extending a class generally means adding new functionality, modifying or improving behaviors. If we are not making any modification on Thread then use Runnable interface instead.
+   1. Runnable interface represent a Task which can be executed by either plain Thread or Executors or any other means. So logical separation of Task as Runnable than Thread is good design decision.
+   1. Separating task as Runnable means we can reuse the task and also has liberty to execute it from different means. Since you can not restart a Thread once it completes. again Runnable vs Thread for task, Runnable is winner.
    1. Java designer recognizes this and that's why Executors accept Runnable as Task and they have worker thread which executes those task.
    1. Inheriting all Thread methods are additional overhead just for representing a Task which can can be done easily with Runnable.
 
@@ -70,6 +72,8 @@ Implement thread either overriding ~run()~ method of ~Thread~ class or implement
 
 * Why wait, notify and notifyAll is declared in Object Class instead of Thread?
 
+TODO clarify this
+
 1. Wait and notify are not just normal methods or synchronization utility. More than that, they are communication mechanism between two threads in Java. And Object class is the correct place to make them available for every object if this mechanism is not available via any java keyword like synchronized. Remember synchronized and wait notify are two different areas and don’t confuse that they are same or related. Synchronized is to provide mutual exclusion and ensuring thread safety of Java class like race condition while wait and notify are communication mechanism between two thread.
 1. Locks are made available on per Object basis, which is another reason wait and notify is declared in Object class rather then Thread class.
 1. In Java in order to enter critical section of code, Threads needs lock and they wait for lock, they don't know which threads holds lock instead they just know the lock is hold by some thread and they should wait for lock instead of knowing which thread is inside the synchronized block and asking them to release lock. this analogy fits with wait and notify being on object class rather than thread in Java.
@@ -94,14 +98,14 @@ Implement thread either overriding ~run()~ method of ~Thread~ class or implement
               return count++;
           }
           /*
-           * This method is thread-safe because count is incremented atomically
+           * This method is thread-safe because atomicCount is incremented atomically
            */
           public int getCountAtomically(){
               return atomicCount.incrementAndGet();
           }
       }
       #+end_src
-   1. Immutable objects are by default thread-safe because there state can not be modified once created. Since String is immutable in Java, its inherently thread-safe.
+   1. Immutable objects are by default thread-safe because their state can not be modified once created. Since String is immutable in Java, its inherently thread-safe.
    1. Read only or final variables in Java are also thread-safe in Java.
    1. Locking is one way of achieving thread-safety in Java.
    1. Static variables if not synchronized properly becomes major cause of thread-safety issues.
@@ -243,7 +247,7 @@ Two code patterns namely "check and act" and "read modify write" can suffer race
 *** "Check and Act" race condition pattern
 
 classical example of "check and act" race condition in Java is getInstance() method of Singleton Class.
-getInstace() method first check for whether instance is null and than initialized the instance and return to caller. Whole
+getInstace() method first check for whether instance is null and then initialized the instance and return to caller. Whole
 purpose of Singleton is that getInstance should always return same instance of Singleton. if you call getInstance()
 method from two thread simultaneously its possible that while one thread is initializing singleton after null check, another
 thread sees value of _instance reference variable as null (quite possible in java) especially if your object takes longer time
@@ -259,7 +263,7 @@ public Singleton getInstance(){
 }
 #+end_src
 
-An easy way to fix "check and act" race conditions is to synchronized keyword and enforce locking which will make this operation atomic and guarantees that block or method will only be executed by one thread and result of operation will be visible to all threads once synchronized blocks completed or thread exited form synchronized block.
+An easy way to fix "check and act" race conditions is to use synchronized keyword and enforce locking which will make this operation atomic and guarantees that block or method will only be executed by one thread and result of operation will be visible to all threads once synchronized blocks completed or thread exited form synchronized block.
 
 *** Read-modify-update race conditions
 
@@ -282,4 +286,5 @@ which makes them atomic together because no thread can go inside synchronized bl
 
 * References
 
+   See "Singleton Design Pattern"
    See "Producer Consumer Design Pattern"
