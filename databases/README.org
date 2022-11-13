@@ -491,7 +491,6 @@ This chapter shows how to create, update, and delete a view.
 1. In SQL, a view is a virtual table based on the result-set of an SQL statement.
 1. A view contains rows and columns, just like a real table. The fields in a view are fields from one or more real tables in the database.
 1. You can add SQL functions, WHERE, and JOIN statements to a view and present the data as if the data were coming from one single table.
-   #+NAME: SQL CREATE VIEW Syntax
    #+begin_src 
    CREATE VIEW view_name AS
    SELECT column_name(s)
@@ -513,7 +512,6 @@ This chapter shows how to create, update, and delete a view.
 
 You can update a view by using the following syntax:
 #+begin_src 
-SQL CREATE OR REPLACE VIEW Syntax:
 CREATE OR REPLACE VIEW view_name AS
 SELECT column_name(s)
 FROM table_name
