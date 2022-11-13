@@ -7,8 +7,8 @@
   - [[#named-sql-query][Named SQL query]]
   - [[#sqlexceptiontranslator][SQLExceptionTranslator]]
   - [[#sqlprovider][SQLProvider]]
-  - [[#stored-procudures-sql-related][Stored procudures (SQL related)]]
-  - [[#sql-aggregate-functions--aggregate-functions][SQL Aggregate Functions / aggregate functions]]
+  - [[#stored-procudures][Stored procudures]]
+  - [[#sql-aggregate-functions][SQL Aggregate Functions]]
   - [[#sql-top][SQL TOP]]
   - [[#sql-like][SQL LIKE]]
   - [[#sql-wildcards][SQL Wildcards]]
@@ -98,7 +98,7 @@ SQLExceptionTranslator, is an interface to be implemented by classes that can tr
 1. Typically implemented byPreparedStatementCreator implementers.
 1. Useful for debugging
 
-** Stored procudures (SQL related)
+** Stored procudures
 
 1. A stored procedure is a subroutine available to applications that access a relational database system. A stored procedure (sometimes called a proc, sproc, StoPro, StoredProc, or SP) is actually stored in the database data dictionary.
 1. Typical uses for stored procedures include data validation (integrated into the database) or access control mechanisms.
@@ -110,10 +110,8 @@ SQLExceptionTranslator, is an interface to be implemented by classes that can tr
 1. Unlike views, stored procedures are compiled, making them ideal candidates to represent and process frequently run SQL statements.
 1. Views are limited to only certain columns and rows from the underlying SELECT statement that generated the view. Thus a view is often used to represent a commonly used SELECT statement that may join several tables, employ a WHERE clause, and expose specific columns. Views are often found in the FROM clause of a SQL statement joined to other tables and views.
 1. There are two main types of UDFs: scalar value-returning UDFs and table value-returning UDFs. Within table value UDFs you'll find UDFs that return inline tables and multistatement tables.
-refer: invoke stored procedures
-refer: callable statement
 
-** SQL Aggregate Functions / aggregate functions
+** SQL Aggregate Functions
 
 An aggregate function is a function where the values of multiple rows are grouped together as input on certain criteria to form a single value of more significant meaning or measurement such as a set, a bag or a list.
 
@@ -211,11 +209,13 @@ SQL joins are used to query data from two or more tables, based on a relationshi
 
 *** Different SQL JOINs
 
-Before we continue with examples, we will list the types of JOIN you can use, and the differences between them.
-1. JOIN: Return rows when there is at least one match in both tables
-1. LEFT JOIN: Return all rows from the left table, even if there are no matches in the right table
-1. RIGHT JOIN: Return all rows from the right table, even if there are no matches in the left table
-1. FULL JOIN: Return rows when there is a match in one of the tables
+    Before we continue with examples, we will list the types of JOIN you can use, and the differences between them.
+    1. JOIN: Return rows when there is at least one match in both tables
+    1. LEFT JOIN: Return all rows from the left table, even if there are no matches in the right table
+    1. RIGHT JOIN: Return all rows from the right table, even if there are no matches in the left table
+    1. FULL JOIN: Return rows when there is a match in one of the tables
+
+   [[./images/SQL_JOINS.png]]
 
 *** SQL INNER JOIN
 
@@ -298,9 +298,11 @@ The FULL JOIN keyword returns all the rows from the left table (Persons), and al
 SELECT column_name(s) FROM table_name1
 UNION
 SELECT column_name(s) FROM table_name2;
+
 SELECT column_name(s) FROM table_name1
 UNION ALL
 SELECT column_name(s) FROM table_name2;
+
 SELECT E_Name FROM Employees_Norway
 UNION
 SELECT E_Name FROM Employees_USA;
