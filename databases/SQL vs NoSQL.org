@@ -1,40 +1,32 @@
-* Google App Engine Cloud SQL
-
-*** Fully managed
-*** Pure MySQL
-
-It is like the computer you built at home to run your SQL instance, except it is in the cloud.
-
-*** Advantages
-    1. CloudSQL supports SQL.
-    1. The expressiveness of a MySQL database.
-    1. Easy to get started and easy to manage.
-    1. Don't have to use NoSQL DataStore stuff.
-
-* Google App Engine DataStore
-  
-   NoSQL is a misnomer (a wrong or inaccurate use of a name or term) for DataStore.
-   
-** No-SQL?
-
-*** DataStore supports an evergrowing subset of a structured query language similar to SQL.
-
-    1. Filters
-       1. SELECT * FROM table WHERE A=1 and (B=2 OR C=3) 
-    1. Sorting
-       1. SELECT * FROM table ORDER BY A,B DESC
-    1. Projections/Index-Only Queries
-       1. SELECT A, B FROM table
-
-*** Beyond SQL
-
-    1. Repeated properties
-       1. Contains all(==)/any(IN) - very useful when building tools like labels in Gmail or tags for photos
-        
-    1. Scales in the size of the result set.
-       1. You never have to worry if the performance of your queries is going to degrade over time if your database grows.
-       
-* Comparison between CloudSQL and DataStore (SQL and NoSQL):
+* Comparison between CloudSQL and DataStore (SQL and NoSQL):          :TOC_9:
+    - [[#queries][Queries]]
+      - [[#cloudsql][CloudSQL]]
+      - [[#datastore][DataStore]]
+    - [[#aggregation][Aggregation]]
+      - [[#cloudsql-1][CloudSQL]]
+        - [[#lets-say-that-you-want-to-compute-the-average-age-of-people-living-in-each-city][Lets say that you want to compute the average age of people living in each city]]
+        - [[#lets-say-that-you-want-to-put-this-average-city-age-information-on-a-map-well-you-need-to-be-able-to-have-joins-to-do-that-you-probably-have-a-table-for-people-and-a-table-for-cities-and-the-cities-table-will-contain-the-latitude-and-longitude][Lets say that you want to put this average city age information on a map. Well, you need to be able to have joins to do that. You probably have a table for people and a table for cities, and the cities table will contain the latitude and longitude.]]
+      - [[#datastore-1][DataStore]]
+        - [[#lets-say-that-you-want-to-compute-the-average-age-of-people-living-in-each-city-1][Lets say that you want to compute the average age of people living in each city.]]
+        - [[#lets-say-that-you-want-to-put-this-average-city-age-information-on-a-map-well-you-need-to-be-able-to-have-joins-to-do-that-you-probably-have-a-table-for-people-and-a-table-for-cities-and-the-cities-table-will-contain-the-latitude-and-longitude-1][Lets say that you want to put this average city age information on a map. Well, you need to be able to have joins to do that. You probably have a table for people and a table for cities, and the cities table will contain the latitude and longitude.]]
+    - [[#transactions][Transactions]]
+      - [[#datastore-2][DataStore]]
+      - [[#cloudsql-2][CloudSQL]]
+    - [[#consistency][Consistency]]
+      - [[#datastore-3][DataStore]]
+      - [[#cloudsql-3][CloudSQL]]
+    - [[#scalability][Scalability]]
+      - [[#cloudsql-4][CloudSQL]]
+      - [[#datastore-4][DataStore]]
+    - [[#management][Management]]
+      - [[#cloudsql-5][CloudSQL]]
+      - [[#datastore-5][DataStore]]
+    - [[#schema][Schema]]
+      - [[#cloudsql-6][CloudSQL]]
+      - [[#datastore-6][DataStore]]
+    - [[#scoreboard][Scoreboard]]
+      - [[#where-can-the-datastore-probably-be-a-better-fit-than-cloudsql][Where can the DataStore probably be a better fit than CloudSQL]]
+  - [[#references][References]]
 
 *** Queries
 

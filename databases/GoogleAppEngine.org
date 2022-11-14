@@ -1,0 +1,35 @@
+* Google App Engine Cloud SQL
+
+*** Fully managed
+*** Pure MySQL
+
+It is like the computer you built at home to run your SQL instance, except it is in the cloud.
+
+*** Advantages
+    1. CloudSQL supports SQL.
+    1. The expressiveness of a MySQL database.
+    1. Easy to get started and easy to manage.
+    1. Don't have to use NoSQL DataStore stuff.
+
+* Google App Engine DataStore
+  
+   NoSQL is a misnomer (a wrong or inaccurate use of a name or term) for DataStore.
+   
+** No-SQL?
+
+*** DataStore supports an evergrowing subset of a structured query language similar to SQL.
+
+    1. Filters
+       1. SELECT * FROM table WHERE A=1 and (B=2 OR C=3) 
+    1. Sorting
+       1. SELECT * FROM table ORDER BY A,B DESC
+    1. Projections/Index-Only Queries
+       1. SELECT A, B FROM table
+
+*** Beyond SQL
+
+    1. Repeated properties
+       1. Contains all(==)/any(IN) - very useful when building tools like labels in Gmail or tags for photos
+        
+    1. Scales in the size of the result set.
+       1. You never have to worry if the performance of your queries is going to degrade over time if your database grows.
