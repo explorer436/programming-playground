@@ -22,7 +22,10 @@
     - [[#sql-left-join--left-outer-join][SQL LEFT JOIN / LEFT OUTER JOIN]]
     - [[#sql-right-join--right-outer-join][SQL RIGHT JOIN / RIGHT OUTER JOIN]]
     - [[#sql-full-join][SQL FULL JOIN]]
-  - [[#sql-union-operator][SQL UNION Operator]]
+    - [[#cartesian-or-cross-joins][CARTESIAN or CROSS JOINS]]
+      - [[#cartesian-product][Cartesian product]]
+  - [[#sql-union-and-unionall-operators][SQL UNION and UNIONALL Operators]]
+    - [[#difference-between-union-and-unionall][Difference between UNION and UNIONALL]]
   - [[#sql-select-into-statement][SQL SELECT INTO Statement]]
   - [[#sql-create-database-statement][SQL CREATE DATABASE Statement]]
   - [[#sql-create-table-statement][SQL CREATE TABLE Statement]]
@@ -59,6 +62,18 @@
 - [[#cursors][Cursors]]
   - [[#implicit-cursors][Implicit cursors]]
   - [[#explicit-cursors][Explicit cursors]]
+- [[#nolock][NOLOCK]]
+- [[#what-is-database-normalization][What is Database Normalization?]]
+  - [[#the-drawbacks-of-data-redundancy][The drawbacks of data redundancy]]
+  - [[#types-of-database-normalization][Types of database normalization]]
+  - [[#denormalization][Denormalization]]
+  - [[#first-normal-form-1nf][First Normal Form (1NF)]]
+  - [[#second-normal-form-2nf][Second Normal Form (2NF)]]
+  - [[#third-normal-form-3nf][Third Normal Form (3NF)]]
+  - [[#find-nth-highest-salary-from-a-table][Find Nth highest salary from a table]]
+    - [[#using-limit-function][Using Limit function]]
+    - [[#using-dense_rank][Using DENSE_RANK]]
+    - [[#using-distinct-and-min-functions][Using DISTINCT and MIN functions]]
 
 * Database model
 
@@ -289,10 +304,90 @@ ORDER BY Persons.LastName;
 #+end_src
 The FULL JOIN keyword returns all the rows from the left table (Persons), and all the rows from the right table (Orders). If there are rows in "Persons" that do not have matches in "Orders", or if there are rows in "Orders" that do not have matches in "Persons", those rows will be listed as well.
 
-** SQL UNION Operator
+*** CARTESIAN or CROSS JOINS
 
-1. The SQL UNION operator combines two or more SELECT statements.
-1. The UNION operator is used to combine the result-set of two or more SELECT statements.
+The CARTESIAN JOIN or CROSS JOIN returns the Cartesian product of the sets of records from two or more joined tables.
+
+**** Cartesian product
+
+In mathematics, specifically set theory, the Cartesian product of two sets A and B, denoted A × B, is the set of all ordered pairs (a, b) where a is in A and b is in B.
+
+[[./images/Cartesian_Product.png]]
+
+e.g. If we have two tables - CUSTOMERS and ORDERS
+
+#+begin_src 
+ +----+----------+-----+-----------+----------+
+| ID | NAME     | AGE | ADDRESS   | SALARY   |
++----+----------+-----+-----------+----------+
+|  1 | Ramesh   |  32 | Ahmedabad |  2000.00 |
+|  2 | Khilan   |  25 | Delhi     |  1500.00 |
+|  3 | kaushik  |  23 | Kota      |  2000.00 |
+|  4 | Chaitali |  25 | Mumbai    |  6500.00 |
+|  5 | Hardik   |  27 | Bhopal    |  8500.00 |
+|  6 | Komal    |  22 | MP        |  4500.00 |
+|  7 | Muffy    |  24 | Indore    | 10000.00 |
++----+----------+-----+-----------+----------+ 
+
++-----+---------------------+-------------+--------+
+|OID  | DATE                | CUSTOMER_ID | AMOUNT |
++-----+---------------------+-------------+--------+
+| 102 | 2009-10-08 00:00:00 |           3 |   3000 |
+| 100 | 2009-10-08 00:00:00 |           3 |   1500 |
+| 101 | 2009-11-20 00:00:00 |           2 |   1560 |
+| 103 | 2008-05-20 00:00:00 |           4 |   2060 |
++-----+---------------------+-------------+--------+
+#+end_src
+
+Now, let us join these two tables using CARTESIAN JOIN as follows −
+
+#+begin_src 
+SQL> SELECT  ID, NAME, AMOUNT, DATE
+   FROM CUSTOMERS, ORDERS; 
+#+end_src
+
+ This would produce the following result −
+
+#+begin_src 
++----+----------+--------+---------------------+
+| ID | NAME     | AMOUNT | DATE                |
++----+----------+--------+---------------------+
+|  1 | Ramesh   |   3000 | 2009-10-08 00:00:00 |
+|  1 | Ramesh   |   1500 | 2009-10-08 00:00:00 |
+|  1 | Ramesh   |   1560 | 2009-11-20 00:00:00 |
+|  1 | Ramesh   |   2060 | 2008-05-20 00:00:00 |
+|  2 | Khilan   |   3000 | 2009-10-08 00:00:00 |
+|  2 | Khilan   |   1500 | 2009-10-08 00:00:00 |
+|  2 | Khilan   |   1560 | 2009-11-20 00:00:00 |
+|  2 | Khilan   |   2060 | 2008-05-20 00:00:00 |
+|  3 | kaushik  |   3000 | 2009-10-08 00:00:00 |
+|  3 | kaushik  |   1500 | 2009-10-08 00:00:00 |
+|  3 | kaushik  |   1560 | 2009-11-20 00:00:00 |
+|  3 | kaushik  |   2060 | 2008-05-20 00:00:00 |
+|  4 | Chaitali |   3000 | 2009-10-08 00:00:00 |
+|  4 | Chaitali |   1500 | 2009-10-08 00:00:00 |
+|  4 | Chaitali |   1560 | 2009-11-20 00:00:00 |
+|  4 | Chaitali |   2060 | 2008-05-20 00:00:00 |
+|  5 | Hardik   |   3000 | 2009-10-08 00:00:00 |
+|  5 | Hardik   |   1500 | 2009-10-08 00:00:00 |
+|  5 | Hardik   |   1560 | 2009-11-20 00:00:00 |
+|  5 | Hardik   |   2060 | 2008-05-20 00:00:00 |
+|  6 | Komal    |   3000 | 2009-10-08 00:00:00 |
+|  6 | Komal    |   1500 | 2009-10-08 00:00:00 |
+|  6 | Komal    |   1560 | 2009-11-20 00:00:00 |
+|  6 | Komal    |   2060 | 2008-05-20 00:00:00 |
+|  7 | Muffy    |   3000 | 2009-10-08 00:00:00 |
+|  7 | Muffy    |   1500 | 2009-10-08 00:00:00 |
+|  7 | Muffy    |   1560 | 2009-11-20 00:00:00 |
+|  7 | Muffy    |   2060 | 2008-05-20 00:00:00 |
++----+----------+--------+---------------------+
+#+end_src
+
+
+** SQL UNION and UNIONALL Operators
+
+1. The SQL UNION operator combines/concatenates two or more SELECT statements.
+1. The UNION operator is used to combine/concatenate the result-set of two or more SELECT statements.
 1. Notice that each SELECT statement within the UNION must have the same number of columns. The columns must also have similar data types. Also, the columns in each SELECT statement must be in the same order.
 #+begin_src 
 SELECT column_name(s) FROM table_name1
@@ -307,6 +402,11 @@ SELECT E_Name FROM Employees_Norway
 UNION
 SELECT E_Name FROM Employees_USA;
 #+end_src
+
+*** Difference between UNION and UNIONALL
+
+UNION: only keeps unique records
+UNION ALL: keeps all records, including duplicates
 
 ** SQL SELECT INTO Statement
 
@@ -681,3 +781,175 @@ These are created by default when DML statements like, INSERT, UPDATE, and DELET
 They must be created when you are executing a SELECT statement that returns more than one row. Even though the cursor stores multiple records, only one record can be processed at a time, which is called as current row. When you fetch a row the current row position moves to next row.
 
 Both implicit and explicit cursors have the same functionality, but they differ in the way they are accessed.
+
+* NOLOCK
+
+What is "with (nolock)" in SQL Server?
+
+Explain the implications of using with (nolock) on queries. When should/shouldn't you use it?
+
+For example, if you have a banking application with high transaction rates and a lot of data in certain tables, in what types of queries would nolock be okay? Are there cases when you should always use it/never use it?
+
+WITH (NOLOCK) is the equivalent of using READ UNCOMMITED as a transaction isolation level. So, you stand the risk of reading an uncommitted row that is subsequently rolled back, i.e. data that never made it into the database. So, while it can prevent reads being deadlocked by other operations, it comes with a risk. In a banking application with high transaction rates, it's probably not going to be the right solution to whatever problem you're trying to solve with it IMHO.
+
+With the NOLOCK hint (or setting the isolation level of the session to READ UNCOMMITTED) you tell SQL Server that you don't expect consistency, so there are no guarantees. Bear in mind though that "inconsistent data" does not only mean that you might see uncommitted changes that were later rolled back, or data changes in an intermediate state of the transaction. *It also means that in a simple query that scans all table/index data SQL Server may lose the scan position, or you might end up getting the same row twice.*
+
+* What is Database Normalization?
+
+https://en.wikipedia.org/wiki/Database_normalization
+
+Database normalization is the process of restructuring a relational database in accordance with a series of so-called normal forms in order to reduce data redundancy and improve data integrity. It was first proposed by Edgar F. Codd as an integral part of his relational model.
+
+Normalization entails organizing the columns (attributes) and tables (relations) of a database to ensure that their dependencies are properly enforced by database integrity constraints. It is accomplished by applying some formal rules either by a process of synthesis (creating a new database design) or decomposition (improving an existing database design).
+
+** The drawbacks of data redundancy
+
+1. Data maintenance becomes tedious – data deletion and data updates become problematic
+1. It creates data inconsistencies
+1. Insert, Update and Delete anomalies become frequent. An update anomaly, for example, means that the versions of the same record, duplicated in different places in the database, will all need to be updated to keep the record consistent
+1. Redundant data inflates the size of a database and takes up an inordinate amount of space on disk
+
+** Types of database normalization
+
+The database normalization process is further categorized into the following types:
+
+First Normal Form (1 NF)
+Second Normal Form (2 NF)
+Third Normal Form (3 NF)
+Boyce Codd Normal Form or Fourth Normal Form ( BCNF or 4 NF)
+Fifth Normal Form (5 NF)
+Sixth Normal Form (6 NF)
+
+** Denormalization
+
+https://en.wikipedia.org/wiki/Denormalization
+
+Denormalization is a strategy used on a previously-normalized database to increase performance. In computing, denormalization is the process of trying to improve the read performance of a database, at the expense of losing some write performance, by adding redundant copies of data or by grouping data. It is often motivated by performance or scalability in relational database software needing to carry out very large numbers of read operations. Denormalization should not be confused with Unnormalized form. Databases/tables must first be normalized to efficiently denormalize them.
+
+** First Normal Form (1NF)
+
+The first normal form requires that a table satisfies the following conditions:
+
+1. Rows are not ordered
+1. Columns are not ordered
+1. There is duplicated data
+1. Row-and-column intersections always have a unique value
+1. All columns are “regular” with no hidden values
+
+A table that violates 1NF. This contains more than one value in the Dept column.
+#+begin_src 
+EmpID     Employee   Age    Dept  
+-----     --------   ---    ----
+1001      ABC        30     Sales, Finance
+1002      DEF        40     Sales, Finance, DevOps
+#+end_src
+   
+Now, normalize this.
+
+Department table
+#+begin_src 
+DeptID    DeptName
+-----     ------------    ----  
+1         Sales
+2         Finance
+3         DevOps
+#+end_src
+
+Employee table
+#+begin_src 
+EmpID     Employee   Age    DeptID
+-----     --------   ---    ----  
+1001      ABC        30     1
+1001      ABC        30     2
+1002      DEF        40     1
+1002      DEF        40     2
+1002      DEF        40     3
+#+end_src
+
+** Second Normal Form (2NF)
+
+An entity is in a second normal form if all of its attributes depend on the whole primary key. So this means that the values in the different columns have a dependency on the other columns.
+
+1. The table must be already in 1 NF and all non-key columns of the tables must depend on the PRIMARY KEY
+1. The partial dependencies are removed and placed in a separate table
+
+** Third Normal Form (3NF)
+
+The third normal form states that you should eliminate fields in a table that do not depend on the key.
+
+1. A Table is already in 2 NF
+1. Non-Primary key columns shouldn’t depend on the other non-Primary key columns
+1. There is no transitive functional dependency   
+
+** Find Nth highest salary from a table   
+
+Consider an Employee table
+#+begin_src 
+employeeName     Salary
+------------     ------
+A                23000
+B                31000
+C                24500
+D                35000
+E                28500
+F                31500
+G                39800
+H                51000
+I                39800
+#+end_src
+
+*** Using Limit function
+
+#+begin_src 
+select * from (
+    (select * from Employee 
+     ORDER BY `sal` DESC limit 6 ) AS T
+) 
+ORDER BY T.`sal` ASC limit 1;
+#+end_src
+
+or
+
+#+begin_src 
+select * from Employee
+ORDER BY `sal` DESC limit 5,1;
+// will return 6th highest
+#+end_src
+
+Limit clause has two components, First component is to skip  number of rows from top and second component is display number of rows we want. 
+
+*** Using DENSE_RANK
+
+#+begin_src 
+select * from (
+    select ename, sal, dense_rank() 
+    over(order by sal desc)r from Employee
+) 
+where r=&n;
+#+end_src
+
+1. DENSE_RANK computes the rank of a row in an ordered group of rows and returns the rank as a NUMBER. The ranks are consecutive integers beginning with 1.
+1. This function accepts arguments as any numeric data type and returns NUMBER.
+1. As an analytic function, DENSE_RANK computes the rank of each row returned from a query with respect to the other rows, based on the values of the value_exprs in the order_by_clause.
+1. In the above query the rank is returned based on sal of the employee table. In case of tie, it assigns equal rank to all the rows. 
+
+To find to the 2nd highest sal set n = 2
+To find 3rd highest sal set n = 3 and so on.
+
+*** Using DISTINCT and MIN functions
+
+1. Find the employees with top N distinct salaries.
+1. Find the lowest salary among the salaries fetched by the above query, this will give us the Nth highest salary.
+1. Find the details of the employee whose salary is the lowest salary fetched by the above query.
+
+#+begin_src 
+ SELECT * FROM Employee WHERE sal = 
+         (
+            SELECT MIN(sal) FROM Employee 
+            WHERE  sal IN (
+                                 SELECT DISTINCT TOP N
+                                     sal FROM Employee 
+                                         ORDER BY sal DESC
+                             )
+        ) 
+#+end_src
