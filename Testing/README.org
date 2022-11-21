@@ -46,3 +46,4 @@ A Guide to REST-assured: https://www.baeldung.com/rest-assured-tutorial
 
 Integration Testing in Spring: https://www.baeldung.com/integration-testing-in-spring
 
+Testing the web layer in a springboot application: https://spring.io/guides/gs/testing-web/
