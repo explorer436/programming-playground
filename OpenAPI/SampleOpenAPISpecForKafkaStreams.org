@@ -1,3 +1,6 @@
+* Sample OpenAPI spec for kafka streams
+
+#+begin_src 
 asyncapi: '2.5.0'
 info:
   title: Streetlights Kafka API
@@ -186,3 +189,5 @@ components:
           clientId:
             type: string
             enum: ['my-app-id']
+#+end_src
+
