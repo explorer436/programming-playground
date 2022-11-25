@@ -2,6 +2,8 @@
 
 https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html
 
+https://aws.amazon.com/blogs/compute/enriching-event-driven-architectures-with-aws-event-fork-pipelines/
+
 * To do
 
 Implement employee-cdk-stack using Java and Rust and Go and Python
