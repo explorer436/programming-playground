@@ -1,0 +1,173 @@
+* Getting Started with the Spock Testing Framework
+
+  For those in a hurry there are lots of great tutorials and documentation at these addresses:
+
+Official Spock Documentation: http://spockframework.org/spock/docs/1.1/index.html
+Terrific 'Getting Started with Mocking': https://semaphoreci.com/community/tutorials/stubbing-and-mocking-in-java-with-the-spock-testing-framework
+Using PowerMock & Spock for those hard to test scenarios: https://github.com/will-gilbert/Spock-PowerMock
+Sharing data between Spock tests:  http://www.frommknecht.net/spock-with-traits/
+Spock Traits using in above sharing data link: http://docs.groovy-lang.org/next/html/documentation/core-traits.html
+
+** A quick introduction to the Spock Framework
+  
+http://spockframework.org/
+
+Spock is a testing and specification framework for Java and Groovy applications.  Spock is:
+1. extremely expressive 
+1. facilitates the Given / When / Then syntax for your tests https://martinfowler.com/bliki/GivenWhenThen.html
+1. compatible with most IDEs and CI Servers.
+ 
+Sounds interesting? Well you can start playing with Spock very quickly by paying a quick visit to the Spock web console and copy this little "Hello World" test. http://meetspock.appspot.com/?id=9001
+
+#+begin_src 
+import spock.lang.Specification
+ 
+class HelloWorldSpec extends Specification {
+    def  'let's try this!'() {
+       given: 'Hello World introduction to Spock Test'
+       def firstWord = 'Hello'
+       def secondWord = 'World'
+ 
+       when: 'They are concatenated'
+       def result = firstWord + ' '  + secondWord
+ 
+      then: 'We get a lovely greeting!'
+      result == 'Hello World'
+    }
+}
+#+end_src
+ 
+There is:
+1. No need to indicate the class is Public as it is by default
+1. No need to declare firstWord and lastWord as Strings
+1. Strings can be defined with either single or double quotes; Single quotes look cleaner
+1. No need to hurt your little finger with a ; at the end every line
+1. No need to explicitly invoke assert, as every line of code in the expect block gets that automatically.  Just make sure the lines in the then: block evaluate to a boolean expression.  If it is true the test passes otherwise it fails.  So in this case, it is just an equality expression which will either be true or false. You can have as many expressions as you want.  
+
+So less boiler plate code what next?  Well you know those really long test names you get with JUnit tests, well instead of having to call this test, helloWorldIntroductionToSpockTest() which is difficult to read, you can just use a String with spaces to name the test: 'Hello World introduction to Spock' test. This makes things much more readable.
+ 
+Thirdly, the Given: When: Then: syntax,  enforces test structure.  No random asserts all the test.  They are in a designated place.   More  complex tests, can use this structure to achieve BDD and ATDD.
+https://en.wikipedia.org/wiki/Behavior-driven_development
+https://www.agilealliance.org/glossary/atdd/
+ 
+Fourthly, if I were to make a small change to the test and change the assertion to say hello to Tony,  the test will, of course, fail.  But when I get a failure in Spock, I get the full context of the expression that is tested. This is a feature of Groovy called the Power Assert where you can see the value of everything in the expression.  This makes it much quicker to diagnose problems when tests fail.
+ 
+#+begin_src 
+Condition not satisfied:
+ 
+ result == "Hello Tony"
+ |      |
+ |      false
+ |      4 differences (63% similarity)
+ |      Hello (W)o(rld)
+ |      Hello (T)o(ny-)
+ Hello World
+ 
+ at HelloWorldSpec.let's try this!(Script1.groovy:13)
+#+end_src
+
+** Mocking and Stubbing
+
+Mocking and Stubbing are much more powerful than what is possible with JUnit (and various add on's). But, it is not only super powerful in Spock, it is also very terse, keeping your test code very neat and easy to read.
+
+Suppose we want to Stub a class called PaymentCalculator in our test, more specifically one of its method, calculate(Product product, Integer count).   In the stubbed version we want to return the count multiplied by 10 irrespective of the value of product.   In Spock we achieve this by:
+
+#+begin_src 
+PaymentCalculator paymentCalculator = Stub(PaymentCalculator)
+paymentCalculator.calculate(_, _) >> { p, c -> c * 10 }
+#+end_src
+
+Consider these points:
+1. The underscores in the calculate allow for any value  
+1. On the right hand side, of the second line, we see a Groovy Closure. For now, think of this as an anonymous method with two inputs. p for the product, c for count. We don't have to define a type for either of them. That's just more boiler plate code gone.  
+1. The closure will always return the count times 10.  We don't even need a return statement.  The value of the last expression is always returned. Again, this means less boiler plate code.  When stubbing becomes this easy, it means you can really focus on the test. 
+ 
+Stub: Used to represent state of an object
+Mock: Used to simulate behavior of an object
+
+Given/When/Then: A pattern used to in both TDD and BDD; Also known as AAA - "Arrange, Action, Assertion"
+
+** The Details - Setting Up
+
+Add the follow line to your Gradle build file at the appropriate places.  The 'cglib' is needed if you will be stubbing or mocking concrete classes.  If you are only mocking and stubbing interfaces this library is not needed.
+
+#+begin_src 
+apply plugin: "groovy"
+def junit = '4.12'
+def cglib = '3.2.5'
+def groovy = '2.4.13'
+def spock = '1.1-groovy-2.4'
+testCompile ("junit:junit:$junit")
+testCompile("cglib:cglib-nodep:$cglib")
+testCompile("org.codehaus.groovy:groovy-all:$groovy")
+testCompile("org.spockframework:spock-core:$spock")
+#+end_src
+
+** Simple Example with Power Assert
+
+The first example was created in a file name "MyFirstSpec.groovy". Groovy doesn't require the class name match the file name but it helps organize things. Things to note.
+
+1. The method/test name can contain spaces and punctuation. It must, however, end with an empty set of parentheses and the method is enclosed in braces
+1. This test consists of a single 'expect' block. That block can optionally have a descriptive string
+1. There is not 'assert' method; Assertion are expressed as boolean statements
+1. Here we purposefully fail the assertion in order to show the output of Groovy's 'Power Assert'
+
+#+begin_src 
+import spock.lang.Specification
+
+class MyFirstSpec extends Specification {
+  def "Let's try this!"() {
+    expect:"This should return 2"
+    Math.max(1, 2) == 3
+  }
+}
+#+end_src
+
+One of Spock and Groovy's really nice feature is the 'Power Assert' where the statement is broken down into smaller fragments with the value of each fragment written below.  This can be very useful in analyzing the cause of a failed assertion.  NB: For some reports, e.g. Serenity, the text is not rendered as preformatted HTML and can be difficult to work with. Use the JUnit report instead.
+
+#+begin_src 
+Condition not satisfied:
+Math.max(1,2) == 3
+       |      |
+       2      false
+#+end_src
+ 
+Example showcasing given/when/then
+
+Example showcasing stubs/mocks
+
+Example showcasing where
+#+begin_src 
+@Unroll
+def "The maximum of #a and #b is #c"() {
+  expect:
+  Math.max(a, b) == c
+
+  where:
+    a     |   b    ||   c
+    5     |   1    ||   5
+    3     |   9    ||   9 
+#+end_src
+
+Example showcasing exception verification
+
+Examples using PowerMock
+When using PowerMock with Spock for the those hard to test scenarios you will need to include the Mockito and PowerMock libraries. NB: Because PowerMock and Mockito are evolving quickly and independently of each other it is very important to choose the version which are compatible.  Resist the impulse to use the "latest and greatest" of each for there will be great wailing and gnashing of teeth. There is a compatible version table at https://github.com/powermock/powermock/wiki/Mockito#supported-versions but even here it took several iterations to find the compatible versions. (As of Feb 2018)
+
+#+begin_src 
+def junit = '4.12'
+def mockito = '2.9.0'
+def powermock = '1.7.3'
+def spock = '1.1-groovy-2.4'
+
+def cglib = '3.2.5
+
+testCompile ("org.mockito:mockito-core:$mockito")
+
+testCompile ("org.powermock:powermock-api-mockito2:$powermock")
+testCompile ("org.powermock:powermock-module-junit4:$powermock")
+
+testCompile ("cglib:cglib-nodep:$cglib")
+testCompile ("junit:junit:$junit")
+testCompile ("org.spockframework:spock-core:$spock")
+#+end_src
