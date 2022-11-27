@@ -10,6 +10,12 @@ In every HTTP request, there is a method. Sometimes called a verb. The most comm
 
 Normally however you do not specify the method in the command line, but instead the exact method used depends on the specific options you use. GET is default, using -d or -F makes it a POST, -I generates a HEAD and -T sends a PUT.
 
+** GET
+Since GET is the default, we don't have to specifically mention the HTTP type in a GET request.
+#+begin_src 
+curl --verbose http://localhost:8080/list/files  
+#+end_src
+
 ** POST
 #+begin_src 
 curl --request "POST" -H "Content-Type: application/json" -d '{"name": "linuxize", "email": "linuxize@example.com"}'  https://endpoint.com
