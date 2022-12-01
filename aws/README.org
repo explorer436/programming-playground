@@ -32,3 +32,75 @@ https://cdkworkshop.com/30-python.html
 * How to find out what the current active environment is?
 
   We have to use Route53.
+
+* IAM users
+
+1. Instead of logging in with root user access, create an IAM user and use the credentials for the IAM user to login to the console or do programming.
+1. And grant permissions to this IAM user on a need to know basis:
+   AmazonS3FullAccess
+
+* Managing credentials in various environments
+
+For local development, there are multiple ways:
+
+1. Using BasicAWSCredentials in the application
+
+   Sample application.property file
+   #+begin_src 
+   bucket:
+     name: your-bucket-name
+     uploadExpirationTime: 3600000
+     downloadExpirationTime: 3600000
+         
+   # https://cloud.spring.io/spring-cloud-static/spring-cloud-aws/2.2.0.M2/reference/html/   
+   # https://docs.awspring.io/spring-cloud-aws/docs/current/reference/html/appendix.html   
+   # AWS properties
+   cloud:
+     aws:
+       region:
+         static: us-east-1
+       stack:
+         auto: false
+       credentials:
+         accessKey: your-access-key
+         secretKey: your-secret-key
+   #+end_src
+
+   And then, using these in the configuration files in the application.
+
+   Sample config file:
+   #+begin_src 
+   import org.springframework.beans.factory.annotation.Value;
+   import org.springframework.context.annotation.Bean;
+   import org.springframework.context.annotation.Configuration;
+   
+   import com.amazonaws.auth.AWSStaticCredentialsProvider;
+   import com.amazonaws.auth.BasicAWSCredentials;
+   import com.amazonaws.regions.Regions;
+   import com.amazonaws.services.s3.AmazonS3;
+   import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+   
+   @Configuration
+   public class AmazonS3ClientConfig {
+   
+   	@Value("${cloud.aws.credentials.accessKey}")
+   	private String awsId;
+   
+   	@Value("${cloud.aws.credentials.secretKey}")
+   	private String awsKey;
+   
+   	@Value("${cloud.aws.region.static}")
+   	private String region;
+   
+   	@Bean
+   	public AmazonS3 s3client() {
+   
+   		BasicAWSCredentials awsCredentials = new BasicAWSCredentials(awsId, awsKey);
+   		AmazonS3 amazonS3Client = AmazonS3ClientBuilder.standard().withRegion(Regions.fromName(region))
+   				.withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();
+   
+   		return amazonS3Client;
+   	}
+   
+   }
+   #+end_src
