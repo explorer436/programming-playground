@@ -1,3 +1,0 @@
-* How to Kill a Java Thread
-
-TODO [[https://www.baeldung.com/java-thread-stop]]

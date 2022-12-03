@@ -1,3 +1,0 @@
-* Thread safety
-
-TODO : [[https://www.baeldung.com/java-thread-safety]]
