@@ -24,3 +24,18 @@ Note that multi-core machines are now very, very common even on phones. For exam
 
 If your Java program has just one thread, you can ignore all of this stuff. However, if you are designing/creating/building a Java program with multiple threads, then these issues are vital. They are not easy to deal with. Indeed, the sheer difficulty of building multi-threaded programs is the key reason that they are not very common.
 
+---------------------------------
+
+Brian Bi
+Software engineer
+
+What is concurrency in programming?
+Some people distinguish between “concurrency” and “parallelism”. Parallelism is simpler.
+
+Parallelism is when multiple copies of the same program are run at the same time, but on different data, and not necessarily on the same machine. For example, a search engine company would use a large number of machines to crawl the web, and each of those machines would be running a program that sends requests out to websites, but each copy of the program is given a different list of URLs, and will therefore produce a different set of downloaded content. You could say that all the copies of the program run “in parallel”, so they will get the job done faster than if there was just one machine that would go through the entire list of URLs, one at a time. When you use parallelism, you can refer to each copy of the program as one “instance” or one “replica”.
+
+Concurrency happens when multiple copies of the same program are run at the same time, but in the course of their execution, those copies communicate with each other. In many simple concurrent applications, you use a single machine, and the program’s instruction code is only loaded into memory once—in other words, a single process is created—but the process’s execution has multiple threads. Each thread remembers which instruction it’s on, and executes that instruction before going on to the next one; thus, the various threads in a process each follow their own control flow, but can make decisions based on information they receive from other threads.
+
+Concurrency can be very tricky. Two threads can communicate by having a shared memory location that one writes to and the other reads from. But then the value read by the latter depends on whether the read occurred before or after the former wrote to that memory location. Worse still, if the read and write happen at the same time, it’s possible for the reader to see a partially updated value because the writer started updating it but did not finish before the reader read the value. In order to avoid this, we use synchronization instructions, which tell one thread to wait until some action is performed by another thread before the former continues its execution.
+
+There are even more complex concurrent applications in which multiple machines must be used because a single machine is not powerful enough, for example, a database system that holds 10 petabytes of data. You then have what’s called a distributed system. Distributed systems are even harder to develop than single-machine concurrent applications because of the communication latency between machines; excessive use of synchronization will cause threads to be idle for long periods of time while they wait for something to happen on another machine. So you have to write the program in such a way so that there is enough synchronization for the entire system to have some consistent state that can be reasoned about and controlled, but not so much that it hurts performance.
