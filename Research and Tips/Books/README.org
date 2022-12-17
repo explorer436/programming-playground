@@ -1,0 +1,7 @@
+* Books to research
+
+https://www.enterpriseintegrationpatterns.com/
+
+https://martinfowler.com/books/eip.html
+
+https://en.wikipedia.org/wiki/Enterprise_Integration_Patterns
