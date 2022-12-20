@@ -1,0 +1,17 @@
+bucket:
+  name: myawsbucket-26be0f7e-5030-4094-8a49-0a754f22ffe1
+  uploadExpirationTime: 3600000
+  downloadExpirationTime: 3600000
+      
+# https://cloud.spring.io/spring-cloud-static/spring-cloud-aws/2.2.0.M2/reference/html/   
+# https://docs.awspring.io/spring-cloud-aws/docs/current/reference/html/appendix.html   
+# AWS properties
+cloud:
+  aws:
+    region:
+      static: us-east-1
+    stack:
+      auto: false
+    credentials:
+      accessKey: your_access_key
+      secretKey: your_secret_key
