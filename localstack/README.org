@@ -4,3 +4,7 @@ It is an interesting project.
 It provides a local cloud stack so that your applications can run just by connecting to local stack without having to connect to a real AWS account.
 
 https://localstack.cloud/
+
+** Spring Cloud Messaging With AWS and LocalStack
+
+https://auth0.com/blog/spring-cloud-messaging-with-aws-and-localstack/
