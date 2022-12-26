@@ -16,7 +16,7 @@ The three streaming applications are as follows:
 1. The Processor application (named UsageCostProcessor ) consumes the UsageDetail and computes the cost of the call and the cost of the data per userId . It sends the UsageCostDetail object as JSON.
 1. The Sink application (named UsageCostLogger ) consumes the UsageCostDetail object and logs the cost of the call and the cost of the data.
 
-** UsageDetailSender source
+*** UsageDetailSender source
 
 1. Create a new Maven project with a Group name of io.spring.dataflow.sample and an Artifact name of usage-detail-sender-kafka .
 2. In the Dependencies text box, type Kafka to select the Kafka binder dependency.
@@ -25,7 +25,7 @@ The three streaming applications are as follows:
 5. If your target platform is Cloud Foundry , type Cloud Connectors to select the Spring Cloud Connector dependency.
 6. Click the Generate Project button.
 
-*** Business Logic
+**** Business Logic
 
 Now we can create the code required for this application. To do so:
 
@@ -73,7 +73,7 @@ public class UsageDetailSender {
    
 This is a simple Configuration class with a single bean that returns a java.util.function.Supplier . Spring Cloud Stream, behind the scenes will turn this Supplier into a producer. By default, the supplier will be invoked every second. On each invocation, the supplier method sendEvents constructs a UsageDetail object.
 
-*** Configuring the UsageDetailSender application
+**** Configuring the UsageDetailSender application
 
 When configuring the producer application, we need to set the producer binding destination (Kafka topic) where the producer publishes the data. The default producer output binding for the above method is going to be sendEvents-out-0 (method name followed by the literal -out-0 where 0 is the index). If the application does not set a destination, Spring Cloud Stream will use this same binding name as the output destination (Kafka topic). However, in our case, we neither want this default binding name used by Spring Cloud Stream nor the destination name. We want to use the binding name as output and provide a custom destination.
 
@@ -86,13 +86,13 @@ spring.cloud.stream.bindings.output.destination=usage-detail
 
 The first property will override the default binding name to output and the second one will set destination on that binding.
 
-*** Building
+**** Building
 
 Now we can build the Usage Detail Sender application. In the usage-detail-sender directory, use the following command to build the project using maven:
 
 ~mvn clean package~
 
-*** Testing
+**** Testing
 
 Spring Cloud Stream provides a test binder to test an application. Following are the maven coordinates for this artifact.
 
@@ -158,7 +158,7 @@ public class UsageDetailSenderApplicationTests {
 1. The contextLoads test case verifies the application starts successfully.
 1. The testUsageDetailSender test case uses the test binder to receive messages from the output destination where the supplier publishes messages to.
 
-** UsageCostProcessor Processor   
+*** UsageCostProcessor Processor   
 
 1. Create a new Maven project with a Group name of io.spring.dataflow.sample and an Artifact name of usage-cost-processor-kafka .
 1. In the Dependencies text box, type kafka to select the Kafka binder dependency.
@@ -167,7 +167,7 @@ public class UsageDetailSenderApplicationTests {
 1. If your target platform is Cloud Foundry , type Cloud Connectors to select the Spring Cloud Connector dependency.
 1. Click the Generate Project button.
 
-*** Business Logic
+**** Business Logic
 
 1. Create the UsageDetail class in the io.spring.dataflow.sample.usagecostprocessor with content that resembles UsageDetail.java. The UsageDetail class contains userId , data and, duration properties
 1. Create the UsageCostDetail class in the io.spring.dataflow.sample.usagecostprocessor package with content that resembles UsageCostDetail.java. This UsageCostDetail class contains userId , callCost , and dataCost properties.
@@ -219,7 +219,7 @@ public class UsageCostProcessor {
 In the preceding application, we are providing a bean that returns a
 java.util.function.Function that consumes a UsageDetail as input and publishes a UsageCostDetail as ouptut.
 
-*** Configuring the UsageCostProcessor Application
+**** Configuring the UsageCostProcessor Application
 
 When configuring this processor application, we need to set both the input and output destinations (Kafka topics). By default, Sprig Cloud Stream uses binding names as processUsageCost-in-0 and processUsageCost-out-0 which becomes the topic names unless the application overrides them. However, in our case, as in the producer above, we don't want these defaults but rather we would want to make them more descriptive. We want to use the binding name as input and output and provide custom destinations on them.
 
@@ -237,13 +237,13 @@ spring.cloud.stream.bindings.output.destination=usage-cost
 1. The spring.cloud.stream.bindings.processUsageCost-in-0.destination sets the destination to the usage-detail Kafka topic.
 1. The spring.cloud.stream.bindings.processUsageCost-out-0.destination sets the destination to the usage-cost Kafka topic.
 
-*** Building   
+**** Building   
 
 Now we can build the Usage Cost Processor application. In the usage-cost-processor directory, use the following command to build the project with Maven:
 
 ~mvn clean package~
 
-*** Testing
+**** Testing
 
 We can use the same test binder that we used above for testing the supplier.
 
@@ -316,7 +316,7 @@ public class UsageCostProcessorApplicationTests {
 1. The contextLoads test case verifies the application starts successfully.
 1. The testUsageCostProcessor test case uses the test binder's InputDestination to publish a message which is consumed by the function in the processor. Then we use the OutputDestination to verify that the UsageDetail is property transformed into a UsageCostDetail .
 
-** UsageCostLogger Sink   
+*** UsageCostLogger Sink   
 
 1. Create a new Maven project with a Group name of io.spring.dataflow.sample and an Artifact name of usage-cost-logger-kafka .
 1. In the Dependencies text box, type kafka to select the Kafka binder dependency.
@@ -325,7 +325,7 @@ public class UsageCostProcessorApplicationTests {
 1. If your target platform is Cloud Foundry , type Cloud Connectors to select the Spring Cloud Connector dependency.
 1. Click the Generate Project button.
 
-*** Business Logic   
+**** Business Logic   
 
 Now we can create the business logic for the sink application. To do so:
 
@@ -364,7 +364,7 @@ public class UsageCostLogger {
    
 Here we have a java.util.function.Consumer bean that consumes a UsageCostDetail and then logs that information.
 
-*** Configuring the UsageCostLogger Application
+**** Configuring the UsageCostLogger Application
 
 When configuring the consumer application, we need to set the input binding destination (a Kafka topic). By default, the input binding used by Spring Cloud Stream will be process-in-0 (so does the destination name if the application does not override it). We want to override these to make the sink application work with the above two applications (source and processor).
 
@@ -379,13 +379,13 @@ The spring.cloud.stream.function.bindings.process-in-0 property overrides the bi
 
 There are many configuration options that you can choose to extend/override to achieve the desired runtime behavior when using Apache Kafka as the message broker. The Apache Kafkaspecific binder configuration properties are listed in Apache Kafka-binder documentation (https://cloud.spring.io/spring-cloud-static/spring-cloud-stream-binder-kafka/current/reference/html/spring-cloud-stream-binder-kafka.html#_configuration_options)
 
-*** Building
+**** Building
 
 Now we can build the Usage Cost Logger application. In the usage-cost-logger directory, use the following command to build the project with Maven:
 
 ~mvn clean package~
 
-*** Testing
+**** Testing
 
 To unit test the UsageCostLogger , add the following code in the
 UsageCostLoggerApplicationTests class:
@@ -465,7 +465,7 @@ The UsageDetailSender source application's output is connected to the UsageCostP
 
 When these applications run, the Kafka binder binds the applications' output and input boundaries to the corresponding topics in Kafka.
 
-** Local
+*** Local
 
 This section shows how to run the three applications as standalone applications in your local environment.
 
@@ -478,7 +478,7 @@ After unpacking the downloaded archive, you can start the ZooKeeper and Kafka se
 ./bin/kafka-server-start.sh config/server.properties &  
 #+end_src
 
-*** Running the Source
+**** Running the Source
 
 By using the pre-defined configuration properties (along with a unique server port) for UsageDetailSender , you can run the application, as follows:
 
@@ -498,7 +498,7 @@ To list the topics, run the following command:
 ./bin/kafka-topics.sh --zookeeper localhost:2181 --list  
 #+end_src
 
-*** Running the Processor
+**** Running the Processor
 
 By using the pre-defined configuration properties(along with a unique server port) for UsageCostProcessor, you can run the application, as follows:
 
@@ -512,7 +512,7 @@ With the UsageDetail data in the usage-detail Kafka topic from the UsageDetailSe
 ./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic usage-cost  
 #+end_src
 
-*** Running the Sink
+**** Running the Sink
 
 By using the pre-defined configuration properties (along with a unique server port) for UsageCostLogger, you can run the application, as follows:
 
@@ -522,7 +522,319 @@ By using the pre-defined configuration properties (along with a unique server po
 
 Now you can see that this application logs the usage cost detail.
 
-** Cloud Foundry
+*** Cloud Foundry
 
 This section walks you through how to deploy the UsageDetailSender, UsageCostProcessor, and UsageCostLogger applications on CloudFoundry.
 
+**** Create a CF Manifest for the UsageDetail Sender
+
+You need to create a CF manifest YAML file called usage-detail-sender.yml for the UsageDetailSender to define its configuration properties, as follows
+
+#+begin_src 
+applications:
+- name: usage-detail-sender
+  timeout: 120
+  path: ./target/usage-detail-sender-kafka-0.0.1-SNAPSHOT.jar
+  memory: 1G
+  buildpack: java_buildpack
+  env:
+    SPRING_CLOUD_STREAM_KAFKA_BINDER_BROKERS: [Kafka_Service_IP_Address:Kafka_Service_Port]
+    SPRING_CLOUD_STREAM_KAFKA_BINDER_ZKNODES: [ZooKeeper_Service_IP_Address:ZooKeeper_Service_Port]  
+#+end_src
+
+Then you need to push the UsageDetailSender application by using its manifest YAML file, as follows:
+
+#+begin_src 
+cf push -f usage-detail-sender.yml  
+#+end_src
+
+You need to create a CF manifest YAML file called usage-cost-processor.yml for the UsageCostProcessor to define its configuration properties, as follows
+
+#+begin_src 
+applications:
+- name: usage-cost-processor
+  timeout: 120
+  path: ./target/usage-cost-processor-kafka-0.0.1-SNAPSHOT.jar
+  memory: 1G
+  buildpack: java_buildpack
+  env:
+    SPRING_CLOUD_STREAM_KAFKA_BINDER_BROKERS: [Kafka_Service_IP_Address:Kafka_Service_Port]
+    SPRING_CLOUD_STREAM_KAFKA_BINDER_ZKNODES: [ZooKeeper_Service_IP_Address:ZooKeeper_Service_Port]  
+#+end_src
+
+Then you need to push the UsageCostProcessor application by using its manifest YAML file, as follows:
+
+#+begin_src 
+cf push -f usage-cost-processor.yml  
+#+end_src
+
+You need to create a CF manifest YAML file called usage-cost-logger.yml for the UsageCostLogger to define its configuration properties, as follows:
+
+#+begin_src 
+ applications:
+- name: usage-cost-logger
+  timeout: 120
+  path: ./target/usage-cost-logger-kafka-0.0.1-SNAPSHOT.jar
+  memory: 1G
+  buildpack: java_buildpack
+  env:
+    SPRING_CLOUD_STREAM_KAFKA_BINDER_BROKERS: [Kafka_Service_IP_Address:Kafka_Service_Port]
+    SPRING_CLOUD_STREAM_KAFKA_BINDER_ZKNODES: [ZooKeeper_Service_IP_Address:ZooKeeper_Service_Port] 
+#+end_src
+
+Then you need to push the UsageCostLogger application by using its manifest YAML file, as follows:
+
+#+begin_src 
+ cf push -f usage-cost-logger.yml 
+#+end_src
+
+You can see the applications by running the cf apps command, as the folowing example (with output) shows:
+
+#+begin_src 
+ cf apps 
+#+end_src
+
+Output:
+
+#+begin_src 
+ name                   requested state   instances   memory   disk   urls
+usage-cost-logger      started           1/1         1G       1G     usage-cost-logger.cfapps.io
+usage-cost-processor   started           1/1         1G       1G     usage-cost-processor.cfapps.io
+usage-detail-sender    started           1/1         1G       1G     usage-detail-sender.cfapps.io 
+#+end_src
+
+Logs
+
+#+begin_src 
+ 2019-05-13T23:23:33.36+0530 [APP/PROC/WEB/0] OUT 2019-05-13 17:53:33.362  INFO 15 --- [e-cost.logger-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "user5", "callCost": "1.0", "dataCost": "12.350000000000001" }
+   2019-05-13T23:23:33.46+0530 [APP/PROC/WEB/0] OUT 2019-05-13 17:53:33.467  INFO 15 --- [e-cost.logger-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "user1", "callCost": "19.0", "dataCost": "10.0" }
+   2019-05-13T23:23:34.46+0530 [APP/PROC/WEB/0] OUT 2019-05-13 17:53:34.466  INFO 15 --- [e-cost.logger-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "user4", "callCost": "2.2", "dataCost": "5.15" }
+   2019-05-13T23:23:35.46+0530 [APP/PROC/WEB/0] OUT 2019-05-13 17:53:35.469  INFO 15 --- [e-cost.logger-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "user3", "callCost": "21.0", "dataCost": "17.3" } 
+#+end_src
+
+*** Kubernetes
+
+This section walks you through how to deploy the three Spring Cloud Stream applications on Kubernetes.
+
+**** Setting up the Kubernetes Cluster
+
+For this we need a running Kubernetes cluster. For this example we will deploy to minikube.
+
+https://dataflow.spring.io/docs/installation/kubernetes/#creating-a-kubernetes-cluster
+
+https://minikube.sigs.k8s.io/docs/start/
+
+**** Verifying Minikube is Running
+
+To verify that Minikube is running, run the following command (shown with typical output if Minikube is running):
+
+#+begin_src 
+ $minikube status
+
+host: Running
+kubelet: Running
+apiserver: Running
+kubectl: Correctly Configured: pointing to minikube-vm at 192.168.99.100 
+#+end_src
+
+**** Installing Apache Kafka
+
+Now we can install the Kafka message broker by using the default configuration from Spring Cloud Data Flow. To do so, run the following command:
+
+#+begin_src 
+kubectl apply -f https://raw.githubusercontent.com/spring-cloud/spring-cloud-dataflow/v2.7.1/src/kubernetes/kafka/kafka-deployment.yaml \
+-f https://raw.githubusercontent.com/spring-cloud/spring-cloud-dataflow/v2.7.1/src/kubernetes/kafka/kafka-svc.yaml \
+-f https://raw.githubusercontent.com/spring-cloud/spring-cloud-dataflow/v2.7.1/src/kubernetes/kafka/kafka-zk-deployment.yaml \
+-f https://raw.githubusercontent.com/spring-cloud/spring-cloud-dataflow/v2.7.1/src/kubernetes/kafka/kafka-zk-svc.yaml  
+#+end_src
+
+**** Building Docker Images
+
+To build Docker images, we use the jib Maven plugin. If you downloaded the source distribution, the jib plugin is already configured. If you built the apps from scratch, add the following under plugins in each pom.xml file:
+
+https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#build-your-image
+
+Add the following under plugins in each pom.xml file:
+
+#+begin_src 
+<plugin>
+    <groupId>com.google.cloud.tools</groupId>
+    <artifactId>jib-maven-plugin</artifactId>
+    <version>0.10.1</version>
+    <configuration>
+        <from>
+            <image>springcloud/openjdk</image>
+        </from>
+        <to>
+            <image>${docker.org}/${project.artifactId}:${docker.version}</image>
+        </to>
+        <container>
+            <useCurrentTimestamp>true</useCurrentTimestamp>
+        </container>
+    </configuration>
+</plugin>  
+#+end_src
+
+Then add the following properties under the properties section of each pom.xml file. For this example, we use the following properties:
+
+#+begin_src 
+<docker.org>springcloudstream</docker.org>
+<docker.version>${project.version}</docker.version> 
+#+end_src
+
+Now you can run the Maven build to create the Docker images in the minikube Docker registry. To do so, run the following commands:
+
+#+begin_src 
+$ eval $(minikube docker-env)
+$./mvnw package jib:dockerBuild 
+#+end_src
+
+Otherwise, run the build for the source, processor, and sink individually. You need only run eval $(minikube docker-env) once for each terminal session.
+
+**** Deploying the Stream
+
+To deploy the stream, you must first copy and paste the following YAML and save it to usage-cost-stream.yaml:
+
+#+begin_src 
+ kind: Pod
+apiVersion: v1
+metadata:
+  name: usage-detail-sender
+  labels:
+    app: usage-cost-stream
+spec:
+  containers:
+    - name: usage-detail-sender
+      image: springcloudstream/usage-detail-sender-kafka:0.0.1-SNAPSHOT
+      ports:
+        - containerPort: 80
+          protocol: TCP
+      env:
+        - name: SPRING_CLOUD_STREAM_KAFKA_BINDER_BROKERS
+          value: kafka
+        - name: SPRING_CLOUD_STREAM_BINDINGS_OUTPUT_DESTINATION
+          value: user-details
+        - name: SERVER_PORT
+          value: '80'
+  restartPolicy: Always
+
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: usage-cost-processor
+  labels:
+    app: usage-cost-stream
+spec:
+  containers:
+    - name: usage-cost-processor
+      image: springcloudstream/usage-cost-processor-kafka:0.0.1-SNAPSHOT
+      ports:
+        - containerPort: 80
+          protocol: TCP
+      env:
+        - name: SPRING_CLOUD_STREAM_KAFKA_BINDER_BROKERS
+          value: kafka
+        - name: SPRING_CLOUD_STREAM_BINDINGS_INPUT_GROUP
+          value: usage-cost-stream
+        - name: SPRING_CLOUD_STREAM_BINDINGS_INPUT_DESTINATION
+          value: user-details
+        - name: SPRING_CLOUD_STREAM_BINDINGS_OUTPUT_DESTINATION
+          value: user-cost
+        - name: SERVER_PORT
+          value: '80'
+  restartPolicy: Always
+
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: usage-cost-logger
+  labels:
+    app: usage-cost-stream
+spec:
+  containers:
+    - name: usage-cost-logger
+      image: springcloudstream/usage-cost-logger-kafka:0.0.1-SNAPSHOT
+      ports:
+        - containerPort: 80
+          protocol: TCP
+      env:
+        - name: SPRING_CLOUD_STREAM_KAFKA_BINDER_BROKERS
+          value: kafka
+        - name: SPRING_CLOUD_STREAM_BINDINGS_INPUT_GROUP
+          value: usage-cost-stream
+        - name: SPRING_CLOUD_STREAM_BINDINGS_INPUT_DESTINATION
+          value: user-cost
+        - name: SERVER_PORT
+          value: '80'
+  restartPolicy: Always 
+#+end_src
+
+Then you need to deploy the apps, by running the following command:
+
+#+begin_src 
+kubectl apply -f usage-cost-stream.yaml 
+#+end_src
+
+If all is well, you should see the following output:
+
+#+begin_src 
+pod/usage-detail-sender created
+pod/usage-cost-processor created
+pod/usage-cost-logger created 
+#+end_src
+
+The preceding YAML specifies three pod resources, for the source, processor, and sink applications. Each pod has a single container that references the corresponding docker image.
+
+We set the Kafka binding parameters as environment variables. The input and output destination names have to be correct to wire the stream. Specifically, the output of the source must be the same as the input of the processor, and the output of the processor must be the same as the input of the sink. We also set the logical hostname for the Kafka broker so that each application can connect to it. Here we use the Kafka service name — kafka, in this case. We set the app: ~user-cost-stream~ label to logically group our apps.
+
+We set the Spring Cloud Stream binding parameters by using environment variables. The input and output destination names have to be correct to wire the stream. Specifically, the output of the source must be the same as the input of the processor, and the output of the processor must be the same as the input of the sink. We set the inputs and outputs as follows:
+
+1. Usage Detail Sender: ~SPRING_CLOUD_STREAM_BINDINGS_OUTPUT_DESTINATION=user-details~
+1. Usage Cost Processor: ~SPRING_CLOUD_STREAM_BINDINGS_INPUT_DESTINATION=user-details~ and ~SPRING_CLOUD_STREAM_BINDINGS_OUTPUT_DESTINATION=user-cost~
+1. Usage Cost Logger: ~SPRING_CLOUD_STREAM_BINDINGS_INPUT_DESTINATION=user-cost~
+
+**** Verifying the Deployment   
+
+You can use the following command to tail the log for the usage-cost-logger sink:
+
+#+begin_src 
+kubectl logs -f usage-cost-logger 
+#+end_src
+
+You should see messages similar to the following messages:
+
+#+begin_src 
+ 2019-05-02 15:48:18.550  INFO 1 --- [container-0-C-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "Mark", "callCost": "21.1", "dataCost": "26.05" }
+2019-05-02 15:48:19.553  INFO 1 --- [container-0-C-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "Ilaya", "callCost": "4.2", "dataCost": "15.75" }
+2019-05-02 15:48:20.549  INFO 1 --- [container-0-C-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "Mark", "callCost": "28.400000000000002", "dataCost": "15.0" }
+2019-05-02 15:48:21.553  INFO 1 --- [container-0-C-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "Ilaya", "callCost": "16.8", "dataCost": "28.5" }
+2019-05-02 15:48:22.551  INFO 1 --- [container-0-C-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "Mark", "callCost": "22.700000000000003", "dataCost": "20.3" }
+2019-05-02 15:48:23.556  INFO 1 --- [container-0-C-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "Janne", "callCost": "16.6", "dataCost": "2.6" }
+2019-05-02 15:48:24.557  INFO 1 --- [container-0-C-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "Janne", "callCost": "6.7", "dataCost": "1.0" }
+2019-05-02 15:48:25.555  INFO 1 --- [container-0-C-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "Glenn", "callCost": "3.7", "dataCost": "2.6500000000000004" }
+2019-05-02 15:48:26.557  INFO 1 --- [container-0-C-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "Janne", "callCost": "24.200000000000003", "dataCost": "32.9" }
+2019-05-02 15:48:27.556  INFO 1 --- [container-0-C-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "Glenn", "callCost": "19.200000000000003", "dataCost": "7.4" }
+2019-05-02 15:48:28.559  INFO 1 --- [container-0-C-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "Sabby", "callCost": "17.7", "dataCost": "27.35" }
+2019-05-02 15:48:29.562  INFO 1 --- [container-0-C-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "Ilaya", "callCost": "26.8", "dataCost": "32.45" }
+2019-05-02 15:48:30.561  INFO 1 --- [container-0-C-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "Janne", "callCost": "26.5", "dataCost": "33.300000000000004" }
+2019-05-02 15:48:31.562  INFO 1 --- [container-0-C-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "Sabby", "callCost": "16.1", "dataCost": "5.0" }
+2019-05-02 15:48:32.564  INFO 1 --- [container-0-C-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "Janne", "callCost": "16.3", "dataCost": "23.6" }
+2019-05-02 15:48:33.567  INFO 1 --- [container-0-C-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "Ilaya", "callCost": "29.400000000000002", "dataCost": "2.1" }
+2019-05-02 15:48:34.567  INFO 1 --- [container-0-C-1] i.s.d.s.u.UsageCostLoggerApplication     : {"userId": "Janne", "callCost": "5.2", "dataCost": "20.200000000000003" } 
+#+end_src
+
+**** Cleaning up
+
+To delete the stream, we can use the label we created earlier. The following command shows how to do so:
+
+#+begin_src 
+kubectl delete pod -l app=usage-cost-stream
+#+end_src
+
+To uninstall Kafka, run the following command:
+
+#+begin_src 
+kubectl delete all -l app=kafka
+#+end_src
