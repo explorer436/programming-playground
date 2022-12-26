@@ -1,0 +1,21 @@
+* Spring Cloud Stream
+
+** Getting Started with Spring Cloud Stream
+
+This guide walks you through an overview of Spring Cloud Stream and the process of creating an event-driven streaming application.
+
+** What is Spring Cloud Stream?
+
+A framework for building event-driven Spring Boot microservices for real-time stream processing. You can learn more about the framework from the project-site, documentation, and samples.
+
+** Stream Processing with RabbitMQ
+
+In the following guide, we develop three Spring Boot applications that use Spring Cloud Stream’s support for RabbitMQ and deploy them to Cloud Foundry, to Kubernetes, and on your local machine.
+
+** Stream Processing with Apache Kafka
+
+In the following guide, we develop three Spring Boot applications that use Spring Cloud Stream’s support for Apache Kafka and deploy them to Cloud Foundry, to Kubernetes, and on your local machine.
+
+** Summary
+
+Congratulations! You have completed Spring Cloud Stream’s high-level overview, and you were able to build and test Spring Cloud Stream applications that communicate with RabbitMQ or Apache Kafka.
