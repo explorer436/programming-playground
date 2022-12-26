@@ -10,21 +10,6 @@
 		
     ~spring-cloud-starter-aws~ has ~spring-cloud-aws-context~ and ~spring-cloud-aws-autoconfigure~ dependencies.
 		
-    #+begin_src 
-    # https://cloud.spring.io/spring-cloud-static/spring-cloud-aws/2.2.0.M2/reference/html/
-    # https://docs.awspring.io/spring-cloud-aws/docs/current/reference/html/appendix.html
-    # AWS properties
-    cloud:
-      aws:
-        region:
-          static: us-east-1
-        stack:
-          auto: false
-        credentials:
-          accessKey: AKIA32CIHYHAOT2KHV
-          secretKey: fcmvvq1hcDoSWmHSem6VRc6GdHw2081lUawajH
-    #+end_src
-
 1. To start the application: ~mvn spring-boot:run~
 1. To call the GET list of files operation,
    #+begin_src 
