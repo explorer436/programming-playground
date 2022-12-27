@@ -1,5 +1,8 @@
 * Stream Processing with RabbitMQ
 
+For parts of this document where there is no explanation, please refer to the document [[./Stream Processing with Apache Kafka.org]]
+The instructions were not copied over because they are exactly the same.
+
 ** Development
 
 *** UsageDetailSender source
