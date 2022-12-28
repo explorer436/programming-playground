@@ -405,11 +405,11 @@ java -jar target/usage-detail-sender-rabbit-0.0.1-SNAPSHOT.jar --server.port=900
 
 When this application is running, you can see that the usage-detail RabbitMQ exchange is created and the durable queue named usage-detail.usage-cost-consumer is bound to this exchange, as the following example shows:
 
-[[./images/standalone-rabbitmq-usage-detail-sender.png]]
+[[./images/spring-cloud-stream-processing-with-RabbitMQ-usage-detail-sender.png]]
 
 Also, if you click on the Queues and check the queue usage-detail.usage-cost-consumer, you can see the messages being consumed and stored in this durable queue, as the following example shows:
 
-[[./images/standalone-rabbitmq-usage-detail-sender-message-guarantee.png]]
+[[./images/spring-cloud-stream-processing-with-RabbitMQ-usage-detail-sender-message-guarantee.png]]
 
 When configuring the consumer applications for this Source application, you can set the group binding property to connect to the corresponding durable queue.
 
@@ -431,11 +431,11 @@ From the RabbitMQ console, you can see:
 
 When this application is running, you can see that the usage-cost RabbitMQ exchange is created and the durable queue named usage-cost.logger is bound to this exchange, as the following image shows:
 
-[[./images/standalone-rabbitmq-usage-cost-processor.png]]
+[[./images/spring-cloud-stream-processing-with-RabbitMQ-usage-cost-processor.png]]
 
 Also, if you click on the Queues and check the usage-cost.logger queue, you can see the messages being consumed and stored in this durable queue, as the following image shows:
 
-[[./images/standalone-rabbitmq-usage-cost-processor-message-guarantee.png]]
+[[./images/spring-cloud-stream-processing-with-RabbitMQ-usage-cost-processor-message-guarantee.png]]
 
 **** Running the Sink
 
