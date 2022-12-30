@@ -1,0 +1,50 @@
+* Moving around in Git
+
+*** HEAD
+
+First we have to talk about "HEAD". HEAD is the symbolic name for the currently checked out commit -- it's essentially what commit you're working on top of.
+
+HEAD always points to the most recent commit which is reflected in the working tree. Most git commands which make changes to the working tree will start by changing HEAD.
+
+Normally HEAD points to a branch name (like bugFix). When you commit, the status of bugFix is altered and this change is visible through HEAD.
+
+[[./images/05.png]]
+
+This would result in the following:
+
+[[./images/06.png]]
+
+** Detatching HEAD
+
+[[./images/07.png]]
+
+This would result in the following:
+
+[[./images/08.png]]
+
+*** Relative Refs
+
+Specifying commits by their hash isn't the most convenient thing ever, which is why Git has relative refs.
+
+With relative refs, you can start somewhere memorable (like the branch bugFix or HEAD) and work from there.
+
+Relative commits are powerful, but we will introduce two simple ones here:
+
+1) Moving upwards one commit at a time with the Caret (~^~) operator.
+2) Moving upwards a number of times with the ~~~ operator. ~~<num>~
+
+**** Refer to the parent commit using the Caret (^) operator   
+
+[[./images/09.png]]
+
+This would result in the following:
+
+[[./images/10.png]]
+
+Using HEAD as a relative ref:
+
+[[./images/11.png]]
+
+This would result in the following:
+
+[[./images/12.png]]
