@@ -30,8 +30,8 @@ With relative refs, you can start somewhere memorable (like the branch bugFix or
 
 Relative commits are powerful, but we will introduce two simple ones here:
 
-1) Moving upwards one commit at a time with the Caret (~^~) operator.
-2) Moving upwards a number of times with the ~~~ operator. ~~<num>~
+1) Moving upwards one commit at a time with the Caret (*^*) operator.
+2) Moving upwards a number of times with The *~* operator. *~<num>*
 
 **** Refer to the parent commit using the Caret (^) operator   
 
