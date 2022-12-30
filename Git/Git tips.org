@@ -41,6 +41,15 @@
 | git diff --word-diff myfile.txt | Instead of showing you two lines for each change, Git allows you to highlight changes in a line explicitly. (The result is usually colored nicely, the removed part being red and the added text green.) |
 | git diff --cached myfile.txt    | command to see already "-add" ed changes                                                                                                                                                                 |
 | git status -u                   | Show untracked files                                                                                                                                                                                     |
+
+*** How to see the file differences between a local branch and a remote branch
+
+    Needless to say, before doing this, fetch all the updates from the remote first.
+
+    #+begin_src 
+    git diff <local branch> <remote branch>
+    #+end_src
+
 *** Staging changes
 
 | command                        | description                                                                                                                                                                                                                          |
@@ -73,6 +82,26 @@ When doing a diff on a long line, this can be very helpful but you'll still get 
 | git reset --hard origin/master<remotebranchname> | master branch and 'origin/master' have diverged, how to 'undiverge' branches'                                                                                                                                                                                                                                                                                                                             |
 | git reset --soft HEAD~                           | (When you reset back to HEAD~ (the parent of HEAD), you are moving the branch back to where it was without changing the Index (staging area) or Working Directory. You could now do a bit more work and commit again to accomplish basically what git commit --amend would have done. Note that if you run git status now you'll see in green the difference between the Index and what the new HEAD is.) |
 | git reset --mixed HEAD~                          | It still undid your last commit, but also unstaged everything. You rolled back to before you ran all your git adds AND git commit.                                                                                                                                                                                                                                                                        |
+*** See all Unpushed commits or commits that are not in another branch
+
+| git cherry -v                   | If you need to find out which of your local commits are not on the remote server do this. The -v option prints out the commit messages. Without it you will see only the SHA1 codes.                   |
+| git cherry -v origin/somebranch | You may also compare against another (upstream) branch like that. This tool is especially useful when you have a ton of commits after a merge and want to know the commit differences between branches |
+| git show (COMMIT_HASH)          | Once you have the list from the command above, use this to see the files that changed in each commit                                                                                                   |
+
+*** Remove all your local branches except master
+
+    Sometimes, you may want to delete all your local branches except master
+
+    #+begin_src 
+    git branch | grep -ve " master$" | xargs git branch -D
+    #+end_src
+
+    You can also use an alias:
+
+    #+begin_src 
+    alias gbr="git branch | grep -ve " master$" | xargs git branch -D"
+    #+end_src
+
 *** Clean-up
 
 | command                                                              | description                                                                                    |
@@ -162,4 +191,3 @@ Most of this sequence will be explained to you by the output of the various comm
 ** Helpful Resources
     
     https://www.atlassian.com/git/tutorials/merging-vs-rebasing 
-
