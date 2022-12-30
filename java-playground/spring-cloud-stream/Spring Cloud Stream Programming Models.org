@@ -1,6 +1,0 @@
-* Programming Models
-
-TODO 
-
-https://dataflow.spring.io/docs/stream-developer-guides/programming-models/
-
