@@ -33,7 +33,7 @@
 | git checkout localBranch2                                        | To find out which remote branch your local branch is tracking                                                            |
 | git status                                                       | To see the status of the local repository                                                                                |
 
-*** Checking status and differences
+*** Checking status and differences for files
 
 | command                         | description                                                                                                                                                                                              |
 |---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
