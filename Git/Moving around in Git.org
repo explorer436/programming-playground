@@ -22,7 +22,7 @@ This would result in the following:
 
 [[./images/08.png]]
 
-*** Relative Refs
+** Relative Refs
 
 Specifying commits by their hash isn't the most convenient thing ever, which is why Git has relative refs.
 
@@ -33,7 +33,7 @@ Relative commits are powerful, but we will introduce two simple ones here:
 1) Moving upwards one commit at a time with the Caret (*^*) operator.
 2) Moving upwards a number of times with The *~* operator. *~<num>*
 
-**** Refer to the parent commit using the Caret (^) operator   
+*** Refer to the parent commit using the Caret (^) operator   
 
 [[./images/09.png]]
 
@@ -48,3 +48,36 @@ Using HEAD as a relative ref:
 This would result in the following:
 
 [[./images/12.png]]
+
+*** Move up in the commit tree using the ~ operator   
+
+Say you want to move a lot of levels up in the commit tree. It might be tedious to type ^ several times, so Git also has the tilde (~) operator.
+
+The tilde operator (optionally) takes in a trailing number that specifies the number of parents you would like to ascend.
+
+[[./images/13.png]]
+
+This would result in the following:
+
+[[./images/14.png]]
+
+** Branch forcing
+
+Let's actually use relative refs for something.
+
+One of the most common ways to use relative refs is to move branches around. You can directly reassign a branch to a commit with the -f option. So something like:
+
+#+begin_src 
+git branch -f main HEAD~3
+#+end_src
+
+moves (by force) the main branch to three parents behind HEAD.
+
+[[./images/15.png]]
+
+This would result in the following:
+
+[[./images/16.png]]
+
+
+
