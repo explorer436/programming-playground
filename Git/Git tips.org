@@ -56,9 +56,9 @@
 
 When doing a diff on a long line, this can be very helpful but you'll still get a less-like scrolling output that can be unhandy to use. You maybe just want the diff put into your terminal:
 
-+begin_src 
+#+begin_src 
   `PAGER='' git diff --word-diff myfile.txt`  
-+end_src
+#+end_src
 
 *** Undoing changes
 
@@ -85,33 +85,38 @@ When doing a diff on a long line, this can be very helpful but you'll still get 
 
 ** Undoing a git push
 
-ou need to make sure that no other users of this repository are fetching the incorrect changes or trying to build on top of the commits that you want removed because you are about to rewind history.
+Before you undo a push, you need to make sure that no other users of this repository are fetching the incorrect changes or trying to build on top of the commits that you want removed because you are about to rewind history.
 
-hen you need to 'force' push the old reference.
+When you need to 'force' push the old reference.
 
+#+begin_src 
 git push -f origin last_known_good_commit:branch_name~
+#+end_src
 
-.g.
+e.g.
 
+#+begin_src 
 git push -f origin cc4b63bebb6:alpha-0.3.0~
+#+end_src
 
 ** Remove last commit from remote git repository
 
-e careful that this will create an "alternate reality" for people who have already fetch/pulled/cloned from the remote repository.
-ut in fact, it's quite simple:
-+begin_src 
-it reset HEAD^ * remove commit locally
-it push origin +HEAD * force-push the new HEAD commit  
-+end_src
+Be careful before you do this because this will create an "alternate reality" for people who have already fetch/pulled/cloned from the remote repository.
+But in fact, it's quite simple:
 
-f you want to still have it in your local repository and only remove it from the remote, then you can use:
-+begin_src 
-it push origin +HEAD^:<name of your branch, most likely 'master'>  
-+end_src
+#+begin_src 
+git reset HEAD^ * remove commit locally
+git push origin +HEAD * force-push the new HEAD commit  
+#+end_src
+
+If you want to still have it in your local repository and only remove it from the remote, then you can use:
+#+begin_src 
+git push origin +HEAD^:<name of your branch, most likely 'master'>  
+#+end_src
 
 ** Undo a commit and redo
 
-+begin_src 
+#+begin_src 
  git commit -m "Something terribly misguided"              (1)
 
  git reset HEAD~                                           (2)
@@ -121,37 +126,37 @@ it push origin +HEAD^:<name of your branch, most likely 'master'>
  git add ...                                               (4)
 
  git commit -c ORIG_HEAD                                   (5)  
-+end_src
+#+end_src
 
-. This is what you want to undo
-. This leaves your working tree (the state of your files on disk) unchanged but undoes the commit and leaves the changes you  committed unstaged (so they'll appear as "Changes not staged for commit" in git status, and you'll need to add them again before committing). If you only want to add more changes to the previous commit, or change the commit message1, you could use git reset --soft HEAD~ instead, which is like git reset HEAD~ (where HEAD~ is the same as HEAD~1) but leaves your existing changes staged.
-. Make corrections to working tree files.
-. git add anything that you want to include in your new commit.
-. Commit the changes, reusing the old commit message. reset copied the old head to .git/ORIG_HEAD; commit with -c ORIG_HEAD will open an editor, which initially contains the log message from the old commit and allows you to edit it. If you do not need to edit the message, you could use the -C option.
+1. This is what you want to undo
+1. This leaves your working tree (the state of your files on disk) unchanged but undoes the commit and leaves the changes you  committed unstaged (so they'll appear as "Changes not staged for commit" in git status, and you'll need to add them again before committing). If you only want to add more changes to the previous commit, or change the commit message1, you could use git reset --soft HEAD~ instead, which is like git reset HEAD~ (where HEAD~ is the same as HEAD~1) but leaves your existing changes staged.
+1. Make corrections to working tree files.
+1. git add anything that you want to include in your new commit.
+1. Commit the changes, reusing the old commit message. reset copied the old head to .git/ORIG_HEAD; commit with -c ORIG_HEAD will open an editor, which initially contains the log message from the old commit and allows you to edit it. If you do not need to edit the message, you could use the -C option.
 
-f the commit you want to fix isn’t the most recent one:
+If the commit you want to fix isn’t the most recent one:
 
-+begin_src 
+#+begin_src 
   git rebase --interactive $parent_of_flawed_commit (after the git log command, if you want to edit the fifth commit, then enter the name of the sixth commit in this command.)  
-+end_src
+#+end_src
 
-f you want to fix several flawed commits, pass the parent of the oldest one of them.
+If you want to fix several flawed commits, pass the parent of the oldest one of them.
 
-+begin_src 
+#+begin_src 
   An editor will come up, with a list of all commits since the one you gave.
   Change pick to reword (or on old versions of Git, to edit) in front of any commits you want to fix.
   Once you save, Git will replay the listed commits.  
-+end_src
+#+end_src
 
-or each commit you want to reword, Git will drop you back into your editor. For each commit you want to edit, Git drops you into the shell. If you’re in the shell:
+For each commit you want to reword, Git will drop you back into your editor. For each commit you want to edit, Git drops you into the shell. If you’re in the shell:
 
-+begin_src 
+#+begin_src 
   Change the commit in any way you like.
   git commit --amend
   git rebase --continue  
-+end_src
+#+end_src
 
-ost of this sequence will be explained to you by the output of the various commands as you go. It’s very easy, you don’t need to memorise it – just remember that git rebase --interactive lets you correct commits no matter how long ago they were.
+Most of this sequence will be explained to you by the output of the various commands as you go. It’s very easy, you don’t need to memorise it – just remember that git rebase --interactive lets you correct commits no matter how long ago they were.
 
 ** Helpful Resources
     
