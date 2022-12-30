@@ -25,12 +25,13 @@
 
 *** Checking out branches
 
-| command                                                          | description                                                                                         |
-|------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------|
-| git checkout -b feature/testFeatureBranch remotes/origin/develop | To start a feature branch from command line, simply create a new branch from remotes/origin/develop |
-| git checkout localBranch1                                        | To find out which remote branch your local branch is tracking                                       |
-| git checkout localBranch2                                        | To find out which remote branch your local branch is tracking                                       |
-| git status                                                       | To see the status of the local repository                                                           |
+| command                                                          | description                                                                                                              |
+|------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------|
+| git checkout -b feature/testFeatureBranch remotes/origin/develop | To create a feature branch from remotes/origin/develop and checkout that feature branch                                  |
+| git checkout -b feature/testFeatureBranch                        | Same step as above; But you don't have to mention develop branch in the command if you are already on the develop branch |
+| git checkout localBranch1                                        | To find out which remote branch your local branch is tracking                                                            |
+| git checkout localBranch2                                        | To find out which remote branch your local branch is tracking                                                            |
+| git status                                                       | To see the status of the local repository                                                                                |
 
 *** Checking status and differences
 
