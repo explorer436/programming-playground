@@ -49,6 +49,20 @@ This would result in the following:
 
 [[./images/12.png]]
 
+The ^ and ~ modifiers can make moving around a commit tree very powerful:
+
+[[./images/23.png]]
+
+This would result in:
+
+[[./images/24.png]]
+
+These modifiers can be chained together!
+
+[[./images/25.png]]
+
+The same movement as before, but all in one command.
+
 *** Move up in the commit tree using the ~ operator   
 
 Say you want to move a lot of levels up in the commit tree. It might be tedious to type ^ several times, so Git also has the tilde (~) operator.

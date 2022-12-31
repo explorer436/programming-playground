@@ -7,12 +7,18 @@ This one isn't a git command, but another tool you can tell git to use to render
 https://github.com/so-fancy/diff-so-fancy
 It makes git diff alot easier to read on the command line.
 
+~git pull~ is an alias for ~git fetch && git merge~
 
+What if you want to use ~rebase~ instead of ~merge~ with ~git pull~ ?
 
+~git pull --rebase~
+
+#+begin_src 
 git pull origin master --ff-only
-Pulls the latest changes into your branch without creating an extra merge commit. I run this command multiple times a day when I am working to avoid merge conficts.
-If there is a merge conflict, I may drop the --ff-only flag to deal with the conflict asap. This avoids nasty merge conflicts later.
-Fun fact - git pull is an alias for git fetch && git merge
+#+end_src
+
+How to pull the latest changes into your branch without creating an extra merge commit? Run this command multiple times a day when working to avoid merge conficts.
+If there is a merge conflict when you run this, drop the ~--ff-only~ flag to deal with the conflict asap. This avoids merge conflicts later.
 
 You can also configure git to only allow fast forwards on pulls without having to set it everytime:
 git config --global pull.rebase true
