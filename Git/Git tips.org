@@ -62,7 +62,6 @@
 | git stash -u                   | command to undo all changes                                                                                                                                                                                                          |
 | GIT LOG --ONELINE              | To view recent commit messages                                                                                                                                                                                                       |
 | git push                       | To push the commits to an upsteam remote branch                                                                                                                                                                                      |
-| git revert                     | To undo a previous commit. In git, you can't alter or erase an earlier commit. (Actually you can, but it can cause problems.) So instead of editing the earlier commit, revert introduces a new commit that reverses an earlier one. |
 
 When doing a diff on a long line, this can be very helpful but you'll still get a less-like scrolling output that can be unhandy to use. You maybe just want the diff put into your terminal:
 
@@ -71,6 +70,21 @@ When doing a diff on a long line, this can be very helpful but you'll still get 
 #+end_src
 
 *** Reversing changes in Git
+
+There are two primary ways to undo changes in Git -- one is using ~git reset~ and the other is using ~git revert~.
+
+[[./images/17.png]]
+
+This would result in the following:
+Git moves the main branch reference back to ~C1~; now our local repository is in a state as if ~C2~ had never happened.
+
+[[./images/18.png]]
+
+[[./images/19.png]]
+
+This would result in the following:
+
+[[./images/20.png]]
 
 | command                                          | description                                                                                                                                                                                                                                                                                                                                                                                               |
 |--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -82,7 +96,25 @@ When doing a diff on a long line, this can be very helpful but you'll still get 
 | git reset --hard origin/master<remotebranchname> | master branch and 'origin/master' have diverged, how to 'undiverge' branches'                                                                                                                                                                                                                                                                                                                             |
 | git reset --soft HEAD~                           | (When you reset back to HEAD~ (the parent of HEAD), you are moving the branch back to where it was without changing the Index (staging area) or Working Directory. You could now do a bit more work and commit again to accomplish basically what git commit --amend would have done. Note that if you run git status now you'll see in green the difference between the Index and what the new HEAD is.) |
 | git reset --mixed HEAD~                          | It still undid your last commit, but also unstaged everything. You rolled back to before you ran all your git adds AND git commit.                                                                                                                                                                                                                                                                        |
-*** See all Unpushed commits or commits that are not in another branch
+| git revert                                       | To undo a previous commit. In git, you can't alter or erase an earlier commit. (Actually you can, but it can cause problems.) So instead of editing the earlier commit, revert introduces a new commit that reverses an earlier one.                                                                                                                                                                      |
+
+*** Moving Work Around in Git.
+
+~git cherry-pick~ will plop down a commit from anywhere in the tree onto HEAD (as long as that commit isn't an ancestor of HEAD).
+
+#+begin_src 
+git cherry-pick <Commit1> <Commit2> <...>
+#+end_src
+
+It's a very straightforward way of saying that you would like to copy a series of commits below your current location (HEAD).
+
+[[./images/21.png]]
+
+This would result in:
+
+[[./images/22.png]]
+
+*** See all Unpushed commits or commits that are not in another branch.
 
 | git cherry -v                   | If you need to find out which of your local commits are not on the remote server do this. The -v option prints out the commit messages. Without it you will see only the SHA1 codes.                   |
 | git cherry -v origin/somebranch | You may also compare against another (upstream) branch like that. This tool is especially useful when you have a ton of commits after a merge and want to know the commit differences between branches |
