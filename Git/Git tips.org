@@ -61,6 +61,31 @@
 | git commit -m "commit message" | To commit with a custom message                                                                                                                                                                                                      |
 | git stash -u                   | command to undo all changes                                                                                                                                                                                                          |
 | GIT LOG --ONELINE              | To view recent commit messages                                                                                                                                                                                                       |
+
+*** Pulling and pushing
+
+~git pull~ is an alias for ~git fetch && git merge~
+
+What if you want to use ~rebase~ instead of ~merge~ with ~git pull~ ?
+
+~git pull --rebase~
+
+#+begin_src 
+git pull origin master --ff-only
+#+end_src
+
+How to pull the latest changes into your branch without creating an extra merge commit? Run this command multiple times a day when working to avoid merge conficts.
+If there is a merge conflict when you run this, drop the ~--ff-only~ flag to deal with the conflict asap. This avoids merge conflicts later.
+
+You can also configure git to only allow fast forwards on pulls without having to set it everytime:
+
+#+begin_src 
+git config --global pull.rebase true
+#+end_src
+
+https://spin.atomicobject.com/2020/05/05/git-configurations-default/
+
+
 | git push                       | To push the commits to an upsteam remote branch                                                                                                                                                                                      |
 
 When doing a diff on a long line, this can be very helpful but you'll still get a less-like scrolling output that can be unhandy to use. You maybe just want the diff put into your terminal:
