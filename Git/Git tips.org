@@ -42,6 +42,28 @@
 | git diff --cached myfile.txt    | command to see already "-add" ed changes                                                                                                                                                                 |
 | git status -u                   | Show untracked files                                                                                                                                                                                     |
 
+**** diff settings
+
+***** diff on long lines
+
+When doing a diff on a long line, this can be very helpful but you'll still get a less-like scrolling output that can be unhandy to use. You maybe just want the diff put into your terminal:
+
+#+begin_src 
+  `PAGER='' git diff --word-diff myfile.txt`  
+#+end_src
+
+***** colorMoved setting
+
+This configuration adds extra colors when running ~git diff~ to show blocks of lines that remain unchanged but have moved in the file.
+
+~git config --global diff.colorMoved zebra~
+
+By default, the diff expresses the changes as additions and deletions, with green and red denoting the operation done to a line. The additional colors help differentiate actual changes and lines moving around due to those changes.
+
+Since turning on this configuration, I’ve found diffs much easier to read. I’m able to focus on the lines of code that actually changed and brush over blocks of code that are just moving around. Diffs are much more meaningful when I have a way to focus on what really changes.
+
+
+
 *** How to see the file differences between a local branch and a remote branch
 
     Needless to say, before doing this, fetch all the updates from the remote first.
@@ -85,15 +107,7 @@ git config --global pull.rebase true
 
 https://spin.atomicobject.com/2020/05/05/git-configurations-default/
 
-
 | git push                       | To push the commits to an upsteam remote branch                                                                                                                                                                                      |
-
-When doing a diff on a long line, this can be very helpful but you'll still get a less-like scrolling output that can be unhandy to use. You maybe just want the diff put into your terminal:
-
-#+begin_src 
-  `PAGER='' git diff --word-diff myfile.txt`  
-#+end_src
-
 *** Reversing changes in Git
 
 There are two primary ways to undo changes in Git -- one is using ~git reset~ and the other is using ~git revert~.
