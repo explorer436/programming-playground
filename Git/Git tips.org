@@ -110,18 +110,18 @@ https://spin.atomicobject.com/2020/05/05/git-configurations-default/
 
 There are two primary ways to undo changes in Git -- one is using ~git reset~ and the other is using ~git revert~.
 
-[[./images/17.png]]
+[[./images/GitNotes_936b0864_17.png]]
 
 This would result in the following:
 Git moves the main branch reference back to ~C1~; now our local repository is in a state as if ~C2~ had never happened.
 
-[[./images/18.png]]
+[[./images/GitNotes_936b0864_18.png]]
 
-[[./images/19.png]]
+[[./images/GitNotes_936b0864_19.png]]
 
 This would result in the following:
 
-[[./images/20.png]]
+[[./images/GitNotes_936b0864_20.png]]
 
 | command                                          | description                                                                                                                                                                                                                                                                                                                                                                                               |
 |--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -145,11 +145,11 @@ git cherry-pick <Commit1> <Commit2> <...>
 
 It's a very straightforward way of saying that you would like to copy a series of commits below your current location (HEAD).
 
-[[./images/21.png]]
+[[./images/GitNotes_936b0864_21.png]]
 
 This would result in:
 
-[[./images/22.png]]
+[[./images/GitNotes_936b0864_22.png]]
 
 *** See all Unpushed commits or commits that are not in another branch.
 

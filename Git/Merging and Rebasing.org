@@ -2,21 +2,21 @@
 
 ** Merge from a remote branch into a current branch
 
-[[./images/01.png]]
+[[./images/GitNotes_936b0864_01.png]]
 
 ** Checkout a different branch and Merge from another remote branch into that branch
 
-[[./images/02.png]]
+[[./images/GitNotes_936b0864_02.png]]
 
 * Rebasing
 
 ** Move work from the feature branch onto the main branch
 
-[[./images/03.png]]
+[[./images/GitNotes_936b0864_03.png]]
 
 It will result in this:
 
-[[./images/04.png]]
+[[./images/GitNotes_936b0864_04.png]]
 
 * Resolving merge conflicts after a Git rebase
 

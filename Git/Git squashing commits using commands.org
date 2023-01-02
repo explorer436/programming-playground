@@ -18,27 +18,27 @@ A word of caution: Only do this on commits that haven’t been pushed an externa
 
 So, let’s say you’ve just made a few small commits, and you want to make one larger commit out of them. Our repository’s history currently looks like this:
 
-[[./GitSquasingCommitsImages/GitSquashingCommitsImages_68416fe5-98f7-46ac-bcc9-d3563b5ba20b_01.png]]
+[[./images/GitNotes_d3563b5ba20b_GitSquashingCommitsImages_01.png]]
 
 The last 4 commits would be much happier if they were wrapped up together, so let’s do just that through interactive rebasing:
 
-[[./GitSquasingCommitsImages/GitSquashingCommitsImages_68416fe5-98f7-46ac-bcc9-d3563b5ba20b_02.png]]
+[[./images/GitNotes_d3563b5ba20b_GitSquashingCommitsImages_02.png]]
 
 So, a few things have happened here. First of all, I told Git that I wanted to rebase using the last four commits from where the HEAD is with HEAD~4. Git has now put me into an editor with the above text in it, and a little explanation of what can be done. You have plenty of options available to you from this screen, but right now we’re just going to squash everything into one commit. So, changing the first four lines of the file to this will do the trick:
 
-[[./GitSquasingCommitsImages/GitSquashingCommitsImages_68416fe5-98f7-46ac-bcc9-d3563b5ba20b_03.png]]
+[[./images/GitNotes_d3563b5ba20b_GitSquashingCommitsImages_03.png]]
 
 Basically this tells Git to combine all four commits into the the first commit in the list. Once this is done and saved, another editor pops up with the following:
 
-[[./GitSquasingCommitsImages/GitSquashingCommitsImages_68416fe5-98f7-46ac-bcc9-d3563b5ba20b_04.png]]
+[[./images/GitNotes_d3563b5ba20b_GitSquashingCommitsImages_04.png]]
 
 Since we’re combining so many commits, Git allows you to modify the new commit’s message based on the rest of the commits involved in the process. Edit the message as you see fit, then save and quit. Once that’s done, your commits have been successfully squashed!
 
-[[./GitSquasingCommitsImages/GitSquashingCommitsImages_68416fe5-98f7-46ac-bcc9-d3563b5ba20b_05.png]]
+[[./images/GitNotes_d3563b5ba20b_GitSquashingCommitsImages_05.png]]
 
 So, this has been a relatively painless so far. If you run into conflicts during the rebase, they’re usually quite easy to resolve and Git leads you through as much as possible. The basics of this is fix the conflict in question, git add the file, and then git rebase --continue will resume the process. Of course, doing a git rebase --abort will bring you back to your previous state if you want. If for some reason you’ve lost a commit in the rebase, you can use the reflog to get it back.
 
 There’s plenty of other uses for git rebase -i that haven’t been covered yet. If you have one you’d like to share, please do so! GitCasts also has a fantastic video on this process as a whole that also covers some more complex examples of the command.
 
-[[./GitSquasingCommitsImages/GitSquashingCommitsImages_68416fe5-98f7-46ac-bcc9-d3563b5ba20b_06.png]]
+[[./images/GitNotes_d3563b5ba20b_GitSquashingCommitsImages_06.png]]
 
