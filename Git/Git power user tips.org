@@ -54,23 +54,3 @@ git add -A
 #+end_src
 Both are very similar commands that read "add all files to the commit".
 But did you know that . is used to add all files from your current location and its child directories; where -A is for all files in the git repository (including parent directories).
-
-
-** Git bisect
-
-~git bisect~ is a pretty powerful tool. Say you know there was a bug introduced between 2 commits, you can give it the known good commit and the known bad commit and step through the commits one at a time, running each one against a test script. For example, a jest suite.  It is very useful if you don't know when a bug was introduced and need to identify the commit.
-https://makandracards.com/makandra/17477-automated-git-bisect-will-make-your-day
-
-*** Anecdote about how much time bisect could save you:
-1. At my old job, we were building mainline Linux kernels for specific pieces of hardware we supported. There was a bug in the linux kernels intel graphics stack that would occasionally prevent our hardware from booting.
-1. I setup a test script that would run during a bisect, that would build to the device over SSH and reboot it N number of times. If the script was unable to establish an ssh connection within N seconds after a reboot, I had it throw an error.
-1. Using that method I was able to let git bisect run automatically and eventually we found the commit in the linux kernel that broke our hardware and were able to report the bug.
-
-
-
-git commit --amend allows you to re-write the last commit message
-
-
-You can also use git commit --amend to add more changes to your last commit, if you forgot to stage a file(s) or need to tweak what you comitted without adding a second commit.
-
-

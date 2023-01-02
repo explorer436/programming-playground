@@ -7,6 +7,7 @@ This guide explains how to change the message of the most recent or older Git co
 ** Changing the Most Recent Commit
 
 The ~git commit --amend~ command allows you to change the most recent commit message.
+You can also use ~git commit --amend~ to add more changes to your last commit, if you forgot to stage a file(s) or need to tweak what you comitted without adding a second commit.
 
 *** Not pushed commit
 

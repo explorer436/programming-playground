@@ -257,6 +257,30 @@ For each commit you want to reword, Git will drop you back into your editor. For
 
 Most of this sequence will be explained to you by the output of the various commands as you go. It’s very easy, you don’t need to memorise it – just remember that git rebase --interactive lets you correct commits no matter how long ago they were.
 
+** Git bisect
+
+~git bisect~ is a pretty powerful tool. Say you know there was a bug introduced between 2 commits, you can give it the known good commit and the known bad commit and step through the commits one at a time, running each one against a test script. For example, a jest suite.  It is very useful if you don't know when a bug was introduced and need to identify the commit.
+https://makandracards.com/makandra/17477-automated-git-bisect-will-make-your-day
+
+*** Anecdote about how much time bisect could save you:
+1. At my old job, we were building mainline Linux kernels for specific pieces of hardware we supported. There was a bug in the linux kernels intel graphics stack that would occasionally prevent our hardware from booting.
+1. I setup a test script that would run during a bisect, that would build to the device over SSH and reboot it N number of times. If the script was unable to establish an ssh connection within N seconds after a reboot, I had it throw an error.
+1. Using that method I was able to let git bisect run automatically and eventually we found the commit in the linux kernel that broke our hardware and were able to report the bug.
+
+** Git describe
+
+Git describe takes the form of:
+
+~git describe <ref>~
+
+Where ~<ref>~ is anything git can resolve into a commit. If you don't specify a ref, git just uses where you're checked out right now (HEAD).
+
+The output of the command looks like:
+
+~<tag>_<numCommits>_g<hash>~
+
+Where ~tag~ is the closest ancestor ~tag~ in history, ~numCommits~ is how many commits away that tag is, and ~<hash>~ is the hash of the commit being described.
+
 ** Helpful Resources
     
     https://www.atlassian.com/git/tutorials/merging-vs-rebasing 
