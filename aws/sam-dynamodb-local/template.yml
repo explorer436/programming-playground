@@ -1,0 +1,82 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: "dynamodb-local-python"
+    Description: "A simple PUT-GET implementation demonstration use of DynamoDB Local using SAM."
+    Author: "Ganesh Shankaran"
+    SpdxLicenseId: "Apache-2.0"
+    LicenseUrl: "LICENSE.txt"
+    ReadmeUrl: "README.md"
+    Labels: ['sam-dynamodb-local']
+    HomePageUrl: https://github.com/ganshan/sam-dynamodb-local
+    SemanticVersion: 0.0.1
+    SourceCodeUrl: https://github.com/ganshan/sam-dynamodb-local
+
+Parameters:
+  TABLENAME:
+    Type: String
+    Description: The DynamoDB table for storing Person information.
+    Default: 'PersonTable'
+
+  REGIONNAME:
+    Type: String
+    Description: Default region for deployment.
+    Default: 'us-east-1'
+
+  AWSENVNAME:
+    Type: String
+    Description: AWS Environment where code is being executed (AWS_SAM_LOCAL or AWS).
+    Default: 'AWS_SAM_LOCAL'
+
+  DEVENVNAME:
+    Type: String
+    Description: Developer environment where code is being executed (OSX, Windows, or Linux).
+    Default: 'OSX'
+  
+
+Resources:
+  PersonTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Ref TABLENAME
+      AttributeDefinitions:
+        - AttributeName: Id
+          AttributeType: S
+      KeySchema: 
+        - AttributeName: Id
+          KeyType: HASH
+      ProvisionedThroughput: 
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+
+  Person:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Runtime: python3.6
+      Handler: Person.lambda_handler
+      CodeUri: ./src
+      MemorySize: 128
+      Timeout: 300
+      Description: 'A simple serverless application to demonstrate GET/PUT using DynamoDB Local.'
+      Policies: AmazonDynamoDBFullAccess
+      Environment:
+        Variables:
+          TABLE: !Ref TABLENAME
+          REGION: !Ref REGIONNAME
+          AWSENV: !Ref AWSENVNAME
+          DEVENV: !Ref DEVENVNAME
+
+      Events:
+        PutPerson:
+          Type: Api
+          Properties:
+            Path: /
+            Method: POST
+
+        GetPerson:
+          Type: Api
+          Properties:
+            Path: /
+            Method: GET
