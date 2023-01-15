@@ -1,0 +1,5 @@
+# springboot jpa
+
+A sample project that uses h2 for database.
+
+The tests hit the h2 database instead of using mocking.
