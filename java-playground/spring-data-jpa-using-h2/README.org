@@ -1,0 +1,22 @@
+* springboot jpa
+
+A sample project that uses h2 for database.
+
+The tests hit the h2 database instead of using mocking.
+
+* gotchas while working with spring-boot-starter-data-jpa
+
+** Not a managed type error
+
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'carService' defined in file [/home/h/Downloads/GitRepositories/programming-playground/java-playground/spring-data-jpa-using-h2/target/classes/com/mycompany/springdatajpausingh2/inventory/services/CarService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'carRepository' defined in com.mycompany.springdatajpausingh2.inventory.repositories.CarRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Not a managed type: class com.mycompany.springdatajpausingh2.inventory.entities.Car
+
+why:
+spring could not find entity classes
+
+cause:
+Entity classes are not under the package that contains springboot main class
+
+solution:
+1. move the entity classes to the package that contains springboot main class
+1. rename the package containing the main class
+1. use @EntityScan annotation
