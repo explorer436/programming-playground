@@ -18,14 +18,14 @@ Then go to localhost:8080 to see your “Hello Docker World” message.
 
 *** Containerize It
 
-Docker has a simple "Dockerfile" file format that it uses to specify the “layers” of an image.
+Docker has a simple "Dockerfile" file format that it uses to specify the "layers" of an image.
 
 If you use Maven, you can run it with the following command:
 #+BEGIN_SRC
 docker build -t springdemo/my-spring-boot-docker-demo .
 #+END_SRC
 
-This command builds an image and tags it as `springdemo/my-spring-boot-docker-demo`
+This command builds an image and tags it as ~springdemo/my-spring-boot-docker-demo~
 
 
 Run it using this command:
@@ -33,7 +33,7 @@ Run it using this command:
 docker run -p 8080:8080 springdemo/my-spring-boot-docker-demo
 #+END_SRC
 
-By default, Spring Boot applications run on port 8080 inside the container, and we mapped that to the same port on the host by using `-p` on the command line.
+By default, Spring Boot applications run on port 8080 inside the container, and we mapped that to the same port on the host by using ~-p~ on the command line.
 
 ***** Version 1
 
@@ -98,3 +98,78 @@ To use the ~DEPENDENCY~ parameter with Maven, run the following command: ~mkdir 
 If we get that right, it already contains a ~BOOT-INF/lib~ directory with the dependency JARs in it, and a ~BOOT-INF/classes~ directory with the application classes in it. Notice that we use the application’s own main class: ~hello.Application~ (use this format to build this: ~packageName.className~). (This is faster than using the indirection provided by the fat JAR launcher.)
 
 Exploding the JAR file can result in the classpath order being [different at runtime](https://github.com/spring-projects/spring-boot/issues/9128#issuecomment-510577157). A well-behaved and well-written application should not care about this, but you may see behavior changes if the dependencies are not carefully managed.
+
+***** A more complex version
+
+Generally, when there are more requirements, it would look something like the one shown below:
+
+This involves working with the pipeline team to make sure the arguments are injected from the Jenkins pipeline.
+
+#+begin_src 
+FROM us-artifactory.mycompany.com/docker-virtual/maven:3.8.4-openjdk-17-slim as builder  
+
+WORKDIR /workspace/application1
+
+ARG username
+ARG password
+ARG branchname
+
+ENV username ${username}
+ENV password ${password}
+ENV branch ${branchname}
+
+COPY pom.xml .
+COPY settings.xml .
+
+RUN mvn -B -e -C -s settings.xml help:active-profiles dependency:go-offline
+
+COPY . .
+run mvn -B -e -s settings.xml package
+
+RUN pwd && ls -l target
+
+#Extract Coverage reports
+FROM scratch as sonar
+COPY --from=builder /workspace/application1/target/surefire-reports .
+COPY --from=builder /workspace/application1/target/jacoco.exec .
+COPY --from=builder /workspace/application1/target/site/jacoco/jacoco.xml .
+
+#Extract layers
+FROM us-artifactory.mycompany.com/docker-virtual/openjdk:17-jdk-alpine as extractor  
+
+WORKDIR /workspace/application1
+RUN mkdir -p target/extracted
+
+ARG build=/workspace/application1
+COPY --from=builder ${BUILD}/target/*.jar target
+
+RUN java -Djarmode=layertools -jar target/*.jar extract --destination target/extracted
+
+RUN pwd && ls -l target/extracted
+
+# Build image
+FROM us-artifactory.mycompany.com/docker-virtual/openjdk:17-jdk-alpine
+
+WORKDIR /home/application/application1
+
+ARG port=8010
+ENV port ${port}
+
+EXPOSE ${port}
+
+ARG extracted=/workspace/application1/target/extracted
+
+COPY --from=extractor ${EXTRACTED}/dependencies/ ./
+COPY --from=extractor ${EXTRACTED}/spring-boot-loader/ ./
+COPY --from=extractor ${EXTRACTED}/snapshot-dependencies/ ./
+COPY --from=extractor ${EXTRACTED}/application/ ./
+
+RUN pwd && ls -l
+
+COPY docker-entrypoint.sh ./
+
+RUN chmod +x docker-entrypoint.sh
+
+ENTRYPOINT ["sh","./docker-endtrypoint.sh"]
+#+end_src
+
