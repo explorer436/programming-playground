@@ -50,12 +50,23 @@ public class TutorialController {
         }
     }
 
-    @PostMapping("/tutorials")
+    @PostMapping("/tutorial")
     public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial tutorial) {
         try {
             Tutorial _tutorial = tutorialRepository
                     .save(tutorial);
             return new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/tutorials")
+    public ResponseEntity<List<Tutorial>> createTutorials(@RequestBody List<Tutorial> tutorials) {
+        try {
+            List<Tutorial> _tutorials = tutorialRepository
+                    .saveAll(tutorials);
+            return new ResponseEntity<>(_tutorials, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

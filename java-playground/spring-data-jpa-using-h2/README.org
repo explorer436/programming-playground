@@ -18,23 +18,33 @@ This shows how to interact with h2 database for basic operations on one table us
 
 Curl requests to perform various operations on the Tutorials table.
 
-create tutorials:
+create single tutorial:
 #+begin_src 
-curl --location --request POST 'http://localhost:8080/api/tutorials' \
+curl --location --request POST 'http://localhost:8080/api/tutorial' \
 --header 'Content-Type: application/json' \
 --data-raw '{
 "title": "sample title for book 1",
 "description":  "sample description for book 1",
 "published": true
 }'
+#+end_src
 
+create tutorials bulk request
+#+begin_src 
 curl --location --request POST 'http://localhost:8080/api/tutorials' \
 --header 'Content-Type: application/json' \
---data-raw '{
-"title": "sample title for book 2",
-"description":  "sample description for book 2",
-"published": false
-}'
+--data-raw '[
+    {
+        "title": "sample title for book 3",
+        "description": "sample description for book 3",
+        "published": true
+    },
+    {
+        "title": "sample title for book 4",
+        "description": "sample description for book 4",
+        "published": false
+    }
+]'  
 #+end_src
 
 get all tutorials from the table
@@ -73,3 +83,7 @@ get tutorials that are published
 #+begin_src 
 curl --location --request GET 'http://localhost:8080/api/tutorials/published'
 #+end_src
+
+** References
+
+https://www.bezkoder.com/spring-boot-jpa-h2-example/
