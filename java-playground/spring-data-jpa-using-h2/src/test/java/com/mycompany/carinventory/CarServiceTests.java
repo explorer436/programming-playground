@@ -1,4 +1,4 @@
-package com.mycompany.inventory;
+package com.mycompany.carinventory;
 
 import java.util.Collection;
 
@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.mycompany.inventory.entities.Car;
-import com.mycompany.inventory.entities.RecalledCar;
-import com.mycompany.inventory.services.CarService;
-import com.mycompany.inventory.services.RecalledCarService;
+import com.mycompany.carinventory.entities.Car;
+import com.mycompany.carinventory.entities.RecalledCar;
+import com.mycompany.carinventory.services.CarService;
+import com.mycompany.carinventory.services.RecalledCarService;
 
 @SpringBootTest
 class CarServiceTests {

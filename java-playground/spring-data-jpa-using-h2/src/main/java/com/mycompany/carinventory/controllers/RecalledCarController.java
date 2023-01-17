@@ -1,7 +1,7 @@
-package com.mycompany.inventory.controllers;
+package com.mycompany.carinventory.controllers;
 
-import com.mycompany.inventory.entities.RecalledCar;
-import com.mycompany.inventory.services.RecalledCarService;
+import com.mycompany.carinventory.entities.RecalledCar;
+import com.mycompany.carinventory.services.RecalledCarService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

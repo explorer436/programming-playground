@@ -1,7 +1,7 @@
-package com.mycompany.inventory.services;
+package com.mycompany.carinventory.services;
 
-import com.mycompany.inventory.entities.RecalledCar;
-import com.mycompany.inventory.repositories.RecalledCarRepository;
+import com.mycompany.carinventory.entities.RecalledCar;
+import com.mycompany.carinventory.repositories.RecalledCarRepository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

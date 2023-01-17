@@ -1,11 +1,11 @@
-package com.mycompany.inventory.helpers;
+package com.mycompany.carinventory.helpers;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.mycompany.inventory.entities.Car;
+import com.mycompany.carinventory.entities.Car;
 
 public class CarFilter {
 

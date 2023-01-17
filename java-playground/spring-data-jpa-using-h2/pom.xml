@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.mycompany</groupId>
-    <artifactId>CarInventory</artifactId>
+    <artifactId>spring-data-jpa-using-h2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>carinventory</name>
+    <name>spring-data-jpa-using-h2</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

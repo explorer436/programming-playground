@@ -1,4 +1,4 @@
-package com.mycompany.inventory.controllers;
+package com.mycompany.carinventory.controllers;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mycompany.inventory.entities.Car;
-import com.mycompany.inventory.services.CarService;
+import com.mycompany.carinventory.entities.Car;
+import com.mycompany.carinventory.services.CarService;
 
 import lombok.RequiredArgsConstructor;
 

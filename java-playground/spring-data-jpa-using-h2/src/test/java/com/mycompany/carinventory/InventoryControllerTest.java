@@ -1,7 +1,7 @@
-package com.mycompany.inventory;
+package com.mycompany.carinventory;
 
-import com.mycompany.inventory.controllers.CarInventoryController;
-import com.mycompany.inventory.services.CarService;
+import com.mycompany.carinventory.controllers.CarInventoryController;
+import com.mycompany.carinventory.services.CarService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
