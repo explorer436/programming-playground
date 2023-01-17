@@ -1,8 +1,10 @@
-package com.mycompany.tutorial.controller;
+package com.mycompany.tutorial.jpqa.controller;
 
-import com.mycompany.tutorial.repositories.TutorialRepository;
+import com.mycompany.tutorial.jpqa.repositories.TutorialRepositoryUsingJPQA;
 import com.mycompany.tutorial.model.Tutorial;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,21 +15,25 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/jpqa")
 @RequiredArgsConstructor
-public class TutorialController {
+public class TutorialControllerForJPQA {
 
-    private final TutorialRepository tutorialRepository;
+    private final TutorialRepositoryUsingJPQA tutorialRepositoryUsingJPQA;
 
     @GetMapping("/tutorials")
     public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required = false) String title) {
         try {
             List<Tutorial> tutorials = new ArrayList<Tutorial>();
 
-            if (title == null)
-                tutorialRepository.findAll().forEach(tutorials::add);
+            /*if (title == null)
+                tutorialRepositoryUsingJPQA.findAll().forEach(tutorials::add);
             else
-                tutorialRepository.findByTitleContaining(title).forEach(tutorials::add);
+                tutorialRepositoryUsingJPQA.findByTitleContaining_JPQA(title).forEach(tutorials::add);*/
+
+            if (StringUtils.isNotEmpty(title)) {
+                tutorialRepositoryUsingJPQA.findAll_JPQA().forEach(tutorials::add);
+            }
 
             if (tutorials.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -41,7 +47,7 @@ public class TutorialController {
 
     @GetMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> getTutorialById(@PathVariable("id") long id) {
-        Optional<Tutorial> tutorialData = tutorialRepository.findById(id);
+        Optional<Tutorial> tutorialData = tutorialRepositoryUsingJPQA.findById(id);
 
         if (tutorialData.isPresent()) {
             return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
@@ -50,10 +56,32 @@ public class TutorialController {
         }
     }
 
+    @GetMapping("/tutorials/{title}")
+    public ResponseEntity<List<Tutorial>> getTutorialByTitleStartingWith(@PathVariable("title") String title) {
+        List<Tutorial> tutorialData = tutorialRepositoryUsingJPQA.findByTitleLike_JPQA(title);
+
+        if (CollectionUtils.isNotEmpty(tutorialData)) {
+            return new ResponseEntity<>(tutorialData, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/tutorials/case-insensitive/{title}")
+    public ResponseEntity<List<Tutorial>> getTutorialByTitleStartingWith_CaseInsensitive(@PathVariable("title") String title) {
+        List<Tutorial> tutorialData = tutorialRepositoryUsingJPQA.findByTitleLikeCaseInsensitive_JPQA(title);
+
+        if (CollectionUtils.isNotEmpty(tutorialData)) {
+            return new ResponseEntity<>(tutorialData, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping("/tutorial")
     public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial tutorial) {
         try {
-            Tutorial _tutorial = tutorialRepository
+            Tutorial _tutorial = tutorialRepositoryUsingJPQA
                     .save(tutorial);
             return new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
         } catch (Exception e) {
@@ -64,7 +92,7 @@ public class TutorialController {
     @PostMapping("/tutorials")
     public ResponseEntity<List<Tutorial>> createTutorials(@RequestBody List<Tutorial> tutorials) {
         try {
-            List<Tutorial> _tutorials = tutorialRepository
+            List<Tutorial> _tutorials = tutorialRepositoryUsingJPQA
                     .saveAll(tutorials);
             return new ResponseEntity<>(_tutorials, HttpStatus.CREATED);
         } catch (Exception e) {
@@ -74,14 +102,14 @@ public class TutorialController {
 
     @PutMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> updateTutorial(@PathVariable("id") long id, @RequestBody Tutorial tutorial) {
-        Optional<Tutorial> tutorialData = tutorialRepository.findById(id);
+        Optional<Tutorial> tutorialData = tutorialRepositoryUsingJPQA.findById(id);
 
         if (tutorialData.isPresent()) {
             Tutorial _tutorial = tutorialData.get();
             _tutorial.setTitle(tutorial.getTitle());
             _tutorial.setDescription(tutorial.getDescription());
             _tutorial.setPublished(tutorial.isPublished());
-            return new ResponseEntity<>(tutorialRepository.save(_tutorial), HttpStatus.OK);
+            return new ResponseEntity<>(tutorialRepositoryUsingJPQA.save(_tutorial), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -90,7 +118,7 @@ public class TutorialController {
     @DeleteMapping("/tutorials/{id}")
     public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
         try {
-            tutorialRepository.deleteById(id);
+            tutorialRepositoryUsingJPQA.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -100,7 +128,7 @@ public class TutorialController {
     @DeleteMapping("/tutorials")
     public ResponseEntity<HttpStatus> deleteAllTutorials() {
         try {
-            tutorialRepository.deleteAll();
+            tutorialRepositoryUsingJPQA.deleteAll();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -111,7 +139,7 @@ public class TutorialController {
     @GetMapping("/tutorials/published")
     public ResponseEntity<List<Tutorial>> findByPublished() {
         try {
-            List<Tutorial> tutorials = tutorialRepository.findByPublished(true);
+            List<Tutorial> tutorials = tutorialRepositoryUsingJPQA.findByPublished_JPQA(true);
 
             if (tutorials.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);

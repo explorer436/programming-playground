@@ -1,0 +1,9 @@
+*** src/main/java/com/mycompany/tutorial/jpqa
+
+Spring JPA supports both JPQL and Native Query.
+
+This shows how to interact with h2 database for basic CRUD operations on one table using Spring JPA's JPQL.
+
+The Jakarta Persistence Query Language (JPQL; formerly Java Persistence Query Language) is a platform-independent object-oriented query language defined as part of the Jakarta Persistence (JPA; formerly Java Persistence API) specification – Wikipedia
+
+JPQL is inspired by SQL, and its queries resemble SQL queries in syntax, but operate against JPA entity objects stored in a relational database rather than directly with database tables.

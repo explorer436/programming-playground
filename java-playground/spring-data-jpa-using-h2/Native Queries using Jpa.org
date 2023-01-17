@@ -1,0 +1,30 @@
+*** src/main/java/com/mycompany/tutorial/nativequeriesusingjparepository
+
+JPQL only supports a subset of SQL standard. If you want to make complex queries, take a look at Native SQL Query.
+
+This shows how to execute SQL native query in Spring Boot with @Query annotation.
+
+1. define SQL in the value attribute
+1. set the nativeQuery attribute value to true
+
+You need to note that:
+1. Spring Data JPA don’t adjust the query to database’s specific SQL dialect, so ensure that the provided statement is supported by RDBMS.
+1. Spring Data JPA does not currently support dynamic sorting for native queries, because it would have to manipulate the actual query declared, which it cannot do reliably for native SQL.   
+
+create tutorials bulk request
+#+begin_src 
+curl --location --request POST 'http://localhost:8080/api/native/tutorials' \
+--header 'Content-Type: application/json' \
+--data-raw '[
+    {
+        "title": "sample title for book 3",
+        "description": "sample description for book 3",
+        "published": true
+    },
+    {
+        "title": "sample title for book 4",
+        "description": "sample description for book 4",
+        "published": false
+    }
+]'  
+#+end_src

@@ -1,4 +1,4 @@
-package com.mycompany.tutorial.repositories;
+package com.mycompany.tutorial.simplecrudwithjpa.repositories;
 
 import com.mycompany.tutorial.model.Tutorial;
 import org.springframework.data.jpa.repository.JpaRepository;

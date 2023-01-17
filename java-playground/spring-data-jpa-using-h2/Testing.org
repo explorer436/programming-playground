@@ -1,0 +1,66 @@
+* How to test JpaRepository interfaces?
+
+How to write unit test for all of them?
+
+We are gonna use @DataJpaTest with TestEntityManager.
+
+For testing, we’ll work with H2 in-memory database. It eliminates the need for configuring and starting an actual database.
+
+** @DataJpaTest annotation for testing JPA Repository
+
+~@DataJpaTest~ is the annotation that Spring supports for a JPA test that focuses only on JPA components.
+
+It will disable full auto-configuration and then, apply only enable configuration relevant to JPA tests. The list of the auto-configuration settings that are enabled can be found here: https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-test-auto-configuration.html#test-auto-configuration
+
+By default, tests annotated with ~@DataJpaTest~ are transactional and roll back at the end of each test. If you don’t want it, you can disable transaction management for a test or for the whole class using ~@Transactional~ annotation:
+
+#+begin_src 
+@DataJpaTest
+@Transactional(propagation = Propagation.NOT_SUPPORTED)
+class YourNonTransactionalTests {
+
+}
+#+end_src
+
+In-memory embedded database (like H2 database in this example) generally works well for tests, it is fast and does not require any installation. However, we can configure for a real database with @AutoConfigureTestDatabase annotation:
+
+#+begin_src 
+@DataJpaTest
+@AutoConfigureTestDatabase(replace=Replace.NONE)
+class YourRepositoryTests {
+
+}
+#+end_src
+
+If you are using JUnit 4, you need to add @RunWith(SpringRunner.class) to the test:
+
+#+begin_src 
+@RunWith(SpringRunner.class)
+@DataJpaTest
+class YourRepositoryTests {
+
+}
+#+end_src
+
+** TestEntityManager
+
+The purpose of the EntityManager is to interact with the persistence context. Spring Data JPA abstractes you from the EntityManager through Repository interfaces. And ~TestEntityManager~ allows us to use EntityManager in tests.
+
+We can inject a ~TestEntityManager~ bean in Data JPA tests. If you want to use ~TestEntityManager~ outside of ~@DataJpaTest~ instances, just add ~@AutoConfigureTestEntityManager~ annotation.
+
+The following example shows the ~@DataJpaTest~ annotation with ~TestEntityManager~:
+
+#+begin_src 
+@DataJpaTest
+class YourRepositoryTests {
+
+  @Autowired
+  private TestEntityManager entityManager;
+
+  @Test
+  void testExample() throws Exception {
+    this.entityManager.persist(new Tutorial("Tut#1", "Desc#1", true));
+    ...
+  }
+}
+#+end_src

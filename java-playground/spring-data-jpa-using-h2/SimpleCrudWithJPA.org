@@ -1,0 +1,71 @@
+*** src/main/java/com/mycompany/tutorial/simplecrudwithjpa
+
+This shows how to interact with h2 database for basic CRUD operations on one table using Spring JPA's built-in JpaRepository methods.
+
+Curl requests to perform various operations on the Tutorials table.
+
+create single tutorial:
+#+begin_src 
+curl --location --request POST 'http://localhost:8080/api/simplecrud/tutorial' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"title": "sample title for book 1",
+"description":  "sample description for book 1",
+"published": true
+}'
+#+end_src
+
+create tutorials bulk request
+#+begin_src 
+curl --location --request POST 'http://localhost:8080/api/simplecrud/tutorials' \
+--header 'Content-Type: application/json' \
+--data-raw '[
+    {
+        "title": "sample title for book 3",
+        "description": "sample description for book 3",
+        "published": true
+    },
+    {
+        "title": "sample title for book 4",
+        "description": "sample description for book 4",
+        "published": false
+    }
+]'  
+#+end_src
+
+get all tutorials from the table
+#+begin_src 
+curl --location --request GET 'http://localhost:8080/api/simplecrud/tutorials'
+#+end_src
+
+get tutorials by id
+#+begin_src 
+curl --location --request GET 'http://localhost:8080/api/simplecrud/tutorials/2'
+#+end_src
+
+update tutorial by id
+#+begin_src 
+curl --location --request PUT 'http://localhost:8080/api/simplecrud/tutorials/2' \
+--header 'id: 2' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "title": "sample title for book 2",
+    "description": "updated sample description for book 2",
+    "published": false
+}'
+#+end_src
+
+delete tutorial by id
+#+begin_src 
+curl --location --request DELETE 'http://localhost:8080/api/simplecrud/tutorials/2'
+#+end_src
+
+delete all tutorials
+#+begin_src 
+curl --location --request DELETE 'http://localhost:8080/api/simplecrud/tutorials'
+#+end_src
+
+get tutorials that are published
+#+begin_src 
+curl --location --request GET 'http://localhost:8080/api/simplecrud/tutorials/published'
+#+end_src
