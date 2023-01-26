@@ -2,9 +2,7 @@
 
 The approach in the medium article works best. The approach in the other two articles talk about an intermediate ServerException and that is just confusing and not necessary.
 
-1. https://medium.com/@robert.junklewitz/global-webclient-retry-logic-for-all-endpoints-in-spring-webflux-dbbe54206b63
-1. https://careydevelopment.us/blog/spring-webflux-simple-retry-strategies-with-webclient (TODO take notes from this article)
-1. https://www.baeldung.com/spring-webflux-retry (TODO take notes from this article)
+Reference: https://medium.com/@robert.junklewitz/global-webclient-retry-logic-for-all-endpoints-in-spring-webflux-dbbe54206b63
 
 ** Global WebClient Retry Logic for all Endpoints in Spring WebFlux
    -- How to stop copy-pasting .retryWhen() for every endpoint
@@ -95,3 +93,7 @@ public WebClient someWebClient(final WebClient.Builder webClientBuilder) {
 } 
 #+end_src
 
+** Items TODO
+
+1. https://careydevelopment.us/blog/spring-webflux-simple-retry-strategies-with-webclient (TODO take notes from this article)
+1. https://www.baeldung.com/spring-webflux-retry (TODO take notes from this article)
