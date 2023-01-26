@@ -1,9 +1,31 @@
-* Developer set-up
+* Developer set-up                                                    :TOC_9:
+  - [[#jdk][jdk]]
+    - [[#installation][Installation]]
+      - [[#linux][Linux]]
+  - [[#maven][maven]]
+  - [[#docker-and-docker-compose][docker and docker-compose]]
+  - [[#haskell-follow-the-instructions-from-haskell-stack-websit-and-hledger][haskell (follow the instructions from haskell stack websit) and hledger]]
+  - [[#rust][rust]]
+  - [[#node-js-with-npm][node js (with npm)]]
 
-Things that need to be set-up in order to run the applications from this repo.
+** jdk
 
-1. docker and docker-compose
-1. jdk
-1. haskell (follow the instructions from haskell stack websit) and hledger
-1. rust
-1. node js (with npm)
+*** Installation
+
+**** Linux
+
+1. Download the latest java version and put it in a directory that will not be deleted.
+1. Set the path.
+   #+begin_src 
+   export JAVA_HOME=~/Downloads/jdk-18
+   export PATH=$JAVA_HOME/bin:$PATH
+   #+end_src
+
+** maven
+
+   Look at https://github.com/explorer436/my-personal-wiki/blob/273ded547a56b086b9397d7588187aa48c28b387/20221203111638-maven.org#maven-installation-details
+
+** docker and docker-compose
+** haskell (follow the instructions from haskell stack websit) and hledger
+** rust
+** node js (with npm)

@@ -22,7 +22,7 @@
 
    Output:
    #+begin_src 
-https://myawsbucket-26be0f7e-5030-4094-8a49-0a754f22ffe1.s3.amazonaws.com/HELP.md?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20221220T001954Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=AKIASTSXPXTQHENHSENE%2F20221220%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=1ca62ae5c4cb73491537c8baa4da561d58622904b6a491b8ddc575aba0ad2f4a
+   https://myawsbucket-26be0f7e-5030-4094-8a49-0a754f22ffe1.s3.amazonaws.com/HELP.md?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20221220T001954Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=AKIASTSXPXTQHENHSENE%2F20221220%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=1ca62ae5c4cb73491537c8baa4da561d58622904b6a491b8ddc575aba0ad2f4a
    #+end_src
 
 1. To retrieve a presigned url for inserting a large document,
@@ -47,3 +47,4 @@ https://myawsbucket-26be0f7e-5030-4094-8a49-0a754f22ffe1.s3.amazonaws.com/HELP.m
 * References:
 
 1. https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/java/example_code/s3/src/main/java/aws/example/s3
+1. https://github.com/awspring/spring-cloud-aws

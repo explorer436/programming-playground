@@ -1,8 +1,7 @@
-Read more: https://javarevisited.blogspot.com/2011/01/how-classpath-work-in-java.html#ixzz6OsAgyv9B
+* How to Set Classpath for Java on Windows and Linux
 
-How to Set Classpath for Java on Windows and Linux
+** What is CLASSPATH in Java 
 
-What is CLASSPATH in Java 
 Classpath in Java is the path to directory or list of the directory which is used by Cl
 
 Classpath in Java is the path to directory or list of the directory which is used by ClassLoaders to find and load class in Java program. Classpath can be specified using CLASSPATH environment variable which is case insensitive, -cp or -classpath command line option or Class-Path attribute in manifest.mf file inside JAR file in Java.  In this Java tutorial, we will learn What is Classpath in Java, how Java resolve classpath and how Classpath works in Java alongside How to set the classpath for Java in windows and UNIX environment.  I have experience in finance and insurance domain and Java is heavily used in this domain for writing sophisticated Equity, Fixed income trading applications. Most of these investment banks have written test as part of their core Java interview questions and I always find at least one question related to CLASSPATH in Java on those interviews.
@@ -18,7 +17,8 @@ The main difference between PATH and CLASSPATH is that former is used to locate 
 
 As I said In this tutorial we will see How to setup classpath for java in windows and Linux, java -classpath example in different scenario and use of java -classpath or java -cp. If you have just started learning Java, then I also suggest you follow a good book to learn Java e.g.Core Java Volume 1 9th Edition by Cay S. Horstmann. That will help you to grasp most of the fundamental concept in Java in a systematic manner.
 
-Setting Java Classpath in Windows
+** Setting Java Classpath in Windows
+
 In order to set Classpath for Java in Windows (any version either Windows XP,  Windows 2000 or Windows 7) you need to specify the value of environment variable CLASSPATH, the name of this variable is not case sensitive and it doesn’t matter if the name of your environment variable is Classpath, CLASSPATH or classpath in Java.
 
 Here is Step by Step guide for setting Java Classpath in Windows:
@@ -32,12 +32,12 @@ set CLASSPATH=%CLASSPATH%;JAVA_HOME\lib;
 
 This way you can set the classpath in Windows XP, windows 2000 or Windows 7 and 8, as they all come with command prompt.
 
-Setting Java Classpath in UNIX or Linux
+** Setting Java Classpath in UNIX or Linux
+
 To set Classpath for Java In Linux, you can simply export CLASSPATH="your classpath" from either your .bash_profile or .bashrc script which will run whenever your login into your Linux or Unix Machine. Now to check the value of Java CLASSPATH in Linux type "echo ${CLASSPATH}" this will print the value of Classpath in command prompt. By using the export command, you can set the classpath for Java in Unix, Linux, Solaris, IBM AIX or any other UNIX operating system. I hope this example for setting classpath in Java will enable to set classpath by yourself let me know if you face any problem while setting up classpath in Java
 
+** Overriding Classpath in Java
 
-
-Overriding Classpath in Java
 You can override classpath in Java, defined by environment variable CLASSPATH by providing option "-cp" or "-classpath" while running Java program and this is the best way to have different classpath for different Java application running on same Unix or Windows machine, standard way to define classpath for Java application is creating start-up script for Java program and set classpath there as shown below :
 
 CLASSPATH=/home/tester/classes
@@ -45,7 +45,8 @@ java -cp $CLASSPATH Test
 
 By default, Java CLASSPATH points to current directory denoted by "." and it will look for any class only in the current directory.
 
-Different example of using Classpath in Java
+** Different example of using Classpath in Java
+
 In case you have multiple directories defined in CLASSPATH variable, Java will look for a class starting from the first directory and only look the second directory in case it did not find the specified class in the first directory. This is an extremely useful feature of Classpath in java to understand and it’s very useful while debugging Java application or  patch release kind of stuff. Let’s see  java -classpath example
 
 
@@ -75,7 +76,8 @@ C:\project>java testing.Test  and It will run successfully because of Classpath 
 
 
 
-Errors related to Classpath in Java
+** Errors related to Classpath in Java
+
 If you are working in Java, you must have faced some errors and exception related to the classpath in java, two most common issues related to java classpath is ClassNotFoundException and NoClassDefFoundError. I have seen that many Java developer tries to solve this error by trial and error; they just don’t look beyond the hood and try to understand what the reason for this java classpath related errors is. They often misunderstood that these two errors are same also.
 
 Here is the reason of these Java classpath errors:
@@ -88,7 +90,8 @@ On the other hand, NoClassDefFoundError is an Error and more critical than Class
 “What is difference between NoClassDefFoundError and ClassNotFoundException Exception in Java”   or
 “When do you see NoClassDefFoundError and ClassNotFoundException Exception in Java”. By the way, NoClassDefFoundError can also come due to various other reason like static initializer failure or class not visible to Classloaders in the J2EE environment. Read 3 ways to resolve NoClassDefFoundError in Java for complete details.
 
-Summary of CLASSPATH in Java
+** Summary of CLASSPATH in Java
+
 1.      Classpath in Java is an environment variable used by Java Virtual machine to locate or find  class files in Java during class loading.
 
 2.      You can override the value of Classpath in Java defined by environment variable CLASSPATH by providing JVM command line option –cp or –classpath while running your application.
@@ -127,4 +130,7 @@ Why wait and notify method must be called in synchronized context? (https://java
 10 practical tips on Java debugging with eclipse (https://javarevisited.blogspot.com/2011/07/java-debugging-tutorial-example-tips.html)
 How does Synchronization work in Java? (https://javarevisited.blogspot.com/2011/04/synchronization-in-java-synchronized.html)
 
+** External references
 
+1. Read more: https://javarevisited.blogspot.com/2011/01/how-classpath-work-in-java.html#ixzz6OsAgyv9B
+1. (Java Puzzlers: Traps, Pitfalls, and Corner Cases 1st Edition by Joshua Bloch / Neal Gafter Bloch / Gafter)
