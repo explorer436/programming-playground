@@ -29,3 +29,11 @@ This shows how to write tests that interact with the h2 database instead of usin
 ** References
 
 https://www.bezkoder.com/spring-boot-jpa-h2-example/
+https://www.bezkoder.com/jpa-repository-query/
+https://www.bezkoder.com/jpa-native-query/
+https://www.bezkoder.com/spring-jpa-query/
+https://www.bezkoder.com/spring-jpa-query/
+
+Pending
+https://www.bezkoder.com/spring-boot-pagination-filter-jpa-pageable/
+https://www.bezkoder.com/spring-data-sort-multiple-columns/

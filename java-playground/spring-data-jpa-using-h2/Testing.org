@@ -64,3 +64,12 @@ class YourRepositoryTests {
   }
 }
 #+end_src
+
+** Why do we have repository and a TestEntityManager in the test?
+
+We use both to save the same entity, what the difference?
+
+1. When you want to check Repository’s save() method, you must use it.
+2. When you want to check other methods of Repository (not including save()),
+   you must have data in database table, and you are NOT sure that Repository’s save() method is good or not,
+   then you use TestEntityManager for persisting data.
