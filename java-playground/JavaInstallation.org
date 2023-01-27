@@ -1,20 +1,6 @@
 * How to set JAVA_HOME in Linux for all users
 
-*** How to find out where Java is installed?
-
-If Java is installed using package managers or by using any other ways other than downloading the JDK from https://openjdk.java.net/install/ , it can get tricky to find out where it is installed.
-
-1. The following command will tell you a lot of information about your java version, including the vendor. It works on Windows, Mac, and Linux.
-
-   #+begin_src 
-   java -XshowSettings:properties -version  
-   #+end_src
-
-2. Here is another way to find it.
-
-   #+begin_src 
-   find /usr/lib/jvm/java-1.x.x-openjdk  
-   #+end_src
+** JDK Installation
 
 *** Download Java from openjdk website
 
@@ -37,6 +23,28 @@ openjdk version "18" 2022-03-22
 OpenJDK Runtime Environment (build 18+36-2087)
 OpenJDK 64-Bit Server VM (build 18+36-2087, mixed mode, sharing)
 #+end_src
+
+Set the path.
+#+begin_src 
+export JAVA_HOME=~/Downloads/jdk-18
+export PATH=$JAVA_HOME/bin:$PATH
+#+end_src
+
+*** How to find out where Java is installed?
+
+If Java is installed using package managers or by using any other ways other than downloading the JDK from https://openjdk.java.net/install/ , it can get tricky to find out where it is installed.
+
+1. The following command will tell you a lot of information about your java version, including the vendor. It works on Windows, Mac, and Linux.
+
+   #+begin_src 
+   java -XshowSettings:properties -version  
+   #+end_src
+
+2. Here is another way to find it.
+
+   #+begin_src 
+   find /usr/lib/jvm/java-1.x.x-openjdk  
+   #+end_src
 
 *** How to set JAVA_HOME and PATH environment variables after figuring out where the jdk is?
 

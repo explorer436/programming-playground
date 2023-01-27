@@ -1,7 +1,5 @@
 * Developer set-up                                                    :TOC_9:
   - [[#jdk][jdk]]
-    - [[#installation][Installation]]
-      - [[#linux][Linux]]
   - [[#maven][maven]]
   - [[#docker-and-docker-compose][docker and docker-compose]]
   - [[#haskell-follow-the-instructions-from-haskell-stack-websit-and-hledger][haskell (follow the instructions from haskell stack websit) and hledger]]
@@ -10,16 +8,7 @@
 
 ** jdk
 
-*** Installation
-
-**** Linux
-
-1. Download the latest java version and put it in a directory that will not be deleted.
-1. Set the path.
-   #+begin_src 
-   export JAVA_HOME=~/Downloads/jdk-18
-   export PATH=$JAVA_HOME/bin:$PATH
-   #+end_src
+Look at [[./java-playground/JavaInstallation.org]]
 
 ** maven
 
