@@ -16,6 +16,8 @@ public class Service {
 
     private final AWSSecretsManager amazonSecretsManager;
 
+    private final Gson gson = new Gson();
+
     public ResponseEntity<String> getSecrets() {
         log.info(">>> getSecrets");
 
@@ -28,8 +30,13 @@ public class Service {
         // We would have to parse the json and retrive the values for key and value
         // Secret string: {"my-secret-key":"my-secret-value"}
 
+
         String secretString = getSecretValueResult.getSecretString();
         log.info("Secret string: " + secretString);
+
+	// Create a POJO called AwsSecret with the parameters username and password to hold the values from the string.
+	AwsSecret awsSecret = gson.fromJson(secretString, AwsSecret.class);
+        log.info("awsSecret: " + awsSecret);
 
         log.info("<<< getSecrets");
         return new ResponseEntity<>(HttpStatus.OK);
