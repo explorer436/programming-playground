@@ -1,0 +1,3 @@
+* Notes
+
+Retrieving secrets without using spring-cloud-aws support.

@@ -1,0 +1,37 @@
+package com.example.springcloudawssecretsmanager.service;
+
+import com.amazonaws.services.secretsmanager.AWSSecretsManager;
+import com.amazonaws.services.secretsmanager.model.GetSecretValueRequest;
+import com.amazonaws.services.secretsmanager.model.GetSecretValueResult;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+@Slf4j
+@RequiredArgsConstructor
+@org.springframework.stereotype.Service
+public class Service {
+
+    private final AWSSecretsManager amazonSecretsManager;
+
+    public ResponseEntity<String> getSecrets() {
+        log.info(">>> getSecrets");
+
+        GetSecretValueRequest getSecretValueRequest = new GetSecretValueRequest();
+        getSecretValueRequest.setSecretId("my-secret");
+        GetSecretValueResult getSecretValueResult = amazonSecretsManager.getSecretValue(getSecretValueRequest);
+        log.info("Printing the secret from secrets-manager: " + getSecretValueResult);
+        log.info("Secret name: " + getSecretValueResult.getName());
+
+        // We would have to parse the json and retrive the values for key and value
+        // Secret string: {"my-secret-key":"my-secret-value"}
+
+        String secretString = getSecretValueResult.getSecretString();
+        log.info("Secret string: " + secretString);
+
+        log.info("<<< getSecrets");
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+}
