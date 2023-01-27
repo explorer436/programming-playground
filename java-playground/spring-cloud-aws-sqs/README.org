@@ -14,7 +14,3 @@ After the message fails to process 10 times, the message will be moved to the DL
 * References:
 
 1. https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/java/example_code/sqs/src/main/java/aws/example/sqs
-
-* TODO
-
-Take notes from this: https://aws.amazon.com/blogs/developer/managing-dependencies-with-aws-sdk-for-java-bill-of-materials-module-bom/
