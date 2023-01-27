@@ -1,15 +1,37 @@
 * Points to note
 
-    <!-- AWS cloud dependencies -->
-    <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-aws -->
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-aws</artifactId>
-        <version>2.2.6.RELEASE</version>
-    </dependency>
-		
-    ~spring-cloud-starter-aws~ has ~spring-cloud-aws-context~ and ~spring-cloud-aws-autoconfigure~ dependencies.
-		
+Take a note of the ~dependencyManagement~ section and the ~dependencies~ section.
+
+#+begin_src 
+<dependencyManagement>
+    <dependencies>
+    	<dependency>
+    		<groupId>com.amazonaws</groupId>
+    		<artifactId>aws-java-sdk-bom</artifactId>
+    		<version>1.12.392</version>
+    		<type>pom</type>
+    		<scope>import</scope>
+    	</dependency>
+    	<dependency>
+    		<groupId>io.awspring.cloud</groupId>
+    		<artifactId>spring-cloud-aws</artifactId>
+    		<version>2.4.2</version>
+    		<type>pom</type>
+    		<scope>import</scope>
+    	</dependency>
+    </dependencies>
+</dependencyManagement>
+#+end_src
+
+Take a note of the ~dependencies~ section.
+
+#+begin_src 
+<dependency>
+    <groupId>io.awspring.cloud</groupId>
+    <artifactId>spring-cloud-starter-aws</artifactId>
+</dependency>
+#+end_src
+
 1. To start the application: ~mvn spring-boot:run~
 1. To call the GET list of files operation,
    #+begin_src 
@@ -48,3 +70,4 @@
 
 1. https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/java/example_code/s3/src/main/java/aws/example/s3
 1. https://github.com/awspring/spring-cloud-aws
+1. https://docs.awspring.io/spring-cloud-aws/docs/2.4.1/reference/html/index.html
