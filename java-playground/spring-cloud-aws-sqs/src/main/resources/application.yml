@@ -1,13 +1,3 @@
-cloud:
-  aws:
-    region:
-      static: us-east-1
-    stack:
-      auto: false
-    credentials:
-      accessKey: your-access-key
-      secretKey: your-secret-key
-
 standard:
   queue:
     name: my-standard-queue-df5f29db

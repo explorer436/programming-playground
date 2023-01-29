@@ -1,9 +1,0 @@
-cloud:
-  aws:
-    region:
-      static: us-east-1
-    stack:
-      auto: false
-    credentials:
-      accessKey: your-access-key
-      secretKey: your-secret-key
