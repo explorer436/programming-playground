@@ -1,0 +1,42 @@
+* Notes
+
+** External references
+
+https://docs.awspring.io/spring-cloud-aws/docs/2.4.1/reference/html/index.html#integrating-your-spring-cloud-application-with-the-aws-secrets-manager
+
+** Points to note
+
+Make sure that the name of the secret starts with "/secret/".
+If not, the framework does not work out of the box and it needs further customization.
+
+** Using aws-cli, look at the key from the aws account
+
+$ aws configure
+AWS Access Key ID [None]: your-access-id
+AWS Secret Access Key [None]: your-access-key
+Default region name [None]: us-east-1
+Default output format [None]:
+
+$ aws secretsmanager list-secrets
+
+{
+    "SecretList": [
+        {
+            "ARN": "arn:aws:secretsmanager:us-east-1:179498368224:secret:/secrets/dev/my-secret-2sglJq",
+            "Name": "/secrets/dev/my-secret",
+            "LastChangedDate": "2023-01-29T11:51:50.424000-05:00",
+            "LastAccessedDate": "2023-01-28T19:00:00-05:00",
+            "Tags": [],
+            "SecretVersionsToStages": {
+                "37fb212e-4ee9-435f-a622-5f5876eb2046": [
+                    "AWSCURRENT"
+                ]
+            },
+            "CreatedDate": "2023-01-29T11:51:50.390000-05:00"
+        }
+    ]
+}
+
+** Testing
+
+curl --location --request GET 'http://localhost:8080/secrets' --data-raw ''

@@ -3,6 +3,8 @@ package com.example.springcloudawssecretsmanager.service;
 import com.amazonaws.services.secretsmanager.AWSSecretsManager;
 import com.amazonaws.services.secretsmanager.model.GetSecretValueRequest;
 import com.amazonaws.services.secretsmanager.model.GetSecretValueResult;
+import com.example.springcloudawssecretsmanager.model.AwsSecret;
+import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +24,7 @@ public class Service {
         log.info(">>> getSecrets");
 
         GetSecretValueRequest getSecretValueRequest = new GetSecretValueRequest();
-        getSecretValueRequest.setSecretId("my-secret");
+        getSecretValueRequest.setSecretId("/dev/my-dev-secret");
         GetSecretValueResult getSecretValueResult = amazonSecretsManager.getSecretValue(getSecretValueRequest);
         log.info("Printing the secret from secrets-manager: " + getSecretValueResult);
         log.info("Secret name: " + getSecretValueResult.getName());
@@ -34,8 +36,9 @@ public class Service {
         String secretString = getSecretValueResult.getSecretString();
         log.info("Secret string: " + secretString);
 
-	// Create a POJO called AwsSecret with the parameters username and password to hold the values from the string.
-	AwsSecret awsSecret = gson.fromJson(secretString, AwsSecret.class);
+
+        // Create a POJO called AwsSecret with the parameters username and password to hold the values from the string.
+	    AwsSecret awsSecret = gson.fromJson(secretString, AwsSecret.class);
         log.info("awsSecret: " + awsSecret);
 
         log.info("<<< getSecrets");

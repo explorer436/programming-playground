@@ -1,3 +1,7 @@
 * Notes
 
 Retrieving secrets without using spring-cloud-aws support.
+Prefer the approach from the application "spring-cloud-aws-secrets-manager" over this.
+With that approach, you don't have to parse the json retrieved from aws.
+
+curl --location --request GET 'http://localhost:8080/secrets' --data-raw ''
