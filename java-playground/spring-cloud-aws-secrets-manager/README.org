@@ -6,19 +6,24 @@ https://docs.awspring.io/spring-cloud-aws/docs/2.4.1/reference/html/index.html#i
 
 ** Points to note
 
-Make sure that the name of the secret starts with "/secret/".
+Make sure that the name of the secret starts with ~/secret/~.
 If not, the framework does not work out of the box and it needs further customization.
 
 [[./images/spring-cloud-aws-secrets-manager-1f9f15031d84-properties.png]]
 
 ** Using aws-cli, look at the key from the aws account
 
+#+begin_src 
 $ aws configure
 AWS Access Key ID [None]: your-access-id
 AWS Secret Access Key [None]: your-access-key
 Default region name [None]: us-east-1
 Default output format [None]:
+#+end_src
 
+Look at the existing secrets using aws-cli
+
+#+begin_src 
 $ aws secretsmanager list-secrets
 
 {
@@ -38,7 +43,11 @@ $ aws secretsmanager list-secrets
         }
     ]
 }
+  
+#+end_src
 
 ** Testing
 
+#+begin_src 
 curl --location --request GET 'http://localhost:8080/secrets' --data-raw ''
+#+end_src
