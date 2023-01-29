@@ -11,6 +11,10 @@ If not, the framework does not work out of the box and it needs further customiz
 
 [[./images/spring-cloud-aws-secrets-manager-1f9f15031d84-properties.png]]
 
+Here is how the secret is supposed to look like in the console
+
+[[./images/spring-cloud-aws-secrets-manager-1f9f15031d84-secret-in-console.png]]
+
 ** Using aws-cli, look at the key from the aws account
 
 #+begin_src 
