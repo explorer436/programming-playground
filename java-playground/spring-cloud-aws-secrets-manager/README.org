@@ -55,3 +55,13 @@ $ aws secretsmanager list-secrets
 #+begin_src 
 curl --location --request GET 'http://localhost:8080/secrets' --data-raw ''
 #+end_src
+
+** Expected output
+
+#+begin_src 
+2023-01-30 09:12:51.255  INFO 258368 --- [nio-8080-exec-1] c.e.s.controller.Controller              : >>> getSecrets
+2023-01-30 09:12:51.255  INFO 258368 --- [nio-8080-exec-1] c.e.s.service.Service                    : >>> getSecrets
+2023-01-30 09:12:51.255  INFO 258368 --- [nio-8080-exec-1] c.e.s.service.Service                    : Printing the value for the secret /secrets/dev/my-secret from secrets-manager: my-secret-value
+2023-01-30 09:12:51.255  INFO 258368 --- [nio-8080-exec-1] c.e.s.service.Service                    : <<< getSecrets
+2023-01-30 09:12:51.257  INFO 258368 --- [nio-8080-exec-1] c.e.s.controller.Controller              : <<< getSecrets
+#+end_src
