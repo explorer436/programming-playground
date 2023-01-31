@@ -9,6 +9,7 @@ https://docs.awspring.io/spring-cloud-aws/docs/2.4.1/reference/html/index.html#i
 Make sure that the name of the secret starts with ~/secret/~.
 If not, the framework does not work out of the box and it needs further customization.
 
+[[./images/spring-cloud-aws-secrets-manager-1f9f15031d84-overview.png]]
 [[./images/spring-cloud-aws-secrets-manager-1f9f15031d84-properties.png]]
 
 Here is how the secret is supposed to look like in the console
