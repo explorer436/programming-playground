@@ -1,0 +1,64 @@
+* Notes
+
+** External references
+
+https://docs.awspring.io/spring-cloud-aws/docs/2.4.1/reference/html/index.html#integrating-your-spring-cloud-application-with-the-aws-parameter-store
+
+** Points to note
+
+Make sure that the name of the secret starts with ~/secret/~.
+If not, the framework does not work out of the box and it needs further customization.
+
+[[./images/spring-cloud-aws-parameter-store-a2cbd7148223-overview.png]]
+[[./images/spring-cloud-aws-parameter-store-a2cbd7148223-properties.png]]
+
+Here is how the secret is supposed to look like in the console
+
+[[./images/spring-cloud-aws-parameter-store-a2cbd7148223-in-console]]
+
+** Using aws-cli, look at the key from the aws account
+
+#+begin_src 
+$ aws configure
+AWS Access Key ID [None]: your-access-id
+AWS Secret Access Key [None]: your-access-key
+Default region name [None]: us-east-1
+Default output format [None]:
+#+end_src
+
+Look at the existing secrets using aws-cli
+
+#+begin_src 
+$ aws ssm describe-parameters
+
+{
+    "Parameters": [
+        {
+            "Name": "/config/spring-cloud-aws-parameter-store/my-custom-paramter",
+            "Type": "String",
+            "LastModifiedDate": "2023-01-31T11:55:29.322000-05:00",
+            "LastModifiedUser": "arn:aws:iam::179498368224:root",
+            "Version": 1,
+            "Tier": "Standard",
+            "Policies": [],
+            "DataType": "text"
+        }
+    ]
+}
+#+end_src
+
+** Testing
+
+#+begin_src 
+curl --location --request GET 'http://localhost:8080/parameters' --data-raw ''
+#+end_src
+
+** Expected output
+
+#+begin_src 
+2023-01-31 13:16:56.721  INFO 290599 --- [nio-8080-exec-1] c.e.s.controller.Controller              : >>> getParameters
+2023-01-31 13:16:56.721  INFO 290599 --- [nio-8080-exec-1] c.e.s.service.Service                    : >>> getParameters
+2023-01-31 13:16:56.722  INFO 290599 --- [nio-8080-exec-1] c.e.s.service.Service                    : Printing the parameter value for /config/spring-cloud-aws-parameter-store/my-custom-paramter from parameter-store: test custom parameter
+2023-01-31 13:16:56.722  INFO 290599 --- [nio-8080-exec-1] c.e.s.service.Service                    : <<< getParameters
+2023-01-31 13:16:56.723  INFO 290599 --- [nio-8080-exec-1] c.e.s.controller.Controller              : <<< getParameters
+#+end_src
