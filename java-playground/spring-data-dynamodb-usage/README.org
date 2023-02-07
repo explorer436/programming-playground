@@ -1,0 +1,76 @@
+* Notes
+
+** External references
+
+https://www.baeldung.com/spring-data-dynamodb
+
+** Gotchas
+
+For the code the work, the table in DynamoDB is a prerequisite. So, make sure the table exists before trying to perform CRUD operations on it.
+
+** Testing
+
+#+begin_src 
+curl -X POST -H "Content-Type: application/json" -d '{"msrp": "test"}'  http://localhost:8080/createTable
+curl -X POST -H "Content-Type: application/json" -d '{"msrp": "test"}'  http://localhost:8080/productInfo
+curl --location --request GET 'http://localhost:8080/productInfo' --data-raw ''
+#+end_src
+
+Expected output of the get operation:
+#+begin_src 
+ {
+  "id": "74cb67c0-8b40-4532-8354-cfc2bcc40ece",
+  "msrp": "$100.00",
+  "cost": "$120.00",
+  "createdDateTime": "2023-02-07T02:30:12.392+00:00",
+  "canBeSold": true,
+  "subObject": {
+    "testAttribute1": "test attribute 1",
+    "testAttribute2": "test attribute 2"
+  }
+} 
+#+end_src
+
+
+To access DynamoDB running locally with the AWS CLI, use the --endpoint-url parameter. For example, use the following command to list DynamoDB tables.
+
+#+begin_src 
+$ aws dynamodb help
+
+$ aws dynamodb list-tables --endpoint-url http://localhost:8000
+
+$ aws dynamodb scan --endpoint-url http://localhost:8000 --table-name ProductInfo
+
+$ aws dynamodb delete-table --endpoint-url http://localhost:8000 --table-name ProductInfo
+#+end_src
+
+Expected results:
+#+begin_src 
+{
+    "Items": [
+        {
+            "can_be_sold": {
+                "BOOL": true
+            },
+            "created_date_time": {
+                "S": "2023-02-07T02:30:12.392Z"
+            },
+            "cost": {
+                "S": "$120.00"
+            },
+            "id": {
+                "S": "74cb67c0-8b40-4532-8354-cfc2bcc40ece"
+            },
+            "sub_object": {
+                "S": "{\"testAttribute1\":\"test attribute 1\",\"testAttribute2\":\"test attribute 2\"}"
+            },
+            "msrp": {
+                "S": "$100.00"
+            }
+        }
+    ],
+    "Count": 1,
+    "ScannedCount": 1,
+    "ConsumedCapacity": null
+}
+#+end_src
