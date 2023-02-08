@@ -1,6 +1,6 @@
 * Notes
 
-For quick reference, here's what we're going to be making:
+** For quick reference, here's what we're going to be making:
 
 1. A Bad Singly-Linked Stack
 1. An Ok Singly-Linked Stack
@@ -10,13 +10,6 @@ For quick reference, here's what we're going to be making:
 1. TODO: An Ok Unsafe Doubly-Linked Deque
 1. Bonus: A Bunch of Silly Lists
 
-Creating the project:
-
-#+begin_src 
-cargo new --lib linked-lists
-cd linked-lists
-#+end_src
-
-* Reference:
+** Reference:
 
 https://rust-unofficial.github.io/too-many-lists/index.html

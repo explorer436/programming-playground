@@ -1,32 +1,171 @@
+* Notes about learning Rust                                           :TOC_9:
+  - [[#documentation][Documentation]]
+  - [[#creating-a-project][Creating a project:]]
+  - [[#the-main-function][The main function]]
+  - [[#println-macro][println macro]]
+  - [[#crates][crates]]
+  - [[#cargo][cargo]]
+  - [[#prelude][prelude]]
+  - [[#stdio][std::io]]
+  - [[#let-statement-in-rust][let statement in Rust]]
+  - [[#string-type][String type]]
+  - [[#associated-function][Associated function]]
+  - [[#variables-and-mutability---immutable-by-default][Variables and Mutability - immutable by default]]
+  - [[#variable-references][Variable references]]
+  - [[#notes][Notes]]
+
+** Documentation
+
 The installation of Rust also includes a copy of the documentation locally, so you can read it offline. Run ~rustup doc~ to open the local documentation in your browser.
 
+** Creating a project:
+
+With this, the main function will be in a file called main.rs
+#+begin_src 
+$ cargo new hello_cargo
+$ cd hello_cargo 
+#+end_src
+
+With this, the main function will be in a file called lib.rs
+#+begin_src 
+cargo new --lib linked-lists
+cd linked-lists
+#+end_src
+
+** The main function
+
+The main function is special. It is always the first code that runs in every executable Rust program.
+
+** println macro
+
+/*
+ * println! calls a Rust macro.
+ * If it had called a function instead, it would be entered as println (without the !).
+ * Using a ! means that you’re calling a macro instead of a normal function and that macros don’t always follow the same rules as functions.
+ *
+ * https://doc.rust-lang.org/std/macro.println.html
+ */
+
+** crates
+
 In Rust, packages of code are referred to as crates
+
+Crates.io is where people in the Rust ecosystem post their open source Rust projects for others to use.
+https://crates.io/
+
+Note: You won’t just know which traits to use and which methods and functions to call from a crate, so each crate has documentation with instructions for using it. Another neat feature of Cargo is that running the ~cargo doc --open~ command will build documentation provided by all your dependencies locally and open it in your browser. If you’re interested in other functionality in the rand crate, for example, run ~cargo doc --open~ and click ~rand~ in the sidebar on the left.
+
+** cargo
 
 Building using Cargo: ~cargo build~
 
 This command creates an executable file in target/debug/hello_cargo (or target\debug\hello_cargo.exe on Windows) rather than in your current directory. You can run the executable with this command:
 
+#+begin_src 
 $ ./target/debug/hello_cargo # or .\target\debug\hello_cargo.exe on Windows
 Hello, world!
+#+end_src
 
-We just built a project with cargo build and ran it with ./target/debug/hello_cargo, but we can also use ~cargo run~ to compile the code and then run the resulting executable all in one command.
+We can also use ~cargo run~ to compile the code and then run the resulting executable all in one command.
 
 Cargo also provides a command called ~cargo check~. This command quickly checks your code to make sure it compiles but doesn’t produce an executable. Often, cargo check is much faster than cargo build, because it skips the step of producing an executable. If you’re continually checking your work while writing the code, using cargo check will speed up the process! As such, many Rustaceans run cargo check periodically as they write their program to make sure it compiles. Then they run cargo build when they’re ready to use the executable.
 
-When your project is finally ready for release, you can use ~cargo build --release~ to compile it with optimizations. This command
-will create an executable in target/release instead of target/debug. The optimizations make your Rust code run faster, but turning them
-on lengthens the time it takes for your program to compile. This is why there are two different profiles: one for development, when you
-want to rebuild quickly and often, and another for building the final program you’ll give to a user that won’t be rebuilt repeatedly and
-that will run as fast as possible.
+When your project is finally ready for release, you can use ~cargo build --release~ to compile it with optimizations. This command will create an executable in target/release instead of target/debug. The optimizations make your Rust code run faster, but turning them on lengthens the time it takes for your program to compile. This is why there are two different profiles: one for development, when you want to rebuild quickly and often, and another for building the final program you’ll give to a user that won’t be rebuilt repeatedly and that will run as fast as possible.
+
+~cargo update~ When you do want to update a crate, Cargo provides the command update, which will ignore the Cargo.lock file and figure out all the latest versions that fit your specifications in Cargo.toml. Cargo will then write those versions to the Cargo.lock file.
+
+** prelude
 
 By default, Rust has a few items defined in the standard library that it brings into the scope of every program. This set is called the prelude, and you can see everything in it in the standard library documentation: https://doc.rust-lang.org/stable/std/prelude/index.html
 
+If a type you want to use isn’t in the prelude, you have to bring that type into scope explicitly with a use statement.
 
-In Rust, variables are immutable by default. We’ll be discussing this concept in detail in the “Variables and Mutability” section in Chapter 3. To make a variable mutable, we add mut before the variable name:
+e.g.
+#+begin_src 
+use std::io; 
+#+end_src
+
+** std::io
+
+Using the std::io library provides you with a number of useful features, including the ability to accept user input.
+
+https://doc.rust-lang.org/stable/std/io/struct.Stdin.html
+
+The ~stdin~ function returns an instance of ~std::io::Stdin~, which is a type that represents a handle to the standard input for your terminal.
+
+https://doc.rust-lang.org/stable/std/io/struct.Stdin.html#method.read_line
+
+The line ~.read_line(&mut guess)~ calls the read_line method on the standard input handle to get input from the user.
+
+We are passing &mut guess as the argument to read_line to tell it what string to store the user input in. The full job of read_line is to take whatever the user types into standard input and append that into a string (without overwriting its contents), so we therefore pass that string as an argument. The string argument needs to be mutable so the method can change the string’s content.
+
+~read_line~ puts whatever the user enters into the string we pass to it, but it also returns a ~Result~ value. ~Result~ is an ~enumeration~, often called an enum, which is a type that can be in one of multiple possible states. We call each possible state a variant.
+
+https://doc.rust-lang.org/stable/std/result/enum.Result.html
+
+The purpose of these Result types is to encode error-handling information.
+
+https://doc.rust-lang.org/stable/book/ch06-00-enums.html
+
+Result’s variants are ~Ok~ and ~Err~. The ~Ok~ variant indicates the operation was successful, and inside ~Ok~ is the successfully generated value. The ~Err~ variant means the operation failed, and ~Err~ contains information about how or why the operation failed.
+
+Values of the ~Result~ type, like values of any type, have methods defined on them. An instance of ~Result~ has an expect method that you can call. If this instance of ~Result~ is an ~Err~ value, expect will cause the program to crash and display the message that you passed as an argument to expect. If the ~read_line~ method returns an ~Err~, it would likely be the result of an error coming from the underlying operating system. If this instance of ~Result~ is an ~Ok~ value, ~expect~ will take the return value that ~Ok~ is holding and return just that value to you so you can use it. In this case, that value is the number of bytes in the user’s input.
+
+https://doc.rust-lang.org/stable/std/result/enum.Result.html#method.expect
+
+If you don’t call expect, the program will compile, but you’ll get a warning:
+
+#+begin_src 
+ /home/h/.cargo/bin/cargo build --color=always --message-format=json-diagnostic-rendered-ansi
+   Compiling guessing_game v0.1.0 (/home/h/Downloads/GitRepositories/programming-playground/rust-playground/guessing_game)
+warning: unused `Result` that must be used
+  --> src/main.rs:17:9
+   |
+17 | /         io::stdin()
+18 | |             .read_line(&mut guess);
+   | |___________________________________^
+   |
+   = note: `#[warn(unused_must_use)]` on by default
+   = note: this `Result` may be an `Err` variant, which should be handled
+
+warning: 1 warning emitted
+
+    Finished dev [unoptimized + debuginfo] target(s) in 0.32s
+Process finished with exit code 0 
+#+end_src
+
+Rust warns that you haven’t used the ~Result~ value returned from ~read_line~, indicating that the program hasn’t handled a possible error.
+
+The right way to suppress the warning is to actually write error-handling code, but in our case we just want to crash this program when a problem occurs, so we can use ~expect~.
+
+** let statement in Rust
+
+We use the let statement to create the variable.
+
+e.g.
+#+begin_src 
+let apples = 5; 
+let mut guess = String::new();
+#+end_src
+
+** String type
+
+https://doc.rust-lang.org/stable/std/string/struct.String.html
+String is a string type provided by the standard library that is a growable, UTF-8 encoded bit of text.
+
+** Associated function
+
+The ~::~ syntax in the ~::new~ line indicates that new is an associated function of the ~String~ type. An associated function is a function that’s implemented on a type, in this case ~String~. This ~new~ function creates a new, empty string. You’ll find a ~new~ function on many types because it’s a common name for a function that makes a new value of some kind.
+
+** Variables and Mutability - immutable by default
+
+In Rust, variables are immutable by default. To make a variable mutable, we add ~mut~ before the variable name:
 let apples = 5; // immutable
 let mut bananas = 5; // mutable
 
-The & indicates that this argument is a reference, which gives you a way to let multiple parts of your code access one piece of data without needing to copy that data into memory multiple times. References are a complex feature, and one of Rust’s major advantages is how safe and easy it is to use references. Like variables, references are immutable by default.
+** Variable references
+
+The ~&~ indicates that the argument is a reference, which gives you a way to let multiple parts of your code access one piece of data without needing to copy that data into memory multiple times. References are a complex feature, and one of Rust’s major advantages is how safe and easy it is to use references. Like variables, references are immutable by default.
 
 
 Rust has a number of types named Result in its standard library: a generic Result as well as specific versions for submodules, such as io::Result. The Result types are enumerations, often referred to as enums, which can have a fixed set of possibilities known as variants. Enums are often used with match, a conditional that makes it convenient to execute different code based on which variant an enum value is when the conditional is evaluated.
@@ -39,6 +178,13 @@ Values of the Result type, like values of any type, have methods defined on them
 
 If you don’t call expect, the program will compile, but you’ll get a warning.
 
-TODO
+** Notes
 
-https://rust-unofficial.github.io/too-many-lists/
+https://docs.rs/sum_type/latest/sum_type/
+
+https://doc.rust-lang.org/std/boxed/struct.Box.html
+
+https://doc.rust-lang.org/std/boxed/
+
+https://tonyarcieri.com/a-quick-tour-of-rusts-type-system-part-1-sum-types-a-k-a-tagged-unions
+
