@@ -7,7 +7,9 @@
   - [[#cargo][cargo]]
   - [[#prelude][prelude]]
   - [[#stdio][std::io]]
-  - [[#let-statement-in-rust][let statement in Rust]]
+  - [[#let-statement-and-variables-in-rust][let statement and variables in Rust]]
+  - [[#constants][constants]]
+  - [[#shadowing][shadowing]]
   - [[#string-type][String type]]
   - [[#associated-function][Associated function]]
   - [[#variables-and-mutability---immutable-by-default][Variables and Mutability - immutable by default]]
@@ -38,13 +40,11 @@ The main function is special. It is always the first code that runs in every exe
 
 ** println macro
 
-/*
- * println! calls a Rust macro.
- * If it had called a function instead, it would be entered as println (without the !).
- * Using a ! means that you’re calling a macro instead of a normal function and that macros don’t always follow the same rules as functions.
- *
- * https://doc.rust-lang.org/std/macro.println.html
- */
+println! calls a Rust macro.
+If it had called a function instead, it would be entered as println (without the !).
+Using a ! means that you’re calling a macro instead of a normal function and that macros don’t always follow the same rules as functions.
+
+https://doc.rust-lang.org/std/macro.println.html
 
 ** crates
 
@@ -138,15 +138,25 @@ Rust warns that you haven’t used the ~Result~ value returned from ~read_line~,
 
 The right way to suppress the warning is to actually write error-handling code, but in our case we just want to crash this program when a problem occurs, so we can use ~expect~.
 
-** let statement in Rust
+** let statement and variables in Rust
 
-We use the let statement to create the variable.
+https://doc.rust-lang.org/stable/book/ch03-01-variables-and-mutability.html
+
+We use the let statement to create variables.
 
 e.g.
 #+begin_src 
 let apples = 5; 
 let mut guess = String::new();
 #+end_src
+
+** constants
+
+https://doc.rust-lang.org/stable/book/ch03-01-variables-and-mutability.html
+
+** shadowing
+
+https://doc.rust-lang.org/stable/book/ch03-01-variables-and-mutability.html
 
 ** String type
 
