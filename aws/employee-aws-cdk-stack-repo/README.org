@@ -39,10 +39,6 @@ You will need the following:
     5. AWS CDK Toolkit
        To install AWS CDK Toolkit globally using Node Package Manager : npm install -g aws-cdk
        
-** TODO
-
-Set up directions for working with AWS SAM in local machines.
-
 ** Issues And Tips
 
 [n0281526@VDDP14P-I9AGJD5 aws-user-service]$ cdk synth
