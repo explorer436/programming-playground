@@ -1,6 +1,7 @@
 fn main() {
     example_use_case_for_mut_keyword();
     example_use_case_for_shadowing();
+    string_that_can_be_mutated();
 }
 
 fn example_use_case_for_mut_keyword() {
@@ -25,4 +26,12 @@ fn example_use_case_for_shadowing() {
 
     println!("The value of x in the outer scope is: {}", x);
     println!("<<< example_use_case_for_shadowing");
+}
+
+fn string_that_can_be_mutated() {
+    let mut s = String::from("hello");
+
+    s.push_str(", world!"); // push_str() appends a literal to a String
+
+    println!("{}", s); // This will print `hello, world!`
 }
