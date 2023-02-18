@@ -1,5 +1,5 @@
 [package]
-name = "linked-lists"
+name = "primitives"
 version = "0.1.0"
 edition = "2021"
 
