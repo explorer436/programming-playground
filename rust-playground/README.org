@@ -21,6 +21,7 @@
 
 Are modules analogous to Java packages?
 Are crates analogous to Java classes?
+Are traits analogous to Abstract classes (or interfaces with implementations) in Java?
 
 ** Documentation
 
