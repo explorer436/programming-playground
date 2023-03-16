@@ -46,6 +46,10 @@ If Java is installed using package managers or by using any other ways other tha
    find /usr/lib/jvm/java-1.x.x-openjdk  
    #+end_src
 
+   In Linux machines, if jdk is installed through the tools provided by the OS, the jdk folder is usually in ~/usr/lib/jvm~ folder.
+
+   [[./images/jdkFolderInLinuxMachines.PNG]]
+
 *** How to set JAVA_HOME and PATH environment variables after figuring out where the jdk is?
 
 Look at Linux/Path.org for details about how the path can be set in .bashrc
