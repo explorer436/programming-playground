@@ -51,19 +51,32 @@ int count = Stream.of(1, 2, 3, 4, 5)
 
 *** What are the most commonly used Intermediate operations?
 
-*Filter(Predicate<T>)* - Allows selective processing of Stream elements. It returns elements that are satisfying the supplied condition by the predicate.
-
-*map(Funtion<T, R>)* - Returns a new Stream, transforming each of the elements by applying the supplied mapper function.= sorted() - Sorts the input elements and then passes them to the next stage.
-
-*distinct()* - Only pass on elements to the next stage, not passed yet.
-
-*limit(long maxsize)* - Limit the stream size to maxsize.
-
-*skip(long start)* - Skip the initial elements till the start.
-
-*peek(Consumer)* - Apply a consumer without modification to the stream.
-
-*flatMap(mapper)* - Transform each element to a stream of its constituent elements and flatten all the streams into a single stream.
+1. *Filter(Predicate<T>)* - Allows selective processing of Stream elements. It returns elements that are satisfying the supplied condition by the predicate.
+1. *map(Funtion<T, R>)* - Returns a new Stream, transforming each of the elements by applying the supplied mapper function.
+   e.g.
+   #+begin_src 
+   List<String> myList = Stream.of("a", "b")
+     .map(String::toUpperCase)
+     .collect(Collectors.toList());
+   assertEquals(asList("A", "B"), myList); 
+   #+end_src
+1. *distinct()* - Only pass on elements to the next stage, not passed yet.
+1. *limit(long maxsize)* - Limit the stream size to maxsize.
+1. *skip(long start)* - Skip the initial elements till the start.
+1. *peek(Consumer)* - Apply a consumer without modification to the stream.
+1. *flatMap(mapper)* - Transform each element to a stream of its constituent elements and flatten all the streams into a single stream.
+    This method first flattens the input Stream of Streams to a single Stream. After that, it works similarly to the map() method.
+    e.g.
+    #+begin_src 
+    List<List<String>> list = Arrays.asList(
+        Arrays.asList("a"),
+        Arrays.asList("b"));
+    System.out.println(list
+      .stream()
+      .flatMap(Collection::stream)
+      .collect(Collectors.toList()));
+    #+end_src
+    The result of such a snippet will be flattened to [a, b].
 
 *** What is the stateful intermediate operation? Give some examples of stateful intermediate operations.
 
