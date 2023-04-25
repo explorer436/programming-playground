@@ -91,6 +91,12 @@ source ~/.zshrc
 java -version
 #+end_src
 
+*** Windows
+
+1. Download the zip file for jdk and unzip it into a location.
+1. After that, set JAVA_HOME in environment variables. Don’t include the \bin folder, just the JDK path. For example – C:\Program Files\Java\jdk1.8.0_60
+1. After that, update PATH in environment variables. Add this: %JAVA_HOME%\bin (If you are looking at the old view, the entries will be separated by semi-colon)
+
 * Checking JAVA_HOME on Linux
 
 Open a terminal and type:
