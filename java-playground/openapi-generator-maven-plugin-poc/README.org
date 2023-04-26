@@ -8,6 +8,11 @@
     1. build-helper-maven-plugin
     1. springdoc-openapi
 
+*** Caveats:
+    1. In the configuration for openapi-generator-maven-plugin in pom.xml, be sure to specify the package name correctly.
+    1. Specifically, for the package with the Delegate interface.
+    1. If it is different from the package name of the main class (with @SpringBootApplication), the application will not work properly. You may see 404 errors.
+
 To install the package into the local repository, for use as a dependency in other projects locally: ~mvn clean install~
 
 Plugin used to generate the artifacts from the OpenAPI specification file:
