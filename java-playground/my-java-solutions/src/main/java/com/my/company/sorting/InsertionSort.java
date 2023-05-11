@@ -32,170 +32,170 @@ While at the beginning the sorted part consists of element a0 only, at the end i
 */
 public class InsertionSort {
 
-  public static void main(String[] args) {
-    Integer[] intArray = new Integer[] {5, 7, 0, 3, 4, 2, 6, 1};
-    System.out.println("--------before sorting-----------");
-    PrintUtils.printArray(intArray);
-    System.out.println("---------printing the sorted list using iteration------------");
-    insertionSort_iterative(intArray);
-    PrintUtils.printArray(intArray);
-    System.out.println("---------printing the sorted list using recursion------------");
-    insertionSort_recursive(intArray, intArray.length);
-    PrintUtils.printArray(intArray);
+    public static void main(String[] args) {
+        Integer[] intArray = new Integer[]{5, 7, 0, 3, 4, 2, 6, 1};
+        System.out.println("--------before sorting-----------");
+        PrintUtils.printArray(intArray);
+        System.out.println("---------printing the sorted list using iteration------------");
+        insertionSort_iterative(intArray);
+        PrintUtils.printArray(intArray);
+        System.out.println("---------printing the sorted list using recursion------------");
+        insertionSort_recursive(intArray, intArray.length);
+        PrintUtils.printArray(intArray);
 
-    System.out.println();
+        System.out.println();
 
-    String[] strArray = new String[] {"ghi", "abc", "def"};
-    System.out.println("--------before sorting-----------");
-    PrintUtils.printArray(strArray);
-    System.out.println("---------printing the sorted list using iteration------------");
-    insertionSort_iterative(strArray);
-    PrintUtils.printArray(strArray);
-    System.out.println("---------printing the sorted list using recursion------------");
-    insertionSort_recursive(strArray, strArray.length);
-    PrintUtils.printArray(strArray);
-  }
+        String[] strArray = new String[]{"ghi", "abc", "def"};
+        System.out.println("--------before sorting-----------");
+        PrintUtils.printArray(strArray);
+        System.out.println("---------printing the sorted list using iteration------------");
+        insertionSort_iterative(strArray);
+        PrintUtils.printArray(strArray);
+        System.out.println("---------printing the sorted list using recursion------------");
+        insertionSort_recursive(strArray, strArray.length);
+        PrintUtils.printArray(strArray);
+    }
 
-  /**
-   * Initially, A[0] is considered to be a sorted part of size = 1. And the algorith starts
-   * evaluating the initial array starting from the second position (i = 1).
-   *
-   * <p>A = [5, 7, 0, 3, 4, 2, 6, 1]
-   * --------------------------------------------------------------------------------------------------------
-   * i = 1 [5 7 0 3 4 2 6 1] i
-   *
-   * <p>j = 1 [5 7 0 3 4 2 6 1] j compare A[j] with A[j - 1].. A[1] with A[0] and since A[j] > A[j -
-   * 1], no need to exchange them.
-   *
-   * <p>A at the end of the iteration i = 1, [5 7 0 3 4 2 6 1]
-   * --------------------------------------------------------------------------------------------------------
-   * i = 2 [5 7 0 3 4 2 6 1] i
-   *
-   * <p>j = 2 [5 7 0 3 4 2 6 1] j compare A[j] with A[j - 1].. A[2] with A[1] and exchange them.
-   *
-   * <p>j = 1 [5 0 7 3 4 2 6 1] j compare A[j] with A[j - 1].. A[1] with A[0] and exchange them.
-   *
-   * <p>A at the end of the iteration i = 2, [0 5 7 3 4 2 6 1]
-   * --------------------------------------------------------------------------------------------------------
-   * i = 3 [0 5 7 3 4 2 6 1] i
-   *
-   * <p>j = 3 [0 5 7 3 4 2 6 1] j compare A[j] with A[j - 1].. A[3] with A[2] and exchange them.
-   *
-   * <p>j = 2 [0 5 3 7 4 2 6 1] j compare A[j] with A[j - 1].. A[2] with A[1] and exchange them.
-   *
-   * <p>j = 1 [0 3 5 7 4 2 6 1] j compare A[j] with A[j - 1].. A[1] with A[0] and since A[j] > A[j -
-   * 1], no need to exchange them.
-   *
-   * <p>A at the end of the iteration i = 3, [0 3 5 7 4 2 6 1]
-   * --------------------------------------------------------------------------------------------------------
-   * i = 4 [0 3 5 7 4 2 6 1] i
-   *
-   * <p>j = 4 [0 3 5 7 4 2 6 1] j compare A[j] with A[j - 1].. A[4] with A[3] and exchange them.
-   *
-   * <p>j = 3 [0 3 5 4 7 2 6 1] j compare A[j] with A[j - 1].. A[3] with A[2] and exchange them.
-   *
-   * <p>j = 2 [0 3 4 5 7 2 6 1] j compare A[j] with A[j - 1].. A[2] with A[1] and since A[j] > A[j -
-   * 1], no need to exchange them.
-   *
-   * <p>j = 1 [0 3 4 5 7 2 6 1] j compare A[j] with A[j - 1].. A[1] with A[0] and since A[j] > A[j -
-   * 1], no need to exchange them.
-   *
-   * <p>A at the end of the iteration i = 4, [0 3 4 5 7 2 6 1]
-   * --------------------------------------------------------------------------------------------------------
-   * i = 5 [0 3 4 5 7 2 6 1] i
-   *
-   * <p>j = 5 [0 3 4 5 7 2 6 1] j compare A[j] with A[j - 1].. A[5] with A[4] and exchange them.
-   *
-   * <p>j = 4 [0 3 4 5 2 7 6 1] j compare A[j] with A[j - 1].. A[4] with A[3] and exchange them.
-   *
-   * <p>j = 3 [0 3 4 2 5 7 6 1] j compare A[j] with A[j - 1].. A[3] with A[2] and exchange them.
-   *
-   * <p>j = 2 [0 3 2 4 5 7 6 1] j compare A[j] with A[j - 1].. A[2] with A[1] and exchange them.
-   *
-   * <p>j = 1 [0 2 3 4 5 7 6 1] j compare A[j] with A[j - 1].. A[1] with A[0] and since A[j] > A[j -
-   * 1], no need to exchange them.
-   *
-   * <p>A at the end of the iteration i = 5, [0 2 3 4 5 7 6 1]
-   * --------------------------------------------------------------------------------------------------------
-   * i = 6 [0 2 3 4 5 7 6 1] i
-   *
-   * <p>j = 6 [0 2 3 4 5 7 6 1] j compare A[j] with A[j - 1].. A[6] with A[5] and exchange them.
-   *
-   * <p>j = 5 [0 2 3 4 5 6 7 1] j compare A[j] with A[j - 1].. A[5] with A[4] and since A[j] > A[j -
-   * 1], no need to exchange them.
-   *
-   * <p>j = 4 [0 2 3 4 5 6 7 1] j compare A[j] with A[j - 1].. A[4] with A[3] and since A[j] > A[j -
-   * 1], no need to exchange them.
-   *
-   * <p>j = 3 [0 2 3 4 5 6 7 1] j compare A[j] with A[j - 1].. A[3] with A[2] and since A[j] > A[j -
-   * 1], no need to exchange them.
-   *
-   * <p>j = 2 [0 2 3 4 5 6 7 1] j compare A[j] with A[j - 1].. A[2] with A[1] and since A[j] > A[j -
-   * 1], no need to exchange them.
-   *
-   * <p>j = 1 [0 2 3 4 5 6 7 1] j compare A[j] with A[j - 1].. A[1] with A[0] and since A[j] > A[j -
-   * 1], no need to exchange them.
-   *
-   * <p>A at the end of the iteration i = 6, [0 2 3 4 5 6 7 1]
-   * --------------------------------------------------------------------------------------------------------
-   * i = 7 [0 2 3 4 5 6 7 1] i
-   *
-   * <p>j = 7 [0 2 3 4 5 6 7 1] j compare A[j] with A[j - 1].. A[7] with A[6] and exchange them.
-   *
-   * <p>j = 6 [0 2 3 4 5 6 1 7] j compare A[j] with A[j - 1].. A[6] with A[5] and exchange them.
-   *
-   * <p>j = 5 [0 2 3 4 5 1 6 7] j compare A[j] with A[j - 1].. A[5] with A[4] and exchange them.
-   *
-   * <p>j = 4 [0 2 3 4 1 5 6 7] j compare A[j] with A[j - 1].. A[4] with A[3] and exchange them.
-   *
-   * <p>j = 3 [0 2 3 1 4 5 6 7] j compare A[j] with A[j - 1].. A[3] with A[2] and exchange them.
-   *
-   * <p>j = 2 [0 2 1 3 4 5 6 7] j compare A[j] with A[j - 1].. A[2] with A[1] and exchange them.
-   *
-   * <p>j = 1 [0 1 2 3 4 5 6 7] j compare A[j] with A[j - 1].. A[1] with A[0] and since A[j] > A[j -
-   * 1], no need to exchange them.
-   *
-   * <p>A at the end of the iteration i = 7, [0 1 2 3 4 5 6 7]
-   */
-  public static void insertionSort_iterative(Comparable[] a) {
-    int length = a.length;
+    /**
+     * Initially, A[0] is considered to be a sorted part of size = 1. And the algorith starts
+     * evaluating the initial array starting from the second position (i = 1).
+     *
+     * <p>A = [5, 7, 0, 3, 4, 2, 6, 1]
+     * --------------------------------------------------------------------------------------------------------
+     * i = 1 [5 7 0 3 4 2 6 1] i
+     *
+     * <p>j = 1 [5 7 0 3 4 2 6 1] j compare A[j] with A[j - 1].. A[1] with A[0] and since A[j] > A[j -
+     * 1], no need to exchange them.
+     *
+     * <p>A at the end of the iteration i = 1, [5 7 0 3 4 2 6 1]
+     * --------------------------------------------------------------------------------------------------------
+     * i = 2 [5 7 0 3 4 2 6 1] i
+     *
+     * <p>j = 2 [5 7 0 3 4 2 6 1] j compare A[j] with A[j - 1].. A[2] with A[1] and exchange them.
+     *
+     * <p>j = 1 [5 0 7 3 4 2 6 1] j compare A[j] with A[j - 1].. A[1] with A[0] and exchange them.
+     *
+     * <p>A at the end of the iteration i = 2, [0 5 7 3 4 2 6 1]
+     * --------------------------------------------------------------------------------------------------------
+     * i = 3 [0 5 7 3 4 2 6 1] i
+     *
+     * <p>j = 3 [0 5 7 3 4 2 6 1] j compare A[j] with A[j - 1].. A[3] with A[2] and exchange them.
+     *
+     * <p>j = 2 [0 5 3 7 4 2 6 1] j compare A[j] with A[j - 1].. A[2] with A[1] and exchange them.
+     *
+     * <p>j = 1 [0 3 5 7 4 2 6 1] j compare A[j] with A[j - 1].. A[1] with A[0] and since A[j] > A[j -
+     * 1], no need to exchange them.
+     *
+     * <p>A at the end of the iteration i = 3, [0 3 5 7 4 2 6 1]
+     * --------------------------------------------------------------------------------------------------------
+     * i = 4 [0 3 5 7 4 2 6 1] i
+     *
+     * <p>j = 4 [0 3 5 7 4 2 6 1] j compare A[j] with A[j - 1].. A[4] with A[3] and exchange them.
+     *
+     * <p>j = 3 [0 3 5 4 7 2 6 1] j compare A[j] with A[j - 1].. A[3] with A[2] and exchange them.
+     *
+     * <p>j = 2 [0 3 4 5 7 2 6 1] j compare A[j] with A[j - 1].. A[2] with A[1] and since A[j] > A[j -
+     * 1], no need to exchange them.
+     *
+     * <p>j = 1 [0 3 4 5 7 2 6 1] j compare A[j] with A[j - 1].. A[1] with A[0] and since A[j] > A[j -
+     * 1], no need to exchange them.
+     *
+     * <p>A at the end of the iteration i = 4, [0 3 4 5 7 2 6 1]
+     * --------------------------------------------------------------------------------------------------------
+     * i = 5 [0 3 4 5 7 2 6 1] i
+     *
+     * <p>j = 5 [0 3 4 5 7 2 6 1] j compare A[j] with A[j - 1].. A[5] with A[4] and exchange them.
+     *
+     * <p>j = 4 [0 3 4 5 2 7 6 1] j compare A[j] with A[j - 1].. A[4] with A[3] and exchange them.
+     *
+     * <p>j = 3 [0 3 4 2 5 7 6 1] j compare A[j] with A[j - 1].. A[3] with A[2] and exchange them.
+     *
+     * <p>j = 2 [0 3 2 4 5 7 6 1] j compare A[j] with A[j - 1].. A[2] with A[1] and exchange them.
+     *
+     * <p>j = 1 [0 2 3 4 5 7 6 1] j compare A[j] with A[j - 1].. A[1] with A[0] and since A[j] > A[j -
+     * 1], no need to exchange them.
+     *
+     * <p>A at the end of the iteration i = 5, [0 2 3 4 5 7 6 1]
+     * --------------------------------------------------------------------------------------------------------
+     * i = 6 [0 2 3 4 5 7 6 1] i
+     *
+     * <p>j = 6 [0 2 3 4 5 7 6 1] j compare A[j] with A[j - 1].. A[6] with A[5] and exchange them.
+     *
+     * <p>j = 5 [0 2 3 4 5 6 7 1] j compare A[j] with A[j - 1].. A[5] with A[4] and since A[j] > A[j -
+     * 1], no need to exchange them.
+     *
+     * <p>j = 4 [0 2 3 4 5 6 7 1] j compare A[j] with A[j - 1].. A[4] with A[3] and since A[j] > A[j -
+     * 1], no need to exchange them.
+     *
+     * <p>j = 3 [0 2 3 4 5 6 7 1] j compare A[j] with A[j - 1].. A[3] with A[2] and since A[j] > A[j -
+     * 1], no need to exchange them.
+     *
+     * <p>j = 2 [0 2 3 4 5 6 7 1] j compare A[j] with A[j - 1].. A[2] with A[1] and since A[j] > A[j -
+     * 1], no need to exchange them.
+     *
+     * <p>j = 1 [0 2 3 4 5 6 7 1] j compare A[j] with A[j - 1].. A[1] with A[0] and since A[j] > A[j -
+     * 1], no need to exchange them.
+     *
+     * <p>A at the end of the iteration i = 6, [0 2 3 4 5 6 7 1]
+     * --------------------------------------------------------------------------------------------------------
+     * i = 7 [0 2 3 4 5 6 7 1] i
+     *
+     * <p>j = 7 [0 2 3 4 5 6 7 1] j compare A[j] with A[j - 1].. A[7] with A[6] and exchange them.
+     *
+     * <p>j = 6 [0 2 3 4 5 6 1 7] j compare A[j] with A[j - 1].. A[6] with A[5] and exchange them.
+     *
+     * <p>j = 5 [0 2 3 4 5 1 6 7] j compare A[j] with A[j - 1].. A[5] with A[4] and exchange them.
+     *
+     * <p>j = 4 [0 2 3 4 1 5 6 7] j compare A[j] with A[j - 1].. A[4] with A[3] and exchange them.
+     *
+     * <p>j = 3 [0 2 3 1 4 5 6 7] j compare A[j] with A[j - 1].. A[3] with A[2] and exchange them.
+     *
+     * <p>j = 2 [0 2 1 3 4 5 6 7] j compare A[j] with A[j - 1].. A[2] with A[1] and exchange them.
+     *
+     * <p>j = 1 [0 1 2 3 4 5 6 7] j compare A[j] with A[j - 1].. A[1] with A[0] and since A[j] > A[j -
+     * 1], no need to exchange them.
+     *
+     * <p>A at the end of the iteration i = 7, [0 1 2 3 4 5 6 7]
+     */
+    public static void insertionSort_iterative(Comparable[] a) {
+        int length = a.length;
 
-    for (int i = 1; i < length; i++) {
-      for (int j = i; j > 0; j--) {
-        boolean isTheFirstGreaterThanTheSecond = a[j - 1].compareTo(a[j]) > 0;
-        if (isTheFirstGreaterThanTheSecond) {
-          ArrayUtils.exch(a, j - 1, j);
-        } else {
-          break;
+        for (int i = 1; i < length; i++) {
+            for (int j = i; j > 0; j--) {
+                boolean isTheFirstGreaterThanTheSecond = a[j - 1].compareTo(a[j]) > 0;
+                if (isTheFirstGreaterThanTheSecond) {
+                    ArrayUtils.exch(a, j - 1, j);
+                } else {
+                    break;
+                }
+            }
         }
-      }
-    }
-  }
-
-  /**
-   * writing an recursive solution for this: step 1 : write a method that accepts the input array
-   * and an extra parameter that tells the method about the number of elements that should be
-   * sorted.
-   *
-   * <p>step 2 : breaking condition
-   */
-  public static void insertionSort_recursive(Comparable[] a, int numberOfElementsToBeSorted) {
-    if (numberOfElementsToBeSorted == 1) {
-      return;
     }
 
-    // we are replacing the outer for loop with a recursive call.
-    insertionSort_recursive(a, numberOfElementsToBeSorted - 1);
+    /**
+     * writing an recursive solution for this: step 1 : write a method that accepts the input array
+     * and an extra parameter that tells the method about the number of elements that should be
+     * sorted.
+     *
+     * <p>step 2 : breaking condition
+     */
+    public static void insertionSort_recursive(Comparable[] a, int numberOfElementsToBeSorted) {
+        if (numberOfElementsToBeSorted == 1) {
+            return;
+        }
 
-    int length = a.length;
+        // we are replacing the outer for loop with a recursive call.
+        insertionSort_recursive(a, numberOfElementsToBeSorted - 1);
 
-    for (int j = numberOfElementsToBeSorted - 1; j > 0; j--) {
-      boolean isTheFirstGreaterThanTheSecond = a[j - 1].compareTo(a[j]) > 0;
-      if (isTheFirstGreaterThanTheSecond) {
-        ArrayUtils.exch(a, j - 1, j);
-      } else {
-        break;
-      }
+        int length = a.length;
+
+        for (int j = numberOfElementsToBeSorted - 1; j > 0; j--) {
+            boolean isTheFirstGreaterThanTheSecond = a[j - 1].compareTo(a[j]) > 0;
+            if (isTheFirstGreaterThanTheSecond) {
+                ArrayUtils.exch(a, j - 1, j);
+            } else {
+                break;
+            }
+        }
     }
-  }
 }

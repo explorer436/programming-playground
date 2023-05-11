@@ -27,66 +27,68 @@ import com.my.company.utility.PrintUtils;
  */
 public class RadixSort {
 
-  /**
-   * example input array : [ 4725, 4586, 1330, 8792, 1594, 5729 ]
-   *
-   * <p>first, sort using the units position.
-   *
-   * <p>[ 1330, 8792, 1594, 4725, 4586, 5729 ]
-   *
-   * <p>then, sort using the tens position.
-   *
-   * <p>[ 1330, 4725, 5729, 4586, 8792, 1594 ]
-   *
-   * <p>then, sort using the hundreds position.
-   *
-   * <p>[ 1330, 4586, 1594, 4725, 5729, 8792 ]
-   *
-   * <p>then, sort using the thousands position.
-   *
-   * <p>[ 1330, 1594, 4586, 4725, 5729, 8792 ]
-   */
+    /**
+     * example input array : [ 4725, 4586, 1330, 8792, 1594, 5729 ]
+     *
+     * <p>first, sort using the units position.
+     *
+     * <p>[ 1330, 8792, 1594, 4725, 4586, 5729 ]
+     *
+     * <p>then, sort using the tens position.
+     *
+     * <p>[ 1330, 4725, 5729, 4586, 8792, 1594 ]
+     *
+     * <p>then, sort using the hundreds position.
+     *
+     * <p>[ 1330, 4586, 1594, 4725, 5729, 8792 ]
+     *
+     * <p>then, sort using the thousands position.
+     *
+     * <p>[ 1330, 1594, 4586, 4725, 5729, 8792 ]
+     */
 
-  /** Counting sort is used as the algorthm for radix sort - must be stable counting sort. */
-  public static void main(String[] args) {
+    /**
+     * Counting sort is used as the algorthm for radix sort - must be stable counting sort.
+     */
+    public static void main(String[] args) {
 
-    int[] radixArray = {4725, 4586, 1330, 8792, 1594, 5729};
+        int[] radixArray = {4725, 4586, 1330, 8792, 1594, 5729};
 
-    radixSort(radixArray, 10, 4);
+        radixSort(radixArray, 10, 4);
 
-    PrintUtils.printArray(radixArray);
-  }
-
-  public static void radixSort(int[] input, int radix, int width) {
-    for (int i = 0; i < width; i++) {
-      radixSingleSort(input, i, radix);
-    }
-  }
-
-  public static void radixSingleSort(int[] input, int position, int radix) {
-
-    int numItems = input.length;
-    int[] countArray = new int[radix];
-
-    for (int value : input) {
-      countArray[getDigit(position, value, radix)]++;
-    }
-    // Adjust the count array
-    for (int j = 1; j < radix; j++) {
-      countArray[j] += countArray[j - 1];
+        PrintUtils.printArray(radixArray);
     }
 
-    int[] temp = new int[numItems];
-    for (int tempIndex = numItems - 1; tempIndex >= 0; tempIndex--) {
-      temp[--countArray[getDigit(position, input[tempIndex], radix)]] = input[tempIndex];
+    public static void radixSort(int[] input, int radix, int width) {
+        for (int i = 0; i < width; i++) {
+            radixSingleSort(input, i, radix);
+        }
     }
 
-    for (int tempIndex = 0; tempIndex < numItems; tempIndex++) {
-      input[tempIndex] = temp[tempIndex];
-    }
-  }
+    public static void radixSingleSort(int[] input, int position, int radix) {
 
-  public static int getDigit(int position, int value, int radix) {
-    return value / (int) Math.pow(radix, position) % radix;
-  }
+        int numItems = input.length;
+        int[] countArray = new int[radix];
+
+        for (int value : input) {
+            countArray[getDigit(position, value, radix)]++;
+        }
+        // Adjust the count array
+        for (int j = 1; j < radix; j++) {
+            countArray[j] += countArray[j - 1];
+        }
+
+        int[] temp = new int[numItems];
+        for (int tempIndex = numItems - 1; tempIndex >= 0; tempIndex--) {
+            temp[--countArray[getDigit(position, input[tempIndex], radix)]] = input[tempIndex];
+        }
+
+        for (int tempIndex = 0; tempIndex < numItems; tempIndex++) {
+            input[tempIndex] = temp[tempIndex];
+        }
+    }
+
+    public static int getDigit(int position, int value, int radix) {
+        return value / (int) Math.pow(radix, position) % radix;
+    }
 }

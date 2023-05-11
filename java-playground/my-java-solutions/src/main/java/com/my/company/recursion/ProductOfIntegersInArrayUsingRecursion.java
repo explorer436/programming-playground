@@ -7,81 +7,81 @@ import java.util.Arrays;
  * anArray[ﬁrst..last].
  */
 public class ProductOfIntegersInArrayUsingRecursion {
-  public static void main(String[] args) {
+    public static void main(String[] args) {
 
-    Integer[] anArray;
+        Integer[] anArray;
 
-    anArray = new Integer[] {5, 2, 10};
-    System.out.println(
-        "productOfElements_recursion of anArray : "
-            + ProductOfIntegersInArrayUsingRecursion.productOfElements_recursion(anArray));
+        anArray = new Integer[]{5, 2, 10};
+        System.out.println(
+                "productOfElements_recursion of anArray : "
+                        + ProductOfIntegersInArrayUsingRecursion.productOfElements_recursion(anArray));
 
-    anArray = new Integer[] {5};
-    System.out.println(
-        "productOfElements_recursion of anArray : "
-            + ProductOfIntegersInArrayUsingRecursion.productOfElements_recursion(anArray));
+        anArray = new Integer[]{5};
+        System.out.println(
+                "productOfElements_recursion of anArray : "
+                        + ProductOfIntegersInArrayUsingRecursion.productOfElements_recursion(anArray));
 
-    anArray = new Integer[] {};
-    System.out.println(
-        "productOfElements_recursion of anArray : "
-            + ProductOfIntegersInArrayUsingRecursion.productOfElements_recursion(anArray));
+        anArray = new Integer[]{};
+        System.out.println(
+                "productOfElements_recursion of anArray : "
+                        + ProductOfIntegersInArrayUsingRecursion.productOfElements_recursion(anArray));
 
-    anArray = new Integer[] {5, 2, 10, 0};
-    System.out.println(
-        "productOfElements_recursion of anArray : "
-            + ProductOfIntegersInArrayUsingRecursion.productOfElements_recursion(anArray));
+        anArray = new Integer[]{5, 2, 10, 0};
+        System.out.println(
+                "productOfElements_recursion of anArray : "
+                        + ProductOfIntegersInArrayUsingRecursion.productOfElements_recursion(anArray));
 
-    System.out.println();
+        System.out.println();
 
-    anArray = new Integer[] {5, 2, 10};
-    System.out.println(
-        "productOfElements_iteration of anArray : "
-            + ProductOfIntegersInArrayUsingRecursion.productOfElements_iteration(anArray));
+        anArray = new Integer[]{5, 2, 10};
+        System.out.println(
+                "productOfElements_iteration of anArray : "
+                        + ProductOfIntegersInArrayUsingRecursion.productOfElements_iteration(anArray));
 
-    anArray = new Integer[] {5};
-    System.out.println(
-        "productOfElements_iteration of anArray : "
-            + ProductOfIntegersInArrayUsingRecursion.productOfElements_iteration(anArray));
+        anArray = new Integer[]{5};
+        System.out.println(
+                "productOfElements_iteration of anArray : "
+                        + ProductOfIntegersInArrayUsingRecursion.productOfElements_iteration(anArray));
 
-    anArray = new Integer[] {};
-    System.out.println(
-        "productOfElements_iteration of anArray : "
-            + ProductOfIntegersInArrayUsingRecursion.productOfElements_iteration(anArray));
+        anArray = new Integer[]{};
+        System.out.println(
+                "productOfElements_iteration of anArray : "
+                        + ProductOfIntegersInArrayUsingRecursion.productOfElements_iteration(anArray));
 
-    anArray = new Integer[] {5, 2, 10, 0};
-    System.out.println(
-        "productOfElements_iteration of anArray : "
-            + ProductOfIntegersInArrayUsingRecursion.productOfElements_iteration(anArray));
-  }
-
-  public static int productOfElements_recursion(Integer[] anArray) {
-
-    int result = 0;
-
-    if (null != anArray && anArray.length != 0) {
-      if (anArray.length == 1) {
-        result = anArray[0];
-      } else {
-        result =
-            anArray[0]
-                * productOfElements_recursion(Arrays.copyOfRange(anArray, 1, anArray.length));
-      }
+        anArray = new Integer[]{5, 2, 10, 0};
+        System.out.println(
+                "productOfElements_iteration of anArray : "
+                        + ProductOfIntegersInArrayUsingRecursion.productOfElements_iteration(anArray));
     }
 
-    return result;
-  }
+    public static int productOfElements_recursion(Integer[] anArray) {
 
-  public static int productOfElements_iteration(Integer[] anArray) {
+        int result = 0;
 
-    int result = 0;
+        if (null != anArray && anArray.length != 0) {
+            if (anArray.length == 1) {
+                result = anArray[0];
+            } else {
+                result =
+                        anArray[0]
+                                * productOfElements_recursion(Arrays.copyOfRange(anArray, 1, anArray.length));
+            }
+        }
 
-    if (null != anArray && anArray.length != 0) {
-      result = 1;
-      for (Integer i : anArray) {
-        result = result * i;
-      }
+        return result;
     }
 
-    return result;
-  }
+    public static int productOfElements_iteration(Integer[] anArray) {
+
+        int result = 0;
+
+        if (null != anArray && anArray.length != 0) {
+            result = 1;
+            for (Integer i : anArray) {
+                result = result * i;
+            }
+        }
+
+        return result;
+    }
 }

@@ -33,120 +33,120 @@ import java.util.stream.Collectors;
  */
 public class MostCommonCharacterInString {
 
-  public static void main(String[] args) {
-    solution_printAllAnswers("aaiicccnn");
-    solution_printAllAnswers("aabbccdd");
-    solution_printAllAnswers("ab2sbf2dj2skl");
-    solution_printAllAnswers("");
-    solution_printAllAnswers(null);
+    public static void main(String[] args) {
+        solution_printAllAnswers("aaiicccnn");
+        solution_printAllAnswers("aabbccdd");
+        solution_printAllAnswers("ab2sbf2dj2skl");
+        solution_printAllAnswers("");
+        solution_printAllAnswers(null);
 
-    System.out.println();
+        System.out.println();
 
-    solution_printFirstAnswer("aaiicccnn");
-    solution_printFirstAnswer("aabbccdd");
-    solution_printFirstAnswer("ab2sbf2dj2skl");
-    solution_printFirstAnswer("");
-    solution_printFirstAnswer(null);
-  }
-
-  /**
-   * approach 1: build a hashmap with each of the letters and then loop through the values for each
-   * character to see which one is the greatest.
-   */
-  public static void solution_printAllAnswers(String str) {
-    HashMap<Character, Integer> letterCountMap = new HashMap<>();
-
-    Integer currentCount;
-    if (null != str) {
-      for (char c : str.toCharArray()) {
-        currentCount = letterCountMap.get(c);
-
-        if (currentCount == null) {
-          letterCountMap.put(c, 1);
-        } else {
-          currentCount = currentCount + 1;
-          letterCountMap.put(c, currentCount);
-        }
-      }
+        solution_printFirstAnswer("aaiicccnn");
+        solution_printFirstAnswer("aabbccdd");
+        solution_printFirstAnswer("ab2sbf2dj2skl");
+        solution_printFirstAnswer("");
+        solution_printFirstAnswer(null);
     }
 
-    // PrintUtils.printMap(letterCountMap);
+    /**
+     * approach 1: build a hashmap with each of the letters and then loop through the values for each
+     * character to see which one is the greatest.
+     */
+    public static void solution_printAllAnswers(String str) {
+        HashMap<Character, Integer> letterCountMap = new HashMap<>();
 
-    // The first step is to find the highest value at all.
-    if (!letterCountMap.isEmpty()) {
-      int maxValue = Collections.max(letterCountMap.values());
+        Integer currentCount;
+        if (null != str) {
+            for (char c : str.toCharArray()) {
+                currentCount = letterCountMap.get(c);
 
-      // Now iterate through all the entries of the map and add to the list keys associated with the
-      // highest value.
-      List<Character> mostCommonCharactersList = new ArrayList<>();
-      for (Entry<Character, Integer> entry : letterCountMap.entrySet()) {
-        if (entry.getValue() == maxValue) {
-          mostCommonCharactersList.add(entry.getKey());
+                if (currentCount == null) {
+                    letterCountMap.put(c, 1);
+                } else {
+                    currentCount = currentCount + 1;
+                    letterCountMap.put(c, currentCount);
+                }
+            }
         }
-      }
 
-      // using streams
-      List<Character> listRetrievedUsingStreams =
-          letterCountMap.entrySet().stream()
-              .filter(entry -> entry.getValue() == maxValue)
-              .map(entry -> entry.getKey())
-              .collect(Collectors.toList());
+        // PrintUtils.printMap(letterCountMap);
 
-      System.out.println(
-          "MostCommonCharacterInString : " + Arrays.toString(mostCommonCharactersList.toArray()));
+        // The first step is to find the highest value at all.
+        if (!letterCountMap.isEmpty()) {
+            int maxValue = Collections.max(letterCountMap.values());
 
-      System.out.println(
-          "MostCommonCharacterInString : " + Arrays.toString(listRetrievedUsingStreams.toArray()));
-    }
-  }
+            // Now iterate through all the entries of the map and add to the list keys associated with the
+            // highest value.
+            List<Character> mostCommonCharactersList = new ArrayList<>();
+            for (Entry<Character, Integer> entry : letterCountMap.entrySet()) {
+                if (entry.getValue() == maxValue) {
+                    mostCommonCharactersList.add(entry.getKey());
+                }
+            }
 
-  public static void solution_printFirstAnswer(String str) {
-    HashMap<Character, Integer> letterCountMap = new HashMap<>();
+            // using streams
+            List<Character> listRetrievedUsingStreams =
+                    letterCountMap.entrySet().stream()
+                            .filter(entry -> entry.getValue() == maxValue)
+                            .map(entry -> entry.getKey())
+                            .collect(Collectors.toList());
 
-    Integer currentCount;
-    if (null != str) {
-      for (char c : str.toCharArray()) {
-        currentCount = letterCountMap.get(c);
+            System.out.println(
+                    "MostCommonCharacterInString : " + Arrays.toString(mostCommonCharactersList.toArray()));
 
-        if (currentCount == null) {
-          letterCountMap.put(c, 1);
-        } else {
-          currentCount = currentCount + 1;
-          letterCountMap.put(c, currentCount);
+            System.out.println(
+                    "MostCommonCharacterInString : " + Arrays.toString(listRetrievedUsingStreams.toArray()));
         }
-      }
     }
 
-    // PrintUtils.printMap(letterCountMap);
+    public static void solution_printFirstAnswer(String str) {
+        HashMap<Character, Integer> letterCountMap = new HashMap<>();
 
-    // The first step is to find the highest value at all.
-    if (!letterCountMap.isEmpty()) {
-      int maxValue = Collections.max(letterCountMap.values());
+        Integer currentCount;
+        if (null != str) {
+            for (char c : str.toCharArray()) {
+                currentCount = letterCountMap.get(c);
 
-      // Now iterate through all the entries of the map and add to the list keys associated with the
-      // highest value.
-      List<Character> mostCommonCharactersList = new ArrayList<>();
-      for (Entry<Character, Integer> entry : letterCountMap.entrySet()) {
-        if (entry.getValue() == maxValue) {
-          mostCommonCharactersList.add(entry.getKey());
-          break;
+                if (currentCount == null) {
+                    letterCountMap.put(c, 1);
+                } else {
+                    currentCount = currentCount + 1;
+                    letterCountMap.put(c, currentCount);
+                }
+            }
         }
-      }
 
-      // using streams
-      List<Character> listRetrievedUsingStreams =
-          letterCountMap.entrySet().stream()
-              .filter(entry -> entry.getValue() == maxValue)
-              .map(entry -> entry.getKey())
-              .collect(Collectors.toList());
+        // PrintUtils.printMap(letterCountMap);
 
-      System.out.println(
-          "MostCommonCharacterInString : " + Arrays.toString(mostCommonCharactersList.toArray()));
+        // The first step is to find the highest value at all.
+        if (!letterCountMap.isEmpty()) {
+            int maxValue = Collections.max(letterCountMap.values());
 
-      System.out.println("MostCommonCharacterInString : " + listRetrievedUsingStreams.get(0));
+            // Now iterate through all the entries of the map and add to the list keys associated with the
+            // highest value.
+            List<Character> mostCommonCharactersList = new ArrayList<>();
+            for (Entry<Character, Integer> entry : letterCountMap.entrySet()) {
+                if (entry.getValue() == maxValue) {
+                    mostCommonCharactersList.add(entry.getKey());
+                    break;
+                }
+            }
+
+            // using streams
+            List<Character> listRetrievedUsingStreams =
+                    letterCountMap.entrySet().stream()
+                            .filter(entry -> entry.getValue() == maxValue)
+                            .map(entry -> entry.getKey())
+                            .collect(Collectors.toList());
+
+            System.out.println(
+                    "MostCommonCharacterInString : " + Arrays.toString(mostCommonCharactersList.toArray()));
+
+            System.out.println("MostCommonCharacterInString : " + listRetrievedUsingStreams.get(0));
+        }
     }
-  }
 
-  // TODO is there a more efficient way to do this?
+    // TODO is there a more efficient way to do this?
 
 }

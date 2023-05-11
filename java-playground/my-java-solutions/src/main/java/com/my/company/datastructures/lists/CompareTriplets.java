@@ -82,58 +82,58 @@ import java.util.LinkedList;
  */
 public class CompareTriplets {
 
-  public static void main(String[] args) {
-    List<Integer> a = new LinkedList<Integer>();
-    a.add(5);
-    a.add(6);
-    a.add(7);
+    public static void main(String[] args) {
+        List<Integer> a = new LinkedList<Integer>();
+        a.add(5);
+        a.add(6);
+        a.add(7);
 
-    List<Integer> b = new LinkedList<Integer>();
-    b.add(3);
-    b.add(6);
-    b.add(10);
+        List<Integer> b = new LinkedList<Integer>();
+        b.add(3);
+        b.add(6);
+        b.add(10);
 
-    compareTriplets(a, b).forEach(element -> System.out.println(element));
+        compareTriplets(a, b).forEach(element -> System.out.println(element));
 
-    System.out.println();
+        System.out.println();
 
-    a = new LinkedList<Integer>();
-    a.add(17);
-    a.add(28);
-    a.add(30);
+        a = new LinkedList<Integer>();
+        a.add(17);
+        a.add(28);
+        a.add(30);
 
-    b = new LinkedList<Integer>();
-    b.add(99);
-    b.add(16);
-    b.add(8);
+        b = new LinkedList<Integer>();
+        b.add(99);
+        b.add(16);
+        b.add(8);
 
-    compareTriplets(a, b).forEach(element -> System.out.println(element));
-  }
-
-  /**
-   * LinkedLists are preferable for this solution because the order of the elements is important.
-   * Since the question states that the maximum size of the array can only be 100, this might be ok.
-   * As the length of the array keeps increasing, LinkedLists might cause bad performance results.
-   */
-  static List<Integer> compareTriplets(List<Integer> a, List<Integer> b) {
-    int alicePoints = 0;
-    int bobPoints = 0;
-
-    for (int i = 0; i < a.size(); i++) {
-      if (a.get(i) > b.get(i)) {
-        alicePoints = alicePoints + 1;
-      } else if (a.get(i) < b.get(i)) {
-        bobPoints = bobPoints + 1;
-      }
+        compareTriplets(a, b).forEach(element -> System.out.println(element));
     }
 
-    System.out.println("alicePoints : " + alicePoints);
-    System.out.println("bobPoints : " + bobPoints);
+    /**
+     * LinkedLists are preferable for this solution because the order of the elements is important.
+     * Since the question states that the maximum size of the array can only be 100, this might be ok.
+     * As the length of the array keeps increasing, LinkedLists might cause bad performance results.
+     */
+    static List<Integer> compareTriplets(List<Integer> a, List<Integer> b) {
+        int alicePoints = 0;
+        int bobPoints = 0;
 
-    List<Integer> result = new LinkedList<Integer>();
-    result.add(alicePoints);
-    result.add(bobPoints);
+        for (int i = 0; i < a.size(); i++) {
+            if (a.get(i) > b.get(i)) {
+                alicePoints = alicePoints + 1;
+            } else if (a.get(i) < b.get(i)) {
+                bobPoints = bobPoints + 1;
+            }
+        }
 
-    return result;
-  }
+        System.out.println("alicePoints : " + alicePoints);
+        System.out.println("bobPoints : " + bobPoints);
+
+        List<Integer> result = new LinkedList<Integer>();
+        result.add(alicePoints);
+        result.add(bobPoints);
+
+        return result;
+    }
 }

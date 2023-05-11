@@ -41,50 +41,51 @@ package com.my.company.datastructures.arrays;
  */
 public class ArrayResizing<Item> {
 
-  public static void main(String[] args) {}
-
-  // stack entries
-  private Item[] a;
-
-  // size
-  private int N;
-
-  private void resize(int max) {
-    // Move stack of size N <= max to a new array of size max.
-    Item[] temp = (Item[]) new Object[max];
-    for (int i = 0; i < N; i++) temp[i] = a[i];
-    a = temp;
-  }
-
-  public void push(Item item) {
-    // Add item to top of stack.
-    if (N == a.length) {
-      resize(2 * a.length);
-    }
-    a[N++] = item;
-  }
-
-  /**
-   * REMEMBER : Loitering: Java’s garbage collection policy is to reclaim the memory associated with
-   * any objects that can no longer be accessed. In our pop() implementations, the reference to the
-   * popped item remains in the array. The item is effectively an orphan—it will be never be
-   * accessed again— but the Java garbage collector has no way to know this until it is overwritten.
-   * Even when the client is done with the item, the reference in the array may keep it alive. This
-   * condition (holding a reference to an item that is no longer needed) is known as loitering. In
-   * this case, loitering is easy to avoid, by setting the array entry corresponding to the popped
-   * item to null , thus overwriting the unused reference and making it possible for the system to
-   * reclaim the memory associated with the popped item when the client is finished with it.
-   */
-  public Item pop() {
-    // Remove item from top of stack.
-    Item item = a[--N];
-    a[N] = null;
-
-    // Avoid loitering (see text).
-    if (N > 0 && N == a.length / 4) {
-      resize(a.length / 2);
+    public static void main(String[] args) {
     }
 
-    return item;
-  }
+    // stack entries
+    private Item[] a;
+
+    // size
+    private int N;
+
+    private void resize(int max) {
+        // Move stack of size N <= max to a new array of size max.
+        Item[] temp = (Item[]) new Object[max];
+        for (int i = 0; i < N; i++) temp[i] = a[i];
+        a = temp;
+    }
+
+    public void push(Item item) {
+        // Add item to top of stack.
+        if (N == a.length) {
+            resize(2 * a.length);
+        }
+        a[N++] = item;
+    }
+
+    /**
+     * REMEMBER : Loitering: Java’s garbage collection policy is to reclaim the memory associated with
+     * any objects that can no longer be accessed. In our pop() implementations, the reference to the
+     * popped item remains in the array. The item is effectively an orphan—it will be never be
+     * accessed again— but the Java garbage collector has no way to know this until it is overwritten.
+     * Even when the client is done with the item, the reference in the array may keep it alive. This
+     * condition (holding a reference to an item that is no longer needed) is known as loitering. In
+     * this case, loitering is easy to avoid, by setting the array entry corresponding to the popped
+     * item to null , thus overwriting the unused reference and making it possible for the system to
+     * reclaim the memory associated with the popped item when the client is finished with it.
+     */
+    public Item pop() {
+        // Remove item from top of stack.
+        Item item = a[--N];
+        a[N] = null;
+
+        // Avoid loitering (see text).
+        if (N > 0 && N == a.length / 4) {
+            resize(a.length / 2);
+        }
+
+        return item;
+    }
 }
