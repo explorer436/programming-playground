@@ -68,19 +68,21 @@ public class CollatzSequences {
     }
 
     private static void printCollatzSequence(int number) {
+        System.out.println(">>> printing Collatz sequence for the number : " + number);
         if (number <= 0) {
             System.out.println("Input is invalid.");
-        }
-
-        while (number > 1) {
-            System.out.print(number + " - ");
-            if (number % 2 == 0) {
-                number = number / 2;
-            } else {
-                number = (number * 3) + 1;
+        } else {
+            System.out.print(number);
+            while (number > 1) {
+                System.out.print(" - ");
+                if (number % 2 == 0) {
+                    number = number / 2;
+                } else {
+                    number = (number * 3) + 1;
+                }
+                System.out.print(number);
             }
         }
-        System.out.print("1");
 
         System.out.println("");
     }

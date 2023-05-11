@@ -2,6 +2,9 @@ package com.my.company.datastructures.trees;
 
 public class Tree {
 
+    // TODO Make this generic to support all the different types of trees
+    // https://www.cs.cmu.edu/~clo/www/CMU/DataStructures/Lessons/lesson4_1.htm#:~:text=A%20tree%20is%20a%20collection,which%20are%20linear%20data%20structures.
+
     private TreeNode root;
 
     public void insert(int value) {
