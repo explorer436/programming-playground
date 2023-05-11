@@ -1,7 +1,7 @@
 package com.my.company.adapterpattern;
 
-import com.my.company.adapterpattern.duck.Duck;
-import com.my.company.adapterpattern.duck.MallardDuck;
+import com.my.company.adapterpattern.example1.duck.Duck;
+import com.my.company.adapterpattern.example1.duck.MallardDuck;
 import com.my.company.adapterpattern.turkey.WildTurkey;
 
 public class DuckTestDrive {

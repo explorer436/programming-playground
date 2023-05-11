@@ -1,4 +1,4 @@
-package com.my.company.adapterpattern;
+package com.my.company.adapterpattern.example2;
 
 import java.util.Arrays;
 import java.util.Iterator;
