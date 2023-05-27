@@ -5,19 +5,24 @@ public abstract class AlgorithmSkeleton {
         stepOne();
         stepTwo();
         stepThree();
-        if(doClientRequire()){
+        if (doClientRequire()) {
             stepFour();
         }
     }
+
     final void stepOne() {
-        System.out.println( "stepOne performed" );
+        System.out.println("stepOne performed");
     }
+
     abstract void stepTwo();
+
     abstract void stepThree();
+
     final void stepFour() {
-        System.out.println( "stepFour performed" );
+        System.out.println("stepFour performed");
     }
-    boolean doClientRequire () {
+
+    boolean doClientRequire() {
         return true;
     }
 }

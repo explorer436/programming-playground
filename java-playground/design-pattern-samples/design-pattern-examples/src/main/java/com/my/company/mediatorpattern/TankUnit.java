@@ -1,24 +1,24 @@
 package com.my.company.mediatorpattern;
 
-public class TankUnit implements ArmedUnit{
+public class TankUnit implements ArmedUnit {
     private Commander commander;
-    public TankUnit(Commander commander){
-        this.commander=commander;
+
+    public TankUnit(Commander commander) {
+        this.commander = commander;
     }
+
     @Override
-    public void  attack()
-    {
-        if(commander.canAttack())
-        {
+    public void attack() {
+        if (commander.canAttack()) {
             System.out.println("TankUnit: Attacking.....");
             commander.setAttackStatus(false);
-        }
-        else{
+        } else {
             System.out.println("TankUnit: Cannot attack now. Other units attacking....");
         }
     }
+
     @Override
-    public void  stopAttack(){
+    public void stopAttack() {
         System.out.println("TankUnit: Stopped attacking.....");
         commander.setAttackStatus(true);
     }

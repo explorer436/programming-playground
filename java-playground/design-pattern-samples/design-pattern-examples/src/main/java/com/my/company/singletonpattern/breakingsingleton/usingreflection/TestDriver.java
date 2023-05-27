@@ -8,7 +8,7 @@ public class TestDriver {
         Singleton singleton2 = null;
         try {
             Constructor[] constructors = Singleton.class.getDeclaredConstructors();
-            for (Constructor constructor: constructors) {
+            for (Constructor constructor : constructors) {
                 constructor.setAccessible(true);
                 singleton2 = (Singleton) constructor.newInstance();
                 break;

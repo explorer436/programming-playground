@@ -2,7 +2,7 @@ package com.my.company.chainofresponsibilitypattern;
 
 public class GeneralSupportHandler extends AbstractSupportHandler {
 
-    public GeneralSupportHandler(int level){
+    public GeneralSupportHandler(int level) {
         this.level = level;
     }
 

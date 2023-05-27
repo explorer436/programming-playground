@@ -5,13 +5,14 @@ public class SingletonMultiThreaded {
     private static volatile SingletonMultiThreaded INSTANCE;
 
     /* private constructor */
-    private SingletonMultiThreaded() {}
+    private SingletonMultiThreaded() {
+    }
 
     public static SingletonMultiThreaded getInstance() {
         /* double-checking lock */
         if (null == INSTANCE) {
             /* synchronized block */
-            synchronized(SingletonMultiThreaded.class) {
+            synchronized (SingletonMultiThreaded.class) {
                 if (null == INSTANCE) {
                     INSTANCE = new SingletonMultiThreaded();
                 }

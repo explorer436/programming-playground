@@ -5,7 +5,8 @@ public class Singleton {
     private static Singleton instance = new Singleton();
 
     /* private constructor */
-    private Singleton() {}
+    private Singleton() {
+    }
 
     /* returns the same object */
     public static Singleton getInstance() {

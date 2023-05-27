@@ -6,7 +6,8 @@ public class SingletonWithSerialized implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private SingletonWithSerialized() {}
+    private SingletonWithSerialized() {
+    }
 
     private static SingletonWithSerialized instance = new SingletonWithSerialized();
 

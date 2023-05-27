@@ -21,8 +21,8 @@ public class TestDriver {
         SingletonWithSerialized instanceTwo = (SingletonWithSerialized) in.readObject();
         in.close();
 
-        System.out.println("instanceOne-- "+instanceOne.hashCode());
-        System.out.println("instanceTwo-- "+instanceTwo.hashCode());
+        System.out.println("instanceOne-- " + instanceOne.hashCode());
+        System.out.println("instanceTwo-- " + instanceTwo.hashCode());
 
         // output
         // instanceOne--      1011114567

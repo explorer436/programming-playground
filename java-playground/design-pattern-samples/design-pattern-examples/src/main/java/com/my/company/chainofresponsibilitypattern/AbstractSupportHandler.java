@@ -9,15 +9,16 @@ public abstract class AbstractSupportHandler {
     protected int level;
 
     protected AbstractSupportHandler nextHandler;
-    public void setNextHandler(AbstractSupportHandler nextHandler){
-        this.nextHandler=nextHandler;
+
+    public void setNextHandler(AbstractSupportHandler nextHandler) {
+        this.nextHandler = nextHandler;
     }
 
-    public void receiveRequest(int level, String message){
-        if(this.level <= level){
+    public void receiveRequest(int level, String message) {
+        if (this.level <= level) {
             handleRequest(message);
         }
-        if(nextHandler !=null){
+        if (nextHandler != null) {
             nextHandler.receiveRequest(level, message);
         }
     }

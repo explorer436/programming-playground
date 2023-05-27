@@ -3,15 +3,16 @@ package com.my.company.strategypattern.withoutthepattern;
 public class Encryptor {
     private String algorithmName;
     private String plainText;
-    public Encryptor(String algorithmName){
-        this.algorithmName=algorithmName;
+
+    public Encryptor(String algorithmName) {
+        this.algorithmName = algorithmName;
     }
-    public void encrypt(){
-        if (algorithmName.equals("Aes")){
+
+    public void encrypt() {
+        if (algorithmName.equals("Aes")) {
             System.out.println("Encrypting data using AES algorithm");
             /*Code to encrypt data using AES algorithm*/
-        }
-        else if (algorithmName.equals("Blowfish")){
+        } else if (algorithmName.equals("Blowfish")) {
             System.out.println("Encrypting data using Blowfish algorithm");
             /*Code to encrypt data using Blowfish algorithm */
         }

@@ -3,7 +3,8 @@ package com.my.company.strategypattern.withthepattern;
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
-public class BlowfishEncryptionStrategy implements EncryptionStrategy{
+
+public class BlowfishEncryptionStrategy implements EncryptionStrategy {
     @Override
     public void encryptData(String plaintext) {
         System.out.println("\n-------Encrypting data using Blowfish algorithm-------");
@@ -20,8 +21,7 @@ public class BlowfishEncryptionStrategy implements EncryptionStrategy{
             for (int i = 0; i < cipherText.length; i++) {
                 System.out.print(cipherText[i] + " ");
             }
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
