@@ -1,6 +1,6 @@
 package com.my.company.factorypatterns.abstractfactory;
 
-public class TestDrive {
+public class TestDriver {
  
 	public static void main(String[] args) {
 		PizzaStore nyStore = new NYPizzaStore();

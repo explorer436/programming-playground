@@ -1,16 +1,11 @@
 package com.my.company.factorypatterns.simplefactory;
 
 public class PizzaStore {
-	SimplePizzaFactory factory;
- 
-	public PizzaStore(SimplePizzaFactory factory) { 
-		this.factory = factory;
-	}
  
 	public Pizza orderPizza(String type) {
-		Pizza pizza;
- 
-		pizza = factory.createPizza(type);
+
+		SimplePizzaFactory factory = new SimplePizzaFactory();
+		Pizza pizza = factory.createPizza(type);
  
 		pizza.prepare();
 		pizza.bake();
