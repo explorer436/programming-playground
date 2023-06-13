@@ -6,7 +6,7 @@ public class TestDriver {
         ConstructionEngineer engineerA = new ConstructionEngineer(concreteHouseBuilder);
         House houseA = engineerA.constructHouse();
         System.out.println("House is: "+houseA);
-        
+
         PrefabricatedHouseBuilder prefabricatedHouseBuilder = new PrefabricatedHouseBuilder();
         ConstructionEngineer engineerB = new ConstructionEngineer(prefabricatedHouseBuilder);
         House houseB = engineerB.constructHouse();

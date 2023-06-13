@@ -11,6 +11,5 @@ public class TestDriver {
         Encryptor blowfishEncryptor = new Encryptor(blowfishStrategy);
         blowfishEncryptor.setPlainText("This is plain text");
         blowfishEncryptor.encrypt();
-
     }
 }
