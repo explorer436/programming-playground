@@ -1,0 +1,46 @@
+* Example
+
+beers-api and xxxx work together.
+
+You’ll learn how to create REST endpoints with Spring Data REST, configure Spring Boot to allow CORS, and create an Angular app to display its data. This app will display a list of beers from the API, then fetch a GIF from https://giphy.com/ that matches the beer’s name.
+
+endpoint for beers-api: http://localhost:8080/good-beers
+
+Without CORS configuration in the spring boot application, we see this error in the console in the browser.
+#+begin_src 
+Failed to load http://localhost:8080/good-beers: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://localhost:4200' is therefore not allowed access.  
+#+end_src
+
+*** Current state
+
+Integration with Giphy API is not working.
+
+It is a good idea for a POC: https://developers.giphy.com/docs/sdk/
+
+#+begin_src 
+Object { headers: {…}, status: 403, statusText: "Forbidden", url: "http://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&limit=1&q=Kentucky%20Brunch%20Brand%20Stout", ok: false, name: "HttpErrorResponse", message: "Http failure response for http://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&limit=1&q=Kentucky%20Brunch%20Brand%20Stout: 403 Forbidden", error: {…} }
+​
+error: Object { data: [], meta: {…} }
+​
+headers: Object { normalizedNames: Map(0), lazyUpdate: null, lazyInit: lazyInit() }
+​
+message: "Http failure response for http://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&limit=1&q=Kentucky%20Brunch%20Brand%20Stout: 403 Forbidden"
+​
+name: "HttpErrorResponse"
+​
+ok: false
+​
+status: 403
+​
+statusText: "Forbidden"
+​
+url: "http://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&limit=1&q=Kentucky%20Brunch%20Brand%20Stout"
+​
+<prototype>: Object { … }
+giphy.service.ts:25:16
+#+end_src
+
+
+*** Reference
+
+https://developer.okta.com/blog/2017/04/26/bootiful-development-with-spring-boot-and-angular
