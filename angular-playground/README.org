@@ -6,6 +6,30 @@ You’ll learn how to create REST endpoints with Spring Data REST, configure Spr
 
 endpoint for beers-api: http://localhost:8080/good-beers
 
+#+begin_src 
+  $ curl -v GET http://localhost:8080/good-beers
+  * Could not resolve host: GET
+  * Closing connection 0
+  curl: (6) Could not resolve host: GET
+  *   Trying 127.0.0.1:8080...
+  * Connected to localhost (127.0.0.1) port 8080 (#1)
+  > GET /good-beers HTTP/1.1
+  > Host: localhost:8080
+  > User-Agent: curl/8.0.1
+  > Accept: */*
+  > 
+  < HTTP/1.1 200 
+  < Vary: Origin
+  < Vary: Access-Control-Request-Method
+  < Vary: Access-Control-Request-Headers
+  < Content-Type: application/json
+  < Transfer-Encoding: chunked
+  < Date: Fri, 16 Jun 2023 03:29:19 GMT
+  < 
+  * Connection #1 to host localhost left intact
+  [{"id":1,"name":"Kentucky Brunch Brand Stout"},{"id":2,"name":"Good Morning"},{"id":3,"name":"Very Hazy"},{"id":4,"name":"King Julius"}]
+#+end_src
+
 Without CORS configuration in the spring boot application, we see this error in the console in the browser.
 #+begin_src 
 Failed to load http://localhost:8080/good-beers: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://localhost:4200' is therefore not allowed access.  
