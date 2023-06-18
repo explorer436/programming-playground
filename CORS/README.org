@@ -1,6 +1,6 @@
 * Example
 
-beers-api and beers-client work together.
+beers-api (Angular) and beers-client (springboot) work together.
 
 You’ll learn how to create REST endpoints with Spring Data REST, configure Spring Boot to allow CORS, and create an Angular app to display its data. This app will display a list of beers from the API, then fetch a GIF from https://giphy.com/ that matches the beer’s name.
 
