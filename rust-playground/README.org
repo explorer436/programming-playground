@@ -1,4 +1,5 @@
 * Notes about learning Rust                                           :TOC_9:
+  - [[#helpful-tips][Helpful tips]]
   - [[#questions][Questions]]
   - [[#documentation][Documentation]]
   - [[#creating-a-project][Creating a project:]]
@@ -16,6 +17,10 @@
   - [[#variables-and-mutability---immutable-by-default][Variables and Mutability - immutable by default]]
   - [[#variable-references][Variable references]]
   - [[#notes][Notes]]
+
+** Helpful tips
+
+Install the rust plugin for IntelliJ idea to be able to run programs quickly.
 
 ** Questions
 
