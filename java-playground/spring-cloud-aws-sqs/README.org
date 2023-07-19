@@ -8,11 +8,11 @@ Create a standard queue and a corresponding DLQ and link the two of them togethe
 1. my-dead-letter-queue-df5f29db
 2. my-standard-queue-df5f29db
 
-Make sure you set the "maxReceiveCount" on the standard queue set to a number that is greater than "1".
+Make sure you set the ~maxReceiveCount~ on the standard queue set to a number that is greater than ~1~.
 
 When you call the endpoint,
-curl --location --request POST 'http://localhost:8080/message/sqs2' --data-raw ''
-you should see the log message ">>> listener picked up message from the queue at 10:38:10.527109400" printed on the console 10 times (or the number of times equal to "maxReceiveCount" value of the standard queue).
+~curl --location --request POST 'http://localhost:8080/message/sqs2' --data-raw ''~
+you should see the log message ~>>> listener picked up message from the queue at 10:38:10.527109400~ printed on the console 10 times (or the number of times equal to ~maxReceiveCount~ value of the standard queue).
 After the message fails to process 10 times, the message will be moved to the DLQ.
 
 * References:
