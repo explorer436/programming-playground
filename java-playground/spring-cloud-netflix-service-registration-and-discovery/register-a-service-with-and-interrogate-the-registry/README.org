@@ -1,0 +1,93 @@
+** Validation
+
+When the application starts, you should see this log statement
+#+begin_src 
+2023-07-19 21:10:03.701  INFO 1343299 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_REGISTER-A-SERVICE-WITH-AND-INTERROGATE-THE-REGISTRY/192.168.5.10:register-a-service-with-and-interrogate-the-registry - registration status: 204  
+#+end_src
+
+** Testing
+
+Hit this url from a browser.
+
+~http://localhost:8080/service-instances/register-a-service-with-and-interrogate-the-registry~
+
+or run this from terminal
+
+#+begin_src 
+curl --verbose http://localhost:8080/service-instances/register-a-service-with-and-interrogate-the-registry  -verbose | json_pp  
+#+end_src
+
+
+You should see an output that looks something like this.
+
+  #+begin_src 
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                   Dload  Upload   Total   Spent    Left  Speed
+    0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 127.0.0.1:8080...
+  * Connected to localhost (127.0.0.1) port 8080 (#0)
+  > GET /service-instances/register-a-service-with-and-interrogate-the-registry HTTP/1.1
+  > Host: localhost:8080
+  > User-Agent: curl/8.1.2
+  > Accept: */*
+  > Referer: rbose
+  > 
+  < HTTP/1.1 200 
+  < Content-Type: application/json
+  < Transfer-Encoding: chunked
+  < Date: Thu, 20 Jul 2023 01:35:04 GMT
+  < 
+  { [1379 bytes data]
+  100  1372    0  1372    0     0   295k      0 --:--:-- --:--:-- --:--:--  334k
+  * Connection #0 to host localhost left intact
+  [
+     {
+        "host" : "localhost",
+        "instanceId" : "192.168.5.10:register-a-service-with-and-interrogate-the-registry",
+        "instanceInfo" : {
+           "actionType" : "ADDED",
+           "app" : "REGISTER-A-SERVICE-WITH-AND-INTERROGATE-THE-REGISTRY",
+           "appGroupName" : null,
+           "asgName" : null,
+           "countryId" : 1,
+           "dataCenterInfo" : {
+              "@class" : "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
+              "name" : "MyOwn"
+           },
+           "healthCheckUrl" : "http://localhost:8080/actuator/health",
+           "homePageUrl" : "http://localhost:8080/",
+           "hostName" : "localhost",
+           "instanceId" : "192.168.5.10:register-a-service-with-and-interrogate-the-registry",
+           "ipAddr" : "192.168.5.10",
+           "isCoordinatingDiscoveryServer" : false,
+           "lastDirtyTimestamp" : 1689815403616,
+           "lastUpdatedTimestamp" : 1689815404293,
+           "leaseInfo" : {
+              "durationInSecs" : 90,
+              "evictionTimestamp" : 0,
+              "lastRenewalTimestamp" : 1689815553643,
+              "registrationTimestamp" : 1689815404293,
+              "renewalIntervalInSecs" : 30,
+              "serviceUpTimestamp" : 1689815403691
+           },
+           "metadata" : {
+              "management.port" : "8080"
+           },
+           "overriddenStatus" : "UNKNOWN",
+           "secureHealthCheckUrl" : null,
+           "secureVipAddress" : "register-a-service-with-and-interrogate-the-registry",
+           "sid" : "na",
+           "status" : "UP",
+           "statusPageUrl" : "http://localhost:8080/actuator/info",
+           "vipAddress" : "register-a-service-with-and-interrogate-the-registry"
+        },
+        "metadata" : {
+           "management.port" : "8080"
+        },
+        "port" : 8080,
+        "scheme" : "http",
+        "secure" : false,
+        "serviceId" : "REGISTER-A-SERVICE-WITH-AND-INTERROGATE-THE-REGISTRY",
+        "uri" : "http://localhost:8080"
+     }
+  ]
+  #+end_src
