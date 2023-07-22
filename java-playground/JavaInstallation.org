@@ -4,6 +4,10 @@
 
 *** Download Java from openjdk website
 
+https://openjdk.org/projects/jdk/
+
+https://jdk.java.net/archive/
+
 A more straight-forward way is to download it from openjdk install page and extracting it using the command:
 #+begin_src 
 $ tar xvf openjdk-13*_bin.tar.gz  
