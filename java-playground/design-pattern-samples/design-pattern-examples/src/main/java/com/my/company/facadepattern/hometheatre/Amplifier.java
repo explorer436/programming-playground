@@ -1,4 +1,4 @@
-package com.my.company.facadepattern;
+package com.my.company.facadepattern.hometheatre;
 
 public class Amplifier {
     String description;
