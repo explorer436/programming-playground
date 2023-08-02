@@ -2,9 +2,13 @@
 
 A sample project that uses h2 for database.
 
+TutorialRepositoryUsingJPQA shows how to interact with h2 database for basic CRUD operations on one table using Spring JPA's JPQL.
+
+* Running and testing
 
 Run Spring Boot application with command: mvn spring-boot:run
-Let’s open H2 console with url: http://localhost:8080/h2-ui
+
+Open H2 console with url: http://localhost:8080/h2-ui
 
 When you login to the console, you should see the tables created for the entities defined in the application.
 

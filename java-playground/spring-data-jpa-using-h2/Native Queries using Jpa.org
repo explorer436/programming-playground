@@ -2,7 +2,7 @@
 
 JPQL only supports a subset of SQL standard. If you want to make complex queries, take a look at Native SQL Query.
 
-This shows how to execute SQL native query in Spring Boot with @Query annotation.
+TutorialRepositoryUsingNativeQueries shows how to execute SQL native query in Spring Boot with @Query annotation.
 
 1. define SQL in the value attribute
 1. set the nativeQuery attribute value to true
