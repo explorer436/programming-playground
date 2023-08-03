@@ -1,9 +1,5 @@
 * Notes
 
-** External references
-
-https://www.baeldung.com/spring-data-dynamodb
-
 ** Gotchas
 
 For the code the work, the table in DynamoDB is a prerequisite. So, make sure the table exists before trying to perform CRUD operations on it.
@@ -74,3 +70,7 @@ Expected results:
     "ConsumedCapacity": null
 }
 #+end_src
+
+** External references
+
+https://www.baeldung.com/spring-data-dynamodb
