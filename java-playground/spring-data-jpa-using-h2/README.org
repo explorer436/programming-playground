@@ -30,6 +30,10 @@ This shows how to write tests that interact with the h2 database instead of usin
 
 [[./Native Queries using Jpa.org]]
 
+** Testing
+
+Look at this file: [[./Testing.org]]
+
 ** References
 
 https://www.bezkoder.com/spring-boot-jpa-h2-example/
