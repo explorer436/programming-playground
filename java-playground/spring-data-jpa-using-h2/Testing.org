@@ -15,7 +15,25 @@ curl --location --request POST 'http://localhost:8080/api/simplecrud/tutorial' \
 }'
 #+end_src
 
-create tutorials bulk request
+create tutorials bulk request (using native approach)
+#+begin_src 
+curl --location --request POST 'http://localhost:8080/api/native/tutorials' \
+--header 'Content-Type: application/json' \
+--data-raw '[
+    {
+        "title": "sample title for book 3",
+        "description": "sample description for book 3",
+        "published": true
+    },
+    {
+        "title": "sample title for book 4",
+        "description": "sample description for book 4",
+        "published": false
+    }
+]'  
+#+end_src
+
+create tutorials bulk request (using jpqa approach)
 #+begin_src 
 curl --location --request POST 'http://localhost:8080/api/simplecrud/tutorials' \
 --header 'Content-Type: application/json' \
