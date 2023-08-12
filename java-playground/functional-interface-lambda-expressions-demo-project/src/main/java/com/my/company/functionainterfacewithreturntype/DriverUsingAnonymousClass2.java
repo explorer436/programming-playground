@@ -7,10 +7,11 @@ public class DriverUsingAnonymousClass2 {
         A2 obj = new A2() {
             @Override
             public int add(int i, int j) {
-                System.out.println("In show() - i: " + i);
+                System.out.println("In add() - i: " + i);
+                System.out.println("In add() - j: " + j);
                 return i + j;
             }
         };
-        obj.add(6, 7);
+        System.out.println(obj.add(6, 7));
     }
 }
