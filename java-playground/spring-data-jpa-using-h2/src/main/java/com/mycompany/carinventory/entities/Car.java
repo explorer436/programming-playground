@@ -22,6 +22,8 @@ public class Car {
 
     @Column(unique=true)
     String name;
+
     double price;
+
     Integer quantity;
 }

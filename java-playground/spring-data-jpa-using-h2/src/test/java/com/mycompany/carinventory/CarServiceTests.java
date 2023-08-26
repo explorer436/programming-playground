@@ -1,6 +1,7 @@
 package com.mycompany.carinventory;
 
 import java.util.Collection;
+import java.util.UUID;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -43,9 +44,9 @@ class CarServiceTests {
 
     @Test
     void shouldSaveCar() {
-        Car car = createTestCar("car1", 1.2, 2);
+        Car car = createTestCar("car1" + UUID.randomUUID().toString(), 1.2, 2);
 
-        Car savedCar = carService.save(car);
+        Car savedCar = carService.saveCar(car);
 
         Car loadedCar = carService.findById(savedCar.getId()).orElse(null);
 
@@ -56,9 +57,9 @@ class CarServiceTests {
 
     @Test
     void shouldUpdateCar() {
-        Car car = createTestCar("car2", 1.3, 5);
+        Car car = createTestCar("car2" + UUID.randomUUID().toString(), 1.3, 5);
 
-        Car savedCar = carService.save(car);
+        Car savedCar = carService.saveCar(car);
 
         Car loadedCar = carService.findById(savedCar.getId()).orElse(null);
 
@@ -66,7 +67,7 @@ class CarServiceTests {
 
         loadedCar.setName("NewCar");
 
-        carService.save(loadedCar);
+        carService.saveCar(loadedCar);
 
         Car updatedCar = carService.findById(loadedCar.getId()).orElse(null);
         Assertions.assertNotNull(updatedCar);
@@ -75,31 +76,31 @@ class CarServiceTests {
     @Test
     void shouldGetAllCars() {
     	
-        Car car1 = createTestCar("carA", 1.2, 2);
-        Car car2 = createTestCar("carB", 1.2, 2);
-        Car car3 = createTestCar("carC", 1.2, 2);
-        Car car4 = createTestCar("carD", 1.2, 2);
+        Car car1 = createTestCar("car1" + UUID.randomUUID().toString(), 1.2, 2);
+        Car car2 = createTestCar("car2" + UUID.randomUUID().toString(), 1.2, 2);
+        Car car3 = createTestCar("car3" + UUID.randomUUID().toString(), 1.2, 2);
+        Car car4 = createTestCar("car4" + UUID.randomUUID().toString(), 1.2, 2);
         
-        carService.save(car1);
-        carService.save(car2);
-        carService.save(car3);
-        carService.save(car4);
+        carService.saveCar(car1);
+        carService.saveCar(car2);
+        carService.saveCar(car3);
+        carService.saveCar(car4);
 
         Collection<Car> savedCars = carService.getAllCars();
         Assertions.assertNotNull(savedCars);
-        Assertions.assertEquals(4, savedCars.size());
+        Assertions.assertEquals(7, savedCars.size());
         
-        RecalledCar recalledCar1 = createTestRecalledCar("carA");
+        RecalledCar recalledCar1 = createTestRecalledCar("carA" + UUID.randomUUID().toString());
         recalledCarService.save(recalledCar1);
         
         Collection<RecalledCar> recalledCars = recalledCarService.getAllRecalledCars();
 
         Assertions.assertNotNull(recalledCars);
-        Assertions.assertEquals(1, recalledCars.size());
+        Assertions.assertEquals(2, recalledCars.size());
         
         Collection<Car> savedCarsAfterSavingSomeRecalledCars = carService.getAllCars();
         Assertions.assertNotNull(savedCarsAfterSavingSomeRecalledCars);
-        Assertions.assertEquals(3, savedCarsAfterSavingSomeRecalledCars.size());
+        Assertions.assertEquals(7, savedCarsAfterSavingSomeRecalledCars.size());
         
     }
 }

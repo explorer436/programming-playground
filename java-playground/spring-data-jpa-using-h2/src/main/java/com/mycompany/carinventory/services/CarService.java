@@ -17,25 +17,25 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CarService {
 
-    private final CarRepository inventoryRepository;
+    private final CarRepository carInventoryRepository;
     
     private final RecalledCarRepository recalledCarRepository;
 
     public Car saveCar(Car car) {
-        return inventoryRepository.save(car);
+        return carInventoryRepository.save(car);
     }
 
     public List<Car> saveCars(List<Car> cars) {
-        return inventoryRepository.saveAll(cars);
+        return carInventoryRepository.saveAll(cars);
     }
 
     public Collection<Car> getAllCars() {
     	List<String> recalledCarNames = recalledCarRepository.findAll().stream().map(rp -> rp.getName()).collect(Collectors.toList());
         CarFilter filter = new CarFilter(recalledCarNames);
-        return filter.removeRecalled(inventoryRepository.findAll());
+        return filter.removeRecalled(carInventoryRepository.findAll());
     }
 
     public Optional<Car> findById(Integer id) {
-        return inventoryRepository.findById(id);
+        return carInventoryRepository.findById(id);
     }
 }

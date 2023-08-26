@@ -28,7 +28,7 @@ public class CarInventoryController {
      *
      * @return all the cars that are not recalled
      */
-    @GetMapping@PostMapping("/car")
+    @GetMapping("/car")
     public ResponseEntity<Collection<Car>> getAllCars() {
         return ResponseEntity.ok(carService.getAllCars());
     }
