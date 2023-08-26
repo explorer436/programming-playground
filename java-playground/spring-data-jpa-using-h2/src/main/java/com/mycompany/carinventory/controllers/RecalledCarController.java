@@ -1,5 +1,6 @@
 package com.mycompany.carinventory.controllers;
 
+import com.mycompany.carinventory.dto.RecalledCarDto;
 import com.mycompany.carinventory.entities.RecalledCar;
 import com.mycompany.carinventory.services.RecalledCarService;
 
@@ -15,20 +16,27 @@ import java.util.Collection;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "api/inventory/recalled")
+@RequestMapping(value = "api/inventory")
 public class RecalledCarController {
 
     private final RecalledCarService recalledCarService;
 
-    @PostMapping
+    @PostMapping("/recalled")
     public ResponseEntity<RecalledCar> createRecalledCar(@RequestBody RecalledCar recalledCar) {
         return ResponseEntity.ok(recalledCarService.save(recalledCar));
     }
 
-    @GetMapping("/")
+    @GetMapping("/recalled")
     ResponseEntity<Collection<RecalledCar>> findRecalledCars() {
         Collection<RecalledCar> allRecalledCars = recalledCarService.getAllRecalledCars();
 
         return ResponseEntity.ok(allRecalledCars);
+    }
+
+    @GetMapping("/recalled/inventory")
+    ResponseEntity<Collection<RecalledCarDto>> findRecalledCarsAndInventoryDetails() {
+        Collection<RecalledCarDto> recalledCarsAndInventoryDetails = recalledCarService.findRecalledCarsAndInventoryDetails();
+
+        return ResponseEntity.ok(recalledCarsAndInventoryDetails);
     }
 }

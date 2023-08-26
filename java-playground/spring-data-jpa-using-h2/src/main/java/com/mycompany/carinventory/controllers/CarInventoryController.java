@@ -1,6 +1,7 @@
 package com.mycompany.carinventory.controllers;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "api/inventory/car")
+@RequestMapping(value = "api/inventory")
 public class CarInventoryController {
 
     private final CarService carService;
@@ -27,17 +28,22 @@ public class CarInventoryController {
      *
      * @return all the cars that are not recalled
      */
-    @GetMapping
+    @GetMapping@PostMapping("/car")
     public ResponseEntity<Collection<Car>> getAllCars() {
         return ResponseEntity.ok(carService.getAllCars());
     }
 
-    @PostMapping
+    @PostMapping("/car")
     public ResponseEntity<Car> createCar(@RequestBody Car car) {
-        return ResponseEntity.ok(carService.save(car));
+        return ResponseEntity.ok(carService.saveCar(car));
     }
 
-    @GetMapping("/{id}")
+    @PostMapping("/cars")
+    public ResponseEntity<List<Car>> createCars(@RequestBody List<Car> cars) {
+        return ResponseEntity.ok(carService.saveCars(cars));
+    }
+
+    @GetMapping("/car/{id}")
     ResponseEntity<Car> findCar(@PathVariable Integer id) {
         Optional<Car> byId = carService.findById(id);
 

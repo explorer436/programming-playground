@@ -87,3 +87,64 @@ get tutorials that are published
 #+begin_src 
 curl --location --request GET 'http://localhost:8080/api/simplecrud/tutorials/published'
 #+end_src
+
+find tutorials that match the input criteria:
+curl --location --request POST 'http://localhost:8080/api/native/tutorial/find' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"title": "sample title for book 1",
+"description":  "sample description for book 1"
+}'
+
+curl --location --request POST 'http://localhost:8080/api/native/tutorial/find' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"title": "sample title for book 1"
+}'
+
+Create single car:
+curl --location --request POST 'http://localhost:8080/api/inventory/car' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"name": "carA",
+"price":  1.2,
+"quantity": 1
+}'
+
+Create multiple cars:
+curl --location --request POST 'http://localhost:8080/api/inventory/cars' \
+--header 'Content-Type: application/json' \
+--data-raw '[{
+"name": "carA",
+"price":  1.2,
+"quantity": 1
+},
+{
+"name": "carB",
+"price":  3.4,
+"quantity": 2
+},
+{
+"name": "carC",
+"price":  5.6,
+"quantity": 3
+},
+{
+"name": "carD",
+"price":  7.8,
+"quantity": 4
+}]'
+
+Create recalled car:
+curl --location --request POST 'http://localhost:8080/api/inventory/recalled' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"name": "carA",
+"reasonForRecall": "faulty steering wheel"
+}'
+
+Get recalled cars:
+curl --location --request GET 'http://localhost:8080/api/inventory/recalled'
+
+Get recalled cars along with inventory details:
+curl --location --request GET 'http://localhost:8080/api/inventory/recalled/inventory'

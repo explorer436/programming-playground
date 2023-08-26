@@ -21,8 +21,12 @@ public class CarService {
     
     private final RecalledCarRepository recalledCarRepository;
 
-    public Car save(Car car) {
+    public Car saveCar(Car car) {
         return inventoryRepository.save(car);
+    }
+
+    public List<Car> saveCars(List<Car> cars) {
+        return inventoryRepository.saveAll(cars);
     }
 
     public Collection<Car> getAllCars() {

@@ -21,13 +21,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(MockitoExtension.class)
 @RequiredArgsConstructor
-class InventoryControllerTest {
+class CarInventoryControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @InjectMocks
-    CarInventoryController inventoryController;
+    CarInventoryController carInventoryController;
 
     @Mock
     CarService carService;
@@ -35,7 +35,7 @@ class InventoryControllerTest {
     @BeforeEach
     public void before() {
         mockMvc = MockMvcBuilders
-                .standaloneSetup(inventoryController)
+                .standaloneSetup(carInventoryController)
                 .build();
     }
 

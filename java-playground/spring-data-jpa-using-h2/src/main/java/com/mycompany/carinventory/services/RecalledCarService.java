@@ -1,5 +1,6 @@
 package com.mycompany.carinventory.services;
 
+import com.mycompany.carinventory.dto.RecalledCarDto;
 import com.mycompany.carinventory.entities.RecalledCar;
 import com.mycompany.carinventory.repositories.RecalledCarRepository;
 
@@ -21,6 +22,10 @@ public class RecalledCarService {
 
     public Collection<RecalledCar> getAllRecalledCars() {
         return recalledCarRepository.findAll();
+    }
+
+    public Collection<RecalledCarDto> findRecalledCarsAndInventoryDetails() {
+        return recalledCarRepository.findRecalledCarsAndInventoryDetails();
     }
 
     public Optional<RecalledCar> findById(Integer id) {

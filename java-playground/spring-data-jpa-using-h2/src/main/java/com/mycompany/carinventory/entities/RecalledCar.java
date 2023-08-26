@@ -22,4 +22,7 @@ public class RecalledCar {
 
     @Column(unique=true)
     String name;
+
+    @Column(unique=true)
+    String reasonForRecall;
 }
