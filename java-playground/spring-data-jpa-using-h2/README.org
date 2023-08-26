@@ -6,13 +6,12 @@ TutorialRepositoryUsingJPQA shows how to interact with h2 database for basic CRU
 
 * Running and testing
 
-Run Spring Boot application with command: mvn spring-boot:run
+1. Run Spring Boot application with command: mvn spring-boot:run
+1. H2 is set-up by maven dependencies.
+1. After starting the application, open H2 console with url: http://localhost:8080/h2-ui (Make sure the JDBC url for the conection is: jdbc:h2:mem:testdb)
+1. When you login to the console, you should see the tables created for the entities defined in the application.
 
-Open H2 console with url: http://localhost:8080/h2-ui
-
-When you login to the console, you should see the tables created for the entities defined in the application.
-
-** Inventory package
+** CarInventory examples
 
 This shows how to write tests that interact with the h2 database instead of using mocking.
 
@@ -45,3 +44,5 @@ https://www.bezkoder.com/spring-jpa-query/
 Pending
 https://www.bezkoder.com/spring-boot-pagination-filter-jpa-pageable/
 https://www.bezkoder.com/spring-data-sort-multiple-columns/
+
+https://thorben-janssen.com/spring-data-jpa-dto-native-queries/

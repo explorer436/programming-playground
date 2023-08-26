@@ -1,7 +1,7 @@
 package com.mycompany.tutorial.simplecrudwithjpa.controller;
 
 import com.mycompany.tutorial.model.Tutorial;
-import com.mycompany.tutorial.simplecrudwithjpa.repositories.TutorialRepository;
+import com.mycompany.tutorial.simplecrudwithjpa.repositories.TutorialRepositoryUsingSpringDataJpa;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TutorialControllerForSimpleCrud {
 
-    private final TutorialRepository tutorialRepository;
+    private final TutorialRepositoryUsingSpringDataJpa tutorialRepositoryUsingSpringDataJpa;
 
     @GetMapping("/tutorials")
     public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required = false) String title) {
@@ -25,9 +25,9 @@ public class TutorialControllerForSimpleCrud {
             List<Tutorial> tutorials = new ArrayList<Tutorial>();
 
             if (title == null)
-                tutorialRepository.findAll().forEach(tutorials::add);
+                tutorialRepositoryUsingSpringDataJpa.findAll().forEach(tutorials::add);
             else
-                tutorialRepository.findByTitleContaining(title).forEach(tutorials::add);
+                tutorialRepositoryUsingSpringDataJpa.findByTitleContaining(title).forEach(tutorials::add);
 
             if (tutorials.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -41,7 +41,7 @@ public class TutorialControllerForSimpleCrud {
 
     @GetMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> getTutorialById(@PathVariable("id") long id) {
-        Optional<Tutorial> tutorialData = tutorialRepository.findById(id);
+        Optional<Tutorial> tutorialData = tutorialRepositoryUsingSpringDataJpa.findById(id);
 
         if (tutorialData.isPresent()) {
             return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
@@ -53,7 +53,7 @@ public class TutorialControllerForSimpleCrud {
     @PostMapping("/tutorial")
     public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial tutorial) {
         try {
-            Tutorial _tutorial = tutorialRepository
+            Tutorial _tutorial = tutorialRepositoryUsingSpringDataJpa
                     .save(tutorial);
             return new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
         } catch (Exception e) {
@@ -64,7 +64,7 @@ public class TutorialControllerForSimpleCrud {
     @PostMapping("/tutorials")
     public ResponseEntity<List<Tutorial>> createTutorials(@RequestBody List<Tutorial> tutorials) {
         try {
-            List<Tutorial> _tutorials = tutorialRepository
+            List<Tutorial> _tutorials = tutorialRepositoryUsingSpringDataJpa
                     .saveAll(tutorials);
             return new ResponseEntity<>(_tutorials, HttpStatus.CREATED);
         } catch (Exception e) {
@@ -74,14 +74,14 @@ public class TutorialControllerForSimpleCrud {
 
     @PutMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> updateTutorial(@PathVariable("id") long id, @RequestBody Tutorial tutorial) {
-        Optional<Tutorial> tutorialData = tutorialRepository.findById(id);
+        Optional<Tutorial> tutorialData = tutorialRepositoryUsingSpringDataJpa.findById(id);
 
         if (tutorialData.isPresent()) {
             Tutorial _tutorial = tutorialData.get();
             _tutorial.setTitle(tutorial.getTitle());
             _tutorial.setDescription(tutorial.getDescription());
             _tutorial.setPublished(tutorial.isPublished());
-            return new ResponseEntity<>(tutorialRepository.save(_tutorial), HttpStatus.OK);
+            return new ResponseEntity<>(tutorialRepositoryUsingSpringDataJpa.save(_tutorial), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -90,7 +90,7 @@ public class TutorialControllerForSimpleCrud {
     @DeleteMapping("/tutorials/{id}")
     public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
         try {
-            tutorialRepository.deleteById(id);
+            tutorialRepositoryUsingSpringDataJpa.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -100,7 +100,7 @@ public class TutorialControllerForSimpleCrud {
     @DeleteMapping("/tutorials")
     public ResponseEntity<HttpStatus> deleteAllTutorials() {
         try {
-            tutorialRepository.deleteAll();
+            tutorialRepositoryUsingSpringDataJpa.deleteAll();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -111,7 +111,7 @@ public class TutorialControllerForSimpleCrud {
     @GetMapping("/tutorials/published")
     public ResponseEntity<List<Tutorial>> findByPublished() {
         try {
-            List<Tutorial> tutorials = tutorialRepository.findByPublished(true);
+            List<Tutorial> tutorials = tutorialRepositoryUsingSpringDataJpa.findByPublished(true);
 
             if (tutorials.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);

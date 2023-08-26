@@ -3,6 +3,7 @@ package com.mycompany.tutorial.nativequeriesusingjparepository.controller;
 import com.mycompany.tutorial.model.Tutorial;
 import com.mycompany.tutorial.nativequeriesusingjparepository.repositories.TutorialRepositoryUsingNativeQueries;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/native")
 @RequiredArgsConstructor
+@Slf4j
 public class TutorialControllerForNativeQueries {
 
     private final TutorialRepositoryUsingNativeQueries tutorialRepositoryUsingNativeQueries;
@@ -124,6 +126,19 @@ public class TutorialControllerForNativeQueries {
             return new ResponseEntity<>(tutorials, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+    @PostMapping("/tutorial/find")
+    public ResponseEntity<List<Tutorial>> findAllMatchingCriteria(@RequestBody Tutorial tutorial) {
+        try {
+            List<Tutorial> tutorials = tutorialRepositoryUsingNativeQueries
+                    .findAllTutorialsMatchingCriteria_Native(tutorial.getTitle(), tutorial.getDescription());
+
+            return new ResponseEntity<>(tutorials, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

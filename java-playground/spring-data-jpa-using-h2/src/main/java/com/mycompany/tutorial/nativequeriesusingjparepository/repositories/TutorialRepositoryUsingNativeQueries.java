@@ -17,10 +17,10 @@ public interface TutorialRepositoryUsingNativeQueries extends JpaRepository<Tuto
     // JPA native query Select with where condition
 
     // This is not supported
-    // @Query(value = "SELECT * FROM tutorials t WHERE t.published=?1", nativeQuery = true)
+    // @Query(value = "SELECT * FROM tutorial t WHERE t.published=?1", nativeQuery = true)
     // List<Tutorial> findByPublished_Native(boolean isPublished);
 
-    // @Query(value = "SELECT * FROM tutorials t WHERE t.title LIKE %?1%%?", nativeQuery = true)
+    // @Query(value = "SELECT * FROM tutorial t WHERE t.title LIKE %?1%%?", nativeQuery = true)
     // List<Tutorial> findByTitleContaining_Native(String title);
     // This is giving an error
     /*
@@ -32,33 +32,39 @@ public interface TutorialRepositoryUsingNativeQueries extends JpaRepository<Tuto
      * Mixing of ? parameters and other forms like ?1 is not supported!
      */
 
-    @Query(value = "SELECT * FROM tutorials t WHERE t.title LIKE %?1%", nativeQuery = true)
+    @Query(value = "SELECT * FROM TUTORIAL t WHERE t.title LIKE %?1%", nativeQuery = true)
     List<Tutorial> findByTitleLike_Native(String title);
 
-    @Query(value = "SELECT * FROM tutorials t WHERE LOWER(t.title) LIKE LOWER(CONCAT('%', ?1,'%'))", nativeQuery = true)
+    @Query(value = "SELECT * FROM TUTORIAL t WHERE LOWER(t.title) LIKE LOWER(CONCAT('%', ?1,'%'))", nativeQuery = true)
     List<Tutorial> findByTitleLikeCaseInsensitive_Native(String title);
-    @Query(value = "SELECT * FROM tutorials", nativeQuery = true)
+
+    @Query(value = "SELECT * FROM TUTORIAL", nativeQuery = true)
     List<Tutorial> findAll_Native();
 
-    @Query(value = "SELECT * FROM tutorials t WHERE t.published=true", nativeQuery = true)
+    @Query(value = "SELECT * FROM TUTORIAL where TITLE=:title " +
+            "AND (DESCRIPTION=:description OR @Param2 IS NULL)",
+            nativeQuery = true)
+    List<Tutorial> findAllTutorialsMatchingCriteria_Native(String title, String description);
+
+    @Query(value = "SELECT * FROM TUTORIAL t WHERE t.published=true", nativeQuery = true)
     List<Tutorial> findByPublished_Native();
 
     // JPA Native Query Greater Than or Equal To
 
-    @Query(value = "SELECT * FROM tutorials t WHERE t.level >= ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM TUTORIAL t WHERE t.level >= ?1", nativeQuery = true)
     List<Tutorial> findByLevelGreaterThanEqual_Native(int level);
 
-    @Query(value = "SELECT * FROM tutorials t WHERE t.created_at >= ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM TUTORIAL t WHERE t.created_at >= ?1", nativeQuery = true)
     List<Tutorial> findByDateGreaterThanEqual_Native(Date date);
 
     // JPA Native Query Between
 
     // In these examples, we use Positional Parameters: the parameters is referenced by their positions in the query (defined using ? followed by a number (?1, ?2, …). Spring Data JPA will automatically replaces the value of each parameter in the same position.
 
-    @Query(value = "SELECT * FROM tutorials t WHERE t.level BETWEEN ?1 AND ?2", nativeQuery = true)
+    @Query(value = "SELECT * FROM TUTORIAL t WHERE t.level BETWEEN ?1 AND ?2", nativeQuery = true)
     List<Tutorial> findByLevelBetween_Native(int start, int end);
 
-    @Query(value = "SELECT * FROM tutorials t WHERE t.created_at BETWEEN ?1 AND ?2", nativeQuery = true)
+    @Query(value = "SELECT * FROM TUTORIAL t WHERE t.created_at BETWEEN ?1 AND ?2", nativeQuery = true)
     List<Tutorial> findByDateBetween_Native(Date start, Date end);
 
     // JPA Native Query example with parameters
@@ -66,18 +72,18 @@ public interface TutorialRepositoryUsingNativeQueries extends JpaRepository<Tuto
     // Another way of binding values is by using Named Parameters.
     // A named parameter starts with : followed by the name of the parameter (:title, :date, …).
 
-    @Query(value = "SELECT * FROM tutorials t WHERE t.published=:isPublished AND t.level BETWEEN :start AND :end", nativeQuery = true)
+    @Query(value = "SELECT * FROM TUTORIAL t WHERE t.published=:isPublished AND t.level BETWEEN :start AND :end", nativeQuery = true)
     List<Tutorial> findByLevelBetween_Native(@Param("start") int start, @Param("end") int end, @Param("isPublished") boolean isPublished);
 
     // JPA Native Query Order By Desc/Asc
 
-    @Query(value = "SELECT * FROM tutorials t ORDER BY t.level DESC", nativeQuery = true)
+    @Query(value = "SELECT * FROM TUTORIAL t ORDER BY t.level DESC", nativeQuery = true)
     List<Tutorial> findAllOrderByLevelDesc_Native();
 
-    @Query(value = "SELECT * FROM tutorials t WHERE LOWER(t.title) LIKE LOWER(CONCAT('%', ?1,'%')) ORDER BY t.level ASC", nativeQuery = true)
+    @Query(value = "SELECT * FROM TUTORIAL t WHERE LOWER(t.title) LIKE LOWER(CONCAT('%', ?1,'%')) ORDER BY t.level ASC", nativeQuery = true)
     List<Tutorial> findByTitleOrderByLevelAsc_Native(String title);
 
-    @Query(value = "SELECT * FROM tutorials t WHERE t.published=true ORDER BY t.created_at DESC", nativeQuery = true)
+    @Query(value = "SELECT * FROM TUTORIAL t WHERE t.published=true ORDER BY t.created_at DESC", nativeQuery = true)
     List<Tutorial> findAllPublishedOrderByCreatedDesc_Native();
 
     // JPA Native Query Sort By
@@ -89,16 +95,16 @@ public interface TutorialRepositoryUsingNativeQueries extends JpaRepository<Tuto
      * Official Spring Document - https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.at-query.native
      *
      * InvalidJpaQueryMethodException
-        @Query(value = "SELECT * FROM tutorials t WHERE LOWER(t.title) LIKE LOWER(CONCAT('%', ?1,'%'))", nativeQuery = true)
+        @Query(value = "SELECT * FROM TUTORIAL t WHERE LOWER(t.title) LIKE LOWER(CONCAT('%', ?1,'%'))", nativeQuery = true)
         List<Tutorial> findByTitleAndSort(String title, Sort sort);
      *
      * So, how to deal with dynamic sorting?
      * We can use Pageable object instead. For example:
     */
 
-    @Query(value = "SELECT * FROM tutorials t WHERE LOWER(t.title) LIKE LOWER(CONCAT('%', ?1,'%'))", nativeQuery = true)
+    @Query(value = "SELECT * FROM TUTORIAL t WHERE LOWER(t.title) LIKE LOWER(CONCAT('%', ?1,'%'))", nativeQuery = true)
     Page<Tutorial> findByTitleLike_Native(String title, Pageable pageable);
 
-    @Query(value = "SELECT * FROM tutorials t WHERE t.published=?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM TUTORIAL t WHERE t.published=?1", nativeQuery = true)
     Page<Tutorial> findByPublished_Native(boolean isPublished, Pageable pageable);
 }

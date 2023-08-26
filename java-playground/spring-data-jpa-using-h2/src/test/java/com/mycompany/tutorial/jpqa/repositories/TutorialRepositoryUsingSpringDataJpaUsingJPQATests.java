@@ -9,7 +9,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-public class TutorialRepositoryUsingJPQATests {
+public class TutorialRepositoryUsingSpringDataJpaUsingJPQATests {
     @Autowired
     private TestEntityManager entityManager;
 

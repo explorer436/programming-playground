@@ -1,4 +1,4 @@
-package com.mycompany.tutorial.nativequeriesusingjparepository.repositories;
+package com.mycompany.tutorial.simplecrudwithjpa.repositories;
 
 import com.mycompany.tutorial.model.Tutorial;
 import org.junit.jupiter.api.Test;
@@ -9,12 +9,13 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-public class TutorialRepositoryUsingNativeQueriesTests {
+public class TutorialRepositoryUsingSpringDataJpaTests {
+
     @Autowired
     private TestEntityManager entityManager;
 
     @Autowired
-    TutorialRepositoryUsingNativeQueries repository;
+    TutorialRepositoryUsingSpringDataJpa repository;
 
     private Tutorial createTutorial(String title, String description, boolean published) {
         return Tutorial.builder()
@@ -69,8 +70,7 @@ public class TutorialRepositoryUsingNativeQueriesTests {
         assertThat(foundTutorial).isEqualTo(tut2);
     }
 
-    // FIXME Why is this not working?
-    /*@Test
+    @Test
     public void should_find_published_tutorials() {
         Tutorial tut1 = createTutorial("Tut#1", "Desc#1", true);
         entityManager.persist(tut1);
@@ -81,15 +81,12 @@ public class TutorialRepositoryUsingNativeQueriesTests {
         Tutorial tut3 = createTutorial("Tut#3", "Desc#3", true);
         entityManager.persist(tut3);
 
-
-
-        Iterable tutorials = repository.findByPublished_Native();
+        Iterable tutorials = repository.findByPublished(true);
 
         assertThat(tutorials).hasSize(2).contains(tut1, tut3);
-    }*/
+    }
 
-    // FIXME Why is this not working?
-    /*@Test
+    @Test
     public void should_find_tutorials_by_title_containing_string() {
         Tutorial tut1 = createTutorial("Spring Boot Tut#1", "Desc#1", true);
         entityManager.persist(tut1);
@@ -100,10 +97,10 @@ public class TutorialRepositoryUsingNativeQueriesTests {
         Tutorial tut3 = createTutorial("Spring Data JPA Tut#3", "Desc#3", true);
         entityManager.persist(tut3);
 
-        Iterable tutorials = repository.findByTitleLike_Native("ring");
+        Iterable tutorials = repository.findByTitleContaining("ring");
 
         assertThat(tutorials).hasSize(2).contains(tut1, tut3);
-    }*/
+    }
 
     @Test
     public void should_update_tutorial_by_id() {
@@ -157,3 +154,4 @@ public class TutorialRepositoryUsingNativeQueriesTests {
         assertThat(repository.findAll()).isEmpty();
     }
 }
+
