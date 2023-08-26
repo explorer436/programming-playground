@@ -56,6 +56,16 @@ get all tutorials from the table
 curl --location --request GET 'http://localhost:8080/api/simplecrud/tutorials'
 #+end_src
 
+get all tutorials from the table sorted by the criteria specified in TutorialControllerForJPQA.findAllAndSort()
+#+begin_src
+curl --location --request GET 'http://localhost:8080/api/jpqa/tutorials/sorted'  -verbose | json_pp
+#+end_src
+
+get all tutorials from the table sorted and paginated by the criteria specified in TutorialControllerForJPQA.findAllWithSortingAndPagination()
+#+begin_src
+curl --location --request GET 'http://localhost:8080/api/jpqa/tutorials/sortedAndPaginated'  -verbose | json_pp
+#+end_src
+
 get tutorials by id
 #+begin_src 
 curl --location --request GET 'http://localhost:8080/api/simplecrud/tutorials/2'

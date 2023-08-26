@@ -15,30 +15,18 @@ import java.util.List;
 
 public interface TutorialRepositoryUsingJPQA extends JpaRepository<Tutorial, Long> {
 
-    // https://www.bezkoder.com/spring-jpa-query/
-
     // JPQA Select query with where condition
     @Query("SELECT t FROM Tutorial t")
     List<Tutorial> findAll_JPQA();
 
-    // @Query("SELECT t FROM Tutorial t WHERE t.published=true")
-    // List<Tutorial> findByPublished_true_JPQA();
+    @Query("SELECT t FROM Tutorial t WHERE t.published=true")
+    List<Tutorial> findByPublished_true_JPQA();
 
     @Query("SELECT t FROM Tutorial t WHERE t.published=?1")
     List<Tutorial> findByPublished_JPQA(boolean isPublished);
 
     @Query("SELECT t FROM Tutorial t WHERE t.title LIKE %?1%")
     List<Tutorial> findByTitleLike_JPQA(String title);
-
-    // @Query("SELECT t FROM Tutorial t WHERE t.title LIKE %?1%%?")
-    // List<Tutorial> findByTitleContaining_JPQA(String title);
-    // This is giving an error:
-    /* nested exception is org.springframework.data.repository.query.QueryCreationException:
-       Could not create query for public abstract java.util.List
-       com.mycompany.tutorial.jpqa.repositories.TutorialRepositoryUsingJPQA.findByTitleContaining_JPQA(java.lang.String)!
-       Reason: Mixing of ? parameters and other forms like ?1 is not supported!;
-       nested exception is java.lang.IllegalArgumentException: Mixing of ? parameters and other forms like ?1 is not supported!
-     */
 
     @Query("SELECT t FROM Tutorial t WHERE LOWER(t.title) LIKE LOWER(CONCAT('%', ?1,'%'))")
     List<Tutorial> findByTitleLikeCaseInsensitive_JPQA(String title);
@@ -83,10 +71,16 @@ public interface TutorialRepositoryUsingJPQA extends JpaRepository<Tutorial, Lon
     @Query("SELECT t FROM Tutorial t WHERE t.published=?1")
     List<Tutorial> findByPublishedAndSort_JPQA(boolean isPublished, Sort sort);
 
+    @Query("SELECT t FROM Tutorial t")
+    List<Tutorial> findAllWithSorting_JPQA(Sort sort);
+
     // JPA Query Pagination
 
     @Query("SELECT t FROM Tutorial t")
     Page<Tutorial> findAllWithPagination_JPQA(Pageable pageable);
+
+    @Query("SELECT t FROM Tutorial t")
+    Page<Tutorial> findAllWithSortingAndPagination_JPQA(Pageable pageable);
 
     // JPA Query Update
 

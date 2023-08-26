@@ -5,6 +5,10 @@ import com.mycompany.tutorial.model.Tutorial;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -140,6 +144,56 @@ public class TutorialControllerForJPQA {
     public ResponseEntity<List<Tutorial>> findByPublished() {
         try {
             List<Tutorial> tutorials = tutorialRepositoryUsingJPQA.findByPublished_JPQA(true);
+
+            if (tutorials.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(tutorials, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+
+    @GetMapping("/tutorials/sorted")
+    public ResponseEntity<List<Tutorial>> findAllAndSort() {
+        try {
+            List<Sort.Order> orders = new ArrayList<Sort.Order>();
+
+            // This one takes priority over order2
+            Sort.Order order1 = new Sort.Order(Sort.Direction.DESC, "description");
+            orders.add(order1);
+
+            Sort.Order order2 = new Sort.Order(Sort.Direction.ASC, "id");
+            orders.add(order2);
+
+            List<Tutorial> tutorials = tutorialRepositoryUsingJPQA.findAllWithSorting_JPQA(Sort.by(orders));
+
+            if (tutorials.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(tutorials, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/tutorials/sortedAndPaginated")
+    public ResponseEntity<Page<Tutorial>> findAllWithSortingAndPagination() {
+        try {
+            List<Sort.Order> orders = new ArrayList<Sort.Order>();
+
+            // This one takes priority over order2
+            Sort.Order order1 = new Sort.Order(Sort.Direction.DESC, "description");
+            orders.add(order1);
+
+            Sort.Order order2 = new Sort.Order(Sort.Direction.ASC, "id");
+            orders.add(order2);
+
+            Pageable pageable = PageRequest.of(0, 4, Sort.by(orders));
+
+            Page<Tutorial> tutorials = tutorialRepositoryUsingJPQA.findAllWithSortingAndPagination_JPQA(pageable);
 
             if (tutorials.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
