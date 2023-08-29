@@ -376,6 +376,10 @@ public class MyServletRequestUtils {
             wrapperForClonedReq.addHeader(h, req.getHeader(h));
         }
 
+        for (Cookie c : req.getCookies()) {
+            wrapperForClonedReq.addCookie(c);
+        }
+
         return wrapperForClonedReq;
     }
 
@@ -383,9 +387,12 @@ public class MyServletRequestUtils {
 
         public HeaderMapRequestWrapper(HttpServletRequest httpServletRequest) {
             super(httpServletRequest);
+            this.cookies = new ArrayList<>(Arrays.asList(httpServletRequest.getCookies()));
         }
 
         private Map<String, String> headerMap = new HashMap<>();
+
+        private List<Cookie> cookies;
 
         public void addHeader(String name, String value) {
             headerMap.put(name, value);
@@ -423,6 +430,15 @@ public class MyServletRequestUtils {
                 values.add(headerMap.get(name));
             }
             return Collections.enumeration(values);
+        }
+
+        @Override
+        public Cookie[] getCookies() {
+            return this.cookies.toArray(new Cookie[0]);
+        }
+
+        public void addCookie(Cookie cookie) {
+            this.cookies.add(cookie);
         }
 
     }

@@ -44,9 +44,10 @@ public class LoggingAspect {
      * @param e exception
      */
     @AfterThrowing(pointcut = "applicationPackagePointcut() && springBeanPointcut()", throwing = "e")
-    public void logAfterThrowing(JoinPoint joinPoint, Throwable e) {
+    public void adviceAfterThrowing(JoinPoint joinPoint, Throwable e) {
         log.error("Exception in {}.{}() with cause = {}", joinPoint.getSignature().getDeclaringTypeName(),
-                joinPoint.getSignature().getName(), e.getCause() != null ? e.getCause() : "NULL");
+                // joinPoint.getSignature().getName(), e.getCause() != null ? e.getCause() : "NULL");
+                joinPoint.getSignature().getName(), e.getMessage() != null ? e.getMessage() : "NULL");
     }
 
     /**
@@ -57,7 +58,7 @@ public class LoggingAspect {
      * @throws Throwable throws IllegalArgumentException
      */
     @Around("applicationPackagePointcut() && springBeanPointcut()")
-    public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object adviceAround(ProceedingJoinPoint joinPoint) throws Throwable {
         if (log.isDebugEnabled()) {
             log.debug("Enter: {}.{}() with argument[s] = {}", joinPoint.getSignature().getDeclaringTypeName(),
                     joinPoint.getSignature().getName(), Arrays.toString(joinPoint.getArgs()));
