@@ -1,0 +1,6 @@
+get tutorials by id
+#+begin_src
+curl --location --request GET 'http://localhost:8080/api/v1/files/1' > temp1.pdf
+
+curl --location --request GET 'http://localhost:8080/api/v1/files/2' > temp2.txt
+#+end_src
