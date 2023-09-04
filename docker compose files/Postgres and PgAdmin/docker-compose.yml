@@ -1,0 +1,39 @@
+# Couldn't get this to work.
+# Couldn't connect to the database from pgadmin tool.
+# It kept giving the error "Name does not resolve".
+
+
+version: '2.8'
+services:
+#   db:
+#     container_name: postgres_container
+#     image: postgres
+#     restart: always
+#     environment:
+#       POSTGRES_USER: root
+#       POSTGRES_PASSWORD: root
+#       POSTGRES_DB: test_db
+#     ports:
+#       - "5432:5432"
+  db:
+    container_name: postgres_container
+    image: postgres
+    hostname: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: test_db
+    restart: unless-stopped
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+
+# Launch pgadmin console using localhost:5050

@@ -14,7 +14,10 @@ curl --location --request GET 'http://localhost:8080/api/v1/downloadExcelFile' -
 
 http://localhost:8080/files
 
+Putting and getting files from the file system:
+curl --request POST   --url http://localhost:8080/api/io/upload   --header 'Content-Type: multipart/form-data'   --form file=@sample3.txt
+curl --request GET --url http://localhost:8080/api/io/files
 
-curl --request POST   --url http://localhost:8080/api/files/upload   --header 'Content-Type: multipart/form-data'   --form file=@sample3.txt
-
-curl --request GET --url http://localhost:8080/api/files/files
+Putting and getting files from the DB:
+curl --request POST   --url http://localhost:8080/api/db/upload   --header 'Content-Type: multipart/form-data'   --form file=@sample3.txt
+curl --request GET --url http://localhost:8080/api/db/files

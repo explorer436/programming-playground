@@ -1,11 +1,14 @@
 package com.example.springfileiodemo.service;
 
+import com.example.springfileiodemo.entities.FileDB;
+import com.example.springfileiodemo.repository.FileDBRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -18,7 +21,10 @@ import java.util.stream.Stream;
 
 @Service
 @Slf4j
-public class FilesStorageServiceImpl implements FilesStorageService {
+@RequiredArgsConstructor
+public class FilesStorageOnFileSystemOnFileSystemServiceImpl implements FilesStorageOnFileSystemService {
+
+    private final FileDBRepository fileDBRepository;
 
     private final Path root = Paths.get("doc-uploads").toAbsolutePath().normalize();
 
@@ -37,11 +43,20 @@ public class FilesStorageServiceImpl implements FilesStorageService {
         log.info(">>> save()");
         try {
             Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
+
+            String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+            FileDB FileDB = com.example.springfileiodemo.entities.FileDB.builder()
+                    .name(fileName)
+                    .type(file.getContentType())
+                    .data(file.getBytes())
+                    .build();
+
+            fileDBRepository.save(FileDB);
+
         } catch (Exception e) {
             if (e instanceof FileAlreadyExistsException) {
                 throw new RuntimeException("A file of that name already exists.");
             }
-
             throw new RuntimeException(e.getMessage());
         }
     }

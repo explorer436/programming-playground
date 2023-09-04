@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class ResponseMessage {
+public class FileSystemResponseMessage {
     private String message;
 }

@@ -1,6 +1,6 @@
 package com.example.springfileiodemo.initialize;
 
-import com.example.springfileiodemo.service.FilesStorageService;
+import com.example.springfileiodemo.service.FilesStorageOnFileSystemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +10,7 @@ import javax.annotation.PostConstruct;
 @RequiredArgsConstructor
 public class InitData {
 
-    private final FilesStorageService storageService;
+    private final FilesStorageOnFileSystemService storageService;
 
     @PostConstruct
     public void load() {
