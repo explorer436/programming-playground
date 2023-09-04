@@ -5,6 +5,16 @@ curl --location --request GET 'http://localhost:8080/api/v1/files/1' > temp1.pdf
 curl --location --request GET 'http://localhost:8080/api/v1/files/2' > temp2.txt
 
 http://localhost:8080/api/v1/files/3
+#+end_src
 
+With Postman, you don't have to specify the name of the file while downloading. It is set in Controller code.
+#+begin_src
 curl --location --request GET 'http://localhost:8080/api/v1/downloadExcelFile' --output file.xlsx
 #+end_src
+
+http://localhost:8080/files
+
+
+curl --request POST   --url http://localhost:8080/api/files/upload   --header 'Content-Type: multipart/form-data'   --form file=@sample3.txt
+
+curl --request GET --url http://localhost:8080/api/files/files

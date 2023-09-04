@@ -1,4 +1,4 @@
-package com.example.springfileiodemo.service;
+package com.example.springfileiodemo.service.excel;
 
 import lombok.Builder;
 import lombok.Getter;

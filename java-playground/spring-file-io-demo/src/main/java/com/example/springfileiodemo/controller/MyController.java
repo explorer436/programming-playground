@@ -1,6 +1,6 @@
 package com.example.springfileiodemo.controller;
 
-import com.example.springfileiodemo.service.UserExcelExporter;
+import com.example.springfileiodemo.service.excel.UserExcelExporter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
