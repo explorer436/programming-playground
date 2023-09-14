@@ -1,4 +1,4 @@
-package com.example.jacksonjsonpoc.objectmapper;
+package com.example.jacksonjsonpoc.objectmapper.model;
 
 import lombok.Getter;
 
