@@ -1,0 +1,104 @@
+* Issues identified
+
+The app is shutting down if we try to start it from IntelliJ.
+Start it from terminal using ~mvn spring-boot:run~
+
+After starting the application, launch h2 console using:
+http://localhost:8080/h2-ui
+jdbc url: jdbc:h2:mem:spring_jpa_user;
+username: sa
+password: sa
+And look at the data in the User table.
+
+jdbc url: jdbc:h2:mem:spring_jpa_product;
+username: sa
+password: sa
+And look at the data in the Product table.
+
+* Things to note about the configuration
+
+We are just extending the default behavior where Spring maps these settings to an instance of org.springframework.boot.autoconfigure.jdbc.DataSourceProperties using the @ConfigurationProperties annotation: https://www.explorer436.com/posts/20230106191612-spring_data/#configure-spring-datasource-jpa-hibernate
+
+So, to use multiple data sources, we need to declare multiple beans with different mappings within Spring’s application context.
+
+** How are they wired together?
+
+1. By default, Spring Boot will instantiate its default DataSource with the configuration properties prefixed by spring.datasource.*;
+   Look at https://www.explorer436.com/posts/20230106191612-spring_data/#configure-spring-datasource-jpa-hibernate for more details.
+1. Now, in addition to using the primary datasource, we want to configure a second DataSource, but with a different property namespace. This is done by using:
+   #+begin_src
+    spring.datasource.jdbcUrl=jdbc:h2:mem:spring_jpa_user;NON_KEYWORDS=user;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;
+    spring.datasource.driverClassName=org.h2.Driver
+    spring.datasource.username=sa
+    spring.datasource.password=sa
+
+    spring.second-datasource.jdbcUrl=jdbc:h2:mem:spring_jpa_product;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;
+    spring.second-datasource.driverClassName=org.h2.Driver
+    spring.second-datasource.username=sa
+    spring.second-datasource.password=sa
+    #+end_src
+
+** Configuration classes
+
+1. In order for Spring Boot autoconfiguration to pick up the properties related to the two different databases (and instantiate two different DataSources), we need two configuration classes. The first one to work with one datasource and the second one to work with the other datasource.
+1. In each configuration class, we’ll need to define the following interfaces for User:
+   1. DataSource
+   1. EntityManagerFactory (userEntityManager)
+   1. TransactionManager (userTransactionManager)
+
+** Primary beans
+
+We are using ~userTransactionManager~ as our Primary TransactionManager by annotating the bean definition with @Primary. That’s helpful whenever we’re going to implicitly or explicitly inject the transaction manager without specifying which one by name.
+
+** Creating datasource beans using @ConfigurationProperties
+
+Notice how we are annotating the data source bean creation method with @ConfigurationProperties.
+We need to specify the corresponding config prefix.
+
+For the first one:
+
+#+begin_src
+@Primary
+@Bean
+@ConfigurationProperties(prefix = "spring.datasource")
+public DataSource userDataSource() {
+    return DataSourceBuilder.create().build();
+}
+#+end_src
+
+For the second one:
+
+#+begin_src
+@Bean
+@ConfigurationProperties(prefix = "spring.second-datasource")
+public DataSource productDataSource() {
+    return DataSourceBuilder.create().build();
+}
+#+end_src
+
+But how do the configured properties get injected into the DataSource configuration?
+In this method, we’re using a DataSourceBuilder.
+When SpringBoot calls the build() method on the DataSourceBuilder, it’ll call its private bind() method:
+
+#+begin_src
+public T build() {
+    Class<? extends DataSource> type = getType();
+    DataSource result = BeanUtils.instantiateClass(type);
+    maybeGetDriverClassName();
+    bind(result);
+    return (T) result;
+}
+#+end_src
+
+This private method performs much of the autoconfiguration magic, binding the resolved configuration to the actual DataSource instance:
+
+#+begin_src
+private void bind(DataSource result) {
+    ConfigurationPropertySource source = new MapConfigurationPropertySource(this.properties);
+    ConfigurationPropertyNameAliases aliases = new ConfigurationPropertyNameAliases();
+    aliases.addAliases("url", "jdbc-url");
+    aliases.addAliases("username", "user");
+    Binder binder = new Binder(source.withAliases(aliases));
+    binder.bind(ConfigurationPropertyName.EMPTY, Bindable.ofInstance(result));
+}
+#+end_src
