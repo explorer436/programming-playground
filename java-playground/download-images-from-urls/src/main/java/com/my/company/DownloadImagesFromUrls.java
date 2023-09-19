@@ -1,4 +1,4 @@
-package com.download.image.from.url;
+package com.my.company;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
