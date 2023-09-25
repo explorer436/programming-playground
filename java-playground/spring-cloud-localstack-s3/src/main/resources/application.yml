@@ -1,0 +1,4 @@
+bucket:
+  name: myawsbucket-26be0f7e-5030-4094-8a49-0a754f22ffe1
+  uploadExpirationTime: 3600000
+  downloadExpirationTime: 3600000
