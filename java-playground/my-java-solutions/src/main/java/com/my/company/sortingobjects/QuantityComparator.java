@@ -1,10 +1,8 @@
-package com.my.company.sorting.objects.lists;
+package com.my.company.sortingobjects;
 
 import java.util.Comparator;
 
-import com.my.company.sorting.objects.Fruit;
-
-public class QuantityCompare implements Comparator<Fruit> {
+public class QuantityComparator implements Comparator<Fruit> {
 
     public int compare(Fruit f1, Fruit f2) {
         if (f1.getQuantity() < f2.getQuantity()) return -1;

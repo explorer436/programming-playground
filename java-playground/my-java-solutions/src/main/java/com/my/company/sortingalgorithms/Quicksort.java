@@ -1,4 +1,4 @@
-package com.my.company.sorting;
+package com.my.company.sortingalgorithms;
 
 import com.my.company.utility.PrintUtils;
 

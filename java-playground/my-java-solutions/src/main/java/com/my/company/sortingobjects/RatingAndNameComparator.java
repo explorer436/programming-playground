@@ -1,13 +1,11 @@
-package com.my.company.sorting.objects.lists;
+package com.my.company.sortingobjects;
 
 import java.util.Comparator;
-
-import com.my.company.sorting.objects.Fruit;
 
 // Class to compare Fruits by rating and name simultaneously.
 // This comparator doesn't have to be in the client class.
 // This method can be written in the class Fruit.
-public class RatingAndNameCompare implements Comparator<Fruit> {
+public class RatingAndNameComparator implements Comparator<Fruit> {
 
     public int compare(Fruit f1, Fruit f2) {
         // sort the fruits by rating first.

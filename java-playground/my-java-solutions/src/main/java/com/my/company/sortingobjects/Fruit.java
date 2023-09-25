@@ -1,4 +1,4 @@
-package com.my.company.sorting.objects;
+package com.my.company.sortingobjects;
 
 import java.util.Comparator;
 

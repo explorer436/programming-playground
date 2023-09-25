@@ -1,14 +1,9 @@
-package com.my.company.sorting.objects;
+package com.my.company.sortingobjects;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-
-import com.my.company.sorting.objects.lists.NameCompare;
-import com.my.company.sorting.objects.lists.QuantityCompare;
-import com.my.company.sorting.objects.lists.RatingAndNameCompare;
 
 /*
  * Suppose we want sort fruits by their name and quantity also (RatingAndNameCompare).
@@ -79,7 +74,7 @@ public class ArraysAndListsComparator {
         }
 
         System.out.println("sorting the list by name using comparator");
-        Collections.sort(fruitsList, new NameCompare());
+        Collections.sort(fruitsList, new NameComparator());
         for (Fruit f : fruitsList) {
             printFruit(f);
         }
@@ -91,13 +86,13 @@ public class ArraysAndListsComparator {
         }
 
         System.out.println("sorting the list by quantity using comparator");
-        Collections.sort(fruitsList, new QuantityCompare());
+        Collections.sort(fruitsList, new QuantityComparator());
         for (Fruit f : fruitsList) {
             printFruit(f);
         }
 
         System.out.println("sorting the list by rating and name simultaneously");
-        Collections.sort(fruitsList, new RatingAndNameCompare());
+        Collections.sort(fruitsList, new RatingAndNameComparator());
         for (Fruit f : fruitsList) {
             printFruit(f);
         }
