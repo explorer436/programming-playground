@@ -1,5 +1,6 @@
 package com.example.awss3.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -32,8 +33,8 @@ public class S3BucketStorageController {
 
     @GetMapping("/file/download")
     public ResponseEntity<String> downloadFile(@RequestParam("fileName") String fileName,
-                                               @RequestParam("rawContent") boolean rawContent) {
-        return new ResponseEntity<>(service.downloadFile(fileName, rawContent), HttpStatus.OK);
+                                               @RequestParam("presignedUrl") boolean presignedUrl) {
+        return new ResponseEntity<>(service.downloadFile(fileName, presignedUrl), HttpStatus.OK);
     }
 
     @GetMapping("/list/files")
@@ -44,5 +45,11 @@ public class S3BucketStorageController {
     @GetMapping("/presignedurl")
     public ResponseEntity<String> getPresignedUrl(@RequestParam("fileName") String fileName) {
         return new ResponseEntity<>(service.generatePUTPresignedURL(fileName), HttpStatus.OK);
+    }
+
+    @GetMapping("/zip")
+    public ResponseEntity zip() throws IOException {
+        service.zip();
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

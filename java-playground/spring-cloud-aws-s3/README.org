@@ -35,21 +35,11 @@ Take a note of the ~dependencies~ section.
 1. To start the application: ~mvn spring-boot:run~
 1. To call the GET list of files operation,
    #+begin_src 
-   $ curl --verbose --request "GET" http://localhost:8080/list/files
+   curl --verbose --request "GET" http://localhost:8080/list/files
    #+end_src
-1. To get a presigned url for a file that exists in S3,
-   #+begin_src 
-   $ curl --location --request GET 'http://localhost:8080/file/download?fileName=HELP.md&rawContent=true'
-   #+end_src
-
-   Output:
-   #+begin_src 
-   https://myawsbucket-26be0f7e-5030-4094-8a49-0a754f22ffe1.s3.amazonaws.com/HELP.md?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20221220T001954Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=AKIASTSXPXTQHENHSENE%2F20221220%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=1ca62ae5c4cb73491537c8baa4da561d58622904b6a491b8ddc575aba0ad2f4a
-   #+end_src
-
 1. To retrieve a presigned url for inserting a large document,
    #+begin_src 
-   $ curl --location --request GET 'http://localhost:8080/presignedurl?fileName=fileToBeUploaded.txt'
+   curl --location --request GET 'http://localhost:8080/presignedurl?fileName=fileToBeUploaded.txt'
    #+end_src
 1. To upload a document using the presigned url,
    #+begin_src 
@@ -59,11 +49,20 @@ Take a note of the ~dependencies~ section.
    #+end_src
 1. To retrive the byte stream of the file,
    #+begin_src 
-   $ curl --location --request GET 'http://localhost:8080/file/download?fileNamcurl --location --request GET 'http://localhost:8080/file/download?fileName=HELP.md&rawContent=false'
+   curl --location --request GET 'http://localhost:8080/file/download?fileNamcurl --location --request GET 'http://localhost:8080/file/download?fileName=HELP.md&presignedUrl=false'
    #+end_src
 1. To delete a file,
    #+begin_src 
    curl --location --request DELETE 'http://localhost:8080/file/delete?fileName=HELP.md'
+   #+end_src
+1. To get a presigned url for a file that exists in S3,
+   #+begin_src 
+   curl --location --request GET 'http://localhost:8080/file/download?fileName=HELP.md&presignedUrl=true'
+   #+end_src
+
+   Output:
+   #+begin_src 
+   https://myawsbucket-26be0f7e-5030-4094-8a49-0a754f22ffe1.s3.amazonaws.com/HELP.md?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20221220T001954Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=AKIASTSXPXTQHENHSENE%2F20221220%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=1ca62ae5c4cb73491537c8baa4da561d58622904b6a491b8ddc575aba0ad2f4a
    #+end_src
 
 * References:
