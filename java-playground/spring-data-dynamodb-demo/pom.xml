@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>spring-data-dynamodb-usage</artifactId>
+	<artifactId>spring-data-dynamodb-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-cloud-aws-dynamodb</name>
 	<description>Demo project for Spring Boot</description>
