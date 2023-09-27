@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>spring-data-mongodb-rest</artifactId>
+	<artifactId>spring-data-rest-with-mongodb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-data-mongodb-rest</name>
+	<name>spring-data-rest-with-mongodb</name>
 	<description>Demo project for Spring Data MongoDB and Rest</description>
 	<properties>
 		<java.version>11</java.version>
