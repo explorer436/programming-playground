@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>spring-data-file-io-poc</artifactId>
+	<artifactId>spring-data-jpa-file-io-with-mysql</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-data-file-io-poc</name>
+	<name>spring-data-jpa-file-io-with-mysql</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
