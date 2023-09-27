@@ -1,0 +1,70 @@
+* Points to note
+
+Reference: https://github.com/explorer436/programming-playground/blob/main/java-playground/spring-cloud-aws-s3/README.org
+
+1. Make a bucket in localstack using cli
+   #+begin_src 
+   aws --endpoint-url=http://localhost:4566 s3 mb s3://bucket1
+   #+end_src
+1. List existing buckets in s3:
+   #+begin_src 
+   curl --verbose --request "GET" http://localhost:8080/list/buckets
+   #+end_src
+1. To call the GET list of files operation,
+   #+begin_src 
+   curl --verbose --request "GET" http://localhost:8080/list/files
+   #+end_src
+1. To retrieve a presigned url for inserting a large document,
+   #+begin_src 
+   curl --location --request GET 'http://localhost:8080/presignedurl?fileName=fileToBeUploaded.txt'
+
+   curl --location --request GET 'http://localhost:8080/presignedurl?fileName=image1.jpg'
+   #+end_src
+1. To upload a document using the presigned url,
+   #+begin_src 
+   curl --location --request PUT 'https://myawsbucket-26be0f7e-5030-4094-8a49-0a754f22ffe1.s3.amazonaws.com/fileToBeUploaded.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20221220T002324Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=AKIASTSXPXTQHENHSENE%2F20221220%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=951f78cae689c8d6ac11fdceb5f858c21e5e6f0498ed95c6c1bddc8ba22db648' \
+   --header 'Content-Type: text/plain' \
+   --data-binary '@/home/h/Downloads/FileToBeUploaded.txt'
+
+
+   curl --location --request PUT 'http://myawsbucket-26be0f7e-5030-4094-8a49-0a754f22ffe1.localhost:4566/image1.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230927T165124Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3599&X-Amz-Credential=test%2F20230927%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=f5fe8fc6fc9bb9ef006324de5942ee8989c10251a66d330e447859432cc9bfd8' \
+   --header 'Content-Type: text/plain' \
+   --data-binary '@/home/explorer436/Downloads/image1.jpg'
+   #+end_src
+1. To retrive the byte stream of the file,
+   #+begin_src 
+   curl --location --request GET 'http://localhost:8080/file/download?fileNamcurl --location --request GET 'http://localhost:8080/file/download?fileName=HELP.md&rawContent=false'
+   #+end_src
+1. To delete a file,
+   #+begin_src 
+   curl --location --request DELETE 'http://localhost:8080/file/delete?fileName=HELP.md'
+   #+end_src
+1. To get a presigned url for a file that exists in S3,
+   #+begin_src 
+   curl --location --request GET 'http://localhost:8080/file/download?fileName=HELP.md&rawContent=true'
+   #+end_src
+
+   Output:
+   #+begin_src 
+  https://myawsbucket-26be0f7e-5030-4094-8a49-0a754f22ffe1.s3.amazonaws.com/HELP.md?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20221220T001954Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=AKIASTSXPXTQHENHSENE%2F20221220%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=1ca62ae5c4cb73491537c8baa4da561d58622904b6a491b8ddc575aba0ad2f4a
+   #+end_src
+
+
+* References:
+
+1. https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/java/example_code/s3/src/main/java/aws/example/s3
+1. https://github.com/awspring/spring-cloud-aws
+1. https://docs.awspring.io/spring-cloud-aws/docs/2.4.1/reference/html/index.html
+
+* Results
+
+Haven't had much success with this approach. I am seeing this error when trying to upload a document to s3 in localstack.
+
+#+begin_src 
+curl --location --request PUT 'http://myawsbucket-26be0f7e-5030-4094-8a49-0a754f22ffe1.localhost:4566/fileToBeUploaded.txt?X-Acurl --location --request PUT 'http://myawsbucket-26be0f7e-5030-4094-8a49-0a754f22ffe1.localhost:4566/fileToBeUploaded.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230927T165350Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=test%2F20230927%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=e35244a2c4795ed8b4e8962ead001a1f4a117b4d8d5ae5dfc96a2092f611234f' \
+   --header 'Content-Type: text/plain' \
+   --data-binary '@/home/explorer436/Downloads/loremipsum.txt'
+<?xml version='1.0' encoding='utf-8'?>
+<Error><Code>InternalError</Code><Message>exception while calling s3 with unknown operation: Unable to parse request (syntax error: line 1, column 0), invalid XML received:
+b'Lorem Ipsum\n"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."\n"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."\nWhat is Lorem Ipsum?\nLorem Ipsum is simply dummy text of THE printing and typesetting industry. Lorem Ipsum has been THE industry\'s standard dummy text ever since THE 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also THE leap into electronic typesetting, remaining essentially unchanged. It was popularised in THE 1960s with THE release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\nWhy do we use it?\nIt is a long established fact that a reader will be distracted by THE readable content of a page when looking at its layout. THE point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as THEir default model text, and a search for \'lorem ipsum\' will uncover many web sites still in THEir infancy. Various versions have evolved over THE years, sometimes by accident, sometimes on purpose (injected humour and THE like).\n\n\nWhere does it come from?\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of THE more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through THE cites of THE word in classical literature, discovered THE undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (THE Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on THE THEory of ethics, very popular during THE Renaissance. THE first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nTHE standard chunk of Lorem Ipsum used since THE 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in THEir exact original form, accompanied by English versions from THE 1914 translation by H. Rackham.\n\nWhere can I get some?\nTHEre are many variations of passages of Lorem Ipsum available, but THE majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure THEre isn\'t anything embarrassing hidden in THE middle of text. All THE Lorem Ipsum generators on THE Internet tend to repeat predefined chunks as necessary, making this THE first true generator on THE Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. THE generated Lorem Ipsum is THErefore always free from repetition, injected humour, or non-characteristic words etc.\n\n5\n\tparagraphs\n\twords\n\tbytes\n\tlists\n\tStart with \'Lorem\nipsum dolor sit amet...\'\n\nTranslations: Can you help translate this site into a foreign language ? Please email us with details if you can help.\nTHEre is a set of mock banners available here in three colours and in a range of standard banner sizes:\nBannersBannersBanners\nDonate: If you use this site regularly and would like to help keep THE site on THE Internet, please consider donating a small sum to help pay for THE hosting and bandwidth bill. THEre is no minimum donation, any sum is appreciated - click here to donate using PayPal. Thank you for your support.\nDonate Bitcoin: 16UQLq1HZ3CNwhvgrarV6pMoA2CDjb4tyF\nNodeJS Python Interface GTK Lipsum Rails .NET Groovy\nTHE standard Lorem Ipsum passage, used since THE 1500s\n"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."\n\nSection 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC\n"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"\n\n1914 translation by H. Rackham\n"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of THE system, and expound THE actual teachings of THE great explorer of THE truth, THE master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is THEre anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"\n\nSection 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC\n"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."\n\n1914 translation by H. Rackham\n"On THE oTHEr hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by THE charms of pleasure of THE moment, so blinded by desire, that THEy cannot foresee THE pain and trouble that are bound to ensue; and equal blame belongs to those who fail in THEir duty through weakness of will, which is THE same as saying through shrinking from toil and pain. THEse cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to THE claims of duty or THE obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. THE wise man THErefore always holds in THEse matters to this principle of selection: he rejects pleasures to secure oTHEr greater pleasures, or else he endures pains to avoid worse pains."\n\nhelp@lipsum.com\nPrivacy Policy \xc2\xb7 Do Not Sell My Personal Information \xc2\xb7 Change Consent\n'</Message><RequestId>772ba4d7-654e-42b3-ad78-9e58b9f26edc</RequestId></Error>[explorer436@explorer436-p50-20eqs27p03 ~]  
+#+end_src

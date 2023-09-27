@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.PostConstruct;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,14 +21,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
 public class S3StorageService {
 
     private final AmazonS3 amazonS3Client;
-
-    private final static String S3_URL = "s3://%s/%s";
 
     @Value("${bucket.name}")
     private String bucketName;
@@ -37,6 +37,19 @@ public class S3StorageService {
 
     @Value("${bucket.downloadExpirationTime}")
     private Long bucketDownloadExpirationTime;
+
+    @PostConstruct
+    public void load() {
+        boolean exist = amazonS3Client.doesBucketExistV2(bucketName);
+        if (!exist) {
+            Bucket createdBucket = amazonS3Client.createBucket(bucketName);
+            log.info("created bucket: " + createdBucket.getName());
+        }
+    }
+
+    public List<Bucket> listBuckets() {
+        return amazonS3Client.listBuckets();
+    }
 
     /**
      * Upload file into AWS S3

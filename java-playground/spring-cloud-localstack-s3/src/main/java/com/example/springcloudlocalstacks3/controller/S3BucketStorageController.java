@@ -1,8 +1,10 @@
 package com.example.springcloudlocalstacks3.controller;
 
+import com.amazonaws.services.s3.model.Bucket;
 import com.example.springcloudlocalstacks3.service.S3StorageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +34,11 @@ public class S3BucketStorageController {
     public ResponseEntity<String> downloadFile(@RequestParam("fileName") String fileName,
                                                @RequestParam("rawContent") boolean rawContent) {
         return new ResponseEntity<>(service.downloadFile(fileName, rawContent), HttpStatus.OK);
+    }
+
+    @GetMapping("/list/buckets")
+    public ResponseEntity<List<Bucket>> getListOfBuckets() {
+        return new ResponseEntity<>(service.listBuckets(), HttpStatus.OK);
     }
 
     @GetMapping("/list/files")
