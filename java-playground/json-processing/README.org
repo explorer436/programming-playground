@@ -1,0 +1,8 @@
+* Reading material
+
+What is the difference?
+
+gson vs ObjectMapper
+gsonToJson vs writeValueAsString
+
+https://www.baeldung.com/jackson-object-mapper-tutorial
