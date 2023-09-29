@@ -1,4 +1,4 @@
-package com.my.company.jackson.objectmapper.model;
+package com.my.company.model;
 
 import lombok.Getter;
 

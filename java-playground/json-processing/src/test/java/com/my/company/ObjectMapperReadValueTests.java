@@ -1,4 +1,4 @@
-package com.my.company.jackson.objectmapper;
+package com.my;
 
 import com.my.company.jackson.objectmapper.ObjectMapperReadValue;
 import org.junit.jupiter.api.Test;

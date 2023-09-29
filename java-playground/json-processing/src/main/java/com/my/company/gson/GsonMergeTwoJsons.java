@@ -5,17 +5,10 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Sample {
+public class GsonMergeTwoJsons {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
-
         mergeTwoJsonStringsWithoutKnowingTheirTypes();
-
-        printArrayListAsJson();
     }
 
     /**
@@ -40,22 +33,11 @@ public class Sample {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = "{ \"name\": \"myName\", \"java\": true }";
+
         JsonObject jsonObject = JsonParser.parseString(json).getAsJsonObject();
         jsonObject.addProperty("id", "115");
         jsonObject.addProperty("title", "Sample Konfabulator Widget");
         String jsonStr = gson.toJson(jsonObject);
         System.out.println("JSON String after inserting additional property: " + jsonStr);
-    }
-
-    private static void printArrayListAsJson() {
-
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-        List<String> l = new ArrayList<>();
-        l.add("first");
-        l.add("second");
-
-        String abc = gson.toJson(l);
-        System.out.println("abc: " + abc);
     }
 }

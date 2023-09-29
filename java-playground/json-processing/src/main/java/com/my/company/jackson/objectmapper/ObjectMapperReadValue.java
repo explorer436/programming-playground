@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.my.company.jackson.objectmapper.model.ColorData;
+import com.my.company.model.ColorData;
 
 public class ObjectMapperReadValue {
     public String readValue() throws JsonProcessingException {
