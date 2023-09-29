@@ -1,75 +1,12 @@
 package com.my.company.collections;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.function.IntConsumer;
 import java.util.stream.Collectors;
 
-import com.my.company.utility.PrintUtils;
-
 public class StreamCollect {
-
-	public static void main(String[] args) {
-		
-		List<Person> people = new ArrayList<Person>();
-		people.add(new Person("1John", 15, "male"));
-		people.add(new Person("2Rob", 25, "male"));
-		people.add(new Person("3Clark", 35, "male"));
-		people.add(new Person("4Trevor", 45, "male"));
-		people.add(new Person("5Jane", 15, "female"));
-		people.add(new Person("6Gayle", 25, "female"));
-		people.add(new Person("7Mary", 35, "female"));
-		people.add(new Person("8Sophie", 45, "female"));
-		
-		System.out.println("average age of men : " + getAverageAgeOfMen_Collect(people)); // 30.0
-		
-		System.out.println();
-		
-		System.out.println("names of men using standard collector to list : " + Arrays.toString(getNamesOfMen_Collect_UsingStandardCollector(people).toArray())); // [1John, 2Rob, 3Clark, 4Trevor]
-		
-		System.out.println();
-		
-		System.out.println("names of men using ArrayList and accumulator function : " + Arrays.toString(getNamesOfMen_Collect_UsingArrayList(people).toArray())); // [1John, 2Rob, 3Clark, 4Trevor]
-		
-		System.out.println();
-		
-		System.out.println("printing people grouped by gender : ");
-		PrintUtils.printMap(groupPeopleByGender(people));
-		/*
-		 * female = [Person [name=5Jane, age=15, gender=female], Person [name=6Gayle, age=25, gender=female], Person [name=7Mary, age=35, gender=female], Person [name=8Sophie, age=45, gender=female]]
-		 * male = [Person [name=1John, age=15, gender=male], Person [name=2Rob, age=25, gender=male], Person [name=3Clark, age=35, gender=male], Person [name=4Trevor, age=45, gender=male]]
-		 */
-		
-		System.out.println();
-		
-		System.out.println("printing people names by gender : ");
-		PrintUtils.printMap(groupPersonNamesByGender(people));
-		/*
-		 * female = [5Jane, 6Gayle, 7Mary, 8Sophie]
-		 * male = [1John, 2Rob, 3Clark, 4Trevor]
-		 */
-		
-		System.out.println();
-		
-		System.out.println("printing total age by gender : ");
-		PrintUtils.printMap(groupTotalAgeByGender(people));
-		/*
-		 * female = 120
-		 * male = 120
-		 */
-		
-		System.out.println();
-		
-		System.out.println("printing average age by gender : ");
-		PrintUtils.printMap(getAverageAgeByGender(people));
-		/*
-		 * female = 30.0
-		 * male = 30.0
-		 */
-		
-	}
 
 	/**
 	 * The Stream.collect Method
@@ -83,7 +20,7 @@ public class StreamCollect {
 	 * You can create a new data type that contains member variables that keep track of the total number of values and the sum of those values, such as the class, Averager:
 	 * @return 
 	 */
-	private static double getAverageAgeOfMen_Collect(List<Person> people)
+	public static double getAverageAgeOfMen_Collect(List<Person> people)
 	{
 		/**
 		 * The collect operation in this example takes three arguments:
@@ -153,7 +90,7 @@ public class StreamCollect {
                BiConsumer<R, R> combiner);
 	 * 
 	 */
-	private static List<String> getNamesOfMen_Collect_UsingArrayList(List<Person> people)
+	public static List<String> getNamesOfMen_Collect_UsingArrayList(List<Person> people)
 	{
 		/**
 		 * Here, 
@@ -179,7 +116,7 @@ public class StreamCollect {
 	 *  The above example (getNamesOfMen_Collect_UsingArrayList) for collecting strings into a List can be rewritten using a standard Collector as shown here.
 	 * 
 	 */
-	private static List<String> getNamesOfMen_Collect_UsingStandardCollector(List<Person> people)
+	public static List<String> getNamesOfMen_Collect_UsingStandardCollector(List<Person> people)
 	{
 		/**
 		 * This version of the collect operation takes one parameter of type Collector. 
@@ -210,7 +147,7 @@ public class StreamCollect {
 	/**
 	 * The following example groups members of the collection people by gender.
 	 */
-	private static Map<String, List<Person>> groupPeopleByGender(List<Person> people)
+	public Map<String, List<Person>> groupPeopleByGender(List<Person> people)
 	{
 		
 		/**
@@ -227,11 +164,21 @@ public class StreamCollect {
 		
 		return byGender;
 	}
-	
+
+	public Map<Person.Address, List<Person>> groupPeopleByAddress(List<Person> people)
+	{
+		Map<Person.Address, List<Person>> byAddress = people
+				.stream()
+				.collect(
+						Collectors.groupingBy(Person::getAddress));
+
+		return byAddress;
+	}
+
 	/**
 	 * The following example retrieves the names of each member in the collection people and groups them by gender.
 	 */
-	private static Map<String, List<String>> groupPersonNamesByGender(List<Person> people)
+	public static Map<String, List<String>> groupPersonNamesByGender(List<Person> people)
 	{
 		
 		/**
@@ -257,7 +204,7 @@ public class StreamCollect {
 	/**
 	 * The following example retrieves the total age of members of each gender.
 	 */
-	private static Map<String, Integer> groupTotalAgeByGender(List<Person> people)
+	public static Map<String, Integer> groupTotalAgeByGender(List<Person> people)
 	{
 		/**
 		 * The reducing operation takes three parameters:
@@ -295,7 +242,7 @@ public class StreamCollect {
 	/**
 	 *  The following example retrieves the average age of members of each gender.
 	 */
-	private static Map<String, Double> getAverageAgeByGender(List<Person> people)
+	public static Map<String, Double> getAverageAgeByGender(List<Person> people)
 	{
 		Map<String, Double> averageAgeByGender = people
 			    .stream()

@@ -8,18 +8,6 @@ public class StreamReduce {
 	
 public static void main(String[] args) {
 		
-		List<Person> people = new ArrayList<Person>();
-		people.add(new Person("1John", 15, "male"));
-		people.add(new Person("2Rob", 25, "male"));
-		people.add(new Person("3Clark", 35, "male"));
-		people.add(new Person("4Trevor", 45, "male"));
-		people.add(new Person("5Jane", 15, "female"));
-		people.add(new Person("6Gayle", 25, "female"));
-		people.add(new Person("7Mary", 35, "female"));
-		people.add(new Person("8Sophie", 45, "female"));
-		
-		System.out.println("sum of ages of males : " + returnSumOfAgesOfMales_Reduce(people));
-		
 		int[] A = new int[] { 1, 2, 3, 4, 5 };
 		System.out.println("sum of all elements of the array " + Arrays.toString(A) + " is : " + getSumOfAllElementsOfArray(A));
 		System.out.println("product of all elements of the array " + Arrays.toString(A) + " is : " + getProductOfAllElementsOfArray(A));
@@ -60,7 +48,7 @@ public static void main(String[] args) {
 	 * Stream.reduce does not need a "combiner".
 	 * 
 	 */
-	private static Integer returnSumOfAgesOfMales_Reduce(List<Person> people)
+	public static Integer returnSumOfAgesOfMales_Reduce(List<Person> people)
 	{
 		// This does not use reduce.
 		Integer totalAgeCalculatedUsingSum = people

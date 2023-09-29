@@ -4,30 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StreamAPI {
-
-	public static void main(String[] args) {
-		
-		List<Person> people = new ArrayList<Person>();
-		people.add(new Person("1John", 15, "male"));
-		people.add(new Person("2Rob", 25, "male"));
-		people.add(new Person("3Clark", 35, "male"));
-		people.add(new Person("4Trevor", 45, "male"));
-		people.add(new Person("5Jane", 15, "female"));
-		people.add(new Person("6Gayle", 25, "female"));
-		people.add(new Person("7Mary", 35, "female"));
-		people.add(new Person("8Sophie", 45, "female"));
-		
-		printTheNameOfEachPerson_AggregateOperations(people);
-		
-		System.out.println();
-		
-		printNamesOfMen_Pipelines(people);
-		
-		System.out.println();
-		
-		System.out.println("average age of men : " + getAverageAgeOfMen_TerminalOperator(people));
-		
-	}
 	
 	/**
 	 * Differences Between Aggregate Operations and Iterators:
@@ -58,16 +34,14 @@ public class StreamAPI {
 	 * Aggregate Operations
 	 * 
 	 */
-	private static void printTheNameOfEachPerson_AggregateOperations(List<Person> people)
+	public static void printTheNameOfEachPerson_AggregateOperations(List<Person> people)
 	{
-		// using a for each loop
+		System.out.println("using a for each loop");
 		for (Person p : people) {
 		    System.out.println(p.getName());
 		}
 		
-		System.out.println();
-		
-		// using the aggregate operation forEach
+		System.out.println("using the aggregate operation forEach");
 		people
 	    .stream()
 	    .forEach(e -> System.out.println(e.getName()));
@@ -92,7 +66,7 @@ public class StreamAPI {
 	 * which invokes the method getName on the object e. 
 	 * (The Java runtime and compiler infer that the type of the object e is Person.)
 	 */
-	private static void printNamesOfMen_Pipelines(List<Person> people)
+	public static void printNamesOfMen_Pipelines(List<Person> people)
 	{
 		people
 	    .stream()
@@ -104,7 +78,7 @@ public class StreamAPI {
 	 * The following example calculates the average age of all male members contained in the collection people 
 	 * with a pipeline that consists of the aggregate operations filter, mapToInt, and average.
 	 */
-	private static double getAverageAgeOfMen_TerminalOperator(List<Person> people)
+	public static double getAverageAgeOfMen_TerminalOperator(List<Person> people)
 	{
 		/**
 		The mapToInt operation returns a new stream of type IntStream (which is a stream that contains only integer values). 

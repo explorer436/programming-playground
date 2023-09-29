@@ -7,3 +7,5 @@ gsonToJson vs writeValueAsString
 
 1. https://www.baeldung.com/jackson
 1. https://www.baeldung.com/jackson-object-mapper-tutorial
+1. https://www.baeldung.com/jackson-vs-gson
+1. https://stackoverflow.com/questions/2378402/jackson-vs-gson
