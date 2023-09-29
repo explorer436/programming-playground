@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JavaToJsonTests {
+public class JavaToJson_Objects_Tests {
 
     private ObjectMapperJavaToJson objectMapperJavaToJson = new ObjectMapperJavaToJson();
     private GsonJavaToJson gsonJavaToJson = new GsonJavaToJson();

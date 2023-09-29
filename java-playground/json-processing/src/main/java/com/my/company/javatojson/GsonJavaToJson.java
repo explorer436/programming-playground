@@ -13,14 +13,9 @@ import java.util.List;
 
 public class GsonJavaToJson {
 
-
-    public String javaToJson() {
+    public String javaToJson(List<String> l) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-        List<String> l = new ArrayList<>();
-        l.add("first");
-        l.add("second");
 
         String abc = gson.toJson(l);
         System.out.println("abc: " + abc);
