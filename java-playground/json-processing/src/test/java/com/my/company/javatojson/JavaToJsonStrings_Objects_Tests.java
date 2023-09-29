@@ -1,4 +1,4 @@
-package com.my.company;
+package com.my.company.javatojson;
 
 import com.my.company.javatojson.GsonJavaToJson;
 import com.my.company.javatojson.ObjectMapperJavaToJsonStrings;

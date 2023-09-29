@@ -1,4 +1,4 @@
-package com.my.company.gson;
+package com.my.company.mergejsons.gson;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
