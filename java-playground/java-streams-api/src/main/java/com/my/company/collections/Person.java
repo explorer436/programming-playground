@@ -9,6 +9,7 @@ import java.beans.Transient;
 @Data
 @Builder
 public class Person {
+    private int id;
     private String name;
     private int age;
     private String gender;

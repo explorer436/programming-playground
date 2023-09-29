@@ -27,21 +27,23 @@ public class CollectExamplesTests {
     public void test_storeStringLengthGroupingResulsInASet() throws JsonProcessingException {
         Map<Integer, Set<String>> actual = collectExamples.storeStringLengthGroupingResulsInASet(strings);
 
-        assertEquals("{\n" +
-                "  \"1\" : [ \"a\" ],\n" +
-                "  \"2\" : [ \"bb\", \"dd\" ],\n" +
-                "  \"3\" : [ \"ccc\" ]\n" +
-                "}", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
+        assertEquals("""
+                {
+                  "1" : [ "a" ],
+                  "2" : [ "bb", "dd" ],
+                  "3" : [ "ccc" ]
+                }""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
     }
 
     @Test
     public void test_partitionByStringLength() throws JsonProcessingException {
         Map<Boolean, List<String>> actual = collectExamples.partitionByStringLength(strings);
 
-        assertEquals("{\n" +
-                "  \"false\" : [ \"a\", \"bb\", \"dd\" ],\n" +
-                "  \"true\" : [ \"ccc\" ]\n" +
-                "}", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
+        assertEquals("""
+                {
+                  "false" : [ "a", "bb", "dd" ],
+                  "true" : [ "ccc" ]
+                }""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
     }
 
     @Test

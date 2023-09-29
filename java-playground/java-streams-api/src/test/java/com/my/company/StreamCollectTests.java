@@ -25,7 +25,8 @@ public class StreamCollectTests {
         assertEquals("""
                {
                  "female" : [ {
-                   "name" : "5Jane",
+                   "id" : 5,
+                   "name" : "Jane",
                    "age" : 15,
                    "gender" : "female",
                    "addressLine1" : "123 JohnJane Ln",
@@ -41,7 +42,8 @@ public class StreamCollectTests {
                      "zip" : "03820"
                    }
                  }, {
-                   "name" : "6Gayle",
+                   "id" : 6,
+                   "name" : "Gayle",
                    "age" : 25,
                    "gender" : "female",
                    "addressLine1" : "123 RobGayle Ln",
@@ -57,7 +59,8 @@ public class StreamCollectTests {
                      "zip" : "03820"
                    }
                  }, {
-                   "name" : "7Mary",
+                   "id" : 7,
+                   "name" : "Mary",
                    "age" : 35,
                    "gender" : "female",
                    "addressLine1" : "123 ClarkMary Ln",
@@ -73,7 +76,8 @@ public class StreamCollectTests {
                      "zip" : "03820"
                    }
                  }, {
-                   "name" : "8Sophie",
+                   "id" : 8,
+                   "name" : "Sophie",
                    "age" : 45,
                    "gender" : "female",
                    "addressLine1" : "123 TrevorSophie Ln",
@@ -90,7 +94,8 @@ public class StreamCollectTests {
                    }
                  } ],
                  "male" : [ {
-                   "name" : "1John",
+                   "id" : 1,
+                   "name" : "John",
                    "age" : 15,
                    "gender" : "male",
                    "addressLine1" : "123 JohnJane Ln",
@@ -106,7 +111,8 @@ public class StreamCollectTests {
                      "zip" : "03820"
                    }
                  }, {
-                   "name" : "2Rob",
+                   "id" : 2,
+                   "name" : "Rob",
                    "age" : 25,
                    "gender" : "male",
                    "addressLine1" : "123 RobGayle Ln",
@@ -122,7 +128,8 @@ public class StreamCollectTests {
                      "zip" : "03820"
                    }
                  }, {
-                   "name" : "3Clark",
+                   "id" : 3,
+                   "name" : "Clark",
                    "age" : 35,
                    "gender" : "male",
                    "addressLine1" : "123 ClarkMary Ln",
@@ -138,7 +145,8 @@ public class StreamCollectTests {
                      "zip" : "03820"
                    }
                  }, {
-                   "name" : "4Trevor",
+                   "id" : 4,
+                   "name" : "Trevor",
                    "age" : 45,
                    "gender" : "male",
                    "addressLine1" : "123 TrevorSophie Ln",
@@ -167,7 +175,8 @@ public class StreamCollectTests {
         assertEquals("""
                 {
                   "Address[addressLine1=123 ClarkMary Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
-                    "name" : "3Clark",
+                    "id" : 3,
+                    "name" : "Clark",
                     "age" : 35,
                     "gender" : "male",
                     "addressLine1" : "123 ClarkMary Ln",
@@ -183,7 +192,8 @@ public class StreamCollectTests {
                       "zip" : "03820"
                     }
                   }, {
-                    "name" : "7Mary",
+                    "id" : 7,
+                    "name" : "Mary",
                     "age" : 35,
                     "gender" : "female",
                     "addressLine1" : "123 ClarkMary Ln",
@@ -200,7 +210,8 @@ public class StreamCollectTests {
                     }
                   } ],
                   "Address[addressLine1=123 RobGayle Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
-                    "name" : "2Rob",
+                    "id" : 2,
+                    "name" : "Rob",
                     "age" : 25,
                     "gender" : "male",
                     "addressLine1" : "123 RobGayle Ln",
@@ -216,7 +227,8 @@ public class StreamCollectTests {
                       "zip" : "03820"
                     }
                   }, {
-                    "name" : "6Gayle",
+                    "id" : 6,
+                    "name" : "Gayle",
                     "age" : 25,
                     "gender" : "female",
                     "addressLine1" : "123 RobGayle Ln",
@@ -233,7 +245,8 @@ public class StreamCollectTests {
                     }
                   } ],
                   "Address[addressLine1=123 JohnJane Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
-                    "name" : "1John",
+                    "id" : 1,
+                    "name" : "John",
                     "age" : 15,
                     "gender" : "male",
                     "addressLine1" : "123 JohnJane Ln",
@@ -249,7 +262,8 @@ public class StreamCollectTests {
                       "zip" : "03820"
                     }
                   }, {
-                    "name" : "5Jane",
+                    "id" : 5,
+                    "name" : "Jane",
                     "age" : 15,
                     "gender" : "female",
                     "addressLine1" : "123 JohnJane Ln",
@@ -266,7 +280,8 @@ public class StreamCollectTests {
                     }
                   } ],
                   "Address[addressLine1=123 TrevorSophie Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
-                    "name" : "4Trevor",
+                    "id" : 4,
+                    "name" : "Trevor",
                     "age" : 45,
                     "gender" : "male",
                     "addressLine1" : "123 TrevorSophie Ln",
@@ -282,7 +297,8 @@ public class StreamCollectTests {
                       "zip" : "03820"
                     }
                   }, {
-                    "name" : "8Sophie",
+                    "id" : 8,
+                    "name" : "Sophie",
                     "age" : 45,
                     "gender" : "female",
                     "addressLine1" : "123 TrevorSophie Ln",
@@ -307,10 +323,11 @@ public class StreamCollectTests {
 
         Map<String, Double> actual = streamCollect.getAverageAgeByGender(people);
 
-        assertEquals("{\n" +
-                "  \"female\" : 30.0,\n" +
-                "  \"male\" : 30.0\n" +
-                "}", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
+        assertEquals("""
+                {
+                  "female" : 30.0,
+                  "male" : 30.0
+                }""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
     }
 
     @Test
@@ -328,7 +345,7 @@ public class StreamCollectTests {
 
         List<String> actual = streamCollect.getNamesOfMen_Collect_UsingStandardCollector(people);
 
-        assertEquals("[ \"1John\", \"2Rob\", \"3Clark\", \"4Trevor\" ]", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
+        assertEquals("[ \"John\", \"Rob\", \"Clark\", \"Trevor\" ]", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
     }
 
     @Test
@@ -338,7 +355,7 @@ public class StreamCollectTests {
         List<String> actual = streamCollect.getNamesOfMen_Collect_UsingArrayList(people);
 
         assertEquals("""
-                [ \"1John\", \"2Rob\", \"3Clark\", \"4Trevor\" ]""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
+                [ \"John\", \"Rob\", \"Clark\", \"Trevor\" ]""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
     }
 
     @Test
@@ -349,8 +366,8 @@ public class StreamCollectTests {
 
         assertEquals("""
                 {
-                  "female" : [ "5Jane", "6Gayle", "7Mary", "8Sophie" ],
-                  "male" : [ "1John", "2Rob", "3Clark", "4Trevor" ]
+                  "female" : [ "Jane", "Gayle", "Mary", "Sophie" ],
+                  "male" : [ "John", "Rob", "Clark", "Trevor" ]
                 }""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
     }
 
@@ -360,9 +377,10 @@ public class StreamCollectTests {
 
         Map<String, Integer> actual = streamCollect.groupTotalAgeByGender(people);
 
-        assertEquals("{\n" +
-                "  \"female\" : 120,\n" +
-                "  \"male\" : 120\n" +
-                "}", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
+        assertEquals("""
+                {
+                  "female" : 120,
+                  "male" : 120
+                }""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
     }
 }
