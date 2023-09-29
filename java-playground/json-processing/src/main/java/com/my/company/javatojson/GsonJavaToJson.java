@@ -26,6 +26,9 @@ public class GsonJavaToJson {
     public String javaToJson(Employee e) {
         GsonBuilder gsonBuilder = new GsonBuilder();
 
+        // JsonIO Failed making field 'java.time.LocalDateTime#date' accessible; either increase its visibility or write a custom TypeAdapter for its declaring type.
+        // JsonIO Failed making field 'java.time.OffsetDateTime#dateTime' accessible; either increase its visibility or write a custom TypeAdapter for its declaring type.
+
         gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeTypeAdapter());
         gsonBuilder.registerTypeAdapter(OffsetDateTime.class, new OffsetDateTimeTypeAdapter());
 
