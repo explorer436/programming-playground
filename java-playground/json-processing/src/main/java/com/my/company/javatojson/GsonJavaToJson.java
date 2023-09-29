@@ -8,7 +8,6 @@ import com.my.company.model.Employee;
 
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GsonJavaToJson {
@@ -17,10 +16,7 @@ public class GsonJavaToJson {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        String abc = gson.toJson(l);
-        System.out.println("abc: " + abc);
-
-        return abc;
+        return gson.toJson(l);
     }
 
     public String javaToJson(Employee e) {

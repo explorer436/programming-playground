@@ -1,21 +1,17 @@
 package com.my.company;
 
 import com.my.company.javatojson.GsonJavaToJson;
-import com.my.company.javatojson.ObjectMapperJavaToJson;
-import com.my.company.model.Employee;
+import com.my.company.javatojson.ObjectMapperJavaToJsonStrings;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JavaToJson_Lists_Tests {
+public class JavaToJsonStrings_Lists_Tests {
 
-    private ObjectMapperJavaToJson objectMapperJavaToJson = new ObjectMapperJavaToJson();
+    private ObjectMapperJavaToJsonStrings objectMapperJavaToJsonStrings = new ObjectMapperJavaToJsonStrings();
     private GsonJavaToJson gsonJavaToJson = new GsonJavaToJson();
 
     @Test
@@ -23,7 +19,7 @@ public class JavaToJson_Lists_Tests {
 
         List<String> l = getList();
 
-        String actual = objectMapperJavaToJson.javaToJson(l);
+        String actual = objectMapperJavaToJsonStrings.javaToJson(l);
         assertEquals("[ \"first\", \"second\" ]", actual);
     }
 

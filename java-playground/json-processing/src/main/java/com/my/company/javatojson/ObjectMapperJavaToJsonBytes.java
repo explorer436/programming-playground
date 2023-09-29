@@ -9,20 +9,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-public class ObjectMapperJavaToJson {
+public class ObjectMapperJavaToJsonBytes {
 
-    public String javaToJson(List<String> l) throws JsonProcessingException {
-
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        // com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8 date/time type `java.time.LocalDate` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling (through reference chain: com.example.jacksonjsonpoc.objectmapper.model.Employee["joinedDate"])
-
-        objectMapper.registerModule(new JavaTimeModule());
-
-        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(l);
-    }
-
-    public String javaToJson(Employee e) throws JsonProcessingException {
+    public byte[] javaToJson(List<String> l) throws JsonProcessingException {
 
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -30,10 +19,21 @@ public class ObjectMapperJavaToJson {
 
         objectMapper.registerModule(new JavaTimeModule());
 
-        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(e);
+        return objectMapper.writeValueAsBytes(l);
     }
 
-    public String javaToJson_withSpecificDateFormat(Employee e) throws JsonProcessingException {
+    public byte[] javaToJson(Employee e) throws JsonProcessingException {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        // com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8 date/time type `java.time.LocalDate` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling (through reference chain: com.example.jacksonjsonpoc.objectmapper.model.Employee["joinedDate"])
+
+        objectMapper.registerModule(new JavaTimeModule());
+
+        return objectMapper.writeValueAsBytes(e);
+    }
+
+    public byte[] javaToJson_withSpecificDateFormat(Employee e) throws JsonProcessingException {
 
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -43,6 +43,6 @@ public class ObjectMapperJavaToJson {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm a z");
         objectMapper.setDateFormat(df);
 
-        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(e);
+        return objectMapper.writeValueAsBytes(e);
     }
 }

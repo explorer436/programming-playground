@@ -1,8 +1,8 @@
 package com.my.company;
 
-import com.my.company.model.Employee;
 import com.my.company.javatojson.GsonJavaToJson;
-import com.my.company.javatojson.ObjectMapperJavaToJson;
+import com.my.company.javatojson.ObjectMapperJavaToJsonStrings;
+import com.my.company.model.Employee;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -11,9 +11,9 @@ import java.time.format.DateTimeFormatter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JavaToJson_Objects_Tests {
+public class JavaToJsonStrings_Objects_Tests {
 
-    private ObjectMapperJavaToJson objectMapperJavaToJson = new ObjectMapperJavaToJson();
+    private ObjectMapperJavaToJsonStrings objectMapperJavaToJsonStrings = new ObjectMapperJavaToJsonStrings();
     private GsonJavaToJson gsonJavaToJson = new GsonJavaToJson();
 
     @Test
@@ -21,7 +21,7 @@ public class JavaToJson_Objects_Tests {
 
         Employee e = getEmployee();
 
-        String actual = objectMapperJavaToJson.javaToJson(e);
+        String actual = objectMapperJavaToJsonStrings.javaToJson(e);
         assertEquals("{\n" +
                 "  \"firstname\" : \"a-first-name\",\n" +
                 "  \"lastname\" : \"a-last-name\",\n" +
@@ -50,7 +50,7 @@ public class JavaToJson_Objects_Tests {
 
         Employee e = getEmployeeWithSpecificDateFormat();
 
-        String actual = objectMapperJavaToJson.javaToJson_withSpecificDateFormat(e);
+        String actual = objectMapperJavaToJsonStrings.javaToJson_withSpecificDateFormat(e);
         assertEquals("{\n" +
                 "  \"firstname\" : \"a-first-name\",\n" +
                 "  \"lastname\" : \"a-last-name\",\n" +

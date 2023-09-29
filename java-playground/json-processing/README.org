@@ -5,4 +5,5 @@ What is the difference?
 gson vs ObjectMapper
 gsonToJson vs writeValueAsString
 
-https://www.baeldung.com/jackson-object-mapper-tutorial
+1. https://www.baeldung.com/jackson
+1. https://www.baeldung.com/jackson-object-mapper-tutorial
