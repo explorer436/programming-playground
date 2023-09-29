@@ -17,7 +17,7 @@ public class ObjectMapperJavaToJson {
 
         objectMapper.registerModule(new JavaTimeModule());
 
-        return objectMapper.writeValueAsString(e);
+        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(e);
     }
 
     public String javaToJson_withSpecificDateFormat(Employee e) throws JsonProcessingException {
@@ -30,6 +30,6 @@ public class ObjectMapperJavaToJson {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm a z");
         objectMapper.setDateFormat(df);
 
-        return objectMapper.writeValueAsString(e);
+        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(e);
     }
 }

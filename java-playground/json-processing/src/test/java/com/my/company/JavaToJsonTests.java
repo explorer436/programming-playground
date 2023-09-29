@@ -22,7 +22,12 @@ public class JavaToJsonTests {
         Employee e = getEmployee();
 
         String actual = objectMapperJavaToJson.javaToJson(e);
-        assertEquals("{\"firstname\":\"a-first-name\",\"lastname\":\"a-last-name\",\"joinedDate\":[2016,6,24,13,39,44,687680000],\"leavingDate\":1466771984.000000000}", actual);
+        assertEquals("{\n" +
+                "  \"firstname\" : \"a-first-name\",\n" +
+                "  \"lastname\" : \"a-last-name\",\n" +
+                "  \"joinedDate\" : [ 2016, 6, 24, 13, 39, 44, 687680000 ],\n" +
+                "  \"leavingDate\" : 1466771984.000000000\n" +
+                "}", actual);
     }
 
     private static Employee getEmployee() {
@@ -46,7 +51,12 @@ public class JavaToJsonTests {
         Employee e = getEmployeeWithSpecificDateFormat();
 
         String actual = objectMapperJavaToJson.javaToJson_withSpecificDateFormat(e);
-        assertEquals("{\"firstname\":\"a-first-name\",\"lastname\":\"a-last-name\",\"joinedDate\":\"2016-06-24T13:39:44.68768\",\"leavingDate\":\"2016-06-24T13:39:44+01:00\"}", actual);
+        assertEquals("{\n" +
+                "  \"firstname\" : \"a-first-name\",\n" +
+                "  \"lastname\" : \"a-last-name\",\n" +
+                "  \"joinedDate\" : \"2016-06-24T13:39:44.68768\",\n" +
+                "  \"leavingDate\" : \"2016-06-24T13:39:44+01:00\"\n" +
+                "}", actual);
     }
 
     private static Employee getEmployeeWithSpecificDateFormat() {
