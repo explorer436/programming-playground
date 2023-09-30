@@ -8,12 +8,11 @@ package com.my.company.numbers;
  */
 public class RightTriange {
 
-    public static void main(String[] args) {
-        // Auto-generated method stub
+  public static void main(String[] args) {
+    // Auto-generated method stub
 
-    }
+  }
 
-    // TODO
-    private static void getRightTriange() {
-    }
+  // TODO
+  private static void getRightTriange() {}
 }

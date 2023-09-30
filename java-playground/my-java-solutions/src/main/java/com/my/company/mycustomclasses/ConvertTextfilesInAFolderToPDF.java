@@ -14,12 +14,10 @@ package com.my.company.mycustomclasses;
 // import java.io.FileOutputStream;
 // import java.io.FileReader;
 
-/**
- * @author harshavardhane
- */
+/** @author harshavardhane */
 public class ConvertTextfilesInAFolderToPDF {
 
-    /** @param args the command line arguments */
+  /** @param args the command line arguments */
   /* public static void main(String[] args)
   {
   	readFileNames("/Users/harshavardhane/Desktop/textfiles");

@@ -39,115 +39,115 @@ import java.util.Stack;
  */
 public class TransformAnInfixExpressionToPostfixNotation {
 
-    public static void main(String[] args) throws Exception {
-        String result = null;
+  public static void main(String[] args) throws Exception {
+    String result = null;
 
-        result = transformInfixToPostfix("5 * ( 6 + 2 ) - 12 / 4");
-        if (!result.equals("5 6 2 + * 12 4 / -")) {
-            throw new Exception(
-                    "wrong answer - expected " + "5 6 2 + * 12 4 / -" + " but received " + result);
-        }
-
-        System.out.println("done");
+    result = transformInfixToPostfix("5 * ( 6 + 2 ) - 12 / 4");
+    if (!result.equals("5 6 2 + * 12 4 / -")) {
+      throw new Exception(
+          "wrong answer - expected " + "5 6 2 + * 12 4 / -" + " but received " + result);
     }
 
-    /**
-     * Suppose I is an arithmetic expression in infix notation. We will create an equivalent postfix
-     * expression P by adding items to on the right of P. The new expression P will not contain any
-     * parentheses.
-     *
-     * <p>We will use a stack in which each item may be a left parenthesis or the symbol for an
-     * operation.
-     *
-     * <p>Start with an empty stack. We scan I from left to right.
-     *
-     * <p>While (we have not reached the end of I) If (an operand is found) Add it to P End-If If (a
-     * left parenthesis is found) Push it onto the stack End-If If (a right parenthesis is found)
-     * While (the stack is not empty AND the top item is not a left parenthesis) Pop the stack and add
-     * the popped value to P End-While Pop the left parenthesis from the stack and discard it End-If
-     * If (an operator is found) If (the stack is empty or if the top element is a left parenthesis)
-     * Push the operator onto the stack Else While (the stack is not empty AND the top of the stack is
-     * not a left parenthesis AND precedence of the operator <= precedence of the top of the stack)
-     * Pop the stack and add the top value to P End-While Push the latest operator onto the stack
-     * End-If End-If End-While While (the stack is not empty) Pop the stack and add the popped value
-     * to P End-While
-     *
-     * <p>Notes:
-     *
-     * <p>At the end, if there is still a left parenthesis at the top of the stack, or if we find a
-     * right parenthesis when the stack is empty, then I contained unbalanced parentheses and is in
-     * error.
-     */
-    public static String transformInfixToPostfix(String expression) {
-        char[] expressionCharArray = expression.toCharArray();
+    System.out.println("done");
+  }
 
-        // Stack for the postfix expression: 'postfixStack'
-        Stack postfixStack = new Stack<>();
+  /**
+   * Suppose I is an arithmetic expression in infix notation. We will create an equivalent postfix
+   * expression P by adding items to on the right of P. The new expression P will not contain any
+   * parentheses.
+   *
+   * <p>We will use a stack in which each item may be a left parenthesis or the symbol for an
+   * operation.
+   *
+   * <p>Start with an empty stack. We scan I from left to right.
+   *
+   * <p>While (we have not reached the end of I) If (an operand is found) Add it to P End-If If (a
+   * left parenthesis is found) Push it onto the stack End-If If (a right parenthesis is found)
+   * While (the stack is not empty AND the top item is not a left parenthesis) Pop the stack and add
+   * the popped value to P End-While Pop the left parenthesis from the stack and discard it End-If
+   * If (an operator is found) If (the stack is empty or if the top element is a left parenthesis)
+   * Push the operator onto the stack Else While (the stack is not empty AND the top of the stack is
+   * not a left parenthesis AND precedence of the operator <= precedence of the top of the stack)
+   * Pop the stack and add the top value to P End-While Push the latest operator onto the stack
+   * End-If End-If End-While While (the stack is not empty) Pop the stack and add the popped value
+   * to P End-While
+   *
+   * <p>Notes:
+   *
+   * <p>At the end, if there is still a left parenthesis at the top of the stack, or if we find a
+   * right parenthesis when the stack is empty, then I contained unbalanced parentheses and is in
+   * error.
+   */
+  public static String transformInfixToPostfix(String expression) {
+    char[] expressionCharArray = expression.toCharArray();
 
-        // Stack for Operators: 'operatorsStack'
-        Stack<Character> operatorsStack = new Stack<>();
+    // Stack for the postfix expression: 'postfixStack'
+    Stack postfixStack = new Stack<>();
 
-        for (int i = 0; i < expressionCharArray.length; i++) {
-            // Current token is a whitespace, skip it
-            if (expressionCharArray[i] == ' ') {
-                continue;
-            }
+    // Stack for Operators: 'operatorsStack'
+    Stack<Character> operatorsStack = new Stack<>();
 
-            // Current token is a number, push it to stack for numbers
-            if (expressionCharArray[i] >= '0' && expressionCharArray[i] <= '9') {
-                StringBuffer sbuf = new StringBuffer();
+    for (int i = 0; i < expressionCharArray.length; i++) {
+      // Current token is a whitespace, skip it
+      if (expressionCharArray[i] == ' ') {
+        continue;
+      }
 
-                // There may be more than one digit in number.
-                while (i < expressionCharArray.length
-                        && expressionCharArray[i] >= '0'
-                        && expressionCharArray[i] <= '9') {
-                    sbuf.append(expressionCharArray[i++]);
-                }
+      // Current token is a number, push it to stack for numbers
+      if (expressionCharArray[i] >= '0' && expressionCharArray[i] <= '9') {
+        StringBuffer sbuf = new StringBuffer();
 
-                postfixStack.push(Integer.parseInt(sbuf.toString()));
-            }
-
-            // Current token is an opening brace, push it to 'operatorsStack'
-            else if (expressionCharArray[i] == '(') {
-                operatorsStack.push(expressionCharArray[i]);
-            }
-
-            // Closing brace encountered, solve entire brace
-            else if (expressionCharArray[i] == ')') {
-                while (operatorsStack.peek() != '(') {
-                    Character operator = operatorsStack.pop();
-                    postfixStack.push(operator);
-                }
-
-                // pop the corresponding closing brace and ignore it.
-                operatorsStack.pop();
-            }
-
-            // Current token is an operator.
-            else if (expressionCharArray[i] == '+'
-                    || expressionCharArray[i] == '-'
-                    || expressionCharArray[i] == '*'
-                    || expressionCharArray[i] == '/') {
-                char currentOperator = expressionCharArray[i];
-                // While top of 'operatorsStack' has same or greater precedence to current operator.
-                // Apply operator on top of 'operatorsStack' to top two elements in postfixStack stack.
-                while (!operatorsStack.empty()
-                        && ExpressionEvaluation.currentOperatorsPrecedenceIsLessThanThoseFromTheStack(
-                        currentOperator, operatorsStack.peek())) {
-                    postfixStack.push(operatorsStack.pop());
-                }
-
-                // Push current token to 'operatorsStack'.
-                operatorsStack.push(currentOperator);
-            }
+        // There may be more than one digit in number.
+        while (i < expressionCharArray.length
+            && expressionCharArray[i] >= '0'
+            && expressionCharArray[i] <= '9') {
+          sbuf.append(expressionCharArray[i++]);
         }
 
-        // Entire expression has been parsed at this point, apply remaining operatorsStack to remaining
-        // postfixStack.
-        while (!operatorsStack.empty()) {
-            postfixStack.push(operatorsStack.pop());
+        postfixStack.push(Integer.parseInt(sbuf.toString()));
+      }
+
+      // Current token is an opening brace, push it to 'operatorsStack'
+      else if (expressionCharArray[i] == '(') {
+        operatorsStack.push(expressionCharArray[i]);
+      }
+
+      // Closing brace encountered, solve entire brace
+      else if (expressionCharArray[i] == ')') {
+        while (operatorsStack.peek() != '(') {
+          Character operator = operatorsStack.pop();
+          postfixStack.push(operator);
         }
 
-        return ReverseAGivenStack.reverseUsingTempStack(postfixStack);
+        // pop the corresponding closing brace and ignore it.
+        operatorsStack.pop();
+      }
+
+      // Current token is an operator.
+      else if (expressionCharArray[i] == '+'
+          || expressionCharArray[i] == '-'
+          || expressionCharArray[i] == '*'
+          || expressionCharArray[i] == '/') {
+        char currentOperator = expressionCharArray[i];
+        // While top of 'operatorsStack' has same or greater precedence to current operator.
+        // Apply operator on top of 'operatorsStack' to top two elements in postfixStack stack.
+        while (!operatorsStack.empty()
+            && ExpressionEvaluation.currentOperatorsPrecedenceIsLessThanThoseFromTheStack(
+                currentOperator, operatorsStack.peek())) {
+          postfixStack.push(operatorsStack.pop());
+        }
+
+        // Push current token to 'operatorsStack'.
+        operatorsStack.push(currentOperator);
+      }
     }
+
+    // Entire expression has been parsed at this point, apply remaining operatorsStack to remaining
+    // postfixStack.
+    while (!operatorsStack.empty()) {
+      postfixStack.push(operatorsStack.pop());
+    }
+
+    return ReverseAGivenStack.reverseUsingTempStack(postfixStack);
+  }
 }

@@ -6,6 +6,6 @@ import lombok.Data;
 @Builder
 @Data
 public class Person {
-    private String name;
-    private PersonRole personRole;
+  private String name;
+  private PersonRole personRole;
 }

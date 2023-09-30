@@ -30,54 +30,54 @@ package com.my.company.codility.iterations;
  * <p>N is an integer within the range [1..2,147,483,647].
  */
 public class BinaryGap {
-    public static void main(String[] args) throws Exception {
-        int finalResult;
+  public static void main(String[] args) throws Exception {
+    int finalResult;
 
-        finalResult = (new BinaryGap()).solution(1041);
-        if (finalResult != 5) {
-            throw new Exception("wrong answer - expected " + 5 + " but received " + finalResult);
-        }
-
-        finalResult = (new BinaryGap()).solution(328);
-        if (finalResult != 2) {
-            throw new Exception("wrong answer - expected " + 2 + " but received " + finalResult);
-        }
-
-        finalResult = (new BinaryGap()).solution(1024);
-        if (finalResult != 0) {
-            throw new Exception("wrong answer - expected " + 0 + " but received " + finalResult);
-        }
-
-        System.out.println("done");
+    finalResult = (new BinaryGap()).solution(1041);
+    if (finalResult != 5) {
+      throw new Exception("wrong answer - expected " + 5 + " but received " + finalResult);
     }
 
-    public int solution(int N) {
-        int current = 0;
-        int max = 0;
-
-        boolean openedGate = false;
-
-        // Map<Integer,Integer> indexesMap = new HashMap<Integer,Integer>();
-
-        while (N > 0) {
-            // System.out.print("N : " + N);
-            if (N % 2 == 0) {
-                if (openedGate) {
-                    ++current;
-                }
-            } else {
-                openedGate = true;
-
-                max = Math.max(max, current);
-                current = 0;
-            }
-
-            N = N / 2;
-
-            // System.out.print(" - N : " + N + " - max : " + max + " - current : " + current);
-            // System.out.println();
-        }
-
-        return max;
+    finalResult = (new BinaryGap()).solution(328);
+    if (finalResult != 2) {
+      throw new Exception("wrong answer - expected " + 2 + " but received " + finalResult);
     }
+
+    finalResult = (new BinaryGap()).solution(1024);
+    if (finalResult != 0) {
+      throw new Exception("wrong answer - expected " + 0 + " but received " + finalResult);
+    }
+
+    System.out.println("done");
+  }
+
+  public int solution(int N) {
+    int current = 0;
+    int max = 0;
+
+    boolean openedGate = false;
+
+    // Map<Integer,Integer> indexesMap = new HashMap<Integer,Integer>();
+
+    while (N > 0) {
+      // System.out.print("N : " + N);
+      if (N % 2 == 0) {
+        if (openedGate) {
+          ++current;
+        }
+      } else {
+        openedGate = true;
+
+        max = Math.max(max, current);
+        current = 0;
+      }
+
+      N = N / 2;
+
+      // System.out.print(" - N : " + N + " - max : " + max + " - current : " + current);
+      // System.out.println();
+    }
+
+    return max;
+  }
 }

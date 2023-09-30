@@ -19,33 +19,33 @@ import java.util.List;
  */
 public class FizzBuzz {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        FizzBuzz fizzBuzz = new FizzBuzz();
+    FizzBuzz fizzBuzz = new FizzBuzz();
 
-        System.out.println(Arrays.toString(fizzBuzz.fizzBuzz(15).toArray()));
+    System.out.println(Arrays.toString(fizzBuzz.fizzBuzz(15).toArray()));
 
-        System.out.println(Arrays.toString(fizzBuzz.fizzBuzz(0).toArray()));
+    System.out.println(Arrays.toString(fizzBuzz.fizzBuzz(0).toArray()));
 
-        System.out.println(Arrays.toString(fizzBuzz.fizzBuzz(100).toArray()));
+    System.out.println(Arrays.toString(fizzBuzz.fizzBuzz(100).toArray()));
+  }
+
+  public List<String> fizzBuzz(int n) {
+
+    List<String> result = new LinkedList<>();
+
+    for (int i = 1; i <= n; i++) {
+      if (i % 3 == 0 && i % 5 == 0) {
+        result.add("FizzBuzz");
+      } else if (i % 3 == 0) {
+        result.add("Fizz");
+      } else if (i % 5 == 0) {
+        result.add("Buzz");
+      } else {
+        result.add(String.valueOf(i));
+      }
     }
 
-    public List<String> fizzBuzz(int n) {
-
-        List<String> result = new LinkedList<>();
-
-        for (int i = 1; i <= n; i++) {
-            if (i % 3 == 0 && i % 5 == 0) {
-                result.add("FizzBuzz");
-            } else if (i % 3 == 0) {
-                result.add("Fizz");
-            } else if (i % 5 == 0) {
-                result.add("Buzz");
-            } else {
-                result.add(String.valueOf(i));
-            }
-        }
-
-        return result;
-    }
+    return result;
+  }
 }

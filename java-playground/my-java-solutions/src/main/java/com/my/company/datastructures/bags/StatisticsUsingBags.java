@@ -2,12 +2,12 @@ package com.my.company.datastructures.bags;
 
 public class StatisticsUsingBags {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        // TODO
-        // We need to write an implementation for Bag first.
+    // TODO
+    // We need to write an implementation for Bag first.
 
-        // Bag<Double> bag = new Bag<String>();
+    // Bag<Double> bag = new Bag<String>();
 
-    }
+  }
 }

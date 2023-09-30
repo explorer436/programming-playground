@@ -33,37 +33,37 @@ and Stack and Queue maintain the list in LIFO and FIFO order, respectively.
 */
 public class BagImplementationUsingLinkedList<Item> {
 
-    private class Node {
-        Item item;
-        Node next;
+  private class Node {
+    Item item;
+    Node next;
+  }
+
+  private Node currentFirstNodeInTheBag; // Sometimes, this is named head.
+
+  public void add(Item item) {
+    Node oldFirst = currentFirstNodeInTheBag;
+
+    currentFirstNodeInTheBag = new Node();
+    currentFirstNodeInTheBag.item = item;
+    currentFirstNodeInTheBag.next = oldFirst;
+  }
+
+  private class ListIterator implements Iterator<Item> {
+    private Node currentNode = currentFirstNodeInTheBag;
+
+    public boolean hasNext() {
+      return (currentNode != null);
     }
 
-    private Node currentFirstNodeInTheBag; // Sometimes, this is named head.
+    public Item next() {
+      Item item = currentNode.item;
+      currentNode = currentNode.next;
 
-    public void add(Item item) {
-        Node oldFirst = currentFirstNodeInTheBag;
-
-        currentFirstNodeInTheBag = new Node();
-        currentFirstNodeInTheBag.item = item;
-        currentFirstNodeInTheBag.next = oldFirst;
+      return item;
     }
+  }
 
-    private class ListIterator implements Iterator<Item> {
-        private Node currentNode = currentFirstNodeInTheBag;
-
-        public boolean hasNext() {
-            return (currentNode != null);
-        }
-
-        public Item next() {
-            Item item = currentNode.item;
-            currentNode = currentNode.next;
-
-            return item;
-        }
-    }
-
-    public Iterator<Item> iterator() {
-        return new ListIterator();
-    }
+  public Iterator<Item> iterator() {
+    return new ListIterator();
+  }
 }

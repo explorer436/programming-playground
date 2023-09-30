@@ -7,46 +7,46 @@ package com.my.company.datastructures.arrays;
  */
 public class SumOfNaturalNumbersUptoN {
 
-    public static void main(String[] args) throws Exception {
+  public static void main(String[] args) throws Exception {
 
-        int result;
+    int result;
 
-        result = sumOfNaturalNumbersUptoN_slow(5);
-        // 1 + 2 + 3 + 4 + 5 = 15
-        if (result != 15) {
-            throw new Exception("wrong answer - expected " + 15 + " but received " + result);
-        }
-
-        result = sumOfNaturalNumbersUptoN_fast(5);
-        if (result != 15) {
-            throw new Exception("wrong answer - expected " + 15 + " but received " + result);
-        }
-
-        System.out.println("done");
+    result = sumOfNaturalNumbersUptoN_slow(5);
+    // 1 + 2 + 3 + 4 + 5 = 15
+    if (result != 15) {
+      throw new Exception("wrong answer - expected " + 15 + " but received " + result);
     }
 
-    // O(n)
-    public static int sumOfNaturalNumbersUptoN_slow(int n) {
-        int result = 0;
-
-        if (n > 0) {
-            for (int i = 1; i <= n; i++) {
-                result = result + i;
-            }
-        }
-
-        return result;
+    result = sumOfNaturalNumbersUptoN_fast(5);
+    if (result != 15) {
+      throw new Exception("wrong answer - expected " + 15 + " but received " + result);
     }
 
-    // O(1)
-    // Read TimeComplexity.pdf
-    public static int sumOfNaturalNumbersUptoN_fast(int n) {
-        int result = 0;
+    System.out.println("done");
+  }
 
-        if (n > 0) {
-            return (n * (n + 1)) / 2;
-        }
+  // O(n)
+  public static int sumOfNaturalNumbersUptoN_slow(int n) {
+    int result = 0;
 
-        return result;
+    if (n > 0) {
+      for (int i = 1; i <= n; i++) {
+        result = result + i;
+      }
     }
+
+    return result;
+  }
+
+  // O(1)
+  // Read TimeComplexity.pdf
+  public static int sumOfNaturalNumbersUptoN_fast(int n) {
+    int result = 0;
+
+    if (n > 0) {
+      return (n * (n + 1)) / 2;
+    }
+
+    return result;
+  }
 }

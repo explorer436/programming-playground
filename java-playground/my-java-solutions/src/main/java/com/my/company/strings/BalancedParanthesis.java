@@ -52,392 +52,392 @@ import com.my.company.datastructures.stack.StackImplementationUsingLinkedList;
  */
 public class BalancedParanthesis {
 
-    public static void main(String[] args) throws Exception {
+  public static void main(String[] args) throws Exception {
 
-        boolean result;
+    boolean result;
 
-        result = checkIfBracketsAreBalancedFromBeginningAndEnding("");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsAreBalancedFromBeginningAndEnding("{}[](){");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsAreBalancedFromBeginningAndEnding("{}[]()");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsAreBalancedFromBeginningAndEnding("{)");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsAreBalancedFromBeginningAndEnding("([)}");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsAreBalancedFromBeginningAndEnding("{[()]}");
-        if (!result) {
-            throw new Exception("wrong answer - expected " + true + " but received " + result);
-        }
-
-        result = checkIfBracketsAreBalancedFromBeginningAndEnding("{[(])}");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsAreBalancedFromBeginningAndEnding("{{[[(())]]}}");
-        if (!result) {
-            throw new Exception("wrong answer - expected " + true + " but received " + result);
-        }
-
-        result = checkIfBracketsAreBalancedFromBeginningAndEnding("[()]{}{[()()]()}");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsAreBalancedFromBeginningAndEnding("[(])");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        // -----------------------------------------------------------------------------------
-        // check if they are adjacently balanced.
-        // this is not a very common scenario.
-
-        result = checkIfBracketsAreAdjacentBalanced("");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsAreAdjacentBalanced("{}[](){");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsAreAdjacentBalanced("{}[]()");
-        if (!result) {
-            throw new Exception("wrong answer - expected " + true + " but received " + result);
-        }
-
-        result = checkIfBracketsAreAdjacentBalanced("{)");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsAreAdjacentBalanced("([)}");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsAreAdjacentBalanced("{[()]}");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsAreAdjacentBalanced("{[(])}");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsAreAdjacentBalanced("{{[[(())]]}}");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsAreAdjacentBalanced("[()]{}{[()()]()}");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsAreAdjacentBalanced("[(])");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        // -----------------------------------------------------------------------------------
-        // check if they are balanced using string replacement technique.
-        // this is not a very common scenario.
-
-        result = isBalanced("");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = isBalanced("{}[](){");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = isBalanced("{}[]()");
-        if (!result) {
-            throw new Exception("wrong answer - expected " + true + " but received " + result);
-        }
-
-        result = isBalanced("{)");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = isBalanced("([)}");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = isBalanced("{[()]}");
-        if (!result) {
-            throw new Exception("wrong answer - expected " + true + " but received " + result);
-        }
-
-        result = isBalanced("{[(])}");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = isBalanced("{{[[(())]]}}");
-        if (!result) {
-            throw new Exception("wrong answer - expected " + true + " but received " + result);
-        }
-
-        result = isBalanced("[()]{}{[()()]()}");
-        if (!result) {
-            throw new Exception("wrong answer - expected " + true + " but received " + result);
-        }
-
-        result = isBalanced("[(])");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        // -----------------------------------------------------------------------------------
-        // check if the input is an expression.
-        // this is not a very common scenario.
-
-        result = checkIfBracketsIsAnExpression("");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsIsAnExpression("{}[](){");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsIsAnExpression("{}[]()");
-        if (!result) {
-            throw new Exception("wrong answer - expected " + true + " but received " + result);
-        }
-
-        result = checkIfBracketsIsAnExpression("{)");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsIsAnExpression("([)}");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsIsAnExpression("{[()]}");
-        if (!result) {
-            throw new Exception("wrong answer - expected " + true + " but received " + result);
-        }
-
-        result = checkIfBracketsIsAnExpression("{[(])}");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        result = checkIfBracketsIsAnExpression("{{[[(())]]}}");
-        if (!result) {
-            throw new Exception("wrong answer - expected " + true + " but received " + result);
-        }
-
-        result = checkIfBracketsIsAnExpression("[()]{}{[()()]()}");
-        if (!result) {
-            throw new Exception("wrong answer - expected " + true + " but received " + result);
-        }
-
-        result = checkIfBracketsIsAnExpression("[(])");
-        if (result) {
-            throw new Exception("wrong answer - expected " + false + " but received " + result);
-        }
-
-        System.out.println("done");
+    result = checkIfBracketsAreBalancedFromBeginningAndEnding("");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
     }
 
-    /**
-     * This works for expressions in general. That included adjacently balanced brackets.
-     *
-     * <p>Complexity is O (n)
-     */
-    private static boolean checkIfBracketsIsAnExpression(String str) {
-        boolean result = false;
-
-        if (null != str && str.length() > 0 && (str.length() % 2 == 0)) {
-            StackImplementationUsingLinkedList stack = new StackImplementationUsingLinkedList();
-
-            for (int i = 0; i < str.length(); i++) {
-                if (str.charAt(i) == '(' || str.charAt(i) == '{' || str.charAt(i) == '[') {
-                    stack.push((char) str.charAt(i));
-                } else if (str.charAt(i) == ')') {
-                    char correspondingBracketAtTheBeginning = (char) stack.pop();
-                    if (correspondingBracketAtTheBeginning != '(') {
-                        return false;
-                    }
-                } else if (str.charAt(i) == '}') {
-                    char correspondingBracketAtTheBeginning = (char) stack.pop();
-                    if (correspondingBracketAtTheBeginning != '{') {
-                        return false;
-                    }
-                } else if (str.charAt(i) == ']') {
-                    char correspondingBracketAtTheBeginning = (char) stack.pop();
-                    if (correspondingBracketAtTheBeginning != '[') {
-                        return false;
-                    }
-                } else {
-                    return false;
-                }
-            }
-
-            if (stack.isEmpty()) {
-                result = true;
-            }
-        }
-
-        return result;
+    result = checkIfBracketsAreBalancedFromBeginningAndEnding("{}[](){");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
     }
 
-    /**
-     * This is a brute force method that will work for both adjacently balanced and balanced
-     * expressions. This works for expressions in general. That included adjacently balanced brackets.
-     *
-     * <p>Complexity is O (n^2)
-     */
-    private static boolean isBalanced(String str) {
-        boolean result = false;
+    result = checkIfBracketsAreBalancedFromBeginningAndEnding("{}[]()");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
 
-        if (null != str && str.length() > 0 && (str.length() % 2 == 0)) {
-            // without using linked lists.
+    result = checkIfBracketsAreBalancedFromBeginningAndEnding("{)");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
 
-            // REMEMBER do not use while (str.length() > 0).. it will lead to infinite loop when the input
-            // is not balanced.
-            while (str.contains("()") || str.contains("[]") || str.contains("{}")) {
-                str = str.replaceAll("\\(\\)", "").replaceAll("\\[\\]", "").replaceAll("\\{\\}", "");
-            }
-        } else {
+    result = checkIfBracketsAreBalancedFromBeginningAndEnding("([)}");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = checkIfBracketsAreBalancedFromBeginningAndEnding("{[()]}");
+    if (!result) {
+      throw new Exception("wrong answer - expected " + true + " but received " + result);
+    }
+
+    result = checkIfBracketsAreBalancedFromBeginningAndEnding("{[(])}");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = checkIfBracketsAreBalancedFromBeginningAndEnding("{{[[(())]]}}");
+    if (!result) {
+      throw new Exception("wrong answer - expected " + true + " but received " + result);
+    }
+
+    result = checkIfBracketsAreBalancedFromBeginningAndEnding("[()]{}{[()()]()}");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = checkIfBracketsAreBalancedFromBeginningAndEnding("[(])");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    // -----------------------------------------------------------------------------------
+    // check if they are adjacently balanced.
+    // this is not a very common scenario.
+
+    result = checkIfBracketsAreAdjacentBalanced("");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = checkIfBracketsAreAdjacentBalanced("{}[](){");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = checkIfBracketsAreAdjacentBalanced("{}[]()");
+    if (!result) {
+      throw new Exception("wrong answer - expected " + true + " but received " + result);
+    }
+
+    result = checkIfBracketsAreAdjacentBalanced("{)");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = checkIfBracketsAreAdjacentBalanced("([)}");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = checkIfBracketsAreAdjacentBalanced("{[()]}");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = checkIfBracketsAreAdjacentBalanced("{[(])}");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = checkIfBracketsAreAdjacentBalanced("{{[[(())]]}}");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = checkIfBracketsAreAdjacentBalanced("[()]{}{[()()]()}");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = checkIfBracketsAreAdjacentBalanced("[(])");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    // -----------------------------------------------------------------------------------
+    // check if they are balanced using string replacement technique.
+    // this is not a very common scenario.
+
+    result = isBalanced("");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = isBalanced("{}[](){");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = isBalanced("{}[]()");
+    if (!result) {
+      throw new Exception("wrong answer - expected " + true + " but received " + result);
+    }
+
+    result = isBalanced("{)");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = isBalanced("([)}");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = isBalanced("{[()]}");
+    if (!result) {
+      throw new Exception("wrong answer - expected " + true + " but received " + result);
+    }
+
+    result = isBalanced("{[(])}");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = isBalanced("{{[[(())]]}}");
+    if (!result) {
+      throw new Exception("wrong answer - expected " + true + " but received " + result);
+    }
+
+    result = isBalanced("[()]{}{[()()]()}");
+    if (!result) {
+      throw new Exception("wrong answer - expected " + true + " but received " + result);
+    }
+
+    result = isBalanced("[(])");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    // -----------------------------------------------------------------------------------
+    // check if the input is an expression.
+    // this is not a very common scenario.
+
+    result = checkIfBracketsIsAnExpression("");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = checkIfBracketsIsAnExpression("{}[](){");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = checkIfBracketsIsAnExpression("{}[]()");
+    if (!result) {
+      throw new Exception("wrong answer - expected " + true + " but received " + result);
+    }
+
+    result = checkIfBracketsIsAnExpression("{)");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = checkIfBracketsIsAnExpression("([)}");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = checkIfBracketsIsAnExpression("{[()]}");
+    if (!result) {
+      throw new Exception("wrong answer - expected " + true + " but received " + result);
+    }
+
+    result = checkIfBracketsIsAnExpression("{[(])}");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    result = checkIfBracketsIsAnExpression("{{[[(())]]}}");
+    if (!result) {
+      throw new Exception("wrong answer - expected " + true + " but received " + result);
+    }
+
+    result = checkIfBracketsIsAnExpression("[()]{}{[()()]()}");
+    if (!result) {
+      throw new Exception("wrong answer - expected " + true + " but received " + result);
+    }
+
+    result = checkIfBracketsIsAnExpression("[(])");
+    if (result) {
+      throw new Exception("wrong answer - expected " + false + " but received " + result);
+    }
+
+    System.out.println("done");
+  }
+
+  /**
+   * This works for expressions in general. That included adjacently balanced brackets.
+   *
+   * <p>Complexity is O (n)
+   */
+  private static boolean checkIfBracketsIsAnExpression(String str) {
+    boolean result = false;
+
+    if (null != str && str.length() > 0 && (str.length() % 2 == 0)) {
+      StackImplementationUsingLinkedList stack = new StackImplementationUsingLinkedList();
+
+      for (int i = 0; i < str.length(); i++) {
+        if (str.charAt(i) == '(' || str.charAt(i) == '{' || str.charAt(i) == '[') {
+          stack.push((char) str.charAt(i));
+        } else if (str.charAt(i) == ')') {
+          char correspondingBracketAtTheBeginning = (char) stack.pop();
+          if (correspondingBracketAtTheBeginning != '(') {
             return false;
+          }
+        } else if (str.charAt(i) == '}') {
+          char correspondingBracketAtTheBeginning = (char) stack.pop();
+          if (correspondingBracketAtTheBeginning != '{') {
+            return false;
+          }
+        } else if (str.charAt(i) == ']') {
+          char correspondingBracketAtTheBeginning = (char) stack.pop();
+          if (correspondingBracketAtTheBeginning != '[') {
+            return false;
+          }
+        } else {
+          return false;
         }
+      }
 
-        if (str.length() == 0) {
-            result = true;
-        }
-
-        return result;
+      if (stack.isEmpty()) {
+        result = true;
+      }
     }
 
-    /**
-     * This is not a valid solution. This will work only if the brackets at the beginning and at the
-     * end match. e.g. This works for {[()]} But it does not work for {}[()]
-     */
-    private static boolean checkIfBracketsAreBalancedFromBeginningAndEnding(String str) {
-        boolean result = false;
+    return result;
+  }
 
-        if (null != str && str.length() > 0 && (str.length() % 2 == 0)) {
-            // using double linked list for this.
-            StackImplementationUsingDoubleLinkedList stack =
-                    new StackImplementationUsingDoubleLinkedList();
+  /**
+   * This is a brute force method that will work for both adjacently balanced and balanced
+   * expressions. This works for expressions in general. That included adjacently balanced brackets.
+   *
+   * <p>Complexity is O (n^2)
+   */
+  private static boolean isBalanced(String str) {
+    boolean result = false;
 
-            for (int i = 0; i < str.length(); i++) {
-                stack.pushToTheTop((char) str.charAt(i));
-            }
+    if (null != str && str.length() > 0 && (str.length() % 2 == 0)) {
+      // without using linked lists.
 
-            while (!stack.isEmpty()) {
-                char lastChar = (char) stack.popFromTheTop();
-
-                // { {, }, (, ), [, ] }
-                if (lastChar == '}') {
-                    char correspondingBracketAtTheBeginning = (char) stack.popFromTheBottom();
-                    if ('{' == correspondingBracketAtTheBeginning) {
-                        continue;
-                    } else {
-                        return false;
-                    }
-                } else if (lastChar == ')') {
-                    char correspondingBracketAtTheBeginning = (char) stack.popFromTheBottom();
-                    if ('(' == correspondingBracketAtTheBeginning) {
-                        continue;
-                    } else {
-                        return false;
-                    }
-                } else if (lastChar == ']') {
-                    char correspondingBracketAtTheBeginning = (char) stack.popFromTheBottom();
-                    if ('[' == correspondingBracketAtTheBeginning) {
-                        continue;
-                    } else {
-                        return false;
-                    }
-                }
-            }
-
-            if (stack.isEmpty()) {
-                result = true;
-            }
-        }
-
-        return result;
+      // REMEMBER do not use while (str.length() > 0).. it will lead to infinite loop when the input
+      // is not balanced.
+      while (str.contains("()") || str.contains("[]") || str.contains("{}")) {
+        str = str.replaceAll("\\(\\)", "").replaceAll("\\[\\]", "").replaceAll("\\{\\}", "");
+      }
+    } else {
+      return false;
     }
 
-    /**
-     * This is not an accurate solution. This works only if the brackets are adjacently balanced. It
-     * works for {}[]() It does not work for []{()}
-     */
-    private static boolean checkIfBracketsAreAdjacentBalanced(String str) {
-        boolean result = false;
-
-        if (null != str && str.length() > 0 && (str.length() % 2 == 0)) {
-            // using single linked list for this.
-            StackImplementationUsingLinkedList stack = new StackImplementationUsingLinkedList();
-
-            for (int i = 0; i < str.length(); i++) {
-                stack.push((char) str.charAt(i));
-            }
-
-            while (!stack.isEmpty()) {
-                char lastChar = (char) stack.pop();
-
-                // { {, }, (, ), [, ] }
-                if (lastChar == '}') {
-                    if ('{' == (char) stack.pop()) {
-                        continue;
-                    } else {
-                        return false;
-                    }
-                } else if (lastChar == ')') {
-                    if ('(' == (char) stack.pop()) {
-                        continue;
-                    } else {
-                        return false;
-                    }
-                } else if (lastChar == ']') {
-                    if ('[' == (char) stack.pop()) {
-                        continue;
-                    } else {
-                        return false;
-                    }
-                }
-            }
-
-            if (stack.isEmpty()) {
-                result = true;
-            }
-        }
-
-        return result;
+    if (str.length() == 0) {
+      result = true;
     }
+
+    return result;
+  }
+
+  /**
+   * This is not a valid solution. This will work only if the brackets at the beginning and at the
+   * end match. e.g. This works for {[()]} But it does not work for {}[()]
+   */
+  private static boolean checkIfBracketsAreBalancedFromBeginningAndEnding(String str) {
+    boolean result = false;
+
+    if (null != str && str.length() > 0 && (str.length() % 2 == 0)) {
+      // using double linked list for this.
+      StackImplementationUsingDoubleLinkedList stack =
+          new StackImplementationUsingDoubleLinkedList();
+
+      for (int i = 0; i < str.length(); i++) {
+        stack.pushToTheTop((char) str.charAt(i));
+      }
+
+      while (!stack.isEmpty()) {
+        char lastChar = (char) stack.popFromTheTop();
+
+        // { {, }, (, ), [, ] }
+        if (lastChar == '}') {
+          char correspondingBracketAtTheBeginning = (char) stack.popFromTheBottom();
+          if ('{' == correspondingBracketAtTheBeginning) {
+            continue;
+          } else {
+            return false;
+          }
+        } else if (lastChar == ')') {
+          char correspondingBracketAtTheBeginning = (char) stack.popFromTheBottom();
+          if ('(' == correspondingBracketAtTheBeginning) {
+            continue;
+          } else {
+            return false;
+          }
+        } else if (lastChar == ']') {
+          char correspondingBracketAtTheBeginning = (char) stack.popFromTheBottom();
+          if ('[' == correspondingBracketAtTheBeginning) {
+            continue;
+          } else {
+            return false;
+          }
+        }
+      }
+
+      if (stack.isEmpty()) {
+        result = true;
+      }
+    }
+
+    return result;
+  }
+
+  /**
+   * This is not an accurate solution. This works only if the brackets are adjacently balanced. It
+   * works for {}[]() It does not work for []{()}
+   */
+  private static boolean checkIfBracketsAreAdjacentBalanced(String str) {
+    boolean result = false;
+
+    if (null != str && str.length() > 0 && (str.length() % 2 == 0)) {
+      // using single linked list for this.
+      StackImplementationUsingLinkedList stack = new StackImplementationUsingLinkedList();
+
+      for (int i = 0; i < str.length(); i++) {
+        stack.push((char) str.charAt(i));
+      }
+
+      while (!stack.isEmpty()) {
+        char lastChar = (char) stack.pop();
+
+        // { {, }, (, ), [, ] }
+        if (lastChar == '}') {
+          if ('{' == (char) stack.pop()) {
+            continue;
+          } else {
+            return false;
+          }
+        } else if (lastChar == ')') {
+          if ('(' == (char) stack.pop()) {
+            continue;
+          } else {
+            return false;
+          }
+        } else if (lastChar == ']') {
+          if ('[' == (char) stack.pop()) {
+            continue;
+          } else {
+            return false;
+          }
+        }
+      }
+
+      if (stack.isEmpty()) {
+        result = true;
+      }
+    }
+
+    return result;
+  }
 }

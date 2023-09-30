@@ -24,29 +24,29 @@ package com.my.company.strings;
  */
 public class TimeConversion {
 
-    public static void main(String[] args) {
-        System.out.println("24-hour format for 07:05:45PM is : " + timeConversion("07:05:45PM"));
+  public static void main(String[] args) {
+    System.out.println("24-hour format for 07:05:45PM is : " + timeConversion("07:05:45PM"));
 
-        System.out.println("24-hour format for 07:05:45AM is : " + timeConversion("07:05:45AM"));
+    System.out.println("24-hour format for 07:05:45AM is : " + timeConversion("07:05:45AM"));
 
-        System.out.println("24-hour format for 12:00:00AM is : " + timeConversion("12:00:00AM"));
+    System.out.println("24-hour format for 12:00:00AM is : " + timeConversion("12:00:00AM"));
 
-        System.out.println("24-hour format for 12:00:00PM is : " + timeConversion("12:00:00PM"));
+    System.out.println("24-hour format for 12:00:00PM is : " + timeConversion("12:00:00PM"));
+  }
+
+  static String timeConversion(String s) {
+    String[] values = s.split(":");
+
+    String hourValue = values[0];
+
+    if ("PM".equals(values[2].substring(2)) && !"12".equals(hourValue)) {
+      hourValue = String.valueOf(Integer.valueOf(hourValue) + 12);
     }
 
-    static String timeConversion(String s) {
-        String[] values = s.split(":");
-
-        String hourValue = values[0];
-
-        if ("PM".equals(values[2].substring(2)) && !"12".equals(hourValue)) {
-            hourValue = String.valueOf(Integer.valueOf(hourValue) + 12);
-        }
-
-        if ("AM".equals(values[2].substring(2)) && "12".equals(hourValue)) {
-            hourValue = "00";
-        }
-
-        return hourValue + ":" + values[1] + ":" + values[2].substring(0, 2);
+    if ("AM".equals(values[2].substring(2)) && "12".equals(hourValue)) {
+      hourValue = "00";
     }
+
+    return hourValue + ":" + values[1] + ":" + values[2].substring(0, 2);
+  }
 }
