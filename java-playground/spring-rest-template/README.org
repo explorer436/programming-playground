@@ -10,18 +10,18 @@ To directly bind your data to your custom types, you need to specify the variabl
 
 We need to add a ~RestTemplate~ , which uses the Jackson JSON processing library to process the incoming data to the main class with ~@SpringBootApplication~ annotation.
 
-#+begin_src 
+#+begin_src
     @Bean
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();
-	}  
+	}
 #+end_src
 
 
 Using the RestTemplate:
 
-#+begin_src 
-Quote quote = restTemplate.getForObject("https://quoters.apps.pcfone.io/api/random", Quote.class);  
+#+begin_src
+Quote quote = restTemplate.getForObject("https://quoters.apps.pcfone.io/api/random", Quote.class);
 #+end_src
 
 
