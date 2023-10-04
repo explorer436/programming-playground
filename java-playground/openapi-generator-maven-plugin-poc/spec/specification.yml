@@ -145,7 +145,7 @@ components:
       properties:
         customerId:
           type: string
-        rewards:
+        orders:
           type: array
           items:
             $ref: '#/components/schemas/Order'

@@ -30,9 +30,9 @@ public class Orders implements Serializable {
   @JsonProperty("customerId")
   private String customerId;
 
-  @JsonProperty("rewards")
+  @JsonProperty("orders")
   @Valid
-  private List<Order> rewards = null;
+  private List<Order> orders = null;
 
   public Orders customerId(String customerId) {
     this.customerId = customerId;
@@ -53,31 +53,31 @@ public class Orders implements Serializable {
     this.customerId = customerId;
   }
 
-  public Orders rewards(List<Order> rewards) {
-    this.rewards = rewards;
+  public Orders orders(List<Order> orders) {
+    this.orders = orders;
     return this;
   }
 
-  public Orders addRewardsItem(Order rewardsItem) {
-    if (this.rewards == null) {
-      this.rewards = new ArrayList<>();
+  public Orders addOrdersItem(Order ordersItem) {
+    if (this.orders == null) {
+      this.orders = new ArrayList<>();
     }
-    this.rewards.add(rewardsItem);
+    this.orders.add(ordersItem);
     return this;
   }
 
   /**
-   * Get rewards
-   * @return rewards
+   * Get orders
+   * @return orders
   */
   @Valid 
-  @Schema(name = "rewards", required = false)
-  public List<Order> getRewards() {
-    return rewards;
+  @Schema(name = "orders", required = false)
+  public List<Order> getOrders() {
+    return orders;
   }
 
-  public void setRewards(List<Order> rewards) {
-    this.rewards = rewards;
+  public void setOrders(List<Order> orders) {
+    this.orders = orders;
   }
 
   @Override
@@ -90,12 +90,12 @@ public class Orders implements Serializable {
     }
     Orders orders = (Orders) o;
     return Objects.equals(this.customerId, orders.customerId) &&
-        Objects.equals(this.rewards, orders.rewards);
+        Objects.equals(this.orders, orders.orders);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customerId, rewards);
+    return Objects.hash(customerId, orders);
   }
 
   @Override
@@ -103,7 +103,7 @@ public class Orders implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class Orders {\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
-    sb.append("    rewards: ").append(toIndentedString(rewards)).append("\n");
+    sb.append("    orders: ").append(toIndentedString(orders)).append("\n");
     sb.append("}");
     return sb.toString();
   }

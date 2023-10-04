@@ -1,6 +1,5 @@
 package com.example.assignment.service;
 
-import com.example.assignment.api.impl.HelperUtility;
 import com.example.assignment.model.Transaction;
 import io.grpc.stub.StreamObserver;
 import io.quarkus.grpc.GrpcService;
@@ -19,7 +18,7 @@ import java.util.List;
 
 @GrpcService
 @RequiredArgsConstructor
-public class MyGrpcServer extends RewardsServiceGrpc.RewardsServiceImplBase {
+public class RewardsGrpcService extends RewardsServiceGrpc.RewardsServiceImplBase {
 
     @Value("${points.tier1.purchaseAmount}")
     private int pointsTier1PurchaseAmount;

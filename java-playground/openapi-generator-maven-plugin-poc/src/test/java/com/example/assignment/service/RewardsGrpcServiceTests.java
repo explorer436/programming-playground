@@ -1,10 +1,7 @@
 package com.example.assignment.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
-import openapitools.RewardOuterClass;
 import openapitools.RewardsOuterClass;
 import openapitools.services.rewardsservice.RewardsServiceOuterClass;
 import org.junit.jupiter.api.Test;
@@ -12,21 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 @SpringBootTest
 @SpringJUnitConfig(classes = { MyServiceUnitTestConfiguration.class })
 @Slf4j
 // Spring doesn't start without a config (might be empty)
 // Don't use @EnableAutoConfiguration in this scenario
-public class MyGrpcServerTests {
+public class RewardsGrpcServiceTests {
 
     @Autowired
-    private MyGrpcServer myGrpcServer;
+    private RewardsGrpcService rewardsGrpcService;
 
     @Test
-    void testSayHello() throws Exception {
+    void test_getRewards() throws Exception {
         RewardsServiceOuterClass.GetRewardsByCustomerIdRequest request = RewardsServiceOuterClass.GetRewardsByCustomerIdRequest.newBuilder()
                 .setCustomerId("1")
                 .build();
@@ -49,7 +43,6 @@ public class MyGrpcServerTests {
             }
         };
 
-
-        myGrpcServer.getRewardsByCustomerId(request, responseObserver);
+        rewardsGrpcService.getRewardsByCustomerId(request, responseObserver);
     }
 }

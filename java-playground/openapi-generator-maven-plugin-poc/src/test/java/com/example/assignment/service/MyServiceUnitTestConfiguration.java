@@ -7,8 +7,13 @@ import org.springframework.context.annotation.Configuration;
 public class MyServiceUnitTestConfiguration {
 
     @Bean
-    MyGrpcServer myService() {
-        return new MyGrpcServer();
+    RewardsGrpcService rewardsGrpcServiceService() {
+        return new RewardsGrpcService();
+    }
+
+    @Bean
+    OrdersGrpcService ordersGrpcService() {
+        return new OrdersGrpcService();
     }
 
 }

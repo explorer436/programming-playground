@@ -40,7 +40,7 @@ public interface OrdersApiDelegate {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"customerId\" : \"customerId\", \"rewards\" : [ { \"itemName\" : \"itemName\", \"itemDescription\" : \"itemDescription\", \"purchaseAmount\" : 0.8008281904610115 }, { \"itemName\" : \"itemName\", \"itemDescription\" : \"itemDescription\", \"purchaseAmount\" : 0.8008281904610115 } ] }";
+                    String exampleString = "{ \"customerId\" : \"customerId\", \"orders\" : [ { \"itemName\" : \"itemName\", \"itemDescription\" : \"itemDescription\", \"purchaseAmount\" : 0.8008281904610115 }, { \"itemName\" : \"itemName\", \"itemDescription\" : \"itemDescription\", \"purchaseAmount\" : 0.8008281904610115 } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -67,7 +67,7 @@ public interface OrdersApiDelegate {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"customerId\" : \"customerId\", \"rewards\" : [ { \"itemName\" : \"itemName\", \"itemDescription\" : \"itemDescription\", \"purchaseAmount\" : 0.8008281904610115 }, { \"itemName\" : \"itemName\", \"itemDescription\" : \"itemDescription\", \"purchaseAmount\" : 0.8008281904610115 } ] }";
+                    String exampleString = "{ \"customerId\" : \"customerId\", \"orders\" : [ { \"itemName\" : \"itemName\", \"itemDescription\" : \"itemDescription\", \"purchaseAmount\" : 0.8008281904610115 }, { \"itemName\" : \"itemName\", \"itemDescription\" : \"itemDescription\", \"purchaseAmount\" : 0.8008281904610115 } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

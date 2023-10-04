@@ -18,6 +18,6 @@ message Orders {
 
   string customerId = 507442793;
 
-  repeated Order rewards = 26908454;
+  repeated Order orders = 471899420;
 
 }
