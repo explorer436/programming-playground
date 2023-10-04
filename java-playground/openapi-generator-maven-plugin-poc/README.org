@@ -70,6 +70,13 @@ Transfer-Encoding: chunked
 }
 #+end_src
 
+To invoke the grpc controller:
+#+begin_src
+curl -X 'GET' \
+  'http://localhost:8080/grpc' \
+  -H 'accept: application/json'
+#+end_src
+
 * Assignment description - Coding Guidelines for Java/Spring submissions
  
 

@@ -5,3 +5,10 @@ points:
   tier2:
     purchaseAmount: 50
     perDollar: 2
+
+
+quarkus:
+  grpc:
+    clients:
+      rewardsService:
+        host: localhost

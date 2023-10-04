@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
-public class Reward  implements Serializable {
+public class Reward implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
