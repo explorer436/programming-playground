@@ -5,7 +5,7 @@
  */
 package com.example.assignment.rewards.api;
 
-import com.example.assignment.rewards.model.Rewards;
+import com.example.assignment.rewards.model.Orders;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -27,15 +27,15 @@ import javax.annotation.Generated;
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 @Validated
-@Tag(name = "rewards", description = "the rewards API")
-public interface RewardsApi {
+@Tag(name = "orders", description = "the orders API")
+public interface OrdersApi {
 
-    default RewardsApiDelegate getDelegate() {
-        return new RewardsApiDelegate() {};
+    default OrdersApiDelegate getDelegate() {
+        return new OrdersApiDelegate() {};
     }
 
     /**
-     * GET /rewards/{customerId} : Returns rewards by customer Id
+     * GET /orders/{customerId} : Returns rewards by customer Id
      * Returns rewards by customer Id
      *
      * @param customerId customer id (required)
@@ -47,12 +47,12 @@ public interface RewardsApi {
      *         or  (status code 500)
      */
     @Operation(
-        operationId = "getRewardsByCustomerId",
+        operationId = "getOrdersByCustomerId",
         summary = "Returns rewards by customer Id",
-        tags = { "rewards" },
+        tags = { "orders" },
         responses = {
             @ApiResponse(responseCode = "200", description = "successful operation", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Rewards.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Orders.class))
             }),
             @ApiResponse(responseCode = "400", description = ""),
             @ApiResponse(responseCode = "401", description = ""),
@@ -63,18 +63,18 @@ public interface RewardsApi {
     )
     @RequestMapping(
         method = RequestMethod.GET,
-        value = "/rewards/{customerId}",
+        value = "/orders/{customerId}",
         produces = { "application/json" }
     )
-    default ResponseEntity<Rewards> getRewardsByCustomerId(
+    default ResponseEntity<Orders> getOrdersByCustomerId(
         @Parameter(name = "customerId", description = "customer id", required = true) @PathVariable("customerId") String customerId
     ) {
-        return getDelegate().getRewardsByCustomerId(customerId);
+        return getDelegate().getOrdersByCustomerId(customerId);
     }
 
 
     /**
-     * POST /rewards/{customerId} : Returns rewards by customer Id
+     * POST /orders/{customerId} : Returns rewards by customer Id
      * Returns rewards by customer Id
      *
      * @param customerId customer id (required)
@@ -86,12 +86,12 @@ public interface RewardsApi {
      *         or  (status code 500)
      */
     @Operation(
-        operationId = "postRewardsByCustomerId",
+        operationId = "postOrdersByCustomerId",
         summary = "Returns rewards by customer Id",
-        tags = { "rewards" },
+        tags = { "orders" },
         responses = {
             @ApiResponse(responseCode = "200", description = "successful operation", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Rewards.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Orders.class))
             }),
             @ApiResponse(responseCode = "400", description = ""),
             @ApiResponse(responseCode = "401", description = ""),
@@ -102,13 +102,13 @@ public interface RewardsApi {
     )
     @RequestMapping(
         method = RequestMethod.POST,
-        value = "/rewards/{customerId}",
+        value = "/orders/{customerId}",
         produces = { "application/json" }
     )
-    default ResponseEntity<Rewards> postRewardsByCustomerId(
+    default ResponseEntity<Orders> postOrdersByCustomerId(
         @Parameter(name = "customerId", description = "customer id", required = true) @PathVariable("customerId") String customerId
     ) {
-        return getDelegate().postRewardsByCustomerId(customerId);
+        return getDelegate().postOrdersByCustomerId(customerId);
     }
 
 }

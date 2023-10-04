@@ -1,0 +1,122 @@
+package com.example.assignment.rewards.model;
+
+import java.net.URI;
+import java.util.Objects;
+import com.example.assignment.rewards.model.Order;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.ArrayList;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.io.Serializable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
+
+/**
+ * Orders
+ */
+
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
+public class Orders implements Serializable {
+
+  private static final long serialVersionUID = 1L;
+
+  @JsonProperty("customerId")
+  private String customerId;
+
+  @JsonProperty("rewards")
+  @Valid
+  private List<Order> rewards = null;
+
+  public Orders customerId(String customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Get customerId
+   * @return customerId
+  */
+  
+  @Schema(name = "customerId", required = false)
+  public String getCustomerId() {
+    return customerId;
+  }
+
+  public void setCustomerId(String customerId) {
+    this.customerId = customerId;
+  }
+
+  public Orders rewards(List<Order> rewards) {
+    this.rewards = rewards;
+    return this;
+  }
+
+  public Orders addRewardsItem(Order rewardsItem) {
+    if (this.rewards == null) {
+      this.rewards = new ArrayList<>();
+    }
+    this.rewards.add(rewardsItem);
+    return this;
+  }
+
+  /**
+   * Get rewards
+   * @return rewards
+  */
+  @Valid 
+  @Schema(name = "rewards", required = false)
+  public List<Order> getRewards() {
+    return rewards;
+  }
+
+  public void setRewards(List<Order> rewards) {
+    this.rewards = rewards;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Orders orders = (Orders) o;
+    return Objects.equals(this.customerId, orders.customerId) &&
+        Objects.equals(this.rewards, orders.rewards);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(customerId, rewards);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class Orders {\n");
+    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
+    sb.append("    rewards: ").append(toIndentedString(rewards)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

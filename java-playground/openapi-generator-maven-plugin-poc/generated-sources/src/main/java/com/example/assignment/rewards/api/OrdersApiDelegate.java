@@ -1,6 +1,6 @@
 package com.example.assignment.rewards.api;
 
-import com.example.assignment.rewards.model.Rewards;
+import com.example.assignment.rewards.model.Orders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,18 +13,18 @@ import java.util.Optional;
 import javax.annotation.Generated;
 
 /**
- * A delegate to be called by the {@link RewardsApiController}}.
+ * A delegate to be called by the {@link OrdersApiController}}.
  * Implement this interface with a {@link org.springframework.stereotype.Service} annotated class.
  */
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
-public interface RewardsApiDelegate {
+public interface OrdersApiDelegate {
 
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
 
     /**
-     * GET /rewards/{customerId} : Returns rewards by customer Id
+     * GET /orders/{customerId} : Returns rewards by customer Id
      * Returns rewards by customer Id
      *
      * @param customerId customer id (required)
@@ -34,13 +34,13 @@ public interface RewardsApiDelegate {
      *         or  (status code 403)
      *         or  (status code 404)
      *         or  (status code 500)
-     * @see RewardsApi#getRewardsByCustomerId
+     * @see OrdersApi#getOrdersByCustomerId
      */
-    default ResponseEntity<Rewards> getRewardsByCustomerId(String customerId) {
+    default ResponseEntity<Orders> getOrdersByCustomerId(String customerId) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"totalPurchaseAmountForPastThreeMonths\" : 6.027456183070403, \"customerId\" : \"customerId\", \"totalRewardPointsForPastThreeMonths\" : 0, \"rewards\" : [ { \"month\" : \"month\", \"rewardPoints\" : 1, \"purchaseAmount\" : 5.962133916683182 }, { \"month\" : \"month\", \"rewardPoints\" : 1, \"purchaseAmount\" : 5.962133916683182 } ] }";
+                    String exampleString = "{ \"customerId\" : \"customerId\", \"rewards\" : [ { \"itemName\" : \"itemName\", \"itemDescription\" : \"itemDescription\", \"purchaseAmount\" : 0.8008281904610115 }, { \"itemName\" : \"itemName\", \"itemDescription\" : \"itemDescription\", \"purchaseAmount\" : 0.8008281904610115 } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -51,7 +51,7 @@ public interface RewardsApiDelegate {
     }
 
     /**
-     * POST /rewards/{customerId} : Returns rewards by customer Id
+     * POST /orders/{customerId} : Returns rewards by customer Id
      * Returns rewards by customer Id
      *
      * @param customerId customer id (required)
@@ -61,13 +61,13 @@ public interface RewardsApiDelegate {
      *         or  (status code 403)
      *         or  (status code 404)
      *         or  (status code 500)
-     * @see RewardsApi#postRewardsByCustomerId
+     * @see OrdersApi#postOrdersByCustomerId
      */
-    default ResponseEntity<Rewards> postRewardsByCustomerId(String customerId) {
+    default ResponseEntity<Orders> postOrdersByCustomerId(String customerId) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"totalPurchaseAmountForPastThreeMonths\" : 6.027456183070403, \"customerId\" : \"customerId\", \"totalRewardPointsForPastThreeMonths\" : 0, \"rewards\" : [ { \"month\" : \"month\", \"rewardPoints\" : 1, \"purchaseAmount\" : 5.962133916683182 }, { \"month\" : \"month\", \"rewardPoints\" : 1, \"purchaseAmount\" : 5.962133916683182 } ] }";
+                    String exampleString = "{ \"customerId\" : \"customerId\", \"rewards\" : [ { \"itemName\" : \"itemName\", \"itemDescription\" : \"itemDescription\", \"purchaseAmount\" : 0.8008281904610115 }, { \"itemName\" : \"itemName\", \"itemDescription\" : \"itemDescription\", \"purchaseAmount\" : 0.8008281904610115 } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

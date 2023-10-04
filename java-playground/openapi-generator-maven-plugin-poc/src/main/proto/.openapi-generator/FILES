@@ -1,5 +1,8 @@
 README.md
 models/error_response.proto
+models/order.proto
+models/orders.proto
 models/reward.proto
 models/rewards.proto
+services/orders_service.proto
 services/rewards_service.proto

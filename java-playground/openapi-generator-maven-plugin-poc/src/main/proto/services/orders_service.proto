@@ -10,25 +10,25 @@
 
 syntax = "proto3";
 
-package openapitools.services.rewardsservice;
+package openapitools.services.ordersservice;
 
 import "google/protobuf/empty.proto";
-import public "models/rewards.proto";
+import public "models/orders.proto";
 
-service RewardsService {
-  rpc GetRewardsByCustomerId (GetRewardsByCustomerIdRequest) returns (Rewards);
+service OrdersService {
+  rpc GetOrdersByCustomerId (GetOrdersByCustomerIdRequest) returns (Orders);
 
-  rpc PostRewardsByCustomerId (PostRewardsByCustomerIdRequest) returns (Rewards);
+  rpc PostOrdersByCustomerId (PostOrdersByCustomerIdRequest) returns (Orders);
 
 }
 
-message GetRewardsByCustomerIdRequest {
+message GetOrdersByCustomerIdRequest {
   // customer id
   string customerId = 1;
 
 }
 
-message PostRewardsByCustomerIdRequest {
+message PostOrdersByCustomerIdRequest {
   // customer id
   string customerId = 1;
 

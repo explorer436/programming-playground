@@ -1,7 +1,12 @@
 src/main/java/com/example/assignment/rewards/api/ApiUtil.java
+src/main/java/com/example/assignment/rewards/api/OrdersApi.java
+src/main/java/com/example/assignment/rewards/api/OrdersApiController.java
+src/main/java/com/example/assignment/rewards/api/OrdersApiDelegate.java
 src/main/java/com/example/assignment/rewards/api/RewardsApi.java
 src/main/java/com/example/assignment/rewards/api/RewardsApiController.java
 src/main/java/com/example/assignment/rewards/api/RewardsApiDelegate.java
 src/main/java/com/example/assignment/rewards/model/ErrorResponse.java
+src/main/java/com/example/assignment/rewards/model/Order.java
+src/main/java/com/example/assignment/rewards/model/Orders.java
 src/main/java/com/example/assignment/rewards/model/Reward.java
 src/main/java/com/example/assignment/rewards/model/Rewards.java
