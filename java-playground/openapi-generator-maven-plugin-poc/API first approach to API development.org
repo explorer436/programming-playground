@@ -1,0 +1,43 @@
+* API first approach to API development
+
+** Code First approach for API development
+
+In the code first approach, developers implement the application requirements directly. There is no contract or specification at first. It also requires a strong communication between the teams implementing application parts.
+
+** The Value of API-First and the benefits of using API specifications for Organizations
+
+An API‑first strategy is often ideal for microservices architectures because it ensures application ecosystems begin life as modular and reusable systems. Adopting an API‑first software development model provides significant benefits for both developers and organizations, including:
+
+By developing with an API-First Design methodology, APIs are more than just a byproduct of an internal system. API-First Design establishes a contract for how your API communicates with other programs, even if the language behind a program is unknown.
+
+*** Developer friendly
+
+1. Increased developer productivity – Development teams can work in parallel, able to update backend applications without impacting the teams working on other microservices which depend on the applications’ APIs. Collaboration is often easier across the API lifecycle since every team can refer to the established API contract. Development teams does not block each other.
+1. Enhanced developer experience – API‑first design prioritizes the developer experience by ensuring that an API is logical and well‑documented. This creates a seamless experience for developers when they interact with an API. Learn why it’s so important for Platform Ops teams to take the API developer experience into consideration.
+1. Lower development cost - Using an API-First Methodology allows for the recycle of code between projects so development teams always have a baseline architecture to work with. This also reduces associated time and financial costs that are the result of starting from scratch. Developers can troubleshoot API issues sooner and often without any code, which leads to smoother integrations.
+1. Adoption: The widest range of users/clients can adopt and consume your API.
+1. Developer-friendly: Developers can easily use your API to integrate your app or service into their projects. The API specification enables good and consistent communication between teams.
+1. Improved interoperability – A common, machine‑readable specification means different systems and clients can consume and use the API contract. This makes it easier for Platform Ops teams to integrate, manage, and monitor complex architectures.
+1. Better testing – API specifications can be used to automatically generate and run tests, which can help ensure the API implementation adheres to the contract and is working as expected. This can help identify issues with an API before it is published to production.
+1. Easier evolution – API specifications can help facilitate the evolution of the API contract and application itself over time by providing a clear and standard way to document and communicate changes in both machine‑ and human‑readable formats. When coupled with proper versioning practices, this helps minimize the impacts of API changes on API consumers and ensures that an API remains backward compatible.
+1. Greater Flexibility to Upgrade and Update Systems - Well-designed APIs – and the fact that they promote app/client interactions without dependency – support pluggable, component-based architectures. This pluggability offers the flexibility to add, remove, or upgrade individual services/features while reducing the chance of impacting other parts of the system.
+1. Language and Platform Flexibility - APIs offer a language and platform agnostic interface that different microservices can interact with. Because API-first development prompts the creation of consistent and reusable APIs, the API-first approach helps your systems integrate with a wide range of services – regardless of their languages and platforms.
+1. Compatibility: Your app or service can integrate with a diverse array of apps and systems.
+1. Lowers Development Costs and Achieves Faster Time to Market - The pluggability that API-first achieves means that development teams can re-use different app components (or microservices) in other projects. Development teams can focus more time on building a minimum viable product, then complete the rest of the project by integrating with the APIs of other pre-built microservices components. With fewer dependencies and a consistent framework for interservice communication, different teams can build and improve their services much more efficiently. A consistent, machine‑readable API specification is one tool that can help developers and Platform Ops teams to work better together.
+1. Reusability
+1. Separation of concerns
+
+*** Documentation and governance
+
+1. Consistent governance and security – Cloud and platform architects can organize the API ecosystem in a consistent way by incorporating security and governance rules during the API design phase. This avoids the costly reviews required when issues are discovered later in the software process.
+1. Improved software quality – Designing APIs first ensures security and compliance requirements are met early in the development process, well before the API is ready to be deployed to production. With less need to fix security flaws in production, your operations, quality, and security engineering teams have more time to work directly with the development teams to ensure quality and security standards are met in the design phase.
+1. Easy and Consistent documentation and API models – The API contract is documented in a standard format, including the endpoints, request and response formats, and other relevant details. Many systems can use the contract to generate comprehensive documentation, providing clarity and making it easier for developers to understand how to use the API.
+1. Improved security – Advanced security tools can use the OpenAPI Specification to analyze API traffic and user behavior. They can apply positive security by verifying that API requests comply with the methods, endpoints, and parameters supported by the API endpoint. Non‑conforming traffic is blocked by default, reducing the number of calls your microservices have to process.
+1. More Scalable Systems - The loose connections of APIs ensure that the services they expose are as Stateless And RESTful as possible. REST APIs allow for “loose” connections while minimizing or eliminating dependencies. This supports scalability because it’s easier to deploy, replicate, and destroy instances of a specific microservices app component in response to fluctuating demands on the system.
+1. Highly-Available, Fault-Tolerant Systems - A microservices-based system that integrates through APIs allows you to build a highly-available and fault-tolerant system. This is because it’s easier to load-balance incoming requests, automate the deployment of microservices, achieve redundancy of key components, and carry out other orchestration strategies. Through the redundancy of systems and other fail-safes – like implementing Circuit Breaker Patterns – if one microservice fails, there is less chance of it negatively impacting the rest of the system.
+
+** References:
+
+1. https://www.nginx.com/blog/benefits-of-api-first-approach-to-building-microservices/
+1. https://blog.dreamfactory.com/api-first-the-advantages-of-an-api-first-approach-to-app-development/#3
+1. https://softjourn.com/insights/5-benefits-of-api-first-design
