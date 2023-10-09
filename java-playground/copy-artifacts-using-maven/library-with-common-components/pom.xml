@@ -7,12 +7,6 @@
   <version>1.0-SNAPSHOT</version>
   <name>library-with-common-components</name>
   <url>http://maven.apache.org</url>
-  
-  <properties>
-	  <java.version>18</java.version>
-	  <maven.compiler.source>18</maven.compiler.source>
-	  <maven.compiler.target>18</maven.compiler.target>
-	</properties>
 	
   <dependencies>
     <dependency>
@@ -47,9 +41,6 @@
 		            	  </includes>
 		            	</resource>
 		            </resources>
-		                <sources>
-		                    <source>src/main/another-src</source>
-		                </sources>
 		            </configuration>
 		        </execution>
 		    </executions>

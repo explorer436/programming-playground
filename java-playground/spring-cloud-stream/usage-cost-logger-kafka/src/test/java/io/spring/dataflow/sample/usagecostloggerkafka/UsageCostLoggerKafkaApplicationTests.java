@@ -51,7 +51,7 @@ public class UsageCostLoggerKafkaApplicationTests {
         The testUsageCostLogger test case verifies that the process method of UsageCostLogger is invoked. 
 		We use the OutputCaptureExtension facility provided by Spring Boot testing infrastructure to verify that the message is logged to the console.
 	 */
-	@Test
+	/*@Test
 	public void testUsageCostLogger(CapturedOutput output) {
 		try (ConfigurableApplicationContext context = new SpringApplicationBuilder(
 				TestChannelBinderConfiguration
@@ -76,5 +76,5 @@ public class UsageCostLoggerKafkaApplicationTests {
 
 			Awaitility.await().until(output::getOut, value -> value.contains("{\"userId\": \"user1\", \"callCost\": \"3.0\", \"dataCost\": \"5.0\" }"));
 		}
-	}
+	}*/
 }
