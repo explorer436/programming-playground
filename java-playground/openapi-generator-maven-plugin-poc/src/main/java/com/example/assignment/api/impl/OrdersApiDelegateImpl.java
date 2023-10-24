@@ -6,29 +6,32 @@ import com.example.assignment.rewards.model.Orders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+
 @Service
 public class OrdersApiDelegateImpl implements OrdersApiDelegate {
     @Override
     public ResponseEntity<Orders> getOrdersByCustomerId(String customerId) {
-        Orders orders = new Orders();
 
-        Order order1 = new Order();
-        order1.setItemDescription("item 1 description");
-        order1.setItemName("item 1 name");
-        order1.setPurchaseAmount(100.0);
-        orders.addOrdersItem(order1);
 
-        Order order2 = new Order();
-        order2.setItemDescription("item 2 description");
-        order2.setItemName("item 2 name");
-        order2.setPurchaseAmount(200.0);
-        orders.addOrdersItem(order2);
+        Order order1 = Order.builder()
+                .itemDescription("item 1 description")
+                .itemName("item 1 name")
+                .purchaseAmount(100.0).build();
 
-        Order order3 = new Order();
-        order3.setItemDescription("item 3 description");
-        order3.setItemName("item 3 name");
-        order3.setPurchaseAmount(300.0);
-        orders.addOrdersItem(order3);
+        Order order2 = Order.builder()
+                .itemDescription("item 2 description")
+                .itemName("item 2 name")
+                .purchaseAmount(200.0).build();
+
+        Order order3 = Order.builder()
+                .itemDescription("item 3 description")
+                .itemName("item 3 name")
+                .purchaseAmount(300.0).build();
+
+        Orders orders = Orders.builder()
+                .orders(Arrays.asList(order1, order2, order3))
+                .build();
 
         return ResponseEntity.ok(orders);
     }

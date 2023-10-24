@@ -18,6 +18,9 @@ import javax.annotation.Generated;
 /**
  * ErrorResponse
  */
+@lombok.Builder
+@lombok.Getter
+@lombok.extern.jackson.Jacksonized
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class ErrorResponse implements Serializable {

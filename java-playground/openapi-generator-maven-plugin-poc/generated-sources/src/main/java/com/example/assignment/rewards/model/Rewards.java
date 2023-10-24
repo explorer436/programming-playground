@@ -21,6 +21,9 @@ import javax.annotation.Generated;
 /**
  * Rewards
  */
+@lombok.Builder
+@lombok.Getter
+@lombok.extern.jackson.Jacksonized
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class Rewards implements Serializable {

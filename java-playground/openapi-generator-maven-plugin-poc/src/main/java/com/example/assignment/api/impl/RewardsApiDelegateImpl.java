@@ -3,6 +3,7 @@ package com.example.assignment.api.impl;
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.ResponseEntity;
@@ -34,27 +35,27 @@ public class RewardsApiDelegateImpl implements RewardsApiDelegate {
 		LocalDate currentMonthMinusOne = now.minusMonths(1);
 		LocalDate currentMonthMinusTwo = now.minusMonths(2);
 		LocalDate currentMonthMinusThree = now.minusMonths(3);
-		
-		Rewards rewards = new Rewards();
-		rewards.setCustomerId(customerId);
-		rewards.addRewardsItem(getRewardsPerMonth(customerId, currentMonthMinusOne));
-		rewards.addRewardsItem(getRewardsPerMonth(customerId, currentMonthMinusTwo));
-		rewards.addRewardsItem(getRewardsPerMonth(customerId, currentMonthMinusThree));
-		rewards.setTotalRewardPointsForPastThreeMonths(
-				rewards.getRewards()
-					.stream()
-					.mapToInt(Reward::getRewardPoints)
-							.reduce(
-								0,
-								(a, b) -> a + b));
-		rewards.setTotalPurchaseAmountForPastThreeMonths(
-				rewards.getRewards()
+
+		Rewards rewards = Rewards.builder()
+				.customerId(customerId)
+				.rewards(Arrays.asList(
+						getRewardsPerMonth(customerId, currentMonthMinusOne),
+						getRewardsPerMonth(customerId, currentMonthMinusTwo),
+						getRewardsPerMonth(customerId, currentMonthMinusThree)))
+				.build();
+		rewards.setTotalRewardPointsForPastThreeMonths(rewards.getRewards()
+				.stream()
+				.mapToInt(Reward::getRewardPoints)
+				.reduce(
+						0,
+						(a, b) -> a + b));
+		rewards.setTotalPurchaseAmountForPastThreeMonths(rewards.getRewards()
 				.stream()
 				.mapToDouble(Reward::getPurchaseAmount)
-						.reduce(
-							0,
-							(a, b) -> a + b)
-				);
+				.reduce(
+						0,
+						(a, b) -> a + b));
+
 		return rewards;
 	}
 
@@ -65,10 +66,12 @@ public class RewardsApiDelegateImpl implements RewardsApiDelegate {
 		
 		double purchaseAmountInTheMonth = amountSpentByCustomerInAMonth(customerId, monthNumberMinusOneStartDate, monthNumberMinusOneEndDate);
 		
-		Reward r = new Reward();
-		r.setPurchaseAmount(purchaseAmountInTheMonth);
-		r.setMonth(monthNumber.getMonth().name());
-		r.setRewardPoints(helperUtility.getPointsFromPurchaseAmount(purchaseAmountInTheMonth));
+		Reward r = Reward.builder()
+				.purchaseAmount(purchaseAmountInTheMonth)
+				.month(monthNumber.getMonth().name())
+				.rewardPoints(helperUtility.getPointsFromPurchaseAmount(purchaseAmountInTheMonth))
+				.build();
+
 		return r;
 	}
 

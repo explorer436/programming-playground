@@ -161,6 +161,11 @@
                                 <serializableModel>true</serializableModel>
                                 <delegatePattern>true</delegatePattern>
                                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                                <additionalModelTypeAnnotations>
+                                    @lombok.Builder
+                                    @lombok.Getter
+                                    @lombok.extern.jackson.Jacksonized
+                                </additionalModelTypeAnnotations>
                             </configOptions>
                         </configuration>
                     </execution>

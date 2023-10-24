@@ -18,6 +18,9 @@ import javax.annotation.Generated;
 /**
  * Order
  */
+@lombok.Builder
+@lombok.Getter
+@lombok.extern.jackson.Jacksonized
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class Order implements Serializable {
