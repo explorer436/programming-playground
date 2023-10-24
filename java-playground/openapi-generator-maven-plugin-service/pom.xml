@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>openapi-generator-maven-plugin-poc</artifactId>
+    <artifactId>openapi-generator-maven-plugin-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>openapi-generator-maven-plugin-poc</name>
+    <name>openapi-generator-maven-plugin-service</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>18</java.version>
