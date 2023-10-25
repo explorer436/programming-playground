@@ -1,0 +1,10 @@
+src/main/java/com/example/assignment/rewards/model/ErrorResponse.java
+src/main/java/com/example/assignment/rewards/model/Order.java
+src/main/java/com/example/assignment/rewards/model/Orders.java
+src/main/java/com/example/assignment/rewards/model/Reward.java
+src/main/java/com/example/assignment/rewards/model/Rewards.java
+src/main/java/org/openapitools/api/ApiUtil.java
+src/main/java/org/openapitools/api/OrdersApi.java
+src/main/java/org/openapitools/api/OrdersApiController.java
+src/main/java/org/openapitools/api/RewardsApi.java
+src/main/java/org/openapitools/api/RewardsApiController.java

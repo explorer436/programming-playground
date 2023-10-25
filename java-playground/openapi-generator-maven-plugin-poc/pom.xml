@@ -10,6 +10,7 @@
 
   <modules>
     <module>openapi-generator-maven-plugin-service</module>
+    <module>openapi-generator-maven-plugin-client</module>
   </modules>
 
   <properties>

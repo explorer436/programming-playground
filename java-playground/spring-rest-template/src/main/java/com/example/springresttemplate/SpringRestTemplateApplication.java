@@ -1,7 +1,6 @@
 package com.example.springresttemplate;
 
 import com.example.springresttemplate.model.IpAddress;
-import com.example.springresttemplate.model.Quote;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

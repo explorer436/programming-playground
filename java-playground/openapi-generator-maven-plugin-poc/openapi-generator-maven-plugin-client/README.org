@@ -1,0 +1,5 @@
+* Things to note
+
+1. generatorName
+1. configOptions.language
+1. configOptions.library
