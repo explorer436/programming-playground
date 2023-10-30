@@ -19,6 +19,8 @@ public class Person {
     private String state;
     private String zip;
 
+    // If this class happens to be an entity in an application, mark this with the annotation "@Transient". If not, hibernate will complain that it cannot determine the type of the object "Address".
+
     public record Address(String addressLine1, String addressLine2, String city, String state, String zip) { }
 
     public Address getAddress() {
