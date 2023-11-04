@@ -2,7 +2,7 @@
   - [[#helpful-tips][Helpful tips]]
   - [[#questions][Questions]]
   - [[#documentation][Documentation]]
-  - [[#creating-a-project][Creating a project:]]
+  - [[#creating-a-project][Creating a project]]
   - [[#the-main-function][The main function]]
   - [[#println-macro][println macro]]
   - [[#crates][crates]]
@@ -22,17 +22,21 @@
 
 Install the rust plugin for IntelliJ idea to be able to run programs quickly.
 
+** Dead code
+
+https://doc.rust-lang.org/rust-by-example/attribute/unused.html
+
 ** Questions
 
 Are modules analogous to Java packages?
-Are crates analogous to Java classes?
+
 Are traits analogous to Abstract classes (or interfaces with implementations) in Java?
 
 ** Documentation
 
 The installation of Rust also includes a copy of the documentation locally, so you can read it offline. Run ~rustup doc~ to open the local documentation in your browser.
 
-** Creating a project:
+** Creating a project
 
 With this, the main function will be in a file called main.rs
 #+begin_src 
@@ -52,15 +56,17 @@ The main function is special. It is always the first code that runs in every exe
 
 ** println macro
 
-println! calls a Rust macro.
-If it had called a function instead, it would be entered as println (without the !).
-Using a ! means that you’re calling a macro instead of a normal function and that macros don’t always follow the same rules as functions.
-
 https://doc.rust-lang.org/std/macro.println.html
 
 ** crates
 
-In Rust, packages of code are referred to as crates
+https://doc.rust-lang.org/book/ch07-01-packages-and-crates.html
+
+In Rust, packages of code are referred to as crates.
+
+Are crates analogous to Java classes? No, I think they are more analogous to jar files. 
+
+Most of the time when Rustaceans say “crate”, they mean library crate, and they use “crate” interchangeably with the general programming concept of a “library".
 
 Crates.io is where people in the Rust ecosystem post their open source Rust projects for others to use.
 https://crates.io/

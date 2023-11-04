@@ -1,0 +1,5 @@
+* Running this:
+
+$ rustc main.rs
+$ ./main
+Hello, world!

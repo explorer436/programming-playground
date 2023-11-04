@@ -1,0 +1,16 @@
+* Project structure
+
+How can we have multiple main() in same crate?
+
+I'm trying to code some very simple utilities to help me manipulating source code from command line. (e.g. extracting headers from Java or Python sources)
+
+Most of these programs just pick a file from command line args, and after some checking, load its contents, calls a function and outputs the result.
+
+I can create a crate for each small program, of course, but I wonder if it is possible to define more than one main() in the same crate.
+
+So the question is: is it possible (and how) to define more than one main() in the same crate?
+
+Answer:
+
+1. Instead of ~src/main.rs~ you can have ~src/bin/tool1.rs~ and ~src/bin/tool2.rs~ etc. If you then have ~src/lib.rs~ then all those can access a single support crate for code, making things compile faster.
+1. structops is an alternative.
