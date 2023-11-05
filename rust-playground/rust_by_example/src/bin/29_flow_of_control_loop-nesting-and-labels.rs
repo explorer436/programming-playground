@@ -1,5 +1,6 @@
 #![allow(unreachable_code)]
 
+#[allow(unused_labels)]
 fn main() {
     'outer: loop {
 	println!("Entered the outer loop");

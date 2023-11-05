@@ -2,6 +2,7 @@
 
 // This structure cannot be printed either with `fmt::Display` or
 // with `fmt::Debug`.
+#[allow(dead_code)]
 struct UnPrintable(i32);
 
 // The `derive` attribute automatically creates the implementation
@@ -19,6 +20,7 @@ struct Structure(i32);
 #[derive(Debug)]
 struct Deep(Structure);
 
+#[allow(dead_code)]
 #[derive(Debug)]
 struct Person<'a> {
     name: &'a str,
