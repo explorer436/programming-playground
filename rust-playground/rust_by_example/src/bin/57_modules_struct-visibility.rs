@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 mod my {
     // A public struct with a public field of generic type `T`
     pub struct OpenBox<T> {

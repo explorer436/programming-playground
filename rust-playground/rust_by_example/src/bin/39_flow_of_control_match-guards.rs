@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 enum Temperature {
     Celsius(i32),
     Fahrenheit(i32),

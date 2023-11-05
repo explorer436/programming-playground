@@ -22,6 +22,7 @@ fn print_debug<T: Debug>(t: &T) {
 
 // `T` must implement `HasArea`. Any type which meets
 // the bound can access `HasArea`'s function `area`.
+#[allow(dead_code)]
 fn area<T: HasArea>(t: &T) -> f64 { t.area() }
 
 fn main() {

@@ -1,3 +1,4 @@
+#[allow(unused_must_use)]
 fn main() {
     let x = 5u32;
 

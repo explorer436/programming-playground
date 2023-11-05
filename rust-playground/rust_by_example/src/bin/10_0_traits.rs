@@ -3,6 +3,7 @@ use std::vec::IntoIter;
 
 // This function combines two `Vec<i32>` and returns an iterator over it.
 // Look how complicated its return type is!
+#[allow(dead_code)]
 fn combine_vecs_explicit_return_type(
     v: Vec<i32>,
     u: Vec<i32>,

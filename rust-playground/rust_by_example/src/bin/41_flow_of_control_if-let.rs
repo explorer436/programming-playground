@@ -62,6 +62,7 @@ fn main() {
     }
 
     // Binding also works with `if let`
+    #[allow(unused_variables)]
     if let Foo::Qux(value @ 100) = c {
 	println!("c is one hundred");
     }

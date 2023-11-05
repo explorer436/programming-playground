@@ -1,5 +1,6 @@
 use std::convert::From;
 
+#[allow(dead_code)]
 #[derive(Debug)]
 struct Number {
     value: i32,
