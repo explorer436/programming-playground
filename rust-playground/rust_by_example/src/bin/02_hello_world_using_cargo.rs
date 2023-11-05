@@ -1,5 +1,3 @@
-// This example does not use Cargo.
-
 fn main() {
     println!("Hello, world!");
 }

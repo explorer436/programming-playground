@@ -1,6 +1,6 @@
 * Project structure
 
-How can we have multiple main() in same crate?
+How can we have multiple ~main()~ in same crate?
 
 I'm trying to code some very simple utilities to help me manipulating source code from command line. (e.g. extracting headers from Java or Python sources)
 
