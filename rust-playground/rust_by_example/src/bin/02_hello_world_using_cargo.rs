@@ -6,7 +6,7 @@ fn main() {
  * If there were parameters, they would go inside the parentheses ().
  */
 
-// To compile and run the file:
+// To compile and run the file without using cargo:
 // $ rustc main.rs
 // After compiling successfully, Rust outputs a binary executable file.
 // you run the main or main.exe file, like this:
