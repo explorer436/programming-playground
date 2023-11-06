@@ -28,8 +28,6 @@ struct Person<'a> {
 }
 
 fn main() {
-    println!("Hello, world!");
-
     // Printing with `{:?}` is similar to with `{}`.
     println!("{:?} months in a year.", 12);
     println!("{1:?} {0:?} is the {actor:?} name.",
