@@ -8,27 +8,6 @@ fn reverse(pair: (i32, bool)) -> (bool, i32) {
     (bool_param, int_param)
 }
 
-// The following struct is for the activity.
-#[derive(Debug)]
-struct Matrix(f32, f32, f32, f32);
-
-// Implement `Display` for `MinMax`.
-impl fmt::Display for Matrix {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-	// Use `self.number` to refer to each positional data point.
-	write!(f, "({} {}) \n", &self.0, &self.1)?;
-	write!(f, "({} {})", &self.2, &self.3)
-    }
-}
-
-fn transpose(matrix: Matrix) -> Matrix {
-    // `let` can be used to bind the members of a tuple to variables
-    // let (int_param, bool_param) = pair;
-
-    Matrix(matrix.0, matrix.2, matrix.1, matrix.3)
-}
-
-
 fn main() {
     // A tuple with a bunch of different types
     let long_tuple = (1u8, 2u16, 3u32, 4u64,
@@ -66,12 +45,5 @@ fn main() {
 
     let (a, b, c, d) = tuple;
     println!("{:?}, {:?}, {:?}, {:?}", a, b, c, d);
-
-    let matrix = Matrix(1.1, 1.2, 2.1, 2.2);
-    println!("{:?}", matrix);
-
-    println!("{}", matrix);
-
-    println!("transposed matrix is \n{}", transpose(matrix));
 
 }
