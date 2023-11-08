@@ -7,13 +7,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Order
@@ -27,13 +27,10 @@ public class Order implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  @JsonProperty("purchaseAmount")
   private Double purchaseAmount;
 
-  @JsonProperty("itemName")
   private String itemName;
 
-  @JsonProperty("itemDescription")
   private String itemDescription;
 
   public Order purchaseAmount(Double purchaseAmount) {
@@ -46,7 +43,8 @@ public class Order implements Serializable {
    * @return purchaseAmount
   */
   
-  @Schema(name = "purchaseAmount", required = false)
+  @Schema(name = "purchaseAmount", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("purchaseAmount")
   public Double getPurchaseAmount() {
     return purchaseAmount;
   }
@@ -65,7 +63,8 @@ public class Order implements Serializable {
    * @return itemName
   */
   
-  @Schema(name = "itemName", required = false)
+  @Schema(name = "itemName", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("itemName")
   public String getItemName() {
     return itemName;
   }
@@ -84,7 +83,8 @@ public class Order implements Serializable {
    * @return itemDescription
   */
   
-  @Schema(name = "itemDescription", required = false)
+  @Schema(name = "itemDescription", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("itemDescription")
   public String getItemDescription() {
     return itemDescription;
   }

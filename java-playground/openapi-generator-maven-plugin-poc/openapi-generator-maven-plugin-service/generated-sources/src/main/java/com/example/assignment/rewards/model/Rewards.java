@@ -10,13 +10,13 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Rewards
@@ -30,18 +30,14 @@ public class Rewards implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  @JsonProperty("customerId")
   private String customerId;
 
-  @JsonProperty("totalRewardPointsForPastThreeMonths")
   private Integer totalRewardPointsForPastThreeMonths;
 
-  @JsonProperty("totalPurchaseAmountForPastThreeMonths")
   private Double totalPurchaseAmountForPastThreeMonths;
 
-  @JsonProperty("rewards")
   @Valid
-  private List<Reward> rewards = null;
+  private List<@Valid Reward> rewards;
 
   public Rewards customerId(String customerId) {
     this.customerId = customerId;
@@ -53,7 +49,8 @@ public class Rewards implements Serializable {
    * @return customerId
   */
   
-  @Schema(name = "customerId", required = false)
+  @Schema(name = "customerId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("customerId")
   public String getCustomerId() {
     return customerId;
   }
@@ -72,7 +69,8 @@ public class Rewards implements Serializable {
    * @return totalRewardPointsForPastThreeMonths
   */
   
-  @Schema(name = "totalRewardPointsForPastThreeMonths", required = false)
+  @Schema(name = "totalRewardPointsForPastThreeMonths", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("totalRewardPointsForPastThreeMonths")
   public Integer getTotalRewardPointsForPastThreeMonths() {
     return totalRewardPointsForPastThreeMonths;
   }
@@ -91,7 +89,8 @@ public class Rewards implements Serializable {
    * @return totalPurchaseAmountForPastThreeMonths
   */
   
-  @Schema(name = "totalPurchaseAmountForPastThreeMonths", required = false)
+  @Schema(name = "totalPurchaseAmountForPastThreeMonths", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("totalPurchaseAmountForPastThreeMonths")
   public Double getTotalPurchaseAmountForPastThreeMonths() {
     return totalPurchaseAmountForPastThreeMonths;
   }
@@ -100,7 +99,7 @@ public class Rewards implements Serializable {
     this.totalPurchaseAmountForPastThreeMonths = totalPurchaseAmountForPastThreeMonths;
   }
 
-  public Rewards rewards(List<Reward> rewards) {
+  public Rewards rewards(List<@Valid Reward> rewards) {
     this.rewards = rewards;
     return this;
   }
@@ -118,12 +117,13 @@ public class Rewards implements Serializable {
    * @return rewards
   */
   @Valid 
-  @Schema(name = "rewards", required = false)
-  public List<Reward> getRewards() {
+  @Schema(name = "rewards", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("rewards")
+  public List<@Valid Reward> getRewards() {
     return rewards;
   }
 
-  public void setRewards(List<Reward> rewards) {
+  public void setRewards(List<@Valid Reward> rewards) {
     this.rewards = rewards;
   }
 

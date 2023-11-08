@@ -11,52 +11,52 @@
  */
 
 
-package com.example.assignment.rewards.client;
+package com.example.assignment.rewards.api;
 
-import com.example.assignment.rewards.client.ApiException;
+import com.example.assignment.rewards.model.ErrorResponse;
 import com.example.assignment.rewards.model.Orders;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.Ignore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * API tests for OrdersApi
  */
-@Disabled
+@Ignore
 public class OrdersApiTest {
 
     private final OrdersApi api = new OrdersApi();
 
+    
     /**
      * Returns rewards by customer Id
      *
      * Returns rewards by customer Id
-     *
-     * @throws ApiException if the Api call fails
      */
     @Test
-    public void getOrdersByCustomerIdTest() throws ApiException {
+    public void getOrdersByCustomerIdTest()  {
         String customerId = null;
-        Orders response = api.getOrdersByCustomerId(customerId);
+        Orders response = api.getOrdersByCustomerId(customerId).block();
+
         // TODO: test validations
     }
-
+    
     /**
      * Returns rewards by customer Id
      *
      * Returns rewards by customer Id
-     *
-     * @throws ApiException if the Api call fails
      */
     @Test
-    public void postOrdersByCustomerIdTest() throws ApiException {
+    public void postOrdersByCustomerIdTest()  {
         String customerId = null;
-        Orders response = api.postOrdersByCustomerId(customerId);
+        Orders response = api.postOrdersByCustomerId(customerId).block();
+
         // TODO: test validations
     }
-
+    
 }

@@ -3,3 +3,11 @@
 1. generatorName
 1. configOptions.language
 1. configOptions.library
+
+* Testing
+
+#+begin_src
+$ curl -X 'GET' 'http://localhost:8081/greeting' -H 'accept: application/json'
+#+end_src
+
+This will in turn, invoke the server application and receive a response.

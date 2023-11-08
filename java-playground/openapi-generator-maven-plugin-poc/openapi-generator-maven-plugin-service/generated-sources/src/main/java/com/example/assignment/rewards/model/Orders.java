@@ -10,13 +10,13 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Orders
@@ -30,12 +30,10 @@ public class Orders implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  @JsonProperty("customerId")
   private String customerId;
 
-  @JsonProperty("orders")
   @Valid
-  private List<Order> orders = null;
+  private List<@Valid Order> orders;
 
   public Orders customerId(String customerId) {
     this.customerId = customerId;
@@ -47,7 +45,8 @@ public class Orders implements Serializable {
    * @return customerId
   */
   
-  @Schema(name = "customerId", required = false)
+  @Schema(name = "customerId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("customerId")
   public String getCustomerId() {
     return customerId;
   }
@@ -56,7 +55,7 @@ public class Orders implements Serializable {
     this.customerId = customerId;
   }
 
-  public Orders orders(List<Order> orders) {
+  public Orders orders(List<@Valid Order> orders) {
     this.orders = orders;
     return this;
   }
@@ -74,12 +73,13 @@ public class Orders implements Serializable {
    * @return orders
   */
   @Valid 
-  @Schema(name = "orders", required = false)
-  public List<Order> getOrders() {
+  @Schema(name = "orders", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("orders")
+  public List<@Valid Order> getOrders() {
     return orders;
   }
 
-  public void setOrders(List<Order> orders) {
+  public void setOrders(List<@Valid Order> orders) {
     this.orders = orders;
   }
 

@@ -1,0 +1,24 @@
+* Tips
+
+<generateSupportingFiles>true</generateSupportingFiles> in both server and client.
+
+** Is there a way to configure openapi-generator to use jakarta (instead of javax) package during generation
+
+#+begin_src
+configOptions = [
+	    useSpringBoot3: "true"
+	]
+#+end_src
+But this option works only for the SPRING generator openapi-generator.tech/docs/generators/spring, which generates the server.
+
+The property that you need is either "useSpringBoot3" or "useJakartaEe"
+
+    Go to https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator-maven-plugin
+
+    At the end of the table you see "configHelp" property which will give you configs for the current generator "spring" in my case
+
+    Rerun "mvn clean install" - this will give you a list of available "configOptions".
+
+    Read the list and found a property
+
+    useJakartaEe: whether to use Jakarta EE namespace instead of javax (Default: false)

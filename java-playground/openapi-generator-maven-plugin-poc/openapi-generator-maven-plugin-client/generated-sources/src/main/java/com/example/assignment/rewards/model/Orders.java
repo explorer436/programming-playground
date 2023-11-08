@@ -21,8 +21,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -36,10 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Orders.JSON_PROPERTY_CUSTOMER_ID,
   Orders.JSON_PROPERTY_ORDERS
 })
-@lombok.Builder
-@lombok.Getter
-@lombok.extern.jackson.Jacksonized
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Orders implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -47,9 +42,9 @@ public class Orders implements Serializable {
   private String customerId;
 
   public static final String JSON_PROPERTY_ORDERS = "orders";
-  private List<Order> orders = null;
+  private List<Order> orders;
 
-  public Orders() { 
+  public Orders() {
   }
 
   public Orders customerId(String customerId) {
@@ -62,8 +57,7 @@ public class Orders implements Serializable {
    * Get customerId
    * @return customerId
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CUSTOMER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -97,8 +91,7 @@ public class Orders implements Serializable {
    * Get orders
    * @return orders
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ORDERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -112,7 +105,6 @@ public class Orders implements Serializable {
   public void setOrders(List<Order> orders) {
     this.orders = orders;
   }
-
 
   @Override
   public boolean equals(Object o) {

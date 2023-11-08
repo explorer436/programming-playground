@@ -11,52 +11,52 @@
  */
 
 
-package com.example.assignment.rewards.client;
+package com.example.assignment.rewards.api;
 
-import com.example.assignment.rewards.client.ApiException;
+import com.example.assignment.rewards.model.ErrorResponse;
 import com.example.assignment.rewards.model.Rewards;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.Ignore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * API tests for RewardsApi
  */
-@Disabled
+@Ignore
 public class RewardsApiTest {
 
     private final RewardsApi api = new RewardsApi();
 
+    
     /**
      * Returns rewards by customer Id
      *
      * Returns rewards by customer Id
-     *
-     * @throws ApiException if the Api call fails
      */
     @Test
-    public void getRewardsByCustomerIdTest() throws ApiException {
+    public void getRewardsByCustomerIdTest()  {
         String customerId = null;
-        Rewards response = api.getRewardsByCustomerId(customerId);
+        Rewards response = api.getRewardsByCustomerId(customerId).block();
+
         // TODO: test validations
     }
-
+    
     /**
      * Returns rewards by customer Id
      *
      * Returns rewards by customer Id
-     *
-     * @throws ApiException if the Api call fails
      */
     @Test
-    public void postRewardsByCustomerIdTest() throws ApiException {
+    public void postRewardsByCustomerIdTest()  {
         String customerId = null;
-        Rewards response = api.postRewardsByCustomerId(customerId);
+        Rewards response = api.postRewardsByCustomerId(customerId).block();
+
         // TODO: test validations
     }
-
+    
 }

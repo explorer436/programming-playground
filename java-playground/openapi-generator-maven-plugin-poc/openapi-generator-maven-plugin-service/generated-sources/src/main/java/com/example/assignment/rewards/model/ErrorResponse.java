@@ -7,13 +7,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * ErrorResponse
@@ -27,7 +27,6 @@ public class ErrorResponse implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  @JsonProperty("id")
   private String id;
 
   public ErrorResponse id(String id) {
@@ -40,7 +39,8 @@ public class ErrorResponse implements Serializable {
    * @return id
   */
   
-  @Schema(name = "id", required = false)
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
   public String getId() {
     return id;
   }

@@ -21,11 +21,11 @@ Returns rewards by customer Id
 
 ```java
 // Import classes:
-import com.example.assignment.rewards.client.ApiClient;
-import com.example.assignment.rewards.client.ApiException;
-import com.example.assignment.rewards.client.Configuration;
-import com.example.assignment.rewards.client.models.*;
-import com.example.assignment.rewards.client.OrdersApi;
+import com.example.assignment.rewards.model.ApiClient;
+import com.example.assignment.rewards.model.ApiException;
+import com.example.assignment.rewards.model.Configuration;
+import com.example.assignment.rewards.model.models.*;
+import com.example.assignment.rewards.api.OrdersApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -73,11 +73,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | successful operation |  -  |
-| **400** |  |  -  |
-| **401** |  |  -  |
-| **403** |  |  -  |
-| **404** |  |  -  |
-| **500** |  |  -  |
+| **400** | Bad request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error occurred |  -  |
 
 
 ## postOrdersByCustomerId
@@ -92,11 +92,11 @@ Returns rewards by customer Id
 
 ```java
 // Import classes:
-import com.example.assignment.rewards.client.ApiClient;
-import com.example.assignment.rewards.client.ApiException;
-import com.example.assignment.rewards.client.Configuration;
-import com.example.assignment.rewards.client.models.*;
-import com.example.assignment.rewards.client.OrdersApi;
+import com.example.assignment.rewards.model.ApiClient;
+import com.example.assignment.rewards.model.ApiException;
+import com.example.assignment.rewards.model.Configuration;
+import com.example.assignment.rewards.model.models.*;
+import com.example.assignment.rewards.api.OrdersApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -144,9 +144,9 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | successful operation |  -  |
-| **400** |  |  -  |
-| **401** |  |  -  |
-| **403** |  |  -  |
-| **404** |  |  -  |
-| **500** |  |  -  |
+| **400** | Bad request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error occurred |  -  |
 

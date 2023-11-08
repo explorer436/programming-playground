@@ -1,5 +1,6 @@
 package com.example.assignment.rewards.api;
 
+import com.example.assignment.rewards.model.ErrorResponse;
 import com.example.assignment.rewards.model.Orders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -10,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * A delegate to be called by the {@link OrdersApiController}}.
@@ -29,11 +30,11 @@ public interface OrdersApiDelegate {
      *
      * @param customerId customer id (required)
      * @return successful operation (status code 200)
-     *         or  (status code 400)
-     *         or  (status code 401)
-     *         or  (status code 403)
-     *         or  (status code 404)
-     *         or  (status code 500)
+     *         or Bad request (status code 400)
+     *         or Unauthorized (status code 401)
+     *         or Forbidden (status code 403)
+     *         or Not found (status code 404)
+     *         or Internal server error occurred (status code 500)
      * @see OrdersApi#getOrdersByCustomerId
      */
     default ResponseEntity<Orders> getOrdersByCustomerId(String customerId) {
@@ -56,11 +57,11 @@ public interface OrdersApiDelegate {
      *
      * @param customerId customer id (required)
      * @return successful operation (status code 200)
-     *         or  (status code 400)
-     *         or  (status code 401)
-     *         or  (status code 403)
-     *         or  (status code 404)
-     *         or  (status code 500)
+     *         or Bad request (status code 400)
+     *         or Unauthorized (status code 401)
+     *         or Forbidden (status code 403)
+     *         or Not found (status code 404)
+     *         or Internal server error occurred (status code 500)
      * @see OrdersApi#postOrdersByCustomerId
      */
     default ResponseEntity<Orders> postOrdersByCustomerId(String customerId) {

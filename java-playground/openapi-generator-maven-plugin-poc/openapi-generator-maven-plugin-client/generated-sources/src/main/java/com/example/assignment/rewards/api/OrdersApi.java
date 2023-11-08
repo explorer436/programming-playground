@@ -1,7 +1,8 @@
-package com.example.assignment.rewards.client;
+package com.example.assignment.rewards.api;
 
-import com.example.assignment.rewards.client.ApiClient;
+import com.example.assignment.rewards.model.ApiClient;
 
+import com.example.assignment.rewards.model.ErrorResponse;
 import com.example.assignment.rewards.model.Orders;
 
 import java.util.HashMap;
@@ -25,7 +26,7 @@ import org.springframework.http.ResponseEntity;
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class OrdersApi {
     private ApiClient apiClient;
 
@@ -50,11 +51,11 @@ public class OrdersApi {
      * Returns rewards by customer Id
      * Returns rewards by customer Id
      * <p><b>200</b> - successful operation
-     * <p><b>400</b>
-     * <p><b>401</b>
-     * <p><b>403</b>
-     * <p><b>404</b>
-     * <p><b>500</b>
+     * <p><b>400</b> - Bad request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>403</b> - Forbidden
+     * <p><b>404</b> - Not found
+     * <p><b>500</b> - Internal server error occurred
      * @param customerId customer id
      * @return Orders
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
@@ -92,11 +93,11 @@ public class OrdersApi {
      * Returns rewards by customer Id
      * Returns rewards by customer Id
      * <p><b>200</b> - successful operation
-     * <p><b>400</b>
-     * <p><b>401</b>
-     * <p><b>403</b>
-     * <p><b>404</b>
-     * <p><b>500</b>
+     * <p><b>400</b> - Bad request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>403</b> - Forbidden
+     * <p><b>404</b> - Not found
+     * <p><b>500</b> - Internal server error occurred
      * @param customerId customer id
      * @return Orders
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
@@ -106,19 +107,49 @@ public class OrdersApi {
         return getOrdersByCustomerIdRequestCreation(customerId).bodyToMono(localVarReturnType);
     }
 
+    /**
+     * Returns rewards by customer Id
+     * Returns rewards by customer Id
+     * <p><b>200</b> - successful operation
+     * <p><b>400</b> - Bad request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>403</b> - Forbidden
+     * <p><b>404</b> - Not found
+     * <p><b>500</b> - Internal server error occurred
+     * @param customerId customer id
+     * @return ResponseEntity&lt;Orders&gt;
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
     public Mono<ResponseEntity<Orders>> getOrdersByCustomerIdWithHttpInfo(String customerId) throws WebClientResponseException {
         ParameterizedTypeReference<Orders> localVarReturnType = new ParameterizedTypeReference<Orders>() {};
         return getOrdersByCustomerIdRequestCreation(customerId).toEntity(localVarReturnType);
+    }
+
+    /**
+     * Returns rewards by customer Id
+     * Returns rewards by customer Id
+     * <p><b>200</b> - successful operation
+     * <p><b>400</b> - Bad request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>403</b> - Forbidden
+     * <p><b>404</b> - Not found
+     * <p><b>500</b> - Internal server error occurred
+     * @param customerId customer id
+     * @return ResponseSpec
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseSpec getOrdersByCustomerIdWithResponseSpec(String customerId) throws WebClientResponseException {
+        return getOrdersByCustomerIdRequestCreation(customerId);
     }
     /**
      * Returns rewards by customer Id
      * Returns rewards by customer Id
      * <p><b>200</b> - successful operation
-     * <p><b>400</b>
-     * <p><b>401</b>
-     * <p><b>403</b>
-     * <p><b>404</b>
-     * <p><b>500</b>
+     * <p><b>400</b> - Bad request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>403</b> - Forbidden
+     * <p><b>404</b> - Not found
+     * <p><b>500</b> - Internal server error occurred
      * @param customerId customer id
      * @return Orders
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
@@ -156,11 +187,11 @@ public class OrdersApi {
      * Returns rewards by customer Id
      * Returns rewards by customer Id
      * <p><b>200</b> - successful operation
-     * <p><b>400</b>
-     * <p><b>401</b>
-     * <p><b>403</b>
-     * <p><b>404</b>
-     * <p><b>500</b>
+     * <p><b>400</b> - Bad request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>403</b> - Forbidden
+     * <p><b>404</b> - Not found
+     * <p><b>500</b> - Internal server error occurred
      * @param customerId customer id
      * @return Orders
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
@@ -170,8 +201,38 @@ public class OrdersApi {
         return postOrdersByCustomerIdRequestCreation(customerId).bodyToMono(localVarReturnType);
     }
 
+    /**
+     * Returns rewards by customer Id
+     * Returns rewards by customer Id
+     * <p><b>200</b> - successful operation
+     * <p><b>400</b> - Bad request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>403</b> - Forbidden
+     * <p><b>404</b> - Not found
+     * <p><b>500</b> - Internal server error occurred
+     * @param customerId customer id
+     * @return ResponseEntity&lt;Orders&gt;
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
     public Mono<ResponseEntity<Orders>> postOrdersByCustomerIdWithHttpInfo(String customerId) throws WebClientResponseException {
         ParameterizedTypeReference<Orders> localVarReturnType = new ParameterizedTypeReference<Orders>() {};
         return postOrdersByCustomerIdRequestCreation(customerId).toEntity(localVarReturnType);
+    }
+
+    /**
+     * Returns rewards by customer Id
+     * Returns rewards by customer Id
+     * <p><b>200</b> - successful operation
+     * <p><b>400</b> - Bad request
+     * <p><b>401</b> - Unauthorized
+     * <p><b>403</b> - Forbidden
+     * <p><b>404</b> - Not found
+     * <p><b>500</b> - Internal server error occurred
+     * @param customerId customer id
+     * @return ResponseSpec
+     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
+     */
+    public ResponseSpec postOrdersByCustomerIdWithResponseSpec(String customerId) throws WebClientResponseException {
+        return postOrdersByCustomerIdRequestCreation(customerId);
     }
 }

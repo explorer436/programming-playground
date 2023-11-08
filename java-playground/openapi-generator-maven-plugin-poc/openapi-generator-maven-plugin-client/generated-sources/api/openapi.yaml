@@ -1,0 +1,301 @@
+openapi: 3.0.1
+info:
+  description: API to show the rewards for customers based on recorded purchases.
+  title: Rewards calculator
+  version: 1.0.0
+servers:
+- url: http://localhost:8080
+paths:
+  /rewards/{customerId}:
+    get:
+      description: Returns rewards by customer Id
+      operationId: getRewardsByCustomerId
+      parameters:
+      - description: customer id
+        explode: false
+        in: path
+        name: customerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rewards'
+          description: successful operation
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error occurred
+      summary: Returns rewards by customer Id
+      tags:
+      - rewards
+      x-accepts: application/json
+    post:
+      description: Returns rewards by customer Id
+      operationId: postRewardsByCustomerId
+      parameters:
+      - description: customer id
+        explode: false
+        in: path
+        name: customerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rewards'
+          description: successful operation
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error occurred
+      summary: Returns rewards by customer Id
+      tags:
+      - rewards
+      x-accepts: application/json
+  /orders/{customerId}:
+    get:
+      description: Returns rewards by customer Id
+      operationId: getOrdersByCustomerId
+      parameters:
+      - description: customer id
+        explode: false
+        in: path
+        name: customerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Orders'
+          description: successful operation
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error occurred
+      summary: Returns rewards by customer Id
+      tags:
+      - orders
+      x-accepts: application/json
+    post:
+      description: Returns rewards by customer Id
+      operationId: postOrdersByCustomerId
+      parameters:
+      - description: customer id
+        explode: false
+        in: path
+        name: customerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Orders'
+          description: successful operation
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error occurred
+      summary: Returns rewards by customer Id
+      tags:
+      - orders
+      x-accepts: application/json
+components:
+  schemas:
+    Order:
+      example:
+        itemName: itemName
+        itemDescription: itemDescription
+        purchaseAmount: 0.8008281904610115
+      properties:
+        purchaseAmount:
+          format: double
+          type: number
+        itemName:
+          type: string
+        itemDescription:
+          type: string
+      type: object
+    Orders:
+      example:
+        customerId: customerId
+        orders:
+        - itemName: itemName
+          itemDescription: itemDescription
+          purchaseAmount: 0.8008281904610115
+        - itemName: itemName
+          itemDescription: itemDescription
+          purchaseAmount: 0.8008281904610115
+      properties:
+        customerId:
+          type: string
+        orders:
+          items:
+            $ref: '#/components/schemas/Order'
+          type: array
+      type: object
+    Reward:
+      example:
+        month: month
+        rewardPoints: 1
+        purchaseAmount: 5.962133916683182
+      properties:
+        rewardPoints:
+          type: integer
+        purchaseAmount:
+          format: double
+          type: number
+        month:
+          type: string
+      type: object
+    Rewards:
+      example:
+        totalPurchaseAmountForPastThreeMonths: 6.027456183070403
+        customerId: customerId
+        totalRewardPointsForPastThreeMonths: 0
+        rewards:
+        - month: month
+          rewardPoints: 1
+          purchaseAmount: 5.962133916683182
+        - month: month
+          rewardPoints: 1
+          purchaseAmount: 5.962133916683182
+      properties:
+        customerId:
+          type: string
+        totalRewardPointsForPastThreeMonths:
+          type: integer
+        totalPurchaseAmountForPastThreeMonths:
+          format: double
+          type: number
+        rewards:
+          items:
+            $ref: '#/components/schemas/Reward'
+          type: array
+      type: object
+    ErrorResponse:
+      properties:
+        id:
+          type: string
+      type: object
+

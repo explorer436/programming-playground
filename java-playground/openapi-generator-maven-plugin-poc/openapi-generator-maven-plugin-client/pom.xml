@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.17</version>
+		<version>3.0.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
@@ -21,6 +21,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
@@ -41,8 +42,8 @@
 
 		<dependency>
 			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.8</version>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.1.0</version>
 		</dependency>
 
 		<dependency>
@@ -50,6 +51,7 @@
 			<artifactId>jackson-databind-nullable</artifactId>
 			<version>0.2.1</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -71,7 +73,7 @@
 				<groupId>org.openapitools</groupId>
 				<artifactId>openapi-generator-maven-plugin</artifactId>
 				<!-- RELEASE_VERSION -->
-				<version>6.0.0</version>
+				<version>6.6.0</version>
 				<!-- /RELEASE_VERSION -->
 				<executions>
 					<execution>
@@ -83,23 +85,38 @@
 							<output>./generated-sources</output>
 							<inputSpec>${project.basedir}/spec/specification.yml</inputSpec>
 							<generatorName>java</generatorName>
-							<apiPackage>com.example.assignment.rewards.client</apiPackage>
-							<invokerPackage>com.example.assignment.rewards.client</invokerPackage>
+							<apiPackage>com.example.assignment.rewards.api</apiPackage>
 							<modelPackage>com.example.assignment.rewards.model</modelPackage>
-							<generateSupportingFiles>false</generateSupportingFiles>
-							<supportingFilesToGenerate>None</supportingFilesToGenerate>
+							<invokerPackage>com.example.assignment.rewards.model</invokerPackage>
+							<generateSupportingFiles>true</generateSupportingFiles>
 							<configOptions>
+								<useJakartaEe>true</useJakartaEe>
 								<language>java</language>
 								<library>webclient</library>
 								<dateLibrary>java8</dateLibrary>
 								<serializableModel>true</serializableModel>
 								<hideGenerationTimestamp>true</hideGenerationTimestamp>
-								<additionalModelTypeAnnotations>
-									@lombok.Builder
-									@lombok.Getter
-									@lombok.extern.jackson.Jacksonized
-								</additionalModelTypeAnnotations>
 							</configOptions>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.3.0</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>generated-sources/src/main/java</source>
+							</sources>
 						</configuration>
 					</execution>
 				</executions>

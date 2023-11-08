@@ -20,8 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -34,10 +32,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Reward.JSON_PROPERTY_PURCHASE_AMOUNT,
   Reward.JSON_PROPERTY_MONTH
 })
-@lombok.Builder
-@lombok.Getter
-@lombok.extern.jackson.Jacksonized
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Reward implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -50,7 +45,7 @@ public class Reward implements Serializable {
   public static final String JSON_PROPERTY_MONTH = "month";
   private String month;
 
-  public Reward() { 
+  public Reward() {
   }
 
   public Reward rewardPoints(Integer rewardPoints) {
@@ -63,8 +58,7 @@ public class Reward implements Serializable {
    * Get rewardPoints
    * @return rewardPoints
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_REWARD_POINTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -90,8 +84,7 @@ public class Reward implements Serializable {
    * Get purchaseAmount
    * @return purchaseAmount
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PURCHASE_AMOUNT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -117,8 +110,7 @@ public class Reward implements Serializable {
    * Get month
    * @return month
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_MONTH)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -132,7 +124,6 @@ public class Reward implements Serializable {
   public void setMonth(String month) {
     this.month = month;
   }
-
 
   @Override
   public boolean equals(Object o) {

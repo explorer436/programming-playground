@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.7</version>
+        <version>3.0.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
@@ -78,8 +78,8 @@
 
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.6.8</version>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.1.0</version>
         </dependency>
 
         <dependency>
@@ -136,7 +136,7 @@
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
                 <!-- RELEASE_VERSION -->
-                <version>6.0.0</version>
+                <version>6.6.0</version>
                 <!-- /RELEASE_VERSION -->
                 <executions>
                     <execution>
@@ -155,6 +155,7 @@
                                 <serializableModel>true</serializableModel>
                                 <delegatePattern>true</delegatePattern>
                                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                                <useSpringBoot3>true</useSpringBoot3>
                                 <additionalModelTypeAnnotations>
                                     @lombok.Builder
                                     @lombok.Getter

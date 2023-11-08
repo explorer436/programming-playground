@@ -21,8 +21,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -38,10 +36,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Rewards.JSON_PROPERTY_TOTAL_PURCHASE_AMOUNT_FOR_PAST_THREE_MONTHS,
   Rewards.JSON_PROPERTY_REWARDS
 })
-@lombok.Builder
-@lombok.Getter
-@lombok.extern.jackson.Jacksonized
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Rewards implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -55,9 +50,9 @@ public class Rewards implements Serializable {
   private Double totalPurchaseAmountForPastThreeMonths;
 
   public static final String JSON_PROPERTY_REWARDS = "rewards";
-  private List<Reward> rewards = null;
+  private List<Reward> rewards;
 
-  public Rewards() { 
+  public Rewards() {
   }
 
   public Rewards customerId(String customerId) {
@@ -70,8 +65,7 @@ public class Rewards implements Serializable {
    * Get customerId
    * @return customerId
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CUSTOMER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -97,8 +91,7 @@ public class Rewards implements Serializable {
    * Get totalRewardPointsForPastThreeMonths
    * @return totalRewardPointsForPastThreeMonths
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TOTAL_REWARD_POINTS_FOR_PAST_THREE_MONTHS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -124,8 +117,7 @@ public class Rewards implements Serializable {
    * Get totalPurchaseAmountForPastThreeMonths
    * @return totalPurchaseAmountForPastThreeMonths
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TOTAL_PURCHASE_AMOUNT_FOR_PAST_THREE_MONTHS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -159,8 +151,7 @@ public class Rewards implements Serializable {
    * Get rewards
    * @return rewards
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_REWARDS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -174,7 +165,6 @@ public class Rewards implements Serializable {
   public void setRewards(List<Reward> rewards) {
     this.rewards = rewards;
   }
-
 
   @Override
   public boolean equals(Object o) {

@@ -20,8 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -34,10 +32,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Order.JSON_PROPERTY_ITEM_NAME,
   Order.JSON_PROPERTY_ITEM_DESCRIPTION
 })
-@lombok.Builder
-@lombok.Getter
-@lombok.extern.jackson.Jacksonized
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Order implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -50,7 +45,7 @@ public class Order implements Serializable {
   public static final String JSON_PROPERTY_ITEM_DESCRIPTION = "itemDescription";
   private String itemDescription;
 
-  public Order() { 
+  public Order() {
   }
 
   public Order purchaseAmount(Double purchaseAmount) {
@@ -63,8 +58,7 @@ public class Order implements Serializable {
    * Get purchaseAmount
    * @return purchaseAmount
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PURCHASE_AMOUNT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -90,8 +84,7 @@ public class Order implements Serializable {
    * Get itemName
    * @return itemName
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ITEM_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -117,8 +110,7 @@ public class Order implements Serializable {
    * Get itemDescription
    * @return itemDescription
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ITEM_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -132,7 +124,6 @@ public class Order implements Serializable {
   public void setItemDescription(String itemDescription) {
     this.itemDescription = itemDescription;
   }
-
 
   @Override
   public boolean equals(Object o) {

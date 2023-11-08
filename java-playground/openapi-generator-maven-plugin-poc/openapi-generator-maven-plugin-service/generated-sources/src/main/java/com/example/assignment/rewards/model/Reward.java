@@ -7,13 +7,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.util.*;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 /**
  * Reward
@@ -27,13 +27,10 @@ public class Reward implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  @JsonProperty("rewardPoints")
   private Integer rewardPoints;
 
-  @JsonProperty("purchaseAmount")
   private Double purchaseAmount;
 
-  @JsonProperty("month")
   private String month;
 
   public Reward rewardPoints(Integer rewardPoints) {
@@ -46,7 +43,8 @@ public class Reward implements Serializable {
    * @return rewardPoints
   */
   
-  @Schema(name = "rewardPoints", required = false)
+  @Schema(name = "rewardPoints", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("rewardPoints")
   public Integer getRewardPoints() {
     return rewardPoints;
   }
@@ -65,7 +63,8 @@ public class Reward implements Serializable {
    * @return purchaseAmount
   */
   
-  @Schema(name = "purchaseAmount", required = false)
+  @Schema(name = "purchaseAmount", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("purchaseAmount")
   public Double getPurchaseAmount() {
     return purchaseAmount;
   }
@@ -84,7 +83,8 @@ public class Reward implements Serializable {
    * @return month
   */
   
-  @Schema(name = "month", required = false)
+  @Schema(name = "month", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("month")
   public String getMonth() {
     return month;
   }

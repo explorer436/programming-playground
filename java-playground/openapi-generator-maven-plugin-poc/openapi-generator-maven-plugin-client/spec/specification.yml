@@ -28,15 +28,35 @@ paths:
               schema:
                 $ref: '#/components/schemas/Rewards'
         400:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         401:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         403:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         404:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         500:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     post:
       tags:
         - "rewards"
@@ -58,15 +78,35 @@ paths:
               schema:
                 $ref: '#/components/schemas/Rewards'
         400:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         401:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         403:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         404:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         500:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   /orders/{customerId}:
     get:
       tags:
@@ -89,15 +129,35 @@ paths:
               schema:
                 $ref: '#/components/schemas/Orders'
         400:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         401:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         403:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         404:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         500:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     post:
       tags:
         - "orders"
@@ -119,15 +179,35 @@ paths:
               schema:
                 $ref: '#/components/schemas/Orders'
         400:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         401:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         403:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         404:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         500:
-          $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
     Order:
