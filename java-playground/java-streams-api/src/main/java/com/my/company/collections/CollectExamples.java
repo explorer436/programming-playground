@@ -16,12 +16,12 @@ import java.util.stream.Collectors;
 
 import com.my.company.utility.PrintUtils;
 import org.apache.commons.lang3.SerializationUtils;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 
 public class CollectExamples {
 
 	public static void main(String[] args) {
 
-		List<String> numbers = Arrays.asList("1", "2", "3", "4", "5", "6");
 		List<String> givenList = Arrays.asList("a", "bb", "bb", "ccc", "ccc", "ccc", "dddd", "dddd", "dddd");
 
 		System.out.println("List converted to Array : " + Arrays.toString(collectToListWithoutMapOrFilter(givenList).toArray())); // [a, bb, ccc, dd]
@@ -64,6 +64,30 @@ public class CollectExamples {
 		if (minBy.isPresent()) {
 			System.out.println("result of collect and max by : " + minBy.toString()); // Optional[a]
 		}
+
+		/**
+		 * How to use pairs to check if the elements of a list meet certain criteria?
+		 * This can help with the following items:
+		 * 1. Do not use comma or hyphen delimited elements in the list.
+		 * 2. Don't have to build maps because maps do not allow duplicates for keys.
+		 */
+		List<ImmutablePair<String, String>> list = new ArrayList<>();
+		list.add(new ImmutablePair<>("1", "person with rank 1"));
+		list.add(new ImmutablePair<>("1", "another person with rank 1"));
+		list.add(new ImmutablePair<>("3", "person with rank 3"));
+		list.add(new ImmutablePair<>("4", "person with rank 4"));
+		list.add(new ImmutablePair<>("5", "person with rank 5"));
+		list.add(new ImmutablePair<>("5", "another person with rank 5"));
+		System.out.println("Do all pairs in list meet the criteria : " + isAllMatch(list));
+
+	}
+
+	private static boolean isAllMatch(List<ImmutablePair<String, String>> list) {
+		// if any of the pairs in the input list does not meet this criteria, this would return false.
+		return list.stream().allMatch(pair -> {
+			// some business functionality like calling a DAO layer with the value in each pair in the input list
+			return true;
+		});
 	}
 	
 	/**
