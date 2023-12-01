@@ -15,68 +15,55 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import com.my.company.utility.PrintUtils;
+import org.apache.commons.lang3.SerializationUtils;
 
 public class CollectExamples {
 
 	public static void main(String[] args) {
 
 		List<String> numbers = Arrays.asList("1", "2", "3", "4", "5", "6");
-		List<String> givenList = Arrays.asList("a", "bb", "ccc", "dd");
+		List<String> givenList = Arrays.asList("a", "bb", "bb", "ccc", "ccc", "ccc", "dddd", "dddd", "dddd");
 
-		System.out.println("givenList converted to List : " + Arrays.toString(collectToListWithoutMapOrFilter(givenList).toArray())); // [a, bb, ccc, dd]
+		System.out.println("List converted to Array : " + Arrays.toString(collectToListWithoutMapOrFilter(givenList).toArray())); // [a, bb, ccc, dd]
 
+		System.out.println("List converted to Set : " + Arrays.toString(collectToSetWithoutMapOrFilter(givenList).toArray())); // [bb, dd, a, ccc]
 
-		System.out.println("givenList converted to Set : " + Arrays.toString(collectToSetWithoutMapOrFilter(givenList).toArray())); // [bb, dd, a, ccc]
+		System.out.println("List converted to LinkedList : " + Arrays.toString(collectToLinkedListWithoutMapOrFilter(givenList).toArray())); // [a, bb, ccc, dd]
 
+		System.out.println("List converted to ArrayList : " + Arrays.toString(collectToArrayListWithoutMapOrFilter(givenList).toArray())); // [a, bb, ccc, dd]
 
-		System.out.println("givenList converted to LinkedList : " + Arrays.toString(collectToLinkedListWithoutMapOrFilter(givenList).toArray())); // [a, bb, ccc, dd]
+		System.out.println("List converted to Map : " + collectToMap_HandleKeyCollisions(givenList));        // {dd=2, bb=2, a=1, ccc=3}
+		System.out.println("List converted to Map - result class : " + collectToMap_HandleKeyCollisions(givenList).getClass()); // class java.util.HashMap
 
+		System.out.println("List converted to ConcurrentHashMap : " + collectToMap_ConcurrentHashMap(givenList));        // {bb=2, dd=2, a=1, ccc=3}
+		System.out.println("List converted to ConcurrentHashMap - result class : " + collectToMap_ConcurrentHashMap(givenList).getClass()); // class java.util.concurrent.ConcurrentHashMap
 
-		System.out.println("givenList converted to ArrayList : " + Arrays.toString(collectToArrayListWithoutMapOrFilter(givenList).toArray())); // [a, bb, ccc, dd]
-
-
-		System.out.println("givenList converted to Map : " + collectToMap_HandleKeyCollisions(givenList));        // {dd=2, bb=2, a=1, ccc=3}
-		System.out.println("givenList converted to Map - result class : " + collectToMap_HandleKeyCollisions(givenList).getClass()); // class java.util.HashMap
-
-
-		System.out.println("givenList converted to ConcurrentHashMap : " + collectToMap_ConcurrentHashMap(givenList));        // {bb=2, dd=2, a=1, ccc=3}
-		System.out.println("givenList converted to ConcurrentHashMap - result class : " + collectToMap_ConcurrentHashMap(givenList).getClass()); // class java.util.concurrent.ConcurrentHashMap
-
-
-		System.out.println("givenList converted to SortedMap : " + collectToMap_sortedMap(givenList));        // {a=1, bb=2, ccc=3, dd=2}
-		System.out.println("givenList converted to SortedMap - result class : " + collectToMap_sortedMap(givenList).getClass()); // class java.util.TreeMap
-
+		System.out.println("List converted to SortedMap : " + collectToMap_sortedMap(givenList));        // {a=1, bb=2, ccc=3, dd=2}
+		System.out.println("List converted to SortedMap - result class : " + collectToMap_sortedMap(givenList).getClass()); // class java.util.TreeMap
 
 		System.out.println("result of joining : " + collectAndJoin(givenList)); // abbcccdd
 
-
 		System.out.println("result of joining with custom separators : " + collectAndJoinUsingCustomSeparators(givenList)); // a bb ccc dd
 
+		System.out.println("result of joining with custom separators with count inserted : " + collectAndJoinUsingCustomSeparatorsAndInsertCount(givenList)); // a bb ccc dd
 
 		System.out.println("result of joining with pre and post : " + collectAndJoinWithPreAndPost(givenList)); // PRE-a bb ccc dd-POST
 
-
 		System.out.println("result of collect and count : " + collectAndCount(givenList)); // 4
-
 
 		System.out.println("result of collect and average double : " + collectAndAveragingDouble(givenList)); // 2.0
 
-
 		System.out.println("result of collect and summing double : " + collectAndSummingDouble(givenList)); // 8.0
-
 
 		Optional<String> maxBy = collectAndMaxBy(givenList);
 		if (maxBy.isPresent()) {
 			System.out.println("result of collect and max by : " + maxBy.toString()); // Optional[dd]
 		}
 
-
 		Optional<String> minBy = collectAndMinBy(givenList);
 		if (minBy.isPresent()) {
 			System.out.println("result of collect and max by : " + minBy.toString()); // Optional[a]
 		}
-
-
 	}
 	
 	/**
@@ -110,7 +97,6 @@ public class CollectExamples {
 	 * ToSet collector can be used for collecting all Stream elements into a Set instance. 
 	 * The important thing to remember is the fact that we can't assume any particular Set implementation with this method. 
 	 * If we want to have more control over this, we can use toCollection instead.
-	 * 
 	 */
 	public static Set collectToSetWithoutMapOrFilter(List<String> givenList)
 	{
@@ -151,10 +137,8 @@ public class CollectExamples {
 	/**
 	 * ToMap collector can be used to collect Stream elements into a Map instance. To do this, we need to provide two functions:
 	 * 
-	 * 1. keyMapper
-	 * 2. valueMapper
-	 * 
-	 * keyMapper will be used for extracting a Map key from a Stream element, and valueMapper will be used for extracting a value associated with a given key.
+	 * 1. keyMapper - keyMapper will be used for extracting a Map key from a Stream element
+	 * 2. valueMapper - valueMapper will be used for extracting a value associated with a given key
 	 * 
 	 * Let's collect those elements into a Map that stores strings as keys and their lengths as values.
 	 * 
@@ -181,10 +165,9 @@ public class CollectExamples {
 		Map<String, Integer> result = givenList.stream()
 				  .collect(Collectors.toMap(Function.identity(), String::length, (item, identicalItem) -> item));
 		
-		// TODO write a custom implementation for this instead of using just picking the first element that matches the criteria.
+		// We can write a custom implementation for this instead of using just picking the first element that matches the criteria.
 		
 		return result;
-		
 	}
 	
 	/**
@@ -248,15 +231,28 @@ public class CollectExamples {
 	public static String collectAndJoinUsingCustomSeparators(List<String> givenList)
 	{
 		String result = givenList.stream()
-				  .collect(Collectors.joining(" "));
+				  .collect(Collectors.joining(", "));
 		
+		return result;
+	}
+
+	public static String collectAndJoinUsingCustomSeparatorsAndInsertCount(List<String> givenList)
+	{
+		ArrayList<String> inputList = new ArrayList<>(givenList);
+
+		for (int i=0;i<inputList.size();i++){
+			inputList.set(i, i + 1 + ". " + inputList.get(i));
+		}
+		String result = inputList.stream()
+				.collect(Collectors.joining(", ", "This list has the following elements - ", ""));
+
 		return result;
 	}
 	
 	public static String collectAndJoinWithPreAndPost(List<String> givenList)
 	{
 		String result = givenList.stream()
-				  .collect(Collectors.joining(" ", "PRE-", "-POST"));
+				  .collect(Collectors.joining(", ", "PRE-", "-POST"));
 		
 		return result;
 	}
