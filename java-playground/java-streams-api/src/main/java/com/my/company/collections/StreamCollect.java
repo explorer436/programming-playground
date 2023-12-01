@@ -25,7 +25,7 @@ public class StreamCollect {
 	 * 2. Usually, this is not a problem because the Lists can have duplicates.
 	 * 3. There may be scenarios in which we have to return Maps in which values are single elements instead of Lists.
 	 * 4. In scenarios like that, we have to handle duplicates.
-	 * 5. Look at xxxx
+	 * 5. Look at groupPeopleById_excludeDuplicates
 	 */
 	public static double getAverageAgeOfMen_Collect(List<Person> people)
 	{
