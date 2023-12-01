@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 public class IteratingAHashMap {
   public static void main(String[] args) {
@@ -13,23 +14,37 @@ public class IteratingAHashMap {
     sampleMap.put("Sandra Dee", "521-9655");
 
     /**
-     * Iterate through a HashMap EntrySet using Iterators. entrySet() is used to return a set view
-     * of mapped elements. Use set.getValue() to get value from the set. Use set.getKey() to get key
-     * from the set.
+     * Iterate through a HashMap using EntrySet.
+     * entrySet() is used to return a set view of mapped elements.
+     * Use set.getKey() to get key from the set.
+     * Use set.getValue() to get value from the set.
      */
+    System.out.println("");
+    System.out.println("Running a for loop on the EntrySet");
     for (Map.Entry<String, String> set : sampleMap.entrySet()) {
       System.out.println(set.getKey() + " = " + set.getValue());
     }
 
-    // Using for-each loop on the entrySet
-    for (Map.Entry<String, String> set : sampleMap.entrySet()) {
-      System.out.println(set.getKey() + " = " + set.getValue());
+    /**
+     * Iterate through a HashMap using KeySet.
+     * keySet() returns a set of keys.
+     * Use each of the keys in  the set to get values from the map.
+     */
+    System.out.println("");
+    System.out.println("using KeySet");
+    Set<String> abc = sampleMap.keySet();
+    for (String key : sampleMap.keySet()) {
+      System.out.println(key + " = " + sampleMap.get(key));
     }
 
     // using a lambda expression
+    System.out.println("");
+    System.out.println("using a lambda expression");
     sampleMap.forEach((key, value) -> System.out.println(key + " = " + value));
 
-    // Iterate through HashMap EntrySet using Iterator.
+    // Using Iterator on the map's entrySet()
+    System.out.println("");
+    System.out.println("using Iterator on EntrySet");
     Iterator<Entry<String, String>> entrySet_Iterator = sampleMap.entrySet().iterator();
     while (entrySet_Iterator.hasNext()) {
       Map.Entry<String, String> new_Map = (Map.Entry<String, String>) entrySet_Iterator.next();
@@ -37,6 +52,8 @@ public class IteratingAHashMap {
     }
 
     // Using Stream API on the map's entrySet()
+    System.out.println("");
+    System.out.println("Using Stream API on the map's entrySet()");
     sampleMap.entrySet().stream()
         .forEach(input -> System.out.println(input.getKey() + " : " + input.getValue()));
   }
