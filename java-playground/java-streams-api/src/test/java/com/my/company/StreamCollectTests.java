@@ -16,11 +16,173 @@ public class StreamCollectTests {
     private StreamCollect streamCollect = new StreamCollect();
 
     @Test
+    public void test_groupPeopleById_excludeDuplicates() throws JsonProcessingException {
+        List<Person> people = TestsHelper.getPeople();
+
+        Map<Integer, Person> actual = streamCollect.groupPeopleById_excludeDuplicates(people);
+
+        assertEquals(actual.size(), 8);
+
+        assertEquals("""
+                {
+                  "1" : {
+                    "id" : 1,
+                    "name" : "John",
+                    "age" : 15,
+                    "gender" : "male",
+                    "addressLine1" : "123 JohnJane Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "address" : {
+                      "addressLine1" : "123 JohnJane Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
+                  },
+                  "2" : {
+                    "id" : 2,
+                    "name" : "Rob",
+                    "age" : 25,
+                    "gender" : "male",
+                    "addressLine1" : "123 RobGayle Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "address" : {
+                      "addressLine1" : "123 RobGayle Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
+                  },
+                  "3" : {
+                    "id" : 3,
+                    "name" : "Clark",
+                    "age" : 35,
+                    "gender" : "male",
+                    "addressLine1" : "123 ClarkMary Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "address" : {
+                      "addressLine1" : "123 ClarkMary Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
+                  },
+                  "4" : {
+                    "id" : 4,
+                    "name" : "Trevor",
+                    "age" : 45,
+                    "gender" : "male",
+                    "addressLine1" : "123 TrevorSophie Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "address" : {
+                      "addressLine1" : "123 TrevorSophie Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
+                  },
+                  "5" : {
+                    "id" : 5,
+                    "name" : "Jane",
+                    "age" : 15,
+                    "gender" : "female",
+                    "addressLine1" : "123 JohnJane Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "address" : {
+                      "addressLine1" : "123 JohnJane Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
+                  },
+                  "6" : {
+                    "id" : 6,
+                    "name" : "Gayle",
+                    "age" : 25,
+                    "gender" : "female",
+                    "addressLine1" : "123 RobGayle Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "address" : {
+                      "addressLine1" : "123 RobGayle Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
+                  },
+                  "7" : {
+                    "id" : 7,
+                    "name" : "Mary",
+                    "age" : 35,
+                    "gender" : "female",
+                    "addressLine1" : "123 ClarkMary Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "address" : {
+                      "addressLine1" : "123 ClarkMary Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
+                  },
+                  "8" : {
+                    "id" : 8,
+                    "name" : "Sophie",
+                    "age" : 45,
+                    "gender" : "female",
+                    "addressLine1" : "123 TrevorSophie Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "address" : {
+                      "addressLine1" : "123 TrevorSophie Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
+                  }
+                }""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
+    }
+
+    @Test
     public void test_groupPeopleByGender() throws JsonProcessingException {
 
         List<Person> people = TestsHelper.getPeople();
 
-        Map<String, List<Person>> actual = streamCollect.groupPeopleByGender(people);
+        Map<String, List<Person>> actual = streamCollect.groupPeopleByGender_IncludeDuplicates(people);
+
+        assertEquals(actual.size(), 2);
+
+        assertEquals(actual.get("male").size(), 4);
+        assertEquals(actual.get("female").size(), 5);
 
         assertEquals("""
                {
@@ -70,6 +232,23 @@ public class StreamCollectTests {
                    "zip" : "03820",
                    "address" : {
                      "addressLine1" : "123 ClarkMary Ln",
+                     "addressLine2" : null,
+                     "city" : "Dover",
+                     "state" : "NH",
+                     "zip" : "03820"
+                   }
+                 }, {
+                   "id" : 8,
+                   "name" : "Sophie",
+                   "age" : 45,
+                   "gender" : "female",
+                   "addressLine1" : "123 TrevorSophie Ln",
+                   "addressLine2" : null,
+                   "city" : "Dover",
+                   "state" : "NH",
+                   "zip" : "03820",
+                   "address" : {
+                     "addressLine1" : "123 TrevorSophie Ln",
                      "addressLine2" : null,
                      "city" : "Dover",
                      "state" : "NH",
@@ -313,6 +492,23 @@ public class StreamCollectTests {
                       "state" : "NH",
                       "zip" : "03820"
                     }
+                  }, {
+                    "id" : 8,
+                    "name" : "Sophie",
+                    "age" : 45,
+                    "gender" : "female",
+                    "addressLine1" : "123 TrevorSophie Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "address" : {
+                      "addressLine1" : "123 TrevorSophie Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
                   } ]
                 }""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
     }
@@ -325,7 +521,7 @@ public class StreamCollectTests {
 
         assertEquals("""
                 {
-                  "female" : 30.0,
+                  "female" : 33.0,
                   "male" : 30.0
                 }""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
     }
@@ -366,7 +562,7 @@ public class StreamCollectTests {
 
         assertEquals("""
                 {
-                  "female" : [ "Jane", "Gayle", "Mary", "Sophie" ],
+                  "female" : [ "Jane", "Gayle", "Mary", "Sophie", "Sophie" ],
                   "male" : [ "John", "Rob", "Clark", "Trevor" ]
                 }""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
     }
@@ -379,7 +575,7 @@ public class StreamCollectTests {
 
         assertEquals("""
                 {
-                  "female" : 120,
+                  "female" : 165,
                   "male" : 120
                 }""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
     }

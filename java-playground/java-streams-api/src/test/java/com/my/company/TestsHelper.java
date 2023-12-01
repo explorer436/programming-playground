@@ -17,6 +17,7 @@ public class TestsHelper {
         people.add(Person.builder().id(6).name("Gayle").age(25).gender("female").addressLine1("123 RobGayle Ln").city("Dover").state("NH").zip("03820").build());
         people.add(Person.builder().id(7).name("Mary").age(35).gender("female").addressLine1("123 ClarkMary Ln").city("Dover").state("NH").zip("03820").build());
         people.add(Person.builder().id(8).name("Sophie").age(45).gender("female").addressLine1("123 TrevorSophie Ln").city("Dover").state("NH").zip("03820").build());
+        people.add(Person.builder().id(8).name("Sophie").age(45).gender("female").addressLine1("123 TrevorSophie Ln").city("Dover").state("NH").zip("03820").build());
         return people;
     }
 

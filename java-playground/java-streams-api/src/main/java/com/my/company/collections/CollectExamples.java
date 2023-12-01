@@ -67,6 +67,7 @@ public class CollectExamples {
 		list.add(new ImmutablePair<>("4", "person with rank 4"));
 		list.add(new ImmutablePair<>("5", "person with rank 5"));
 		list.add(new ImmutablePair<>("5", "another person with rank 5"));
+
 		System.out.println("Do all pairs in list meet the criteria : " + isAllMatch(list));
 
 	}

@@ -3,6 +3,7 @@ package com.my.company.collections;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.function.IntConsumer;
 import java.util.stream.Collectors;
 
@@ -18,7 +19,13 @@ public class StreamCollect {
 	 * You require two pieces of data: the total number of values and the sum of those values. 
 	 * However, like the reduce method and all other reduction methods, the collect method returns only one value. 
 	 * You can create a new data type that contains member variables that keep track of the total number of values and the sum of those values, such as the class, Averager:
-	 * @return 
+	 *
+	 * Duplicate entries in the input list:
+	 * 1. By default, when the methods return List<T>, the duplicates are included in the list.
+	 * 2. Usually, this is not a problem because the Lists can have duplicates.
+	 * 3. There may be scenarios in which we have to return Maps in which values are single elements instead of Lists.
+	 * 4. In scenarios like that, we have to handle duplicates.
+	 * 5. Look at xxxx
 	 */
 	public static double getAverageAgeOfMen_Collect(List<Person> people)
 	{
@@ -147,7 +154,7 @@ public class StreamCollect {
 	/**
 	 * The following example groups members of the collection people by gender.
 	 */
-	public Map<String, List<Person>> groupPeopleByGender(List<Person> people)
+	public Map<String, List<Person>> groupPeopleByGender_IncludeDuplicates(List<Person> people)
 	{
 		
 		/**
@@ -163,6 +170,23 @@ public class StreamCollect {
 			            Collectors.groupingBy(Person::getGender));
 		
 		return byGender;
+	}
+
+	public Map<Integer, Person> groupPeopleById_excludeDuplicates(List<Person> people)
+	{
+
+		/**
+		 * In this example, the returned map contains two keys, Person.Sex.MALE and Person.Sex.FEMALE.
+		 * The keys' corresponding values are instances of List that contain the stream elements that, when processed by the classification function, correspond to the key value.
+		 * For example, the value that corresponds to key Person.Sex.MALE is an instance of List that contains all male members.
+		 */
+
+		Map<Integer, Person> byId =
+				people
+						.stream()
+						.collect(Collectors.toMap(Person::getId, Function.identity(), (first, second) -> first));
+
+		return byId;
 	}
 
 	public Map<Person.Address, List<Person>> groupPeopleByAddress(List<Person> people)
