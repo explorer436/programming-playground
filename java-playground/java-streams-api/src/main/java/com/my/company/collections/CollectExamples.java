@@ -1,22 +1,11 @@
 package com.my.company.collections;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.DoubleSummaryStatistics;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.TreeMap;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
-import com.my.company.utility.PrintUtils;
-import org.apache.commons.lang3.SerializationUtils;
-import org.apache.commons.lang3.tuple.ImmutablePair;
 
 public class CollectExamples {
 
@@ -57,12 +46,12 @@ public class CollectExamples {
 
 		Optional<String> maxBy = collectAndMaxBy(givenList);
 		if (maxBy.isPresent()) {
-			System.out.println("result of collect and max by : " + maxBy.toString()); // Optional[dd]
+			System.out.println("result of collect and max by : " + maxBy); // Optional[dd]
 		}
 
 		Optional<String> minBy = collectAndMinBy(givenList);
 		if (minBy.isPresent()) {
-			System.out.println("result of collect and max by : " + minBy.toString()); // Optional[a]
+			System.out.println("result of collect and max by : " + minBy); // Optional[a]
 		}
 
 		/**
@@ -109,7 +98,7 @@ public class CollectExamples {
 	 * If you want to have more control over this, use toCollection instead.
 	 * 
 	 */
-	public static List collectToListWithoutMapOrFilter(List<String> givenList)
+	public static List<String> collectToListWithoutMapOrFilter(List<String> givenList)
 	{
 		List<String> result = givenList.stream().collect(Collectors.toList());
 		
