@@ -81,19 +81,23 @@ public class FullyParenthesizedArithmeticExpressionEvaluation {
     }
 
     /*
-    result = evaluateExpression("( 1 + ( 12 + 3 ) )");
-    if (result != 16)
-    {
-    	throw new Exception("wrong answer - expected " + 16 + " but received " + result);
-    }
-    */
+     * result = evaluateExpression("( 1 + ( 12 + 3 ) )");
+     * if (result != 16)
+     * {
+     * throw new Exception("wrong answer - expected " + 16 + " but received " +
+     * result);
+     * }
+     */
 
     // This is not going to work for partially paranthesized expressions
-    /*result = evaluateExpression("5 * ( 6 + 2 ) - 12 / 4");
-    if (result != 37)
-    {
-    	throw new Exception("wrong answer - expected " + 37 + " but received " + result);
-    }*/
+    /*
+     * result = evaluateExpression("5 * ( 6 + 2 ) - 12 / 4");
+     * if (result != 37)
+     * {
+     * throw new Exception("wrong answer - expected " + 37 + " but received " +
+     * result);
+     * }
+     */
 
     System.out.println("done");
   }
@@ -134,7 +138,8 @@ public class FullyParenthesizedArithmeticExpressionEvaluation {
 
         values.push(result);
       } else {
-        // REMEMBER : converting char to Integer. Integer.parseInt() is not going to work.
+        // REMEMBER : converting char to Integer. Integer.parseInt() is not going to
+        // work.
         values.push(Character.getNumericValue(ch));
       }
     }

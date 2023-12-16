@@ -14,10 +14,9 @@ public class IteratingAHashMap {
     sampleMap.put("Sandra Dee", "521-9655");
 
     /**
-     * Iterate through a HashMap using EntrySet.
-     * entrySet() is used to return a set view of mapped elements.
-     * Use set.getKey() to get key from the set.
-     * Use set.getValue() to get value from the set.
+     * Iterate through a HashMap using EntrySet. entrySet() is used to return a set view of mapped
+     * elements. Use set.getKey() to get key from the set. Use set.getValue() to get value from the
+     * set.
      */
     System.out.println("");
     System.out.println("Running a for loop on the EntrySet");
@@ -26,9 +25,8 @@ public class IteratingAHashMap {
     }
 
     /**
-     * Iterate through a HashMap using KeySet.
-     * keySet() returns a set of keys.
-     * Use each of the keys in  the set to get values from the map.
+     * Iterate through a HashMap using KeySet. keySet() returns a set of keys. Use each of the keys
+     * in the set to get values from the map.
      */
     System.out.println("");
     System.out.println("using KeySet");

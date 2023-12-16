@@ -376,8 +376,10 @@ public class MyServletRequestUtils {
             wrapperForClonedReq.addHeader(h, req.getHeader(h));
         }
 
-        for (Cookie c : req.getCookies()) {
-            wrapperForClonedReq.addCookie(c);
+        if (null != req.getCookies()) {
+            for (Cookie c : req.getCookies()) {
+                wrapperForClonedReq.addCookie(c);
+            }
         }
 
         return wrapperForClonedReq;

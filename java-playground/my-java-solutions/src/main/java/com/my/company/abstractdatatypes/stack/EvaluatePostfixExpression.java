@@ -60,7 +60,9 @@ public class EvaluatePostfixExpression {
         int b = (int) stack.pop();
         int a = (int) stack.pop();
 
-        stack.push(ExpressionEvaluation.applyOp(currentOperator, b, a));
+        stack.push(
+            com.my.company.datastructures.stack.ExpressionEvaluation.applyOp(
+                currentOperator, b, a));
       }
     }
 
