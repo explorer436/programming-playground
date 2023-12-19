@@ -27,7 +27,7 @@ public class StreamCollect {
 	 * 4. In scenarios like that, we have to handle duplicates.
 	 * 5. Look at groupPeopleById_excludeDuplicates
 	 */
-	public static double getAverageAgeOfMen_Collect(List<Person> people)
+	public static double getAverageAgeOfMen_Collect_CustomAverager(List<Person> people)
 	{
 		/**
 		 * The collect operation in this example takes three arguments:
@@ -88,6 +88,21 @@ public class StreamCollect {
 			
 		return averageCollect.average();
 	}
+
+	/**
+	 *  The following example retrieves the average age of members of each gender.
+	 */
+	public static Map<String, Double> getAverageAgeByGender_Collect_AveratingInt(List<Person> people)
+	{
+		Map<String, Double> averageAgeByGender = people
+				.stream()
+				.collect(
+						Collectors.groupingBy(
+								Person::getGender,
+								Collectors.averagingInt(Person::getAge)));
+
+		return averageAgeByGender;
+	}
 	
 	/**
 	 * The collect operation is best suited for collections. The following example puts the names of the male members in a collection with the collect operation.
@@ -97,7 +112,7 @@ public class StreamCollect {
                BiConsumer<R, R> combiner);
 	 * 
 	 */
-	public static List<String> getNamesOfMen_Collect_UsingArrayList(List<Person> people)
+	public static List<String> getNamesOfMen_Collect_Field_To_ArrayList(List<Person> people)
 	{
 		/**
 		 * Here, 
@@ -123,7 +138,7 @@ public class StreamCollect {
 	 *  The above example (getNamesOfMen_Collect_UsingArrayList) for collecting strings into a List can be rewritten using a standard Collector as shown here.
 	 * 
 	 */
-	public static List<String> getNamesOfMen_Collect_UsingStandardCollector(List<Person> people)
+	public static List<String> getNamesOfMen_Collect_Field_To_List_Using_StandardCollector(List<Person> people)
 	{
 		/**
 		 * This version of the collect operation takes one parameter of type Collector. 
@@ -154,7 +169,7 @@ public class StreamCollect {
 	/**
 	 * The following example groups members of the collection people by gender.
 	 */
-	public Map<String, List<Person>> groupPeopleByGender_IncludeDuplicates(List<Person> people)
+	public Map<String, List<Person>> groupPeopleByGender_Collect_ListToMap_IncludeDuplicates(List<Person> people)
 	{
 		
 		/**
@@ -172,7 +187,7 @@ public class StreamCollect {
 		return byGender;
 	}
 
-	public Map<Integer, Person> groupPeopleById_excludeDuplicates(List<Person> people)
+	public Map<Integer, Person> groupPeopleById_Collect_ListToMap_excludeDuplicates(List<Person> people)
 	{
 
 		/**
@@ -189,7 +204,7 @@ public class StreamCollect {
 		return byId;
 	}
 
-	public Map<Person.Address, List<Person>> groupPeopleByAddress(List<Person> people)
+	public Map<Person.Address, List<Person>> groupPeopleByAddress_Collect_ListToMap_GroupByMultipleFields(List<Person> people)
 	{
 		Map<Person.Address, List<Person>> byAddress = people
 				.stream()
@@ -202,7 +217,7 @@ public class StreamCollect {
 	/**
 	 * The following example retrieves the names of each member in the collection people and groups them by gender.
 	 */
-	public static Map<String, List<String>> groupPersonNamesByGender(List<Person> people)
+	public static Map<String, List<String>> groupPersonNamesByGender_Collect_ListToMap_GroupByAField_CollectAnotherField(List<Person> people)
 	{
 		
 		/**
@@ -228,7 +243,7 @@ public class StreamCollect {
 	/**
 	 * The following example retrieves the total age of members of each gender.
 	 */
-	public static Map<String, Integer> groupTotalAgeByGender(List<Person> people)
+	public static Map<String, Integer> groupTotalAgeByGender_Collect_ListToMap_Reducing(List<Person> people)
 	{
 		/**
 		 * The reducing operation takes three parameters:
@@ -261,21 +276,6 @@ public class StreamCollect {
 			                    Integer::sum)));
 		
 		return totalAgeByGender;
-	}
-	
-	/**
-	 *  The following example retrieves the average age of members of each gender.
-	 */
-	public static Map<String, Double> getAverageAgeByGender(List<Person> people)
-	{
-		Map<String, Double> averageAgeByGender = people
-			    .stream()
-			    .collect(
-			        Collectors.groupingBy(
-			            Person::getGender,                      
-			            Collectors.averagingInt(Person::getAge)));
-		
-		return averageAgeByGender;
 	}
 	
 	private static class Averager implements IntConsumer

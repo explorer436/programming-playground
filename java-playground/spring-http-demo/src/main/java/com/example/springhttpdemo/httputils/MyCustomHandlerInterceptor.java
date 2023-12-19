@@ -3,9 +3,11 @@ package com.example.springhttpdemo.httputils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+@Component
 @Slf4j
 public class MyCustomHandlerInterceptor implements HandlerInterceptor {
     @Override

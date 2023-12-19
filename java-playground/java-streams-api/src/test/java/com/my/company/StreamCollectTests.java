@@ -19,7 +19,7 @@ public class StreamCollectTests {
     public void test_groupPeopleById_excludeDuplicates() throws JsonProcessingException {
         List<Person> people = TestsHelper.getPeople();
 
-        Map<Integer, Person> actual = streamCollect.groupPeopleById_excludeDuplicates(people);
+        Map<Integer, Person> actual = streamCollect.groupPeopleById_Collect_ListToMap_excludeDuplicates(people);
 
         assertEquals(actual.size(), 8);
 
@@ -177,7 +177,7 @@ public class StreamCollectTests {
 
         List<Person> people = TestsHelper.getPeople();
 
-        Map<String, List<Person>> actual = streamCollect.groupPeopleByGender_IncludeDuplicates(people);
+        Map<String, List<Person>> actual = streamCollect.groupPeopleByGender_Collect_ListToMap_IncludeDuplicates(people);
 
         assertEquals(actual.size(), 2);
 
@@ -349,7 +349,7 @@ public class StreamCollectTests {
     public void test_groupPeopleByAddress() throws JsonProcessingException {
         List<Person> people = TestsHelper.getPeople();
 
-        Map<Person.Address, List<Person>> actual = streamCollect.groupPeopleByAddress(people);
+        Map<Person.Address, List<Person>> actual = streamCollect.groupPeopleByAddress_Collect_ListToMap_GroupByMultipleFields(people);
 
         assertEquals("""
                 {
@@ -517,7 +517,7 @@ public class StreamCollectTests {
     public void test_getAverageAgeByGender() throws JsonProcessingException {
         List<Person> people = TestsHelper.getPeople();
 
-        Map<String, Double> actual = streamCollect.getAverageAgeByGender(people);
+        Map<String, Double> actual = streamCollect.getAverageAgeByGender_Collect_AveratingInt(people);
 
         assertEquals("""
                 {
@@ -530,7 +530,7 @@ public class StreamCollectTests {
     public void test_getAverageAgeOfMen_Collect() {
         List<Person> people = TestsHelper.getPeople();
 
-        double actual = streamCollect.getAverageAgeOfMen_Collect(people);
+        double actual = streamCollect.getAverageAgeOfMen_Collect_CustomAverager(people);
 
         assertEquals(30.0, actual);
     }
@@ -539,7 +539,7 @@ public class StreamCollectTests {
     public void test_getNamesOfMen_Collect_UsingStandardCollector() throws JsonProcessingException {
         List<Person> people = TestsHelper.getPeople();
 
-        List<String> actual = streamCollect.getNamesOfMen_Collect_UsingStandardCollector(people);
+        List<String> actual = streamCollect.getNamesOfMen_Collect_Field_To_List_Using_StandardCollector(people);
 
         assertEquals("[ \"John\", \"Rob\", \"Clark\", \"Trevor\" ]", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
     }
@@ -548,7 +548,7 @@ public class StreamCollectTests {
     public void test_getNamesOfMen_Collect_UsingArrayList() throws JsonProcessingException {
         List<Person> people = TestsHelper.getPeople();
 
-        List<String> actual = streamCollect.getNamesOfMen_Collect_UsingArrayList(people);
+        List<String> actual = streamCollect.getNamesOfMen_Collect_Field_To_ArrayList(people);
 
         assertEquals("""
                 [ \"John\", \"Rob\", \"Clark\", \"Trevor\" ]""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
@@ -558,7 +558,7 @@ public class StreamCollectTests {
     public void test_groupPersonNamesByGender() throws JsonProcessingException {
         List<Person> people = TestsHelper.getPeople();
 
-        Map<String, List<String>> actual = streamCollect.groupPersonNamesByGender(people);
+        Map<String, List<String>> actual = streamCollect.groupPersonNamesByGender_Collect_ListToMap_GroupByAField_CollectAnotherField(people);
 
         assertEquals("""
                 {
@@ -571,7 +571,7 @@ public class StreamCollectTests {
     public void test_groupTotalAgeByGender() throws JsonProcessingException {
         List<Person> people = TestsHelper.getPeople();
 
-        Map<String, Integer> actual = streamCollect.groupTotalAgeByGender(people);
+        Map<String, Integer> actual = streamCollect.groupTotalAgeByGender_Collect_ListToMap_Reducing(people);
 
         assertEquals("""
                 {

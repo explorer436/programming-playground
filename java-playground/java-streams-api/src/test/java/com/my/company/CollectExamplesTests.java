@@ -18,14 +18,14 @@ public class CollectExamplesTests {
 
     @Test
     public void test_mapAndFilterAndCollectToList() throws JsonProcessingException {
-        List<Integer> actual = collectExamples.mapAndFilterAndCollectToList(numbers);
+        List<Integer> actual = collectExamples.map_Filter_Collect_ToList(numbers);
 
         assertEquals("[ 2, 4, 6 ]", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
     }
 
     @Test
     public void test_storeStringLengthGroupingResulsInASet() throws JsonProcessingException {
-        Map<Integer, Set<String>> actual = collectExamples.storeStringLengthGroupingResulsInASet(strings);
+        Map<Integer, Set<String>> actual = collectExamples.collect_groupingByStringLength(strings);
 
         assertEquals("""
                 {
@@ -37,7 +37,7 @@ public class CollectExamplesTests {
 
     @Test
     public void test_partitionByStringLength() throws JsonProcessingException {
-        Map<Boolean, List<String>> actual = collectExamples.partitionByStringLength(strings);
+        Map<Boolean, List<String>> actual = collectExamples.collect_partitioningByStringLength(strings);
 
         assertEquals("""
                 {
@@ -48,7 +48,7 @@ public class CollectExamplesTests {
 
     @Test
     public void test_collectAndSummarize() throws JsonProcessingException {
-        DoubleSummaryStatistics actual = collectExamples.collectAndSummarize(strings);
+        DoubleSummaryStatistics actual = collectExamples.collect_SummarizingDouble(strings);
 
         assertEquals("""
                 {
