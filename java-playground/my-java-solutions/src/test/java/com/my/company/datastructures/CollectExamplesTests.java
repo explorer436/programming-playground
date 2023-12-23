@@ -1,8 +1,8 @@
-package com.my.company;
+package com.my.company.datastructures;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.my.company.collections.CollectExamples;
+import com.my.company.datastructures.streamsapi.CollectExamples;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;

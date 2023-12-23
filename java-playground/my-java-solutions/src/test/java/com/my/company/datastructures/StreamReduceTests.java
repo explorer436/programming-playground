@@ -1,6 +1,6 @@
-package com.my.company;
+package com.my.company.datastructures;
 
-import com.my.company.collections.StreamReduce;
+import com.my.company.datastructures.streamsapi.StreamReduce;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

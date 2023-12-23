@@ -1,8 +1,8 @@
 package com.my.company.hackerrank;
 
-import java.util.Arrays;
+import com.my.company.datastructures.streamsapi.StreamReduce;
 
-import com.my.company.collections.StreamReduce;
+import java.util.Arrays;
 
 /**
  * Given an array of integers, find the sum of its elements.
