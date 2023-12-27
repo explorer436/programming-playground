@@ -7,10 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("products")
+@RequestMapping("products/all")
 @RequiredArgsConstructor
 public class ProductController {
 
@@ -20,14 +18,4 @@ public class ProductController {
     public Iterable<Product> findAll() {
         return productSearchServiceWithRepo.findAll();
     }
-
-    /*@PostMapping
-    public Book save(@RequestBody Book book) {
-        return bookService.save(book);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable(name = "id") String id) {
-        bookService.deleteById(id);
-    }*/
 }
