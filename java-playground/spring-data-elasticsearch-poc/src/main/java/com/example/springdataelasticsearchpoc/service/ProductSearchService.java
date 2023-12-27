@@ -34,11 +34,12 @@ public class ProductSearchService {
                 .map(product -> new IndexQueryBuilder().withId(product.getId().toString()).withObject(product).build())
                 .collect(Collectors.toList());
         ;
-        List<IndexedObjectInformation> abc = elasticsearchOperations.bulkIndex(queries, IndexCoordinates.of(PRODUCT_INDEX));
+        List<IndexedObjectInformation> indexedObjectInformationList = elasticsearchOperations.bulkIndex(queries, IndexCoordinates.of(PRODUCT_INDEX));
 
         List<String> result = new ArrayList<>();
-
-        // TODO
+        indexedObjectInformationList.forEach(i -> {
+            result.add(i.getId());
+        });
 
         return result;
     }
@@ -46,14 +47,17 @@ public class ProductSearchService {
     public String createProductIndex(Product product) {
 
         IndexQuery indexQuery = new IndexQueryBuilder().withId(product.getId().toString()).withObject(product).build();
+
         String documentId = elasticsearchOperations.index(indexQuery, IndexCoordinates.of(PRODUCT_INDEX));
 
         return documentId;
     }
 
     public void findProductsByBrand(final String brandName) {
+
         QueryBuilder queryBuilder = QueryBuilders
                 .matchQuery("manufacturer", brandName);
+
         // .fuzziness(0.8)
         // .boost(1.0f)
         // .prefixLength(0)
@@ -126,6 +130,7 @@ public class ProductSearchService {
 
 
     public List<String> fetchSuggestions(String query) {
+
         QueryBuilder queryBuilder = QueryBuilders
                 .wildcardQuery("name", query+"*");
 

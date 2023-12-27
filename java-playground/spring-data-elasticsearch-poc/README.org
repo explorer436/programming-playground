@@ -79,6 +79,10 @@ It will print out a full curl statement for the request along with full JSON the
 curl http://localhost:8080/products/all  -verbose | json_pp
 #+end_src
 
+* Access the UI
+
+With URL: http://localhost:8080/search
+
 * Reference
 
 https://reflectoring.io/spring-boot-elasticsearch/
