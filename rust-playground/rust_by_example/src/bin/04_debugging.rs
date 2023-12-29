@@ -10,17 +10,15 @@ struct UnPrintable(i32);
 #[derive(Debug)]
 struct DebugPrintable(i32);
 
-// Derive the `fmt::Debug` implementation for `Structure`. `Structure`
-// is a structure which contains a single `i32`.
+// Derive the `fmt::Debug` implementation for `Structure`. 
+// `Structure` is a structure which contains a single `i32`.
 #[derive(Debug)]
 struct Structure(i32);
 
-// Put a `Structure` inside of the structure `Deep`. Make it printable
-// also.
+// Put a `Structure` inside of the structure `Deep`. Make it printable also.
 #[derive(Debug)]
 struct Deep(Structure);
 
-#[allow(dead_code)]
 #[derive(Debug)]
 struct Person<'a> {
     name: &'a str,
@@ -30,6 +28,7 @@ struct Person<'a> {
 fn main() {
     // Printing with `{:?}` is similar to with `{}`.
     println!("{:?} months in a year.", 12);
+
     println!("{1:?} {0:?} is the {actor:?} name.",
              "Slater",
              "Christian",
@@ -46,6 +45,9 @@ fn main() {
     let age = 27;
     let peter = Person { name, age };
 
-    // Pretty print
+    // Pretty print json
     println!("{:#?}", peter);
+
+    println!("{:#?}", peter.name);
+    println!("{:#?}", peter.age);
 }

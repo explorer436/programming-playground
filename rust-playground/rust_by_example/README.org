@@ -12,5 +12,49 @@ So the question is: is it possible (and how) to define more than one main() in t
 
 Answer:
 
-1. Instead of ~src/main.rs~ you can have ~src/bin/tool1.rs~ and ~src/bin/tool2.rs~ etc. If you then have ~src/lib.rs~ then all those can access a single support crate for code, making things compile faster.
+Use this project structure for working through coding challenges:
+
+#+begin_src
+/src/bin/problem-101.rs
+/src/bin/problem-143.rs
+/src/lib.rs
+/Cargo.toml
+#+end_src
+
+Essentially, create a bin/ folder in src/, create separate source files for each problem in there, and off you go!
+
+1. Instead of ~src/main.rs~ you can have ~src/bin/tool1.rs~ and ~src/bin/tool2.rs~ etc.
+1. If you then have ~src/lib.rs~, then all those can access a single support crate for code, making things compile faster.
 1. structops is an alternative.
+
+This structure is easy to use and extend with small "scripts" because Rust source files in the /src/bin folder are automatically detected as binaries and do not need to be listed separately in Cargo.toml. You can run them directly:
+
+#+begin_src
+> cargo run --bin problem-101
+   Compiling challenges v0.1.0 (...\challenges)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.26s
+     Running `target\debug\problem-101.exe`
+solution #101
+> cargo run --bin problem-143
+   Compiling challenges v0.1.0 (...\challenges)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.32s
+     Running `target\debug\problem-143.exe`
+solution #143
+#+end_src
+
+Using a library as the root of the project allows you to share functions and logic between your problems very easily. Just import from the library like so:
+
+#+begin_src
+use challenges::add;
+#+end_src
+
+Reference: https://stackoverflow.com/questions/73738228/how-should-i-structure-a-rust-project-for-solving-small-coding-challenges
+
+* Running cargo commands
+
+https://doc.rust-lang.org/cargo/commands/build-commands.html
+
+#+begin_src
+cargo test
+cargo build
+#+end_src
