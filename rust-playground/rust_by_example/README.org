@@ -52,6 +52,7 @@ Reference: https://stackoverflow.com/questions/73738228/how-should-i-structure-a
 
 * Running cargo commands
 
+https://doc.rust-lang.org/cargo/commands/index.html
 https://doc.rust-lang.org/cargo/commands/build-commands.html
 
 #+begin_src
