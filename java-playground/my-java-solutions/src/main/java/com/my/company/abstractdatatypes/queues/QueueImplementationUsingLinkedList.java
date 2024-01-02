@@ -1,4 +1,4 @@
-package com.my.company.datastructures.queues;
+package com.my.company.abstractdatatypes.queues;
 
 /**
  * An implementation of Queue API based on the linked-list data structure is straightforward. It

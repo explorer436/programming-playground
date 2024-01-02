@@ -1,4 +1,4 @@
-package com.my.company.datastructures.queues;
+package com.my.company.abstractdatatypes.queues;
 
 public class ReadNumbersFromFileIntoQueue {
 

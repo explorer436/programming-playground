@@ -1,4 +1,4 @@
-package com.my.company.datastructures.bags;
+package com.my.company.abstractdatatypes.bags;
 
 public class StatisticsUsingBags {
 

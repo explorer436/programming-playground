@@ -1,7 +1,7 @@
 package com.my.company.strings;
 
-import com.my.company.datastructures.stack.StackImplementationUsingDoubleLinkedList;
-import com.my.company.datastructures.stack.StackImplementationUsingLinkedList;
+import com.my.company.abstractdatatypes.stack.StackImplementationUsingDoubleLinkedList;
+import com.my.company.abstractdatatypes.stack.StackImplementationUsingLinkedList;
 
 /**
  * A bracket is considered to be any one of the following characters: (, ), {, }, [, or ].

@@ -1,0 +1,9 @@
+* Catalog
+
+| Name of the challenge              | Java                                    | Haskell | Rust |
+|------------------------------------+-----------------------------------------+---------+------|
+| ArrayCyclicRotation                | ArrayCyclicRotation.java                |         |      |
+| OddNumberOfAnArray                 | OddNumberOfAnArray.java                 |         |      |
+| BagImplementationUsingLinkedList   | BagImplementationUsingLinkedList.java   |         |      |
+| QueueImplementationUsingLinkedList | QueueImplementationUsingLinkedList.java |         |      |
+| EvaluatePostfixExpression          | EvaluatePostfixExpression.java          |         |      |

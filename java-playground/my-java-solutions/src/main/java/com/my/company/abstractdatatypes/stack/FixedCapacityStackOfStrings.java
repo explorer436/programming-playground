@@ -1,4 +1,4 @@
-package com.my.company.datastructures.stack;
+package com.my.company.abstractdatatypes.stack;
 
 /**
  * Fixed-capacity stack.

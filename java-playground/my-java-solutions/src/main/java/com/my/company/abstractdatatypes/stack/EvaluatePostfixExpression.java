@@ -1,4 +1,4 @@
-package com.my.company.datastructures.stack;
+package com.my.company.abstractdatatypes.stack;
 
 import java.util.Stack;
 
@@ -61,7 +61,7 @@ public class EvaluatePostfixExpression {
         int a = (int) stack.pop();
 
         stack.push(
-            com.my.company.datastructures.stack.ExpressionEvaluation.applyOp(
+            ExpressionEvaluation.applyOp(
                 currentOperator, b, a));
       }
     }
