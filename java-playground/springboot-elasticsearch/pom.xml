@@ -9,7 +9,8 @@
   <url>http://maven.apache.org</url>
 
   <modules>
-    <module>spring-data-elasticsearch-poc</module>
+    <module>spring-data-elasticsearch-2.7.8-7.17.3</module>
+    <module>spring-data-elasticsearch-3.2.1-7.17.3</module>
     <module>elasticsearch-java-api-client</module>
   </modules>
 

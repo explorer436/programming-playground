@@ -15,7 +15,10 @@ import java.util.Properties;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-/** @author harshavardhane */
+/**
+ * Use case showing how to take a zip file and extract it's contents to a destination location.
+ * For an example showing how to accept some files and zip them, see S3StorageService.java
+ */
 public class Unzip {
 
   private static Properties propertiesConfig = new Properties();
@@ -39,26 +42,26 @@ public class Unzip {
     readZipFileNames(sourceFileServerLocation, destFolderName);
   }
 
-  private static void readZipFileNames(String folderLocation, String destination)
+  private static void readZipFileNames(String sourcefolderLocation, String destination)
       throws FileNotFoundException, IOException, NoSuchAlgorithmException {
-    File folder = new File(folderLocation);
-    File[] listOfFiles = folder.listFiles();
-    System.out.println("listOfFiles.length : " + listOfFiles.length);
-    for (int i = 0; i < listOfFiles.length; i++) {
+    File sourceFolder = new File(sourcefolderLocation);
+    File[] listOfZipFiles = sourceFolder.listFiles();
+    System.out.println("listOfZipFiles.length : " + listOfZipFiles.length);
+    for (int i = 0; i < listOfZipFiles.length; i++) {
       System.out.println("start of for loop for file " + i);
-      if (listOfFiles[i]
+      if (listOfZipFiles[i]
           .getName()
-          .substring(listOfFiles[i].getName().length() - 4, listOfFiles[i].getName().length())
+          .substring(listOfZipFiles[i].getName().length() - 4, listOfZipFiles[i].getName().length())
           .equals(".zip")) {
-        String inputZipName = folderLocation + "/" + listOfFiles[i].getName();
+        String inputZipFileName = sourcefolderLocation + "/" + listOfZipFiles[i].getName();
         // String outputFolderName =
-        // folderLocation+"/"+listOfFiles[i].getName().substring(0,
-        // listOfFiles[i].getName().length()-4);
+        // sourcefolderLocation+"/"+listOfZipFiles[i].getName().substring(0,
+        // listOfZipFiles[i].getName().length()-4);
         // String outputFolderName = destination;
 
-        System.out.println("inputZipName : " + inputZipName);
+        System.out.println("inputZipFileName : " + inputZipFileName);
         System.out.println("outputFolderName : " + destination);
-        unZipIt(inputZipName, destination);
+        unZipIt(inputZipFileName, destination);
       }
       System.out.println("end of for loop for file " + i);
     }

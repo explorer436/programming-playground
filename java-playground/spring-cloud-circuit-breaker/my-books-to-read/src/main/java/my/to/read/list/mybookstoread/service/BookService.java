@@ -19,7 +19,6 @@ public class BookService {
 
   private static final Logger LOG = LoggerFactory.getLogger(BookService.class);
 
-
   private final WebClient webClient;
   private final ReactiveCircuitBreaker readingListCircuitBreaker;
 

@@ -1,0 +1,13 @@
+* Shows how to use generated swagger-ui
+
+# Optional step to disable api docs
+# To disable api-docs
+# springdoc.api-docs.enabled=false
+# api-docs are avalable at this location: http://localhost:8080/v3/api-docs
+
+# Default url to launch swagger ui (without customization)
+# http://localhost:8080/swagger-ui/index.html#
+
+** Reading material
+
+1. https://github.com/springdoc/springdoc-openapi
