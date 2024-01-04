@@ -1,4 +1,14 @@
-* Shows how to use generated swagger-ui
+* A sample project to show how to use generated swagger-ui
+
+Other than adding the mvn dependency, there is nothing else to be done.
+
+#+begin_src
+<dependency>
+   <groupId>org.springdoc</groupId>
+   <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+   <version>last-release-version</version>
+</dependency>
+#+end_src
 
 # Optional step to disable api docs
 # To disable api-docs

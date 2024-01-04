@@ -1,77 +1,9 @@
-* Check the compatibility matrix before starting
-
-https://docs.spring.io/spring-data/elasticsearch/reference/elasticsearch/versions.html
-
-If we use the latest version of springboot (3.x.x), it may not be compatible with the version of elasticsearch that is available.
-
-* Configuration
+* Configuration for this application
 
 1. Spring Boot 2.7.8 + Elasticsearch 7.17.3
 1. Spring-Boot is running at localhost:8080
 1. Elasticsearch is running at localhost:9200, but receives direct communication from Spring via 9300
 1. Kibana is running at localhost:5601 (credentials are elastic/changeme). However, I wasn't able to launch Kibana console in a browser.
-
-* Start our Elasticsearch instance by running the Docker run command:
-
-#+begin_src
-docker-compose --file docker-compose.yml up -d
-docker-compose up -d
-#+end_src
-
-* Other ways to start elasticsearch in docker in local computer
-
-** To start elasticsearch version 7.10.0.
-#+begin_src
-docker run -p 9200:9200 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.10.0
-#+end_src
-However, the latest versions of the plugin for spring applications seem to have trouble working with older versions of elasticsearch. See error1.org
-
-Running this command will start an Elasticsearch instance listening on port 9200. We can verify the instance state by hitting the URL http://localhost:9200 and check the resulting output in our browser:
-
-#+begin_src
-{
-  "name" : "bb2fb59c20bb",
-  "cluster_name" : "docker-cluster",
-  "cluster_uuid" : "dqKAevNvTZCzEIenMYXISw",
-  "version" : {
-    "number" : "7.10.0",
-    "build_flavor" : "default",
-    "build_type" : "docker",
-    "build_hash" : "51e9d6f22758d0374a0f3f5c6e8f3a7997850f96",
-    "build_date" : "2020-11-09T21:30:33.964949Z",
-    "build_snapshot" : false,
-    "lucene_version" : "8.7.0",
-    "minimum_wire_compatibility_version" : "6.8.0",
-    "minimum_index_compatibility_version" : "6.0.0-beta1"
-  },
-  "tagline" : "You Know, for Search"
-}
-#+end_src
-
-** To start elasticsearch version 8.11.3
-
-This has security configured by default. So, the url http://localhost:9200 will not work. Follow the instructions from the web page for accessing the UI.
-
-https://www.elastic.co/guide/en/elasticsearch/reference/current/run-elasticsearch-locally.html
-
-Step 1: Start Elasticsearch. Take note of the passwords and tokens.
-Step 2: Start Kibana.
-
-Then, access elasticsearch through Kibana UI.
-
-However, I didnot use this set-up for this application because of incompatibility issues.
-
-* Tracing requests
-
-How to enable query logging in Spring-data-elasticsearch
-
-After digging through the spring data code i found this helpful little logger called "tracer" (name not very unique)
-
-By setting the following in application.properties
-
-logging.level.tracer=TRACE
-
-It will print out a full curl statement for the request along with full JSON the response from Elasticsearch.
 
 * Retrieving data
 

@@ -1,0 +1,10 @@
+Connect Spring Boot app with Elasticsearch with Java-API Client
+
+* Configuration for this application
+
+** Technologies used:
+Elasticsearch 8.3.3
+Elasticsearch Java API client
+
+** Tools used:
+Kibana 8.3.3

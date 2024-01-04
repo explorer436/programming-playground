@@ -1,0 +1,13 @@
+* Configuration for this application
+
+(https://docs.spring.io/spring-data/elasticsearch/reference/elasticsearch/versions.html)
+
+| Spring Data Release Train | Spring Data Elasticsearch | Elasticsearch | Spring Framework | Spring Boot |
+|---------------------------+---------------------------+---------------+------------------+-------------|
+| 2023.1 (Vaughan)          |                     5.2.x |        8.11.1 |            6.1.x |       3.2.x |
+
+* Testing
+
+curl -X 'GET' \
+  'http://localhost:8080/api/v1/items/Fantastic%20Tool' \
+  -H 'accept: */*'
