@@ -1,0 +1,15 @@
+com/my/company/BlankStringsArgumentsProvider.class
+com/my/company/argumentconversion/SlashyDateConverter.class
+com/my/company/ParameterizedTestsWithVariableSource.class
+com/my/company/argumentaggregator/PersonAggregator.class
+com/my/company/ParameterizedTestsWithArgumentsAggregator.class
+com/my/company/customannotation/VariableArgumentsProvider.class
+com/my/company/customannotation/VariableSource.class
+com/my/company/ParameterizedTestsWithNullAndEmptySource.class
+com/my/company/ParameterizedTestsWithArgumentsSource.class
+com/my/company/ParameterizedTestsWithEnumSource.class
+com/my/company/ParameterizedTestsWithCsvSource.class
+com/my/company/StringParams.class
+com/my/company/ParameterizedTestsWithArgumentsAccessor.class
+com/my/company/ParameterizedTestsWithValueSource.class
+com/my/company/ParameterizedTestsWithMethodSource.class

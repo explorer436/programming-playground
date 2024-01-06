@@ -1,0 +1,14 @@
+Limitations of value sources:
+
+1. They only support these types:
+   1. short (with the shorts attribute)
+   2. byte (bytes attribute)
+   3. int (ints attribute)
+   4. long (longs attribute)
+   5. float (floats attribute)
+   6. double (doubles attribute)
+   7. char (chars attribute)
+   8. java.lang.String (strings attribute)
+   9. java.lang.Class (classes attribute)
+2. We can only pass one argument to the test method each time.
+3. We can’t pass null through a @ValueSource, even for String and Class.
