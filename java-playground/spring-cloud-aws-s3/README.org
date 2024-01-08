@@ -49,7 +49,8 @@ Take a note of the ~dependencies~ section.
    #+end_src
 1. To retrive the byte stream of the file,
    #+begin_src 
-   curl --location --request GET 'http://localhost:8080/file/download?fileNamcurl --location --request GET 'http://localhost:8080/file/download?fileName=HELP.md&presignedUrl=false'
+   curl --location --request GET 'http://localhost:8080/file/download?fileName
+   curl --location --request GET 'http://localhost:8080/file/download?fileName=HELP.md&presignedUrl=false'
    #+end_src
 1. To delete a file,
    #+begin_src 
@@ -64,9 +65,23 @@ Take a note of the ~dependencies~ section.
    #+begin_src 
    https://myawsbucket-26be0f7e-5030-4094-8a49-0a754f22ffe1.s3.amazonaws.com/HELP.md?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20221220T001954Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=AKIASTSXPXTQHENHSENE%2F20221220%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=1ca62ae5c4cb73491537c8baa4da561d58622904b6a491b8ddc575aba0ad2f4a
    #+end_src
+1. To unzip a file in s3:
+   1. Caveat: The zip file has to be in the root directory for this to work
+      #+begin_src 
+      curl --verbose --request "GET" http://localhost:8080/unzip?zipFileName=aws_unzip_test.zip
+      curl --verbose --request "GET" http://localhost:8080/unzip?zipFileName=test1/aws_unzip_test.zip
+      #+end_src
+1. Pick the txt files from a S3 directory
+   #+begin_src 
+   curl --verbose --request "GET" http://localhost:8080/pickTxtFileFromDirectory?folderName=aws_unzip_test
+   #+end_src
 
 * References:
 
 1. https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/java/example_code/s3/src/main/java/aws/example/s3
 1. https://github.com/awspring/spring-cloud-aws
 1. https://docs.awspring.io/spring-cloud-aws/docs/2.4.1/reference/html/index.html
+
+* unzip library
+
+All the code to unzip a file is from this library: https://github.com/nejckorasa/s3-stream-unzip?tab=readme-ov-file

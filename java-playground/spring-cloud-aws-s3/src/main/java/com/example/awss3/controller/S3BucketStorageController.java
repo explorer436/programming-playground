@@ -39,7 +39,7 @@ public class S3BucketStorageController {
 
     @GetMapping("/list/files")
     public ResponseEntity<List<String>> getListOfFiles() {
-        return new ResponseEntity<>(service.listFiles(), HttpStatus.OK);
+        return new ResponseEntity<>(service.listFilesInBucket(), HttpStatus.OK);
     }
 
     @GetMapping("/presignedurl")
@@ -47,9 +47,31 @@ public class S3BucketStorageController {
         return new ResponseEntity<>(service.generatePUTPresignedURL(fileName), HttpStatus.OK);
     }
 
+    @GetMapping("/presignedurl/get")
+    public ResponseEntity<String> generateGetPresignedUrl(@RequestParam("fileName") String fileName) {
+        return new ResponseEntity<>(service.generateGETPresignedURL(fileName), HttpStatus.OK);
+    }
+
+    @GetMapping("/presignedurl/filename")
+    public ResponseEntity<String> getFileNameFromPresignedUrl(@RequestParam("presignedurl") String presignedurl) {
+        return new ResponseEntity<>(service.getFileNameFromPresignedUrl(presignedurl), HttpStatus.OK);
+    }
+
     @GetMapping("/zip")
     public ResponseEntity zip() throws IOException {
         service.zip();
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @GetMapping("/unzip")
+    public ResponseEntity unzip(@RequestParam("zipFileName") String zipFileName) throws IOException {
+        service.unzip(zipFileName);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @GetMapping("/pickTxtFileFromDirectory")
+    public ResponseEntity pickTxtFileFromDirectory(@RequestParam("folderName") String folderName) throws IOException {
+        List<String> txtFilesList = service.pickTxtFileFromDirectory(folderName);
+        return new ResponseEntity<>(txtFilesList, HttpStatus.OK);
     }
 }

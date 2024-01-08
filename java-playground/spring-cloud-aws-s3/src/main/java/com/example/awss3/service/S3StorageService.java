@@ -4,9 +4,15 @@ import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.HttpMethod;
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3URI;
 import com.amazonaws.services.s3.model.*;
+import com.example.awss3.service.unzip.S3UnzipManager;
+import com.example.awss3.service.unzip.strategy.NoSplitUnzipStrategy;
+import com.example.awss3.service.unzip.strategy.UnzipStrategy;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -76,6 +82,19 @@ public class S3StorageService {
         return "Deleted File: " + fileName;
     }
 
+    public void deleteFolder(final String folderName) {
+        ListObjectsRequest listObjectsRequest = new ListObjectsRequest()
+                .withBucketName(bucketName)
+                .withPrefix(folderName);
+        ObjectListing objectListing = amazonS3Client.listObjects(listObjectsRequest);
+
+        for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
+            amazonS3Client.deleteObject(bucketName, objectSummary.getKey());
+        }
+    }
+
+    public String
+
     /**
      * Downloads file using amazon S3 client from S3 bucket
      *
@@ -118,7 +137,7 @@ public class S3StorageService {
      *
      * @return
      */
-    public List<String> listFiles() {
+    public List<String> listFilesInBucket() {
 
         ListObjectsRequest listObjectsRequest = new ListObjectsRequest().withBucketName(bucketName);
 
@@ -166,7 +185,7 @@ public class S3StorageService {
     }
 
     public void zip() throws IOException {
-        List<String> fileNames = listFiles();
+        List<String> fileNames = listFilesInBucket();
 
         Map<String, byte[]> myMap = new HashMap<>();
         for (String fileName : fileNames) {
@@ -198,4 +217,101 @@ public class S3StorageService {
         return baos.toByteArray();
     }
 
+    public void unzip(String zipFileName) {
+        UnzipStrategy unzipStrategy = new NoSplitUnzipStrategy();
+        S3UnzipManager unzipManager = new S3UnzipManager(amazonS3Client, unzipStrategy);
+
+        unzipManager.unzipObjects(bucketName, zipFileName, FilenameUtils.getBaseName(zipFileName));
+    }
+
+    public String getFileNameFromPresignedUrl(String presignedurl) {
+        return presignedurl;
+    }
+
+    public void moveFileToFromRootDirectory(S3SubDirectory s3SubDirectory, String fileName, boolean toRoot) {
+
+        String keynameWithSubfolder = s3SubDirectory.getValue() + "/" + fileName;
+
+        if (toRoot) {
+            CopyObjectRequest copyObjectRequest = new CopyObjectRequest();
+            copyObjectRequest.setSourceBucketName(bucketName);
+            copyObjectRequest.setDestinationBucketName(bucketName);
+            copyObjectRequest.setSourceKey(keynameWithSubfolder);
+            copyObjectRequest.setDestinationKey(fileName);
+
+            amazonS3Client.copyObject(copyObjectRequest);
+        } else {
+            ListObjectsRequest listObjectsRequest = new ListObjectsRequest()
+                    .withBucketName(bucketName)
+                    .withPrefix(fileName);
+            ObjectListing objectListing = amazonS3Client.listObjects(listObjectsRequest);
+
+            CopyObjectRequest copyObjectRequest;
+            for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
+                copyObjectRequest = new CopyObjectRequest();
+                copyObjectRequest.setSourceBucketName(bucketName);
+                copyObjectRequest.setDestinationBucketName(bucketName);
+                copyObjectRequest.setSourceKey(objectSummary.getKey());
+                copyObjectRequest.setDestinationKey(s3SubDirectory.getValue() + "/" + objectSummary.getKey());
+
+                amazonS3Client.copyObject(copyObjectRequest);
+            }
+        }
+
+        /*ObjectListing objectListing = amazonS3Client.listObjects(new ListObjectsRequest()
+                .withBucketName(bucketName)
+                .withPrefix(fileName));
+
+        for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
+            // amazonS3Client.copyObject(sourceBucketName, objectSummary.getKey(), destinationBucketName, objectSummary.getKey());
+
+            amazonS3Client.copyObject(bucketName, objectSummary.getKey(), bucketName, objectSummary.getKey());
+        }*/
+    }
+
+    public List<String> pickTxtFileFromDirectory(String folderName) {
+        ListObjectsRequest listObjectsRequest = new ListObjectsRequest()
+                .withBucketName(bucketName)
+                .withPrefix(folderName);
+
+        List<String> keys = new ArrayList<>();
+
+        ObjectListing objectListing = amazonS3Client.listObjects(listObjectsRequest);
+
+        while (true) {
+            List<S3ObjectSummary> objectSummaries = objectListing.getObjectSummaries();
+            if (objectSummaries.size() < 1) {
+                break;
+            }
+
+            for (S3ObjectSummary item : objectSummaries) {
+                String currentItemKey = item.getKey();
+                if (!currentItemKey.endsWith("/")) {
+                    String extension = FilenameUtils.getExtension(currentItemKey);
+                    if (StringUtils.equalsIgnoreCase(extension, "txt")) {
+                        keys.add(item.getKey());
+                    }
+                }
+            }
+
+            objectListing = amazonS3Client.listNextBatchOfObjects(objectListing);
+        }
+
+        return keys;
+    }
+
+    public String getFilenameFromPresignedurl(String presignedurl) {
+        int indexOfQuestionmark = presignedurl.indexOf("?");
+
+        presignedurl = indexOfQuestionmark == -1 ? presignedurl : presignedurl.substring(0, indexOfQuestionmark);
+
+        // To remove "subfolder names" from the uri and to get the filename
+        int indexOfForwardSlash = presignedurl.lastIndexOf("/");
+        return indexOfForwardSlash == -1 ? presignedurl : presignedurl.substring(indexOfForwardSlash + 1);
+
+        // If there are not "sub folders"
+        // AmazonS3URI uri = new AmazonS3URI(presignedurl);
+        // S3Object s3Object = amazonS3Client.getObject(new GetObjectRequest(uri.getBucket(), uri.getKey()));
+        // return s3Object.getKey();
+    }
 }
