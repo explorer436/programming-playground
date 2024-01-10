@@ -93,8 +93,6 @@ public class S3StorageService {
         }
     }
 
-    public String
-
     /**
      * Downloads file using amazon S3 client from S3 bucket
      *
