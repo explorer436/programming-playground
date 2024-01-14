@@ -1,4 +1,4 @@
-use std::fmt;
+// use std::fmt;
 
 // Tuples can be used as function arguments and as return values
 fn reverse(pair: (i32, bool)) -> (bool, i32) {
