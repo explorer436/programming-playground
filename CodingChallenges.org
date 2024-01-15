@@ -1,123 +1,135 @@
 * Catalog
 
-| Topic                    | Name of the challenge                           | Java                                                                       | Rust       | Haskell |
-|--------------------------+-------------------------------------------------+----------------------------------------------------------------------------+------------+---------|
-| Abstract Data Types      | BagImplementationUsingLinkedList                | BagImplementationUsingLinkedList.java                                      |            |         |
-|                          | QueueImplementationUsingLinkedList              | QueueImplementationUsingLinkedList.java                                    |            |         |
-|                          | EvaluatePostfixExpression                       | EvaluatePostfixExpression.java                                             |            |         |
-|                          |                                                 | ExpressionEvaluation.java                                                  |            |         |
-|                          |                                                 | FixedCapacityStack.java                                                    |            |         |
-|                          |                                                 | FullyParenthesizedArithmeticExpressionEvaluation.java                      |            |         |
-|                          |                                                 | ResizingArrayStack.java                                                    |            |         |
-|                          |                                                 | ReverseAGivenStack.java                                                    |            |         |
-|                          |                                                 | ReverseUsingStack.java (rename this to ReverseCollectionUsingStack.java)   |            |         |
-|                          |                                                 | StackImplementationUsingDoubleLinkedList.java                              |            |         |
-|                          |                                                 | StackImplementationUsingLinkedList.java                                    |            |         |
-|                          |                                                 | TransformAnInfixExpressionToPostfixNotation.java (Shunting yard algorithm) |            |         |
-|                          | Brackets                                        |                                                                            |            |         |
-|                          | Fish                                            |                                                                            |            |         |
-|                          | Nesting                                         |                                                                            |            |         |
-|                          | StoneWall                                       |                                                                            |            |         |
-| Binary Search            | Min Max Division                                |                                                                            |            |         |
-|                          | Nailing Planks                                  |                                                                            |            |         |
-| CaterpillarMethod        | absolute distinct count of this array           |                                                                            |            |         |
-|                          | count distinct slices                           |                                                                            |            |         |
-|                          | count triangles                                 |                                                                            |            |         |
-|                          | minimal absolute value of a sum of two elements |                                                                            |            |         |
-| Counting elements        | Frog river one                                  |                                                                            |            |         |
-|                          | Max counters                                    |                                                                            |            |         |
-|                          | Permutation check                               |                                                                            |            |         |
-|                          | smallest positive number missing from array     |                                                                            |            |         |
-| Dynamic programming      | Min Abs Sum                                     |                                                                            |            |         |
-|                          | Number Solitaire                                |                                                                            |            |         |
-| Euclidean algorithm      | GCD                                             |                                                                            |            |         |
-|                          | Chocolates by numbers                           |                                                                            |            |         |
-|                          | Common prime divisors                           |                                                                            |            |         |
-| Fibonacci numbers        | Fib Frog                                        |                                                                            |            |         |
-|                          | Ladder                                          |                                                                            |            |         |
-| Array                    |                                                 | ArrayCyclicRotation.java                                                   |            |         |
-|                          |                                                 | OddNumberOfAnArray.java                                                    |            |         |
-|                          |                                                 | ArrayResizing.java                                                         |            |         |
-|                          |                                                 | BirthdayCakeCandles.java                                                   |            |         |
-|                          |                                                 | DropFirstNElementsOfAnArray.java                                           |            |         |
-|                          |                                                 | EquilibriumIndexOfArray.java                                               |            |         |
-|                          |                                                 | KadanesAlgorithm.pdf                                                       |            |         |
-|                          |                                                 | LargestSumSubarray.java                                                    |            |         |
-|                          |                                                 | MaximumAndMinimumElementsInAnArray.java                                    |            |         |
-|                          |                                                 | MaximumContiguousSubarraySumProblems.pdf                                   |            |         |
-|                          |                                                 | MoveNegativeElementsToTheLeft.java                                         |            |         |
-|                          |                                                 | SearchForANumberInAnArray.java                                             |            |         |
-|                          |                                                 | SequentialParallelAlgorithms4MaxSubarrayProblem.pdf                        |            |         |
-|                          |                                                 | SimpleArraySum.java                                                        |            |         |
-|                          |                                                 | SmallestIndexInAnArrayThatHasAllTheElements.java                           |            |         |
-|                          |                                                 | SubarraysWithNegativeSum.java                                              |            |         |
-|                          |                                                 | SumOfNaturalNumbersUptoN.java                                              |            |         |
-|                          |                                                 | SwapElementsToMakeSumEqual.java                                            |            |         |
-|                          |                                                 | TwoSum.java                                                                |            |         |
-|                          |                                                 | TwoSum.java                                                                | two_sum.rs |         |
-|                          |                                                 | TwoSumFromTwoDifferentArrays.java                                          |            |         |
-|                          |                                                 | TwoSumInputArrayIsSorted.java                                              |            |         |
-|                          |                                                 | UniqueNumbersInAnArray.java                                                |            |         |
-|                          |                                                 | VeryBigArraySum.java                                                       |            |         |
-|                          |                                                 | WriteArrayBackwards.java                                                   |            |         |
-|                          | Compute number of inversion in an array         |                                                                            |            |         |
-|                          | Polygon concavity index                         |                                                                            |            |         |
-|                          | Flood depth                                     |                                                                            |            |         |
-|                          | Slalom skiing                                   |                                                                            |            |         |
-|                          | Array recovery                                  |                                                                            |            |         |
-| Hash Maps                |                                                 | IteratingAHashMap.java                                                     |            |         |
-| Hash Tables              |                                                 | ChainingHashTableClient.java                                               |            |         |
-|                          |                                                 | IteratingAHashTable.java                                                   |            |         |
-|                          |                                                 | LinearProbingHashTableClient.java                                          |            |         |
-|                          |                                                 | SimpleHashTable_Chaining.java                                              |            |         |
-|                          |                                                 | SimpleHashTable_LinearProbing.java                                         |            |         |
-| Heap                     |                                                 | Heap.java                                                                  |            |         |
-|                          |                                                 | HeapClient.java                                                            |            |         |
-|                          |                                                 | PriorityQueueClient.java                                                   |            |         |
-| Greedy algorithms        | max non overlapping segments                    |                                                                            |            |         |
-|                          | tie ropes                                       |                                                                            |            |         |
-| Iterations               | Binary gap                                      | BinaryGap.java                                                             |            |         |
-| Leader                   | Dominator                                       |                                                                            |            |         |
-|                          | EquiLeader                                      |                                                                            |            |         |
-| Maximum Slice problem    | max double slice sum                            |                                                                            |            |         |
-|                          | max double slice sum                            |                                                                            |            |         |
-|                          | max profit                                      |                                                                            |            |         |
-|                          | max slice sum                                   |                                                                            |            |         |
-| Prefix sums              |                                                 | CountDiv.java                                                              |            |         |
-|                          |                                                 | GenomicRangeQuery.java                                                     |            |         |
-|                          |                                                 | CountDiv.java                                                              |            |         |
-|                          |                                                 | GenomicRangeQuery.java                                                     |            |         |
-|                          |                                                 | MaxOrMinAvgSubArrayOfSpecifiedSize.java                                    |            |         |
-|                          |                                                 | MinAvgTwoSlice2.java                                                       |            |         |
-|                          |                                                 | MinAvgTwoSlice3.java                                                       |            |         |
-|                          |                                                 | MinAvgTwoSlice.java                                                        |            |         |
-|                          |                                                 | MinAvgTwoSliceProof.pdf                                                    |            |         |
-|                          |                                                 | MushroomPicker.java                                                        |            |         |
-|                          |                                                 | PassingCars.java                                                           |            |         |
-|                          |                                                 | PrefixSums.java                                                            |            |         |
-| PrimeAndCompositeNumbers | CountFactors                                    |                                                                            |            |         |
-|                          | Flags                                           |                                                                            |            |         |
-|                          | MinPerimeterRectangle                           |                                                                            |            |         |
-|                          | Peaks                                           |                                                                            |            |         |
-| SieveOfEratosthenes      | CountNonDivisible                               |                                                                            |            |         |
-|                          | CountSemiprimes                                 |                                                                            |            |         |
-|                          | CountNonDivisible                               |                                                                            |            |         |
-| Sorting                  | Distinct                                        |                                                                            |            |         |
-|                          | MaxProductOfThree                               |                                                                            |            |         |
-|                          | NumberOfDiscIntersections                       |                                                                            |            |         |
-|                          | Triangle                                        |                                                                            |            |         |
-| String                   | symmetry point of a string                      |                                                                            |            |         |
-|                          | longest password                                |                                                                            |            |         |
-|                          | dwarfs rafting                                  |                                                                            |            |         |
-| Time complexity          | Frog jumps                                      |                                                                            |            |         |
-|                          | Perm missing element                            |                                                                            |            |         |
-|                          | Tape equilibrium                                |                                                                            |            |         |
-| Unidentified             | Hilbert maze                                    |                                                                            |            |         |
-|                          | Rectangle builder greater area                  |                                                                            |            |         |
-|                          | Tree product                                    |                                                                            |            |         |
-|                          | Diamonds count                                  |                                                                            |            |         |
-|                          | Socks laundering                                |                                                                            |            |         |
-|                          | Tennis tournament                               |                                                                            |            |         |
+| Topic                            | Name of the challenge                           | Java                                                                       | Rust       | Haskell |
+|----------------------------------+-------------------------------------------------+----------------------------------------------------------------------------+------------+---------|
+| Abstract Data Types              | BagImplementationUsingLinkedList                | BagImplementationUsingLinkedList.java                                      |            |         |
+|                                  | QueueImplementationUsingLinkedList              | QueueImplementationUsingLinkedList.java                                    |            |         |
+|                                  | EvaluatePostfixExpression                       | EvaluatePostfixExpression.java                                             |            |         |
+|                                  |                                                 | ExpressionEvaluation.java                                                  |            |         |
+|                                  |                                                 | FixedCapacityStack.java                                                    |            |         |
+|                                  |                                                 | FullyParenthesizedArithmeticExpressionEvaluation.java                      |            |         |
+|                                  |                                                 | ResizingArrayStack.java                                                    |            |         |
+|                                  |                                                 | ReverseAGivenStack.java                                                    |            |         |
+|                                  |                                                 | ReverseUsingStack.java (rename this to ReverseCollectionUsingStack.java)   |            |         |
+|                                  |                                                 | StackImplementationUsingDoubleLinkedList.java                              |            |         |
+|                                  |                                                 | StackImplementationUsingLinkedList.java                                    |            |         |
+|                                  |                                                 | TransformAnInfixExpressionToPostfixNotation.java (Shunting yard algorithm) |            |         |
+|                                  | Brackets                                        |                                                                            |            |         |
+|                                  | Fish                                            |                                                                            |            |         |
+|                                  | Nesting                                         |                                                                            |            |         |
+|                                  | StoneWall                                       |                                                                            |            |         |
+| Binary Search                    | Min Max Division                                |                                                                            |            |         |
+|                                  | Nailing Planks                                  |                                                                            |            |         |
+| CaterpillarMethod                | absolute distinct count of this array           |                                                                            |            |         |
+|                                  | count distinct slices                           |                                                                            |            |         |
+|                                  | count triangles                                 |                                                                            |            |         |
+|                                  | minimal absolute value of a sum of two elements |                                                                            |            |         |
+| Counting elements                | Frog river one                                  |                                                                            |            |         |
+|                                  | Max counters                                    |                                                                            |            |         |
+|                                  | Permutation check                               |                                                                            |            |         |
+|                                  | smallest positive number missing from array     |                                                                            |            |         |
+| Dynamic programming              | Min Abs Sum                                     |                                                                            |            |         |
+|                                  | Number Solitaire                                |                                                                            |            |         |
+| Euclidean algorithm              | GCD                                             |                                                                            |            |         |
+|                                  | Chocolates by numbers                           |                                                                            |            |         |
+|                                  | Common prime divisors                           |                                                                            |            |         |
+| Fibonacci numbers                | Fib Frog                                        |                                                                            |            |         |
+|                                  | Ladder                                          |                                                                            |            |         |
+| Array                            |                                                 | ArrayCyclicRotation.java                                                   |            |         |
+|                                  |                                                 | OddNumberOfAnArray.java                                                    |            |         |
+|                                  |                                                 | ArrayResizing.java                                                         |            |         |
+|                                  |                                                 | BirthdayCakeCandles.java                                                   |            |         |
+|                                  |                                                 | DropFirstNElementsOfAnArray.java                                           |            |         |
+|                                  |                                                 | EquilibriumIndexOfArray.java                                               |            |         |
+|                                  |                                                 | KadanesAlgorithm.pdf                                                       |            |         |
+|                                  |                                                 | LargestSumSubarray.java                                                    |            |         |
+|                                  |                                                 | MaximumAndMinimumElementsInAnArray.java                                    |            |         |
+|                                  |                                                 | MaximumContiguousSubarraySumProblems.pdf                                   |            |         |
+|                                  |                                                 | MoveNegativeElementsToTheLeft.java                                         |            |         |
+|                                  |                                                 | SearchForANumberInAnArray.java                                             |            |         |
+|                                  |                                                 | SequentialParallelAlgorithms4MaxSubarrayProblem.pdf                        |            |         |
+|                                  |                                                 | SimpleArraySum.java                                                        |            |         |
+|                                  |                                                 | SmallestIndexInAnArrayThatHasAllTheElements.java                           |            |         |
+|                                  |                                                 | SubarraysWithNegativeSum.java                                              |            |         |
+|                                  |                                                 | SumOfNaturalNumbersUptoN.java                                              |            |         |
+|                                  |                                                 | SwapElementsToMakeSumEqual.java                                            |            |         |
+|                                  |                                                 | TwoSum.java                                                                |            |         |
+|                                  |                                                 | TwoSum.java                                                                | two_sum.rs |         |
+|                                  |                                                 | TwoSumFromTwoDifferentArrays.java                                          |            |         |
+|                                  |                                                 | TwoSumInputArrayIsSorted.java                                              |            |         |
+|                                  |                                                 | UniqueNumbersInAnArray.java                                                |            |         |
+|                                  |                                                 | VeryBigArraySum.java                                                       |            |         |
+|                                  |                                                 | WriteArrayBackwards.java                                                   |            |         |
+|                                  | Compute number of inversion in an array         |                                                                            |            |         |
+|                                  | Polygon concavity index                         |                                                                            |            |         |
+|                                  | Flood depth                                     |                                                                            |            |         |
+|                                  | Slalom skiing                                   |                                                                            |            |         |
+|                                  | Array recovery                                  |                                                                            |            |         |
+| Hash Maps                        |                                                 | IteratingAHashMap.java                                                     |            |         |
+| Hash Tables                      |                                                 | ChainingHashTableClient.java                                               |            |         |
+|                                  |                                                 | IteratingAHashTable.java                                                   |            |         |
+|                                  |                                                 | LinearProbingHashTableClient.java                                          |            |         |
+|                                  |                                                 | SimpleHashTable_Chaining.java                                              |            |         |
+|                                  |                                                 | SimpleHashTable_LinearProbing.java                                         |            |         |
+| Heap                             |                                                 | Heap.java                                                                  |            |         |
+|                                  |                                                 | HeapClient.java                                                            |            |         |
+|                                  |                                                 | PriorityQueueClient.java                                                   |            |         |
+| Linked list (jdk)                |                                                 | JdkLinkedListClient.java                                                   |            |         |
+| Linked list (singly linked list) |                                                 | IntegerLinkedListClient.java                                               |            |         |
+|                                  |                                                 | Node.java                                                                  |            |         |
+|                                  |                                                 | SortedIntegerLinkedList.java                                               |            |         |
+|                                  |                                                 | EmployeeLinkedListClient.java                                              |            |         |
+|                                  |                                                 | EmployeeNode.java                                                          |            |         |
+|                                  |                                                 | EmployeeSinglyLinkedList.java                                              |            |         |
+| Linked list (doubly linked list) |                                                 | EmployeeDoublyLinkedList.java                                              |            |         |
+|                                  |                                                 | EmployeeLinkedListClient.java                                              |            |         |
+|                                  |                                                 | EmployeeNode.java                                                          |            |         |
+| Lists                            |                                                 | CompareTriplets.java                                                       |            |         |
+|                                  |                                                 | IteratingAnArrayList.java                                                  |            |         |
+| Greedy algorithms                | max non overlapping segments                    |                                                                            |            |         |
+|                                  | tie ropes                                       |                                                                            |            |         |
+| Iterations                       | Binary gap                                      | BinaryGap.java                                                             |            |         |
+| Leader                           | Dominator                                       |                                                                            |            |         |
+|                                  | EquiLeader                                      |                                                                            |            |         |
+| Maximum Slice problem            | max double slice sum                            |                                                                            |            |         |
+|                                  | max double slice sum                            |                                                                            |            |         |
+|                                  | max profit                                      |                                                                            |            |         |
+|                                  | max slice sum                                   |                                                                            |            |         |
+| Prefix sums                      |                                                 | CountDiv.java                                                              |            |         |
+|                                  |                                                 | GenomicRangeQuery.java                                                     |            |         |
+|                                  |                                                 | CountDiv.java                                                              |            |         |
+|                                  |                                                 | GenomicRangeQuery.java                                                     |            |         |
+|                                  |                                                 | MaxOrMinAvgSubArrayOfSpecifiedSize.java                                    |            |         |
+|                                  |                                                 | MinAvgTwoSlice2.java                                                       |            |         |
+|                                  |                                                 | MinAvgTwoSlice3.java                                                       |            |         |
+|                                  |                                                 | MinAvgTwoSlice.java                                                        |            |         |
+|                                  |                                                 | MinAvgTwoSliceProof.pdf                                                    |            |         |
+|                                  |                                                 | MushroomPicker.java                                                        |            |         |
+|                                  |                                                 | PassingCars.java                                                           |            |         |
+|                                  |                                                 | PrefixSums.java                                                            |            |         |
+| PrimeAndCompositeNumbers         | CountFactors                                    |                                                                            |            |         |
+|                                  | Flags                                           |                                                                            |            |         |
+|                                  | MinPerimeterRectangle                           |                                                                            |            |         |
+|                                  | Peaks                                           |                                                                            |            |         |
+| SieveOfEratosthenes              | CountNonDivisible                               |                                                                            |            |         |
+|                                  | CountSemiprimes                                 |                                                                            |            |         |
+|                                  | CountNonDivisible                               |                                                                            |            |         |
+| Sorting                          | Distinct                                        |                                                                            |            |         |
+|                                  | MaxProductOfThree                               |                                                                            |            |         |
+|                                  | NumberOfDiscIntersections                       |                                                                            |            |         |
+|                                  | Triangle                                        |                                                                            |            |         |
+| String                           | symmetry point of a string                      |                                                                            |            |         |
+|                                  | longest password                                |                                                                            |            |         |
+|                                  | dwarfs rafting                                  |                                                                            |            |         |
+| Time complexity                  | Frog jumps                                      |                                                                            |            |         |
+|                                  | Perm missing element                            |                                                                            |            |         |
+|                                  | Tape equilibrium                                |                                                                            |            |         |
+| Unidentified                     | Hilbert maze                                    |                                                                            |            |         |
+|                                  | Rectangle builder greater area                  |                                                                            |            |         |
+|                                  | Tree product                                    |                                                                            |            |         |
+|                                  | Diamonds count                                  |                                                                            |            |         |
+|                                  | Socks laundering                                |                                                                            |            |         |
+|                                  | Tennis tournament                               |                                                                            |            |         |
 
 
 todo
