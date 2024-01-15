@@ -1,19 +1,19 @@
 * Catalog
 
-| Topic | Name of the challenge                                    | Java                                                                       | Rust       | Haskell |
-|-------+----------------------------------------------------------+----------------------------------------------------------------------------+------------+---------|
-|       | Abstract Data Types - BagImplementationUsingLinkedList   | BagImplementationUsingLinkedList.java                                      |            |         |
-|       | Abstract Data Types - QueueImplementationUsingLinkedList | QueueImplementationUsingLinkedList.java                                    |            |         |
-|       | Abstract Data Types - EvaluatePostfixExpression          | EvaluatePostfixExpression.java                                             |            |         |
-|       |                                                          | ExpressionEvaluation.java                                                  |            |         |
-|       |                                                          | FixedCapacityStack.java                                                    |            |         |
-|       |                                                          | FullyParenthesizedArithmeticExpressionEvaluation.java                      |            |         |
-|       |                                                          | ResizingArrayStack.java                                                    |            |         |
-|       |                                                          | ReverseAGivenStack.java                                                    |            |         |
-|       |                                                          | ReverseUsingStack.java (rename this to ReverseCollectionUsingStack.java)   |            |         |
-|       |                                                          | StackImplementationUsingDoubleLinkedList.java                              |            |         |
-|       |                                                          | StackImplementationUsingLinkedList.java                                    |            |         |
-|       |                                                          | TransformAnInfixExpressionToPostfixNotation.java (Shunting yard algorithm) |            |         |
-|       | Array - ArrayCyclicRotation                              | ArrayCyclicRotation.java                                                   |            |         |
-|       | Array - OddNumberOfAnArray                               | OddNumberOfAnArray.java                                                    |            |         |
-|       | Array - Two Sum                                          | TwoSum.java                                                                | two_sum.rs |         |
+| Topic               | Name of the challenge              | Java                                                                       | Rust       | Haskell |
+|---------------------+------------------------------------+----------------------------------------------------------------------------+------------+---------|
+| Abstract Data Types | BagImplementationUsingLinkedList   | BagImplementationUsingLinkedList.java                                      |            |         |
+|                     | QueueImplementationUsingLinkedList | QueueImplementationUsingLinkedList.java                                    |            |         |
+|                     | EvaluatePostfixExpression          | EvaluatePostfixExpression.java                                             |            |         |
+|                     |                                    | ExpressionEvaluation.java                                                  |            |         |
+|                     |                                    | FixedCapacityStack.java                                                    |            |         |
+|                     |                                    | FullyParenthesizedArithmeticExpressionEvaluation.java                      |            |         |
+|                     |                                    | ResizingArrayStack.java                                                    |            |         |
+|                     |                                    | ReverseAGivenStack.java                                                    |            |         |
+|                     |                                    | ReverseUsingStack.java (rename this to ReverseCollectionUsingStack.java)   |            |         |
+|                     |                                    | StackImplementationUsingDoubleLinkedList.java                              |            |         |
+|                     |                                    | StackImplementationUsingLinkedList.java                                    |            |         |
+|                     |                                    | TransformAnInfixExpressionToPostfixNotation.java (Shunting yard algorithm) |            |         |
+| Array               | ArrayCyclicRotation                | ArrayCyclicRotation.java                                                   |            |         |
+|                     | OddNumberOfAnArray                 | OddNumberOfAnArray.java                                                    |            |         |
+|                     | Two Sum                            | TwoSum.java                                                                | two_sum.rs |         |
