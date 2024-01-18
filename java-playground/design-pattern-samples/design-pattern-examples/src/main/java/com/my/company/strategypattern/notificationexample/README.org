@@ -1,0 +1,11 @@
+This one actually focuses on implementing the strategy pattern in Spring Boot and Java using the power of Spring Dependency Resolver.
+
+In most cases, engineers end up using multiple if/else conditions. Or a switch case in a “cleaner” implementation of switching between the relevant strategies.
+
+Spring boot resolves dependencies like no one else does. It enables you to implement the strategy pattern in a scalable and efficient manner.
+
+In this approach, we create implementations of a strategy interface and Spring Boot will take care of the rest. How? By picking up the concrete types and mapping each type to its concrete implementation.
+
+* Reference
+
+https://thegeekyasian.com/strategy-pattern-spring-boot/
