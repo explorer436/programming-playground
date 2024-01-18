@@ -1,19 +1,20 @@
-package com.my.company.strategypattern.withthepattern;
+package com.my.company.strategypattern.encryptionexample.withthepattern;
+
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
-public class BlowfishEncryptionStrategy implements EncryptionStrategy {
+public class AesEncryptionStrategy implements EncryptionStrategy {
     @Override
     public void encryptData(String plaintext) {
-        System.out.println("\n-------Encrypting data using Blowfish algorithm-------");
+        System.out.println("-------Encrypting data using AES algorithm-------");
         try {
-            KeyGenerator keyGenerator = KeyGenerator.getInstance("Blowfish");
+            KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
             keyGenerator.init(128);
             SecretKey secretKey = keyGenerator.generateKey();
             byte[] plaintTextByteArray = plaintext.getBytes("UTF8");
-            Cipher cipher = Cipher.getInstance("Blowfish");
+            Cipher cipher = Cipher.getInstance("AES");
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);
             byte[] cipherText = cipher.doFinal(plaintTextByteArray);
             System.out.println("Original data: " + plaintext);
@@ -24,5 +25,6 @@ public class BlowfishEncryptionStrategy implements EncryptionStrategy {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
     }
 }

@@ -1,4 +1,4 @@
-package com.my.company.strategypattern.withoutthepattern;
+package com.my.company.strategypattern.encryptionexample.withoutthepattern;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;

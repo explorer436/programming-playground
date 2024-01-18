@@ -1,0 +1,5 @@
+* Things to note
+
+1. The beans have to be registered in ~applicationContext.xml~
+1. Property values can be injected from ~applicationContext.xml~
+1. The name of this xml file doesn't matter.

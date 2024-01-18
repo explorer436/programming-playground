@@ -1,4 +1,4 @@
-package com.my.company.strategypattern.withthepattern;
+package com.my.company.strategypattern.encryptionexample.withthepattern;
 
 public class Encryptor {
     private EncryptionStrategy strategy;

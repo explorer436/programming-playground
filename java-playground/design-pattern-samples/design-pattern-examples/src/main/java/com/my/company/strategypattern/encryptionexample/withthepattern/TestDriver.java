@@ -1,4 +1,4 @@
-package com.my.company.strategypattern.withthepattern;
+package com.my.company.strategypattern.encryptionexample.withthepattern;
 
 public class TestDriver {
     public static void main(String[] args) {
