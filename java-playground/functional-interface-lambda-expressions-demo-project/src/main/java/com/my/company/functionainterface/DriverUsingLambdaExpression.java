@@ -17,8 +17,10 @@ public class DriverUsingLambdaExpression {
         // Make sure you use "->". That represents lambda.
 
         // A obj = (int i) -> System.out.println("In show() - i: " + i);
-        // A obj = (i) -> System.out.println("In show() - i: " + i);
-        A obj = i -> System.out.println("In show() - i: " + i);
+        A obj = (i) -> System.out.println("In show() - i: " + i);
+        /*A obj = i -> {
+            System.out.println("In show() - i: " + i);
+        };*/
         obj.show(7);
     }
 }
