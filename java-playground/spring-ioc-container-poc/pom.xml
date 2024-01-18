@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.my.company</groupId>
   <artifactId>spring-ioc-ccontainer-poc</artifactId>
@@ -10,14 +10,15 @@
 
   <modules>
     <module>class-path-xml-application-context-poc</module>
+    <module>annotation-config-application-context-poc</module>
   </modules>
-
+    
   <properties>
     <java.version>18</java.version>
     <maven.compiler.source>18</maven.compiler.source>
     <maven.compiler.target>18</maven.compiler.target>
   </properties>
-
+    
   <dependencyManagement>
     <dependencies>
 
@@ -27,14 +28,14 @@
         <artifactId>spring-core</artifactId>
         <version>6.1.3</version>
       </dependency>
-
+            
       <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-context</artifactId>
         <version>6.1.3</version>
       </dependency>
-
+            
       <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
       <dependency>
         <groupId>org.projectlombok</groupId>
@@ -42,7 +43,7 @@
         <version>1.18.30</version>
         <scope>provided</scope>
       </dependency>
-
+          
     </dependencies>
   </dependencyManagement>
 </project>

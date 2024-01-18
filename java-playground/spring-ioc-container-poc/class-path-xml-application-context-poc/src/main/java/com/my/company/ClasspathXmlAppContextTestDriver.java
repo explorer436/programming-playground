@@ -7,7 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * Hello world!
  *
  */
-public class App 
+public class ClasspathXmlAppContextTestDriver
 {
     public static void main(String a[]){
         System.out.println( "Hello World!" );
