@@ -1,5 +1,8 @@
 package com.my.company.factorypatterns.simplefactory;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class SimplePizzaFactory {
 
 	public Pizza createPizza(String type) {

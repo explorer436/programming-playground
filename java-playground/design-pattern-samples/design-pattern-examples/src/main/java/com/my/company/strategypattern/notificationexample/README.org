@@ -6,6 +6,8 @@ Spring boot resolves dependencies like no one else does. It enables you to imple
 
 In this approach, we create implementations of a strategy interface and Spring Boot will take care of the rest. How? By picking up the concrete types and mapping each type to its concrete implementation.
 
+In other words, we are making our StrategyFactory a bean and injecting into it a Map<String, Strategy>. Spring fill it with the name of the strategy bean as a key and a value will be a strategy itself. Then all we have to do is to call get on that Map.
+
 * Reference
 
 https://thegeekyasian.com/strategy-pattern-spring-boot/

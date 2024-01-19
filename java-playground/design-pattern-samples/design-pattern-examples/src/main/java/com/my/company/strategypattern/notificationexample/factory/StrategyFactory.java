@@ -8,7 +8,7 @@ import java.util.Map;
 
 @Component
 @RequiredArgsConstructor
-public class NotificationFactory {
+public class StrategyFactory {
 
     /**
      * Since each strategy (in impl directory) is marked as a Service with @Service annotation, we can get all the concrete implementations of NotificationService interface by Autowiring NotificationService.
