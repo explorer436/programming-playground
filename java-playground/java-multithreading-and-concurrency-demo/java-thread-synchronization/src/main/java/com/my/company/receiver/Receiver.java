@@ -16,7 +16,7 @@ public class Receiver implements Runnable {
              !"End".equals(receivedMessage);
              receivedMessage = load.receive()) {
 
-            System.out.println(receivedMessage);
+            System.out.println("received : " + receivedMessage);
 
             //Thread.sleep() to mimic heavy server-side processing
             try {

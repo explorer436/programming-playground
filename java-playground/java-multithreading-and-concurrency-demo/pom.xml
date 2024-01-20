@@ -11,9 +11,9 @@
     
   <modules>
     <module>multithreading</module>
-    <module>java-concurrency-api</module>
-    <module>java-thread-synchronization</module>
     <module>01-creating-threads</module>
+    <module>java-thread-synchronization</module>
+    <module>04java-concurrency-api</module>
   </modules>
     
   <properties>
