@@ -8,24 +8,24 @@ import com.example.springcloudawsdynamodb.SpringCloudAwsDynamodbApplication;
 import com.example.springcloudawsdynamodb.entities.ProductInfoEntity;
 import com.example.springcloudawsdynamodb.entities.SubObject;
 import com.example.springcloudawsdynamodb.repositories.ProductInfoRepository;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertThat;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = SpringCloudAwsDynamodbApplication.class)
 @WebAppConfiguration
 @ActiveProfiles("local")
@@ -45,7 +45,7 @@ public class ProductInfoRepositoryIntegrationTest {
     private static final String EXPECTED_COST = "$120.00";
     private static final String EXPECTED_PRICE = "50";
 
-    @Before
+    @BeforeEach
     public void setup() throws Exception {
         dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
 
