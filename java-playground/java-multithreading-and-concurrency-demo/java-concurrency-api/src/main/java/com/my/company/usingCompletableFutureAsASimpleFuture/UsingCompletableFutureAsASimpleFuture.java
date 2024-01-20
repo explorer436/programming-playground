@@ -43,7 +43,7 @@ public class UsingCompletableFutureAsASimpleFuture {
 	    // CompletableFuture.complete() method is used to manually complete a Future.
 	    // The get() method blocks until the Future is complete. So, if the complete() is not implemented, the get call will be blocked forever.
 	    Executors.newCachedThreadPool().submit(() -> {
-	        Thread.sleep(500);
+	        Thread.sleep(5000);
 	        completableFuture.complete("Hello");
 	        return null;
 	    });
@@ -60,7 +60,8 @@ public class UsingCompletableFutureAsASimpleFuture {
 	
 	/**
 	 * 
-	    The simplest case creates an already completed CompletableFuture with a predefined result. Usually, this may act as the starting stage in your computation. 
+	    The simplest case creates an already completed CompletableFuture with a predefined result.
+	    Usually, this may act as the starting stage in your computation.
 		The getNow(null) returns the result if completed (which is obviously the case), but otherwise returns null (the argument).
 
 	    If we already know the result of a computation, we can use the static completedFuture method with an argument that represents a result of this computation. 
