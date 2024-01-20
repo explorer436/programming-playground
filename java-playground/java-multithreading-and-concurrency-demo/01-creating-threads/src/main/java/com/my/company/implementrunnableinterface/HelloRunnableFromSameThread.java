@@ -1,22 +1,21 @@
-package com.example;
+package com.my.company.implementrunnableinterface;
 
-public class HelloRunnableFromNewThread implements Runnable {
+public class HelloRunnableFromSameThread implements Runnable {
 
-	@Override
     public void run() {
         System.out.println("Hello from a thread!");
     }   
 
     public static void main(String args[]) {
     	// You can pass Runnable to create a Thread.
-        (new Thread(new HelloRunnableFromNewThread())).start();
+        (new HelloRunnableFromSameThread()).run();
         System.out.println("Hello from main");
     }
 
 }  
 
 // Output:
-// Hello from main
 // Hello from a thread!
+// Hello from main
 
-// The code in run() is executed after the main() method completes its execution. 
+// The code in run() is executed in the same thread where main() is running. 

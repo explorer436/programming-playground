@@ -3,7 +3,7 @@ package com.my.company.implementrunnableinterface;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MyRunnable3 implements Runnable {
+public class MyRunnable implements Runnable {
 
     /**
      * When the thread is started it will call the run() method of the MyRunnable instance instead of executing it's own run() method.
@@ -12,6 +12,6 @@ public class MyRunnable3 implements Runnable {
      */
 
     public void run(){
-        System.out.println("MyRunnable3 running");
+        System.out.println("MyRunnable.run() - " + Thread.currentThread().getName() + " - Running");
     }
 }
