@@ -6,27 +6,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class UsingCompletableFutureAsASimpleFuture {
-
-	/**
-	 * 		The get method throws some checked exceptions.
-	 * 		1. ExecutionException (encapsulating an exception that occurred during a computation) and 
-	 * 		2. InterruptedException (an exception signifying that a thread executing a method was interrupted):
-	 */
-	public static void main(String[] args) throws InterruptedException, ExecutionException {
-		UsingCompletableFutureAsASimpleFuture classUnderTest = new UsingCompletableFutureAsASimpleFuture();
-		
-		// Call the calculateHelloAsync() method, receive the Future instance.
-		Future<String> completableFuture = classUnderTest.calculateHelloAsync();	
-
-		// Call the get method on the future instance when we're ready to block for the result.
-		// The CompletableFuture.get() method is blocking. It waits until the Future is completed and returns the result after its completion.
-		String result = completableFuture.get();
-		System.out.println("result: " + result); // Hello
-		
-		CompletableFuture<String> completedFuture = classUnderTest.returnCompletedFuture();	
-		System.out.println(completedFuture.getNow(null)); // Already completed!
-		
-	}
 	
 	/**
 	 * A method that creates a CompletableFuture instance, then spins off some computation in another thread and returns the Future immediately.
@@ -43,7 +22,7 @@ public class UsingCompletableFutureAsASimpleFuture {
 	    // CompletableFuture.complete() method is used to manually complete a Future.
 	    // The get() method blocks until the Future is complete. So, if the complete() is not implemented, the get call will be blocked forever.
 	    Executors.newCachedThreadPool().submit(() -> {
-	        Thread.sleep(5000);
+	        Thread.sleep(1000 * 2);
 	        completableFuture.complete("Hello");
 	        return null;
 	    });
