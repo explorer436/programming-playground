@@ -1,4 +1,4 @@
-package com.example;
+package com.my.company;
 
 import java.time.Duration;
 import java.time.Instant;

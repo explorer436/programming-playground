@@ -1,10 +1,13 @@
-package com.example;
+package com.my.company.launchingcallableusingexecutorservice;
+
+import org.springframework.stereotype.Service;
 
 import java.util.concurrent.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Service
 //class implementing callable interface
 public class EdPressoCallable implements Callable<String> {
 
@@ -16,40 +19,6 @@ public class EdPressoCallable implements Callable<String> {
 		
 		// return the thread name executing this callable task
 		return Thread.currentThread().getName();
-	}
-
-	// main method starting here
-	public static void main(String args[]) {
-		
-		// Thread pool size is 5
-		ExecutorService executorService = Executors.newFixedThreadPool(5);
-		
-		// Create EdPresso instance
-		Callable<String> callable = new EdPressoCallable();
-		
-		// create a list to hold the Future object associated with Callable
-		List<Future<String>> mylistOfFutures = new ArrayList<Future<String>>();
-		
-		for (int i = 0; i < 50; i++) {
-			// submit 50 Callable tasks to be executed by thread pool
-			Future<String> fut = executorService.submit(callable);
-			// add Future to the list, we can get return value using Future
-			mylistOfFutures.add(fut);
-		}
-		
-		for (Future<String> f : mylistOfFutures) {
-			try {
-				// because Future.get() waits for task to get completed
-				System.out.println("Hello from a thread! - date: " + new Date() + ":: Thread name is " + f.get());
-			} catch (InterruptedException | ExecutionException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		// shut down the executor service now
-		executorService.shutdown();
-		
-		System.out.println("Hello from main");
 	}
 }
 

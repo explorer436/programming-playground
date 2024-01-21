@@ -10,8 +10,8 @@
   <url>http://maven.apache.org</url>
     
   <modules>
-    <module>multithreading</module>
     <module>01-creating-threads</module>
+    <module>02-executor-service</module>
     <module>java-thread-synchronization</module>
     <module>04java-concurrency-api</module>
   </modules>

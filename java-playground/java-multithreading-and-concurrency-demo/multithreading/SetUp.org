@@ -1,7 +1,0 @@
-#+begin_src 
-   mvn archetype:generate 
-	-DgroupId=com.example
-	-DartifactId=multithreading
-	-DarchetypeArtifactId=maven-archetype-quickstart
-        -DinteractiveMode=false
-#+end_src

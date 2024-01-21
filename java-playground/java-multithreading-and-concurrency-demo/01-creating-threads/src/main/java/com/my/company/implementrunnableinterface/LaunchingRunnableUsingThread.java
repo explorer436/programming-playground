@@ -1,9 +1,6 @@
-package com.example;
+package com.my.company.implementrunnableinterface;
 
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 public class LaunchingRunnableUsingThread implements Runnable {
 

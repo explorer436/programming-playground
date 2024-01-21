@@ -1,4 +1,4 @@
-package com.example;
+package com.my.company.launchingrunnableusingexecutorservice;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -14,17 +14,6 @@ public class LaunchingRunnableUsingExecutorService implements Runnable {
 		System.out.println("Message");
 		
 		System.out.println("<<< run()");
-	}
-
-	public static void main(String[] args) throws InterruptedException, ExecutionException {
-		System.out.println(">>> main()");
-		
-		ExecutorService executorService = Executors.newSingleThreadExecutor();
-		Future future = executorService.submit(new LaunchingRunnableUsingExecutorService());
-		System.out.println("future value is " + future.get());
-		executorService.shutdown();
-		
-		System.out.println("<<< main()");
 	}
 }
 
