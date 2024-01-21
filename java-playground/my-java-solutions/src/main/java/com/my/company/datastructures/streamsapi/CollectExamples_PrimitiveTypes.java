@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class CollectExamples {
+public class CollectExamples_PrimitiveTypes {
 
   public static void main(String[] args) {
 

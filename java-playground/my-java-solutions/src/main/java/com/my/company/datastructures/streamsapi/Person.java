@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.beans.Transient;
+import java.util.List;
 
 @Data
 @Builder
@@ -18,6 +19,7 @@ public class Person {
   private String city;
   private String state;
   private String zip;
+  private List<String> phones;
 
   // If this class happens to be an entity in an application, mark this with the annotation
   // "@Transient". If not, hibernate will complain that it cannot determine the type of the object

@@ -4,13 +4,15 @@
   <groupId>com.my.company</groupId>
   <artifactId>class-path-xml-application-context-poc</artifactId>
   <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>class-path-xml-application-context-poc</name>
+  <url>http://maven.apache.org</url>
+
   <properties>
     <maven.compiler.source>18</maven.compiler.source>
     <maven.compiler.target>18</maven.compiler.target>
   </properties>
-  <version>1.0-SNAPSHOT</version>
-  <name>class-path-xml-application-context-poc</name>
-  <url>http://maven.apache.org</url>
+
   <dependencies>
 
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
