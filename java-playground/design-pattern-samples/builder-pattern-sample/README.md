@@ -8,6 +8,4 @@ See: builder-pattern-sample/src/main/java/com/app/sr/builderpattern/model/ApiRes
 API details
   http://localhost:8090/api/v1/customers/
 
-TODO
-
-Find a smaller example. We don't really need a full-blown app to demo the pattern.
+For a smaller sample, see design-pattern-samples/design-pattern-examples/src/main/java/com/my/company/builderpattern

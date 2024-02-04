@@ -1,16 +1,15 @@
 package com.my.company.strategypattern.encryptionexample.withoutthepattern;
 
+import lombok.RequiredArgsConstructor;
+
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
+@RequiredArgsConstructor
 public class Encryptor {
-    private String algorithmName;
-    private String plainText;
-
-    public Encryptor(String algorithmName) {
-        this.algorithmName = algorithmName;
-    }
+    private final String algorithmName;
+    private final String plainText;
 
     public void encrypt() {
         if (algorithmName.equals("Aes")) {
@@ -26,7 +25,7 @@ public class Encryptor {
     }
     /*Getter and setter methods for plainText*/
 
-    public void encryptDataUsingAESAlgorithm(String plaintext) {
+    private void encryptDataUsingAESAlgorithm(String plaintext) {
         System.out.println("-------Encrypting data using AES algorithm-------");
         try {
             KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
@@ -41,13 +40,14 @@ public class Encryptor {
             for (int i = 0; i < cipherText.length; i++) {
                 System.out.print(cipherText[i] + " ");
             }
+            System.out.println("");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
     }
 
-    public void encryptDataUsingBlowfishAlgorithm(String plaintext) {
+    private void encryptDataUsingBlowfishAlgorithm(String plaintext) {
         System.out.println("\n-------Encrypting data using Blowfish algorithm-------");
         try {
             KeyGenerator keyGenerator = KeyGenerator.getInstance("Blowfish");
@@ -62,6 +62,7 @@ public class Encryptor {
             for (int i = 0; i < cipherText.length; i++) {
                 System.out.print(cipherText[i] + " ");
             }
+            System.out.println("");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
