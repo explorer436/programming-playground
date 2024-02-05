@@ -1,7 +1,5 @@
 package com.my.company.strategypattern.encryptionexample.withinheritance;
 
-import lombok.RequiredArgsConstructor;
-
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
