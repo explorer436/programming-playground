@@ -285,7 +285,7 @@
 |                                  | longest password                                                           |      |      |         |
 |                                  | dwarfs rafting                                                             |      |      |         |
 |                                  | BalancedParanthesis                                                        | yes  |      |         |
-|                                  | FizzBuzz                                                                   | yes  |      |         |
+|                                  | FizzBuzz                                                                   | yes  | yes  |         |
 |                                  | FizzBuzzMultithreaded                                                      | yes  |      |         |
 |                                  | MostCommonCharacterInString                                                | yes  |      |         |
 |                                  | Permutations                                                               | yes  |      |         |
@@ -413,7 +413,6 @@
 |                                  | Pattern matching                                                           |      |      | yes     |
 |                                  | Guards                                                                     |      |      | yes     |
 | NumberLineJumps.pdf              | NumberLineJumps.hs                                                         |      |      | yes     |
->>>>>>> origin/main
 
 
 TODO
