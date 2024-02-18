@@ -5,22 +5,22 @@ fn main() {
 
     // Infinite loop
     loop {
-	count += 1;
+        count += 1;
 
-	if count == 3 {
-	    println!("three");
+        if count == 3 {
+            println!("three");
 
-	    // Skip the rest of this iteration
-	    continue;
-	}
+            // Skip the rest of this iteration
+            continue;
+        }
 
-	println!("{}", count);
+        println!("{}", count);
 
-	if count == 5 {
-	    println!("OK, that's enough");
+        if count == 5 {
+            println!("OK, that's enough");
 
-	    // Exit this loop
-	    break;
-	}
+            // Exit this loop
+            break;
+        }
     }
 }

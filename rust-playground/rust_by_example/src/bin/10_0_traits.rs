@@ -13,10 +13,7 @@ fn combine_vecs_explicit_return_type(
 
 // This is the exact same function, but its return type uses `impl Trait`.
 // Look how much simpler it is!
-fn combine_vecs(
-    v: Vec<i32>,
-    u: Vec<i32>,
-) -> impl Iterator<Item=i32> {
+fn combine_vecs(v: Vec<i32>, u: Vec<i32>) -> impl Iterator<Item = i32> {
     v.into_iter().chain(u.into_iter()).cycle()
 }
 

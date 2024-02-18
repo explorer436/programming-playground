@@ -11,7 +11,7 @@ fn main() {
     // as are the `{}` wrapping the body. These nameless functions
     // are assigned to appropriately named variables.
     let closure_annotated = |i: i32| -> i32 { i + outer_var };
-    let closure_inferred  = |i     |          i + outer_var  ;
+    let closure_inferred = |i| i + outer_var;
 
     // Call the closures.
     println!("closure_annotated: {}", closure_annotated(1));
@@ -24,5 +24,4 @@ fn main() {
     // The return type is inferred.
     let one = || 1;
     println!("closure returning one: {}", one());
-
 }

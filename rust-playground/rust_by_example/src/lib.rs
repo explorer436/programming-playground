@@ -1,5 +1,6 @@
 pub mod rectangle;
-pub mod challenges;
+pub mod vectors;
+pub mod strings;
 
 pub fn foo() {
     println!("Hallo, Rust library here!")

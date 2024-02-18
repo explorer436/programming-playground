@@ -38,15 +38,15 @@ fn main() {
     let work = Civilian;
 
     match status {
-	// Note the lack of scoping because of the explicit `use` above.
-	Rich => println!("The rich have lots of money!"),
-	Poor => println!("The poor have no money..."),
+        // Note the lack of scoping because of the explicit `use` above.
+        Rich => println!("The rich have lots of money!"),
+        Poor => println!("The poor have no money..."),
     }
 
     match work {
-	// Note again the lack of scoping.
-	Civilian => println!("Civilians work!"),
-	Soldier  => println!("Soldiers fight!"),
+        // Note again the lack of scoping.
+        Civilian => println!("Civilians work!"),
+        Soldier => println!("Soldiers fight!"),
     }
 
     // `enums` can be cast as integers.

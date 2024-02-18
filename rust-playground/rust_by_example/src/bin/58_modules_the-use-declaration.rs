@@ -7,9 +7,9 @@ fn function() {
 
 mod deeply {
     pub mod nested {
-	pub fn function() {
-	    println!("called `deeply::nested::function()`");
-	}
+        pub fn function() {
+            println!("called `deeply::nested::function()`");
+        }
     }
 }
 
@@ -19,15 +19,15 @@ fn main() {
 
     println!("Entering block");
     {
-	// This is equivalent to `use deeply::nested::function as function`.
-	// This `function()` will shadow the outer one.
-	use crate::deeply::nested::function;
+        // This is equivalent to `use deeply::nested::function as function`.
+        // This `function()` will shadow the outer one.
+        use crate::deeply::nested::function;
 
-	// `use` bindings have a local scope. In this case, the
-	// shadowing of `function()` is only in this block.
-	function();
+        // `use` bindings have a local scope. In this case, the
+        // shadowing of `function()` is only in this block.
+        function();
 
-	println!("Leaving block");
+        println!("Leaving block");
     }
 
     function();

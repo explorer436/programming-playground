@@ -9,14 +9,14 @@ struct GenVal<T> {
 // impl of Val
 impl Val {
     fn value(&self) -> &f64 {
-	&self.val
+        &self.val
     }
 }
 
 // impl of GenVal for a generic type `T`
 impl<T> GenVal<T> {
     fn value(&self) -> &T {
-	&self.gen_val
+        &self.gen_val
     }
 }
 

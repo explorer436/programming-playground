@@ -9,7 +9,10 @@ struct Book {
 
 // This function takes a reference to a book
 fn borrow_book(book: &Book) {
-    println!("I immutably borrowed {} - {} edition", book.title, book.year);
+    println!(
+        "I immutably borrowed {} - {} edition",
+        book.title, book.year
+    );
 }
 
 // This function takes a reference to a mutable book and changes `year` to 2014
@@ -21,10 +24,10 @@ fn new_edition(book: &mut Book) {
 fn main() {
     // Create an immutable Book named `immutabook`
     let immutabook = Book {
-	// string literals have type `&'static str`
-	author: "Douglas Hofstadter",
-	title: "Gödel, Escher, Bach",
-	year: 1979,
+        // string literals have type `&'static str`
+        author: "Douglas Hofstadter",
+        title: "Gödel, Escher, Bach",
+        year: 1979,
     };
 
     // Create a mutable copy of `immutabook` and call it `mutabook`

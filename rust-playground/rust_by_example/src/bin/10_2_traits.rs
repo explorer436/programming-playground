@@ -21,13 +21,12 @@ trait CompSciStudent: Programmer + Student {
 #[allow(dead_code)]
 fn comp_sci_student_greeting(student: &dyn CompSciStudent) -> String {
     format!(
-	"My name is {} and I attend {}. My favorite language is {}. My Git username is {}",
-	student.name(),
-	student.university(),
-	student.fav_language(),
-	student.git_username()
+        "My name is {} and I attend {}. My favorite language is {}. My Git username is {}",
+        student.name(),
+        student.university(),
+        student.fav_language(),
+        student.git_username()
     )
 }
 
-fn main() {
-}
+fn main() {}

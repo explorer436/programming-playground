@@ -8,7 +8,7 @@ fn main() {
 fn is_divisible_by(lhs: u32, rhs: u32) -> bool {
     // Corner case, early return
     if rhs == 0 {
-	return false;
+        return false;
     }
 
     // This is an expression, the `return` keyword is not necessary here
@@ -18,13 +18,13 @@ fn is_divisible_by(lhs: u32, rhs: u32) -> bool {
 // Functions that "don't" return a value, actually return the unit type `()`
 fn fizzbuzz(n: u32) -> () {
     if is_divisible_by(n, 15) {
-	println!("fizzbuzz");
+        println!("fizzbuzz");
     } else if is_divisible_by(n, 3) {
-	println!("fizz");
+        println!("fizz");
     } else if is_divisible_by(n, 5) {
-	println!("buzz");
+        println!("buzz");
     } else {
-	println!("{}", n);
+        println!("{}", n);
     }
 }
 
@@ -32,6 +32,6 @@ fn fizzbuzz(n: u32) -> () {
 // signature
 fn fizzbuzz_to(n: u32) {
     for n in 1..=n {
-	fizzbuzz(n);
+        fizzbuzz(n);
     }
 }

@@ -8,11 +8,11 @@ impl TryFrom<i32> for EvenNumber {
     type Error = ();
 
     fn try_from(value: i32) -> Result<Self, Self::Error> {
-	if value % 2 == 0 {
-	    Ok(EvenNumber(value))
-	} else {
-	    Err(())
-	}
+        if value % 2 == 0 {
+            Ok(EvenNumber(value))
+        } else {
+            Err(())
+        }
     }
 }
 

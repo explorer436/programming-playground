@@ -1,8 +1,10 @@
 // `F` must implement `Fn` for a closure which takes no
 // inputs and returns nothing - exactly what is required
 // for `print`.
-fn apply<F>(f: F) where
-    F: Fn() {
+fn apply<F>(f: F)
+where
+    F: Fn(),
+{
     f();
 }
 

@@ -26,12 +26,12 @@ fn main() {
     // Variables can be type annotated.
     let _logical: bool = true;
 
-    let _a_float: f64 = 1.0;  // Regular annotation
-    let _an_integer   = 5i32; // Suffix annotation
+    let _a_float: f64 = 1.0; // Regular annotation
+    let _an_integer = 5i32; // Suffix annotation
 
     // Or a default will be used.
-    let _default_float   = 3.0; // `f64`
-    let _default_integer = 7;   // `i32`
+    let _default_float = 3.0; // `f64`
+    let _default_integer = 7; // `i32`
 
     // A type can also be inferred from context
     let mut _inferred_type = 12; // Type i64 is inferred from another line
@@ -66,10 +66,10 @@ fn main() {
 
     // This is a block, and has a smaller scope than the main function
     {
-	// This binding only exists in this block
-	let short_lived_binding = 2;
+        // This binding only exists in this block
+        let short_lived_binding = 2;
 
-	println!("inner short: {}", short_lived_binding);
+        println!("inner short: {}", short_lived_binding);
     }
     // End of the block
 
@@ -82,12 +82,12 @@ fn main() {
     let shadowed_binding = 1;
 
     {
-	println!("before being shadowed: {}", shadowed_binding);
+        println!("before being shadowed: {}", shadowed_binding);
 
-	// This binding *shadows* the outer one
-	let shadowed_binding = "abc";
+        // This binding *shadows* the outer one
+        let shadowed_binding = "abc";
 
-	println!("shadowed in inner block: {}", shadowed_binding);
+        println!("shadowed in inner block: {}", shadowed_binding);
     }
     println!("outside inner block: {}", shadowed_binding);
 
@@ -99,10 +99,10 @@ fn main() {
     let a_binding;
 
     {
-	let x = 2;
+        let x = 2;
 
-	// Initialize the binding
-	a_binding = x * x;
+        // Initialize the binding
+        a_binding = x * x;
     }
 
     println!("a binding: {}", a_binding);
@@ -120,14 +120,14 @@ fn main() {
     let mut _mutable_integer = 7i32;
 
     {
-	// Shadowing by immutable `_mutable_integer`
-	let _mutable_integer = _mutable_integer;
+        // Shadowing by immutable `_mutable_integer`
+        let _mutable_integer = _mutable_integer;
 
-	// Error! `_mutable_integer` is frozen in this scope
-	// _mutable_integer = 50;
-	// FIXME ^ Comment out this line
+        // Error! `_mutable_integer` is frozen in this scope
+        // _mutable_integer = 50;
+        // FIXME ^ Comment out this line
 
-	// `_mutable_integer` goes out of scope
+        // `_mutable_integer` goes out of scope
     }
 
     // Ok! `_mutable_integer` is not frozen in this scope
@@ -150,8 +150,8 @@ fn example_use_case_for_shadowing() {
     let x = x + 1;
 
     {
-	let x = x * 2;
-	println!("The value of x in the inner scope is: {x}");
+        let x = x * 2;
+        println!("The value of x in the inner scope is: {x}");
     }
 
     println!("The value of x in the outer scope is: {}", x);

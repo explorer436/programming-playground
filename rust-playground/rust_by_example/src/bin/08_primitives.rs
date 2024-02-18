@@ -2,12 +2,12 @@ fn main() {
     // Variables can be type annotated.
     let _logical: bool = true;
 
-    let _a_float: f64 = 1.0;  // Regular annotation
-    let _an_integer   = 5i32; // Suffix annotation
+    let _a_float: f64 = 1.0; // Regular annotation
+    let _an_integer = 5i32; // Suffix annotation
 
     // Or a default will be used.
-    let _default_float   = 3.0; // `f64`
-    let _default_integer = 7;   // `i32`
+    let _default_float = 3.0; // `f64`
+    let _default_integer = 7; // `i32`
 
     // A type can also be inferred from context
     #[allow(unused_assignments)]

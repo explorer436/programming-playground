@@ -4,15 +4,14 @@ struct Days(i64);
 
 impl Years {
     pub fn to_days(&self) -> Days {
-	Days(self.0 * 365)
+        Days(self.0 * 365)
     }
 }
-
 
 impl Days {
     /// truncates partial years
     pub fn to_years(&self) -> Years {
-	Years(self.0 / 365)
+        Years(self.0 / 365)
     }
 }
 

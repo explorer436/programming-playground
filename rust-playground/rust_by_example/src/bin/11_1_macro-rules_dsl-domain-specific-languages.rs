@@ -9,10 +9,10 @@ macro_rules! calculate {
 
 fn main() {
     calculate! {
-	eval 1 + 2 // hehehe `eval` is _not_ a Rust keyword!
+    eval 1 + 2 // hehehe `eval` is _not_ a Rust keyword!
     }
 
     calculate! {
-	eval (1 + 2) * (3 / 4)
+    eval (1 + 2) * (3 / 4)
     }
 }

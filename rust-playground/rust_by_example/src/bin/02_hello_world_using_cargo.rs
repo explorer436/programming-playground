@@ -11,4 +11,3 @@ fn main() {
 // After compiling successfully, Rust outputs a binary executable file.
 // you run the main or main.exe file, like this:
 // $ ./main
-

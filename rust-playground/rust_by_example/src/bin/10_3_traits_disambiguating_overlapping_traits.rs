@@ -16,20 +16,20 @@ struct Form {
 
 impl UsernameWidget for Form {
     fn get(&self) -> String {
-	self.username.clone()
+        self.username.clone()
     }
 }
 
 impl AgeWidget for Form {
     fn get(&self) -> u8 {
-	self.age
+        self.age
     }
 }
 
 fn main() {
     let form = Form {
-	username: "rustacean".to_owned(),
-	age: 28,
+        username: "rustacean".to_owned(),
+        age: 28,
     };
 
     // If you uncomment this line, you'll get an error saying

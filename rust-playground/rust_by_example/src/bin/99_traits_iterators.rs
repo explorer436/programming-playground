@@ -16,14 +16,14 @@ impl Iterator for Fibonacci {
     // We use Self::Item in the return type, so we can change
     // the type without having to update the function signatures.
     fn next(&mut self) -> Option<Self::Item> {
-	let current = self.curr;
+        let current = self.curr;
 
-	self.curr = self.next;
-	self.next = current + self.next;
+        self.curr = self.next;
+        self.next = current + self.next;
 
-	// Since there's no endpoint to a Fibonacci sequence, the `Iterator`
-	// will never return `None`, and `Some` is always returned.
-	Some(current)
+        // Since there's no endpoint to a Fibonacci sequence, the `Iterator`
+        // will never return `None`, and `Some` is always returned.
+        Some(current)
     }
 }
 
@@ -46,25 +46,25 @@ fn main() {
     // Each `Some` value is unwrapped and bound to a variable (here, `i`).
     println!("Iterate through 0..3 using `for`");
     for i in 0..3 {
-	println!("> {}", i);
+        println!("> {}", i);
     }
 
     // The `fibonacci sequence is:
     /*println!("The `fibonacci sequence is: ");
     for i in fibonacci() {
-	println!("> {}", i);
+    println!("> {}", i);
     }*/
 
     // The `take(n)` method reduces an `Iterator` to its first `n` terms.
     println!("The first four terms of the Fibonacci sequence are: ");
     for i in fibonacci().take(4) {
-	println!("> {}", i);
+        println!("> {}", i);
     }
 
     // The `skip(n)` method shortens an `Iterator` by dropping its first `n` terms.
     println!("The next four terms of the Fibonacci sequence are: ");
     for i in fibonacci().skip(4).take(4) {
-	println!("> {}", i);
+        println!("> {}", i);
     }
 
     let array = [1u32, 3, 3, 7];
@@ -72,6 +72,6 @@ fn main() {
     // The `iter` method produces an `Iterator` over an array/slice.
     println!("Iterate the following array {:?}", &array);
     for i in array.iter() {
-	println!("> {}", i);
+        println!("> {}", i);
     }
 }

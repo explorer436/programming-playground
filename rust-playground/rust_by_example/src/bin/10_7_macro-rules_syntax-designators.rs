@@ -3,11 +3,10 @@ macro_rules! create_function {
     // creates a function named `$func_name`.
     // The `ident` designator is used for variable/function names.
     ($func_name:ident) => {
-	fn $func_name() {
-	    // The `stringify!` macro converts an `ident` into a string.
-	    println!("You called {:?}()",
-		     stringify!($func_name));
-	}
+        fn $func_name() {
+            // The `stringify!` macro converts an `ident` into a string.
+            println!("You called {:?}()", stringify!($func_name));
+        }
     };
 }
 
@@ -20,10 +19,8 @@ macro_rules! print_result {
     // it as a string along with its result.
     // The `expr` designator is used for expressions.
     ($expression:expr) => {
-	// `stringify!` will convert the expression *as it is* into a string.
-	println!("{:?} = {:?}",
-		 stringify!($expression),
-		 $expression);
+        // `stringify!` will convert the expression *as it is* into a string.
+        println!("{:?} = {:?}", stringify!($expression), $expression);
     };
 }
 
@@ -35,8 +32,8 @@ fn main() {
 
     // Recall that blocks are expressions too!
     print_result!({
-	let x = 1u32;
+        let x = 1u32;
 
-	x * x + 2 * x - 1
+        x * x + 2 * x - 1
     });
 }

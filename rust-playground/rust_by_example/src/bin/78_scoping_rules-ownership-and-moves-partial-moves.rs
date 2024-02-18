@@ -1,13 +1,13 @@
 fn main() {
     #[derive(Debug)]
     struct Person {
-	name: String,
-	age: Box<u8>,
+        name: String,
+        age: Box<u8>,
     }
 
     let alice_person = Person {
-	name: String::from("Alice"),
-	age: Box::new(20),
+        name: String::from("Alice"),
+        age: Box::new(20),
     };
 
     // `name` is moved out of person, but `age` is referenced
@@ -21,5 +21,8 @@ fn main() {
     //println!("The person struct is {:?}", person);
 
     // `person` cannot be used but `person.age` can be used as it is not moved
-    println!("The person's age from person struct is {}", alice_person.age);
+    println!(
+        "The person's age from person struct is {}",
+        alice_person.age
+    );
 }

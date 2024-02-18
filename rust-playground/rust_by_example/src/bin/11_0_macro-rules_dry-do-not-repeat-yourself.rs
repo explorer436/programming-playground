@@ -31,7 +31,6 @@ fn main() {
     println!("Hello, world!");
 }
 
-
 // Implement `add_assign`, `mul_assign`, and `sub_assign` functions.
 op!(add_assign, Add, +=, add);
 op!(mul_assign, Mul, *=, mul);

@@ -53,12 +53,18 @@ fn main() {
     println!("second point: ({}, {})", bottom_right.x, bottom_right.y);
 
     // Destructure the point using a `let` binding
-    let Point { x: left_edge, y: top_edge } = point;
+    let Point {
+        x: left_edge,
+        y: top_edge,
+    } = point;
 
     let _rectangle = Rectangle {
-	// struct instantiation is an expression too
-	top_left: Point { x: left_edge, y: top_edge },
-	bottom_right: bottom_right,
+        // struct instantiation is an expression too
+        top_left: Point {
+            x: left_edge,
+            y: top_edge,
+        },
+        bottom_right: bottom_right,
     };
 
     // Instantiate a unit struct

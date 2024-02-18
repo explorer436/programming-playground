@@ -1,12 +1,12 @@
 use std::fmt;
 
 struct Circle {
-    radius: i32
+    radius: i32,
 }
 
 impl fmt::Display for Circle {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-	write!(f, "Circle of radius {}", self.radius)
+        write!(f, "Circle of radius {}", self.radius)
     }
 }
 

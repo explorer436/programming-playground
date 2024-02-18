@@ -22,7 +22,6 @@ fn main() {
     // A move or reborrow is allowed after the final use of `print`
     let _color_moved = color;
 
-
     let mut count = 0;
     // A closure to increment `count` could take either `&mut count` or `count`
     // but `&mut count` is less restrictive so it takes that. Immediately
@@ -31,8 +30,8 @@ fn main() {
     // A `mut` is required on `inc` because a `&mut` is stored inside. Thus,
     // calling the closure mutates the closure which requires a `mut`.
     let mut inc = || {
-	count += 1;
-	println!("`count`: {}", count);
+        count += 1;
+        println!("`count`: {}", count);
     };
 
     // Call the closure using a mutable borrow.
@@ -48,7 +47,6 @@ fn main() {
     // possible to reborrow without an error
     let _count_reborrowed = &mut count;
 
-
     // A non-copy type.
     let movable = Box::new(3);
 
@@ -57,8 +55,8 @@ fn main() {
     // A non-copy must move and so `movable` immediately moves into
     // the closure.
     let consume = || {
-	println!("`movable`: {:?}", movable);
-	mem::drop(movable);
+        println!("`movable`: {:?}", movable);
+        mem::drop(movable);
     };
 
     // `consume` consumes the variable so this can only be called once.

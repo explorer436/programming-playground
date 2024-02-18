@@ -36,7 +36,6 @@ fn main() {
         let guessed_number: u32 = match guessed_string.trim().parse() {
             Ok(num) => num,
             Err(_) => continue,
-
             // We switch from an expect call to a match expression
             // to move from crashing on an error to handling the error.
             // Remember that parse returns a Result type and

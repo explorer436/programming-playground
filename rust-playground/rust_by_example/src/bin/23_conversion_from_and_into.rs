@@ -8,7 +8,7 @@ struct Number {
 
 impl From<i32> for Number {
     fn from(item: i32) -> Self {
-	Number { value: item }
+        Number { value: item }
     }
 }
 
