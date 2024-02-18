@@ -420,17 +420,4 @@ TODO
 move SqlSum.txt into "sql" folder
 move StrSymmetryPoint.txt into "string" folder
 
-move these into a single "string" folder
-BalancedParanthesis.java
-FizzBuzz.java
-FizzBuzzMultithreaded.java
-MostCommonCharacterInString.java
-Permutations.java
-ReverseWordsInASentence.java
-Staircase.java
-StringPalindrome.java
-StringReversal.java
-TimeConversion.java
-ToCamelCase.java
-
 Can we combine java, haskell, rust solutions into one project?
