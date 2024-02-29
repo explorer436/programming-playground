@@ -2,6 +2,7 @@
 
 // type Tree<T> = Option<Box<BinaryTree<T>>>;
 
+#[derive(Debug, PartialEq, PartialOrd)]
 pub struct BinaryTree<T> {
     root: Option<T>,
     left: Option<Box<BinaryTree<T>>>,
@@ -67,7 +68,7 @@ mod tests {
         let y: Option<Box<BinaryTree<i32>>> = None;
 
 
-        let an_integer = 5i32; // Suffix annotation
+        let an_integer = 5i32;
 
         let test_tree = BinaryTree {
             root: Some(an_integer),
@@ -77,6 +78,37 @@ mod tests {
 
         let actual = BinaryTree::root_element(&test_tree);
         let expected = Some(an_integer);
+        assert_eq!(actual, expected.as_ref());
+    }
+
+    #[test]
+    fn testing_left_tree_for_non_empty_tree() {
+
+        let x: Option<Box<BinaryTree<i32>>> = Some(Box::new(BinaryTree {
+            root: Some(6i32),
+            left: None,
+            right: None
+        }));
+
+        // let expected = Some(an_integer);
+        let expected: Option<Box<BinaryTree<i32>>> = Some(Box::new(BinaryTree {
+            root: Some(6i32),
+            left: None,
+            right: None
+        }));
+
+        let y: Option<Box<BinaryTree<i32>>> = None;
+
+        let an_integer = 5i32;
+
+        let test_tree = BinaryTree {
+            root: Some(an_integer),
+            left: x,
+            right: y
+        };
+
+        let actual = BinaryTree::left_tree(&test_tree);
+        // let expected = Some(an_integer);
         assert_eq!(actual, expected.as_ref());
     }
 }
