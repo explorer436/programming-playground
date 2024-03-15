@@ -39,6 +39,16 @@ impl<T> BinaryTree<T> {
             Some(x) => Some(x),
         }
     }
+
+    #[allow(dead_code)]
+    fn tree_height(&self) -> Option<&Box<BinaryTree<T>>> {
+        let e = &self.right;
+
+        match e {
+            None => None,
+            Some(x) => Some(x),
+        }
+    }
 }
 
 #[cfg(test)]
