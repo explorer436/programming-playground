@@ -1,0 +1,16 @@
+Questions:
+How to use camel RouteBuilder from other classes?
+e.g. from a RestController?
+
+ActiveMQ:
+https://activemq.apache.org/components/artemis/documentation/latest/docker.html
+http://localhost:8161/
+
+
+docker run -e ANONYMOUS_LOGIN=true --detach --name mycontainer -it -p 61616:61616 -p 8161:8161 apache/activemq-artemis:latest-alpine
+docker run -e ARTEMIS_USER=myUser -e ARTEMIS_PASSWORD=myPass --detach --name mycontainer -it -p 61616:61616 -p 8161:8161 apache/activemq-artemis:latest-alpine
+docker run --detach --name mycontainer -p 61616:61616 -p 8161:8161 --rm apache/activemq-artemis:latest-alpine. And then use these credentials, username: artemis/artemis
+
+References:
+
+1. https://github.com/in28minutes/course-material/blob/main/08-apache-camel/downloads.md

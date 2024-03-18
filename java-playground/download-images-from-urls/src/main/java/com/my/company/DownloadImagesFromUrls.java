@@ -16,7 +16,7 @@ public class DownloadImagesFromUrls {
 
     System.out.println("testing");
 
-    List<String> urlList = getUrlsForImagesFromDConnolly();
+    List<String> urlList = getUrlsForImages();
 
     // String fileUrl =
     // "https://lh3.googleusercontent.com/proxy/NuhjYDc1E54B8o-l1h1bLgSBzqSDnQRKTNBEwFlddcClwO9bSnuwbuEsXbCO74NVNY129SQkx05KQ358nVsYPC4GebJFJ3tODQP47Hlt4Ayx9Q_UE3VcbFdvUXI5zKDFjGqSqzuAhUPWONwfCtAP_UoQLmYLLeUFYasGRCE5AgR5_gjFR1ZV_rh8hPyF_oTwY8F7vh9pMN6pVMAxm9iYWdF84iUhUNB08ckHvgiG0JvQ82nBKz2hVhdNBjv8NCtED9URMg5Cg8Az0ImXCNWSHpiykdlxRWimDW_rl09NwDpsOw=s2560-w2560-h1440-fcrop64=1,000023d6fffffe04-k-no-nd-mv";
@@ -29,8 +29,8 @@ public class DownloadImagesFromUrls {
     int failureCount = 0;
     for (int i = 1; i < urlList.size() + 1; i++) {
       fileUrl = urlList.get(i - 1);
-      localFilename =
-          "/home/explorer436/Downloads/temp/downloaded-images/" + String.valueOf(i) + ".jpg";
+      // localFilename = "/home/explorer436/Pictures/downloaded-images/" + String.valueOf(i) + ".jpg";
+      localFilename = "/home/explorer436/Pictures/downloaded-images/" + String.valueOf(i);
       boolean result = downloadWithJavaNIO(fileUrl, localFilename);
       if (result) {
         successCount++;
@@ -46,11 +46,14 @@ public class DownloadImagesFromUrls {
   }
 
   // Downloaded from https://github.com/dconnolly/chromecast-backgrounds
-  private static List<String> getUrlsForImagesFromDConnolly() {
+  private static List<String> getUrlsForImages() {
 
     List<String> urlList = new ArrayList<>();
 
     urlList.add(
+            "https://i0.wp.com/post.healthline.com/wp-content/uploads/2021/02/400x400_Bodyweight_Back_Exercises_Wide_Grip_Pullup-1.gif?h=840");
+
+    /*urlList.add(
         "https://lh6.googleusercontent.com/-A0tXm8gjfMU/U08VDMRGtuI/AAAAAAAAvrI/IQEscTGZyJY/s1920-w1920-h1080-c/IMG_0293%2Bhe.jpg");
     urlList.add(
         "https://lh6.googleusercontent.com/-3LiF-MBl6OE/UO5TXZ724aI/AAAAAAAAE50/JWLqdeEM9QY/s1920-w1920-h1080-c/Colorado%2BRiver%2BSunset.jpg");
@@ -3833,7 +3836,7 @@ public class DownloadImagesFromUrls {
     urlList.add(
         "https://lh3.googleusercontent.com/hefOAaaRtBgnKwl9asTi1ajJtkG92c8d9d5ug58-imDETYwO70Etiw=s2560-w2560-h1440-p-k-no-nd-mv");
     urlList.add(
-        "https://lh3.googleusercontent.com/nBVYnwmEQH9yRRE6CDqjaZ36-vV_yMolb4kPer0Dxkfuh529OFsQ=s2560-w2560-h1440-p-k-no-nd-mv");
+        "https://lh3.googleusercontent.com/nBVYnwmEQH9yRRE6CDqjaZ36-vV_yMolb4kPer0Dxkfuh529OFsQ=s2560-w2560-h1440-p-k-no-nd-mv");*/
 
     return urlList;
   }
