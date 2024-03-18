@@ -1,3 +1,16 @@
+// Why do we need Traits in the first place?
+// Because, in Rust, we don't have Object inheritance - or Struct inheritance.
+
+// Traits are similar to "interfaces" in other languages.
+// Rust takes "Composition over Inheritance" approach.
+// Traits define required behavior - functions and methods that a Struct must implement, if it wants to have that Trait.
+// Another interesting thing:
+// Traits implement inheritance.
+
+// Why bother with Traits?
+// Why don't we just write the impls in the Structs without using Traits?
+// With Traits, we can start writing generic functions that can be implemented by any Struct that wants to implement the Trait.
+
 trait Person {
     fn name(&self) -> String;
 }

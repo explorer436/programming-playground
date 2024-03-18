@@ -1,3 +1,9 @@
+// Enums in Rust are more like "algebrac datatypes" in Haskell - rather than c-like enums.
+// The real power of enums comes into play when we associate data and methods on those data variants in enums.
+
+// We can also write functions with generics on enums.
+// For example, look at "Option" and "Result" enums from the standard library.
+
 // An attribute to hide warnings for unused code.
 #![allow(dead_code)]
 

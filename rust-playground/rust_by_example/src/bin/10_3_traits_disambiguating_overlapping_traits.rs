@@ -14,6 +14,7 @@ struct Form {
     age: u8,
 }
 
+// impl Trait for Struct
 impl UsernameWidget for Form {
     fn get(&self) -> String {
         self.username.clone()

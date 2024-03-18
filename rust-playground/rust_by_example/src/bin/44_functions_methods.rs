@@ -3,6 +3,11 @@ struct Point {
     y: f64,
 }
 
+// Associated functions:
+// 1. They don't have "&self" as the first parameter.
+// 1. In other languages, we refer to them as "class methods".
+// 0. They are often used like "constructors" are used in other languages.
+
 // Implementation block, all `Point` associated functions & methods go in here
 impl Point {
     // This is an "associated function" because this function is associated with
