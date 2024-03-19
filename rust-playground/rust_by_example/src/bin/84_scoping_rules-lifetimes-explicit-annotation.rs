@@ -1,6 +1,7 @@
 // `print_refs` takes two references to `i32` which have different
 // lifetimes `'a` and `'b`. These two lifetimes must both be at
 // least as long as the function `print_refs`.
+
 fn print_refs<'a, 'b>(x: &'a i32, y: &'b i32) {
     println!("x is {} and y is {}", x, y);
 }
@@ -10,7 +11,7 @@ fn failed_borrow<'a>() {
     let _x = 12;
 
     // ERROR: `_x` does not live long enough
-    let y: &'a i32 = &_x;
+    // let y: &'a i32 = &_x;
     // Attempting to use the lifetime `'a` as an explicit type annotation
     // inside the function will fail because the lifetime of `&_x` is shorter
     // than that of `y`. A short lifetime cannot be coerced into a longer one.

@@ -1,5 +1,4 @@
-// One input reference with lifetime `'a` which must live
-// at least as long as the function.
+// One input reference with lifetime 'a which must live ft least as long as the function.
 fn print_one<'a>(x: &'a i32) {
     println!("`print_one`: x is {}", x);
 }
@@ -9,9 +8,9 @@ fn add_one<'a>(x: &'a mut i32) {
     *x += 1;
 }
 
-// Multiple elements with different lifetimes. In this case, it
-// would be fine for both to have the same lifetime `'a`, but
-// in more complex cases, different lifetimes may be required.
+// Multiple elements with different lifetimes.
+// In this case, it would be fine for both to have the same lifetime 'a,
+// but in more complex cases, different lifetimes may be required.
 fn print_multi<'a, 'b>(x: &'a i32, y: &'b i32) {
     println!("`print_multi`: x is {}, y is {}", x, y);
 }
@@ -20,7 +19,7 @@ fn print_multi<'a, 'b>(x: &'a i32, y: &'b i32) {
 // However, the correct lifetime must be returned.
 fn pass_x<'a, 'b>(x: &'a i32, _: &'b i32) -> &'a i32 { x }
 
-//fn invalid_output<'a>() -> &'a String { &String::from("foo") }
+// fn invalid_output<'a>() -> &'a String { &String::from("foo") }
 // The above is invalid: `'a` must live longer than the function.
 // Here, `&String::from("foo")` would create a `String`, followed by a
 // reference. Then the data is dropped upon exiting the scope, leaving
