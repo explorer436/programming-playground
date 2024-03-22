@@ -3,8 +3,8 @@ package com.mycompany.camelmicroservicea.routes.a;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
-@Component
-public class MyFileRouter extends RouteBuilder {
+// @Component
+public class MyFileMoverRouter extends RouteBuilder {
 
     // Moving files from one endpoint to another endpoint
 

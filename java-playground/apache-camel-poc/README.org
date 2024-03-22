@@ -19,3 +19,5 @@ References:
 
 Notes:
 1. If we don't specify a route id, a random value will be assigned.
+
+Camel Simple Expression Language: https://camel.apache.org/components/4.4.x/languages/simple-language.html

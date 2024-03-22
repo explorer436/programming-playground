@@ -2,94 +2,102 @@
 
 use std::cmp::max;
 
-#[derive(Debug, PartialEq, PartialOrd)]
+#[derive(Debug, Clone, PartialEq, PartialOrd)]
 pub struct BinaryTree<T> {
-    root: Option<T>,
+    tree_root: Option<Node<T>>,
+}
+
+#[derive(Debug, Clone, PartialEq, PartialOrd)]
+pub struct Node<T> {
+    node_root: Option<T>,
     left: Option<Box<BinaryTree<T>>>,
     right: Option<Box<BinaryTree<T>>>,
 }
 
 impl<T> BinaryTree<T> {
     #[allow(dead_code)]
-    fn root_element(&self) -> Option<&T> {
-        match &self.root {
+    fn root_element(&self) -> Option<&Node<T>> {
+        match &self.tree_root {
             None => None,
-            Some(x) => Some(x),
+            Some(root) => Some(root)
         }
     }
 
     #[allow(dead_code)]
     fn left_tree(&self) -> Option<&Box<BinaryTree<T>>> {
-        match &self.left {
+        match &self.tree_root {
             None => None,
-            Some(x) => Some(x),
+            Some(node) => node.left.as_ref()
         }
     }
 
     #[allow(dead_code)]
     fn right_tree(&self) -> Option<&Box<BinaryTree<T>>> {
-        match &self.right {
+        match &self.tree_root {
             None => None,
-            Some(x) => Some(x),
+            Some(node) => node.right.as_ref()
         }
     }
 
     #[allow(dead_code)]
     fn tree_height(&self) -> i32 {
-        match &self {
-            BinaryTree {
-                root: None,
-                left: None,
-                right: None
-            } => -1,
+        match &self.tree_root {
+            None => -1,
+            Some(root) => {
+                /*Node {
+                    root: None,
+                    left: None,
+                    right: None
+                } => -1,*/
 
-            BinaryTree {
-                root: Some(_),
-                left: None,
-                right: None
-            } => 0,
+                match root {
+                    Node {
+                        node_root: Some(_),
+                        left: None,
+                        right: None
+                    } => 0,
 
-            BinaryTree {
-                root: Some(_),
-                left: Some(l),
-                right: None
-            } => {
-                1 + BinaryTree::tree_height(l)
+                    Node {
+                        node_root: Some(_),
+                        left: Some(l),
+                        right: None
+                    } => {
+                        1 + BinaryTree::tree_height(l)
+                    }
+
+                    Node {
+                        node_root: Some(_),
+                        left: None,
+                        right: Some(r)
+                    } => {
+                        1 + BinaryTree::tree_height(r)
+                    }
+
+                    Node { node_root: Some(_), left: Some(l), right: Some(r) } => {
+                        let left_height = BinaryTree::tree_height(l);
+                        let right_height = BinaryTree::tree_height(r);
+                        1 + max(left_height, right_height)
+                    }
+
+                    Node { node_root: None, left: Some(_), right: _ } => -1,
+                    Node { node_root: None, left: None, right: Some(_) } => -1,
+
+                    Node { node_root: None, left: None, right: None } => -1
+                }
             }
-
-            BinaryTree {
-                root: Some(_),
-                left: None,
-                right: Some(r)
-            } => {
-                1 + BinaryTree::tree_height(r)
-            }
-
-            BinaryTree { root: Some(_), left: Some(l), right: Some(r) } => {
-                let left_height = BinaryTree::tree_height(l);
-                let right_height = BinaryTree::tree_height(r);
-                1 + max(left_height, right_height)
-            }
-
-            BinaryTree { root: None, left: Some(_), right: _ } => -1,
-            BinaryTree { root: None, left: None, right: Some(_) } => -1
         }
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::trees::tree::BinaryTree;
+    use crate::trees::tree::{BinaryTree, Node};
 
     #[test]
     fn testing_root_element_for_an_empty_tree() {
-        let x: Option<Box<BinaryTree<i32>>> = None;
-        let y: Option<Box<BinaryTree<i32>>> = None;
 
-        let test_tree = BinaryTree {
-            root: None,
-            left: x,
-            right: y,
+        let test_tree: BinaryTree<i32> = BinaryTree {
+            tree_root: None
         };
 
         let actual = BinaryTree::root_element(&test_tree);
@@ -106,29 +114,26 @@ mod tests {
         let an_integer = 5i32;
 
         let test_tree = BinaryTree {
-            root: Some(an_integer),
-            left: x,
-            right: y,
+            tree_root: Some(Node {
+                node_root: Some(an_integer),
+                left: x,
+                right: y,
+            })
         };
 
         let actual = BinaryTree::root_element(&test_tree);
         let expected = Some(an_integer);
-        assert_eq!(actual, expected.as_ref());
+        assert_eq!(actual.unwrap().node_root, expected);
     }
 
     #[test]
     fn testing_left_tree_for_non_empty_tree() {
         let x: Option<Box<BinaryTree<i32>>> = Some(Box::new(BinaryTree {
-            root: Some(6i32),
-            left: None,
-            right: None,
-        }));
-
-        // let expected = Some(an_integer);
-        let expected: Option<Box<BinaryTree<i32>>> = Some(Box::new(BinaryTree {
-            root: Some(6i32),
-            left: None,
-            right: None,
+            tree_root: Some(Node {
+                node_root: Some(6i32),
+                left: None,
+                right: None,
+            })
         }));
 
         let y: Option<Box<BinaryTree<i32>>> = None;
@@ -136,22 +141,32 @@ mod tests {
         let an_integer = 5i32;
 
         let test_tree = BinaryTree {
-            root: Some(an_integer),
-            left: x,
-            right: y,
+            tree_root: Some(
+                Node {
+                    node_root: Some(an_integer),
+                    left: x,
+                    right: y,
+                }
+            )
+        };
+
+        let expected: BinaryTree<i32> = BinaryTree {
+            tree_root: Some(Node {
+                node_root: Some(6i32),
+                left: None,
+                right: None,
+            })
         };
 
         let actual = BinaryTree::left_tree(&test_tree);
-        // let expected = Some(an_integer);
-        assert_eq!(actual, expected.as_ref());
+
+        assert_eq!(actual.unwrap(), expected);
     }
 
     #[test]
     fn testing_tree_height_for_empty_tree_1() {
         let test_tree: BinaryTree<i32> = BinaryTree {
-            root: None,
-            left: None,
-            right: None,
+            tree_root: None,
         };
 
         let actual = BinaryTree::tree_height(&test_tree);
@@ -161,9 +176,11 @@ mod tests {
     #[test]
     fn testing_tree_height_for_non_empty_tree_0() {
         let test_tree = BinaryTree {
-            root: Some(5i32),
-            left: None,
-            right: None,
+            tree_root: Some(Node {
+                node_root: Some(5i32),
+                left: None,
+                right: None,
+            })
         };
 
         let actual = BinaryTree::tree_height(&test_tree);
@@ -173,13 +190,17 @@ mod tests {
     #[test]
     fn testing_tree_height_for_non_empty_tree_1() {
         let test_tree = BinaryTree {
-            root: Some(5i32),
-            left: Some(Box::new(BinaryTree {
-                root: Some(6i32),
-                left: None,
+            tree_root: Some(Node {
+                node_root: Some(5i32),
+                left: Some(Box::new(BinaryTree {
+                    tree_root: Some(Node {
+                        node_root: Some(6i32),
+                        left: None,
+                        right: None,
+                    })
+                })),
                 right: None,
-            })),
-            right: None,
+            })
         };
 
         let actual = BinaryTree::tree_height(&test_tree);
@@ -189,17 +210,23 @@ mod tests {
     #[test]
     fn testing_tree_height_for_non_empty_tree_2() {
         let test_tree = BinaryTree {
-            root: Some(5i32),
-            left: Some(Box::new(BinaryTree {
-                root: Some(6i32),
+            tree_root: Some(Node {
+                node_root: Some(5i32),
                 left: Some(Box::new(BinaryTree {
-                    root: Some(7i32),
-                    left: None,
-                    right: None,
+                    tree_root: Some(Node {
+                        node_root: Some(6i32),
+                        left: Some(Box::new(BinaryTree {
+                            tree_root: Some(Node {
+                                node_root: Some(7i32),
+                                left: None,
+                                right: None,
+                            })
+                        })),
+                        right: None,
+                    })
                 })),
                 right: None,
-            })),
-            right: None,
+            })
         };
 
         let actual = BinaryTree::tree_height(&test_tree);
