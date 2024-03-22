@@ -3,7 +3,7 @@ package com.mycompany.camelmicroservicea.routes.a;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
-// @Component
+@Component
 public class MyFileRouter extends RouteBuilder {
 
     // Moving files from one endpoint to another endpoint
@@ -13,9 +13,9 @@ public class MyFileRouter extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        /*from("file:/home/explorer436/Downloads/GitRepositories/programming-playground/java-playground/apache-camel-poc/camel-microservice-a/input-folder")
+        from("file:/home/explorer436/Downloads/GitRepositories/programming-playground/java-playground/apache-camel-poc/camel-microservice-a/input-folder")
                 // .log("${body}")  // logs the body (content) of the file
-                .to("file:/home/explorer436/Downloads/GitRepositories/programming-playground/java-playground/apache-camel-poc/camel-microservice-a/output-folder");*/
+                .to("file:/home/explorer436/Downloads/GitRepositories/programming-playground/java-playground/apache-camel-poc/camel-microservice-a/output-folder");
 
         // This did not work for me.
         /*from("file:input-folder")

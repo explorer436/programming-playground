@@ -16,3 +16,6 @@ Used https://github.com/explorer436/programming-playground/blob/main/docker%20co
 
 References:
 1. https://github.com/in28minutes/course-material/blob/main/08-apache-camel/downloads.md
+
+Notes:
+1. If we don't specify a route id, a random value will be assigned.

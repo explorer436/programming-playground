@@ -1,10 +1,9 @@
 package com.mycompany.camelmicroservicea.routes.a;
 
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.model.rest.RestConfigurationDefinition;
 import org.springframework.stereotype.Component;
 
-@Component
+// @Component
 public class RestApiConsumerRouter extends RouteBuilder {
 
     @Override
