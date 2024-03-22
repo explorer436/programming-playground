@@ -6,15 +6,17 @@ import org.apache.camel.model.dataformat.JsonLibrary;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ActiveMqReceiverRouter extends RouteBuilder {
+public class ActiveMqXmlReceiverRouter extends RouteBuilder {
 
     // Recieve a json and unmarshall it
+    // We can use beans and processors to do further processing on the POJOs after unmarshalling them
 
     @Override
     public void configure() throws Exception {
-    from("activemq:my-activemq-queue")
+    from("activemq:my-activemq-xml-queue")
             .log("${body}")
-            .unmarshal().json(JsonLibrary.Jackson, CurrencyExchange.class)
+            .unmarshal()
+            .jacksonXml(CurrencyExchange.class)
             .log("${body}")
             .to("log:received-message-from-activemq");
     }
