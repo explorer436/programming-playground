@@ -162,6 +162,21 @@ mod tests {
     }
 
     #[test]
+    fn testing_left_tree_for_root_only_tree() {
+        let test_tree = BinaryTree {
+            tree_root: Some(Node {
+                node_root: Some(5i32),
+                left: None,
+                right: None,
+            })
+        };
+
+        let actual = BinaryTree::left_tree(&test_tree);
+
+        assert_eq!(actual, None);
+    }
+
+    #[test]
     fn testing_tree_height_for_empty_tree_1() {
         let test_tree: BinaryTree<i32> = BinaryTree {
             tree_root: None,
