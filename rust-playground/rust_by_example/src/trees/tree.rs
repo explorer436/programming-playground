@@ -24,7 +24,7 @@ impl<T> BinaryTree<T> {
     }
 
     #[allow(dead_code)]
-    fn left_tree(&self) -> Option<&Box<BinaryTree<T>>> {
+    fn left_sub_tree(&self) -> Option<&Box<BinaryTree<T>>> {
         match &self.tree_root {
             None => None,
             Some(node) => node.left.as_ref()
@@ -32,7 +32,7 @@ impl<T> BinaryTree<T> {
     }
 
     #[allow(dead_code)]
-    fn right_tree(&self) -> Option<&Box<BinaryTree<T>>> {
+    fn right_sub_tree(&self) -> Option<&Box<BinaryTree<T>>> {
         match &self.tree_root {
             None => None,
             Some(node) => node.right.as_ref()
@@ -87,6 +87,16 @@ impl<T> BinaryTree<T> {
             }
         }
     }
+
+    // TODO
+    // tree size
+    // are two trees equal
+    // left_node_value
+    // right_node_value
+    // left and right trees as a tuple
+    // left subtree height
+    // right subtree height
+
 }
 
 #[cfg(test)]
@@ -107,17 +117,16 @@ mod tests {
 
     #[test]
     fn testing_root_element_for_non_empty_tree() {
-        let x: Option<Box<BinaryTree<i32>>> = None;
-        let y: Option<Box<BinaryTree<i32>>> = None;
-
+        let l: Option<Box<BinaryTree<i32>>> = None;
+        let r: Option<Box<BinaryTree<i32>>> = None;
 
         let an_integer = 5i32;
 
         let test_tree = BinaryTree {
             tree_root: Some(Node {
                 node_root: Some(an_integer),
-                left: x,
-                right: y,
+                left: l,
+                right: r,
             })
         };
 
@@ -156,7 +165,7 @@ mod tests {
             })
         };
 
-        let actual = BinaryTree::left_tree(&test_tree);
+        let actual = BinaryTree::left_sub_tree(&test_tree);
 
         assert_eq!(actual, Some(Box::new(expected)).as_ref());
     }
@@ -171,7 +180,7 @@ mod tests {
             })
         };
 
-        let actual = BinaryTree::left_tree(&test_tree);
+        let actual = BinaryTree::left_sub_tree(&test_tree);
 
         assert_eq!(actual, None);
     }
