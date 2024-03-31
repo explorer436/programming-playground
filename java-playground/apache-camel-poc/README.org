@@ -2,6 +2,8 @@ Questions:
 How to use camel RouteBuilder from other classes?
 e.g. from a RestController?
 
+* Developer set-up
+
 ActiveMQ docker set-up:
 docker run -e ANONYMOUS_LOGIN=true --detach --name mycontainer -it -p 61616:61616 -p 8161:8161 apache/activemq-artemis:latest-alpine
 docker run -e ARTEMIS_USER=myUser -e ARTEMIS_PASSWORD=myPass --detach --name mycontainer -it -p 61616:61616 -p 8161:8161 apache/activemq-artemis:latest-alpine
@@ -16,8 +18,3 @@ Used https://github.com/explorer436/programming-playground/blob/main/docker%20co
 
 References:
 1. https://github.com/in28minutes/course-material/blob/main/08-apache-camel/downloads.md
-
-Notes:
-1. If we don't specify a route id, a random value will be assigned.
-
-Camel Simple Expression Language: https://camel.apache.org/components/4.4.x/languages/simple-language.html
