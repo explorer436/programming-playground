@@ -21,6 +21,14 @@ impl<T: std::cmp::PartialEq> BinaryTree<T> {
         }
     }
 
+    // Re-writing the above function without using &self
+    /*pub(crate) fn root_element(bt: &BinaryTree<T>) -> Option<&Node<T>> {
+        match &bt.tree_root {
+            None => None,
+            Some(root) => Some(root)
+        }
+    }*/
+
     #[allow(dead_code)]
     fn are_trees_equal(t1: BinaryTree<T>, t2: BinaryTree<T>) -> bool {
         t1 == t2
