@@ -101,7 +101,7 @@
 | trees                            | DriverClass                                                                | yes  |      |         |
 |                                  | Tree                                                                       | yes  |      |         |
 |                                  | TreeNode                                                                   | yes  |      |         |
-|                                  | AppendOneTreeToAnotherTree.hs                                              |      |      | yes     |
+|                                  | AppendOneTreeToAnotherTree.hs                                              |      | yes  | yes     |
 |                                  | ArithmeticBinaryTree.hs                                                    |      |      | yes     |
 |                                  | BinaryTreeBasedCodingProblems.org                                          |      |      | yes     |
 |                                  | BinaryTreeSumsByEachLevel.hs                                               |      |      | yes     |

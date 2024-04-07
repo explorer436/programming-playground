@@ -1,22 +1,20 @@
-// type Tree<T> = Option<Box<BinaryTree<T>>>;
-
 use std::cmp::max;
 
 #[derive(Debug, Clone, PartialEq, PartialOrd)]
 pub struct BinaryTree<T> {
-    tree_root: Option<Node<T>>,
+    pub(crate) tree_root: Option<Node<T>>,
 }
 
 #[derive(Debug, Clone, PartialEq, PartialOrd)]
 pub struct Node<T> {
-    node_root: Option<T>,
-    left: Option<Box<BinaryTree<T>>>,
-    right: Option<Box<BinaryTree<T>>>,
+    pub(crate) node_root: Option<T>,
+    pub(crate) left: Option<Box<BinaryTree<T>>>,
+    pub(crate) right: Option<Box<BinaryTree<T>>>,
 }
 
 impl<T: std::cmp::PartialEq> BinaryTree<T> {
     #[allow(dead_code)]
-    fn root_element(&self) -> Option<&Node<T>> {
+    pub(crate) fn root_element(&self) -> Option<&Node<T>> {
         match &self.tree_root {
             None => None,
             Some(root) => Some(root)
@@ -345,16 +343,15 @@ mod tests {
 
     #[test]
     fn testing_root_element_for_non_empty_tree() {
-        let l: Option<Box<BinaryTree<i32>>> = None;
-        let r: Option<Box<BinaryTree<i32>>> = None;
-
+        /*let l: Option<Box<BinaryTree<i32>>> = None;
+        let r: Option<Box<BinaryTree<i32>>> = None;*/
         let an_integer = 5i32;
 
         let test_tree = BinaryTree {
             tree_root: Some(Node {
-                node_root: Some(an_integer),
-                left: l,
-                right: r,
+                node_root: Some(5i32),
+                left: None,
+                right: None,
             })
         };
 
@@ -385,7 +382,6 @@ mod tests {
         };
 
         let actual = BinaryTree::left_subtree(&test_tree);
-
         assert_eq!(actual, None);
     }
 
@@ -420,7 +416,6 @@ mod tests {
         };
 
         let actual = BinaryTree::left_subtree(&test_tree);
-
         assert_eq!(actual, Some(Box::new(expected)).as_ref());
     }
 
