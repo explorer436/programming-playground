@@ -281,4 +281,6 @@ mod tests {
         }));
         assert_eq!(actual, expected);
     }
+
+    // TODO add tests to include empty tree on one side and non-empty tree on the other side
 }
