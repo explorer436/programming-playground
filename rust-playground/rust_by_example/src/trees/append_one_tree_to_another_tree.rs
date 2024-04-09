@@ -83,13 +83,7 @@ fn append_tree2_to_the_rightmost_leaf_of_tree1<T: std::cmp::PartialEq>(
 
                         // these patterns are not possible - adding them just to satisfy pattern matching
                         _ => {
-                            Some(Box::new(BinaryTree {
-                                tree_root: Some(Node {
-                                    node_root: None,
-                                    left: None,
-                                    right: None,
-                                })
-                            }))
+                            None
                         }
                     }
                 }
@@ -115,13 +109,7 @@ mod tests {
         let actual = append_tree2_to_the_rightmost_leaf_of_tree1(
             Some(Box::new(empty_tree1)),
             Some(Box::new(empty_tree2)));
-        let expected = Some(Box::new(BinaryTree {
-            tree_root: Some(Node {
-                node_root: None,
-                left: None,
-                right: None,
-            })
-        }));
+        let expected = None;
         assert_eq!(actual, expected);
     }
 
