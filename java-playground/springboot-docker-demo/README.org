@@ -173,3 +173,48 @@ RUN chmod +x docker-entrypoint.sh
 ENTRYPOINT ["sh","./docker-endtrypoint.sh"]
 #+end_src
 
+Another complex example:
+
+#+begin_src 
+ARG docker_zulu_runtime_springboot=8-jdk
+
+# certs stage
+FROM docker.ci.artifacts.company.com/wce-docker/ca-roots:latest as roots
+
+FROM docker.ci.artifacts.company.com/strati-docker/zulu:${docker_zulu_runtime_springboot}-centos
+ARG docker_artifact_path=rap-ovt-services/target
+ARG docker_artifact_name=rap-ovt-services
+VOLUME /tmp
+
+# copy known ca certs and wm root cert
+COPY --from=roots /usr/local/share/ca-certificates /etc/pki/ca-trust/source/anchors
+RUN update-ca-trust
+
+COPY ${docker_artifact_path}/${docker_artifact_name}.jar /opt/app/app.jar
+
+EXPOSE 8080
+
+# Non Root user configuration
+
+RUN groupadd -r -g 10001 appGrp \
+    && useradd -r -u 10000 -s /sbin/nologin -d /opt/app/ -G appGrp app \
+    && chown -R 10000:10001 /opt/app
+
+RUN mkdir -p /app/scm/ && chown -R app /app/scm/ \
+    && chown -R app /opt/app/ \
+    && mkdir -p /log/logmon/ && chown -R app /log/logmon/
+
+USER 10000
+
+ENTRYPOINT exec java $JAVA_OPTS \
+-xX:+UseContainerSupport \
+-Dcom.sun.management.jmxremote.rmi.port=9090 \
+-Dcom.sun.management.jmxremote=true \
+-Dcom.sun.management.jmxremote.port=9090 \
+-Dcom.sun.management.jmxremote.ssl=false \
+-Dcom.sun.management.jmxremote.authenticate=false \
+-Dcom.sun.management.jmxremote.local.only=false \
+-Djava.rmi.server.hostname=localhost \
+-Djava.security.egd=file:/dev/./urandom \
+-jar /opt/app/app.jar
+#+end_src
