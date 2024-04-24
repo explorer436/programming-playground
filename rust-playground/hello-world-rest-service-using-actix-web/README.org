@@ -1,0 +1,9 @@
+Run ~cargo build~ to download the dependencies and then compile the application code.
+
+Run ~cargo run~ to run the application and verify it by 
+
+#+begin_src 
+curl --verbose http://localhost:8080
+
+curl --verbose http://localhost:8080/compliment
+#+end_src

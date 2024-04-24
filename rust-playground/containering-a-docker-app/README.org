@@ -17,6 +17,19 @@ docker run -p 8080:8080 my-app
 
 ===============
 
+Testing:
+
+Run these on the host machine:
+
+#+begin_src 
+curl --verbose http://localhost:8080
+
+curl --verbose http://localhost:8080/compliment
+#+end_src
+
+
+===============
+
 What is the difference between ~Dockerfile~ and ~Dockerfile_backup~?
 
 Look at the secion ~Save Space by Compiling Without Tooling~ in https://www.docker.com/blog/simplify-your-deployments-using-the-rust-official-image/
