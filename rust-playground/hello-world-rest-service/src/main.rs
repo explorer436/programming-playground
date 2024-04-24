@@ -1,4 +1,3 @@
-use std::env;
 use std::io;
 
 use actix_files::Files;
@@ -33,7 +32,8 @@ async fn compliment(hb: Data<Handlebars<'_>>) -> impl Responder {
 #[actix_web::main]
 async fn main() -> io::Result<()> {
 
-    let address = env::var("BIND_ADDRESS").unwrap_or_else(|_err| "localhost:8080".to_string());
+    // let address = env::var("BIND_ADDRESS").unwrap_or_else(|_err| "localhost:8080".to_string());
+    let address = "0.0.0.0:8080";
 
     let template_service = {
         let mut handlebars = Handlebars::new();
