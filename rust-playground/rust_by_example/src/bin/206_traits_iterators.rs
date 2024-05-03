@@ -33,21 +33,6 @@ fn fibonacci() -> Fibonacci {
 }
 
 fn main() {
-    // `0..3` is an `Iterator` that generates: 0, 1, and 2.
-    let mut sequence = 0..3;
-
-    println!("Four consecutive `next` calls on 0..3");
-    println!("> {:?}", sequence.next());
-    println!("> {:?}", sequence.next());
-    println!("> {:?}", sequence.next());
-    println!("> {:?}", sequence.next());
-
-    // `for` works through an `Iterator` until it returns `None`.
-    // Each `Some` value is unwrapped and bound to a variable (here, `i`).
-    println!("Iterate through 0..3 using `for`");
-    for i in 0..3 {
-        println!("> {}", i);
-    }
 
     // The `fibonacci sequence is:
     /*println!("The `fibonacci sequence is: ");
@@ -67,11 +52,4 @@ fn main() {
         println!("> {}", i);
     }
 
-    let array = [1u32, 3, 3, 7];
-
-    // The `iter` method produces an `Iterator` over an array/slice.
-    println!("Iterate the following array {:?}", &array);
-    for i in array.iter() {
-        println!("> {}", i);
-    }
 }
