@@ -4,10 +4,13 @@ struct Fibonacci {
 }
 
 // Implement `Iterator` for `Fibonacci`.
+// See "Iterator.rs"
 // The `Iterator` trait only requires a method to be defined for the `next` element.
 impl Iterator for Fibonacci {
-    // We can refer to this type using Self::Item
-    type Item = u32;
+
+    // type Item is mandatory for Iterator trait. See "Iterator.rs"
+    type Item = u32; // We can refer to this type using Self::Item
+
 
     // Here, we define the sequence using `.curr` and `.next`.
     // The return type is `Option<T>`:
@@ -16,19 +19,19 @@ impl Iterator for Fibonacci {
     // We use Self::Item in the return type, so we can change
     // the type without having to update the function signatures.
     fn next(&mut self) -> Option<Self::Item> {
-        let current = self.curr;
+        let temp = self.curr;
 
         self.curr = self.next;
-        self.next = current + self.next;
+        self.next = self.next + temp;
 
         // Since there's no endpoint to a Fibonacci sequence, the `Iterator`
         // will never return `None`, and `Some` is always returned.
-        Some(current)
+        Some(temp)
     }
 }
 
-// Returns a Fibonacci sequence generator
-fn fibonacci() -> Fibonacci {
+// Returns a Fibonacci sequence generator until infinity
+fn fibonacci_sequence_generator() -> Fibonacci {
     Fibonacci { curr: 0, next: 1 }
 }
 
@@ -42,13 +45,13 @@ fn main() {
 
     // The `take(n)` method reduces an `Iterator` to its first `n` terms.
     println!("The first four terms of the Fibonacci sequence are: ");
-    for i in fibonacci().take(4) {
+    for i in fibonacci_sequence_generator().take(100) {
         println!("> {}", i);
     }
 
     // The `skip(n)` method shortens an `Iterator` by dropping its first `n` terms.
-    println!("The next four terms of the Fibonacci sequence are: ");
-    for i in fibonacci().skip(4).take(4) {
+    println!("The next six terms of the Fibonacci sequence are: ");
+    for i in fibonacci_sequence_generator().skip(4).take(6) {
         println!("> {}", i);
     }
 

@@ -261,9 +261,9 @@
 |                                  | CollatzSequences                                                           |      |      | yes          |
 |                                  | ConvertListToDecimalNumber                                                 |      |      | yes          |
 |                                  | DoubleAllNumbersInAListOfIntegers                                          |      |      | yes          |
-|                                  | EvenFibonacciSequence                                                      |      |      | yes          |
+|                                  | EvenFibonacciSequence                                                      | yes  | yes  | yes          |
 |                                  | EvenOrOddNumbers                                                           |      |      | yes          |
-|                                  | FibonacciSequence                                                          |      |      | yes          |
+|                                  | FibonacciSequence                                                          |      | yes  | yes          |
 |                                  | GenerateAListOfAllEvenNumbersTillN                                         |      |      | yes          |
 |                                  | GenerateAListOfFirstNEvenNumbers                                           |      |      | yes          |
 |                                  | LargestNumberUnderNDivisibleByAGivenNumber                                 |      |      | yes          |

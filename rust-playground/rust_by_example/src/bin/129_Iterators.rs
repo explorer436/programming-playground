@@ -1,3 +1,14 @@
+// Iterator is a Trait.
+//https://doc.rust-lang.org/std/iter/trait.Iterator.html 
+// It is used for dealing with iterators.
+// https://doc.rust-lang.org/std/iter/index.html
+// https://doc.rust-lang.org/std/iter/index.html#implementing-iterator
+
+
+// Required Associated Types: type Item
+// Required Methods: "next()"
+
+
 fn main() {
 
     // `0..3` is an `Iterator` that generates: 0, 1, and 2.
