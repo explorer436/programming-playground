@@ -263,9 +263,9 @@
 |                                  | DoubleAllNumbersInAListOfIntegers                                          |      |      | yes          |
 |                                  | EvenFibonacciSequence                                                      | yes  | yes  | yes          |
 |                                  | EvenOrOddNumbers                                                           |      |      | yes          |
-|                                  | FibonacciSequence                                                          |      | yes  | yes          |
-|                                  | GenerateAListOfAllEvenNumbersTillN                                         |      |      | yes          |
-|                                  | GenerateAListOfFirstNEvenNumbers                                           |      |      | yes          |
+|                                  | FibonacciSequence                                                          | yes  | yes  | yes          |
+|                                  | GenerateAListOfAllEvenNumbersTillN                                         |      | yes  | yes          |
+|                                  | GenerateAListOfFirstNEvenNumbers                                           |      | yes  | yes          |
 |                                  | LargestNumberUnderNDivisibleByAGivenNumber                                 |      |      | yes          |
 |                                  | LeapYear                                                                   |      |      | yes          |
 |                                  | Notes.org                                                                  |      |      | yes          |

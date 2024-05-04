@@ -1,0 +1,2 @@
+mod generate_a_list_of_all_even_numbers_till_n;
+mod generate_a_list_of_first_n_even_numbers;
