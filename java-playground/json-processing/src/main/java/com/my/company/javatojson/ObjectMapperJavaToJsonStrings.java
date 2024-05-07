@@ -45,4 +45,17 @@ public class ObjectMapperJavaToJsonStrings {
 
         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(e);
     }
+
+    public String javaToJson_withSpecificDateFormat(List<Employee> list) throws JsonProcessingException {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        // com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8 date/time type `java.time.LocalDate` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling (through reference chain: com.example.jacksonjsonpoc.objectmapper.model.Employee["joinedDate"])
+
+        objectMapper.registerModule(new JavaTimeModule());
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm a z");
+        objectMapper.setDateFormat(df);
+
+        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(list);
+    }
 }
