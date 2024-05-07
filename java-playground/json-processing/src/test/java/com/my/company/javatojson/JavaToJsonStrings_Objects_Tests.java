@@ -60,6 +60,16 @@ public class JavaToJsonStrings_Objects_Tests {
     }
 
     @Test
+    public void test_objectMapper_javaToJson_withSpecificDateFormat_3() throws Exception {
+
+        List<Employee> l = new ArrayList<>();
+        l.add(getEmployee());
+
+        String actual = objectMapperJavaToJsonStrings.javaToJson_withSpecificDateFormat_withoutPrettyPrint(l);
+        assertEquals("[{\"firstname\":\"a-first-name\",\"lastname\":\"a-last-name\",\"joinedDate\":\"2016-06-24T13:39:44.68768\",\"leavingDate\":\"2016-06-24T13:39:44+01:00\"}]", actual);
+    }
+
+    @Test
     public void test_gson_javaToJson() throws Exception {
 
         Employee e = getEmployee();
