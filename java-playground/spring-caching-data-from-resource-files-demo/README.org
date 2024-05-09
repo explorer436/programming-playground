@@ -1,0 +1,29 @@
+Log statements before using caching. The file is read every single time the application serves a request.
+
+#+begin_src
+2024-05-09T15:44:32.178-04:00  INFO 1823480 --- [nio-8080-exec-1] c.e.springjsondemo.service.MyService     : >>> valueList before conversion: [first, second, third]
+2024-05-09T15:44:32.179-04:00  INFO 1823480 --- [nio-8080-exec-1] c.e.s.cacheutils.LookupDataProvider      : >>> Reading data from the resource file
+2024-05-09T15:44:32.197-04:00  INFO 1823480 --- [nio-8080-exec-1] c.e.springjsondemo.service.MyService     : >>> valueList after conversion: [1, 2, 3]
+2024-05-09T15:44:32.992-04:00  INFO 1823480 --- [nio-8080-exec-2] c.e.springjsondemo.service.MyService     : >>> valueList before conversion: [first, second, third]
+2024-05-09T15:44:32.992-04:00  INFO 1823480 --- [nio-8080-exec-2] c.e.s.cacheutils.LookupDataProvider      : >>> Reading data from the resource file
+2024-05-09T15:44:32.993-04:00  INFO 1823480 --- [nio-8080-exec-2] c.e.springjsondemo.service.MyService     : >>> valueList after conversion: [1, 2, 3]
+2024-05-09T15:44:33.823-04:00  INFO 1823480 --- [nio-8080-exec-3] c.e.springjsondemo.service.MyService     : >>> valueList before conversion: [first, second, third]
+2024-05-09T15:44:33.823-04:00  INFO 1823480 --- [nio-8080-exec-3] c.e.s.cacheutils.LookupDataProvider      : >>> Reading data from the resource file
+2024-05-09T15:44:33.824-04:00  INFO 1823480 --- [nio-8080-exec-3] c.e.springjsondemo.service.MyService     : >>> valueList after conversion: [1, 2, 3]
+#+end_src
+
+Changes to enable caching:
+1. ~@EnableCaching~
+2. ~@Cacheable("idValues")~
+
+Log statements after using caching. The file is read only the first time.
+
+#+begin_src
+2024-05-09T15:49:52.165-04:00  INFO 1831557 --- [nio-8080-exec-1] c.e.springjsondemo.service.MyService     : >>> valueList before conversion: [first, second, third]
+2024-05-09T15:49:52.168-04:00  INFO 1831557 --- [nio-8080-exec-1] c.e.s.cacheutils.LookupDataProvider      : >>> Reading data from the resource file
+2024-05-09T15:49:52.194-04:00  INFO 1831557 --- [nio-8080-exec-1] c.e.springjsondemo.service.MyService     : >>> valueList after conversion: [1, 2, 3]
+2024-05-09T15:49:53.037-04:00  INFO 1831557 --- [nio-8080-exec-2] c.e.springjsondemo.service.MyService     : >>> valueList before conversion: [first, second, third]
+2024-05-09T15:49:53.038-04:00  INFO 1831557 --- [nio-8080-exec-2] c.e.springjsondemo.service.MyService     : >>> valueList after conversion: [1, 2, 3]
+2024-05-09T15:49:53.846-04:00  INFO 1831557 --- [nio-8080-exec-3] c.e.springjsondemo.service.MyService     : >>> valueList before conversion: [first, second, third]
+2024-05-09T15:49:53.846-04:00  INFO 1831557 --- [nio-8080-exec-3] c.e.springjsondemo.service.MyService     : >>> valueList after conversion: [1, 2, 3]
+#+end_src

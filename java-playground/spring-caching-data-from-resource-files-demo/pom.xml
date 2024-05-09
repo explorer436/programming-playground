@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>spring-property-files-demo</artifactId>
+	<artifactId>spring-caching-data-from-resource-files-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-property-files-demo</name>
+	<name>spring-caching-data-from-resource-files-demo</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
