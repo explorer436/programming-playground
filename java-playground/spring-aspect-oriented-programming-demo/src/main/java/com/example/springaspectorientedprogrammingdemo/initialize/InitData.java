@@ -19,30 +19,35 @@ public class InitData {
     @PostConstruct
     public void load() throws JsonProcessingException {
 
-        Employee employee1 = (new ObjectMapper()).readValue("{\n" +
-                "                \"firstName\": \"John\",\n" +
-                "                \"lastName\":  \"Mathew\",\n" +
-                "                \"emailId\": \"John.Mathew@xyz.com\"\n" +
-                "                }", Employee.class);
-        Employee employee2 = (new ObjectMapper()).readValue("{\n" +
-                "                \"firstName\": \"Jim\",\n" +
-                "                \"lastName\":  \"Parker\",\n" +
-                "                \"emailId\": \"Jim.Parker@xyz.com\"\n" +
-                "                }", Employee.class);
-        Employee employee3 = (new ObjectMapper()).readValue("{\n" +
-                "                \"firstName\": \"Sophia\",\n" +
-                "                \"lastName\":  \"Ran\",\n" +
-                "                \"emailId\": \"Sophia.Ran@xyz.com\"\n" +
-                "                }", Employee.class);
-        Employee employee4 = (new ObjectMapper()).readValue("{\n" +
-                "                \"firstName\": \"Wendi\",\n" +
-                "                \"lastName\":  \"Blake\",\n" +
-                "                \"emailId\": \"Wendi.Blake@xyz.com\"\n" +
-                "                }", Employee.class);
+        Employee employee1 = (new ObjectMapper()).readValue("""
+                {
+                    "firstName": "John",
+                    "lastName":  "Mathew",
+                    "emailId": "John.Mathew@xyz.com"
+                }
+                """, Employee.class);
+        Employee employee2 = (new ObjectMapper()).readValue("""
+                {
+                    "firstName": "Jim",
+                    "lastName":  "Parker",
+                    "emailId": "Jim.Parker@xyz.com"
+                }
+                """, Employee.class);
+        Employee employee3 = (new ObjectMapper()).readValue("""
+                {
+                    "firstName": "Sophia",
+                    "lastName":  "Ran",
+                    "emailId": "Sophia.Ran@xyz.com"
+                }
+                """, Employee.class);
+        Employee employee4 = (new ObjectMapper()).readValue("""
+                {
+                    "firstName": "Wendi",
+                    "lastName":  "Blake",
+                    "emailId": "Wendi.Blake@xyz.com"
+                }
+                """, Employee.class);
 
-        employeeRepository.saveAll(Arrays.asList(employee1,employee2,employee3,employee4));
+        employeeRepository.saveAll(Arrays.asList(employee1, employee2, employee3, employee4));
     }
-
-
-
 }
