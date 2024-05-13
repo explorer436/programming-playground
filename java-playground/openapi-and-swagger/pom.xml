@@ -2,15 +2,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.my.company</groupId>
-    <artifactId>apache-camel-poc</artifactId>
+    <artifactId>openapi-and-swagger</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>apache-camel-poc</name>
+    <name>openapi-and-swagger</name>
     <url>http://maven.apache.org</url>
 
     <modules>
-        <module>camel-microservice-a</module>
-        <module>camel-microservice-b</module>
+        <module>openapi-generator-maven-plugin-poc</module>
+        <module>swagger-poc-java17-spring3.2</module>
+        <module>swagger-poc-java8-spring2.7</module>
     </modules>
 
     <properties>

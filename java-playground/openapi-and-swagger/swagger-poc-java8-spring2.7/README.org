@@ -1,0 +1,13 @@
+* Key points to note:
+
+1. In application.properties,
+   #+begin_src
+   springdoc.api-docs.path=/api-docs
+   spring.mvc.pathmatch.matching-strategy=ant_path_matcher
+   #+end_src
+2. In pom.xml, ~springdoc-openapi-ui~ dependency
+
+
+We can access the api-docs at: http://localhost:8080/api-docs
+To download the spec file: http://localhost:8080/api-docs.yaml
+Swagger UI: http://localhost:8080/swagger-ui/index.html
