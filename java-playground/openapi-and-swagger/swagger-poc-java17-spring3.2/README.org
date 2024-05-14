@@ -18,6 +18,17 @@ Other than adding the mvn dependency, there is nothing else to be done.
 # Default url to launch swagger ui (without customization)
 # http://localhost:8080/swagger-ui/index.html#
 
+Note that if the application has: context-path, it needs to be included in the url
+
+#+begin_src
+/<context-path>//swagger-ui/index.html
+#+end_src
+
+e.g.
+#+begin_src
+http://localhost:8080/my-service/swagger-ui/index.html
+#+end_src
+
 ** Reading material
 
 1. https://github.com/springdoc/springdoc-openapi
