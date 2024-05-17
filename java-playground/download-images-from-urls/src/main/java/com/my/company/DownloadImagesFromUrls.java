@@ -30,7 +30,7 @@ public class DownloadImagesFromUrls {
     for (int i = 1; i < urlList.size() + 1; i++) {
       fileUrl = urlList.get(i - 1);
       // localFilename = "/home/explorer436/Pictures/downloaded-images/" + String.valueOf(i) + ".jpg";
-      localFilename = "/home/explorer436/Pictures/downloaded-images/" + String.valueOf(i);
+      localFilename = "/home/explorer436/Pictures/" + String.valueOf(i);
       boolean result = downloadWithJavaNIO(fileUrl, localFilename);
       if (result) {
         successCount++;
