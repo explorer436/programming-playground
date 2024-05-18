@@ -16,6 +16,8 @@ breadthLevelSums [] = []
 breadthLevelSums [EmptyTree] = []
 breadthLevelSums listOfTrees = sumOfRootNodeValues listOfTrees ++ breadthLevelSums (concat (map leftAndRightTrees listOfTrees))   
 
+// In Haskell, the ++ operator is list concatenation.
+
 sumOfRootNodeValues :: [Tree Int8] -> [Int8]
 sumOfRootNodeValues listOfTrees = [sum (map actualRootValue listOfTrees)]
 
