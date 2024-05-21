@@ -1,0 +1,4 @@
+There seems to be compatibility issues for powermock for jdk versions greater than 1.8.
+I was not able to run any of the tests in this project.
+If there is no support for higher versions of jdks, powermock is a non-starter.
+Try to avoid using it as much as you can.

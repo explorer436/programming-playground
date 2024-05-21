@@ -12,6 +12,7 @@
         <module>web-layer-testing-for-springboot-app</module>
         <module>parameterized-tests-sample</module>
         <module>mockito-examples</module>
+        <module>powermock-examples</module>
     </modules>
     <properties>
         <java.version>17</java.version>
