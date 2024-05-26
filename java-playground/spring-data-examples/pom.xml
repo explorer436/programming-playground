@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.my.company</groupId>
+    <artifactId>spring-data-examples</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>spring-data-examples</name>
+    <url>http://maven.apache.org</url>
+
+    <modules>
+        <module>spring-data-jpa-file-io-with-mysql</module>
+        <module>spring-data-jpa-multi-datasource-with-h2</module>
+        <module>spring-data-jpa-with-dynamodb</module>
+        <module>spring-data-jpa-with-h2</module>
+        <module>spring-data-rest-with-mongodb</module>
+    </modules>
+
+    <properties>
+	<java.version>18</java.version>
+    </properties>
+</project>

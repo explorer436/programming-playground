@@ -22,7 +22,7 @@ import java.util.stream.Stream;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class FilesStorageOnFileSystemOnFileSystemServiceImpl implements FilesStorageOnFileSystemService {
+public class FilesStorageOnFileSystemServiceImpl implements FilesStorageOnFileSystemService {
 
     private final FileDBRepository fileDBRepository;
 
@@ -31,8 +31,8 @@ public class FilesStorageOnFileSystemOnFileSystemServiceImpl implements FilesSto
     @Override
     public void init() {
         try {
-            Path abc = Files.createDirectories(root);
-            log.info("created path : " + abc);
+            Path p = Files.createDirectories(root);
+            log.info("created path : " + p);
         } catch (IOException e) {
             throw new RuntimeException("Could not initialize folder for upload!");
         }
