@@ -73,7 +73,7 @@ cargo build
 13_formatted_print_displaying.rs
 14_formatted_print_formatting.rs
 
-** 21-30 - variables, primitives, literals, operators, expressions, mutation, shadowing
+** 21-30 - primitives, literals, operators, expressions
 21_variables.rs
 22_primitives_literals_and_operators.rs
 23_primitives_tuples.rs
@@ -83,8 +83,15 @@ cargo build
 ** 31-40 Expressions
 31_expressions.rs
 
-** 41-50 - matrix
-41_matrix.rs
+variables, mutation, shadowing
+
+** 41-50 Custom types
+41_custom_types_structs.rs
+42_custom_types_structs_traits.rs
+43_custom_types_enums.rs
+44_custom_types_use_keyword.rs
+45_custom_types_linked_list_via_enums.rs
+46_custom_types_constants_and_static_variables.rs
 
 ** 51-60 - macros
 51_macro_rules.rs
@@ -95,17 +102,10 @@ cargo build
 56_macro-rules_dsl-domain-specific-languages.rs
 57_macro-rules_variadics.rs
 
-** 61-70 - arrays, slices
-61_arrays_and_slices.rs
+** 71-80
+71_matrix.rs
 
-** 71-80 - structs
-71_structs.rs
-72_structs_traits.rs
-
-** 81-90 - enums
-81_enums.rs
-82_use_keyword.rs
-83_linked_list_via_enums.rs
+** 81-90
 
 ** 91-100 - constants, literals, types, type casting, type inference, type aliasing, conversions from one type to another
 91_constants.rs
