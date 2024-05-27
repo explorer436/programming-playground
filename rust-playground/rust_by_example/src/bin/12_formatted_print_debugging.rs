@@ -15,7 +15,7 @@ struct DebugPrintable(i32);
 #[derive(Debug)]
 struct Structure(i32);
 
-// Put a `Structure` inside of the structure `Deep`. Make it printable also.
+// Put a `Structure` inside the structure `Deep`. Make it printable also.
 #[derive(Debug)]
 struct Deep(Structure);
 

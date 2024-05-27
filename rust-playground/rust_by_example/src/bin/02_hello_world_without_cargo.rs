@@ -7,7 +7,7 @@ fn main() {
  */
 
 // To compile and run the file without using cargo:
-// $ rustc main.rs
+// $ rustc 02_hello_world_without_cargo.rs
 // After compiling successfully, Rust outputs a binary executable file.
 // you run the main or main.exe file, like this:
-// $ ./main
+// $ ./02_hello_world_without_cargo

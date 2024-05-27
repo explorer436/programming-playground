@@ -64,23 +64,27 @@ cargo build
 
 ** 01-10 - Getting started and basics
 01_guessing_game.rs
-02_hello_world_using_cargo.rs
+02_hello_world_without_cargo.rs
+03_hello_world_using_cargo.rs
 
 ** 11-20 - formatting, debugging, displaying, printing
 11_formatted_print.rs
-12_debugging.rs
-13_displaying.rs
-14_formatting.rs
+12_formatted_print_debugging.rs
+13_formatted_print_displaying.rs
+14_formatted_print_formatting.rs
 
-** 21-30 - variables, primitives, literals, operators, expressions
+** 21-30 - variables, primitives, literals, operators, expressions, mutation, shadowing
 21_variables.rs
-22_primitives.rs
-23_literals_and_operators.rs
-24_expressions.rs
+22_primitives_literals_and_operators.rs
+23_primitives_tuples.rs
+24_primitives_arrays_and_slices.rs
+25_variables_mutability_shadowing.rs
 
-** 41-50 - matrix, tuples
+** 31-40 Expressions
+31_expressions.rs
+
+** 41-50 - matrix
 41_matrix.rs
-42_tuples.rs
 
 ** 51-60 - macros
 51_macro_rules.rs
