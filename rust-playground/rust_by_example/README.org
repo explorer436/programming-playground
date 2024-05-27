@@ -59,3 +59,146 @@ https://doc.rust-lang.org/cargo/commands/build-commands.html
 cargo test
 cargo build
 #+end_src
+
+* Folder structure
+
+** 01-10 - Getting started and basics
+01_guessing_game.rs
+02_hello_world_using_cargo.rs
+
+** 11-20 - formatting, debugging, displaying, printing
+11_formatted_print.rs
+12_debugging.rs
+13_displaying.rs
+14_formatting.rs
+
+** 21-30 - variables, primitives, literals, operators, expressions
+21_variables.rs
+22_primitives.rs
+23_literals_and_operators.rs
+24_expressions.rs
+
+** 41-50 - matrix, tuples
+41_matrix.rs
+42_tuples.rs
+
+** 51-60 - macros
+51_macro_rules.rs
+52_macro-rules_syntax-designators.rs
+53_macro-rules_syntax-overload.rs
+54_macro-rules_syntax-repeat.rs
+55_macro-rules_dry-do-not-repeat-yourself.rs
+56_macro-rules_dsl-domain-specific-languages.rs
+57_macro-rules_variadics.rs
+
+** 61-70 - arrays, slices
+61_arrays_and_slices.rs
+
+** 71-80 - structs
+71_structs.rs
+72_structs_traits.rs
+
+** 81-90 - enums
+81_enums.rs
+82_use_keyword.rs
+83_linked_list_via_enums.rs
+
+** 91-100 - constants, literals, types, type casting, type inference, type aliasing, conversions from one type to another
+91_constants.rs
+92_simple_types.rs
+93_type_casting.rs
+94_type_literals.rs
+95_type_inference.rs
+96_type_aliasing.rs
+97_conversion_from_and_into.rs
+98_conversion_try_from_and_try_into.rs
+99_conversion_to_and_from_strings.rs
+
+** 101-120 - flow of controls
+101_flow_of_control_if-else.rs
+102_flow_of_control_loop.rs
+103_flow_of_control_loop-nesting-and-labels.rs
+104_flow_of_control_loop-returning-from-loops.rs
+105_flow_of_control_while.rs
+106_flow_of_control_for-and-range.rs
+107_flow_of_control_match.rs
+108_flow_of_control_match-destructuring-tuples.rs
+109_flow_of_control_match-destructuring-arrays-slices.rs
+110_flow_of_control_match-destructuring-enums.rs
+111_flow_of_control_match-destructuring-pointers-ref.rs
+112_flow_of_control_match-destructuring-structs.rs
+113_flow_of_control_match-guards.rs
+114_flow_of_control_match-binding.rs
+115_flow_of_control_if-let.rs
+116_flow_of_control_while-let.rs
+
+** 121-140 - functions
+121_functions.rs
+122_functions_methods.rs
+123_functions_closures.rs
+124_functions_capturing.rs
+125_functions_as-input-parameters.rs
+126_functions_type-anonymity.rs
+127_functions_input-functions.rs
+128_functions_as-output-parameters.rs
+129_Iterators.rs
+130_functions_iter.rs
+131_functions_into-iter.rs
+132_functions_searching-through-iterators.rs
+133_functions_higher-order-functions.rs
+134_functions_diverging-functions.rs
+
+** 141-150 - modules
+141_modules_visibility.rs
+142_modules_struct-visibility.rs
+143_modules_the-use-declaration.rs
+144_modules_super-and-self.rs
+
+** 151-170 - generics
+151_generics.rs
+152_generics_functions.rs
+153_generics_implementation.rs
+154_generics_traits.rs
+155_generics_bounds.rs
+156_generics_testcase-empty-bounds.rs
+157_generics_multiple-bounds.rs
+158_generics_where-clauses.rs
+159_generics_new-type-idiom.rs
+160_generics_associated-items-the-problem.rs
+161_generics_associated-items-associated-types.rs
+162_generics_phantom-type-parameters.rs
+163_generics_testcase-unit-clarification.rs
+
+** 171-200 - scoping
+171_scoping_rules-raii.rs
+172_scoping_rules-ownership-and-moves.rs
+173_scoping_rules-ownership-and-moves-mutability.rs
+174_scoping_rules-ownership-and-moves-partial-moves.rs
+175_scoping_rules-borrowing.rs
+176_scoping_rules-borrowing-mutability.rs
+177_scoping_rules-borrowing-aliasing.rs
+178_scoping_rules-borrowing-the-ref-pattern.rs
+179_scoping_rules-lifetimes.rs
+180_scoping_rules-lifetimes-explicit-annotation.rs
+181_scoping_rules-lifetimes-functions.rs
+182_scoping_rules-lifetimes-methods.rs
+183_scoping_rules-lifetimes-structs.rs
+184_scoping_rules-lifetimes-traits.rs
+185_scoping_rules-lifetimes-bounds.rs
+186_scoping_rules-lifetimes-coercion.rs
+187_scoping_rules-lifetimes-static.rs
+188_scoping_rules-lifetimes-elision.rs
+
+** 201-... - traits
+201_traits.rs
+202_traits_derive.rs
+203_traits_returning-traits-with-dyn.rs
+204_traits_operator-overloading.rs
+205_traits_drop.rs
+206_traits_fibonacci_sequence_using_iterator_trait.rs
+207_traits_fibonacci_sequence_without_using_iterator_trait.rs
+208_traits_even_fibonacci_sequence_using_iterator_trait.rs
+209_traits.rs
+210_traits.rs
+211_traits.rs
+212_traits_disambiguating_overlapping_traits.rs
