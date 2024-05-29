@@ -1,0 +1,6 @@
+[package]
+name = "type_casting_type_inference_type_aliasing"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
