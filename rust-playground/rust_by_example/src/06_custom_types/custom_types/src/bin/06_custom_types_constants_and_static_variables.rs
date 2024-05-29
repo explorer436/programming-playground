@@ -1,4 +1,8 @@
+
+// https://doc.rust-lang.org/stable/rust-by-example/custom_types/constants.html
+
 // Globals are declared outside all other scopes.
+
 static LANGUAGE: &str = "Rust";
 const THRESHOLD: i32 = 10;
 
