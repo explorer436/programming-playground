@@ -19,6 +19,13 @@ fn main() {
 
 #[warn(dead_code)]
 fn cleanup() {
+
+    Command::new("sh")
+        .arg("-c")
+        .arg("find /home/explorer436/Downloads/GitRepositories/hugo-blog/org -name \"*~*\" -delete")
+        .output()
+        .expect("successful");
+
     Command::new("sh")
         .arg("-c")
         .arg("rm -rf /home/explorer436/Downloads/GitRepositories/hugo-blog/content/posts/")
