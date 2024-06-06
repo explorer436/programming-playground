@@ -19,7 +19,7 @@ func TestFizzBuzz(t *testing.T) {
 	for _, c := range cases {
 		got := FizzBuzz(c.input)
 		if got != c.want {
-			t.Errorf("FizzBuzz(%q) got %q, but want %q", c.input, got, c.want)
+			t.Errorf("FizzBuzz(%d) got %q, but want %q", c.input, got, c.want)
 		}
 	}
 }
