@@ -1,0 +1,43 @@
+To build the binary, run: ~go build~ in the root folder.
+
+It will put a binary file in the same folder with the name of the module (defined in ~go.mod~).
+
+We can run it with ~./hello~
+
+* Dependencies on external modules
+
+Add the ~import~ statements in the ~go~ files and run the command ~go mod tidy~ in the root directory.
+
+The ~go mod tidy~ command adds missing module requirements for imported packages and removes requirements on modules that aren't used anymore. 
+
+* Testing
+
+~go test~ will run the tests only in the directory in which it it run.
+e.g. To run tests on ~morestrings~ package, we have to run ~go test~ in that directory.
+
+How to `go test` all tests in my project?
+
+This should run all tests in current directory and all of its subdirectories: 
+#+begin_src 
+go test ./...
+#+end_src
+
+This should run all tests for given specific directories:
+#+begin_src 
+go test ./tests/... ./unit-tests/... ./my-packages/...
+#+end_src
+
+This should run all tests with import path prefixed with foo/:
+#+begin_src 
+go test foo/...
+#+end_src
+
+This should run all tests import path prefixed with foo:
+#+begin_src 
+go test foo...
+#+end_src
+
+This should run all tests in your $GOPATH:
+#+begin_src 
+go test ...
+#+end_src

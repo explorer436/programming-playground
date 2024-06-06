@@ -1,0 +1,36 @@
+fibonacci
+List of first n even numbers
+List of all even numbers till n
+two sum
+trees
+matrix transpose
+
+   https://gophercises.com/ 
+
+And don‘t forget to look into AOC (Advent of Code) - no brainer if you are looking for assignments!!! https://adventofcode.com/ 
+
+Go has the best standard http library. Do a little middleware chaining for logs and errors and that will give you a solid grasp of lots of patterns without being too complicated.
+
+You can't know how well your app is coded until time passes and you need to add features or fix bugs that you didn't previously plan for. The best way to get that experience is to make something you actually use and need to modify over time.
+Personally, for me that's CLI tools. See https://github.com/bbkane for a small list of things I found useful to create. Maybe something there will inspire you.
+
+build something like small web servers with net/http & then go for a frameworks like gin or fiber with database integrations & caching systems like redis. build small cli tools for yourself. try to write some small program for your daily repetitive tasks.
+
+You can try https://codecrafters.io/ . This have a free http server challange, also you can compare your solution with others. 
+
+CLI tool with web scraping would be a fun one. You get project structure, CLI flag parsing, regex manipulation / XML Parsing, Concurrency for your V2.
+
+My first Go project was replacing a bash script that was too slow. I learn about Go routine and then I DoS my service by having Go be far too efficient and had to learn about waitgroups and channels.
+
+So, obviously getting familiar with the core language is best but here's some really handy libraries to keep in mind.
+
+CLI flags parsing:
+- https://github.com/alecthomas/kong
+- https://github.com/spf13/cobra
+
+Config Loading:
+- https://github.com/spf13/viper
+
+Or just search for awesome-go and find a more choices than you know what to do with. https://github.com/avelino/awesome-go
+
+Check out this great blog post by the Go team for more details on the design and implementation of slices in Go: https://go.dev/blog/slices-intro

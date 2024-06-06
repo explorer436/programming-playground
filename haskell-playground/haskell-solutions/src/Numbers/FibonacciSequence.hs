@@ -10,6 +10,7 @@ import Data.Array
 -}
 
 ----------------------------------------------------------------------------
+
 -- A linear-time solution.
 -- This is an infinite list. We can just grab how ever many elements we want from the beginning of it.
 -- In this approach, the result at each position depends on the result at the previous position.
@@ -46,7 +47,8 @@ fibA n = listArray (0,n) [f i | i <- [0..n]]
 ----------------------------------------------------------------------------
 
 -- This implementation requires O(fib n) additions.
--- This is an inefficient way to get the fibonacci series for a given number n. The number of calls to calculate the values at the positions prior to n will increase exponentially as the value of n increases.
+-- This is an inefficient way to get the fibonacci series for a given number n. 
+-- The number of calls to calculate the values at the positions prior to n will increase exponentially as the value of n increases.
 fibonacciUsingRecursion :: Num a => Int -> [a]
 fibonacciUsingRecursion n = take n (map fibonacciNumberForPosition [0..])
 
