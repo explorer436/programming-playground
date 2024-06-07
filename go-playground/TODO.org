@@ -1,9 +1,5 @@
-fibonacci
-List of first n even numbers
-List of all even numbers till n
-two sum
-trees
-matrix transpose
+1. trees
+1. matrix transpose
 
    https://gophercises.com/ 
 
@@ -34,3 +30,5 @@ Config Loading:
 Or just search for awesome-go and find a more choices than you know what to do with. https://github.com/avelino/awesome-go
 
 Check out this great blog post by the Go team for more details on the design and implementation of slices in Go: https://go.dev/blog/slices-intro
+
+Take notes about pointers from here: https://stackoverflow.com/questions/59964619/difference-using-pointer-in-struct-fields

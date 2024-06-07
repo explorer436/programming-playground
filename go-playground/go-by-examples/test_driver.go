@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	morestrings "my/go/examples/my-strings"
-	value_types "my/go/examples/value_types"
+	morestrings "my/go/examples/mystrings"
+	value_types "my/go/examples/myvaluetypes"
 
 	"github.com/google/go-cmp/cmp"
 )

@@ -41,3 +41,7 @@ This should run all tests in your $GOPATH:
 #+begin_src 
 go test ...
 #+end_src
+
+* Style guides
+
+https://google.github.io/styleguide/go/decisions.html

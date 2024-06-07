@@ -1,14 +1,14 @@
 package com.my.company.datastructures.trees;
 
-public class TreeNode {
+public class BinaryNode {
 
   private int data;
 
-  private TreeNode leftChild;
+  private BinaryNode leftChild;
 
-  private TreeNode rightChild;
+  private BinaryNode rightChild;
 
-  public TreeNode(int data) {
+  public BinaryNode(int data) {
     super();
     this.data = data;
   }
@@ -20,13 +20,13 @@ public class TreeNode {
       return;
     } else if (value < data) {
       if (leftChild == null) {
-        leftChild = new TreeNode(value);
+        leftChild = new BinaryNode(value);
       } else {
         leftChild.insert(value);
       }
     } else if (value > data) {
       if (rightChild == null) {
-        rightChild = new TreeNode(value);
+        rightChild = new BinaryNode(value);
       } else {
         rightChild.insert(value);
       }
@@ -63,7 +63,7 @@ public class TreeNode {
     }
   }
 
-  public TreeNode get(int value) {
+  public BinaryNode get(int value) {
     if (value == data) {
       return this;
     } else if (value < data) {
@@ -103,19 +103,19 @@ public class TreeNode {
     this.data = data;
   }
 
-  public TreeNode getLeftChild() {
+  public BinaryNode getLeftChild() {
     return leftChild;
   }
 
-  public void setLeftChild(TreeNode leftChild) {
+  public void setLeftChild(BinaryNode leftChild) {
     this.leftChild = leftChild;
   }
 
-  public TreeNode getRightChild() {
+  public BinaryNode getRightChild() {
     return rightChild;
   }
 
-  public void setRightChild(TreeNode rightChild) {
+  public void setRightChild(BinaryNode rightChild) {
     this.rightChild = rightChild;
   }
 

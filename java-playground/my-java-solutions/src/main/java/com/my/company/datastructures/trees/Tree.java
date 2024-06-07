@@ -3,13 +3,13 @@ package com.my.company.datastructures.trees;
 public class Tree {
 
   // TODO Make this generic to support all the different types of trees
-  // https://www.cs.cmu.edu/~clo/www/CMU/DataStructures/Lessons/lesson4_1.htm#:~:text=A%20tree%20is%20a%20collection,which%20are%20linear%20data%20structures.
+  // https://www.cs.cmu.edu/~clo/www/CMU/DataStructures/Lessons/lesson4_1.htm#:~:text=A%20tree%20is%20a%20collection,which%20are%20linear%20data%20structures
 
-  private TreeNode root;
+  private BinaryNode root;
 
   public void insert(int value) {
     if (root == null) {
-      root = new TreeNode(value);
+      root = new BinaryNode(value);
     } else {
       root.insert(value);
     }
@@ -27,7 +27,7 @@ public class Tree {
     }
   }
 
-  public TreeNode get(int value) {
+  public BinaryNode get(int value) {
     if (root != null) {
       return root.get(value);
     } else {
@@ -56,7 +56,7 @@ public class Tree {
   }
 
   // this will basically return the replacement node - if there is a replacement node.
-  private TreeNode delete(TreeNode subTreeRoot, int value) {
+  private BinaryNode delete(BinaryNode subTreeRoot, int value) {
     if (subTreeRoot == null) {
       // this means that the tree is empty.
       return null;
