@@ -17,7 +17,8 @@ testConvertListToDecimal02 = convertListToDecimal [13,45] -- expect 1345
 testConvertListToDecimal03 = convertListToDecimal [] -- expect 0
 
 
--- This behaves differently when the input list has numbers with more than one digit. If you need the solution to work when the input list has numbers with more than one digit, use convertListToDecimal instead.
+-- This behaves differently when the input list has numbers with more than one digit.
+-- If you need the solution to work when the input list has numbers with more than one digit, use convertListToDecimal instead.
 decimalNumberfromDigits xs = foldl addDigit 0 xs
                           where addDigit num d = 10*num + d
 {- |

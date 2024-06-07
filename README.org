@@ -21,6 +21,7 @@ https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 
 ** docker and docker-compose
 ** go
-** haskell (follow the instructions from haskell stack websit) and hledger
+** haskell (follow the instructions from haskell stack website) and hledger
+   1. See programming-playground/haskell-playground/haskell-solutions/src/01SettingUpYourHaskellDevelopmentEnvironment
 ** node js (with npm)
 ** rust

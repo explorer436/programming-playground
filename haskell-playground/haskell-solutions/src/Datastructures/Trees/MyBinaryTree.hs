@@ -1,4 +1,4 @@
-module Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, areTreesEqual, leftAndRightTrees, leftSubtree, rightSubtree, leftNodeValue, rightNodeValue, treeHeight, treeLeftHeight, treeRightHeight, treeSize) where
+module Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, actualRootValue, areTreesEqual, leftAndRightTrees, leftSubtree, rightSubtree, leftNodeValue, rightNodeValue, treeHeight, treeLeftHeight, treeRightHeight, treeSize) where
 
 {- |
     In Haskell, Sets and maps from Data.Set and Data.Map are implemented using trees, 
@@ -13,9 +13,16 @@ module Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, areTreesEqual, l
 
 data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Show, Read, Eq, Ord) 
 
+-- To give Optional
 rootValue :: Tree a -> Maybe a
 rootValue (Node a _ _) = Just a
 rootValue EmptyTree    = Nothing
+
+-- To give the actual value for a numbers tree
+actualRootValue :: Num p => Tree p -> p
+actualRootValue tree = case (rootValue tree) of
+                                     Just value -> value
+                                     Nothing -> 0
 
 areTreesEqual :: Eq a => a -> a -> Bool
 areTreesEqual t1 t2 = t1 == t2

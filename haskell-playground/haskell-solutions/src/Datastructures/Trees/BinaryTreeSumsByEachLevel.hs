@@ -2,7 +2,7 @@ module Datastructures.Trees.BinaryTreeSumsByEachLevel (listWithSumsForEachLevel)
 
 import Data.Int ( Int8 )
 
-import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, leftAndRightTrees)
+import Datastructures.Trees.MyBinaryTree (Tree (..), actualRootValue, leftAndRightTrees)
 
 listWithSumsForEachLevel :: Tree Int8 -> [Int8]
 listWithSumsForEachLevel tree = breadthLevelSums [tree]
@@ -16,12 +16,7 @@ breadthLevelSums [] = []
 breadthLevelSums [EmptyTree] = []
 breadthLevelSums listOfTrees = sumOfRootNodeValues listOfTrees ++ breadthLevelSums (concat (map leftAndRightTrees listOfTrees))   
 
-// In Haskell, the ++ operator is list concatenation.
+-- In Haskell, the ++ operator is list concatenation.
 
 sumOfRootNodeValues :: [Tree Int8] -> [Int8]
 sumOfRootNodeValues listOfTrees = [sum (map actualRootValue listOfTrees)]
-
-actualRootValue :: Num p => Tree p -> p
-actualRootValue tree = case (rootValue tree) of 
-                                     Just value -> value
-                                     Nothing -> 0

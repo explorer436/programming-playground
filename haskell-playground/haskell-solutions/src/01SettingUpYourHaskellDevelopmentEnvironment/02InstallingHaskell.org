@@ -8,7 +8,19 @@ Via Stack - https://haskell-lang.org/get-started (recommended)
 Via Nix/NixOS
 
 Recommendation
-Out of the four methods listed above, only Stack is recommended for maintaining your sanity. 
-So, head over to Stack’s Get Started page and follow only the first step, titled “Download Haskell Stack” for your OS. 
-The other steps given on that page are covered in greater detail below.
 
+1. Use https://www.haskell.org/ghcup/
+
+   To start a simple repl, run:
+     ghci
+
+   To start a new haskell project in the current directory, run:
+     cabal init --interactive
+
+   To install other GHC versions and tools, run:
+     ghcup tui
+
+
+2. Out of the four methods listed above, only Stack is recommended for maintaining your sanity.
+   So, head over to Stack’s Get Started page and follow only the first step, titled “Download Haskell Stack” for your OS.
+   The other steps given on that page are covered in greater detail below.
