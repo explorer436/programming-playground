@@ -2,7 +2,7 @@ module Numbers.SumOfAllEvenNumbersInAListOfIntegers where
 
 solution :: [Int] -> Int
 solution xs = 
-    if xs == [] then 0
+    if null xs then 0
     else sum (filter even xs)
 
 

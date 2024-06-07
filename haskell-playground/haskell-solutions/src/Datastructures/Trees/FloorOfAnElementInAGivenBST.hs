@@ -9,9 +9,9 @@ floorOfAnElement :: (Show a, Ord a) => a -> Tree a -> Maybe a
 floorOfAnElement x EmptyTree                    = Nothing
 floorOfAnElement x (Node a EmptyTree EmptyTree) = Just a
 floorOfAnElement x tree@(Node a left right)     = trace ("DEBUG: floorOfAnElement - x:" ++ show x ++ ", tree:" ++ show tree) 
-                                                    (if (x == a) then Just a
-                                                     else if (x < a) then (xIsLesserThanRootValue x tree)
-                                                     else if (x > a) then (xIsGreaterThanRootValue x tree)
+                                                    (if x == a then Just a
+                                                     else if x < a then xIsLesserThanRootValue x tree
+                                                     else if x > a then xIsGreaterThanRootValue x tree
                                                      else Nothing)
 
 xIsLesserThanRootValue :: (Show a, Ord a) => a -> Tree a -> Maybe a

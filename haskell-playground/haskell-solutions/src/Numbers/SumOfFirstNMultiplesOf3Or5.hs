@@ -1,6 +1,6 @@
 module Numbers.SumOfFirstNMultiplesOf3Or5 where
 
-isMultipleOf3Or5 n = if (n `mod` 3 == 0 || n `mod` 3 == 0) then True else False
+isMultipleOf3Or5 n = n `mod` 3 == 0 || n `mod` 3 == 0
 
 firstNMultiplesOf3Or5 :: Integral a => Int -> [a]
 firstNMultiplesOf3Or5 n = take n $ filter isMultipleOf3Or5 [1..]

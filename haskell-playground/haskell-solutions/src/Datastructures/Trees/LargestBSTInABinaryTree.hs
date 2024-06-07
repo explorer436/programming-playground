@@ -10,6 +10,6 @@ import Data.List (foldl')
 
 largestBSTTree EmptyTree                         = EmptyTree
 largestBSTTree tree@(Node a EmptyTree EmptyTree) = tree
-largestBSTTree tree@(Node a l r)                 = if (isBST tree)
+largestBSTTree tree@(Node a l r)                 = if isBST tree
                                                      then tree
                                                    else compareTreeBySize (largestBSTTree l) (largestBSTTree r)

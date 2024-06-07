@@ -1,6 +1,6 @@
 module Datastructures.Trees.LargestBSTInABinaryTreeSpec where
 
-import Test.Hspec
+import Test.Hspec ( describe, it, shouldBe, Spec )
 import Datastructures.Trees.MyBinaryTree (Tree (..))
 import Datastructures.Trees.LargestBSTInABinaryTree (largestBSTTree)
 
@@ -10,13 +10,13 @@ spec = do
   describe "largestBSTTree" $ do
 
 
-    {- |
-          5
-         / \
-        6   7
-       /   / \
-      2   4   9
-    -}
+{- |
+      5
+     / \
+    6   7
+   /   / \
+  2   4   9
+-}
 
     it "returns the largest binary tree from the input tree" $
       largestBSTTree (Node 5 
@@ -28,10 +28,9 @@ spec = do
                               (Node 4 EmptyTree EmptyTree)
                               (Node 9 EmptyTree EmptyTree)
                         )
-                  ) `shouldBe` (Node 7
+                  ) `shouldBe` Node 7
                                      (Node 4 EmptyTree EmptyTree)
                                      (Node 9 EmptyTree EmptyTree)
-                               )
 
 
     {- |
@@ -68,13 +67,13 @@ spec = do
                                     )
                               )
                         )
-                  ) `shouldBe` (Node 5 
-                                     (Node 3
-                                           (Node 1 EmptyTree EmptyTree)
-                                           (Node 4 EmptyTree EmptyTree)
-                                     )
-                                     (Node 7
-                                           (Node 6 EmptyTree EmptyTree)
-                                           EmptyTree
-                                     )
-                               )
+                  ) `shouldBe` Node 5 
+                                    (Node 3
+                                          (Node 1 EmptyTree EmptyTree)
+                                          (Node 4 EmptyTree EmptyTree)
+                                    )
+                                    (Node 7
+                                          (Node 6 EmptyTree EmptyTree)
+                                          EmptyTree
+                                    )
+                               

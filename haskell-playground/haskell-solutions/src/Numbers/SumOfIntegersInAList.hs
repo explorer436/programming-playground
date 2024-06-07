@@ -9,13 +9,14 @@ integerListSumPatternMatchingTest02 = integerListSumPatternMatching []
 
 integerListSumRecursion :: [Int] -> Int
 integerListSumRecursion xs = 
-    if xs == [] then 0
+    -- if xs == [] then 0
+    if null xs then 0
     else head xs + integerListSumRecursion (tail xs)
 -- tests
 integerListSumRecursionTest01 = integerListSumRecursion []  
 integerListSumRecursionTest02 = integerListSumRecursion [4,5,6]
 
 integerListSumUsingNativeLibrary :: [Int] -> Int
-integerListSumUsingNativeLibrary xs = sum xs
+integerListSumUsingNativeLibrary = sum
 --tests
 integerListSumUsingNativeLibraryTest01 = sum [3,4]

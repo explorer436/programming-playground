@@ -38,9 +38,7 @@ testSolution02 = solution 1000
 --}
 
 isMultipleOf3Or5 :: Integral a => a -> Bool
-isMultipleOf3Or5 x 
-    | (x `mod` 3 == 0 || x `mod` 5 == 0) = True
-    | otherwise   = False
+isMultipleOf3Or5 x = x `mod` 3 == 0 || x `mod` 5 == 0
 
 --tests
 isMultipleOf3Or5Test01 = isMultipleOf3Or5 3

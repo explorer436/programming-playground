@@ -4,6 +4,7 @@ import qualified Numbers.FibonacciSequence as FS
 
 -- solution upperLimit = take n (map (fibonacciNumberForPosition) [0..])
 
+solution :: Integral a => a -> a
 solution upperLimit = sum (takeWhile (< upperLimit) (filter odd (map (FS.fibonacciNumberForPosition) [0..])))  
 
 -- sum (takeWhile (< upperLimit) (filter odd (map (^2) [1..])))  

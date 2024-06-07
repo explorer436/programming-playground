@@ -2,6 +2,7 @@ module Datastructures.Trees.ConvertBinaryTreeToFullBinaryTree (convertBinaryTree
 
 import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, leftSubtree, rightSubtree, leftNodeValue, rightNodeValue)
 
+convertBinaryTreeToFullBinaryTree :: Tree a -> Tree a
 convertBinaryTreeToFullBinaryTree EmptyTree = EmptyTree
 convertBinaryTreeToFullBinaryTree tree@(Node a EmptyTree EmptyTree) = tree
 convertBinaryTreeToFullBinaryTree (Node a l EmptyTree) = convertBinaryTreeToFullBinaryTree l

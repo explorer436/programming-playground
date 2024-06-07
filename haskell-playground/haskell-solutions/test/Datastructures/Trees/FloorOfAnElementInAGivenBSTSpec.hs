@@ -26,11 +26,12 @@ spec = do
                                  (Node 1 EmptyTree EmptyTree) 
                                  EmptyTree
                            ) `shouldBe` Just 1
-                                    {- |
-                                         2
-                                        /
-                         input=1       1     
-                                    -}
+
+{- |
+     2
+    /
+   1      input=1
+-}
 
     it "returns rightNodeValue when the input is equal to the right node value" $
       floorOfAnElement 2 (Node 1 

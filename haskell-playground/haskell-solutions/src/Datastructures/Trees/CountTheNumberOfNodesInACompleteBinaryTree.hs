@@ -3,6 +3,7 @@ module Datastructures.Trees.CountTheNumberOfNodesInACompleteBinaryTree (numberOf
 import Datastructures.Trees.MyBinaryTree (Tree (..), treeLeftHeight, treeRightHeight)
 import Datastructures.Trees.CountTheNumberOfNodesInAFullBinaryTree (numberOfNodesInFullBinaryTree)
 
+numberOfNodesInCompleteBinaryTree :: Num a1 => Tree a2 -> a1
 numberOfNodesInCompleteBinaryTree EmptyTree = 0
 numberOfNodesInCompleteBinaryTree (Node _ EmptyTree EmptyTree) = 1
 numberOfNodesInCompleteBinaryTree (Node _ l EmptyTree) = 2
