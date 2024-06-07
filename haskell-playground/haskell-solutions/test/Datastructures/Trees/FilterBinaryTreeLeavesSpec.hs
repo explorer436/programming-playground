@@ -21,6 +21,24 @@ spec = do
                                               )
                                         ) `shouldBe` Node 1 (Node 1 (Node 2 EmptyTree EmptyTree) EmptyTree) EmptyTree
 
+{- |
+                          1
+                        /  \ 
+                       /    \
+                      /      \
+                     1        1 
+                    /        /  
+                   /        /    
+                  2        1       
+
+                       1
+                      /    
+                     1
+                    /             
+                   2                
+-}
+
+
     it "returns EmptyTree for the input parameters" $
       filterBinaryTreeLeaves 1 EmptyTree `shouldBe` EmptyTree
 

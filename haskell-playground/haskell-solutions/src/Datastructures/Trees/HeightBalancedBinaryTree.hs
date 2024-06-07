@@ -7,5 +7,5 @@ import Datastructures.Trees.MyBinaryTree (Tree (..), treeHeight)
 isTreeHeightBalanced :: Tree a -> Bool
 isTreeHeightBalanced EmptyTree    = True
 isTreeHeightBalanced (Node a EmptyTree EmptyTree)    = True
-isTreeHeightBalanced (Node _ l r) = if (abs(treeHeight l - treeHeight r) <= 1) then True else False
+isTreeHeightBalanced (Node _ l r) = abs(treeHeight l - treeHeight r) <= 1
 

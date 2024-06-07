@@ -8,9 +8,9 @@ import Data.Int ()
 filterBinaryTreeLeaves :: Eq t => t -> Tree t -> Tree t
 filterBinaryTreeLeaves x EmptyTree = EmptyTree
 filterBinaryTreeLeaves x tree@(Node a EmptyTree EmptyTree)
-     | (a == x)  = EmptyTree
+     | a == x  = EmptyTree
      | otherwise = tree
 filterBinaryTreeLeaves x tree@(Node a left right)
-    | (a == x && isUnival tree == True) = EmptyTree
-    | otherwise                         = Node a (filterBinaryTreeLeaves x left) (filterBinaryTreeLeaves x right)
+    | a == x && isUnival tree = EmptyTree
+    | otherwise               = Node a (filterBinaryTreeLeaves x left) (filterBinaryTreeLeaves x right)
 

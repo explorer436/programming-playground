@@ -1,7 +1,7 @@
-module Datastructures.Trees.GetParentOfANodeSpec where
+module Datastructures.Trees.GetParentOfANodeValueSpec where
 
 import Test.Hspec ( describe, it, shouldBe, Spec )
-import Datastructures.Trees.GetParentOfANode (getParent)
+import Datastructures.Trees.GetParentOfANodeValue (getParent)
 import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec

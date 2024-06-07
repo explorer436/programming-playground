@@ -1,6 +1,6 @@
 module Numbers.GenerateAListOfAllEvenNumbersTillNSpec where
 
-import Test.Hspec
+import Test.Hspec ( describe, it, shouldBe, Spec )
 import Numbers.GenerateAListOfAllEvenNumbersTillN (evenNumbersTillN)
 
 spec :: Spec

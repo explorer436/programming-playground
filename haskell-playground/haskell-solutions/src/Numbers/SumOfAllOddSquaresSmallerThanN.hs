@@ -1,17 +1,13 @@
-module Numbers.SumOfAllOddSquaresSmallerThanN where
+module Numbers.SumOfAllOddSquaresSmallerThanN (sumOfAllOddSquaresSmallerThanN) where
 
-solution1 :: Integral a => a -> a
-solution1 upperLimit = sum (takeWhile (< upperLimit) (filter odd (map (^2) [1..])))  
+sumOfAllOddSquaresSmallerThanN :: Integral a => a -> a
+sumOfAllOddSquaresSmallerThanN n = sum (takeWhile (< n) (filter odd (map (^2) [1..])))  
 -- Begin by mapping the (^2) function to the infinite list [1..].
 -- Then, filter them so that we get only the odd ones.
 -- Then, take elements from that list while they are smaller than 10,000.
 -- Finally, get a sum of that list.
 
 -- We start with some initial data (the infinite list of all natural numbers) and then we map over it, filter it and cut it until it suits our needs and then we just sum it up.
-
--- tests
-testSolution01 = solution1 10000
--- 166650 
 
 {- |
     takeWhile function takes a predicate and a list 

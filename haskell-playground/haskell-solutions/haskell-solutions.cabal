@@ -1,6 +1,6 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.35.2.
+-- This file has been generated from package.yaml by hpack version 0.36.0.
 --
 -- see: https://github.com/sol/hpack
 
@@ -53,7 +53,7 @@ library
       Datastructures.Trees.FloorOfAnElementInAGivenBST
       Datastructures.Trees.FullBinaryTree
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTree
-      Datastructures.Trees.GetParentOfANode
+      Datastructures.Trees.GetParentOfANodeValue
       Datastructures.Trees.HeightBalancedBinaryTree
       Datastructures.Trees.InvertABinaryTree
       Datastructures.Trees.IsGivenTreeBinarySearchTree
@@ -61,6 +61,7 @@ library
       Datastructures.Trees.LargestPathSumFromRootToLeaf
       Datastructures.Trees.LevelOfTreeWithMaximumSum
       Datastructures.Trees.LevelOfTreeWithMinimumSum
+      Datastructures.Trees.MaximumPathSumFromRootToLeaf
       Datastructures.Trees.MinimumHeightOfNodesInBinaryTree
       Datastructures.Trees.MinimumPathSumFromRootToLeaf
       Datastructures.Trees.MyBinarySearchTree_Delete
@@ -192,7 +193,7 @@ test-suite haskell-solutions-test
       Datastructures.Trees.FloorOfAnElementInAGivenBSTSpec
       Datastructures.Trees.FullBinaryTreeSpec
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTreeSpec
-      Datastructures.Trees.GetParentOfANodeSpec
+      Datastructures.Trees.GetParentOfANodeValueSpec
       Datastructures.Trees.HeightBalancedBinaryTreeSpec
       Datastructures.Trees.InvertABinaryTreeSpec
       Datastructures.Trees.IsGivenTreeBinarySearchTreeSpec
@@ -200,6 +201,7 @@ test-suite haskell-solutions-test
       Datastructures.Trees.LargestPathSumFromRootToLeafSpec
       Datastructures.Trees.LevelOfTreeWithMaximumSumSpec
       Datastructures.Trees.LevelOfTreeWithMinimumSumSpec
+      Datastructures.Trees.MaximumPathSumFromRootToLeafSpec
       Datastructures.Trees.MinimumHeightOfNodesInBinaryTreeSpec
       Datastructures.Trees.MinimumPathSumFromRootToLeafSpec
       Datastructures.Trees.MyBinarySearchTree_DeleteSpec
@@ -220,6 +222,7 @@ test-suite haskell-solutions-test
       Numbers.AbsoluteSpec
       Numbers.GenerateAListOfAllEvenNumbersTillNSpec
       Numbers.LargestNumberUnderNDivisibleByAGivenNumberSpec
+      Numbers.SumOfAllOddSquaresSmallerThanNSpec
       Strings.AnagramSpec
       Strings.AnglesOfAClockSpec
       Strings.LongestCommonSubsequenceBetweenTwoStringsSpec

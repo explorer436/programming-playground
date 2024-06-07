@@ -11,10 +11,24 @@ singleton x = Node x EmptyTree EmptyTree
   
 treeInsert :: (Ord a) => a -> Tree a -> Tree a  
 treeInsert x EmptyTree = singleton x  
-treeInsert x (Node a left right)   
-    | x == a = Node x left right  
+treeInsert x tree@(Node a EmptyTree EmptyTree)   
+    | x == a = tree
+    | x < a  = Node a (singleton x) EmptyTree
+    | x > a  = Node a EmptyTree (singleton x)
+treeInsert x tree@(Node a EmptyTree right)   
+    | x == a = tree
+    | x < a  = Node a (singleton x) right  
+    | x > a  = Node a EmptyTree (treeInsert x right)
+treeInsert x tree@(Node a left EmptyTree)   
+    | x == a = tree
+    | x < a  = Node a (treeInsert x left) EmptyTree
+    | x > a  = Node a left (singleton x)
+treeInsert x tree@(Node a left right)   
+    | x == a = tree
     | x < a  = Node a (treeInsert x left) right  
     | x > a  = Node a left (treeInsert x right)
+
+
 
 {- |
    BUILDING TREES:
@@ -35,7 +49,9 @@ treeInsert x (Node a left right)
 treeFromRight :: (Foldable t, Ord a) => t a -> Tree a
 treeFromRight xs = foldr treeInsert EmptyTree xs
 
+nums :: [Integer]
 nums = [8,6,4,1,7,3,5]  
+numsTreeFromRight :: Tree Integer
 numsTreeFromRight = treeFromRight nums
 -- Node 5 (Node 3 (Node 1 EmptyTree EmptyTree) (Node 4 EmptyTree EmptyTree)) (Node 7 (Node 6 EmptyTree EmptyTree) (Node 8 EmptyTree EmptyTree))  
 
@@ -70,7 +86,9 @@ numsTreeFromRight = treeFromRight nums
 treeFromLeft :: (Foldable t, Ord a) => t a -> Tree a
 treeFromLeft xs = foldl (\acc x -> treeInsert x acc) EmptyTree xs
 
+nums2 :: [Integer]
 nums2 = [25, 20, 15, 27, 30, 29, 26, 22, 32, 17]
+numsTreeFromLeft :: Tree Integer
 numsTreeFromLeft = treeFromLeft nums2
 
 {- |
@@ -89,7 +107,9 @@ numsTreeFromLeft = treeFromLeft nums2
 ----------------------------------------------------------------------------------------------------
 
 -- Using Data.List.permutations here. TODO : write your own implementation for permutations.
+perms :: (Num a, Enum a) => a -> [[a]]
 perms n = permutations [1..n]
+testGenerateBinarySearchTrees :: [Tree Integer]
 testGenerateBinarySearchTrees = map treeFromLeft (perms 3)
 -- [
 -- Node 1 EmptyTree (Node 2 EmptyTree (Node 3 EmptyTree EmptyTree)),

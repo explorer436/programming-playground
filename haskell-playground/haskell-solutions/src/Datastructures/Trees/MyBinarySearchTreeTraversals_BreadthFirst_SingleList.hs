@@ -8,7 +8,7 @@ traverseBreadthFirst tree = helper [tree]
 
 helper :: [Tree a] -> [a]
 helper [] = []
-helper listOfTrees = map (fromJust . rootValue) listOfTrees ++ helper (concat (map leftAndRightTrees listOfTrees))
+helper listOfTrees = map (fromJust . rootValue) listOfTrees ++ helper (concatMap leftAndRightTrees listOfTrees)
 
 {- |
                           F

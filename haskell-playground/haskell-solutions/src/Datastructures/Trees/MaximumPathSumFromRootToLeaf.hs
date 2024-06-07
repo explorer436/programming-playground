@@ -1,4 +1,4 @@
-module Datastructures.Trees.MinimumPathSumFromRootToLeaf (minimumPathSumFromRootToLeaf) where
+module Datastructures.Trees.MaximumPathSumFromRootToLeaf (maximumPathSumFromRootToLeaf) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, leftAndRightTrees)
 import Datastructures.Trees.PathsFromRootToAllLeaves (paths)
@@ -6,16 +6,16 @@ import Data.List (foldl')
 
 -- Hint: use PathsFromRootToAllLeaves.hs
 
-minimumPathSumFromRootToLeaf :: (Ord a, Num a) => Tree a -> [a]
-minimumPathSumFromRootToLeaf tree = 
+maximumPathSumFromRootToLeaf :: (Ord a, Num a) => Tree a -> [a]
+maximumPathSumFromRootToLeaf tree = 
 
   foldl'
 
     -- the lambda
-    (\ currentMinSumPath currentPath ->
-        if sum currentPath < sum currentMinSumPath
+    (\ currentMaxSumPath currentPath ->
+        if sum currentPath > sum currentMaxSumPath
           then currentPath
-        else currentMinSumPath
+        else currentMaxSumPath
     )
 
     -- the initial value

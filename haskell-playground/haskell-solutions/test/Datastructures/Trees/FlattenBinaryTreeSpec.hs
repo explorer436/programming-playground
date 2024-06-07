@@ -21,6 +21,29 @@ spec = do
                        )
                  ) `shouldBe` Node 1 EmptyTree (Node 2 EmptyTree (Node 5 EmptyTree (Node 3 EmptyTree (Node 4 EmptyTree EmptyTree))))
 
+{- |
+                          1
+                        /  \ 
+                       /    \
+                      /      \
+                     2        3 
+                    /        /  
+                   /        /    
+                  5        4       
+
+                          1
+                           \ 
+                            2
+                             \
+                              5 
+                               \
+                                3 
+                                 \
+                                  4 
+
+-}
+
+
     it "returns expected output for the input tree" $
       flatten (
                      Node 1 
@@ -31,3 +54,20 @@ spec = do
                           EmptyTree
                  ) `shouldBe` Node 1 EmptyTree (Node 2 EmptyTree (Node 3 EmptyTree (Node 4 EmptyTree EmptyTree)))
     
+
+{- |
+                         1
+                        /    
+                       2          
+                      /  \         
+                     3    4          
+
+                          1
+                           \ 
+                            2
+                             \
+                              3 
+                               \
+                                4 
+
+-}

@@ -17,4 +17,4 @@ spec = do
                                          (Node 3 EmptyTree EmptyTree)
                                    ) `shouldBe` 262
 
-   
+-- paths are [[1,2,4],[1,2,5],[1,3]] -> 124 + 125 + 13

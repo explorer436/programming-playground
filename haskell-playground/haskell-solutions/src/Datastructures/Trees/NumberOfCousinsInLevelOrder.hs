@@ -8,8 +8,9 @@ numberOfCousinsInLevelOrder :: Eq t => t -> Tree t -> [t]
 numberOfCousinsInLevelOrder x tree = helper x [tree]
 
 -- helper x [] = []
-helper x listOfTrees = if (x `elem` currentLevelValues) 
-                         then (delete x currentLevelValues)
+helper :: Eq t => t -> [Tree t] -> [t]
+helper x listOfTrees = if x `elem` currentLevelValues 
+                         then delete x currentLevelValues
                        else
-                        helper x (concat (map leftAndRightTrees listOfTrees))
+                        helper x (concatMap leftAndRightTrees listOfTrees)
                        where currentLevelValues = map (fromJust . rootValue) listOfTrees

@@ -28,6 +28,7 @@ areTreesEqual :: Eq a => a -> a -> Bool
 areTreesEqual t1 t2 = t1 == t2
 
 leftAndRightTrees :: Tree a -> [Tree a]
+leftAndRightTrees EmptyTree = []
 leftAndRightTrees (Node _ EmptyTree EmptyTree) = []
 leftAndRightTrees (Node _ EmptyTree b)         = [b]
 leftAndRightTrees (Node _ a EmptyTree)         = [a]
