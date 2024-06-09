@@ -1,4 +1,4 @@
-use crate::trees::tree::{BinaryTree};
+use crate::trees::tree::BinaryTree;
 
 #[allow(dead_code)]
 fn evaluate(optional_tree: Option<Box<BinaryTree<i32>>>) -> Vec<i32> {
@@ -8,16 +8,55 @@ fn evaluate(optional_tree: Option<Box<BinaryTree<i32>>>) -> Vec<i32> {
 }
 
 fn breadth_level_sums(vector_of_trees: Vec<Option<Box<BinaryTree<i32>>>>) -> Vec<i32> {
-    let mut expected: Vec<i32> = Vec::new();
-
+    let mut root_elements_sum_vector: Vec<i32> = Vec::new();
     let mut root_sum = 0;
-    for v in vector_of_trees.iter() {
-        let r = match v {
+
+    for ele in vector_of_trees {
+
+        let mut child_trees = Vec::new();
+
+        let r = match ele {
             None => 0,
             Some(root) => {
                 // optional_node<Option<&Node<T>>> = BinaryTree::root_element(v);
 
-                match BinaryTree::root_element(root) {
+                /* let mut child_trees = Vec::new();
+                let l_and_r = BinaryTree::left_and_right_trees(*root);
+                child_trees.append(&mut l_and_r);
+                breadth_level_sums(child_trees);*/
+
+
+                let abc = match BinaryTree::root_element(&root) {
+                    None => 0,
+                    Some(node) => {
+                        node.node_root.unwrap_or_else(|| 0)
+                    }
+                };
+
+                let mut l_and_r = BinaryTree::left_and_right_trees(&root);
+                child_trees.append(l_and_r);
+                breadth_level_sums(child_trees);
+
+                abc
+            }
+        };
+        root_sum = root_sum + r;
+
+    }
+
+    /*for v in vector_of_trees.iter() {
+
+        let r = match *v {
+            None => 0,
+            Some(root) => {
+                // optional_node<Option<&Node<T>>> = BinaryTree::root_element(v);
+
+                /* let mut child_trees = Vec::new();
+                let l_and_r = BinaryTree::left_and_right_trees(*root);
+                child_trees.append(&mut l_and_r);
+                breadth_level_sums(child_trees);*/
+
+                match BinaryTree::root_element(&root) {
                     None => 0,
                     Some(node) => {
                         node.node_root.unwrap_or_else(|| 0)
@@ -26,23 +65,23 @@ fn breadth_level_sums(vector_of_trees: Vec<Option<Box<BinaryTree<i32>>>>) -> Vec
             }
         };
         root_sum = root_sum + r;
-    }
-    // push sum of root elements of all trees in the input vector
-    expected.push(root_sum);
 
-    /*let mut child_trees = Vec::new();
-    for v in vector_of_trees.iter() {
-        match v {
+
+        let mut child_trees = Vec::new();
+        match *v {
+            None => (),
             Some(root) => {
-                let mut l_and_r = BinaryTree::left_and_right_optional_trees(<BinaryTree<i32> as Clone>::clone(&**root));
+                let mut l_and_r = BinaryTree::left_and_right_trees(*root);
                 child_trees.append(&mut l_and_r);
             },
-            None => ()
         }
-    }
-    expected.append(&mut breadth_level_sums(child_trees));*/
+        breadth_level_sums(child_trees);
+    }*/
+    // push sum of root elements of all trees in the input vector
+    root_elements_sum_vector.push(root_sum);
 
-    expected
+    // return
+    root_elements_sum_vector
 }
 
 #[cfg(test)]

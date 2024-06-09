@@ -35,11 +35,14 @@ impl<T: std::cmp::PartialEq> BinaryTree<T> {
     }
 
     #[allow(dead_code)]
-    fn left_and_right_trees(&self) -> Vec<&Box<BinaryTree<T>>> {
+    pub(crate) fn left_and_right_trees(&self) -> Vec<Option<&Box<BinaryTree<T>>>> {
         let mut subtrees = Vec::new();
 
         match &self.tree_root {
-            None => subtrees,
+            None => { 
+                subtrees.push(None); 
+                subtrees
+            },
             Some(root) => {
                 match root {
                     // root-element only tree
@@ -47,7 +50,10 @@ impl<T: std::cmp::PartialEq> BinaryTree<T> {
                         node_root: Some(_),
                         left: None,
                         right: None
-                    } => subtrees,
+                    } => { 
+                subtrees.push(None); 
+                subtrees
+            },
 
                     // left-only tree
                     Node {
@@ -55,8 +61,8 @@ impl<T: std::cmp::PartialEq> BinaryTree<T> {
                         left: Some(l),
                         right: None
                     } => {
-                        subtrees.push(l);
-                        return subtrees;
+                        subtrees.push(Some(l));
+                        subtrees
                     }
 
                     // right-only tree
@@ -65,21 +71,30 @@ impl<T: std::cmp::PartialEq> BinaryTree<T> {
                         left: None,
                         right: Some(r)
                     } => {
-                        subtrees.push(r);
-                        return subtrees;
+                        subtrees.push(Some(r));
+                        subtrees
                     }
 
                     // left and right tree
                     Node { node_root: Some(_), left: Some(l), right: Some(r) } => {
-                        subtrees.push(l);
-                        subtrees.push(r);
-                        return subtrees;
+                        subtrees.push(Some(l));
+                        subtrees.push(Some(r));
+                        subtrees
                     }
 
                     // these patterns are not possible - adding them just to satisfy pattern matching
-                    Node { node_root: None, left: Some(_), right: _ } => subtrees,
-                    Node { node_root: None, left: None, right: Some(_) } => subtrees,
-                    Node { node_root: None, left: None, right: None } => subtrees
+                    Node { node_root: None, left: Some(_), right: _ } => { 
+                subtrees.push(None); 
+                subtrees
+            },
+                    Node { node_root: None, left: None, right: Some(_) } => { 
+                subtrees.push(None); 
+                subtrees
+            },
+                    Node { node_root: None, left: None, right: None } => { 
+                subtrees.push(None); 
+                subtrees
+            }
                 }
             }
         }
@@ -884,7 +899,9 @@ mod tests {
             tree_root: None,
         };
 
-        let actual = BinaryTree::left_and_right_trees(&test_tree);
+        let actual_optional = BinaryTree::left_and_right_trees(&test_tree);
+        let actual = Option::expect(actual_optional, "Value not available");
+
         assert_eq!(actual.len(), 0);
     }
 
@@ -898,7 +915,9 @@ mod tests {
             })
         };
 
-        let actual = BinaryTree::left_and_right_trees(&test_tree);
+        let actual_optional = BinaryTree::left_and_right_trees(&test_tree);
+        let actual = Option::expect(actual_optional, "Value not available");
+
         assert_eq!(actual.len(), 0);
     }
 
@@ -918,7 +937,9 @@ mod tests {
             })
         };
 
-        let actual = BinaryTree::left_and_right_trees(&test_tree);
+        let actual_optional = BinaryTree::left_and_right_trees(&test_tree);
+        let actual = Option::expect(actual_optional, "Value not available");
+
         assert_eq!(actual.len(), 1);
 
         assert_eq!(actual.contains(&&Box::new(BinaryTree {
@@ -952,7 +973,9 @@ mod tests {
             })
         };
 
-        let actual = BinaryTree::left_and_right_trees(&test_tree);
+        let actual_optional = BinaryTree::left_and_right_trees(&test_tree);
+        let actual = Option::expect(actual_optional, "Value not available");
+
         assert_eq!(actual.len(), 1);
 
         assert_eq!(actual.contains(&&Box::new(BinaryTree {
@@ -1004,7 +1027,9 @@ mod tests {
             })
         };
 
-        let actual = BinaryTree::left_and_right_trees(&test_tree);
+        let actual_optional = BinaryTree::left_and_right_trees(&test_tree);
+        let actual = Option::expect(actual_optional, "Value not available");
+
         assert_eq!(actual.len(), 2);
 
         assert_eq!(actual.contains(&&Box::new(BinaryTree {

@@ -18,3 +18,8 @@ The command-line tool called stack pulls packages from Stackage, by default. Hav
 
 Finally, lot of cabal/Hackage lovers hate stack/Stackage and vice-versa. If you are in the mood for some gossip you can search the interwebs and read some flamewars. One hopes, that at some point in the future, the best parts of stack/Stackage and cabal/Hackage can be merged to build a unified, kickass build-tool. Till that day comes, just use Stack.
 
+https://www.fpcomplete.com/blog/why-is-stack-not-cabal/
+
+https://stackoverflow.com/questions/30913145/what-is-the-difference-between-cabal-and-stack
+
+------------------------------

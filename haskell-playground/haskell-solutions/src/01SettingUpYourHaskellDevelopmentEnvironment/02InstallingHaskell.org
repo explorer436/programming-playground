@@ -2,10 +2,10 @@ Installing Haskell
 
 There are currently four ways to install Haskell! Here’s what they are:
 
-Via your OS’ native package manager, i.e. apt-get, or homebrew, or yum
-Via a minimal installer or the Haskell Platform
-Via Stack - https://haskell-lang.org/get-started (recommended)
-Via Nix/NixOS
+1. Via your OS’ native package manager, i.e. apt-get, or homebrew, or yum
+1. Via a minimal installer or the Haskell Platform
+1. Via Stack - https://haskell-lang.org/get-started (recommended)
+1. Via Nix/NixOS
 
 Recommendation
 
