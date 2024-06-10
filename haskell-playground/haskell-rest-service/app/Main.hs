@@ -1,11 +1,16 @@
 {-# LANGUAGE OverloadedStrings #-}
 import Web.Scotty
 import Network.HTTP.Types
+import Data.Text.Internal.Lazy
 
 import Model.Article
 
 main :: IO ()
 main = scotty 3000 $ do
+
+--------------------------------------------------------------
+-- Basic routes
+
   get "/" $ do                         -- handle GET request on "/" URL
     text "This was a GET request!"     -- send 'text/plain' response
   -- curl -X GET http://localhost:3000/
@@ -22,11 +27,24 @@ main = scotty 3000 $ do
     text "This was a PUT request!"
   -- curl -X PUT http://localhost:3000/
 
+--------------------------------------------------------------
+-- Set a custom Header in the response
+
+  get "/agent" $ do
+    userAgentName <- header "User-Agent"
+    let res = convertMaybeToText userAgentName
+    text res
+  -- curl -v --header "User-Agent: my-custom-user-agent" http://localhost:3000/agent
+  -- curl -v http://localhost:3000/agent
+
   -- adding a few more handlers to handle different types of requests
   -- set a header:
   post "/set-headers" $ do
    status status302  -- Respond with HTTP 302 status code
    setHeader "Location" "http://www.google.com.au"
+
+--------------------------------------------------------------
+-- Named and Un-named parameters
 
   -- named parameters:
   get "/askfor/:word" $ do
@@ -40,6 +58,8 @@ main = scotty 3000 $ do
    text name
   -- curl -X POST http://localhost:3000/submit?name=someone
 
+--------------------------------------------------------------
+-- Handle custom data models in requests and responses
 
   -- get article (json)
   get "/article" $ do
@@ -59,10 +79,14 @@ main = scotty 3000 $ do
   -- match a route regardless of the method
   matchAny "/all" $ do 
    text "matches all methods"
-  -- curl http://localhost:3000/all
+  -- curl -v http://localhost:3000/all
 
   -- handler for when there is no matched route
   -- (this should be the last handler because it matches all routes)
   notFound $ do 
    text "there is no such route."
-  -- curl http://localhost:3000/abcd
+  -- curl -v http://localhost:3000/abcd
+
+convertMaybeToText :: (Maybe Text) -> Data.Text.Internal.Lazy.Text
+convertMaybeToText (Just x) = x
+convertMaybeToText Nothing = "no user agent"

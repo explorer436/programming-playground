@@ -15,6 +15,10 @@ $stack build
 Run project
 $stack exec haskell-rest-service-exe
 
+* Testing
+
+The curl commands are in the Main.hs file.
+
 ------------------------
 
 Questions about the project structure?
