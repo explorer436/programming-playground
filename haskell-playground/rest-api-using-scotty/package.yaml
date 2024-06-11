@@ -1,14 +1,14 @@
-name:                haskell-rest-service
+name:                rest-api-using-scotty
 version:             0.1.0.0
-github:              "githubuser/haskell-rest-service"
-license:             BSD3
+github:              "githubuser/rest-api-using-scotty"
+license:             BSD-3-Clause
 author:              "Author name here"
 maintainer:          "example@example.com"
-copyright:           "2020 Author name here"
+copyright:           "2024 Author name here"
 
 extra-source-files:
 - README.md
-- ChangeLog.md
+- CHANGELOG.md
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
@@ -17,7 +17,7 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/githubuser/haskell-rest-service#readme>
+description:         Please see the README on GitHub at <https://github.com/githubuser/rest-api-using-scotty#readme>
 
 dependencies:
 - base >= 4.7 && < 5
@@ -26,11 +26,22 @@ dependencies:
 - aeson
 - text
 
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wmissing-export-lists
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
+
 library:
   source-dirs: src
 
 executables:
-  haskell-rest-service-exe:
+  rest-api-using-scotty-exe:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -38,10 +49,10 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - haskell-rest-service
+    - rest-api-using-scotty
 
 tests:
-  haskell-rest-service-test:
+  rest-api-using-scotty-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:
@@ -49,4 +60,4 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - haskell-rest-service
+    - rest-api-using-scotty
