@@ -51,11 +51,11 @@ library
       Datastructures.Trees.FindIfASubreeExistsInAnotherTree
       Datastructures.Trees.FlattenBinaryTree
       Datastructures.Trees.FloorOfAnElementInAGivenBST
-      Datastructures.Trees.FullBinaryTree
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTree
       Datastructures.Trees.GetParentOfANodeValue
       Datastructures.Trees.HeightBalancedBinaryTree
       Datastructures.Trees.InvertABinaryTree
+      Datastructures.Trees.IsGivenTreeAFullBinaryTree
       Datastructures.Trees.IsGivenTreeBinarySearchTree
       Datastructures.Trees.LargestBSTInABinaryTree
       Datastructures.Trees.LargestPathSumFromRootToLeaf
@@ -191,11 +191,11 @@ test-suite haskell-solutions-test
       Datastructures.Trees.FindIfASubreeExistsInAnotherTreeSpec
       Datastructures.Trees.FlattenBinaryTreeSpec
       Datastructures.Trees.FloorOfAnElementInAGivenBSTSpec
-      Datastructures.Trees.FullBinaryTreeSpec
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTreeSpec
       Datastructures.Trees.GetParentOfANodeValueSpec
       Datastructures.Trees.HeightBalancedBinaryTreeSpec
       Datastructures.Trees.InvertABinaryTreeSpec
+      Datastructures.Trees.IsGivenTreeAFullBinaryTreeSpec
       Datastructures.Trees.IsGivenTreeBinarySearchTreeSpec
       Datastructures.Trees.LargestBSTInABinaryTreeSpec
       Datastructures.Trees.LargestPathSumFromRootToLeafSpec

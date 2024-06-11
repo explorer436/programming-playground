@@ -1,7 +1,7 @@
-module Datastructures.Trees.FullBinaryTreeSpec where
+module Datastructures.Trees.IsGivenTreeAFullBinaryTreeSpec where
 
 import Test.Hspec ( describe, it, shouldBe, Spec )
-import Datastructures.Trees.FullBinaryTree (isTreeAFullBinaryTree)
+import Datastructures.Trees.IsGivenTreeAFullBinaryTree (isTreeAFullBinaryTree)
 import Datastructures.Trees.MyBinaryTree (Tree (..))
 
 spec :: Spec

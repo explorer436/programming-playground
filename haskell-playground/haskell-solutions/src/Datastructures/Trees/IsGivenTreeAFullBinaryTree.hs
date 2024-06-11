@@ -1,4 +1,4 @@
-module Datastructures.Trees.FullBinaryTree (isTreeAFullBinaryTree) where
+module Datastructures.Trees.IsGivenTreeAFullBinaryTree (isTreeAFullBinaryTree) where
 
 import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue)
 

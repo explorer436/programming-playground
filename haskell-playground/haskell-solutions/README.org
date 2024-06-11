@@ -1,6 +1,6 @@
 * haskell-solutions
 
-**** Setting up the Haskell project
+** Setting up the Haskell project
 
 stack new Solutions
 
@@ -13,12 +13,8 @@ Add hspec as a dependency in package.yaml
 ~stack test~ to run the tests
 
 To load a single file into ghci, go to that folder in terminal and run ~stack ghci~.
-After that, load that file into ghci by using ~:l FileName~
 
-TODO:
-Move all the tests into the test directory. 
-That way, the source code will be free of tests and, we will be able to run all the tests using a single command.
-Revisit the descriptions in the test files and fix them if necessary.
+After that, load that file into ghci by using ~:l FileName~
 
 References:
 
