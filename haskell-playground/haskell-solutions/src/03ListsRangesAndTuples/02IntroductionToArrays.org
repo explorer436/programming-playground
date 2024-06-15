@@ -1,26 +1,37 @@
+http://www.zvon.org/other/haskell/Outputarray/listArray_f.html
+
+#+begin_src 
+  Module: 	Array
+  Function: 	listArray
+  Type: 	Ix a => (a,a) -> [b] -> Array a b
+  Related: 	accumArray, array
+#+end_src
+
+Ix is the class of all index types, those that can be used as indicies in arrays.
+If Ix, a, x and y are of type a and x < y, then the range of values between x and y is defined and finite.
+
+Ix inclues Int, Char, (Int, Int), (Int, Int, Char) etc. but not Float or [Int].
+
+The first argument of listArray specifies the smallest and largest index of the array.
+The second argument is the list of values to be stored in the array.
+
+#+begin_src haskell :exports both
 import Data.Array
+listArray (0,2) ['a', 'b', 'c']
+#+end_src
 
--- http://www.zvon.org/other/haskell/Outputarray/listArray_f.html
-{- |
-    Module: 	Array
-    Function: 	listArray
-    Type: 	Ix a => (a,a) -> [b] -> Array a b
-    Related: 	accumArray, array
--}
+#+RESULTS:
+: array (0,2) [(0,'a'),(1,'b'),(2,'c')]
 
--- Ix is the class of all index types, those that can be used as indicies in arrays.
--- If Ix, a, x and y are of type a and x < y, then the range of values between x and y is defined and finite.
+#+begin_src haskell :exports both
+import Data.Array
+listArray (1,1) [100..199]
+#+end_src
 
--- Ix inclues Int, Char, (Int, Int), (Int, Int, Char) etc. but not Float or [Int].
+#+RESULTS:
+: array (1,1) [(1,100)]
 
--- The first argument of listArray specifies the smallest and largest index of the array.
--- The second argument is the list of values to be stored in the array.
-
-myArray01 = listArray (0,2) ['a', 'b', 'c']
--- array (0,2) [(0,'a'),(1,'b'),(2,'c')]
-
-myArray02 = listArray (1,1) [100..199]
--- array (1,1) [(1,100)] - because there is only one index.
+This is because because there is only one index.
 
 myArray03 = listArray ('m','p') [0,2..]
 -- array ('m','p') [('m',0),('n',2),('o',4),('p',6)]
