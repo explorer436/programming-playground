@@ -1,0 +1,46 @@
+-- lines beginning with "--" are comments.
+
+-- Getting help : Enter :? at the ghci prompt
+
+-- exit or quit out of ghci : Ctrl D
+
+{- |
+  Open terminal and type ghci to launch ghci to go into GHCI!
+  The prompt here is Prelude> and that will work for minor functions.
+  If you want to write your functions in a file, write them in a file called 'baby.hs'.
+  To load this file into ghci, type `:l baby`
+  If you change the .hs script, just run `:l baby` again or do `:r`,
+  which is equivalent because it reloads the current script.
+  To unload this file from ghci, type `:m` (short for module).
+  This will take you back to Prelude>
+-}
+
+#+begin_src haskell
+helloworld = "hello" ++ " " ++ "world!"
+helloworld
+#+end_src
+
+#+RESULTS:
+: hello world!
+
+#+begin_src haskell :exports both
+:{
+-- a very verbose way to sum a sequence of numbers:
+sumInts :: Int -> Int -> Int
+sumInts a b =
+  if a == b
+    then b
+    else (+ a) $ (sumInts (a + 1) b)
+:}
+
+map (\[a,b] -> sumInts a b) [[0, 1] , [1, 3], [1,5], [2,10]]
+#+end_src
+
+#+RESULTS:
+| 1 | 6 | 15 | 54 |
+
+-- After loading the file into ghci, just call the name of the method (and pass in arguments if necessary).
+-- > helloworld
+
+--> What is the type signature of a function? Just ask ghci
+-- > :t largestDivisible
