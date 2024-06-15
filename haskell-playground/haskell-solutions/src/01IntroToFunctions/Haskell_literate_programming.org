@@ -1,5 +1,20 @@
 Reference for set-up: https://dev.to/viglioni/creating-haskell-notebooks-with-org-mode-4h7
 
+* exports both
+
+What is ~:exports both~?
+
+When we can export this org file, the ~:exports~ tag defines if we want to export the code, result, both or none.
+You can check out the other tags here: https://orgmode.org/manual/Using-Header-Arguments.html#Using-Header-Arguments
+
+* Evaluating code blocks
+
+With the cursor in the code, call the function ~org-babel-execute-src-block~
+
+* Output multiple line results
+
+By default, code blocks return the value of the last statement in the block. We can use the ~:results~ flag to switch to output mode, where the output produced by your entire code block is returned: ~:results output~
+
 * Writing single line Haskell code
 
 #+begin_src haskell :exports both
@@ -10,8 +25,8 @@ helloworld
 #+RESULTS:
 : hello world!
 
-What is the type signature of a function? Just ask ghci
-:t largestDivisible
+What is the type signature of a function? Just ask ghci using ~:t~
+
 #+begin_src haskell :exports both
 helloworld = "hello" ++ " " ++ "world!"
 :t helloworld
@@ -39,3 +54,4 @@ map (\[a,b] -> sumInts a b) [[0, 1] , [1, 3], [1,5], [2,10]]
 
 #+RESULTS:
 | 1 | 6 | 15 | 54 |
+

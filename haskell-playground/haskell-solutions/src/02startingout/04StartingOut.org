@@ -1,0 +1,31 @@
+Function names cannot begin with capital letters.
+
+#+begin_src haskell :exports both
+succ 8
+#+end_src
+
+#+RESULTS:
+: 9
+
+#+begin_src haskell :exports both
+succ 36
+#+end_src
+
+#+RESULTS:
+: 37
+
+Usually, when calling a function, just separate the function name from the parameter with a space.
+
+If a function needs more than one parameter, just separate the parameters with spaces.
+
+#+begin_src haskell :exports both :results output
+min 9 10
+min 3.4 3.2
+max 100 101
+#+end_src
+
+#+RESULTS:
+: 9
+: 3.2
+: 101
+

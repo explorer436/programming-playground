@@ -1,0 +1,29 @@
+Function application has the highest precedence.
+
+#+begin_src haskell :exports both :results output
+succ 9 + max 5 4 * 2
+-- 10 + 5 * 2 = 20
+#+end_src
+
+#+RESULTS:
+: 20
+
+
+#+begin_src haskell :exports both :results output
+succ (9 + max 5 4) * 2
+-- succ (9 + 5) * 2 = 15 * 2 = 30
+#+end_src
+
+#+RESULTS:
+: 30
+
+We can call a function that takes two parameters as an infix function by surroungding it with backticks.
+
+#+begin_src haskell :exports both :results output
+div 92 10
+92 `div` 10
+#+end_src
+
+#+RESULTS:
+: 9
+: 9

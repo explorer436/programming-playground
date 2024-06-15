@@ -1,0 +1,22 @@
+Introduction to if statement
+
+The else part is mandatory in Haskell.
+
+The if statement is an expression - a piece of code that returns a value.
+
+#+begin_src haskell :exports both :results output
+
+:{
+doubleSmallNumber x = if x > 10
+then x
+else x * 2
+:}
+
+doubleSmallNumber 8
+
+doubleSmallNumber 17
+#+end_src
+
+#+RESULTS:
+: 16
+: 17

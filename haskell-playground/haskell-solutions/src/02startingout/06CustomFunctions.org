@@ -1,0 +1,29 @@
+Function names cannot begin with capital letters.
+
+#+begin_src haskell :exports both :results output
+square x = x * x
+square 4
+#+end_src
+
+#+RESULTS:
+: 16
+
+#+begin_src haskell :exports both :results output
+doubleANumber x = x + x
+-- alternatively, 2 * x
+doubleANumber 9
+#+end_src
+
+#+RESULTS:
+: 18
+
+#+begin_src haskell :exports both :results output
+
+--  doubleUs x y = x*2 + y*2
+doubleUs x y = doubleANumber x + doubleANumber y
+doubleUs 9 10
+#+end_src
+
+#+RESULTS:
+: 38
+
