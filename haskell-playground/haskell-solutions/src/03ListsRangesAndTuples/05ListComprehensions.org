@@ -1,4 +1,6 @@
+#+begin_src 
 import Data.List
+#+end_src
 
  https://en.wikipedia.org/wiki/List_comprehension
 
@@ -13,7 +15,7 @@ import Data.List
 
 
 set comprehensions are usually used for building more specific sets out of general sets.
-A basic comprehension for a set that contains the first ten even natural numbers is S = {2.x | x (belongs to) N, x <= 10 )}
+A basic comprehension for a set that contains the first ten even natural numbers is ~S = {2.x | x (belongs to) N, x <= 10 )}~
 The part before the pipe is called the output function, x is the variable, N is the input set, and `x <= 10` is the predicate.
 In Haskell, it can be represented like this.
 
