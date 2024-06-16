@@ -3,17 +3,18 @@
   - [[#maven][maven]]
   - [[#aws-cli][aws-cli]]
   - [[#docker-and-docker-compose][docker and docker-compose]]
-  - [[#haskell-follow-the-instructions-from-haskell-stack-websit-and-hledger][haskell (follow the instructions from haskell stack websit) and hledger]]
-  - [[#rust][rust]]
+  - [[#go][go]]
+  - [[#haskell-follow-the-instructions-from-haskell-stack-website-and-hledger][haskell (follow the instructions from haskell stack website) and hledger]]
   - [[#node-js-with-npm][node js (with npm)]]
+  - [[#rust][rust]]
 
 ** jdk
 
-https://www.explorer436.com/posts/20230728173003-java_installation/
+https://programming-notes.explorer436.com/posts/20230728173003-java_installation/
 
 ** maven
 
-https://www.explorer436.com/posts/20230802123449-maven_installation_details/
+https://programming-notes.explorer436.com/posts/20230802123449-maven_installation_details/
 
 ** aws-cli
 

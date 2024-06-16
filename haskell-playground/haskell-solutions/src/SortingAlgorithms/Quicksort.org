@@ -1,12 +1,16 @@
 Quicksort definition: 
+#+begin_quote
 A sorted list is a list 
     that has all the values smaller than (or equal to) the head of the list in front 
     (and those values are sorted), 
     then comes the head of the list in the middle and 
     then come all the values that are bigger than the head (they're also sorted).
+#+end_quote
 
 Notice that we defined it using the verb ~is~ to define the algorithm instead of saying do this, do that, then do that .... 
 That's the beauty of functional programming!
+
+Notice that this approach uses recursion.
 
 How are we going to filter the list so that we get only the elements smaller than the head of our list and only elements that are bigger?
 List comprehensions.
@@ -27,7 +31,7 @@ quicksort1 [10,2,5,3,1,6,7,4,2,3,4,8,9]
 #+RESULTS:
 : [1,2,2,3,3,4,4,5,6,7,8,9,10]
 
--- Quick sort using filter
+The same conditions can be written using ~filter~ as well.
 #+begin_src haskell :exports both :results output
 :{
 quicksort2 :: (Ord a) => [a] -> [a]    

@@ -1,6 +1,8 @@
 Recursion is important to Haskell because unlike imperative languages, you do computations in Haskell by declaring what something is instead of declaring how you get it. 
 That is why there are no while loops or for loops in Haskell and instead we many times have to use recursion to declare what something is.
 
+See Quicksort.org
+
 The ~maximum~ function takes a list of things that can be ordered and returns the biggest of them.
 #+begin_src haskell :exports both :results output
 maximum [1,2,3]
