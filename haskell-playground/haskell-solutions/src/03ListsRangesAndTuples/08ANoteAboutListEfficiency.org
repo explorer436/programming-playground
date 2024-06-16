@@ -2,6 +2,7 @@ A Note About List Efficiency
 
 You might be thinking that this way of finding something is very inefficient. 
 You’d be correct if you were thinking this! 
+
 For small amounts of data, the list type is very handy and useful, and more than efficient enough. 
 However, for much larger amounts of data, we would want to use different functions and types if we wanted things to be fast and efficient. 
 As with everything, the context gives meaning to the content, so as the content changes (you get a bigger set of data), we must choose different ways of working with it (choose a different context of functions and data types).

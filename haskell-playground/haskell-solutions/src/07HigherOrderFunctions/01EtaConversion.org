@@ -1,0 +1,80 @@
+* Eta conversion
+
+An eta conversion (also written η-conversion) is adding or dropping of abstraction over a function. For example, the following two values are equivalent under η-conversion:
+
+#+begin_src haskell :exports both :results output
+\x -> abs x
+#+end_src
+
+and
+
+#+begin_src haskell :exports both :results output
+abs
+#+end_src
+
+Converting from the first to the second would constitute an eta reduction, and moving from the second to the first would be an eta abstraction. The term 'eta conversion' can refer to the process in either direction.
+
+* Some Eta Reduction
+
+The technical name for the process of getting rid of the variables that are repeated on the right hand side of the inside and outside is called eta reduction.
+
+Here’s an example of it:
+
+#+begin_src haskell :exports both :results output
+plus num1 num2 = num1 + num2
+#+end_src
+
+The second argument "num2" gets "erased":
+#+begin_src haskell :exports both :results output
+plus' num1 = (num1 +)
+#+end_src
+
+This is the same as
+#+begin_src haskell :exports both :results output
+plus'NonSectioned = \num1 -> (+) num1
+#+end_src
+
+#+begin_src haskell :exports both :results output
+plus'' = (+)
+#+end_src
+
+Note that
+#+begin_src haskell :exports both :results output
+(num1 +)
+#+end_src
+is technically actually what's called a section: that is, a partially applied operator. However, because we're showing this eta reduction with the ~(+)~ operator,
+#+begin_src haskell :exports both :results output
+plus' num1 = (num1 +)
+#+end_src
+
+is effectively the same function as
+
+#+begin_src haskell :exports both :results output
+plus' num1 = (+) num1
+#+end_src
+
+All three of these functions work in the same way. The (+) function already takes two arguments, which as we know in Haskell means it is actually two nested functions.
+
+Let’s look at yet another way to do the same thing, this time with lambdas:
+
+#+begin_src haskell :exports both :results output
+add = \x -> (\y -> x + y)
+#+end_src
+
+The second argument, "y" gets "erased":
+#+begin_src haskell :exports both :results output
+add' = \x -> (x +)
+#+end_src
+
+This is the same as:
+#+begin_src haskell :exports both :results output
+add'NonSectioned = \x -> (+) x
+
+add'' = (+)
+#+end_src
+
+In each step, we’re simply removing one of the unnecessary variables from our function definition, because
+#+begin_src
+(+)
+#+end_src
+is already a function itself, so by the end, all we’re doing is effectively saying that ~add''~ is simply the ~(+)~ function.
