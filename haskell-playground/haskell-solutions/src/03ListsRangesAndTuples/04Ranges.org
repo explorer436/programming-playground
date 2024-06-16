@@ -1,0 +1,62 @@
+Ranges are a way of making lists that are arithmetic sequences of elements that can be enumerated. 
+Numbers can be enumerated. 
+One, two, three, four, etc. 
+Characters can also be enumerated. 
+The alphabet is an enumeration of characters from A to Z. 
+Names can't be enumerated. 
+
+#+begin_src haskell :exports both :results output
+[1..20]  
+['a'..'z']  
+['K'..'Z']  
+#+end_src
+
+#+RESULTS:
+: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+: abcdefghijklmnopqrstuvwxyz
+: KLMNOPQRSTUVWXYZ
+
+Ranges are cool because you can also specify a step. 
+What if we want all even numbers between 1 and 20? Or every third number between 1 and 20?
+
+#+begin_src haskell :exports both :results output
+[2,4..20]  
+[3,6..20]  
+#+end_src
+
+#+RESULTS:
+: [2,4,6,8,10,12,14,16,18,20]
+: [3,6,9,12,15,18]
+
+It's simply a matter of separating the first two elements with a comma and then specifying what the upper limit is. 
+To make a list with all the numbers from 20 to 1, you can't just do [20..1], you have to do [20,19..1].
+
+#+begin_src haskell :exports both :results output
+[20..1]  -- this gives a compilation error.
+#+end_src
+
+#+RESULTS:
+: []
+
+#+begin_src haskell :exports both :results output
+[20,19..1]  -- this gives a compilation error.
+#+end_src
+
+#+RESULTS:
+: [20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1]
+
+While pretty smart, ranges with steps aren't as smart as some people expect them to be. 
+You can't do [1,2,4,8,16..100] and expect to get all the powers of 2. 
+Firstly because you can only specify one step. 
+And secondly because some sequences that aren't arithmetic are ambiguous if given only by a few of their first terms.
+ 
+Watch out when using floating point numbers in ranges! 
+Because they are not completely precise (by definition), their use in ranges can yield some pretty funky results.
+My advice is not to use them in list ranges.
+
+#+begin_src haskell :exports both :results output
+[0.1, 0.3 .. 1]  
+#+end_src
+
+#+RESULTS:
+: [0.1,0.3,0.5,0.7,0.8999999999999999,1.0999999999999999]

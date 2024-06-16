@@ -34,25 +34,36 @@ listArray (1,1) [100..199]
 This is because because there is only one index.
 
 #+begin_src haskell :exports both :results output
+import Data.Array
 listArray ('m','p') [0,2..]
 #+end_src
 
--- array ('m','p') [('m',0),('n',2),('o',4),('p',6)]
+#+RESULTS:
+: array ('m','p') [('m',0),('n',2),('o',4),('p',6)]
 
 #+begin_src haskell :exports both :results output
+import Data.Array
 listArray ('b','a') [1..]
 #+end_src
--- array ('b','a') []
+
+#+RESULTS:
+: array ('b','a') []
 
 #+begin_src haskell :exports both :results output
+import Data.Array
 listArray (0,4) [100..]
 #+end_src
--- array (0,4) [(0,100),(1,101),(2,102),(3,103),(4,104)]
+
+#+RESULTS:
+: array (0,4) [(0,100),(1,101),(2,102),(3,103),(4,104)]
 
 #+begin_src haskell :exports both :results output
+import Data.Array
 listArray (1,3) ['a','b']
 #+end_src
--- array (1,3) [(1,'a'),(2,'b'),(3,*** Exception: (Array.!): undefined array element
+
+#+RESULTS:
+: array (1,3) [(1,'a'),(2,'b'),(3,*** Exception: (Array.!): undefined array element
 
 The value at index i of an array is accessed using arr!i (unline !! for list access)
 
@@ -67,11 +78,13 @@ list Array takes time proportional to the range of indices.
 There is another way to create arrays.
 http://www.zvon.org/other/haskell/Outputarray/array_f.html
 
+#+begin_src 
 Module: 	Array
 Function: 	array
 Type: 	Ix a => (a,a) -> [(a,b)] -> Array a b
 Description: 
-    
+#+end_src
+
 If a is an index type and b is any type, the type of arrays with indices in a and elements in b is written Array a b. An array may be created by the function array. The first argument of array is a pair of bounds, each of the index type of the array. These bounds are the lowest and highest indices in the array, in that order. For example, a one-origin vector of length 10 has bounds (1,10), and a one-origin 10 by 10 matrix has bounds ((1,1),(10,10)).
     
 The second argument of array is a list of associations of the form (index, value). Typically, this list will be expressed as a comprehension. An association (i, x) defines the value of the array at index i to be x. The array is undefined (i.e. _|_) if any index in the list is out of bounds. If any two associations in the list have the same index, the value at that index is undefined (i.e. _|_). Because the indices must be checked for these errors, array is strict in the bounds argument and in the indices of the association list, but nonstrict in the values.
@@ -80,16 +93,22 @@ Not every index within the bounds of the array need appear in the association li
 
 This creates an array from an associative list.
 The associative list need not be in ascending order of indices.
+
 #+begin_src haskell :exports both :results output
 array (0,2) [(1, "one"), (0, "zero"), (2, "two")]
 #+end_src
 
--- The associative list may also omit elements. Is this true?
+#+RESULTS:
+: array (0,2) [(0,"zero"),(1,"one"),(2,"two")]
+
+The associative list may also omit elements. Is this true?
 
 #+begin_src haskell :exports both :results output
 array (0,2) [(0, "abc"), (2, "xyz")]
 #+end_src
--- array (0,2) [(0,"abc"),(1,"*** Exception: (Array.!): undefined array element
+
+#+RESULTS:
+: array (0,2) [(0,"abc"),(1,"*** Exception: (Array.!): undefined array element
 
 Array also takes time proportional to the range of indices.
 
