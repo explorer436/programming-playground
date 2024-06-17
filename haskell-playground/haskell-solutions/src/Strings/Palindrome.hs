@@ -1,6 +1,6 @@
 module Strings.Palindrome (caseSensitivePalindrome, caseInsensitivePalindrome) where
 
-import Data.Char
+import Data.Char (toLower)
 
 
 -- notice the differences in signature between caseSensitivePalindrome and caseInsensitivePalindrome.

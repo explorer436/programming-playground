@@ -115,9 +115,7 @@ library
       Numbers.SumOfIntegersInAList
       Numbers.SumOfMultiplesOf3Or5SmallerThanN
       Numbers.SumSquareDifference
-      Recursion.Factorial
-      Sorting.LinearTimeSort
-      Sorting.Quicksort
+      SortingAlgorithms.LinearTimeSort
       Strings.AddLineNumbersToSourceCode
       Strings.Anagram
       Strings.AnglesOfAClock

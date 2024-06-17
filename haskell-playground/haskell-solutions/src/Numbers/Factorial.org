@@ -1,0 +1,29 @@
+Using pattern matching
+
+#+begin_src haskell :exports both :results output
+:{
+customFactorialFunctionUsingRecursion :: (Integral a) => a -> a  
+customFactorialFunctionUsingRecursion 0 = 1  
+customFactorialFunctionUsingRecursion n = n * customFactorialFunctionUsingRecursion (n - 1) 
+:}
+customFactorialFunctionUsingRecursion 3  
+customFactorialFunctionUsingRecursion 5
+#+end_src
+
+#+RESULTS:
+: 6
+: 120
+
+
+Using Haskell's native product function
+
+#+begin_src haskell :exports both :results output
+:{
+customFactorialFunctionWithoutUsingRecursion :: (Integral a) => a -> a  
+customFactorialFunctionWithoutUsingRecursion n = product [1..n]  
+:}
+customFactorialFunctionWithoutUsingRecursion 4  
+#+end_src
+
+#+RESULTS:
+: 24

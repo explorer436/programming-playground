@@ -1,4 +1,4 @@
-module Sorting.LinearTimeSort where
+module SortingAlgorithms.LinearTimeSort where
 
 import Data.Array
 
