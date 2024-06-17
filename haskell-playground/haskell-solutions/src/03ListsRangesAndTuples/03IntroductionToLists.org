@@ -4,9 +4,10 @@ In Haskell, strings are just a list of characters.
 "hello" is just syntactic sugar for ['h', 'e', 'l', 'l', 'o'].
 Because strings are lists, we can use list functions on them, which is really handy.
 
+* Putting lists together
+
 When you put together two lists (even if you append a singleton list to a list, 
-for instance: [1,2,3] ++ [4]), 
-internally, Haskell has to walk through the whole list on the left side of ++. 
+for instance: in ~puttingTwoListsTogether~, internally, Haskell has to walk through the whole list on the left side of ~++~. 
 That's not a problem when dealing with lists that aren't too big. 
 But putting something at the end of a list that's fifty million entries long is going to take a while.  
 
@@ -33,6 +34,8 @@ puttingTwoListsTogether testList1 testList2
 
 #+RESULTS:
 : woot
+
+* The cons operator
 
 However, putting something at the beginning of a list using the ~:~ operator (also called the cons operator - short for construct) is instantaneous. 
 
@@ -68,6 +71,8 @@ Not preferrable because Haskell has to walk through the whole list on the left s
 [] is an empty list.
 So, 5:[1,2,3,4] is syntactic sugar for 5:1:2:3:4:[]
 
+* Getting elements out of a list
+
 
 #+begin_src haskell :exports both :results output
 getElementOutOfAListByIndex = "Steve Buschmi" !! 6
@@ -79,7 +84,8 @@ getElementOutOfAListByIndex
 
 Indexes start at 0.
 
-List of lists
+* List of lists
+
 #+begin_src haskell :exports both :results output
 testListOfLists = [[3,2,1], [2,12,1,17], [3,10,100,72,365]]
 testListOfLists
@@ -97,8 +103,7 @@ testListOfListOfLists
 #+RESULTS:
 : [[[3,2,1],[2,12,1,17],[3,10,100,72,365]],[[1111],[2222]]]
 
-
-List comparison
+* List comparison
 
 Lists can be compared if the stuff they contain can be compared.
 
@@ -245,6 +250,8 @@ True
 720
 #+end_example
 
+* elem
+
 ~elem~ takes a thing and a list of things and tells us if that thing is an element of the list.
 It's usually called as an infix function because it's easier to read that way.
 #+begin_src haskell :exports both :results output
@@ -257,3 +264,187 @@ It's usually called as an infix function because it's easier to read that way.
 : True
 : True
 : False
+
+* Getting stuff done without loops & without variables
+
+We will demonstrate how it’s possible to write code without loops and variables. Using only functions, and recursion.
+
+This is not how loops are written in real-world Haskell code (we have high-level constructs to deal with it). However, values of variables are certainly not changed in real-world Haskell code. This is what makes Haskell an “immutable” language. And it’s important to undestand how it’s possible to write code without actually changing values of variables.
+
+Summing up a list of integers
+
+First, let’s quickly look at the head and tail functions that operate on lists:
+
+```
+GHCi> head [1, 2, 3, 4]
+1
+
+GHCi> tail [1, 2, 3, 4]
+[2,3,4]
+```
+
+Now, let’s use this functions to write our own function that computes the sum of a list of integers:
+
+```
+module SumOfList where
+
+sumOfList :: Int -> [Int] -> Int
+sumOfList total lst =
+  if (lst == [])
+    then total
+    else sumOfList (total + (head lst)) (tail lst)
+```
+
+Try it out in GHCi:
+```
+GHCi> :l SumOfList
+GHCi> sumOfList 0 [1, 2, 3, 4, 5]
+15
+```
+
+If you notice, we had to pass-in the initial value of the total as 0. If you don’t like this, you can move the core logic to a different function and put the initialisation code in another function, as shown below:
+
+```
+module SumOfList where
+
+sumOfList :: [Int] -> Int
+sumOfList lst = sumOfListInternal 0 lst
+
+sumOfListInternal :: Int -> [Int] -> Int
+sumOfListInternal total lst =
+  if (lst == [])
+    then total
+    else sumOfListInternal (total + (head lst)) (tail lst)
+```
+
+Notice, how we haven’t used any for or do-while loop. We aren’t even changing the value of any variable. Each step in the recursion is passing new values to the next function call (which happens to be itself!)
+
+Summing-up all even numbers in a list of integers
+
+Now, let’s modify our previous code to sum-up only the even numbers in a list:
+
+```
+module SumOfList where
+
+sumOfEven :: Int -> [Int] -> Int
+sumOfEven total lst =
+  if (lst == [])
+    then total
+    else if (mod (head lst) 2) == 0
+      then sumOfEven (total + (head lst)) (tail lst)
+      else sumOfEven total (tail lst)
+```
+
+Doubling all numbers in a list of integers
+```
+module Throwaway where
+
+doubleList :: [Int] -> [Int] -> [Int]
+doubleList processedList remainingList =
+  if (remainingList == [])
+    then processedList
+    else doubleList (processedList ++ [(head remainingList) * 2]) (tail remainingList)
+
+-- GHCi> :l Throwaway
+-- GHCi> doubleList [] [1, 2, 3, 4]
+-- [2, 4, 6, 8]
+-- TODO implement this without passing the processedList to the function
+```
+
+Converting a String to uppercase
+```
+module Throwaway where
+
+-- NOTE: importing the `toUpper` function from the Data.Char module.
+-- You should look up the signature of this function from the docs
+import Data.Char (toUpper)
+
+toUppercase :: String -> String -> String
+toUppercase processedString remainingString =
+  if (remainingString == [])
+    then processedString
+    else toUppercase (processedString ++ [toUpper (head remainingString)] (tail remainingString)
+
+-- GHCi> :l Throwaway
+-- GHCi> toUppercase [] "hello world"
+-- "HELLO WORLD"
+```
+
+Please observe that the String is being treated as a list. This should not surprise you because, in Haskell, String is just another name for [Char], i.e. a string is just a list of Char. Try changing the signature to toUppercase :: [Char] -> [Char] -> [Char] and verify this for yourself.
+
+Checking if all characters in a String are contained in another String
+
+Tip: You should take a pen & paper and understand how the logic & recursion is working in this example.
+
+```
+
+isCharPresent :: Char -> [Char] -> Bool
+isCharPresent needle remainingString =
+  if (remainingString == [])
+    then False
+    else if (need == (head remainingString))
+      then True
+      else isCharPresent needle (tail remainingString)
+
+allCharsPresent :: [Char] -> [Char] -> Bool
+allCharsPresent remainingNeedles haystack =
+  if (remainingNeedles == [])
+    then True
+    else if isCharPresent (head remainingNeedles) haystack
+      then allCharsPresent (tail remainingNeedles) haystack
+      else False
+
+-- GHCi> :l Throwaway
+-- GHCi> allCharsPresent "hlo" "hello world"
+-- True
+--
+-- GHCi> allCharsPresent "hxo" "hello world"
+-- False
+```
+
+Generating a list of all even numbers till “N”
+Let’s quickly look at the : operator, which is used to add an element to the beginning of a list:
+
+GHCi> 1:[1, 3]
+[1, 1, 3]
+
+GHCi> 1:[]
+[1]
+
+GHCi> 'a':"bcde"
+"abcde"
+
+Note:
+
+With repsect to the last example, remember how a String is basically just a Char, so we can use the : operator to add a Char to the beginning of a String. Please take note of the single quotes: '. Can you explain why the following doesn’t work?
+
+GHCi> "a":"bcde"
+
+-- ERROR: • Couldn't match type ‘Char’ with ‘[Char]’
+Also, notice how : is used differently from ++. The former is used to add an item to a list, whereas the latter is used to concatenate two lists:
+
+GHCi> 1:[2, 3]
+[1, 2, 3]
+
+GHCi> [2, 3] ++ [1]
+[2, 3, 1]
+
+GHCi> [2, 3] ++ [1, 2]
+[2, 3, 1, 2]
+
+Now, generating a list of all even numbers till “N”:
+
+```
+evenList :: Int -> [Int] -> [Int]
+evenList n lst =
+  if (n==0)
+    then lst
+    else if (mod n 2) == 0
+
+      -- the `:` operator adds an item to the beginning of a list.
+      then evenList (n - 1) (n:lst)
+      else evenList (n - 1) lst
+
+-- GHCi> evenList 100 []
+-- [2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98,100]
+```

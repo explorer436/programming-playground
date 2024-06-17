@@ -20,3 +20,44 @@ doubleSmallNumber 17
 #+RESULTS:
 : 16
 : 17
+
+
+if-then-else in Haskell works very similar to other languages. For example, here’s a function to return "odd" / "even" depending upon the input number:
+
+#+begin_src haskell :exports both :results output
+:{
+checkNumber :: Int -> String
+checkNumber y =
+  if (mod y 2) == 0
+    then "even"
+    else "odd"
+:}
+checkNumber 10
+checkNumber 7
+#+end_src
+
+We don’t have to explicitly write a return statement.
+
+No “truthy” or “falsy” values
+
+Unlike other languages, Haskell doesn’t have the concept of truthy and falsy values. Some other languages treat a number of non-boolean values, like 0, 1, any string, empty array, empty object, etc, as either a boolean True or a boolean False. Haskell doesn’t do that. Haskell has only two boolean values - True or False. This is a result of the strong and principled type-system of Haskell.
+
+Example of truth-y / false-y in Javascript:
+#+begin_src
+if (0) {
+  console.log("truthy");
+} else {
+  console.log("falsy");
+}
+// OUTPUT: falsy
+#+end_src
+
+Example of truth-y / false-y in Ruby:
+#+begin_src
+if "abc" then
+  puts "truthy"
+else
+  puts "falsy"
+end
+// OUTPUT: truthy
+#+end_src
