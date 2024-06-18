@@ -126,6 +126,7 @@ library
       Strings.ExamScoreProcessing
       Strings.FizzBuzz
       Strings.GeneralizedFibonacciSelector
+      Strings.GetTheMiddleCharactersOfAString
       Strings.GroupNamesByAlphabets
       Strings.ISBNVerifier
       Strings.LongestCommonSubsequenceBetweenTwoStrings
@@ -223,6 +224,7 @@ test-suite haskell-solutions-test
       Numbers.SumOfAllOddSquaresSmallerThanNSpec
       Strings.AnagramSpec
       Strings.AnglesOfAClockSpec
+      Strings.GroupNamesByAlphabetsSpec
       Strings.LongestCommonSubsequenceBetweenTwoStringsSpec
       Strings.PalindromeSpec
       Strings.PangramSpec

@@ -37,6 +37,7 @@ charactersThatAreNotInTheSentenceTest = charactersThatAreNotInTheSentence "Sphin
 pangram :: Foldable t => t Char -> Bool
 pangram input = and $ (map (doesCharacterExistInString input) ['a'..'z'])
 
+doesCharacterExistInString :: Foldable t => t Char -> Char -> Bool
 doesCharacterExistInString input c
     | (c `elem` input || (toUpper c) `elem` input) = True
     | otherwise = False
