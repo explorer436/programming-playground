@@ -54,6 +54,7 @@ library
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTree
       Datastructures.Trees.GetParentOfANodeValue
       Datastructures.Trees.HeightBalancedBinaryTree
+      Datastructures.Trees.HorizontalDistance
       Datastructures.Trees.InvertABinaryTree
       Datastructures.Trees.IsGivenTreeAFullBinaryTree
       Datastructures.Trees.IsGivenTreeBinarySearchTree
@@ -193,6 +194,7 @@ test-suite haskell-solutions-test
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTreeSpec
       Datastructures.Trees.GetParentOfANodeValueSpec
       Datastructures.Trees.HeightBalancedBinaryTreeSpec
+      Datastructures.Trees.HorizontalDistanceSpec
       Datastructures.Trees.InvertABinaryTreeSpec
       Datastructures.Trees.IsGivenTreeAFullBinaryTreeSpec
       Datastructures.Trees.IsGivenTreeBinarySearchTreeSpec
