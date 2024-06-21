@@ -37,6 +37,7 @@ library
       Datastructures.Trees.AppendOneTreeToAnotherTree
       Datastructures.Trees.ArithmeticBinaryTree
       Datastructures.Trees.BinaryTreeSumsByEachLevel
+      Datastructures.Trees.BottomView
       Datastructures.Trees.BuildAllPossibleTrees
       Datastructures.Trees.CeilingOfAnElementInAGivenBST
       Datastructures.Trees.CompareTreesBySize
@@ -177,6 +178,7 @@ test-suite haskell-solutions-test
       Datastructures.Trees.AppendOneTreeToAnotherTreeSpec
       Datastructures.Trees.ArithmeticBinaryTreeSpec
       Datastructures.Trees.BinaryTreeSumsByEachLevelSpec
+      Datastructures.Trees.BottomViewSpec
       Datastructures.Trees.BuildAllPossibleTreesSpec
       Datastructures.Trees.CeilingOfAnElementInAGivenBSTSpec
       Datastructures.Trees.CompareTreesBySizeSpec
