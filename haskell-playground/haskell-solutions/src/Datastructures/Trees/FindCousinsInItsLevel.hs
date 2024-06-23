@@ -1,11 +1,11 @@
-module Datastructures.Trees.NumberOfCousinsInLevelOrder (numberOfCousinsInLevelOrder) where
+module Datastructures.Trees.FindCousinsInItsLevel (cousinsInLevel) where
 
 import Data.Maybe (fromJust)
 import Datastructures.Trees.MyBinaryTree (Tree (..), rootValue, leftAndRightTrees)
 import Data.List (delete)
 
-numberOfCousinsInLevelOrder :: Eq t => t -> Tree t -> [t]
-numberOfCousinsInLevelOrder x tree = helper x [tree]
+cousinsInLevel :: Eq t => t -> Tree t -> [t]
+cousinsInLevel x tree = helper x [tree]
 
 -- helper x [] = []
 helper :: Eq t => t -> [Tree t] -> [t]
