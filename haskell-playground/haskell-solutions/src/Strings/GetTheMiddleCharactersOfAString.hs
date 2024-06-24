@@ -12,4 +12,9 @@
     Output: el
  -}
 
-See haskell-playground/src/Datastructures/Lists/GetTheMiddleElementsOfAList.hs
+module Strings.GetTheMiddleCharactersOfAString where
+
+import Datastructures.Lists.GetTheMiddleElementsOfAList (getMiddleElementsOfAList)
+
+getTheMiddleCharactersOfAString :: [a] -> [a]
+getTheMiddleCharactersOfAString = getMiddleElementsOfAList

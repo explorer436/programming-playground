@@ -37,23 +37,28 @@ library
       Datastructures.Trees.AppendOneTreeToAnotherTree
       Datastructures.Trees.ArithmeticBinaryTree
       Datastructures.Trees.BinaryTreeSumsByEachLevel
+      Datastructures.Trees.BottomView
       Datastructures.Trees.BuildAllPossibleTrees
+      Datastructures.Trees.CartesianTree
       Datastructures.Trees.CeilingOfAnElementInAGivenBST
       Datastructures.Trees.CompareTreesBySize
       Datastructures.Trees.ConvertBinaryTreeToFullBinaryTree
       Datastructures.Trees.CountFullNodesInABinaryTree
       Datastructures.Trees.CountTheNumberOfNodesInACompleteBinaryTree
       Datastructures.Trees.CountTheNumberOfNodesInAFullBinaryTree
+      Datastructures.Trees.CousinsForAllNodes
       Datastructures.Trees.CreateABalancedBinarySearchTree
       Datastructures.Trees.DeepestNodeInABinaryTree
       Datastructures.Trees.FilterBinaryTreeLeaves
       Datastructures.Trees.FindAllDuplicateSubtrees
+      Datastructures.Trees.FindCousinsInItsLevel
       Datastructures.Trees.FindIfASubreeExistsInAnotherTree
       Datastructures.Trees.FlattenBinaryTree
       Datastructures.Trees.FloorOfAnElementInAGivenBST
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTree
       Datastructures.Trees.GetParentOfANodeValue
       Datastructures.Trees.HeightBalancedBinaryTree
+      Datastructures.Trees.HorizontalDistance
       Datastructures.Trees.InvertABinaryTree
       Datastructures.Trees.IsGivenTreeAFullBinaryTree
       Datastructures.Trees.IsGivenTreeBinarySearchTree
@@ -72,7 +77,6 @@ library
       Datastructures.Trees.MyBinarySearchTreeTraversals_BreadthFirst_SingleList
       Datastructures.Trees.MyBinarySearchTreeTraversals_DepthFirst
       Datastructures.Trees.MyBinaryTree
-      Datastructures.Trees.NumberOfCousinsInLevelOrder
       Datastructures.Trees.PathsFromRootToAllLeaves
       Datastructures.Trees.PrintNodesInBoustrophedonOrder
       Datastructures.Trees.ReconstrunctBinaryTreeFromPreorderAndInorderTraversals
@@ -126,6 +130,7 @@ library
       Strings.ExamScoreProcessing
       Strings.FizzBuzz
       Strings.GeneralizedFibonacciSelector
+      Strings.GetTheMiddleCharactersOfAString
       Strings.GroupNamesByAlphabets
       Strings.ISBNVerifier
       Strings.LongestCommonSubsequenceBetweenTwoStrings
@@ -175,6 +180,7 @@ test-suite haskell-solutions-test
       Datastructures.Trees.AppendOneTreeToAnotherTreeSpec
       Datastructures.Trees.ArithmeticBinaryTreeSpec
       Datastructures.Trees.BinaryTreeSumsByEachLevelSpec
+      Datastructures.Trees.BottomViewSpec
       Datastructures.Trees.BuildAllPossibleTreesSpec
       Datastructures.Trees.CeilingOfAnElementInAGivenBSTSpec
       Datastructures.Trees.CompareTreesBySizeSpec
@@ -182,16 +188,19 @@ test-suite haskell-solutions-test
       Datastructures.Trees.CountFullNodesInABinaryTreeSpec
       Datastructures.Trees.CountTheNumberOfNodesInACompleteBinaryTreeSpec
       Datastructures.Trees.CountTheNumberOfNodesInAFullBinaryTreeSpec
+      Datastructures.Trees.CousinsForAllNodesSpec
       Datastructures.Trees.CreateABalancedBinarySearchTreeSpec
       Datastructures.Trees.DeepestNodeInABinaryTreeSpec
       Datastructures.Trees.FilterBinaryTreeLeavesSpec
       Datastructures.Trees.FindAllDuplicateSubtreesSpec
+      Datastructures.Trees.FindCousinsInItsLevelSpec
       Datastructures.Trees.FindIfASubreeExistsInAnotherTreeSpec
       Datastructures.Trees.FlattenBinaryTreeSpec
       Datastructures.Trees.FloorOfAnElementInAGivenBSTSpec
       Datastructures.Trees.GetAllValuesAtACertainHeightInABinaryTreeSpec
       Datastructures.Trees.GetParentOfANodeValueSpec
       Datastructures.Trees.HeightBalancedBinaryTreeSpec
+      Datastructures.Trees.HorizontalDistanceSpec
       Datastructures.Trees.InvertABinaryTreeSpec
       Datastructures.Trees.IsGivenTreeAFullBinaryTreeSpec
       Datastructures.Trees.IsGivenTreeBinarySearchTreeSpec
@@ -208,7 +217,6 @@ test-suite haskell-solutions-test
       Datastructures.Trees.MyBinarySearchTree_MaximumAndMinimumElementsSpec
       Datastructures.Trees.MyBinarySearchTree_RightHeightSpec
       Datastructures.Trees.MyBinarySearchTree_SearchSpec
-      Datastructures.Trees.NumberOfCousinsInLevelOrderSpec
       Datastructures.Trees.PathsFromRootToAllLeavesSpec
       Datastructures.Trees.PrintNodesInBoustrophedonOrderSpec
       Datastructures.Trees.ReconstrunctBinaryTreeFromPreorderAndInorderTraversalsSpec
@@ -223,6 +231,7 @@ test-suite haskell-solutions-test
       Numbers.SumOfAllOddSquaresSmallerThanNSpec
       Strings.AnagramSpec
       Strings.AnglesOfAClockSpec
+      Strings.GroupNamesByAlphabetsSpec
       Strings.LongestCommonSubsequenceBetweenTwoStringsSpec
       Strings.PalindromeSpec
       Strings.PangramSpec

@@ -5,7 +5,7 @@ import Data.Char (toLower)
 
 -- notice the differences in signature between caseSensitivePalindrome and caseInsensitivePalindrome.
 -- caseInsensitivePalindrome works only with strings.
--- caseSensitivePalindddrom works with any TypeClass that satisfies Eq.
+-- caseSensitivePalindrome works with any TypeClass that satisfies Eq.
 
 
 
