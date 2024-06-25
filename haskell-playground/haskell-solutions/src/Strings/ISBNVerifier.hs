@@ -1,4 +1,4 @@
-module Strings.ISBNVerifier where
+module Strings.ISBNVerifier (isValidIsbn, checkSum) where
 
 import Strings.RemoveSubstringFromAString (removeSubstringFromAString)
 import Data.Char (digitToInt)
@@ -76,18 +76,5 @@ isValidIsbn isbn
     | otherwise                                    = False
     where isbnStrippedOfHyphens = removeSubstringFromAString "-" isbn
 
--- tests
-
-isValidIsbnTest01 = isValidIsbn "3598215088"
--- True
-
-isValidIsbnTest02 = isValidIsbn "123-45"
--- False
-
-isValidIsbnTest03 = isValidIsbn "0-86381-580-4"
--- True
-
 checkSum :: [Char] -> Int
-checkSum list = sum [a * digitToInt(b) | (a,b) <- zip [10,9..] list]
-testCheckSum01 = checkSum "3598215088"
--- 264
+checkSum list = sum [a * digitToInt b | (a,b) <- zip [10,9..] list]

@@ -1,4 +1,4 @@
-module Strings.AssessMovies where
+module Strings.AssessMovies (assessMovies) where
 
 import qualified Data.List as L
 
@@ -6,18 +6,7 @@ import qualified Data.List as L
 -- we're only interested in movies whose first letter is in the first half of the alphabet ('a'..'z'). 
 -- In our program, we'll call those good movies, and the others bad.
 
-movies =
-  [ "Aeon Flux"
-  , "The Black Cat"
-  , "Superman"
-  , "Stick It"
-  , "The Matrix Revolutions"
-  , "The Raven"
-  , "Inception"
-  , "Looper"
-  , "Hoodwinked"
-  , "Tell-Tale"
-  ]
+
 
 -- We'd like to be able to make a new list of our movies 
 -- with “good” or “bad” appended to the name so we know which we can watch.
@@ -35,6 +24,3 @@ assess movie = movie ++ " - " ++ assessment
 assessMovies :: [String] -> [String]
 assessMovies = map assess
 
-assessedMovies :: [String]
-assessedMovies = assessMovies movies
--- ["Aeon Flux - Good","The Black Cat - Bad","Superman - Bad","Stick It - Bad","The Matrix Revolutions - Bad","The Raven - Bad","Inception - Good","Looper - Good","Hoodwinked - Good","Tell-Tale - Bad"]

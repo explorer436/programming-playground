@@ -32,7 +32,7 @@ import qualified Strings.RemoveSubstringFromAString as RSSFS
 
 positionsList :: (Integral a) => Int -> a -> [a]
 positionsList lengthOfInput totalNumberOfRails
-   | (lengthOfInput > 0 && totalNumberOfRails > 0) = take lengthOfInput (cycle combinedList)
+   | lengthOfInput > 0 && totalNumberOfRails > 0 = take lengthOfInput (cycle combinedList)
    | otherwise                                     = []
    where railsList = [1..totalNumberOfRails]
          middleList = reverse (init (tail railsList))

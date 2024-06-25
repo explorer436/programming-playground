@@ -231,10 +231,15 @@ test-suite haskell-solutions-test
       Numbers.SumOfAllOddSquaresSmallerThanNSpec
       Strings.AnagramSpec
       Strings.AnglesOfAClockSpec
+      Strings.AssessMoviesSpec
+      Strings.CheckIfAllCharsOfAStringAreInAnotherStringSpec
+      Strings.FizzBuzzSpec
       Strings.GroupNamesByAlphabetsSpec
+      Strings.ISBNVerifierSpec
       Strings.LongestCommonSubsequenceBetweenTwoStringsSpec
       Strings.PalindromeSpec
       Strings.PangramSpec
+      Strings.RemoveSubstringFromAStringSpec
       Paths_haskell_solutions
   hs-source-dirs:
       test
