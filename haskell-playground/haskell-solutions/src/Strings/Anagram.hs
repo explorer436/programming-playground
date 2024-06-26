@@ -20,7 +20,8 @@ doesCharacterExistInString inputString c
     | otherwise = False
 
 -- Reference: RemoveDuplicatesFromList.hs. Using ETA reduce here.
-removeDuplicates = foldl (\result x -> if (x `elem` result) then result else (x:result)) []
+removeDuplicates :: [Char] -> [Char]
+removeDuplicates = foldl (\result x -> if x `elem` result then result else x:result) []
 
 {- |
     Hi, here's your problem today. This problem was recently asked by Twitter:

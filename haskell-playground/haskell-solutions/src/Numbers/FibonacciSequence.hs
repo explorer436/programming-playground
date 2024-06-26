@@ -1,7 +1,7 @@
 module Numbers.FibonacciSequence where
 
 import Data.List (foldl')
-import Data.Array
+import Data.Array ( Ix, Array, listArray, (!) )
 
 {- |
     In mathematics, the Fibonacci numbers, commonly denoted Fn, 

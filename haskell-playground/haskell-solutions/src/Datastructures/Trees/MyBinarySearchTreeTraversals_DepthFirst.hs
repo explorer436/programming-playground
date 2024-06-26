@@ -1,31 +1,31 @@
 module Datastructures.Trees.MyBinarySearchTreeTraversals_DepthFirst where
     
 import Datastructures.Trees.MyBinaryTree (Tree (..))
-import Datastructures.Trees.MyBinarySearchTree_Insert (treeInsert, numsTreeFromLeft)
+import Datastructures.Trees.MyBinarySearchTree_Insert (treeInsert, listToTreeFromLeft)
 
 traverseInOrder :: Tree a -> [a]
 traverseInOrder EmptyTree = []
 traverseInOrder (Node a l r) = traverseInOrder l ++ [a] ++ traverseInOrder r
 --tests
-testInOrder01 = traverseInOrder numsTreeFromLeft -- [15,17,20,22,25,26,27,29,30,32] 
+testInOrder01 = traverseInOrder (listToTreeFromLeft [15,17,20,22,25,26,27,29,30,32])
 
 traversePreOrder :: Tree a -> [a]
 traversePreOrder EmptyTree = []
 traversePreOrder (Node a l r) = a : traversePreOrder l ++ traversePreOrder r
 --tests
-testPreOrder01 = traversePreOrder numsTreeFromLeft -- [25,20,15,17,22,27,26,30,29,32]
+testPreOrder01 = traversePreOrder (listToTreeFromLeft [25,20,15,17,22,27,26,30,29,32])
 
 traversePostOrder :: Tree a -> [a]
 traversePostOrder EmptyTree = []
 traversePostOrder (Node a l r) = traversePostOrder l ++ traversePostOrder r ++ [a]
 --tests
-testPostOrder01 = traversePostOrder numsTreeFromLeft -- [17,15,22,20,26,29,32,30,27,25]
+testPostOrder01 = traversePostOrder (listToTreeFromLeft [17,15,22,20,26,29,32,30,27,25])
 
 traverseReverseInOrder :: Tree a -> [a]
 traverseReverseInOrder EmptyTree = []
 traverseReverseInOrder (Node a l r) = traverseReverseInOrder r ++ [a] ++ traverseReverseInOrder l
 --tests
-testReverseInOrder01 = traverseReverseInOrder numsTreeFromLeft -- [32,30,29,27,26,25,22,20,17,15]
+testReverseInOrder01 = traverseReverseInOrder (listToTreeFromLeft [32,30,29,27,26,25,22,20,17,15])
 
 {- |
                           F

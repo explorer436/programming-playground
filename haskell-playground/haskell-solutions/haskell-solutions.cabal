@@ -72,6 +72,7 @@ library
       Datastructures.Trees.MyBinarySearchTree_Delete
       Datastructures.Trees.MyBinarySearchTree_Insert
       Datastructures.Trees.MyBinarySearchTree_MaximumAndMinimumElements
+      Datastructures.Trees.MyBinarySearchTree_PermutationsFromList
       Datastructures.Trees.MyBinarySearchTree_Search
       Datastructures.Trees.MyBinarySearchTreeTraversals_BreadthFirst_ListsByLevel
       Datastructures.Trees.MyBinarySearchTreeTraversals_BreadthFirst_SingleList
@@ -182,6 +183,7 @@ test-suite haskell-solutions-test
       Datastructures.Trees.BinaryTreeSumsByEachLevelSpec
       Datastructures.Trees.BottomViewSpec
       Datastructures.Trees.BuildAllPossibleTreesSpec
+      Datastructures.Trees.CartesianTreeSpec
       Datastructures.Trees.CeilingOfAnElementInAGivenBSTSpec
       Datastructures.Trees.CompareTreesBySizeSpec
       Datastructures.Trees.ConvertBinaryTreeToFullBinaryTreeSpec
@@ -213,8 +215,10 @@ test-suite haskell-solutions-test
       Datastructures.Trees.MinimumPathSumFromRootToLeafSpec
       Datastructures.Trees.MyBinarySearchTree_DeleteSpec
       Datastructures.Trees.MyBinarySearchTree_HeightSpec
+      Datastructures.Trees.MyBinarySearchTree_InsertSpec
       Datastructures.Trees.MyBinarySearchTree_LeftHeightSpec
       Datastructures.Trees.MyBinarySearchTree_MaximumAndMinimumElementsSpec
+      Datastructures.Trees.MyBinarySearchTree_PermutationsFromListSpec
       Datastructures.Trees.MyBinarySearchTree_RightHeightSpec
       Datastructures.Trees.MyBinarySearchTree_SearchSpec
       Datastructures.Trees.PathsFromRootToAllLeavesSpec

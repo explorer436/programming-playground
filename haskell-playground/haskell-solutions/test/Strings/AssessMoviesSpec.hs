@@ -14,6 +14,7 @@ spec = do
         `shouldBe` 
         ["Aeon Flux - Good","The Black Cat - Bad","Superman - Bad","Stick It - Bad","The Matrix Revolutions - Bad","The Raven - Bad","Inception - Good","Looper - Good","Hoodwinked - Good","Tell-Tale - Bad"]
 
+movies :: [[Char]]
 movies =
   [ "Aeon Flux"
   , "The Black Cat"
