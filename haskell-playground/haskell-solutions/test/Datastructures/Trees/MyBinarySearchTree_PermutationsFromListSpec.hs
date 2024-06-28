@@ -23,15 +23,3 @@ spec = do
                             Node 3 (Node 1 EmptyTree (Node 2 EmptyTree EmptyTree)) EmptyTree,
                             Node 1 EmptyTree (Node 3 (Node 2 EmptyTree EmptyTree) EmptyTree)
                           ]
-
-                 
-{- |
-
-      5
-    /   \   
-  3       7
- / \     / \
-1   4   6   8
-
--}
-

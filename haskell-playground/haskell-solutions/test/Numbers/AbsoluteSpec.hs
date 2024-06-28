@@ -1,6 +1,6 @@
 module Numbers.AbsoluteSpec where
 
-import Test.Hspec
+import Test.Hspec ( describe, it, shouldBe, Spec )
 import Numbers.Absolute (absolute)
 
 spec :: Spec

@@ -1,4 +1,3 @@
------------------------------------------------------------------------
 -- WHERE
 
 -- REMEMBER : in the pipe conditions, all the `equal to` symbols should be in a straigh line.

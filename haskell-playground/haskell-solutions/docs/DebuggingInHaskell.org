@@ -1,21 +1,44 @@
-Source: https://www.haskelltutorials.com/without-theory/lambdas.html
+Sometimes, we run into scenarios with our functions where we would like to know the values of input, output and intermediate variables. This is to get a clear understanding of how the function is changing the values of the variables.
 
-What the hell is going on? Can I print the value of this variable?
+How would we know the values of those variables? Can we do Print debugging? Can I print the value of this variable? It’s not the most elegant debugging technique, but print debugging can be incredibly effective.
 
-You have been explicitly forbidden to write output to the terminal - GHCi will automtically print the return value of your function. 
-There is a reason for doing this, which we will cover later. 
-However, if, for debugging you need to print values to the terminal use various functions from the Debug.Trace module.
+In Haskell, printing something to the screen is a side effect to avoid. However, the ~Debug.Trace~ module, which is part of ~base~, provides tools for print-style debugging for Haskell pure functions.
+
+In theory, we could change our programs so that the functions run in IO and then debug by printing the variables to the screen. For small examples, that approach would work. But in larger programs, refactoring pure functions into an impure one can be a lot of work. We’d rather not undertake a significant refactor just to debug our application.
+
+* How to use ~traceShow~
 
 For example, here’s how you can use traceShow to print the values passed to your lambda, while summing a list of itnegers:
 
-GHCi> import Debug.Trace (traceShow)
-GHCi> import Data.List (foldl')
-GHCi> foldl' (\total x -> traceShow (total, x) (total + x)) 0 [1, 2, 3, 4, 5]
-The simplified type-signature of traceShow is:
+#+begin_src haskell :exports both :results output
+import Debug.Trace (traceShow)
+import Data.List (foldl')
+foldl' (\total x -> traceShow (total, x) (total + x)) 0 [1, 2, 3, 4, 5]
+#+end_src
 
+#+RESULTS:
+: (0,1)
+: (1,2)
+: (3,3)
+: (6,4)
+: (10,5)
+: 15
+
+The simplified type-signature of traceShow is:
+#+begin_src 
 traceShow :: a -> b -> b
+#+end_src
+
 You can pass it two arguments of any type, it will print the first argument to the console, and will return the second argument as it is. 
-Which means that traceShow will always evaluate to the second argument passed to it. 
-So, in our example above (total, x) is being printed, but the function call to traceShow is evaluating to total + x; and, as a result, the entire lambda is evaluating to total + x – thus our summation logic is not changing. 
-In other words, (total, x), which is being printed has absolutely no effect on the “return value” of traceShow. 
-The “return value” of traceShow will always be the second argument you pass to it.
+Which means that ~traceShow~ will always evaluate to the second argument passed to it. 
+So, in our example above ~(total, x)~ is being printed, but the function call to ~traceShow~ is evaluating to ~total + x~; and, as a result, the entire lambda is evaluating to ~total + x~ – thus our summation logic is not changing. 
+In other words, ~(total, x)~, which is being printed has absolutely no effect on the "return value" of traceShow. 
+The "return value" of traceShow will always be the second argument you pass to it.
+
+* How to use ~trace~
+
+~Debug.Trace~ gives us access to ~trace~ — responsible for printing a message to the screen.
+
+Look at all the variations of CharAndWordCount/CharCount.hs
+
+Formatting types for printing: https://hackage.haskell.org/package/base-4.16.0.0/docs/Text-Printf.html

@@ -25,6 +25,16 @@ source-repository head
 
 library
   exposed-modules:
+      CharAndWordCount.CharCount_version1
+      CharAndWordCount.CharCount_version2
+      CharAndWordCount.CharCount_version3
+      CharAndWordCount.CharCount_version4
+      CharAndWordCount.CharCount_version5
+      CharAndWordCount.CharCount_version6
+      CharAndWordCount.CharCount_version7
+      CharAndWordCount.CharCount_version8
+      CharAndWordCount.CharCount_version9
+      CharAndWordCount.WordCount
       Datastructures.Lists.CountFrequencyOfElementsInAList
       Datastructures.Lists.EveryNthElementInAList
       Datastructures.Lists.FindFirstDuplicate
@@ -49,6 +59,7 @@ library
       Datastructures.Trees.CousinsForAllNodes
       Datastructures.Trees.CreateABalancedBinarySearchTree
       Datastructures.Trees.DeepestNodeInABinaryTree
+      Datastructures.Trees.DepthOfAPeculiarlyRepresentedTree
       Datastructures.Trees.FilterBinaryTreeLeaves
       Datastructures.Trees.FindAllDuplicateSubtrees
       Datastructures.Trees.FindCousinsInItsLevel
@@ -128,6 +139,7 @@ library
       Strings.CaesarCipher
       Strings.CheckIfAllCharsOfAStringAreInAnotherString
       Strings.ConvertAStringToLowerCase
+      Strings.CountNumberOfOccurancesOfSubstringInAString
       Strings.ExamScoreProcessing
       Strings.FizzBuzz
       Strings.GeneralizedFibonacciSelector
@@ -140,7 +152,6 @@ library
       Strings.Pangram
       Strings.RailFenceCipher
       Strings.RemoveSubstringFromAString
-      WordCount.WordCount
   other-modules:
       Paths_haskell_solutions
   hs-source-dirs:
@@ -173,6 +184,8 @@ test-suite haskell-solutions-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      CharAndWordCount.CharCountSpec
+      CharAndWordCount.WordCountSpec
       Datastructures.Lists.CountFrequencyOfElementsInAListSpec
       Datastructures.Lists.GetTheMiddleElementsOfAListSpec
       Datastructures.Lists.IsListSymmetricSpec
@@ -193,6 +206,7 @@ test-suite haskell-solutions-test
       Datastructures.Trees.CousinsForAllNodesSpec
       Datastructures.Trees.CreateABalancedBinarySearchTreeSpec
       Datastructures.Trees.DeepestNodeInABinaryTreeSpec
+      Datastructures.Trees.DepthOfAPeculiarlyRepresentedTreeSpec
       Datastructures.Trees.FilterBinaryTreeLeavesSpec
       Datastructures.Trees.FindAllDuplicateSubtreesSpec
       Datastructures.Trees.FindCousinsInItsLevelSpec
@@ -237,6 +251,7 @@ test-suite haskell-solutions-test
       Strings.AnglesOfAClockSpec
       Strings.AssessMoviesSpec
       Strings.CheckIfAllCharsOfAStringAreInAnotherStringSpec
+      Strings.CountNumberOfOccurancesOfSubstringInAStringSpec
       Strings.FizzBuzzSpec
       Strings.GroupNamesByAlphabetsSpec
       Strings.ISBNVerifierSpec

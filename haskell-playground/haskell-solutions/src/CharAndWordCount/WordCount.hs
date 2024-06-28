@@ -1,4 +1,4 @@
-module WordCount.WordCount where
+module CharAndWordCount.WordCount (wordCount, charCount) where
 
 -- file: ch01/WordCount.hs
 
@@ -14,5 +14,10 @@ module WordCount.WordCount where
 --    where wordCount input = show (length (words input)) ++ "\n"
 
 -- This shows the number of characters in a file
-main = interact characterCount
-    where characterCount input = show (length input) ++ "\n"    
+-- main :: IO ()
+-- main = interact characterCount
+--     where characterCount input = show (length input) ++ "\n"    
+
+wordCount input = length (lines input)
+
+charCount input = length input
