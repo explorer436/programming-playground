@@ -1,0 +1,38 @@
+module MySolutions.CharAndWordCount.CharCount_version8 (charCounts) where
+
+import Data.Char
+import Debug.Trace
+import Text.Printf
+
+data CharacterClass
+  = PrintableCharacter
+  | ZeroWidthJoiner
+  | VariantSelector
+  | OtherUnprintableCharacter
+  deriving Show
+
+variantSelectors :: [Char]
+variantSelectors =
+  ['\xFE00', '\xFE01', '\xFE02', '\xFE0E', '\xFE0F']
+
+classifyCharacter :: Char -> CharacterClass
+classifyCharacter c
+  | c `elem` variantSelectors = VariantSelector
+  | ord c == 0x200d = ZeroWidthJoiner
+  | isPrint c = PrintableCharacter
+  | otherwise = OtherUnprintableCharacter
+
+charCounts :: String -> Int
+charCounts = foldr debugCharacterCount 0
+  where
+    countCharacter char count =
+      case classifyCharacter char of
+        PrintableCharacter -> trace "adding to count" $ count + 1
+        ZeroWidthJoiner -> trace "subtracting from count" $ count - 1
+        _otherwise -> trace "not changing count" $ count
+
+    debugCharacterCount char count =
+      let newCount = countCharacter char count
+          message =
+            printf "%c (0x%x): %s: Count: %d -> %d" char (ord char) (show $ classifyCharacter char) count count
+      in trace message newCount
