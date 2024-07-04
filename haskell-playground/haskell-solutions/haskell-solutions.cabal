@@ -26,6 +26,8 @@ source-repository head
 library
   exposed-modules:
       Lib
+      MySolutions.BitwiseOperations.DecimalToBinary
+      MySolutions.BitwiseOperations.MyBits
       MySolutions.BitwiseOperations.SwapElements
       MySolutions.CharAndWordCount.CharCount_version1
       MySolutions.CharAndWordCount.CharCount_version2

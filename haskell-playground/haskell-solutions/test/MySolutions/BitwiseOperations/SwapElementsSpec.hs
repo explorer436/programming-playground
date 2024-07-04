@@ -1,4 +1,4 @@
-module MySolutions.CharAndWordCount.CharCountSpec where
+module MySolutions.BitwiseOperations.SwapElementsSpec where
 
 import Test.Hspec ( describe, it, shouldBe, Spec )
 import MySolutions.BitwiseOperations.SwapElements (swapElements)
