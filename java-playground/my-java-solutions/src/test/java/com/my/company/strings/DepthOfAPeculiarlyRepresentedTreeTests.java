@@ -31,4 +31,16 @@ public class DepthOfAPeculiarlyRepresentedTreeTests {
         int actual = depthOfAPeculiarlyRepresentedTree.depthOfAPeculiarlyRepresentedTree("(00)", "((((00)0)0)0)", "0");
         assertEquals(3, actual);
     }
+
+    @Test
+    public void test_depthOfAPeculiarlyRepresentedTree_05() throws Exception {
+        int actual = depthOfAPeculiarlyRepresentedTree.depthOfAPeculiarlyRepresentedTree("(00)","(((00)0)((00)(00)))", "0");
+        assertEquals(2, actual);
+    }
+
+    /*@Test
+    public void test_depthOfAPeculiarlyRepresentedTree_6() throws Exception {
+        int actual = depthOfAPeculiarlyRepresentedTree.depthOfAPeculiarlyRepresentedTree("(00)","((00)((00)(00)))", "0");
+        assertEquals(2, actual);
+    }*/
 }

@@ -8,10 +8,14 @@ public class CountNumberOfOccurancesOfSubstringInAString {
             return 0;
         }
 
-        if (actualString.startsWith(substr)) {
-            return 1 + countNumberOfOccurancesOfSubstringInAString(substr, actualString.substring(substr.length(), actualString.length()));
-        } else {
-            return countNumberOfOccurancesOfSubstringInAString(substr, actualString.substring(1, actualString.length()));
+        if (StringUtils.contains(actualString, substr)) {
+            if (actualString.startsWith(substr)) {
+                return 1 + countNumberOfOccurancesOfSubstringInAString(substr, actualString.substring(substr.length(), actualString.length()));
+            } else {
+                return countNumberOfOccurancesOfSubstringInAString(substr, actualString.substring(1, actualString.length()));
+            }
         }
+
+        return 0;
     }
 }

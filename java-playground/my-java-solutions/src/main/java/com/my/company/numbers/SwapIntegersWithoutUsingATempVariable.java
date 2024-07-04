@@ -1,141 +1,8 @@
 package com.my.company.numbers;
 
+import org.apache.commons.lang3.tuple.ImmutablePair;
+
 public class SwapIntegersWithoutUsingATempVariable {
-
-  public static void main(String[] args) throws Exception {
-
-    Pair result;
-
-    result =
-        swapUsingAdditionAndSubtraction(
-            new SwapIntegersWithoutUsingATempVariable().new Pair(10, 20));
-    if (result.getA() != 20 || result.getB() != 10) {
-      throw new Exception(
-          "wrong answer - expected (20, 10) but received " + result.getA() + result.getB());
-    }
-
-    result =
-        swapUsingAdditionAndSubtraction(
-            new SwapIntegersWithoutUsingATempVariable().new Pair(-1, -2));
-    if (result.getA() != -2 || result.getB() != -1) {
-      throw new Exception(
-          "wrong answer - expected (-2, -1) but received " + result.getA() + result.getB());
-    }
-
-    result =
-        swapUsingAdditionAndSubtraction(
-            new SwapIntegersWithoutUsingATempVariable().new Pair(Integer.MAX_VALUE, 10));
-    if (result.getA() != 10 || result.getB() != Integer.MAX_VALUE) {
-      throw new Exception(
-          "wrong answer - expected (10, "
-              + Integer.MAX_VALUE
-              + ") but received ("
-              + result.getA()
-              + ","
-              + result.getB()
-              + ")");
-    }
-
-    result =
-        swapUsingAdditionAndSubtraction(
-            new SwapIntegersWithoutUsingATempVariable()
-            .new Pair(Integer.MAX_VALUE, Integer.MAX_VALUE - 3));
-    if (result.getA() != Integer.MAX_VALUE - 3 || result.getB() != Integer.MAX_VALUE) {
-      throw new Exception(
-          "wrong answer - expected ("
-              + (Integer.MAX_VALUE - 3)
-              + ", "
-              + Integer.MAX_VALUE
-              + ") but received ("
-              + result.getA()
-              + ","
-              + result.getB()
-              + ")");
-    }
-
-    result =
-        swapUsingAdditionAndSubtraction(
-            new SwapIntegersWithoutUsingATempVariable()
-            .new Pair(Integer.MIN_VALUE, Integer.MIN_VALUE + 5));
-    if (result.getA() != Integer.MIN_VALUE + 5 || result.getB() != Integer.MIN_VALUE) {
-      throw new Exception(
-          "wrong answer - expected ("
-              + (Integer.MIN_VALUE + 5)
-              + ", "
-              + Integer.MIN_VALUE
-              + ") but received ("
-              + result.getA()
-              + ","
-              + result.getB()
-              + ")");
-    }
-
-    // --------------------------------------------------------
-
-    result =
-        swapUsingBitwiseManipulation(new SwapIntegersWithoutUsingATempVariable().new Pair(10, 20));
-    if (result.getA() != 20 || result.getB() != 10) {
-      throw new Exception(
-          "wrong answer - expected (20, 10) but received " + result.getA() + result.getB());
-    }
-
-    result =
-        swapUsingBitwiseManipulation(new SwapIntegersWithoutUsingATempVariable().new Pair(-1, -2));
-    if (result.getA() != -2 || result.getB() != -1) {
-      throw new Exception(
-          "wrong answer - expected (-2, -1) but received " + result.getA() + result.getB());
-    }
-
-    result =
-        swapUsingBitwiseManipulation(
-            new SwapIntegersWithoutUsingATempVariable().new Pair(Integer.MAX_VALUE, 10));
-    if (result.getA() != 10 || result.getB() != Integer.MAX_VALUE) {
-      throw new Exception(
-          "wrong answer - expected (10, "
-              + Integer.MAX_VALUE
-              + ") but received ("
-              + result.getA()
-              + ","
-              + result.getB()
-              + ")");
-    }
-
-    result =
-        swapUsingBitwiseManipulation(
-            new SwapIntegersWithoutUsingATempVariable()
-            .new Pair(Integer.MAX_VALUE, Integer.MAX_VALUE - 3));
-    if (result.getA() != Integer.MAX_VALUE - 3 || result.getB() != Integer.MAX_VALUE) {
-      throw new Exception(
-          "wrong answer - expected ("
-              + (Integer.MAX_VALUE - 3)
-              + ", "
-              + Integer.MAX_VALUE
-              + ") but received ("
-              + result.getA()
-              + ","
-              + result.getB()
-              + ")");
-    }
-
-    result =
-        swapUsingBitwiseManipulation(
-            new SwapIntegersWithoutUsingATempVariable()
-            .new Pair(Integer.MIN_VALUE, Integer.MIN_VALUE + 5));
-    if (result.getA() != Integer.MIN_VALUE + 5 || result.getB() != Integer.MIN_VALUE) {
-      throw new Exception(
-          "wrong answer - expected ("
-              + (Integer.MIN_VALUE + 5)
-              + ", "
-              + Integer.MIN_VALUE
-              + ") but received ("
-              + result.getA()
-              + ","
-              + result.getB()
-              + ")");
-    }
-
-    System.out.println("done");
-  }
 
   /**
    * This technique uses addition and subtraction.
@@ -158,15 +25,15 @@ public class SwapIntegersWithoutUsingATempVariable {
    * even more diffucult and confusing. Another variant of this solution is using bitwise
    * manipulation. See the other method.
    */
-  private static Pair swapUsingAdditionAndSubtraction(Pair pair) {
-    int a = pair.a;
-    int b = pair.b;
+  public static ImmutablePair swapUsingAdditionAndSubtraction(ImmutablePair pair) {
+    int a = (int) pair.left;
+    int b = (int) pair.right;
 
     a = a + b;
     b = a - b; // actually (a + b) - (b) -> assign this value to b.
     a = a - b; // which is, (a + b) -((a + b) - (b)) = (a + b) - a = b -> assign this value to a.
 
-    return new SwapIntegersWithoutUsingATempVariable().new Pair(a, b);
+    return new ImmutablePair(a, b);
   }
 
   /**
@@ -178,41 +45,14 @@ public class SwapIntegersWithoutUsingATempVariable {
    *
    * <p>"^" - bitwise exclusive OR - bitwise XOR
    */
-  private static Pair swapUsingBitwiseManipulation(Pair pair) {
-    int a = pair.a;
-    int b = pair.b;
+  public static ImmutablePair swapUsingBitwiseManipulation(ImmutablePair pair) {
+    int a = (int) pair.left;
+    int b = (int) pair.right;
 
     a = a ^ b;
     b = a ^ b; // actually (a ^ b) ^ b, which would give us a -> assign this value to b.
     a = a ^ b; // which is, (a ^ b) -((a ^ b) ^ b) = (a ^ b) ^ a = b -> assign this value to a.
 
-    return new SwapIntegersWithoutUsingATempVariable().new Pair(a, b);
-  }
-
-  private class Pair {
-    int a;
-    int b;
-
-    public Pair(int a, int b) {
-      super();
-      this.a = a;
-      this.b = b;
-    }
-
-    public int getA() {
-      return a;
-    }
-
-    public void setA(int a) {
-      this.a = a;
-    }
-
-    public int getB() {
-      return b;
-    }
-
-    public void setB(int b) {
-      this.b = b;
-    }
+    return new ImmutablePair(a, b);
   }
 }
