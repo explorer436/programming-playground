@@ -4,7 +4,7 @@
   - [[#aws-cli][aws-cli]]
   - [[#docker-and-docker-compose][docker and docker-compose]]
   - [[#go][go]]
-  - [[#haskell-follow-the-instructions-from-haskell-stack-website-and-hledger][haskell (follow the instructions from haskell stack website) and hledger]]
+  - [[#haskell][haskell]]
   - [[#node-js-with-npm][node js (with npm)]]
   - [[#rust][rust]]
 
@@ -21,8 +21,13 @@ https://programming-notes.explorer436.com/posts/20230802123449-maven_installatio
 https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 
 ** docker and docker-compose
+
 ** go
-** haskell (follow the instructions from haskell stack website) and hledger
-   1. See programming-playground/haskell-playground/haskell-solutions/src/01SettingUpYourHaskellDevelopmentEnvironment
+
+** haskell
+
+https://programming-notes.explorer436.com/posts/20240610151312-haskell_installation/
+
 ** node js (with npm)
+
 ** rust
