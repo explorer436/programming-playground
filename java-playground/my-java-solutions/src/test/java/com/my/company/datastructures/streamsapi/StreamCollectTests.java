@@ -1,9 +1,7 @@
-package com.my.company.datastructures;
+package com.my.company.datastructures.streamsapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.my.company.datastructures.streamsapi.Person;
-import com.my.company.datastructures.streamsapi.StreamCollect;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -35,6 +33,7 @@ public class StreamCollectTests {
                     "city" : "Dover",
                     "state" : "NH",
                     "zip" : "03820",
+                    "phones" : [ "555-1123", "555-3389" ],
                     "address" : {
                       "addressLine1" : "123 JohnJane Ln",
                       "addressLine2" : null,
@@ -53,6 +52,7 @@ public class StreamCollectTests {
                     "city" : "Dover",
                     "state" : "NH",
                     "zip" : "03820",
+                    "phones" : [ "555-2243", "555-5264" ],
                     "address" : {
                       "addressLine1" : "123 RobGayle Ln",
                       "addressLine2" : null,
@@ -71,6 +71,7 @@ public class StreamCollectTests {
                     "city" : "Dover",
                     "state" : "NH",
                     "zip" : "03820",
+                    "phones" : [ "555-6654", "555-3242" ],
                     "address" : {
                       "addressLine1" : "123 ClarkMary Ln",
                       "addressLine2" : null,
@@ -89,6 +90,7 @@ public class StreamCollectTests {
                     "city" : "Dover",
                     "state" : "NH",
                     "zip" : "03820",
+                    "phones" : null,
                     "address" : {
                       "addressLine1" : "123 TrevorSophie Ln",
                       "addressLine2" : null,
@@ -107,6 +109,7 @@ public class StreamCollectTests {
                     "city" : "Dover",
                     "state" : "NH",
                     "zip" : "03820",
+                    "phones" : null,
                     "address" : {
                       "addressLine1" : "123 JohnJane Ln",
                       "addressLine2" : null,
@@ -125,6 +128,7 @@ public class StreamCollectTests {
                     "city" : "Dover",
                     "state" : "NH",
                     "zip" : "03820",
+                    "phones" : null,
                     "address" : {
                       "addressLine1" : "123 RobGayle Ln",
                       "addressLine2" : null,
@@ -143,6 +147,7 @@ public class StreamCollectTests {
                     "city" : "Dover",
                     "state" : "NH",
                     "zip" : "03820",
+                    "phones" : null,
                     "address" : {
                       "addressLine1" : "123 ClarkMary Ln",
                       "addressLine2" : null,
@@ -161,6 +166,7 @@ public class StreamCollectTests {
                     "city" : "Dover",
                     "state" : "NH",
                     "zip" : "03820",
+                    "phones" : null,
                     "address" : {
                       "addressLine1" : "123 TrevorSophie Ln",
                       "addressLine2" : null,
@@ -196,6 +202,7 @@ public class StreamCollectTests {
                     "city" : "Dover",
                     "state" : "NH",
                     "zip" : "03820",
+                    "phones" : null,
                     "address" : {
                       "addressLine1" : "123 JohnJane Ln",
                       "addressLine2" : null,
@@ -213,6 +220,7 @@ public class StreamCollectTests {
                     "city" : "Dover",
                     "state" : "NH",
                     "zip" : "03820",
+                    "phones" : null,
                     "address" : {
                       "addressLine1" : "123 RobGayle Ln",
                       "addressLine2" : null,
@@ -230,6 +238,7 @@ public class StreamCollectTests {
                     "city" : "Dover",
                     "state" : "NH",
                     "zip" : "03820",
+                    "phones" : null,
                     "address" : {
                       "addressLine1" : "123 ClarkMary Ln",
                       "addressLine2" : null,
@@ -247,6 +256,7 @@ public class StreamCollectTests {
                     "city" : "Dover",
                     "state" : "NH",
                     "zip" : "03820",
+                    "phones" : null,
                     "address" : {
                       "addressLine1" : "123 TrevorSophie Ln",
                       "addressLine2" : null,
@@ -264,6 +274,7 @@ public class StreamCollectTests {
                     "city" : "Dover",
                     "state" : "NH",
                     "zip" : "03820",
+                    "phones" : null,
                     "address" : {
                       "addressLine1" : "123 TrevorSophie Ln",
                       "addressLine2" : null,
@@ -282,6 +293,7 @@ public class StreamCollectTests {
                     "city" : "Dover",
                     "state" : "NH",
                     "zip" : "03820",
+                    "phones" : [ "555-1123", "555-3389" ],
                     "address" : {
                       "addressLine1" : "123 JohnJane Ln",
                       "addressLine2" : null,
@@ -299,6 +311,7 @@ public class StreamCollectTests {
                     "city" : "Dover",
                     "state" : "NH",
                     "zip" : "03820",
+                    "phones" : [ "555-2243", "555-5264" ],
                     "address" : {
                       "addressLine1" : "123 RobGayle Ln",
                       "addressLine2" : null,
@@ -316,6 +329,7 @@ public class StreamCollectTests {
                     "city" : "Dover",
                     "state" : "NH",
                     "zip" : "03820",
+                    "phones" : [ "555-6654", "555-3242" ],
                     "address" : {
                       "addressLine1" : "123 ClarkMary Ln",
                       "addressLine2" : null,
@@ -333,6 +347,7 @@ public class StreamCollectTests {
                     "city" : "Dover",
                     "state" : "NH",
                     "zip" : "03820",
+                    "phones" : null,
                     "address" : {
                       "addressLine1" : "123 TrevorSophie Ln",
                       "addressLine2" : null,
@@ -352,165 +367,174 @@ public class StreamCollectTests {
         Map<Person.Address, List<Person>> actual = streamCollect.groupPeopleByAddress_Collect_ListToMap_GroupByMultipleFields(people);
 
         assertEquals("""
-                {
-                  "Address[addressLine1=123 ClarkMary Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
-                    "id" : 3,
-                    "name" : "Clark",
-                    "age" : 35,
-                    "gender" : "male",
-                    "addressLine1" : "123 ClarkMary Ln",
-                    "addressLine2" : null,
-                    "city" : "Dover",
-                    "state" : "NH",
-                    "zip" : "03820",
-                    "address" : {
-                      "addressLine1" : "123 ClarkMary Ln",
-                      "addressLine2" : null,
-                      "city" : "Dover",
-                      "state" : "NH",
-                      "zip" : "03820"
-                    }
-                  }, {
-                    "id" : 7,
-                    "name" : "Mary",
-                    "age" : 35,
-                    "gender" : "female",
-                    "addressLine1" : "123 ClarkMary Ln",
-                    "addressLine2" : null,
-                    "city" : "Dover",
-                    "state" : "NH",
-                    "zip" : "03820",
-                    "address" : {
-                      "addressLine1" : "123 ClarkMary Ln",
-                      "addressLine2" : null,
-                      "city" : "Dover",
-                      "state" : "NH",
-                      "zip" : "03820"
-                    }
-                  } ],
-                  "Address[addressLine1=123 RobGayle Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
-                    "id" : 2,
-                    "name" : "Rob",
-                    "age" : 25,
-                    "gender" : "male",
-                    "addressLine1" : "123 RobGayle Ln",
-                    "addressLine2" : null,
-                    "city" : "Dover",
-                    "state" : "NH",
-                    "zip" : "03820",
-                    "address" : {
-                      "addressLine1" : "123 RobGayle Ln",
-                      "addressLine2" : null,
-                      "city" : "Dover",
-                      "state" : "NH",
-                      "zip" : "03820"
-                    }
-                  }, {
-                    "id" : 6,
-                    "name" : "Gayle",
-                    "age" : 25,
-                    "gender" : "female",
-                    "addressLine1" : "123 RobGayle Ln",
-                    "addressLine2" : null,
-                    "city" : "Dover",
-                    "state" : "NH",
-                    "zip" : "03820",
-                    "address" : {
-                      "addressLine1" : "123 RobGayle Ln",
-                      "addressLine2" : null,
-                      "city" : "Dover",
-                      "state" : "NH",
-                      "zip" : "03820"
-                    }
-                  } ],
-                  "Address[addressLine1=123 JohnJane Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
-                    "id" : 1,
-                    "name" : "John",
-                    "age" : 15,
-                    "gender" : "male",
-                    "addressLine1" : "123 JohnJane Ln",
-                    "addressLine2" : null,
-                    "city" : "Dover",
-                    "state" : "NH",
-                    "zip" : "03820",
-                    "address" : {
-                      "addressLine1" : "123 JohnJane Ln",
-                      "addressLine2" : null,
-                      "city" : "Dover",
-                      "state" : "NH",
-                      "zip" : "03820"
-                    }
-                  }, {
-                    "id" : 5,
-                    "name" : "Jane",
-                    "age" : 15,
-                    "gender" : "female",
-                    "addressLine1" : "123 JohnJane Ln",
-                    "addressLine2" : null,
-                    "city" : "Dover",
-                    "state" : "NH",
-                    "zip" : "03820",
-                    "address" : {
-                      "addressLine1" : "123 JohnJane Ln",
-                      "addressLine2" : null,
-                      "city" : "Dover",
-                      "state" : "NH",
-                      "zip" : "03820"
-                    }
-                  } ],
-                  "Address[addressLine1=123 TrevorSophie Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
-                    "id" : 4,
-                    "name" : "Trevor",
-                    "age" : 45,
-                    "gender" : "male",
-                    "addressLine1" : "123 TrevorSophie Ln",
-                    "addressLine2" : null,
-                    "city" : "Dover",
-                    "state" : "NH",
-                    "zip" : "03820",
-                    "address" : {
-                      "addressLine1" : "123 TrevorSophie Ln",
-                      "addressLine2" : null,
-                      "city" : "Dover",
-                      "state" : "NH",
-                      "zip" : "03820"
-                    }
-                  }, {
-                    "id" : 8,
-                    "name" : "Sophie",
-                    "age" : 45,
-                    "gender" : "female",
-                    "addressLine1" : "123 TrevorSophie Ln",
-                    "addressLine2" : null,
-                    "city" : "Dover",
-                    "state" : "NH",
-                    "zip" : "03820",
-                    "address" : {
-                      "addressLine1" : "123 TrevorSophie Ln",
-                      "addressLine2" : null,
-                      "city" : "Dover",
-                      "state" : "NH",
-                      "zip" : "03820"
-                    }
-                  }, {
-                    "id" : 8,
-                    "name" : "Sophie",
-                    "age" : 45,
-                    "gender" : "female",
-                    "addressLine1" : "123 TrevorSophie Ln",
-                    "addressLine2" : null,
-                    "city" : "Dover",
-                    "state" : "NH",
-                    "zip" : "03820",
-                    "address" : {
-                      "addressLine1" : "123 TrevorSophie Ln",
-                      "addressLine2" : null,
-                      "city" : "Dover",
-                      "state" : "NH",
-                      "zip" : "03820"
-                    }
-                  } ]
-                }""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
+               {
+                 "Address[addressLine1=123 ClarkMary Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
+                   "id" : 3,
+                   "name" : "Clark",
+                   "age" : 35,
+                   "gender" : "male",
+                   "addressLine1" : "123 ClarkMary Ln",
+                   "addressLine2" : null,
+                   "city" : "Dover",
+                   "state" : "NH",
+                   "zip" : "03820",
+                   "phones" : [ "555-6654", "555-3242" ],
+                   "address" : {
+                     "addressLine1" : "123 ClarkMary Ln",
+                     "addressLine2" : null,
+                     "city" : "Dover",
+                     "state" : "NH",
+                     "zip" : "03820"
+                   }
+                 }, {
+                   "id" : 7,
+                   "name" : "Mary",
+                   "age" : 35,
+                   "gender" : "female",
+                   "addressLine1" : "123 ClarkMary Ln",
+                   "addressLine2" : null,
+                   "city" : "Dover",
+                   "state" : "NH",
+                   "zip" : "03820",
+                   "phones" : null,
+                   "address" : {
+                     "addressLine1" : "123 ClarkMary Ln",
+                     "addressLine2" : null,
+                     "city" : "Dover",
+                     "state" : "NH",
+                     "zip" : "03820"
+                   }
+                 } ],
+                 "Address[addressLine1=123 RobGayle Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
+                   "id" : 2,
+                   "name" : "Rob",
+                   "age" : 25,
+                   "gender" : "male",
+                   "addressLine1" : "123 RobGayle Ln",
+                   "addressLine2" : null,
+                   "city" : "Dover",
+                   "state" : "NH",
+                   "zip" : "03820",
+                   "phones" : [ "555-2243", "555-5264" ],
+                   "address" : {
+                     "addressLine1" : "123 RobGayle Ln",
+                     "addressLine2" : null,
+                     "city" : "Dover",
+                     "state" : "NH",
+                     "zip" : "03820"
+                   }
+                 }, {
+                   "id" : 6,
+                   "name" : "Gayle",
+                   "age" : 25,
+                   "gender" : "female",
+                   "addressLine1" : "123 RobGayle Ln",
+                   "addressLine2" : null,
+                   "city" : "Dover",
+                   "state" : "NH",
+                   "zip" : "03820",
+                   "phones" : null,
+                   "address" : {
+                     "addressLine1" : "123 RobGayle Ln",
+                     "addressLine2" : null,
+                     "city" : "Dover",
+                     "state" : "NH",
+                     "zip" : "03820"
+                   }
+                 } ],
+                 "Address[addressLine1=123 JohnJane Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
+                   "id" : 1,
+                   "name" : "John",
+                   "age" : 15,
+                   "gender" : "male",
+                   "addressLine1" : "123 JohnJane Ln",
+                   "addressLine2" : null,
+                   "city" : "Dover",
+                   "state" : "NH",
+                   "zip" : "03820",
+                   "phones" : [ "555-1123", "555-3389" ],
+                   "address" : {
+                     "addressLine1" : "123 JohnJane Ln",
+                     "addressLine2" : null,
+                     "city" : "Dover",
+                     "state" : "NH",
+                     "zip" : "03820"
+                   }
+                 }, {
+                   "id" : 5,
+                   "name" : "Jane",
+                   "age" : 15,
+                   "gender" : "female",
+                   "addressLine1" : "123 JohnJane Ln",
+                   "addressLine2" : null,
+                   "city" : "Dover",
+                   "state" : "NH",
+                   "zip" : "03820",
+                   "phones" : null,
+                   "address" : {
+                     "addressLine1" : "123 JohnJane Ln",
+                     "addressLine2" : null,
+                     "city" : "Dover",
+                     "state" : "NH",
+                     "zip" : "03820"
+                   }
+                 } ],
+                 "Address[addressLine1=123 TrevorSophie Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
+                   "id" : 4,
+                   "name" : "Trevor",
+                   "age" : 45,
+                   "gender" : "male",
+                   "addressLine1" : "123 TrevorSophie Ln",
+                   "addressLine2" : null,
+                   "city" : "Dover",
+                   "state" : "NH",
+                   "zip" : "03820",
+                   "phones" : null,
+                   "address" : {
+                     "addressLine1" : "123 TrevorSophie Ln",
+                     "addressLine2" : null,
+                     "city" : "Dover",
+                     "state" : "NH",
+                     "zip" : "03820"
+                   }
+                 }, {
+                   "id" : 8,
+                   "name" : "Sophie",
+                   "age" : 45,
+                   "gender" : "female",
+                   "addressLine1" : "123 TrevorSophie Ln",
+                   "addressLine2" : null,
+                   "city" : "Dover",
+                   "state" : "NH",
+                   "zip" : "03820",
+                   "phones" : null,
+                   "address" : {
+                     "addressLine1" : "123 TrevorSophie Ln",
+                     "addressLine2" : null,
+                     "city" : "Dover",
+                     "state" : "NH",
+                     "zip" : "03820"
+                   }
+                 }, {
+                   "id" : 8,
+                   "name" : "Sophie",
+                   "age" : 45,
+                   "gender" : "female",
+                   "addressLine1" : "123 TrevorSophie Ln",
+                   "addressLine2" : null,
+                   "city" : "Dover",
+                   "state" : "NH",
+                   "zip" : "03820",
+                   "phones" : null,
+                   "address" : {
+                     "addressLine1" : "123 TrevorSophie Ln",
+                     "addressLine2" : null,
+                     "city" : "Dover",
+                     "state" : "NH",
+                     "zip" : "03820"
+                   }
+                 } ]
+               }""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
     }
 
     @Test

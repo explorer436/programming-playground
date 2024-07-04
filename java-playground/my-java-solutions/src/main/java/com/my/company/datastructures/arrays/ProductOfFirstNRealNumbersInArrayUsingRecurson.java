@@ -1,4 +1,4 @@
-package com.my.company.recursion;
+package com.my.company.datastructures.arrays;
 
 import java.util.Arrays;
 

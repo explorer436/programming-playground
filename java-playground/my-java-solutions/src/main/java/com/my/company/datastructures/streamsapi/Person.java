@@ -1,10 +1,8 @@
 package com.my.company.datastructures.streamsapi;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import java.beans.Transient;
 import java.util.List;
 
 @Data

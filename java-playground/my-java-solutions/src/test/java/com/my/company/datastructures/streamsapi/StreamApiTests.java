@@ -1,6 +1,5 @@
-package com.my.company.datastructures;
+package com.my.company.datastructures.streamsapi;
 
-import com.my.company.datastructures.streamsapi.StreamAPI;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

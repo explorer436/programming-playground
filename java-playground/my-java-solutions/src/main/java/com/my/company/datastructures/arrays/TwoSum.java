@@ -1,63 +1,19 @@
 package com.my.company.datastructures.arrays;
 
-import java.util.Arrays;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+
 import java.util.HashMap;
 import java.util.Map;
 public class TwoSum {
 
-  public static void main(String[] args) {
-    // num : [3, 2, 4], target : 6, Expected : [0, 1]
-    int[] nums = new int[] {2, 7, 11, 15};
-    System.out.println(
-        "When input is "
-            + Arrays.toString(nums)
-            + " and target is 9, output is "
-            + Arrays.toString(new TwoSum().twoSum(nums, 9)));
-
-    System.out.println();
-
-    // num : [3, 2, 4], target : 6, Expected : [1,2]
-    nums = new int[] {3, 2, 4};
-    System.out.println(
-        "When input is "
-            + Arrays.toString(nums)
-            + " and target is 9, output is "
-            + Arrays.toString(new TwoSum().twoSum(nums, 9)));
-    System.out.println(
-        "When input is "
-            + Arrays.toString(nums)
-            + " and target is 6, output is "
-            + Arrays.toString(new TwoSum().twoSum(nums, 6)));
-
-    System.out.println();
-
-    // num : [0, 4, 3, 0], target : 0, Expected : [0,3]
-    nums = new int[] {0, 4, 3, 0};
-    System.out.println(
-        "When input is "
-            + Arrays.toString(nums)
-            + " and target is 0, output is "
-            + Arrays.toString(new TwoSum().twoSum(nums, 0)));
-
-    System.out.println();
-
-    // num : [-1,-2,-3,-4,-5], target : -8, Expected : [2,4]
-    nums = new int[] {-1, -2, -3, -4, -5};
-    System.out.println(
-        "When input is "
-            + Arrays.toString(nums)
-            + " and target is -8, output is "
-            + Arrays.toString(new TwoSum().twoSum(nums, -8)));
-  }
-
-  public int[] twoSum(int[] nums, int target) {
+  public ImmutablePair twoSum(int[] nums, int target) {
     Map<Integer, Integer> map = new HashMap<>();
 
     for (int i = 0; i < nums.length; i++) {
       int complement = target - nums[i];
 
       if (map.containsKey(complement) && map.get(complement) != i) {
-        return new int[] {map.get(complement), i};
+        return new ImmutablePair(map.get(complement), i);
       } else {
         map.put(nums[i], i);
       }

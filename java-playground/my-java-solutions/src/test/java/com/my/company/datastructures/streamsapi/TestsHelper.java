@@ -1,6 +1,4 @@
-package com.my.company.datastructures;
-
-import com.my.company.datastructures.streamsapi.Person;
+package com.my.company.datastructures.streamsapi;
 
 import java.util.ArrayList;
 import java.util.Arrays;

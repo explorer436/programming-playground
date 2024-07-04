@@ -1,0 +1,248 @@
+* Differences Between Aggregate Operations and Iterators
+
+Aggregate operations, like forEach, appear to be like iterators. However, they have several fundamental differences:
+
+1. They use internal iteration: Aggregate operations do not contain a method like next to instruct them to process the next element of the collection. With internal delegation, your application determines what collection it iterates, but the JDK determines how to iterate the collection. With external iteration, your application determines both what collection it iterates and how it iterates it. However, external iteration can only iterate over the elements of a collection sequentially. Internal iteration does not have this limitation. It can more easily take advantage of parallel computing, which involves dividing a problem into subproblems, solving those problems simultaneously, and then combining the results of the solutions to the subproblems. See the section Parallelism (https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html) for more information.
+
+2. They process elements from a stream: Aggregate operations process elements from a stream, not directly from a collection. Consequently, they are also called stream operations.
+
+3. They support behavior as parameters: You can specify lambda expressions as parameters for most aggregate operations. This enables you to customize the behavior of a particular aggregate operation.
+
+#+begin_src java :results output
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class Main {
+    public static void main(String[] args) {
+
+	int start = 1;
+	int end = 100;
+
+	List<Integer> range = IntStream.rangeClosed(start, end)
+		.boxed().collect(Collectors.toList());
+
+	printTheNameOfEachPerson_AggregateOperations(range);
+    }
+
+    public static void printTheNameOfEachPerson_AggregateOperations(List<Integer> numbersList) {
+	System.out.println("First list:");
+	for (int number : numbersList) {
+	    System.out.println(number);
+	}
+
+	System.out.println("");
+	System.out.println("Second list:");
+
+	// using the aggregate operation forEach
+	numbersList.stream().forEach(n -> System.out.println(n));
+    }
+}
+#+end_src
+
+#+RESULTS:
+#+begin_example
+First list:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+
+Second list:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+#+end_example

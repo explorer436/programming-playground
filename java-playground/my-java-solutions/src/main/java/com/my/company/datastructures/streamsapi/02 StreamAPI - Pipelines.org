@@ -1,0 +1,93 @@
+* Pipelines
+
+A pipeline is a sequence of aggregate operations. Components in a pipeline : 1. source, which is a collection (in this example, it is people) 2. intermediate operations (in this example, filter) 3. a terminal operation (in this example, foreach)
+
+The filter operation returns a new stream that contains elements that match its predicate (this operation's parameter).
+
+The terminal operation is supposed to produce a non-stream result, such as a primitive value (like a double value), a collection, or in the case of forEach, no value at all.
+
+In this example, the parameter of the forEach operation is the lambda expression e -> System.out.println(e.getName()), which invokes the method getName on the object e. (The Java runtime and compiler infer that the type of the object e is Person.)
+
+#+begin_src java :results output
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class Main {
+    public static void main(String[] args) {
+
+	int start = 1;
+	int end = 20;
+
+	List<Integer> range = IntStream.rangeClosed(start, end)
+		.boxed().collect(Collectors.toList());
+
+	printNumbersThatAreEven_Pipelines(range);
+    }
+
+    public static void printNumbersThatAreEven_Pipelines(List<Integer> numbersList) {
+	numbersList.stream()
+		.filter(e -> e % 2 == 0)
+		.forEach(e -> System.out.println(e));
+    }
+}
+#+end_src
+
+#+RESULTS:
+#+begin_example
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+#+end_example
+
+
+The following example calculates the average age of all male members contained in the collection people with a pipeline that consists of the aggregate operations filter, mapToInt, and average.
+
+#+begin_src java :results output
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class Main {
+    public static void main(String[] args) {
+
+	int start = 1;
+	int end = 100;
+
+	List<Integer> range = IntStream.rangeClosed(start, end)
+		.boxed().collect(Collectors.toList());
+
+	printNumbersThatAreEven_Pipelines(range);
+    }
+
+    public static void printNumbersThatAreEven_Pipelines(List<Integer> numbersList) {
+	double average = numbersList.stream()
+			.filter(e -> e % 2 == 0)
+			.mapToDouble(e -> (double) e)
+			.average()
+			.getAsDouble();
+	System.out.println("average is : " + average);
+    }
+}
+#+end_src
+
+#+RESULTS:
+: average is : 51.0
+
+
+
+The mapToDouble operation returns a new stream of type DoubleStream (which is a stream that contains only double values). The operation applies the function specified in its parameter to each element in a particular stream.)
+The mapToInt operation returns a stream that contains the ages of all male members in the collection people.
+
+The average operation calculates the average value of the elements contained in a stream of type DoubleStream. It returns an object of type OptionalDouble. If the stream contains no elements, then the average operation returns an empty instance of OptionalDouble, and invoking the method getAsDouble throws a NoSuchElementException. The JDK contains many terminal operations such as average that return one value by combining the contents of a stream. These operations are called reduction operations; see the section Reduction for more information.
+
+The JDK contains many terminal operations (such as average, sum, min, max, and count) that return one value by combining the contents of a stream. These operations are called reduction operations. Sum, min, max, and average are all special cases of reduction. It is not necessary to remember these special cases and implement our own implemetations using reduce function. However, these are handy for simple operations.
+
+The JDK also contains reduction operations that return a collection instead of a single value. Many reduction operations perform a specific task, such as finding the average of values or grouping elements into categories. However, the JDK provides you with the general-purpose reduction operations reduce and collect - which we can use to write custom code.

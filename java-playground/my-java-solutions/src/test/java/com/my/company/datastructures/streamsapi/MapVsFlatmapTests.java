@@ -1,9 +1,7 @@
-package com.my.company.datastructures;
+package com.my.company.datastructures.streamsapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.my.company.datastructures.streamsapi.MapVsFlatmap;
-import com.my.company.datastructures.streamsapi.Person;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

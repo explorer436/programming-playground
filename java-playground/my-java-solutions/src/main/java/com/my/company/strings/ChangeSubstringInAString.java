@@ -11,11 +11,10 @@ public class ChangeSubstringInAString {
 
         if (StringUtils.contains(actualString, substr)) {
             if (actualString.startsWith(substr)) {
-                return changeSubstringInAString(substr,  changeTo + actualString.substring(substr.length(), actualString.length()), changeTo);
+                return changeSubstringInAString(substr, changeTo + actualString.substring(substr.length(), actualString.length()), changeTo);
             }
 
-
-            return actualString.substring(0,1) + changeSubstringInAString(substr,  actualString.substring(1, actualString.length()), changeTo);
+            return actualString.substring(0, 1) + changeSubstringInAString(substr, actualString.substring(1, actualString.length()), changeTo);
         }
 
         return actualString;

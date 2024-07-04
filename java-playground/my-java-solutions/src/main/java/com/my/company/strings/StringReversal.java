@@ -1,199 +1,130 @@
 package com.my.company.strings;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ListIterator;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.*;
+
+import java.nio.charset.StandardCharsets;
 
 /** Reverse the characters in a String */
 public class StringReversal {
 
-  public static void main(String[] args) {
+  // Note : Apache Commons has a helper method for this as well. StringUtils.reverse()
 
-    // Note : Apache Commons has a helper method for this as well. StringUtils.reverse()
-
-    System.out.println("reverse of cat : " + StringReversal.reverseString("cat"));
-    System.out.println("reverse of damage : " + StringReversal.reverseString("damage"));
-    System.out.println("reverse of empty string : " + StringReversal.reverseString(""));
-
-    System.out.println();
-
-    System.out.println("writeBackward_recursive - input is Testing");
-    writeBackward_recursive("Testing");
-    System.out.println("writeBackward_recursive - input is \"\"");
-    writeBackward_recursive("");
-    System.out.println("writeBackward_recursive - input is null");
-    writeBackward_recursive(null);
-
-    System.out.println();
-
-    System.out.println("reverseStringUsingWhileLoop - input is Testing");
-    reverseStringUsingWhileLoop("Testing");
-    System.out.println("reverseStringUsingWhileLoop - input is \"\"");
-    reverseStringUsingWhileLoop("");
-    System.out.println("reverseStringUsingWhileLoop - input is null");
-    reverseStringUsingWhileLoop(null);
-
-    System.out.println();
-
-    System.out.println("reverseStringUsingByteArray - input is Testing");
-    reverseStringUsingByteArray("Testing");
-    System.out.println("reverseStringUsingByteArray - input is \"\"");
-    reverseStringUsingByteArray("");
-    System.out.println("reverseStringUsingByteArray - input is null");
-    reverseStringUsingByteArray(null);
-
-    System.out.println();
-
-    System.out.println("reverseStringUsingStringBuilder - input is Testing");
-    reverseStringUsingStringBuilder("Testing");
-    System.out.println("reverseStringUsingStringBuilder - input is \"\"");
-    reverseStringUsingStringBuilder("");
-    System.out.println("reverseStringUsingStringBuilder - input is null");
-    reverseStringUsingStringBuilder(null);
-
-    System.out.println();
-
-    System.out.println("reverseStringUsingCharArray1 - input is Testing");
-    reverseStringUsingCharArray1("Testing");
-    System.out.println("reverseStringUsingCharArray1 - input is \"\"");
-    reverseStringUsingCharArray1("");
-    System.out.println("reverseStringUsingCharArray1 - input is null");
-    reverseStringUsingCharArray1(null);
-
-    System.out.println();
-
-    System.out.println("reverseStringUsingCharArray2 - input is Testing");
-    reverseStringUsingCharArray2("Testing");
-    System.out.println("reverseStringUsingCharArray2 - input is \"\"");
-    reverseStringUsingCharArray2("");
-    System.out.println("reverseStringUsingCharArray2 - input is null");
-    reverseStringUsingCharArray2(null);
-
-    System.out.println();
-
-    System.out.println("reverseStringUsingCollections - input is Testing");
-    reverseStringUsingCollections("Testing");
-    System.out.println("reverseStringUsingCollections - input is \"\"");
-    reverseStringUsingCollections("");
-    System.out.println("reverseStringUsingCollections - input is null");
-    reverseStringUsingCollections(null);
-
-    System.out.println();
-
-    System.out.println("reverseStringUsingForLoop - input is Testing");
-    reverseStringUsingForLoop("Testing");
-    System.out.println("reverseStringUsingForLoop - input is \"\"");
-    reverseStringUsingForLoop("");
-    System.out.println("reverseStringUsingForLoop - input is null");
-    reverseStringUsingForLoop(null);
-  }
-
-  public static void writeBackward_recursive(String s) {
-    if (null != s) {
-      int length = s.length();
-      if (length > 0) {
-        // Write last character
-        System.out.println(s.substring(length - 1, length));
-        writeBackward_recursive(s.substring(0, length - 1)); // Write rest
-      } // end if
+  // recursion
+  public static String reverseStringUsingRecursion(String str) {
+    if (StringUtils.isNotEmpty(str)) {
+      return str.substring(str.length() - 1, str.length()) + reverseStringUsingRecursion(str.substring(0, str.length() - 1));
     }
+    return str;
   }
 
-  public static String reverseString(String str) {
-    String result = null;
+  public String reverseStringUsingWhileLoop(String input) {
 
-    if (null != str && str.length() > 1) {
-      result =
-          str.substring(str.length() - 1, str.length())
-              + reverseString(str.substring(0, str.length() - 1));
-    } else if (str.length() == 1) {
-      return str;
-    }
-
-    return result;
-  }
-
-  public static void reverseStringUsingWhileLoop(String input) {
-    if (input != null) {
+    if (StringUtils.isNotEmpty(input)) {
+      StringBuffer sb = new StringBuffer();
       int length = input.length();
       while (length > 0) {
-        System.out.println(input.substring(length - 1, length));
+        sb.append(input.substring(length - 1, length));
         length = length - 1;
       }
+      return sb.toString();
     }
+    return input;
   }
 
   /** Using a for loop */
-  public static void reverseStringUsingForLoop(String input) {
-    String output = null;
-    if (input != null) {
-      output = "";
+  public String reverseStringUsingForLoop(String input) {
+
+    if (StringUtils.isNotEmpty(input)) {
+      String output = "";
+
       for (int i = input.length() - 1; i >= 0; i--) {
         output = output + input.charAt(i);
       }
-      System.out.println(output);
+      return output;
     }
+
+    return input;
   }
 
-  /** Using String.getBytes() */
-  public static void reverseStringUsingByteArray(String input) {
-    if (input != null) {
+  /**
+   * Using String.getBytes()
+   */
+  public String reverseStringUsingByteArray(String input) {
+    if (StringUtils.isNotEmpty(input)) {
+
       byte[] strAsByteArray = input.getBytes();
 
       byte[] result = new byte[strAsByteArray.length];
 
       // Store result in reverse order into result byte[]
-      for (int i = 0; i < strAsByteArray.length; i++)
+      for (int i = 0; i < strAsByteArray.length; i++) {
         result[i] = strAsByteArray[strAsByteArray.length - i - 1];
+      }
 
-      System.out.println(new String(result));
+      return new String(result, StandardCharsets.UTF_8);
     }
+    return input;
   }
 
-  /** Using StringBuilder.reverse() */
-  public static void reverseStringUsingStringBuilder(String input) {
-    if (input != null) {
+  /**
+   * Using StringBuilder.reverse()
+   */
+  public String reverseStringUsingStringBuilder(String input) {
+    if (StringUtils.isNotEmpty(input)) {
       StringBuilder output = new StringBuilder(input).reverse();
 
-      System.out.println(output.toString());
+      return output.toString();
     }
+    return input;
   }
 
   /** Using String.toCharArray() */
-  public static void reverseStringUsingCharArray1(String input) {
-    if (input != null) {
+  public String reverseStringUsingCharArray1(String input) {
+    if (StringUtils.isNotEmpty(input)) {
       char[] try1 = input.toCharArray();
 
+      StringBuffer sb = new StringBuffer();
+
       for (int i = try1.length - 1; i >= 0; i--) {
-        System.out.print(try1[i]);
+        sb.append(try1[i]);
       }
+
+      return sb.toString();
     }
+      return input;
   }
 
-  /** Using String.toCharArray() */
-  public static void reverseStringUsingCharArray2(String input) {
-    if (input != null) {
-      char[] temparray = input.toCharArray();
+  /**
+   * Using String.toCharArray()
+   */
+  public String reverseStringUsingCharArray2(String input) {
+    if (StringUtils.isNotEmpty(input)) {
+      char[] charArray = input.toCharArray();
       int left, right = 0;
-      right = temparray.length - 1;
+      right = charArray.length - 1;
 
       for (left = 0; left < right; left++, right--) {
         // Swap values of left and right
-        char temp = temparray[left];
-        temparray[left] = temparray[right];
-        temparray[right] = temp;
+        char temp = charArray[left];
+        charArray[left] = charArray[right];
+        charArray[right] = temp;
       }
 
-      for (char c : temparray) {
-        System.out.print(c);
+      StringBuffer sb = new StringBuffer();
+      for (char c : charArray) {
+        sb.append(c);
       }
+      return sb.toString();
     }
+    return input;
   }
 
   /** Using Collections.reverse() */
-  public static void reverseStringUsingCollections(String input) {
-    if (input != null) {
+  public String reverseStringUsingCollections(String input) {
+    if (StringUtils.isNotEmpty(input)) {
+
       char[] hello = input.toCharArray();
       List<Character> trial1 = new ArrayList<>();
 
@@ -202,10 +133,14 @@ public class StringReversal {
       }
 
       Collections.reverse(trial1);
+
+      StringBuffer sb = new StringBuffer();
       ListIterator li = trial1.listIterator();
       while (li.hasNext()) {
-        System.out.print(li.next());
+        sb.append(li.next());
       }
+      return sb.toString();
     }
+    return input;
   }
 }
