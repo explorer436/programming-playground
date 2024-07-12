@@ -1,0 +1,72 @@
+* Summary
+
+1. Implement the first part of the Leader Election Distributed Algorithm
+2. Package the application as a standalone jar file that can be easily deployed on any computer
+3. Test the distributed algorithm locally with a group of application instances and see how they are electing a leader
+
+successfully elected a leader to coordinate the work see you all soon in
+
+* How to package the application?
+
+#+begin_src 
+mvn clean package  
+#+end_src
+
+* Testing
+
+After packaging the application, run multiple instances of the application from multiple terminals.
+
+Output from the first instance
+#+begin_src 
+Event received - Successfully connected to Zookeeper
+16:55:29.490 [main-SendThread(localhost:2181)] DEBUG org.apache.zookeeper.ClientCnxn - Reading reply session id: 0x10066e94a9a0003, packet:: clientPath:null serverPath:null finished:false header:: 1,1  replyHeader:: 1,30,0  request:: '/election/c_,,v{s{31,s{'world,'anyone}}},3  response:: '/election/c_0000000001 
+znode name /election/c_0000000001
+16:55:29.495 [main-SendThread(localhost:2181)] DEBUG org.apache.zookeeper.ClientCnxn - Reading reply session id: 0x10066e94a9a0003, packet:: clientPath:null serverPath:null finished:false header:: 2,8  replyHeader:: 2,30,0  request:: '/election,F  response:: v{'c_0000000001} 
+I am the leader
+#+end_src
+
+Output from the second instance
+#+begin_src 
+Event received - Successfully connected to Zookeeper
+16:55:39.232 [main-SendThread(localhost:2181)] DEBUG org.apache.zookeeper.ClientCnxn - Reading reply session id: 0x10066e94a9a0004, packet:: clientPath:null serverPath:null finished:false header:: 1,1  replyHeader:: 1,32,0  request:: '/election/c_,,v{s{31,s{'world,'anyone}}},3  response:: '/election/c_0000000002 
+znode name /election/c_0000000002
+16:55:39.238 [main-SendThread(localhost:2181)] DEBUG org.apache.zookeeper.ClientCnxn - Reading reply session id: 0x10066e94a9a0004, packet:: clientPath:null serverPath:null finished:false header:: 2,8  replyHeader:: 2,32,0  request:: '/election,F  response:: v{'c_0000000002,'c_0000000001} 
+I am not the leader, c_0000000001 is the leader
+#+end_src
+Output from the third instance
+#+begin_src 
+Event received - Successfully connected to Zookeeper
+16:55:42.722 [main-SendThread(localhost:2181)] DEBUG org.apache.zookeeper.ClientCnxn - Reading reply session id: 0x10066e94a9a0005, packet:: clientPath:null serverPath:null finished:false header:: 1,1  replyHeader:: 1,34,0  request:: '/election/c_,,v{s{31,s{'world,'anyone}}},3  response:: '/election/c_0000000003 
+znode name /election/c_0000000003
+16:55:42.728 [main-SendThread(localhost:2181)] DEBUG org.apache.zookeeper.ClientCnxn - Reading reply session id: 0x10066e94a9a0005, packet:: clientPath:null serverPath:null finished:false header:: 2,8  replyHeader:: 2,34,0  request:: '/election,F  response:: v{'c_0000000002,'c_0000000003,'c_0000000001} 
+I am not the leader, c_0000000001 is the leader
+#+end_src
+Output from the fourth instance
+#+begin_src 
+Event received - Successfully connected to Zookeeper
+16:55:46.029 [main-SendThread(localhost:2181)] DEBUG org.apache.zookeeper.ClientCnxn - Reading reply session id: 0x10066e94a9a0006, packet:: clientPath:null serverPath:null finished:false header:: 1,1  replyHeader:: 1,36,0  request:: '/election/c_,,v{s{31,s{'world,'anyone}}},3  response:: '/election/c_0000000004 
+znode name /election/c_0000000004
+16:55:46.034 [main-SendThread(localhost:2181)] DEBUG org.apache.zookeeper.ClientCnxn - Reading reply session id: 0x10066e94a9a0006, packet:: clientPath:null serverPath:null finished:false header:: 2,8  replyHeader:: 2,36,0  request:: '/election,F  response:: v{'c_0000000004,'c_0000000002,'c_0000000003,'c_0000000001} 
+I am not the leader, c_0000000001 is the leader
+#+end_src
+
+* Errors
+
+#+begin_src 
+16:46:53.069 [main-SendThread(localhost:2181)] DEBUG org.apache.zookeeper.ClientCnxn - Reading reply session id: 0x10066e94a9a0000, packet:: clientPath:null serverPath:null finished:false header:: 1,1  replyHeader:: 1,21,-101  request:: '/election/c_,,v{s{31,s{'world,'anyone}}},3  response::  
+Exception in thread "main" org.apache.zookeeper.KeeperException$NoNodeException: KeeperErrorCode = NoNode for /election/c_
+	at org.apache.zookeeper.KeeperException.create(KeeperException.java:118)
+	at org.apache.zookeeper.KeeperException.create(KeeperException.java:54)
+	at org.apache.zookeeper.ZooKeeper.create(ZooKeeper.java:1347)
+	at distributed.systems.LeaderElection.volunteerForLeadership(LeaderElection.java:34)
+	at distributed.systems.LeaderElection.main(LeaderElection.java:23)  
+#+end_src
+
+How to solve this?
+Create the path manually.
+I don't know the reason for this.
+
+#+begin_src 
+[explorer436@explorer436-p50-20eqs27p03 bin]$ ./zkCli.sh
+[zk: localhost:2181(CONNECTED) 2] create /election "some parent data  
+#+end_src

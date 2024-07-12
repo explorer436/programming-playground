@@ -1,0 +1,47 @@
+* Testing
+
+Start the application first.
+Then, go to the cli and create the ~target_znode~ node.
+#+begin_src
+[zk: localhost:2181(CONNECTED) 3] create /target_znode "some parent data"
+#+end_src
+
+The application should receive notifications about it.
+#+begin_src
+17:34:16.390 [main-SendThread(localhost:2181)] DEBUG org.apache.zookeeper.ClientCnxn - Got WatchedEvent state:SyncConnected type:NodeCreated path:/target_znode for session id 0x10066e94a9a0007
+/target_znode was created
+Data: some parent data, children : []
+#+end_src
+
+Now change the data on the node
+#+begin_src
+[zk: localhost:2181(CONNECTED) 4] set /target_znode "some new data"
+#+end_src
+The application should receive notifications about it.
+#+begin_src
+17:37:29.328 [main-SendThread(localhost:2181)] DEBUG org.apache.zookeeper.ClientCnxn - Got WatchedEvent state:SyncConnected type:NodeDataChanged path:/target_znode for session id 0x10066e94a9a0008
+/target_znode data changed
+Data: some new data, children : []
+#+end_src
+
+Now create a child node to ~target_znode~
+#+begin_src
+[zk: localhost:2181(CONNECTED) 5] create /target_znode/child_node "some child data"
+#+end_src
+The application should receive notifications about it.
+#+begin_src
+/target_znode children changed
+Data: some new data, children : [child_node]
+#+end_src
+
+Now, recursively delete the node
+#+begin_src
+[zk: localhost:2181(CONNECTED) 6] deleteall /target_znode
+#+end_src
+The application should receive notifications about it.
+#+begin_src
+17:41:57.352 [main-SendThread(localhost:2181)] DEBUG org.apache.zookeeper.ClientCnxn - Got WatchedEvent state:SyncConnected type:NodeChildrenChanged path:/target_znode for session id 0x10066e94a9a000a
+/target_znode children changed
+17:41:57.356 [main-SendThread(localhost:2181)] DEBUG org.apache.zookeeper.ClientCnxn - Got WatchedEvent state:SyncConnected type:NodeDeleted path:/target_znode for session id 0x10066e94a9a000a
+/target_znode was deleted
+#+end_src
