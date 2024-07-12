@@ -119,7 +119,6 @@ library
       MySolutions.Trees.CousinsForAllNodes
       MySolutions.Trees.CreateABalancedBinarySearchTree
       MySolutions.Trees.DeepestNodeInABinaryTree
-      MySolutions.Trees.DepthOfAPeculiarlyRepresentedTree
       MySolutions.Trees.FilterBinaryTreeLeaves
       MySolutions.Trees.FindAllDuplicateSubtrees
       MySolutions.Trees.FindCousinsInItsLevel
@@ -228,7 +227,6 @@ test-suite haskell-solutions-test
       MySolutions.Trees.CousinsForAllNodesSpec
       MySolutions.Trees.CreateABalancedBinarySearchTreeSpec
       MySolutions.Trees.DeepestNodeInABinaryTreeSpec
-      MySolutions.Trees.DepthOfAPeculiarlyRepresentedTreeSpec
       MySolutions.Trees.FilterBinaryTreeLeavesSpec
       MySolutions.Trees.FindAllDuplicateSubtreesSpec
       MySolutions.Trees.FindCousinsInItsLevelSpec
