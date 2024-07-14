@@ -34,7 +34,7 @@ The application should receive notifications about it.
 Data: some new data, children : [child_node]
 #+end_src
 
-Now, recursively delete the node
+Now, recursively delete the node and all it's children
 #+begin_src
 [zk: localhost:2181(CONNECTED) 6] deleteall /target_znode
 #+end_src

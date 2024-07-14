@@ -1,7 +1,7 @@
 #+begin_src
-
 mvn archetype:generate -DgroupId=distributed.systems.with.zookeeper -DartifactId=01connect.client.to.zookeeper -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 mvn archetype:generate -DgroupId=distributed.systems.with.zookeeper -DartifactId=02maintain.connection.with.zookeeper -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 mvn archetype:generate -DgroupId=distributed.systems.with.zookeeper -DartifactId=03leader.election -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 mvn archetype:generate -DgroupId=distributed.systems.with.zookeeper -DartifactId=04watchers-and-triggers -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+mvn archetype:generate -DgroupId=distributed.systems.with.zookeeper -DartifactId=05fault-tolerant-leader-election -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 #+end_src

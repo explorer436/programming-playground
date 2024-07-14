@@ -1,0 +1,75 @@
+* Objective
+
+1. Implements Fault Tolerant Leader Election Implementation
+2. We will inject failures and test our cluster
+
+* High Level Architecture
+
+Assume that we used a Leader Election Algorithm to elect a Leader.
+Assume that this cluster receives computational tasts.
+These tasks are broken down into multiple parallel sub-tasks - which are distributed by the master node to other znodes in the cluster.
+The results are asynchronously stored in a separate location.
+The leader either collects them and sends them back to the source or aggregates them and then sends them to another compute cluster down the pipeline.
+If the Leader crashes or becomes temporarily unavailable before it collects the results of the sub-tasks, all the computational work that the cluster has performed is potentially lost.
+That is because, only the Leader know how to aggregate it and knows where to send it later.
+
+Another example where Master-Worker architecture is used, is in Distributed Databases.
+In a large scale with millions of users and billions of records, the data is too big to fit in one machine. So, it is distributed across the cluster.
+The leader knows where each piece of data is stored, and how to re-route read and write requests, to the appropriate shards of the data.
+If the leader becomes unavailable for even a fraction of a second, all the data becomes inaccessible to everybody.
+
+So, in order for the system to be Fault Tolerant, the Leader Election algorithm needs to be able to recover from failures.
+It needs to automatically detect and recover from failures  by re-electing a new leader automatically.
+
+* Testing
+
+After packaging the application, run multiple instances of the application from multiple terminals.
+
+Output from the first instance
+#+begin_src
+Event received - Successfully connected to Zookeeper
+znode name /election/c_0000000014
+I am the leader
+#+end_src
+
+Output from the second instance
+#+begin_src
+Event received - Successfully connected to Zookeeper
+znode name /election/c_0000000015
+I am not the leader, c_0000000014 is the leader
+Watching znode c_0000000014
+#+end_src
+Output from the third instance
+#+begin_src
+Event received - Successfully connected to Zookeeper
+znode name /election/c_0000000016
+I am not the leader, c_0000000014 is the leader
+Watching znode c_0000000015
+#+end_src
+Output from the fourth instance
+#+begin_src
+Event received - Successfully connected to Zookeeper
+znode name /election/c_0000000017
+I am not the leader, c_0000000014 is the leader
+Watching znode c_0000000016
+#+end_src
+
+Now, kill the leader.
+Monitor the output of the second instance.
+Output from the second instance.
+#+begin_src
+/target_znode was deleted
+I am the leader
+#+end_src
+Notice that the third and fourth instances are not bothered by this event.
+
+Now, kill the third instance.
+Monitor the output of the fourth instance.
+Output from the fourth instance
+#+begin_src
+/target_znode was deleted
+I am not the leader, c_0000000015 is the leader
+Watching znode c_0000000015
+#+end_src
+
+Now, bring up the first instance again. Notice that it will monitor the current leader.

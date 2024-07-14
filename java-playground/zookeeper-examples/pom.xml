@@ -1,86 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-      
-  <modelVersion>4.0.0</modelVersion>
-      
-  <groupId>distributed.systems.with.zookeeper</groupId>
-      
-  <artifactId>zookeeper-examples</artifactId>
-      
-  <packaging>pom</packaging>
-      
-  <version>1.0-SNAPSHOT</version>
-      
-  <name>springboot-elasticsearch</name>
-      
-  <url>http://maven.apache.org</url>
-      
-  <modules>
-            
-    <module>01connect.client.to.zookeeper</module>
-            
-    <module>02maintain.connection.with.zookeeper</module>
-            
-    <module>03leader.election</module>
-          
-    <module>04watchers-and-triggers</module>
-      
-  </modules>
-      
-  <properties>
-            
-    <java.version>1.8</java.version>
-            
-    <mvn.compiler.source>1.8</mvn.compiler.source>
-            
-    <mvn.compiler.target>1.8</mvn.compiler.target>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>distributed.systems.with.zookeeper</groupId>
+    <artifactId>zookeeper-examples</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>springboot-elasticsearch</name>
         
-  </properties>
-      
-  <dependencyManagement>
-            
-    <dependencies>
-                  
-      <!-- https://mvnrepository.com/artifact/org.apache.zookeeper/zookeeper -->
-                  
-      <dependency>
-                        
-        <groupId>org.apache.zookeeper</groupId>
-                        
-        <artifactId>zookeeper</artifactId>
-                        
-        <version>3.8.4</version>
-                    
-      </dependency>
-              
-    </dependencies>
-        
-  </dependencyManagement>
-      
-  <build>
-            
-    <plugins>
-                  
-      <plugin>
-                        
-        <groupId>org.apache.maven.plugins</groupId>
-                        
-        <artifactId>maven-compiler-plugin</artifactId>
-                        
-        <version>3.6.1</version>
-                        
-        <configuration>
-                              
-          <source>${mvn.compiler.source}</source>
-                              
-          <target>${mvn.compiler.target}</target>
-                          
-        </configuration>
-                    
-      </plugin>
-              
-    </plugins>
-        
-  </build>
-  
+    <url>http://maven.apache.org</url>
+    <modules>
+        <module>01connect.client.to.zookeeper</module>
+        <module>02maintain.connection.with.zookeeper</module>
+        <module>03leader.election</module>
+        <module>04watchers-and-triggers</module>
+        <module>05fault-tolerant-leader-election</module>
+    </modules>
+    <properties>
+        <java.version>1.8</java.version>
+        <mvn.compiler.source>1.8</mvn.compiler.source>
+        <mvn.compiler.target>1.8</mvn.compiler.target>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/org.apache.zookeeper/zookeeper -->
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>3.8.4</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <source>${mvn.compiler.source}</source>
+                    <target>${mvn.compiler.target}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

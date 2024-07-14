@@ -39,7 +39,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>distributed.systems.LeaderElection</mainClass>
+                            <mainClass>distributed.systems.with.zookeeper.LeaderReelection</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

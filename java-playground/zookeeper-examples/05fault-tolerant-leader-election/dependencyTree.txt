@@ -1,0 +1,31 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --< distributed.systems.with.zookeeper:05fault-tolerant-leader-election >--
+[INFO] Building 05fault-tolerant-leader-election 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:3.6.0:tree (default-cli) @ 05fault-tolerant-leader-election ---
+[INFO] distributed.systems.with.zookeeper:05fault-tolerant-leader-election:jar:1.0-SNAPSHOT
+[INFO] \- org.apache.zookeeper:zookeeper:jar:3.8.4:compile
+[INFO]    +- org.apache.zookeeper:zookeeper-jute:jar:3.8.4:compile
+[INFO]    +- org.apache.yetus:audience-annotations:jar:0.12.0:compile
+[INFO]    +- io.netty:netty-handler:jar:4.1.105.Final:compile
+[INFO]    |  +- io.netty:netty-common:jar:4.1.105.Final:compile
+[INFO]    |  +- io.netty:netty-resolver:jar:4.1.105.Final:compile
+[INFO]    |  +- io.netty:netty-buffer:jar:4.1.105.Final:compile
+[INFO]    |  +- io.netty:netty-transport:jar:4.1.105.Final:compile
+[INFO]    |  +- io.netty:netty-transport-native-unix-common:jar:4.1.105.Final:compile
+[INFO]    |  \- io.netty:netty-codec:jar:4.1.105.Final:compile
+[INFO]    +- io.netty:netty-transport-native-epoll:jar:4.1.105.Final:compile
+[INFO]    |  \- io.netty:netty-transport-classes-epoll:jar:4.1.105.Final:compile
+[INFO]    +- org.slf4j:slf4j-api:jar:1.7.30:compile
+[INFO]    +- ch.qos.logback:logback-core:jar:1.2.13:compile
+[INFO]    +- ch.qos.logback:logback-classic:jar:1.2.13:compile
+[INFO]    \- commons-io:commons-io:jar:2.11.0:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.109 s
+[INFO] Finished at: 2024-07-14T17:05:46-04:00
+[INFO] ------------------------------------------------------------------------
