@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>distributed.systems.with.zookeeper</groupId>
+    <artifactId>06autohealer-exercise</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>06autohealer-exercise</name>
+    <url>http://maven.apache.org</url>
+
+    <parent>
+        <groupId>distributed.systems.with.zookeeper</groupId>
+        <artifactId>zookeeper-examples</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+        </dependency>
+    </dependencies>
+
+    <modules>
+        <module>autohealer</module>
+        <module>flakyworker</module>
+    </modules>
+
+</project>
