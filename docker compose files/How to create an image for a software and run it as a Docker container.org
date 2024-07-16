@@ -1,0 +1,5 @@
+See how it is done in "kafka/01-kafka-setup".
+1. Write "image/Dockerfile". "image/runner.sh" is just a helper file for it.
+2. Turn it into a docker image. We can use it locally or push it to DockerHub if necessary.
+3. Write "compose/docker-compose.yaml" file to use the image we previously created.
+4. Run the command to use the docker-compose file to bring up the server/servers.

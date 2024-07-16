@@ -1,0 +1,10 @@
+#+begin_src
+docker run vinsdocker/kafka
+#+end_src
+
+or
+
+(Navigate to the directory in terminal and run) 
+1. docker-compose up
+2. docker-compose --file ./docker-compose.yaml up
+3. docker-compose --file ./docker-compose.yaml up -d (for detatched mode)

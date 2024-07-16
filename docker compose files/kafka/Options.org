@@ -1,0 +1,8 @@
+* Options for using docker images for kafka
+
+1. confluenceinc/cp-kafka
+   1. Huge size
+1. bitnami/kafka
+   1. Good
+   1. Supports the new KRaft mode
+   1. But they do not support MacBook's M1
