@@ -11,11 +11,12 @@ import java.io.ObjectOutputStream;
 
 public class TestDriver {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
+
         SingletonWithSerialized instanceOne = SingletonWithSerialized.getInstance();
-        ObjectOutput out = new ObjectOutputStream(new FileOutputStream(
-                "test.ser"));
+        ObjectOutput out = new ObjectOutputStream(new FileOutputStream("test.ser"));
         out.writeObject(instanceOne);
         out.close();
+
         //deserailize from file to object
         ObjectInput in = new ObjectInputStream(new FileInputStream("test.ser"));
         SingletonWithSerialized instanceTwo = (SingletonWithSerialized) in.readObject();

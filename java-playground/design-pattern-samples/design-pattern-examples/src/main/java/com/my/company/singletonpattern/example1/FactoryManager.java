@@ -18,7 +18,7 @@ public class FactoryManager {
     public static void startTracks() {
         for (int i = 0; i < numTracks; ++i) {
             Track t = new Track();
-            t.start();
+            t.start(i);
         }
     }
 }

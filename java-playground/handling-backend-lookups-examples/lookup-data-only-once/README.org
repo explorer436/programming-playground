@@ -1,0 +1,20 @@
+Testing
+#+begin_src
+curl --verbose --request "GET" http://localhost:8080/api/lookup-data-only-once/type1
+#+end_src
+
+2024-07-26T19:23:12.283-04:00  INFO 902630 --- [lookup-data-only-once] [           main] h.b.l.e.l.LookupDataOnlyOnceApplication  : Started LookupDataOnlyOnceApplication in 1.821 seconds (process running for 2.174)
+2024-07-26T19:23:16.251-04:00  INFO 902630 --- [lookup-data-only-once] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-26T19:23:16.252-04:00  INFO 902630 --- [lookup-data-only-once] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-26T19:23:16.253-04:00  INFO 902630 --- [lookup-data-only-once] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-26T19:23:16.282-04:00  INFO 902630 --- [lookup-data-only-once] [nio-8080-exec-1] h.b.l.e.lookup_data_only_once.dao.MyDao  : >>> id = type1
+2024-07-26T19:23:16.283-04:00  INFO 902630 --- [lookup-data-only-once] [nio-8080-exec-1] h.b.l.e.lookup_data_only_once.dao.MyDao  : >>> getDetailsForType1
+2024-07-26T19:23:16.283-04:00  INFO 902630 --- [lookup-data-only-once] [nio-8080-exec-1] h.b.l.e.lookup_data_only_once.dao.MyDao  : <<< getDetailsForType1
+2024-07-26T19:23:16.283-04:00  INFO 902630 --- [lookup-data-only-once] [nio-8080-exec-1] h.b.l.e.l.service.MyService              : Details in service layer Details(id=type1, name=name-for-type1, accountNumber=account-number-for-type1) :
+2024-07-26T19:23:17.400-04:00  INFO 902630 --- [lookup-data-only-once] [nio-8080-exec-2] h.b.l.e.l.service.MyService              : Details in service layer Details(id=type1, name=name-for-type1, accountNumber=account-number-for-type1) :
+2024-07-26T19:24:07.120-04:00  INFO 902630 --- [lookup-data-only-once] [nio-8080-exec-4] h.b.l.e.lookup_data_only_once.dao.MyDao  : >>> id = type2
+2024-07-26T19:24:07.120-04:00  INFO 902630 --- [lookup-data-only-once] [nio-8080-exec-4] h.b.l.e.lookup_data_only_once.dao.MyDao  : >>> getDetailsForType2
+2024-07-26T19:24:07.120-04:00  INFO 902630 --- [lookup-data-only-once] [nio-8080-exec-4] h.b.l.e.lookup_data_only_once.dao.MyDao  : <<< getDetailsForType2
+2024-07-26T19:24:07.121-04:00  INFO 902630 --- [lookup-data-only-once] [nio-8080-exec-4] h.b.l.e.l.service.MyService              : Details in service layer Details(id=type2, name=name-for-type2, accountNumber=account-number-for-type2) :
+2024-07-26T19:24:09.061-04:00  INFO 902630 --- [lookup-data-only-once] [nio-8080-exec-6] h.b.l.e.l.service.MyService              : Details in service layer Details(id=type2, name=name-for-type2, accountNumber=account-number-for-type2) :
+2024-07-26T19:24:11.711-04:00  INFO 902630 --- [lookup-data-only-once] [nio-8080-exec-8] h.b.l.e.l.service.MyService              : Details in service layer Details(id=type1, name=name-for-type1, accountNumber=account-number-for-type1) :
