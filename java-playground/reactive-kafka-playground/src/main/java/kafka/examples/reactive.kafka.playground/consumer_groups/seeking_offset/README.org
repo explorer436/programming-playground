@@ -1,0 +1,5 @@
+Consumers can use this to start reading offsets from a given offset number.
+e.g. Give me the last 10 items.
+In other words, instead of processing messages from the current offset, start processing them from the previous 10 offset.
+
+This is helpful in scenarios where we do not want to process messages starting from the beginning.

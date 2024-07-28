@@ -1,0 +1,33 @@
+* Using reactor-kafka
+
+Add this dependency manually
+
+https://projectreactor.io/docs/kafka/release/reference/
+
+<dependency>
+    <groupId>io.projectreactor.kafka</groupId>
+    <artifactId>reactor-kafka</artifactId>
+    <version>1.3.17</version>
+</dependency>
+
+io.projectreactor.kafka.reactor-kafka provides interfaces.
+
+~sender~ and ~receiver~ are words specific to this library - not to kafka. They chose different names (from the standard names) to avoid confusion.
+
+This library has two packages:
+1. receiver
+   1. ~io/projectreactor/kafka/reactor-kafka/1.3.17/reactor-kafka-1.3.17.jar!/reactor/kafka/receiver/KafkaReceiver.class~
+2. sender
+   1. ~io/projectreactor/kafka/reactor-kafka/1.3.17/reactor-kafka-1.3.17.jar!/reactor/kafka/sender/KafkaSender.class~
+
+These interfaces delegate the calls to spring's org.springframework.kafka.spring-kafka classes.
+
+This library prints a lot of logs. In order to reduce them, see logback.xml
+
+* Setup
+
+Start kafka and create the topic.
+
+#+begin_src
+kafka-topics.sh --bootstrap-server localhost:9092 --topic order-events --create
+#+end_src

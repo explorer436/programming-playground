@@ -1,0 +1,15 @@
+This is the default partition assignment strategy.
+
+With this assignment strategy, this is how the partition assignment to Consumers is done:
+
+When we have only Consumer1 in the ConsumerGroup:
+Consumer1 -> partition0, partition1, partition2
+
+When we have Consumer1 and Consumer2 in the ConsumerGroup:
+Consumer1 -> partition0, partition1
+Consumer2 -> partition2
+
+When we have Consumer1, Consumer2 and Consumer3 in the ConsumerGroup:
+Consumer1 -> partition0
+Consumer2 -> partition1
+Consumer3 -> partition2

@@ -1,0 +1,55 @@
+* Set-up
+
+Create a topic with three partitions for this.
+
+#+begin_src
+kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic order-events
+
+kafka-topics.sh --bootstrap-server localhost:9092 --topic order-events --create --partitions 3
+#+end_src
+
+* Testing
+
+Objective: To see PartitionReassignment in real time.
+
+Start only Consumer1 from MyKafkaConsumerGroup.
+Because it is the only consumer, all the available partitions are assigned to this.
+
+#+begin_src
+22:30:42.769 [reactive-kafka-demo-group-123-1] INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer instanceId=1, clientId=consumer-demo-group-123-1, groupId=demo-group-123] Adding newly assigned partitions: order-events-0, order-events-1, order-events-2
+#+end_src
+
+Now, start Consumer2 from MyKafkaConsumerGroup.
+We see a log statement indicating that the partition 2 is assigned to this Consumer2.
+
+In Consumer2 logs
+#+begin_src
+22:31:51.762 [reactive-kafka-demo-group-123-1] INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer instanceId=2, clientId=consumer-demo-group-123-2, groupId=demo-group-123] Adding newly assigned partitions: order-events-2
+#+end_src
+
+In Consumer1 logs
+#+begin_src
+22:31:51.749 [reactive-kafka-demo-group-123-1] INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer instanceId=1, clientId=consumer-demo-group-123-1, groupId=demo-group-123] Revoke previously assigned partitions order-events-0, order-events-1, order-events-2
+22:31:51.757 [reactive-kafka-demo-group-123-1] INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer instanceId=1, clientId=consumer-demo-group-123-1, groupId=demo-group-123] Adding newly assigned partitions: order-events-0, order-events-1
+#+end_src
+
+Now, start Consumer3 from MyKafkaConsumerGroup.
+
+In Consumer3 logs
+#+begin_src
+22:35:21.798 [reactive-kafka-demo-group-123-1] INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer instanceId=3, clientId=consumer-demo-group-123-3, groupId=demo-group-123] Adding newly assigned partitions: order-events-2
+#+end_src
+
+In Consumer2 logs
+#+begin_src
+22:35:21.781 [reactive-kafka-demo-group-123-1] INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer instanceId=2, clientId=consumer-demo-group-123-2, groupId=demo-group-123] Revoke previously assigned partitions order-events-2
+22:35:21.788 [reactive-kafka-demo-group-123-1] INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer instanceId=2, clientId=consumer-demo-group-123-2, groupId=demo-group-123] Adding newly assigned partitions: order-events-1
+#+end_src
+
+In Consumer1 logs
+#+begin_src
+22:35:21.779 [reactive-kafka-demo-group-123-1] INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer instanceId=1, clientId=consumer-demo-group-123-1, groupId=demo-group-123] Revoke previously assigned partitions order-events-0, order-events-1
+22:35:21.788 [reactive-kafka-demo-group-123-1] INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer instanceId=1, clientId=consumer-demo-group-123-1, groupId=demo-group-123] Adding newly assigned partitions: order-events-0
+#+end_src
+
+We see the same behavior when Consumer1, Consumer2 and Consumer3 are killed too.
