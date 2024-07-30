@@ -19,14 +19,17 @@ public class TestDriver {
     unsortedPersonsList.forEach(p -> System.out.println(p.toString()));
 
     List<Person> sortedPersonsList =
-        unsortedPersonsList.stream().sorted(getComparing()).collect(Collectors.toList());
+        unsortedPersonsList
+                .stream()
+                .sorted(myComparator())
+                .collect(Collectors.toList());
 
     System.out.println("------------");
     System.out.println("sorted");
     sortedPersonsList.forEach(p -> System.out.println(p.toString()));
   }
 
-  private static Comparator<Person> getComparing() {
+  private static Comparator<Person> myComparator() {
     return Comparator.comparing(p -> p.getPersonRole().getHierarchy());
   }
 }

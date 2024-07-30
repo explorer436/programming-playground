@@ -14,8 +14,7 @@ public class TestDriver {
     public static void main(String[] args) {
         System.out.println("Hello World!");
 
-        StandardDeck myDeck = StandardDeck.builder()
-                .build();
+        StandardDeck myDeck = StandardDeck.builder().build();
 
         myDeck.addCard(
                 PlayingCard.builder()
