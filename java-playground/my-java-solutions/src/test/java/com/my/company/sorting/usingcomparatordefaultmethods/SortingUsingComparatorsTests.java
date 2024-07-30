@@ -1,6 +1,5 @@
-package com.my.company.defaultinterfaces;
+package com.my.company.sorting.usingcomparatordefaultmethods;
 
-import com.my.company.sorting.usingcomparatordefaultmethods.Card;
 import com.my.company.sorting.usingcomparatordefaultmethods.comparators.SortByRankThenSuit;
 import com.my.company.sorting.usingcomparatordefaultmethods.impl.PlayingCard;
 import com.my.company.sorting.usingcomparatordefaultmethods.impl.StandardDeck;
@@ -10,7 +9,7 @@ import java.util.Comparator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DefaultInterfacesTests {
+public class SortingUsingComparatorsTests {
 
     @Test
     public void test_sorting_using_Comparator() throws Exception {
