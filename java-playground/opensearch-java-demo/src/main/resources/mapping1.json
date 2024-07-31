@@ -1,0 +1,950 @@
+{
+  "properties": {
+    "budPerEndDate": {
+      "type": "date",
+      "format": "yyyy-MM-dd"
+    },
+    "budPerSeqNbr": {
+      "type": "long"
+    },
+    "budPerStartDate": {
+      "type": "date",
+      "format": "yyyy-MM-dd"
+    },
+    "codeTxt": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "crtUsername": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "currentQtr": {
+      "type": "date",
+      "format": "yyyy-MM-dd"
+    },
+    "dateFields": {
+      "type": "nested",
+      "properties": {
+        "dataType": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "htmlScreenOrder": {
+          "type": "long"
+        },
+        "index": {
+          "type": "long"
+        },
+        "iterative": {
+          "type": "boolean"
+        },
+        "label": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "metaDisplayName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "screenId": {
+          "type": "long"
+        },
+        "screenName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "subScreen": {
+          "type": "boolean"
+        },
+        "value": {
+          "type": "date",
+          "format": "yyyy-MM-dd"
+        }
+      }
+    },
+    "dateListFields": {
+      "type": "nested",
+      "properties": {
+        "dataType": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "htmlScreenOrder": {
+          "type": "long"
+        },
+        "index": {
+          "type": "long"
+        },
+        "iterative": {
+          "type": "boolean"
+        },
+        "label": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "metaDisplayName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "screenId": {
+          "type": "long"
+        },
+        "screenName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "subScreen": {
+          "type": "boolean"
+        },
+        "values": {
+          "type": "nested",
+          "properties": {
+            "rowIteration": {
+              "type": "long"
+            },
+            "screeName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "screenIteration": {
+              "type": "long"
+            },
+            "screenName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "value": {
+              "type": "date",
+              "format": "yyyy-MM-dd"
+            }
+          }
+        }
+      }
+    },
+    "dateSubScnFields": {
+      "type": "nested",
+      "properties": {
+        "dataType": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "htmlScreenOrder": {
+          "type": "long"
+        },
+        "index": {
+          "type": "long"
+        },
+        "iterative": {
+          "type": "boolean"
+        },
+        "label": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "metaDisplayName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "screenId": {
+          "type": "long"
+        },
+        "screenName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "subScreen": {
+          "type": "boolean"
+        },
+        "values": {
+          "type": "nested",
+          "properties": {
+            "parentMetaName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "parentRowIteration": {
+              "type": "long"
+            },
+            "parentScreenId": {
+              "type": "long"
+            },
+            "parentScreenIteration": {
+              "type": "long"
+            },
+            "rowIteration": {
+              "type": "long"
+            },
+            "subScreenName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "value": {
+              "type": "date",
+              "format": "yyyy-MM-dd"
+            }
+          }
+        }
+      }
+    },
+    "deleteFlag": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "uei": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "dunsId4": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "dunsId9": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "effectiveDate": {
+      "type": "date",
+      "format": "yyyy-MM-dd"
+    },
+    "estimateStatus": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "expenditureStatus": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "expirationDate": {
+      "type": "date",
+      "format": "yyyy-MM-dd"
+    },
+    "finalIndicator": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "formCode": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "formCodeVer": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "formId": {
+      "type": "long"
+    },
+    "formShortTitle": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "formTitle": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "formVersionNumber": {
+      "type": "long"
+    },
+    "fy": {
+      "type": "long"
+    },
+    "grantNbr": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "granteeName": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "mon": {
+      "type": "long"
+    },
+    "nextQtr": {
+      "type": "date",
+      "format": "yyyy-MM-dd"
+    },
+    "numSubScnFields": {
+      "type": "nested",
+      "properties": {
+        "dataType": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "htmlScreenOrder": {
+          "type": "long"
+        },
+        "index": {
+          "type": "long"
+        },
+        "iterative": {
+          "type": "boolean"
+        },
+        "label": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "metaDisplayName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "screenId": {
+          "type": "long"
+        },
+        "screenName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "subScreen": {
+          "type": "boolean"
+        },
+        "values": {
+          "type": "nested",
+          "properties": {
+            "parentMetaName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "parentRowIteration": {
+              "type": "long"
+            },
+            "parentScreenId": {
+              "type": "long"
+            },
+            "parentScreenIteration": {
+              "type": "long"
+            },
+            "rowIteration": {
+              "type": "long"
+            },
+            "subScreenName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "value": {
+              "type": "double"
+            }
+          }
+        }
+      }
+    },
+    "numberFields": {
+      "type": "nested",
+      "properties": {
+        "dataType": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "htmlScreenOrder": {
+          "type": "long"
+        },
+        "index": {
+          "type": "long"
+        },
+        "iterative": {
+          "type": "boolean"
+        },
+        "label": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "metaDisplayName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "screenId": {
+          "type": "long"
+        },
+        "screenName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "subScreen": {
+          "type": "boolean"
+        },
+        "value": {
+          "type": "double"
+        }
+      }
+    },
+    "numberListFields": {
+      "type": "nested",
+      "properties": {
+        "dataType": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "htmlScreenOrder": {
+          "type": "long"
+        },
+        "index": {
+          "type": "long"
+        },
+        "iterative": {
+          "type": "boolean"
+        },
+        "label": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "metaDisplayName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "screenId": {
+          "type": "long"
+        },
+        "screenName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "subScreen": {
+          "type": "boolean"
+        },
+        "values": {
+          "type": "nested",
+          "properties": {
+            "rowIteration": {
+              "type": "long"
+            },
+            "screeName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "screenIteration": {
+              "type": "long"
+            },
+            "screenName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "value": {
+              "type": "double"
+            }
+          }
+        }
+      }
+    },
+    "perEndDate": {
+      "type": "date",
+      "format": "yyyy-MM-dd"
+    },
+    "perStartDate": {
+      "type": "date",
+      "format": "yyyy-MM-dd"
+    },
+    "postalCode": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "progAcronym": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "programName": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "qtr": {
+      "type": "long"
+    },
+    "recptDate": {
+      "type": "date",
+      "format": "yyyy-MM-dd"
+    },
+    "recptId": {
+      "type": "long"
+    },
+    "revSeqNumber": {
+      "type": "long"
+    },
+    "rptDueDate": {
+      "type": "date",
+      "format": "yyyy-MM-dd"
+    },
+    "rptEin": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "rptFreq": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "screensCount": {
+      "type": "long"
+    },
+    "strSubScnFields": {
+      "type": "nested",
+      "properties": {
+        "dataType": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "htmlScreenOrder": {
+          "type": "long"
+        },
+        "index": {
+          "type": "long"
+        },
+        "iterative": {
+          "type": "boolean"
+        },
+        "label": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "metaDisplayName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "screenId": {
+          "type": "long"
+        },
+        "screenName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "subScreen": {
+          "type": "boolean"
+        },
+        "values": {
+          "type": "nested",
+          "properties": {
+            "parentMetaName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "parentRowIteration": {
+              "type": "long"
+            },
+            "parentScreenId": {
+              "type": "long"
+            },
+            "parentScreenIteration": {
+              "type": "long"
+            },
+            "rowIteration": {
+              "type": "long"
+            },
+            "subScreenName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "value": {
+              "type": "text"
+            }
+          }
+        }
+      }
+    },
+    "stringFields": {
+      "type": "nested",
+      "properties": {
+        "dataType": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "htmlScreenOrder": {
+          "type": "long"
+        },
+        "index": {
+          "type": "long"
+        },
+        "iterative": {
+          "type": "boolean"
+        },
+        "label": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "metaDisplayName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "screenId": {
+          "type": "long"
+        },
+        "screenName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "subScreen": {
+          "type": "boolean"
+        },
+        "value": {
+          "type": "text"
+        }
+      }
+    },
+    "stringListFields": {
+      "type": "nested",
+      "properties": {
+        "dataType": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "htmlScreenOrder": {
+          "type": "long"
+        },
+        "index": {
+          "type": "long"
+        },
+        "iterative": {
+          "type": "boolean"
+        },
+        "label": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "metaDisplayName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "screenId": {
+          "type": "long"
+        },
+        "screenName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "subScreen": {
+          "type": "boolean"
+        },
+        "values": {
+          "type": "nested",
+          "properties": {
+            "rowIteration": {
+              "type": "long"
+            },
+            "screeName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "screenIteration": {
+              "type": "long"
+            },
+            "screenName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "value": {
+              "type": "text"
+            }
+          }
+        }
+      }
+    },
+    "subGranteeDuns": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "subGranteeId": {
+      "type": "long"
+    },
+    "subGranteeName": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "submissionStatusCode": {
+      "type": "long"
+    },
+    "submitDate": {
+      "type": "date",
+      "format": "yyyy-MM-dd"
+    },
+    "sysProgGranteeId": {
+      "type": "long"
+    },
+    "updDate": {
+      "type": "date",
+      "format": "yyyy-MM-dd"
+    },
+    "updUsername": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}

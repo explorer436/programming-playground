@@ -1,0 +1,49 @@
+{
+  "properties": {
+    "createdOn": {
+      "type": "date",
+      "format": "yyyy-MM-dd hh:mm:ss a"
+    },
+    "docId": {
+      "type": "text"
+    },
+    "docName": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "fileBytes": {
+      "type": "binary"
+    },
+    "s3Objectkey": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "status": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "userName": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "reqJson": {
+      "type": "text"
+    }
+  }
+}

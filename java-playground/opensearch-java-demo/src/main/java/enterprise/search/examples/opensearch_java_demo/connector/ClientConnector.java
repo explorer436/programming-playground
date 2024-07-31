@@ -1,0 +1,199 @@
+package enterprise.search.examples.opensearch_java_demo.connector;
+
+import enterprise.search.examples.opensearch_java_demo.client.OpensearchClientCreator;
+import enterprise.search.examples.opensearch_java_demo.model.Employee;
+import jakarta.annotation.PostConstruct;
+import jakarta.json.stream.JsonParser;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.opensearch.client.json.JsonpMapper;
+import org.opensearch.client.opensearch.OpenSearchClient;
+import org.opensearch.client.opensearch._types.Time;
+import org.opensearch.client.opensearch._types.mapping.TypeMapping;
+import org.opensearch.client.opensearch.cluster.PutComponentTemplateRequest;
+import org.opensearch.client.opensearch.indices.*;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
+
+@Slf4j
+@RequiredArgsConstructor
+@Component
+public class ClientConnector {
+
+    @Value("${cloudsearch.index1}")
+    private String indexName1;
+
+    @Value("${cloudsearch.index2}")
+    private String indexName2;
+
+    private final OpensearchClientCreator opensearchClientCreator;
+
+    @PostConstruct
+    public void setupIndexes() throws NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException {
+        setupIndex(indexName1, "mapping1.json");
+        setupIndex(indexName2, "mapping2.json");
+    }
+
+    private void setupIndex(String indexName, String mappingFilename) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
+        if (!hasIndex(indexName)) {
+            createIndex(indexName, mappingFilename);
+        }
+    }
+
+    public boolean hasIndex(String indexName) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
+        log.info(">>> hasIndex()");
+
+        OpenSearchClient openSearchClient = getOpenSearchClient();
+
+        // OpenSearchVersionInfo version = openSearchClient.info().version();
+        // log.info("Server: {}@{}", version.distribution(), version.number());
+
+        if (openSearchClient.indices().exists(r -> r.index(indexName)).value()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private void createIndex(String indexName, String mappingFilename) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+        log.info(">>> createIndex()");
+
+        OpenSearchClient openSearchClient = getOpenSearchClient();
+
+        // OpenSearchVersionInfo version = openSearchClient.info().version();
+        // log.info("Server: {}@{}", version.distribution(), version.number());
+
+
+
+        /*if (openSearchClient.indices().existsIndexTemplate(t -> t.name(indexTemplateName)).value()) {
+            DeleteIndexTemplateRequest deleteIndexTemplateRequest = DeleteIndexTemplateRequest.of(i -> i.name(indexTemplateName));
+            log.info("Deleting index template {}", indexTemplateName);
+            openSearchClient.indices().deleteIndexTemplate(deleteIndexTemplateRequest);
+        }*/
+
+        // Create an index template composed of two component templates, one for index settings, and one for mappings
+        String indexSettingsComponentTemplate = indexName + "-settings";
+
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(mappingFilename);
+        JsonpMapper mapper = openSearchClient._transport().jsonpMapper();
+        JsonParser parser = mapper.jsonProvider().createParser(inputStream);
+        // CreateIndexRequest.Builder().index(index).mappings(TypeMapping._DESERIALIZER.deserialize(parser, mapper))
+
+        PutComponentTemplateRequest putComponentTemplateRequest = PutComponentTemplateRequest.of(
+                c -> c.name(indexSettingsComponentTemplate)
+                        .template(
+                                templt -> templt
+                                        .mappings(TypeMapping._DESERIALIZER.deserialize(parser, mapper))
+                                        .settings(
+                                                s -> s.numberOfShards("5")
+                                                        .numberOfReplicas("1")
+                                                        .indexing(
+                                                                i -> i.slowlog(
+                                                                        sl -> sl.level("info")
+                                                                                .reformat(true)
+                                                                                .threshold(th -> th.index(ith -> ith.warn(Time.of(t -> t.time("2s")))))
+                                                                )
+                                                        )
+                                                        .search(
+                                                                se -> se.slowlog(sl -> sl.level("info").threshold(th -> th.query(q -> q.warn(Time.of(t -> t.time("2s"))))))
+                                                        )
+                                        )
+                        )
+
+        );
+        log.info("Creating component template {}", indexSettingsComponentTemplate);
+        openSearchClient.cluster().putComponentTemplate(putComponentTemplateRequest);
+
+        /*String indexMappingsComponentTemplate = indexName + "-mappings";
+        putComponentTemplateRequest = PutComponentTemplateRequest.of(
+                c -> c.name(indexMappingsComponentTemplate)
+                        .mappings(m -> m.properties("age", p -> p.integer(i -> i)))
+        );
+        log.info("Creating component template {}", indexMappingsComponentTemplate);
+        openSearchClient.cluster().putComponentTemplate(putComponentTemplateRequest);*/
+
+        String indexTemplateName = indexName + "-template";
+        PutIndexTemplateRequest putIndexTemplateRequest = PutIndexTemplateRequest.of(
+                it -> it.name(indexTemplateName)
+                        .indexPatterns(indexName)
+                        // .composedOf(List.of(indexSettingsComponentTemplate, indexMappingsComponentTemplate))
+                        .composedOf(List.of(indexSettingsComponentTemplate))
+        );
+
+        log.info("Creating index template {}", indexTemplateName);
+        openSearchClient.indices().putIndexTemplate(putIndexTemplateRequest);
+
+        /*if (openSearchClient.indices().exists(r -> r.index(indexName)).value()) {
+            log.info("Deleting index {}", indexName);
+            openSearchClient.indices().delete(DeleteIndexRequest.of(d -> d.index(indexName)));
+        }*/
+
+        log.info("Creating index {}", indexName);
+        openSearchClient.indices().create(CreateIndexRequest.of(c -> c.index(indexName)));
+
+    }
+
+    public GetMappingResponse getMappingResponse(String indexName) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
+
+        OpenSearchClient openSearchClient = getOpenSearchClient();
+
+        GetMappingResponse getMappingResponse = openSearchClient.indices().getMapping(GetMappingRequest.of(m -> m.index(indexName)));
+        // mappings for the index should contain those defined in component template
+        log.info("Mappings {} found for index {}", getMappingResponse.result().get(indexName).mappings(), indexName);
+
+        return getMappingResponse;
+
+    }
+
+    public GetIndicesSettingsResponse getGetIndicesSettingsResponse(String indexName) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
+
+        OpenSearchClient openSearchClient = getOpenSearchClient();
+
+        GetIndicesSettingsResponse getSettingsResponse = openSearchClient.indices()
+                .getSettings(GetIndicesSettingsRequest.of(m -> m.index(indexName)));
+        // settings for the index should contain those defined in component template
+        log.info("Settings {} found for index {}", getSettingsResponse.result().get(indexName).settings(), indexName);
+
+        return getSettingsResponse;
+    }
+
+    public Employee fetchEmployeeById(String id) {
+        return null;
+    }
+
+    public String insertEmployee(Employee employee) {
+        return "";
+    }
+
+    public boolean bulkInsertEmployees(List<Employee> employees) {
+        return false;
+    }
+
+    public List<Employee> fetchEmployeesWithMustQuery(Employee employee) {
+        return List.of();
+    }
+
+    public List<Employee> fetchEmployeesWithShouldQuery(Employee employee) {
+        return List.of();
+    }
+
+    public String deleteEmployeeById(Long id) {
+        return "";
+    }
+
+    public String updateEmployee(Employee employee) {
+        return "";
+    }
+
+    private OpenSearchClient getOpenSearchClient() throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+        OpenSearchClient openSearchClient = opensearchClientCreator.create();
+        return openSearchClient;
+    }
+}
