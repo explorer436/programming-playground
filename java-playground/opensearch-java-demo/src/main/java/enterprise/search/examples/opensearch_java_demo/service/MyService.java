@@ -1,7 +1,7 @@
 package enterprise.search.examples.opensearch_java_demo.service;
 
 import enterprise.search.examples.opensearch_java_demo.exception.RecordNotFoundException;
-import enterprise.search.examples.opensearch_java_demo.model.Employee;
+import enterprise.search.examples.opensearch_java_demo.model.MyDocument;
 import org.opensearch.client.opensearch.indices.GetIndicesSettingsResponse;
 import org.opensearch.client.opensearch.indices.GetMappingResponse;
 
@@ -19,17 +19,17 @@ public interface MyService {
 
     GetIndicesSettingsResponse getIndicesSettingsResponse(String indexName) throws NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException;
 
-    public Employee fetchEmployeeById(String id) throws RecordNotFoundException, IOException;
+    public List<MyDocument> fetchDocumentByUsername(String username) throws NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException;
 
-    public String insertEmployee(Employee employee) throws IOException;
+    public String insertDocument(MyDocument myDocument) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException;
 
-    public boolean bulkInsertEmployees(List<Employee> employees) throws IOException;
+    public boolean bulkInsertDocuments(List<MyDocument> myDocuments) throws NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException;
 
-    public List<Employee> fetchEmployeesWithMustQuery(Employee employee) throws IOException;
-    public List<Employee> fetchEmployeesWithShouldQuery(Employee employee) throws IOException;
+    public List<MyDocument> fetchDocumentsWithMustQuery(MyDocument myDocument) throws IOException;
+    public List<MyDocument> fetchDocumentsWithShouldQuery(MyDocument myDocument) throws IOException;
 
-    public String deleteEmployeeById(Long id) throws IOException;
+    public String deleteDocumentById(Long id) throws IOException;
 
-    public String updateEmployee(Employee employee) throws IOException;
+    public String updateDocument(MyDocument myDocument) throws IOException;
 
 }

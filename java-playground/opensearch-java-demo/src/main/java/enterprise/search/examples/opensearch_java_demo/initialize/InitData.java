@@ -1,6 +1,6 @@
 package enterprise.search.examples.opensearch_java_demo.initialize;
 
-import enterprise.search.examples.opensearch_java_demo.model.Employee;
+import enterprise.search.examples.opensearch_java_demo.model.MyDocument;
 import enterprise.search.examples.opensearch_java_demo.service.MyService;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -22,9 +22,9 @@ public class InitData {
     public void setupData() {
         log.info("Connecting to Opensearch cluster to write employee data");
 
-        List<Employee> employees = new ArrayList<>();
+        /*List<MyDocument> myDocuments = new ArrayList<>();
 
-        Employee e1 = Employee
+        MyDocument e1 = MyDocument
                 .builder()
                 .id(123l)
                 .firstName("e1firstname")
@@ -36,7 +36,7 @@ public class InitData {
                 .size(123)
                 .build();
 
-        Employee e2 = Employee
+        MyDocument e2 = MyDocument
                 .builder()
                 .id(456l)
                 .firstName("e2firstname")
@@ -48,15 +48,15 @@ public class InitData {
                 .size(456)
                 .build();
 
-        employees.add(e1);
-        employees.add(e2);
+        myDocuments.add(e1);
+        myDocuments.add(e2);
 
         try {
-            boolean isSuccess = employeeService.bulkInsertEmployees(employees);
+            boolean isSuccess = employeeService.bulkInsertDocuments(myDocuments);
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
-        }
+        }*/
 
         log.info("Opensearch setup done");
     }

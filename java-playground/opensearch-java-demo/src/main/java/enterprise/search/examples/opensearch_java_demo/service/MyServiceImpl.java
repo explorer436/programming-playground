@@ -2,7 +2,7 @@ package enterprise.search.examples.opensearch_java_demo.service;
 
 import enterprise.search.examples.opensearch_java_demo.connector.ClientConnector;
 import enterprise.search.examples.opensearch_java_demo.exception.RecordNotFoundException;
-import enterprise.search.examples.opensearch_java_demo.model.Employee;
+import enterprise.search.examples.opensearch_java_demo.model.MyDocument;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.opensearch.client.opensearch.indices.GetIndicesSettingsResponse;
@@ -39,37 +39,37 @@ public class MyServiceImpl implements MyService {
     }
 
     @Override
-    public Employee fetchEmployeeById(String id) throws RecordNotFoundException, IOException {
-        return clientConnector.fetchEmployeeById(id);
+    public List<MyDocument> fetchDocumentByUsername(String username) throws NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException {
+        return clientConnector.fetchDocumentByUsername(username);
     }
 
     @Override
-    public String insertEmployee(Employee employee) throws IOException {
-        return clientConnector.insertEmployee(employee);
+    public String insertDocument(MyDocument myDocument) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+        return clientConnector.insertDocument(myDocument);
     }
 
     @Override
-    public boolean bulkInsertEmployees(List<Employee> employees) throws IOException {
-        return clientConnector.bulkInsertEmployees(employees);
+    public boolean bulkInsertDocuments(List<MyDocument> myDocuments) throws NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException {
+        return clientConnector.bulkInsertDocuments(myDocuments);
     }
 
     @Override
-    public List<Employee> fetchEmployeesWithMustQuery(Employee employee) throws IOException {
-        return clientConnector.fetchEmployeesWithMustQuery(employee);
+    public List<MyDocument> fetchDocumentsWithMustQuery(MyDocument myDocument) throws IOException {
+        return clientConnector.fetchDocumentsWithMustQuery(myDocument);
     }
 
     @Override
-    public List<Employee> fetchEmployeesWithShouldQuery(Employee employee) throws IOException {
-        return clientConnector.fetchEmployeesWithShouldQuery(employee);
+    public List<MyDocument> fetchDocumentsWithShouldQuery(MyDocument myDocument) throws IOException {
+        return clientConnector.fetchDocumentsWithShouldQuery(myDocument);
     }
 
     @Override
-    public String deleteEmployeeById(Long id) throws IOException {
-        return clientConnector.deleteEmployeeById(id);
+    public String deleteDocumentById(Long id) throws IOException {
+        return clientConnector.deleteDocumentById(id);
     }
 
     @Override
-    public String updateEmployee(Employee employee) throws IOException {
-        return clientConnector.updateEmployee(employee);
+    public String updateDocument(MyDocument myDocument) throws IOException {
+        return clientConnector.updateDocument(myDocument);
     }
 }

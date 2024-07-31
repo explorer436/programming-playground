@@ -1,7 +1,7 @@
 package enterprise.search.examples.opensearch_java_demo.connector;
 
 import enterprise.search.examples.opensearch_java_demo.client.OpensearchClientCreator;
-import enterprise.search.examples.opensearch_java_demo.model.Employee;
+import enterprise.search.examples.opensearch_java_demo.model.MyDocument;
 import jakarta.annotation.PostConstruct;
 import jakarta.json.stream.JsonParser;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +11,7 @@ import org.opensearch.client.opensearch.OpenSearchClient;
 import org.opensearch.client.opensearch._types.Time;
 import org.opensearch.client.opensearch._types.mapping.TypeMapping;
 import org.opensearch.client.opensearch.cluster.PutComponentTemplateRequest;
+import org.opensearch.client.opensearch.core.*;
 import org.opensearch.client.opensearch.indices.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,7 @@ import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -164,31 +166,68 @@ public class ClientConnector {
         return getSettingsResponse;
     }
 
-    public Employee fetchEmployeeById(String id) {
-        return null;
+    public String insertDocument(MyDocument myDocument) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+        IndexRequest<MyDocument> indexRequest = new IndexRequest.Builder<MyDocument>().index(indexName2)
+                .document(myDocument)
+                .build();
+
+        OpenSearchClient openSearchClient = getOpenSearchClient();
+        IndexResponse indexResponse = openSearchClient.index(indexRequest);
+        return indexResponse.id();
     }
 
-    public String insertEmployee(Employee employee) {
-        return "";
+    public boolean bulkInsertDocuments(List<MyDocument> myDocuments) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
+        OpenSearchClient openSearchClient = getOpenSearchClient();
+
+        BulkRequest.Builder bulkRequestBuilder = new BulkRequest.Builder();
+        for (MyDocument myDocument : myDocuments) {
+            bulkRequestBuilder.operations(b -> b.index(o -> o.index(indexName2).document(myDocument)));
+        }
+        BulkResponse bulkResponse = openSearchClient.bulk(bulkRequestBuilder.build());
+
+        log.info("bulkResponse.errors(): {}", bulkResponse.errors());
+        log.info("bulkResponse.took(): {}", bulkResponse.took());
+        log.info("bulkResponse.ingestTook(): {}", bulkResponse.ingestTook());
+
+        log.info("bulkResponse.toJsonString(): {}", bulkResponse.toJsonString());
+
+        return !bulkResponse.errors();
     }
 
-    public boolean bulkInsertEmployees(List<Employee> employees) {
-        return false;
+    public List<MyDocument> fetchDocumentByUsername(String username) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
+        OpenSearchClient openSearchClient = getOpenSearchClient();
+
+                SearchRequest searchRequest = new SearchRequest.Builder()
+                .index(indexName2)
+                .query(q -> q.queryString(qs -> qs.fields("userName").query(username)))
+                .build();
+
+        SearchResponse<MyDocument> searchResponse = openSearchClient.search(searchRequest, MyDocument.class);
+
+        // log.info("searchResponse.toJsonString(): {}", searchResponse.toJsonString());
+
+        for (var hit : searchResponse.hits().hits()) {
+            log.info("Found {} with score {}", hit.source(), hit.score());
+        }
+
+        return searchResponse.hits().hits().stream().map(
+                h -> h.source()
+        ).collect(Collectors.toUnmodifiableList());
     }
 
-    public List<Employee> fetchEmployeesWithMustQuery(Employee employee) {
+    public List<MyDocument> fetchDocumentsWithMustQuery(MyDocument myDocument) {
         return List.of();
     }
 
-    public List<Employee> fetchEmployeesWithShouldQuery(Employee employee) {
+    public List<MyDocument> fetchDocumentsWithShouldQuery(MyDocument myDocument) {
         return List.of();
     }
 
-    public String deleteEmployeeById(Long id) {
+    public String deleteDocumentById(Long id) {
         return "";
     }
 
-    public String updateEmployee(Employee employee) {
+    public String updateDocument(MyDocument myDocument) {
         return "";
     }
 

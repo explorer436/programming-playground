@@ -11,13 +11,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Employee {
+public class MyDocument {
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String gender;
-    private String jobTitle;
-    private String phone;
-    private Integer size;
+    private String docName;
+    private String userName;
+    private String status;
+    private String createdOn;
+    private String reqJson;
 }
+
