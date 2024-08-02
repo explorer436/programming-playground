@@ -18,6 +18,7 @@ curl --location 'http://localhost:8080/opensearch/v1/index/mapping/documents1'
 curl --location 'http://localhost:8080/opensearch/v1/index/settings/documents1'
 #+end_src
 
+#+begin_src
 curl --location 'http://localhost:8080/opensearch/v1/index' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -27,89 +28,127 @@ curl --location 'http://localhost:8080/opensearch/v1/index' \
     "createdOn": "2024-07-23 07:21:15 PM",
     "reqJson": "{\"req\":{\"formId\":203,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CSC3\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":null,\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[]},\"excelType\":\"SepBYScreen\",\"username\":\"bruceWayne\",\"formTitle\":\"Module4-CSBG(196)Ver:2(FY:2020To2023)\",\"mailOption\":null}"
 }'
+#+end_src
 
+#+begin_src
 curl --location 'http://localhost:8080/opensearch/v1/index/bulk' \
 --header 'Content-Type: application/json' \
 --data '[
     {
-        "docName": "Adoption Estimate Recommendation Ver: 6 (FY: 2019 To 2024).xlsx",
-        "userName": "superman1",
-        "status": "Completed",
-        "s3Objectkey": "0e4b42d4-7dd3-4744-91ac-46c344b2ccdf",
-        "createdOn": "2021-12-02 07:06:06 PM",
-        "reqJson": "{\"req\":{\"formId\":117,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"ADPTASST\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":null,\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[]},\"excelType\":\"SingleSheet\",\"username\":\"superman1\",\"formTitle\":\"AdoptionEstimateRecommendationVer:6(FY:2019To2024)\",\"mailOption\":null}"
+	"docName": "Adoption Estimate Recommendation Ver: 6 (FY: 2019 To 2024).xlsx",
+	"userName": "superman1",
+	"status": "Completed",
+	"s3Objectkey": "0e4b42d4-7dd3-4744-91ac-46c344b2ccdf",
+	"createdOn": "2021-12-02 07:06:06 PM",
+	"reqJson": "{\"req\":{\"formId\":117,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"ADPTASST\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":null,\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[]},\"excelType\":\"SingleSheet\",\"username\":\"superman1\",\"formTitle\":\"AdoptionEstimateRecommendationVer:6(FY:2019To2024)\",\"mailOption\":null}"
     },
     {
-        "docName": "ACF - 696 Financial Report Ver: 8 (FY: 2021 To 2021).xlsx",
-        "userName": "superman1",
-        "status": "Completed",
-        "s3Objectkey": "a479a7ec-b669-4804-a41b-d8220073065f",
-        "createdOn": "2021-12-02 04:24:15 PM",
-        "reqJson": "{\"req\":{\"formId\":90,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CCDF\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":null,\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[]},\"excelType\":\"SingleSheet\",\"username\":\"superman1\",\"formTitle\":\"ACF-696FinancialReportVer:8(FY:2021To2021)\",\"mailOption\":null}"
+	"docName": "ACF - 696 Financial Report Ver: 8 (FY: 2021 To 2021).xlsx",
+	"userName": "superman1",
+	"status": "Completed",
+	"s3Objectkey": "a479a7ec-b669-4804-a41b-d8220073065f",
+	"createdOn": "2021-12-02 04:24:15 PM",
+	"reqJson": "{\"req\":{\"formId\":90,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CCDF\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":null,\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[]},\"excelType\":\"SingleSheet\",\"username\":\"superman1\",\"formTitle\":\"ACF-696FinancialReportVer:8(FY:2021To2021)\",\"mailOption\":null}"
     },
     {
-        "docName": "ACF - 696 Financial Report Ver: 8 (FY: 2021 To 2021).xlsx",
-        "userName": "superman1",
-        "status": "Completed",
-        "s3Objectkey": "a365a912-5b47-42d5-b4aa-de3e7e5aef42",
-        "createdOn": "2022-02-28 03:27:02 PM",
-        "reqJson": "{\"req\":{\"formId\":90,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CCDF\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":null,\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[]},\"excelType\":\"SingleSheet\",\"username\":\"superman1\",\"formTitle\":\"ACF-696FinancialReportVer:8(FY:2021To2021)\",\"mailOption\":null}"
+	"docName": "ACF - 696 Financial Report Ver: 8 (FY: 2021 To 2021).xlsx",
+	"userName": "superman1",
+	"status": "Completed",
+	"s3Objectkey": "a365a912-5b47-42d5-b4aa-de3e7e5aef42",
+	"createdOn": "2022-02-28 03:27:02 PM",
+	"reqJson": "{\"req\":{\"formId\":90,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CCDF\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":null,\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[]},\"excelType\":\"SingleSheet\",\"username\":\"superman1\",\"formTitle\":\"ACF-696FinancialReportVer:8(FY:2021To2021)\",\"mailOption\":null}"
     },
     {
-        "docName": "ACF - 696 Financial Report Ver: 8 (FY: 2021 To 2021).xlsx",
-        "userName": "superman1",
-        "status": "Completed",
-        "s3Objectkey": "c10c6fcb-e5da-4e9d-b306-0c040d5625cf",
-        "createdOn": "2021-11-23 05:48:58 PM",
-        "reqJson": "{\"req\":{\"formId\":90,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CCDF\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":null,\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[]},\"excelType\":\"SingleSheet\",\"username\":\"superman1\",\"formTitle\":\"ACF-696FinancialReportVer:8(FY:2021To2021)\",\"mailOption\":null}"
+	"docName": "ACF - 696 Financial Report Ver: 8 (FY: 2021 To 2021).xlsx",
+	"userName": "superman1",
+	"status": "Completed",
+	"s3Objectkey": "c10c6fcb-e5da-4e9d-b306-0c040d5625cf",
+	"createdOn": "2021-11-23 05:48:58 PM",
+	"reqJson": "{\"req\":{\"formId\":90,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CCDF\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":null,\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[]},\"excelType\":\"SingleSheet\",\"username\":\"superman1\",\"formTitle\":\"ACF-696FinancialReportVer:8(FY:2021To2021)\",\"mailOption\":null}"
     },
     {
-        "docName": "ACF - 696 Financial Report Ver: 8 (FY: 2021 To 2021).xlsx",
-        "userName": "superman1",
-        "status": "Completed",
-        "s3Objectkey": "083e982c-ab5e-415c-bf00-92d515e3f9ab",
-        "createdOn": "2021-12-02 01:20:42 PM",
-        "reqJson": "{\"req\":{\"formId\":90,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CCDF\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":null,\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[]},\"excelType\":\"SingleSheet\",\"username\":\"superman1\",\"formTitle\":\"ACF-696FinancialReportVer:8(FY:2021To2021)\",\"mailOption\":null}"
+	"docName": "ACF - 696 Financial Report Ver: 8 (FY: 2021 To 2021).xlsx",
+	"userName": "superman1",
+	"status": "Completed",
+	"s3Objectkey": "083e982c-ab5e-415c-bf00-92d515e3f9ab",
+	"createdOn": "2021-12-02 01:20:42 PM",
+	"reqJson": "{\"req\":{\"formId\":90,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CCDF\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":null,\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[]},\"excelType\":\"SingleSheet\",\"username\":\"superman1\",\"formTitle\":\"ACF-696FinancialReportVer:8(FY:2021To2021)\",\"mailOption\":null}"
     },
     {
-        "docName": "Module 2  - CSBG Ver: 2 (FY: 2006 To 2023).xlsx",
-        "userName": "flashman1",
-        "status": "Completed",
-        "s3Objectkey": "25e7a0e0-3da7-4de2-a408-2c436abcec75",
-        "createdOn": "2022-04-04 12:42:35 PM",
-        "reqJson": "{\"req\":{\"formId\":200,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CSBG\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":\"fiscalYear\",\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[2019]},\"excelType\":\"SepBYScreen\",\"username\":\"flashman1\",\"formTitle\":\"Module2-CSBGVer:2(FY:2006To2023)\",\"mailOption\":null}"
+	"docName": "Module 2  - CSBG Ver: 2 (FY: 2006 To 2023).xlsx",
+	"userName": "flashman1",
+	"status": "Completed",
+	"s3Objectkey": "25e7a0e0-3da7-4de2-a408-2c436abcec75",
+	"createdOn": "2022-04-04 12:42:35 PM",
+	"reqJson": "{\"req\":{\"formId\":200,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CSBG\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":\"fiscalYear\",\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[2019]},\"excelType\":\"SepBYScreen\",\"username\":\"flashman1\",\"formTitle\":\"Module2-CSBGVer:2(FY:2006To2023)\",\"mailOption\":null}"
     },
     {
-        "docName": "Module 2  - CSBG Ver: 2 (FY: 2006 To 2023).xlsx",
-        "userName": "flashman1",
-        "status": "Completed",
-        "s3Objectkey": "c70c09d6-f5f2-4e7a-b0fc-b249904fdb91",
-        "createdOn": "2022-03-25 12:57:25 PM",
-        "reqJson": "{\"req\":{\"formId\":200,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CSBG\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":\"fiscalYear\",\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[2019]},\"excelType\":\"SepBYScreen\",\"username\":\"flashman1\",\"formTitle\":\"Module2-CSBGVer:2(FY:2006To2023)\",\"mailOption\":null}"
+	"docName": "Module 2  - CSBG Ver: 2 (FY: 2006 To 2023).xlsx",
+	"userName": "flashman1",
+	"status": "Completed",
+	"s3Objectkey": "c70c09d6-f5f2-4e7a-b0fc-b249904fdb91",
+	"createdOn": "2022-03-25 12:57:25 PM",
+	"reqJson": "{\"req\":{\"formId\":200,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CSBG\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":\"fiscalYear\",\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[2019]},\"excelType\":\"SepBYScreen\",\"username\":\"flashman1\",\"formTitle\":\"Module2-CSBGVer:2(FY:2006To2023)\",\"mailOption\":null}"
     },
     {
-        "docName": "Module 2  - CSBG Ver: 2 (FY: 2006 To 2023).xlsx",
-        "userName": "flashman1",
-        "status": "Completed",
-        "s3Objectkey": "6e2013b1-eba7-4878-a59f-5f284fec5f60",
-        "createdOn": "2022-04-04 12:42:25 PM",
-        "reqJson": "{\"req\":{\"formId\":200,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CSBG\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":\"fiscalYear\",\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[2021]},\"excelType\":\"SepBYScreen\",\"username\":\"flashman1\",\"formTitle\":\"Module2-CSBGVer:2(FY:2006To2023)\",\"mailOption\":null}"
+	"docName": "Module 2  - CSBG Ver: 2 (FY: 2006 To 2023).xlsx",
+	"userName": "flashman1",
+	"status": "Completed",
+	"s3Objectkey": "6e2013b1-eba7-4878-a59f-5f284fec5f60",
+	"createdOn": "2022-04-04 12:42:25 PM",
+	"reqJson": "{\"req\":{\"formId\":200,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CSBG\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":\"fiscalYear\",\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[2021]},\"excelType\":\"SepBYScreen\",\"username\":\"flashman1\",\"formTitle\":\"Module2-CSBGVer:2(FY:2006To2023)\",\"mailOption\":null}"
     },
     {
-        "docName": "ACF - 696 Financial Report Ver: 8 (FY: 2021 To 2021).xlsx",
-        "userName": "superman1",
-        "status": "Failed",
-        "createdOn": "2021-12-02 03:26:18 PM",
-        "reqJson": "{\"req\":{\"formId\":90,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CCDF\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":null,\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[]},\"excelType\":\"SingleSheet\",\"username\":\"superman1\",\"formTitle\":\"ACF-696FinancialReportVer:8(FY:2021To2021)\",\"mailOption\":null}"
+	"docName": "ACF - 696 Financial Report Ver: 8 (FY: 2021 To 2021).xlsx",
+	"userName": "superman1",
+	"status": "Failed",
+	"createdOn": "2021-12-02 03:26:18 PM",
+	"reqJson": "{\"req\":{\"formId\":90,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CCDF\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":null,\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[]},\"excelType\":\"SingleSheet\",\"username\":\"superman1\",\"formTitle\":\"ACF-696FinancialReportVer:8(FY:2021To2021)\",\"mailOption\":null}"
     },
     {
-        "docName": "ACF-196R : Part 1: Expenditure Data Ver: 13 (FY: 2015 To 2024).xlsx",
-        "userName": "wonderwoman1",
-        "status": "Completed",
-        "s3Objectkey": "9d0eec82-c35c-4758-990e-16bfab253638",
-        "createdOn": "2023-07-24 12:49:11 PM",
-        "reqJson": "{\"req\":{\"formId\":272,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"TANF\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":null,\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[]},\"excelType\":\"SingleSheet\",\"username\":\"wonderwoman1\",\"formTitle\":\"ACF-196R:Part1:ExpenditureDataVer:13(FY:2015To2024)\",\"mailOption\":null}"
+	"docName": "ACF-196R : Part 1: Expenditure Data Ver: 13 (FY: 2015 To 2024).xlsx",
+	"userName": "wonderwoman1",
+	"status": "Completed",
+	"s3Objectkey": "9d0eec82-c35c-4758-990e-16bfab253638",
+	"createdOn": "2023-07-24 12:49:11 PM",
+	"reqJson": "{\"req\":{\"formId\":272,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"TANF\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":null,\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[]},\"excelType\":\"SingleSheet\",\"username\":\"wonderwoman1\",\"formTitle\":\"ACF-196R:Part1:ExpenditureDataVer:13(FY:2015To2024)\",\"mailOption\":null}"
     }
 ]'
+#+end_src
 
+#+begin_src
 curl --location 'http://localhost:8080/opensearch/v1/index/superman1'
+#+end_src
+
+* Errors encountered
+
+** Issue with date format
+
+With elasticsearch, the model object was using ~Date~ as the type for a specific field. It looks like elasticsearch was converting it into the format ~"yyyy-MM-dd hh:mm:ss a"~ without any issues.
+
+And opensearch is not doing it.
+
+#+begin_src
+org.opensearch.client.opensearch._types.OpenSearchException: Request failed: [mapper_parsing_exception] failed to parse field [createdOn] of type [date] in document with id 'M7f5E5EBLWvOEL9OZOnz'. Preview of field's value: '1722616997084'
+#+end_src
+
+How to fix this?
+
+Change the model object to make the type of the field a generic:
+
+#+begin_src
+ public class MyDocument<T> {
+    private Long id;
+    private String docName;
+    private String userName;
+    private String status;
+    private T createdOn;
+    private String reqJson;
+}
+#+end_src
+
+Before indexing with opensearch, set the field appropriately:
+
+#+begin_src
+myDocument.setCreatedOn(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a").format(new Date()));
+#+end_src

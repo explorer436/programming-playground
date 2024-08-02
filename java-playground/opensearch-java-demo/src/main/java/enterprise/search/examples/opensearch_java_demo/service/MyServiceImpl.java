@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -45,6 +48,9 @@ public class MyServiceImpl implements MyService {
 
     @Override
     public String insertDocument(MyDocument myDocument) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+
+        myDocument.setCreatedOn(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a").format(new Date()));
+
         return clientConnector.insertDocument(myDocument);
     }
 
@@ -71,5 +77,10 @@ public class MyServiceImpl implements MyService {
     @Override
     public String updateDocument(MyDocument myDocument) throws IOException {
         return clientConnector.updateDocument(myDocument);
+    }
+
+    @Override
+    public List<MyDocument> fetchDocumentByDocumentId(String documentId) throws NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException {
+        return clientConnector.fetchDocumentByDocumentId(documentId);
     }
 }

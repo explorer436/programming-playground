@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.opensearch.client.json.JsonpMapper;
 import org.opensearch.client.opensearch.OpenSearchClient;
+import org.opensearch.client.opensearch._types.SortOptions;
 import org.opensearch.client.opensearch._types.Time;
 import org.opensearch.client.opensearch._types.mapping.TypeMapping;
 import org.opensearch.client.opensearch.cluster.PutComponentTemplateRequest;
@@ -16,8 +17,10 @@ import org.opensearch.client.opensearch.indices.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -197,14 +200,71 @@ public class ClientConnector {
     public List<MyDocument> fetchDocumentByUsername(String username) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
         OpenSearchClient openSearchClient = getOpenSearchClient();
 
-                SearchRequest searchRequest = new SearchRequest.Builder()
+        /*
+        {
+            "from":0,
+            "size":10000,
+            "_source": ["docName","userName","createdOn","status"],
+            "sort": [
+              {
+                "createdOn": {
+                  "order": "desc"
+                }
+              }
+            ],
+            "query": {
+                "term": {
+                  "userName.keyword": {
+                    "value": "{{username}}"
+                  }
+                }
+            }
+        }
+         */
+
+        String sortString = """
+                {
+                  "createdOn": {
+                    "order": "desc"
+                  }
+                }""";
+        InputStream inputStream = new ByteArrayInputStream(sortString.getBytes(StandardCharsets.UTF_8));
+        JsonpMapper mapper = openSearchClient._transport().jsonpMapper();
+        JsonParser parser = mapper.jsonProvider().createParser(inputStream);
+
+        SearchRequest searchRequest1 = new SearchRequest.Builder()
                 .index(indexName2)
+                .from(0)
+                .size(10000)
+                .source(sorc -> sorc.filter(f -> f.includes("docName","userName","createdOn","status")))
+                .sort(SortOptions._DESERIALIZER.deserialize(parser, mapper))
                 .query(q -> q.queryString(qs -> qs.fields("userName").query(username)))
                 .build();
 
-        SearchResponse<MyDocument> searchResponse = openSearchClient.search(searchRequest, MyDocument.class);
+        SearchResponse<MyDocument> searchResponse = openSearchClient.search(searchRequest1, MyDocument.class);
 
         // log.info("searchResponse.toJsonString(): {}", searchResponse.toJsonString());
+
+        for (var hit : searchResponse.hits().hits()) {
+            log.info("Found {} with score {}", hit.source(), hit.score());
+        }
+
+        return searchResponse.hits().hits().stream().map(
+                h -> h.source()
+        ).collect(Collectors.toUnmodifiableList());
+    }
+
+    public List<MyDocument> fetchDocumentByDocumentId(String documentId) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
+        OpenSearchClient openSearchClient = getOpenSearchClient();
+
+        SearchRequest searchRequest1 = new SearchRequest.Builder()
+                .index(indexName2)
+                .from(0)
+                .size(10000)
+                .query(q -> q.queryString(qs -> qs.fields("_id").query(documentId)))
+                .build();
+
+        SearchResponse<MyDocument> searchResponse = openSearchClient.search(searchRequest1, MyDocument.class);
 
         for (var hit : searchResponse.hits().hits()) {
             log.info("Found {} with score {}", hit.source(), hit.score());

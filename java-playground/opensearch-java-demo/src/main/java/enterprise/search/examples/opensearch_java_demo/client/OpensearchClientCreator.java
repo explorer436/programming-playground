@@ -41,7 +41,7 @@ public class OpensearchClientCreator {
 
     public OpenSearchClient create() throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
 
-        log.info(">>> create()");
+        log.info(">>> create client()");
 
         var env = System.getenv();
         var https = Boolean.parseBoolean(env.getOrDefault("HTTPS", "false"));

@@ -32,4 +32,5 @@ public interface MyService {
 
     public String updateDocument(MyDocument myDocument) throws IOException;
 
+    List<MyDocument> fetchDocumentByDocumentId(String documentId) throws NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException;
 }

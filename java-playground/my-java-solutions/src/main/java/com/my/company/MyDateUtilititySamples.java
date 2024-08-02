@@ -2,6 +2,7 @@ package com.my.company;
 
 import org.apache.commons.lang3.time.DateUtils;
 
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -11,10 +12,16 @@ import java.util.Date;
 public class MyDateUtilititySamples {
     public static void main(String[] args) {
 
+        add_or_subtract_number_of_days_from_current_date();
+
+        ex1();
+    }
+
+    private static void add_or_subtract_number_of_days_from_current_date() {
         // Adding or subtracting number of days from current date
 
         // Using apache commons library
-        Date dateBefore30Days_javautildate_1 = DateUtils.addDays(new Date(),-30);
+        Date dateBefore30Days_javautildate_1 = DateUtils.addDays(new Date(), -30);
         System.out.println("dateBefore30Days_javautildate_1: " + dateBefore30Days_javautildate_1);
 
         // Using java.time.LocalDate
@@ -37,5 +44,10 @@ public class MyDateUtilititySamples {
         Instant before = now.minus(Duration.ofDays(30));
         Date dateBefore = Date.from(before);
         System.out.println("dateBefore: " + dateBefore);
+    }
+
+    private static void ex1() {
+        String expectedDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a").format(new Date());
+        System.out.println("expectedDate: " + expectedDate);
     }
 }

@@ -1,4 +1,4 @@
-package com.my.company.strategypattern.encryptionexample.withoutthepattern;
+package com.my.company.strategypattern.encryptionexample.withoutinheritanceorthepattern;
 
 public class TestDriver {
     public static void main(String[] args) {

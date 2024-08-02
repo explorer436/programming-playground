@@ -38,14 +38,20 @@ public class MyController {
         return ResponseEntity.ok(mappingResponse);
     }
 
-    @GetMapping("/index/settings/{index}")
+    @GetMapping("/index/{index}")
     public ResponseEntity<GetIndicesSettingsResponse> getIndicesSettingsResponse(@PathVariable("index") String index) throws NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException {
         log.info(">>> indexExists()");
         GetIndicesSettingsResponse indexSettingsResponse = myService.getIndicesSettingsResponse(index);
         return ResponseEntity.ok(indexSettingsResponse);
     }
 
-    @GetMapping("/index/{username}")
+    @GetMapping("/index/documentId/{documentId}")
+    public ResponseEntity<List<MyDocument>> fetchDocumentByDocumentId(@PathVariable("documentId") String documentId) throws RecordNotFoundException, IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+        List<MyDocument> myDocuments = myService.fetchDocumentByDocumentId(documentId);
+        return ResponseEntity.ok(myDocuments);
+    }
+
+    @GetMapping("/index/username/{username}")
     public ResponseEntity<List<MyDocument>> fetchDocumentByUsername(@PathVariable("username") String username) throws RecordNotFoundException, IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         List<MyDocument> myDocuments = myService.fetchDocumentByUsername(username);
         return ResponseEntity.ok(myDocuments);

@@ -6,17 +6,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MyDocument {
+public class MyDocument<T> {
     private Long id;
     private String docName;
     private String userName;
     private String status;
-    private String createdOn;
+    private T createdOn;
     private String reqJson;
 }
 
