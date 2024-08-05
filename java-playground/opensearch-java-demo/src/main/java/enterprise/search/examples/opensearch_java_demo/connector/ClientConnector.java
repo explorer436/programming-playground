@@ -11,6 +11,7 @@ import org.opensearch.client.opensearch.OpenSearchClient;
 import org.opensearch.client.opensearch._types.SortOptions;
 import org.opensearch.client.opensearch._types.Time;
 import org.opensearch.client.opensearch._types.mapping.TypeMapping;
+import org.opensearch.client.opensearch._types.query_dsl.Query;
 import org.opensearch.client.opensearch.cluster.PutComponentTemplateRequest;
 import org.opensearch.client.opensearch.core.*;
 import org.opensearch.client.opensearch.indices.*;
@@ -236,7 +237,7 @@ public class ClientConnector {
                 .index(indexName2)
                 .from(0)
                 .size(10000)
-                .source(sorc -> sorc.filter(f -> f.includes("docName","userName","createdOn","status")))
+                .source(sorc -> sorc.filter(f -> f.includes("docName", "userName", "createdOn", "status")))
                 .sort(SortOptions._DESERIALIZER.deserialize(parser, mapper))
                 .query(q -> q.queryString(qs -> qs.fields("userName").query(username)))
                 .build();
@@ -257,11 +258,19 @@ public class ClientConnector {
     public List<MyDocument> fetchDocumentByDocumentId(String documentId) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
         OpenSearchClient openSearchClient = getOpenSearchClient();
 
+        String sortString = """
+                "match": { "_id": "ALe9BpEBLWvOEL9OHOmL"
+                }""";
+        InputStream inputStream = new ByteArrayInputStream(sortString.getBytes(StandardCharsets.UTF_8));
+        JsonpMapper mapper = openSearchClient._transport().jsonpMapper();
+        JsonParser parser = mapper.jsonProvider().createParser(inputStream);
+
         SearchRequest searchRequest1 = new SearchRequest.Builder()
                 .index(indexName2)
                 .from(0)
                 .size(10000)
-                .query(q -> q.queryString(qs -> qs.fields("_id").query(documentId)))
+                // .query(q -> q.queryString(qs -> qs.fields("_id").query(documentId)))
+                .query(Query._DESERIALIZER.deserialize(parser, mapper))
                 .build();
 
         SearchResponse<MyDocument> searchResponse = openSearchClient.search(searchRequest1, MyDocument.class);
