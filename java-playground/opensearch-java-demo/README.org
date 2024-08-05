@@ -18,6 +18,8 @@ curl --location 'http://localhost:8080/opensearch/v1/index/mapping/documents1'
 curl --location 'http://localhost:8080/opensearch/v1/index/settings/documents1'
 #+end_src
 
+curl --location 'http://localhost:8080/opensearch/v1/index/documentId/ALe9BpEBLWvOEL9OHOmL'
+
 #+begin_src
 curl --location 'http://localhost:8080/opensearch/v1/index' \
 --header 'Content-Type: application/json' \

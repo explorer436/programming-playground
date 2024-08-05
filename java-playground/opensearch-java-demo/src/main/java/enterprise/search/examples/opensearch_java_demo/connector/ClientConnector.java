@@ -25,7 +25,9 @@ import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -40,6 +42,8 @@ public class ClientConnector {
     private String indexName2;
 
     private final OpensearchClientCreator opensearchClientCreator;
+
+    private final MustacheImpl mustacheImpl;
 
     @PostConstruct
     public void setupIndexes() throws NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException {
@@ -255,7 +259,37 @@ public class ClientConnector {
         ).collect(Collectors.toUnmodifiableList());
     }
 
-    public List<MyDocument> fetchDocumentByDocumentId(String documentId) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
+    public List<MyDocument> fetchDocumentByDocumentId(String documentId) throws Exception {
+        OpenSearchClient openSearchClient = getOpenSearchClient();
+
+        Map params = new HashMap<>();
+        params.put("documentId", documentId);
+        String query = mustacheImpl.template(params, "searchForMyDocumentById.json");
+        log.info("query: {}", query);
+
+        InputStream inputStream = new ByteArrayInputStream(query.getBytes(StandardCharsets.UTF_8));
+        JsonpMapper mapper = openSearchClient._transport().jsonpMapper();
+        JsonParser parser = mapper.jsonProvider().createParser(inputStream);
+
+        SearchRequest searchRequest = SearchRequest._DESERIALIZER.deserialize(parser, mapper);
+
+        SearchResponse<MyDocument> searchResponse = openSearchClient.search(searchRequest, MyDocument.class);
+
+        for (var hit : searchResponse.hits().hits()) {
+            log.info("Found {} with score {}", hit.source(), hit.score());
+        }
+
+        return searchResponse.hits().hits().stream().map(
+                h -> h.source()
+        ).collect(Collectors.toUnmodifiableList());
+    }
+
+    /**
+     * Do not use the approach of setting individual parameters.
+     * Instead, put the entire template for the query in a json file and fill the parameters as necessary.
+     * See "fetchDocumentByDocumentId()"
+     */
+    public List<MyDocument> fetchDocumentByDocumentId2(String documentId) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
         OpenSearchClient openSearchClient = getOpenSearchClient();
 
         String sortString = """

@@ -80,7 +80,7 @@ public class MyServiceImpl implements MyService {
     }
 
     @Override
-    public List<MyDocument> fetchDocumentByDocumentId(String documentId) throws NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException {
+    public List<MyDocument> fetchDocumentByDocumentId(String documentId) throws Exception {
         return clientConnector.fetchDocumentByDocumentId(documentId);
     }
 }

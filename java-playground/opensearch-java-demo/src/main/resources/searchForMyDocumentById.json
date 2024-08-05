@@ -1,0 +1,11 @@
+{
+  "from":0,
+  "size":1,
+  "query": {
+    "term": {
+      "_id": {
+        "value": "{{documentId}}"
+      }
+    }
+  }
+}

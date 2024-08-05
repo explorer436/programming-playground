@@ -46,7 +46,7 @@ public class MyController {
     }
 
     @GetMapping("/index/documentId/{documentId}")
-    public ResponseEntity<List<MyDocument>> fetchDocumentByDocumentId(@PathVariable("documentId") String documentId) throws RecordNotFoundException, IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+    public ResponseEntity<List<MyDocument>> fetchDocumentByDocumentId(@PathVariable("documentId") String documentId) throws Exception {
         List<MyDocument> myDocuments = myService.fetchDocumentByDocumentId(documentId);
         return ResponseEntity.ok(myDocuments);
     }
