@@ -1,7 +1,5 @@
 package com.my.company.javatojson;
 
-import com.my.company.javatojson.GsonJavaToJson;
-import com.my.company.javatojson.ObjectMapperJavaToJsonStrings;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -28,7 +26,7 @@ public class JavaToJsonStrings_Lists_Tests {
 
         List<String> l = getList();
 
-        String actual = gsonJavaToJson.javaToJson(l);
+        String actual = gsonJavaToJson.javaObjectToJsonString(l);
         assertEquals("[\n" +
                 "  \"first\",\n" +
                 "  \"second\"\n" +

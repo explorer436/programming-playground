@@ -1,5 +1,6 @@
 package com.my.company.javatojson;
 
+import com.google.gson.JsonObject;
 import com.my.company.model.Employee;
 import org.junit.jupiter.api.Test;
 
@@ -74,13 +75,26 @@ public class JavaToJsonStrings_Objects_Tests {
 
         Employee e = getEmployee();
 
-        String actual = gsonJavaToJson.javaToJson(e);
+        String actual = gsonJavaToJson.javaObjectToJsonString(e);
         assertEquals("{\n" +
                 "  \"firstname\": \"a-first-name\",\n" +
                 "  \"lastname\": \"a-last-name\",\n" +
                 "  \"joinedDate\": \"2016-06-24T13:39:44.68768\",\n" +
                 "  \"leavingDate\": \"2016-06-24T13:39:44+01:00\"\n" +
                 "}", actual);
+    }
+
+    @Test
+    public void test_gson_mapToJsonObject() {
+
+        JsonObject actual = gsonJavaToJson.mapToJsonObject();
+
+        JsonObject expected = new JsonObject();
+        expected.addProperty("John Smith", "521-1234");
+        expected.addProperty("Sam Doe", "521-5030");
+        expected.addProperty("Sandra Dee", "521-9655");
+
+        assertEquals(expected, actual);
     }
 
     private static Employee getEmployee() {
