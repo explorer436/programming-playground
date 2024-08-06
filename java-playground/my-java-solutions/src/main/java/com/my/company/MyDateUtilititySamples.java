@@ -2,19 +2,23 @@ package com.my.company;
 
 import org.apache.commons.lang3.time.DateUtils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Locale;
 
 public class MyDateUtilititySamples {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
         add_or_subtract_number_of_days_from_current_date();
 
-        ex1();
+        currentDateToString();
+
+        stringToJavaUtilDate();
     }
 
     private static void add_or_subtract_number_of_days_from_current_date() {
@@ -46,8 +50,17 @@ public class MyDateUtilititySamples {
         System.out.println("dateBefore: " + dateBefore);
     }
 
-    private static void ex1() {
+    private static void currentDateToString() {
         String expectedDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a").format(new Date());
         System.out.println("expectedDate: " + expectedDate);
+    }
+
+    private static void stringToJavaUtilDate() throws ParseException {
+
+        String dateInStringFormat = "2024-08-06 12:16:04 PM";
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a", Locale.ENGLISH);
+        Date date = formatter.parse(dateInStringFormat);
+        System.out.println("date: " + date);
     }
 }
