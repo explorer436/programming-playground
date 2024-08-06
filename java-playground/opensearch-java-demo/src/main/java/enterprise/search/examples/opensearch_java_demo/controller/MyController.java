@@ -57,18 +57,6 @@ public class MyController {
         return ResponseEntity.ok(myDocuments);
     }
 
-    @PostMapping("/index/fetchWithMust")
-    public ResponseEntity<List<MyDocument>> fetchDocumentsWithMustQuery(@RequestBody MyDocument myDocumentSearchRequest) throws IOException {
-        List<MyDocument> myDocuments = myService.fetchDocumentsWithMustQuery(myDocumentSearchRequest);
-        return ResponseEntity.ok(myDocuments);
-    }
-
-    @PostMapping("/index/fetchWithShould")
-    public ResponseEntity<List<MyDocument>> fetchDocumentsWithShouldQuery(@RequestBody MyDocument myDocumentSearchRequest) throws IOException {
-        List<MyDocument> myDocuments = myService.fetchDocumentsWithShouldQuery(myDocumentSearchRequest);
-        return ResponseEntity.ok(myDocuments);
-    }
-
     @PostMapping("/index")
     public ResponseEntity<String> insertDocument(@RequestBody MyDocument myDocument) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         String status = myService.insertDocument(myDocument);
@@ -85,9 +73,9 @@ public class MyController {
         }
     }
 
-    @DeleteMapping("/index/{id}")
-    public ResponseEntity<String> deleteDocument(@PathVariable("id") Long id) throws IOException {
-        String status = myService.deleteDocumentById(id);
+    @DeleteMapping("/index/delete/{documentId}")
+    public ResponseEntity<String> deleteDocument(@PathVariable("documentId") String documentId) throws Exception {
+        String status = myService.deleteDocumentById(documentId);
         return ResponseEntity.ok(status);
     }
 

@@ -25,10 +25,7 @@ public interface MyService {
 
     public boolean bulkInsertDocuments(List<MyDocument> myDocuments) throws NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException;
 
-    public List<MyDocument> fetchDocumentsWithMustQuery(MyDocument myDocument) throws IOException;
-    public List<MyDocument> fetchDocumentsWithShouldQuery(MyDocument myDocument) throws IOException;
-
-    public String deleteDocumentById(Long id) throws IOException;
+    public String deleteDocumentById(String documentId) throws Exception;
 
     public String updateDocument(MyDocument myDocument) throws IOException;
 

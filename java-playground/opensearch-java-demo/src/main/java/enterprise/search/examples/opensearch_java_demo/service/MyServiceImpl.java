@@ -60,18 +60,8 @@ public class MyServiceImpl implements MyService {
     }
 
     @Override
-    public List<MyDocument> fetchDocumentsWithMustQuery(MyDocument myDocument) throws IOException {
-        return clientConnector.fetchDocumentsWithMustQuery(myDocument);
-    }
-
-    @Override
-    public List<MyDocument> fetchDocumentsWithShouldQuery(MyDocument myDocument) throws IOException {
-        return clientConnector.fetchDocumentsWithShouldQuery(myDocument);
-    }
-
-    @Override
-    public String deleteDocumentById(Long id) throws IOException {
-        return clientConnector.deleteDocumentById(id);
+    public String deleteDocumentById(String documentId) throws Exception {
+        return clientConnector.deleteDocumentById(documentId);
     }
 
     @Override

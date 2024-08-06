@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.opensearch.client.json.JsonpMapper;
 import org.opensearch.client.opensearch.OpenSearchClient;
+import org.opensearch.client.opensearch._types.Result;
 import org.opensearch.client.opensearch._types.SortOptions;
 import org.opensearch.client.opensearch._types.Time;
 import org.opensearch.client.opensearch._types.mapping.TypeMapping;
@@ -264,7 +265,7 @@ public class ClientConnector {
 
         Map params = new HashMap<>();
         params.put("documentId", documentId);
-        String query = mustacheImpl.template(params, "searchForMyDocumentById.json");
+        String query = mustacheImpl.template(params, "query-MyDocumentById.json");
         log.info("query: {}", query);
 
         InputStream inputStream = new ByteArrayInputStream(query.getBytes(StandardCharsets.UTF_8));
@@ -318,16 +319,18 @@ public class ClientConnector {
         ).collect(Collectors.toUnmodifiableList());
     }
 
-    public List<MyDocument> fetchDocumentsWithMustQuery(MyDocument myDocument) {
-        return List.of();
-    }
+    public String deleteDocumentById(String documentId) throws Exception {
+        OpenSearchClient openSearchClient = getOpenSearchClient();
 
-    public List<MyDocument> fetchDocumentsWithShouldQuery(MyDocument myDocument) {
-        return List.of();
-    }
+        DeleteResponse deleteResponse = openSearchClient.delete(d -> d.index(indexName2).id(documentId));
 
-    public String deleteDocumentById(Long id) {
-        return "";
+        log.info("deleteResponse: {}", deleteResponse.toJsonString());
+
+        if (deleteResponse.result().compareTo(Result.Deleted) == 0) {
+            return "success";
+        } else {
+            return "failure";
+        }
     }
 
     public String updateDocument(MyDocument myDocument) {

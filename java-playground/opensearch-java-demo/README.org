@@ -18,7 +18,9 @@ curl --location 'http://localhost:8080/opensearch/v1/index/mapping/documents1'
 curl --location 'http://localhost:8080/opensearch/v1/index/settings/documents1'
 #+end_src
 
+#+begin_src
 curl --location 'http://localhost:8080/opensearch/v1/index/documentId/ALe9BpEBLWvOEL9OHOmL'
+#+end_src
 
 #+begin_src
 curl --location 'http://localhost:8080/opensearch/v1/index' \
@@ -153,4 +155,20 @@ Before indexing with opensearch, set the field appropriately:
 
 #+begin_src
 myDocument.setCreatedOn(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a").format(new Date()));
+#+end_src
+
+** UnexpectedJsonEventException while parsing opensearch request object
+
+#+begin_src
+org.opensearch.client.json.UnexpectedJsonEventException: Unexpected JSON event 'START_ARRAY' instead of '[START_OBJECT, KEY_NAME, VALUE_STRING, VALUE_TRUE, VALUE_FALSE]'
+#+end_src
+
+change version number in pom.xml to
+#+begin_src
+<!-- https://mvnrepository.com/artifact/org.opensearch.client/opensearch-java -->
+<dependency>
+    <groupId>org.opensearch.client</groupId>
+    <artifactId>opensearch-java</artifactId>
+    <version>2.13.0</version>
+</dependency>
 #+end_src
