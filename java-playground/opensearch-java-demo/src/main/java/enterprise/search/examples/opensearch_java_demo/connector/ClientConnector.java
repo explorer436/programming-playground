@@ -1,5 +1,9 @@
 package enterprise.search.examples.opensearch_java_demo.connector;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import enterprise.search.examples.opensearch_java_demo.client.OpensearchClientCreator;
 import enterprise.search.examples.opensearch_java_demo.model.Movie;
 import enterprise.search.examples.opensearch_java_demo.model.MyDocument;
@@ -58,7 +62,9 @@ public class ClientConnector {
     }
 
     private void setupIndex(String indexName, String mappingFilename) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
-        if (!hasIndex(indexName)) {
+        boolean indexExists = hasIndex(indexName);
+        log.info("index {} exists: {}", indexName, indexExists);
+        if (!indexExists) {
             createIndex(indexName, mappingFilename);
         }
     }
@@ -184,6 +190,9 @@ public class ClientConnector {
         IndexRequest<MyDocument> indexRequest = new IndexRequest.Builder<MyDocument>().index(indexName2)
                 .document(myDocument)
                 .build();
+
+
+        log.info("indexRequest: {}", javaToJson(indexRequest));
 
         OpenSearchClient openSearchClient = getOpenSearchClient();
         IndexResponse indexResponse = openSearchClient.index(indexRequest);
@@ -380,5 +389,19 @@ public class ClientConnector {
     private OpenSearchClient getOpenSearchClient() throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         OpenSearchClient openSearchClient = opensearchClientCreator.create();
         return openSearchClient;
+    }
+
+    private String javaToJson(IndexRequest input) throws JsonProcessingException {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        // com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8 date/time type `java.time.LocalDate` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling (through reference chain: com.example.jacksonjsonpoc.objectmapper.model.Employee["joinedDate"])
+
+        objectMapper.registerModule(new JavaTimeModule());
+
+        // No serializer found for class org.opensearch.client.opensearch.core.IndexRequest and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS)
+        objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+
+        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(input);
     }
 }

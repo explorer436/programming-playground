@@ -2,7 +2,7 @@
   "properties": {
     "createdOn": {
       "type": "date",
-      "format": "yyyy-MM-dd hh:mm:ss a"
+      "format" : "strict_date_optional_time||epoch_millis"
     },
     "docId": {
       "type": "text"

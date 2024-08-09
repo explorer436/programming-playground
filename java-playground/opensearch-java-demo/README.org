@@ -144,16 +144,45 @@ curl --location 'http://localhost:8080/opensearch/v1/index/superman1'
 
 With elasticsearch, the model object was using ~Date~ as the type for a specific field. It looks like elasticsearch was converting it into the format ~"yyyy-MM-dd hh:mm:ss a"~ without any issues.
 
+While the application is retrieving the document from elasticsearch, the application is reading the date field and parsing it without any issues.
+
 And opensearch is not doing it.
 
+While trying to insert an object with a ~Date~ field in it, I saw this error.
 #+begin_src
 org.opensearch.client.opensearch._types.OpenSearchException: Request failed: [mapper_parsing_exception] failed to parse field [createdOn] of type [date] in document with id 'M7f5E5EBLWvOEL9OZOnz'. Preview of field's value: '1722616997084'
 #+end_src
 
 How to fix this?
 
-Change the model object to make the type of the field a generic:
+*** Option 1: Use the default format for date instead of using custom ones
 
+"format" : "strict_date_optional_time||epoch_millis"
+
+Advantages with this approach:
+1. The code is simple. There is no need for parsing the values of dates.
+1. All the built-in conditions work without any issues.
+   #+begin_src
+   GET /documents2/_search
+   {
+	   "sort": [
+	   {
+	     "createdOn": {
+	       "order": "desc"
+	     }
+	   }
+	 ],
+       "query": {
+	   "match_all": {}
+       }
+   }
+   #+end_src
+
+*** Option 2: Store it as a string
+
+Store it as a string in Opensearch and parse the value before insertions and after retrievals. However, this is painful to deal with. During insertion and retrieval.
+
+One option to fix this is to: ~Change the model object to make the type of the field a generic~.
 #+begin_src
  public class MyDocument<T> {
     private Long id;

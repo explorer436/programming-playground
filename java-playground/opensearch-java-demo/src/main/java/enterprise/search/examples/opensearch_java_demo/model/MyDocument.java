@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -18,7 +19,7 @@ public class MyDocument<T> {
     private String docName;
     private String userName;
     private String status;
-    private T createdOn;
+    private Date createdOn;
     private String reqJson;
 }
 

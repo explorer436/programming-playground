@@ -48,7 +48,8 @@ public class MyServiceImpl implements MyService {
     @Override
     public String insertDocument(MyDocument myDocument) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
 
-        myDocument.setCreatedOn(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a").format(new Date()));
+        // String abc = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a").format(new Date());
+        myDocument.setCreatedOn(new Date());
 
         return clientConnector.insertDocument(myDocument);
     }
