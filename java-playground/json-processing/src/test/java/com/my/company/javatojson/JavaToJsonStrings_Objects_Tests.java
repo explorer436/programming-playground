@@ -85,9 +85,9 @@ public class JavaToJsonStrings_Objects_Tests {
     }
 
     @Test
-    public void test_gson_mapToJsonObject() {
+    public void test_gson_mapWithStringValuesToJsonObject() {
 
-        JsonObject actual = gsonJavaToJson.mapToJsonObject();
+        JsonObject actual = gsonJavaToJson.mapWithStringValuesToJsonObject();
 
         JsonObject expected = new JsonObject();
         expected.addProperty("John Smith", "521-1234");

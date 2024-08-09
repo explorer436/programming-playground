@@ -35,7 +35,7 @@ public class GsonJavaToJson {
         return gson.toJson(e);
     }
 
-    public JsonObject mapToJsonObject() {
+    public JsonObject mapWithStringValuesToJsonObject() {
         JsonObject jsonObject = new JsonObject();
 
         Map<String, String> sampleMap = new HashMap<String, String>();

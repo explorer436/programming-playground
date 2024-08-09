@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "name":    { "type" : "text" },
+    "year":    { "type" : "text" },
+    "age":     { "type" : "integer" },
+    "director":{ "type" : "text" }
+  }
+}

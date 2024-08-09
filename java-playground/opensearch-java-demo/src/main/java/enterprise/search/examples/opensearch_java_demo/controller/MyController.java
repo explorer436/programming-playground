@@ -1,6 +1,7 @@
 package enterprise.search.examples.opensearch_java_demo.controller;
 
 import enterprise.search.examples.opensearch_java_demo.exception.RecordNotFoundException;
+import enterprise.search.examples.opensearch_java_demo.model.Movie;
 import enterprise.search.examples.opensearch_java_demo.model.MyDocument;
 import enterprise.search.examples.opensearch_java_demo.service.MyService;
 import lombok.RequiredArgsConstructor;
@@ -57,9 +58,15 @@ public class MyController {
         return ResponseEntity.ok(myDocuments);
     }
 
-    @PostMapping("/index")
-    public ResponseEntity<String> insertDocument(@RequestBody MyDocument myDocument) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+    @PostMapping("/index/mydocument")
+    public ResponseEntity<String> insertMyDocument(@RequestBody MyDocument myDocument) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         String status = myService.insertDocument(myDocument);
+        return ResponseEntity.ok(status);
+    }
+
+    @PostMapping("/index/movie")
+    public ResponseEntity<String> insertMovie(@RequestBody Movie movie) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+        String status = myService.insertMovie(movie);
         return ResponseEntity.ok(status);
     }
 
@@ -83,5 +90,11 @@ public class MyController {
     public ResponseEntity<String> updateDocument(@RequestBody MyDocument myDocument) throws IOException {
         String status = myService.updateDocument(myDocument);
         return ResponseEntity.ok(status);
+    }
+
+    @GetMapping("/index/movie/{name}")
+    public ResponseEntity<List<Movie>> fetchMovieByName(@PathVariable("name") String name) throws Exception {
+        List<Movie> movies = myService.fetchMovieByName(name);
+        return ResponseEntity.ok(movies);
     }
 }

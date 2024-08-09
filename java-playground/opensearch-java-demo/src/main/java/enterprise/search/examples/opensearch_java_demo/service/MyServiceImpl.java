@@ -1,7 +1,7 @@
 package enterprise.search.examples.opensearch_java_demo.service;
 
 import enterprise.search.examples.opensearch_java_demo.connector.ClientConnector;
-import enterprise.search.examples.opensearch_java_demo.exception.RecordNotFoundException;
+import enterprise.search.examples.opensearch_java_demo.model.Movie;
 import enterprise.search.examples.opensearch_java_demo.model.MyDocument;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,6 @@ import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -55,6 +54,11 @@ public class MyServiceImpl implements MyService {
     }
 
     @Override
+    public String insertMovie(Movie movie) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+        return clientConnector.insertMovie(movie);
+    }
+
+    @Override
     public boolean bulkInsertDocuments(List<MyDocument> myDocuments) throws NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException {
         return clientConnector.bulkInsertDocuments(myDocuments);
     }
@@ -72,5 +76,10 @@ public class MyServiceImpl implements MyService {
     @Override
     public List<MyDocument> fetchDocumentByDocumentId(String documentId) throws Exception {
         return clientConnector.fetchDocumentByDocumentId(documentId);
+    }
+
+    @Override
+    public List<Movie> fetchMovieByName(String name) throws Exception {
+        return clientConnector.fetchMovieByName(name);
     }
 }

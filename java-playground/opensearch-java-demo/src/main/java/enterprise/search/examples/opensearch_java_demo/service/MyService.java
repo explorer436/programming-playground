@@ -1,6 +1,7 @@
 package enterprise.search.examples.opensearch_java_demo.service;
 
 import enterprise.search.examples.opensearch_java_demo.exception.RecordNotFoundException;
+import enterprise.search.examples.opensearch_java_demo.model.Movie;
 import enterprise.search.examples.opensearch_java_demo.model.MyDocument;
 import org.opensearch.client.opensearch.indices.GetIndicesSettingsResponse;
 import org.opensearch.client.opensearch.indices.GetMappingResponse;
@@ -23,6 +24,8 @@ public interface MyService {
 
     public String insertDocument(MyDocument myDocument) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException;
 
+    String insertMovie(Movie movie) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException;
+
     public boolean bulkInsertDocuments(List<MyDocument> myDocuments) throws NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException;
 
     public String deleteDocumentById(String documentId) throws Exception;
@@ -30,4 +33,6 @@ public interface MyService {
     public String updateDocument(MyDocument myDocument) throws IOException;
 
     List<MyDocument> fetchDocumentByDocumentId(String documentId) throws Exception;
+
+    List<Movie> fetchMovieByName(String name) throws Exception;
 }

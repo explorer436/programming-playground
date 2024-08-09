@@ -4,6 +4,20 @@ Start the required docker containers.
 
 https://github.com/explorer436/programming-playground/tree/main/docker%20compose%20files/opensearch
 
+#+begin_src
+POST /movies/_doc
+{
+  "name" : "The Godfather",
+  "director" : "Francis Ford Coppola",
+  "age" : 52,
+  "year" : "1972"
+}
+#+end_src
+
+* Learnings
+
+If the application is using multiple indexes at the same Opensearch domain, we don't have to specify the names of the indexes while building ~SearchRequest~ objects. The client is smart enough to figure out where to get the data from.
+
 * Testing
 
 #+begin_src

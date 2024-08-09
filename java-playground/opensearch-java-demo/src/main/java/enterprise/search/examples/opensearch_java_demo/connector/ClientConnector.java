@@ -1,6 +1,7 @@
 package enterprise.search.examples.opensearch_java_demo.connector;
 
 import enterprise.search.examples.opensearch_java_demo.client.OpensearchClientCreator;
+import enterprise.search.examples.opensearch_java_demo.model.Movie;
 import enterprise.search.examples.opensearch_java_demo.model.MyDocument;
 import jakarta.annotation.PostConstruct;
 import jakarta.json.stream.JsonParser;
@@ -42,6 +43,9 @@ public class ClientConnector {
     @Value("${cloudsearch.index2}")
     private String indexName2;
 
+    @Value("${cloudsearch.movies.index}")
+    private String moviesIndex;
+
     private final OpensearchClientCreator opensearchClientCreator;
 
     private final MustacheImpl mustacheImpl;
@@ -50,6 +54,7 @@ public class ClientConnector {
     public void setupIndexes() throws NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException {
         setupIndex(indexName1, "mapping1.json");
         setupIndex(indexName2, "mapping2.json");
+        setupIndex(moviesIndex, "moviesIndexMapping.json");
     }
 
     private void setupIndex(String indexName, String mappingFilename) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
@@ -178,6 +183,16 @@ public class ClientConnector {
     public String insertDocument(MyDocument myDocument) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         IndexRequest<MyDocument> indexRequest = new IndexRequest.Builder<MyDocument>().index(indexName2)
                 .document(myDocument)
+                .build();
+
+        OpenSearchClient openSearchClient = getOpenSearchClient();
+        IndexResponse indexResponse = openSearchClient.index(indexRequest);
+        return indexResponse.id();
+    }
+
+    public String insertMovie(Movie movie) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+        IndexRequest<Movie> indexRequest = new IndexRequest.Builder<Movie>().index(indexName2)
+                .document(movie)
                 .build();
 
         OpenSearchClient openSearchClient = getOpenSearchClient();
@@ -331,6 +346,31 @@ public class ClientConnector {
         } else {
             return "failure";
         }
+    }
+
+    public List<Movie> fetchMovieByName(String name) throws Exception {
+        OpenSearchClient openSearchClient = getOpenSearchClient();
+
+        Map params = new HashMap<>();
+        params.put("name", name);
+        String query = mustacheImpl.template(params, "query-MovieByName.json");
+        log.info("query: {}", query);
+
+        InputStream inputStream = new ByteArrayInputStream(query.getBytes(StandardCharsets.UTF_8));
+        JsonpMapper mapper = openSearchClient._transport().jsonpMapper();
+        JsonParser parser = mapper.jsonProvider().createParser(inputStream);
+
+        SearchRequest searchRequest = SearchRequest._DESERIALIZER.deserialize(parser, mapper);
+
+        SearchResponse<Movie> searchResponse = openSearchClient.search(searchRequest, Movie.class);
+
+        for (var hit : searchResponse.hits().hits()) {
+            log.info("Found {} with score {}", hit.source(), hit.score());
+        }
+
+        return searchResponse.hits().hits().stream().map(
+                h -> h.source()
+        ).collect(Collectors.toUnmodifiableList());
     }
 
     public String updateDocument(MyDocument myDocument) {
