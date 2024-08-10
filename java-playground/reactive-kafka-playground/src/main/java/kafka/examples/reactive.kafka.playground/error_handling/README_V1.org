@@ -1,0 +1,160 @@
+With this type of set-up, the consumer will stop as soon as there is an exception
+
+#+begin_src
+ 16:32:47.431 [main] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values:
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:8081]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-demo-group-1
+	client.rack =
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = demo-group
+	group.instance.id = 1
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+16:32:47.482 [main] INFO  o.a.k.c.t.i.KafkaMetricsCollector - initializing Kafka metrics collector
+16:32:47.692 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.7.1
+16:32:47.694 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: e2494e6ffb89f828
+16:32:47.694 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1723321967691
+16:32:47.721 [reactive-kafka-demo-group-1] INFO  o.a.k.c.c.i.LegacyKafkaConsumer - [Consumer instanceId=1, clientId=consumer-demo-group-1, groupId=demo-group] Subscribed to topic(s): first_kafka_topic
+16:32:48.049 [reactive-kafka-demo-group-1] INFO  org.apache.kafka.clients.Metadata - [Consumer instanceId=1, clientId=consumer-demo-group-1, groupId=demo-group] Cluster ID: OTMwNzFhYTY1ODNiNGE5OQ
+16:32:48.050 [reactive-kafka-demo-group-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer instanceId=1, clientId=consumer-demo-group-1, groupId=demo-group] Discovered group coordinator localhost:8083 (id: 2147483644 rack: null)
+16:32:48.053 [reactive-kafka-demo-group-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer instanceId=1, clientId=consumer-demo-group-1, groupId=demo-group] (Re-)joining group
+16:32:51.098 [reactive-kafka-demo-group-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer instanceId=1, clientId=consumer-demo-group-1, groupId=demo-group] Successfully joined group with generation Generation{generationId=5, memberId='1-4aa5960b-4e1b-43e5-924a-03ab9ce4015c', protocol='range'}
+16:32:51.113 [reactive-kafka-demo-group-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer instanceId=1, clientId=consumer-demo-group-1, groupId=demo-group] Finished assignment for group at generation 5: {1-4aa5960b-4e1b-43e5-924a-03ab9ce4015c=Assignment(partitions=[first_kafka_topic-0])}
+16:32:51.137 [reactive-kafka-demo-group-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer instanceId=1, clientId=consumer-demo-group-1, groupId=demo-group] Successfully synced group in generation Generation{generationId=5, memberId='1-4aa5960b-4e1b-43e5-924a-03ab9ce4015c', protocol='range'}
+16:32:51.138 [reactive-kafka-demo-group-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer instanceId=1, clientId=consumer-demo-group-1, groupId=demo-group] Notifying assignor about the new Assignment(partitions=[first_kafka_topic-0])
+16:32:51.140 [reactive-kafka-demo-group-1] INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer instanceId=1, clientId=consumer-demo-group-1, groupId=demo-group] Adding newly assigned partitions: first_kafka_topic-0
+16:32:51.151 [reactive-kafka-demo-group-1] INFO  o.a.k.c.c.internals.ConsumerUtils - Setting offset for partition first_kafka_topic-0 to the committed offset FetchPosition{offset=825, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:8083 (id: 3 rack: null)], epoch=6}}
+16:32:51.222 [reactive-kafka-demo-group-1] ERROR k.e.r.k.p.e.MyKafkaConsumer - Index 15 out of bounds for length 9
+16:32:51.223 [reactive-kafka-demo-group-1] ERROR reactor.core.publisher.Operators - Operator called default onErrorDropped
+reactor.core.Exceptions$ErrorCallbackNotImplemented: java.lang.ArrayIndexOutOfBoundsException: Index 15 out of bounds for length 9
+Caused by: java.lang.ArrayIndexOutOfBoundsException: Index 15 out of bounds for length 9
+	at kafka.examples.reactive.kafka.playground.error_handling.MyKafkaConsumer.lambda$main$0(MyKafkaConsumer.java:31)
+	at reactor.core.publisher.FluxPeek$PeekSubscriber.onNext(FluxPeek.java:185)
+	at reactor.core.publisher.FluxUsingWhen$UsingWhenSubscriber.onNext(FluxUsingWhen.java:348)
+	at reactor.core.publisher.FluxUsing$UsingFuseableSubscriber.onNext(FluxUsing.java:353)
+	at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onNext(FluxMapFuseable.java:129)
+	at reactor.core.publisher.FluxFlattenIterable$FlattenIterableSubscriber.drainAsync(FluxFlattenIterable.java:453)
+	at reactor.core.publisher.FluxFlattenIterable$FlattenIterableSubscriber.drain(FluxFlattenIterable.java:724)
+	at reactor.core.publisher.FluxFlattenIterable$FlattenIterableSubscriber.onNext(FluxFlattenIterable.java:256)
+	at reactor.core.publisher.FluxPublishOn$PublishOnSubscriber.runBackfused(FluxPublishOn.java:490)
+	at reactor.core.publisher.FluxPublishOn$PublishOnSubscriber.run(FluxPublishOn.java:527)
+	at reactor.core.scheduler.ExecutorScheduler$ExecutorTrackedRunnable.run(ExecutorScheduler.java:192)
+	at reactor.core.scheduler.ImmediateScheduler$ImmediateSchedulerWorker.schedule(ImmediateScheduler.java:84)
+	at reactor.core.scheduler.SingleWorkerScheduler.execute(SingleWorkerScheduler.java:64)
+	at reactor.core.scheduler.ExecutorScheduler$ExecutorSchedulerWorker.schedule(ExecutorScheduler.java:252)
+	at reactor.core.publisher.FluxPublishOn$PublishOnSubscriber.trySchedule(FluxPublishOn.java:312)
+	at reactor.core.publisher.FluxPublishOn$PublishOnSubscriber.onNext(FluxPublishOn.java:237)
+	at reactor.core.publisher.FluxPeekFuseable$PeekFuseableSubscriber.onNext(FluxPeekFuseable.java:210)
+	at reactor.core.publisher.SinkManyUnicast.drainRegular(SinkManyUnicast.java:284)
+	at reactor.core.publisher.SinkManyUnicast.drain(SinkManyUnicast.java:365)
+	at reactor.core.publisher.SinkManyUnicast.tryEmitNext(SinkManyUnicast.java:239)
+	at reactor.core.publisher.SinkManySerialized.tryEmitNext(SinkManySerialized.java:100)
+	at reactor.core.publisher.InternalManySink.emitNext(InternalManySink.java:27)
+	at reactor.kafka.receiver.internals.ConsumerEventLoop$PollEvent.run(ConsumerEventLoop.java:371)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+16:32:51.226 [reactive-kafka-demo-group-1] INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer instanceId=1, clientId=consumer-demo-group-1, groupId=demo-group] Revoke previously assigned partitions first_kafka_topic-0
+16:32:51.227 [reactive-kafka-demo-group-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer instanceId=1, clientId=consumer-demo-group-1, groupId=demo-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+16:32:51.227 [reactive-kafka-demo-group-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer instanceId=1, clientId=consumer-demo-group-1, groupId=demo-group] Request joining group due to: consumer pro-actively leaving the group
+16:32:51.237 [reactive-kafka-demo-group-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+16:32:51.237 [reactive-kafka-demo-group-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+16:32:51.237 [reactive-kafka-demo-group-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+16:32:51.237 [reactive-kafka-demo-group-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+16:32:51.246 [reactive-kafka-demo-group-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.consumer for consumer-demo-group-1 unregistered
+
+Process finished with exit code 0
+#+end_src

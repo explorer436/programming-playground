@@ -1,0 +1,9 @@
+spring-kafka has built-in support for dead letter topics.
+
+reactor-kafka does not have built-in support for dead letter topics.
+
+In order to overcome that, we have to write a separate Producer to write messages to the dead-letter topic.
+
+What if a message picked up from the dead letter topic fails processing again? It is up to the developers to decide how to handle it. For most simple cases, just don't acknowledge it.
+
+

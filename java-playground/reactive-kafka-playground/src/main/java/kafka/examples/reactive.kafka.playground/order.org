@@ -1,0 +1,8 @@
+1. initial
+2. backpressure
+3. messages with headers
+4. fault tolerance
+5. consumer groups
+6. error handling
+7. dead letter topics
+8. poison pill errors

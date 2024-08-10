@@ -1,0 +1,8 @@
+It may be ok to ignore some types of exceptions and acknowledge them and move on.
+
+But there may be scenarios where we don't want the consumer to acknowledge a message until it is processed successfully.
+
+In those scenarios, we have to handle the exceptions and retries and acknowledgements based on the type of exceptions.
+
+1. We will not acknowledge the message if the error is ~DB is down~ error.
+1. We will acknowledge the message if the error is ~IndexOutOfBoundsException~ error.

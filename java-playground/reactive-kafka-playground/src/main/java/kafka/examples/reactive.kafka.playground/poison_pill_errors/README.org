@@ -1,0 +1,7 @@
+What if the consumer is not able to deserialize the message? In other words, the consumer is expecting one type of message - but someone placed a different type of message in the topic.
+
+This is called a ~Poison pill error~. No amount of retries can help solve this problem.
+
+The consumer is expecting an Integer but the producer is sending a String.
+
+We can write our own deserializer. Spring also provides a deserializer called ErrorHandlingDeserializer. We can just use it.

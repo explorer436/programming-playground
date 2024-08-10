@@ -22,6 +22,7 @@ public class MyKafkaProducer {
         );
         var senderOptions = SenderOptions.<String, String>create(producerConfig)
                 .maxInFlight(10_000);
+
         // This is not the default value. Default is 256. The default value is small to handle backpressure well.
         // If we are sending a flux of a million records and the maxInFlight value is very low, due to backpressure, they will take a long time to be sent by the producer.
         // If we remove the maxInFligt value, we can see the difference. The producer will take much longer to send all those messages.

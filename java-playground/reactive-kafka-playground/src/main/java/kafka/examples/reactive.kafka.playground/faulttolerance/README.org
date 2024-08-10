@@ -1,0 +1,1 @@
+See https://programming-notes.explorer436.com/posts/20240809145302-kafka_fault_tolerance/
