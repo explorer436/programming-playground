@@ -6,3 +6,4 @@
 6. error handling
 7. dead letter topics
 8. poison pill errors
+9. with spring

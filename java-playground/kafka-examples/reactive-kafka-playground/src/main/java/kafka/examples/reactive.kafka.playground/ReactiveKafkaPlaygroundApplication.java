@@ -1,4 +1,4 @@
-package kafka.examples.reactive_kafka_playground;
+package kafka.examples.reactive.kafka.playground;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
