@@ -31,3 +31,8 @@ Start kafka and create the topic.
 #+begin_src
 kafka-topics.sh --bootstrap-server localhost:9092 --topic order-events --create
 #+end_src
+
+1. docker compose files/kafka/01-kafka-server-setup/compose/docker-compose.yaml uses "localhost:9092"
+1. docker compose files/kafka/03-kafka-cluster-setup/compose/docker-compose.yaml uses ""localhost:8081""
+
+Set up the containers accordingly.
