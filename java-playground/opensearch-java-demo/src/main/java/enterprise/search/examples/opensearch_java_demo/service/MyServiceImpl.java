@@ -14,6 +14,8 @@ import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -48,10 +50,16 @@ public class MyServiceImpl implements MyService {
     @Override
     public String insertDocument(MyDocument myDocument) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
 
-        // String abc = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a").format(new Date());
-        myDocument.setCreatedOn(new Date());
+        myDocument.setCreatedOn(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a")));
 
         return clientConnector.insertDocument(myDocument);
+    }
+
+    private static String currentDateToString() {
+        String expectedDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a").format(new Date());
+        System.out.println("expectedDate: " + expectedDate);
+
+        return expectedDate;
     }
 
     @Override

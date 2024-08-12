@@ -19,7 +19,7 @@ public class MyDocument<T> {
     private String docName;
     private String userName;
     private String status;
-    private Date createdOn;
+    private String createdOn;
     private String reqJson;
 }
 

@@ -4,10 +4,8 @@ import org.apache.commons.lang3.time.DateUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 
@@ -50,17 +48,27 @@ public class MyDateUtilititySamples {
         System.out.println("dateBefore: " + dateBefore);
     }
 
+    // before java8 style
     private static void currentDateToString() {
         String expectedDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a").format(new Date());
         System.out.println("expectedDate: " + expectedDate);
     }
 
+    // java8 style
+    private String getCurrentLocalDateTimeStamp() {
+        return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a"));
+    }
+
     private static void stringToJavaUtilDate() throws ParseException {
 
         String dateInStringFormat = "2024-08-06 12:16:04 PM";
-
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a", Locale.ENGLISH);
         Date date = formatter.parse(dateInStringFormat);
         System.out.println("date: " + date);
+
+        String dateInStringFormat2 = "2024-08-06";
+        SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        Date date2 = formatter2.parse(dateInStringFormat2);
+        System.out.println("date2: " + date2);
     }
 }

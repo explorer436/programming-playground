@@ -37,13 +37,12 @@ curl --location 'http://localhost:8080/opensearch/v1/index/documentId/ALe9BpEBLW
 #+end_src
 
 #+begin_src
-curl --location 'http://localhost:8080/opensearch/v1/index' \
+curl --location 'http://localhost:8080/opensearch/v1/index/mydocument' \
 --header 'Content-Type: application/json' \
 --data '{
     "docName": "Module 4  - CSBG(196) Ver: 2 (FY: 2020 To 2023).xlsx",
     "userName": "bruceWayne",
     "status": "Completed",
-    "createdOn": "2024-07-23 07:21:15 PM",
     "reqJson": "{\"req\":{\"formId\":203,\"idOnly\":false,\"needBasedForm\":false,\"grantNumbers\":null,\"programAcronyms\":[\"CSC3\"],\"eins\":null,\"duns4\":null,\"duns9\":null,\"calYears\":[],\"periodEndDateRange\":null,\"reportDueDateRange\":null,\"submitDateRange\":null,\"filterBy\":null,\"pagination\":{\"start\":0,\"size\":0},\"progGranteeIds\":[],\"fyears\":[]},\"excelType\":\"SepBYScreen\",\"username\":\"bruceWayne\",\"formTitle\":\"Module4-CSBG(196)Ver:2(FY:2020To2023)\",\"mailOption\":null}"
 }'
 #+end_src
@@ -138,80 +137,4 @@ curl --location 'http://localhost:8080/opensearch/v1/index/bulk' \
 curl --location 'http://localhost:8080/opensearch/v1/index/superman1'
 #+end_src
 
-* Errors encountered
 
-** Issue with date format
-
-With elasticsearch, the model object was using ~Date~ as the type for a specific field. It looks like elasticsearch was converting it into the format ~"yyyy-MM-dd hh:mm:ss a"~ without any issues.
-
-While the application is retrieving the document from elasticsearch, the application is reading the date field and parsing it without any issues.
-
-And opensearch is not doing it.
-
-While trying to insert an object with a ~Date~ field in it, I saw this error.
-#+begin_src
-org.opensearch.client.opensearch._types.OpenSearchException: Request failed: [mapper_parsing_exception] failed to parse field [createdOn] of type [date] in document with id 'M7f5E5EBLWvOEL9OZOnz'. Preview of field's value: '1722616997084'
-#+end_src
-
-How to fix this?
-
-*** Option 1: Use the default format for date instead of using custom ones
-
-"format" : "strict_date_optional_time||epoch_millis"
-
-Advantages with this approach:
-1. The code is simple. There is no need for parsing the values of dates.
-1. All the built-in conditions work without any issues.
-   #+begin_src
-   GET /documents2/_search
-   {
-	   "sort": [
-	   {
-	     "createdOn": {
-	       "order": "desc"
-	     }
-	   }
-	 ],
-       "query": {
-	   "match_all": {}
-       }
-   }
-   #+end_src
-
-*** Option 2: Store it as a string
-
-Store it as a string in Opensearch and parse the value before insertions and after retrievals. However, this is painful to deal with. During insertion and retrieval.
-
-One option to fix this is to: ~Change the model object to make the type of the field a generic~.
-#+begin_src
- public class MyDocument<T> {
-    private Long id;
-    private String docName;
-    private String userName;
-    private String status;
-    private T createdOn;
-    private String reqJson;
-}
-#+end_src
-
-Before indexing with opensearch, set the field appropriately:
-
-#+begin_src
-myDocument.setCreatedOn(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a").format(new Date()));
-#+end_src
-
-** UnexpectedJsonEventException while parsing opensearch request object
-
-#+begin_src
-org.opensearch.client.json.UnexpectedJsonEventException: Unexpected JSON event 'START_ARRAY' instead of '[START_OBJECT, KEY_NAME, VALUE_STRING, VALUE_TRUE, VALUE_FALSE]'
-#+end_src
-
-change version number in pom.xml to
-#+begin_src
-<!-- https://mvnrepository.com/artifact/org.opensearch.client/opensearch-java -->
-<dependency>
-    <groupId>org.opensearch.client</groupId>
-    <artifactId>opensearch-java</artifactId>
-    <version>2.13.0</version>
-</dependency>
-#+end_src
