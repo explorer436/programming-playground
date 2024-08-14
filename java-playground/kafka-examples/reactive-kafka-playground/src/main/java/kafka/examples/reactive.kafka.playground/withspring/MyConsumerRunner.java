@@ -13,12 +13,13 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MyConsumerRunner implements CommandLineRunner {
 
-    private final ReactiveKafkaConsumerTemplate<String, DummyOrder> alternateModelConsumerTemplate;
-    private final ReactiveKafkaConsumerTemplate<String, OrderEvent> consumerTemplate;
+    // See OrderEventConsumerTest.java
+    private final ReactiveKafkaConsumerTemplate<String, DummyOrder> dummyOrderConsumerTemplate;
+    // private final ReactiveKafkaConsumerTemplate<String, OrderEvent> orderEventConsumerTemplate;
 
     @Override
     public void run(String... args) throws Exception {
-        consumerTemplate
+        dummyOrderConsumerTemplate
                 .receive()
                 //        .doOnNext(r -> r.headers().forEach(h -> log.info("header key: {}, value: {}", h.key(), new String(h.value()))))
                 .doOnNext(r -> log.info("key: {}, value: {}", r.key(), r.value()))

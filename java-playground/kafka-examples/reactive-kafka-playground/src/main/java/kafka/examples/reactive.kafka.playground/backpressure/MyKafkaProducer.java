@@ -20,7 +20,7 @@ public class MyKafkaProducer {
                 ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class,
                 ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class
         );
-        var senderOptions = SenderOptions.<String, String>create(producerConfig)
+        SenderOptions<String, String> senderOptions = SenderOptions.<String, String>create(producerConfig)
                 .maxInFlight(10_000);
 
         // This is not the default value. Default is 256. The default value is small to handle backpressure well.

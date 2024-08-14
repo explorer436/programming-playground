@@ -1,4 +1,4 @@
-package kafka.examples.reactive_kafka_playground;
+package kafka.examples.reactive.kafka.playground;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

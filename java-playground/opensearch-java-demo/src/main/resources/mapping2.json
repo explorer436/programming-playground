@@ -1,8 +1,7 @@
 {
   "properties": {
     "createdOn": {
-      "type": "date",
-      "format": "yyyy-MM-dd hh:mm:ss a"
+      "type": "date"
     },
     "docId": {
       "type": "text"

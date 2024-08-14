@@ -50,7 +50,7 @@ public class MyServiceImpl implements MyService {
     @Override
     public String insertDocument(MyDocument myDocument) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
 
-        myDocument.setCreatedOn(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a")));
+        myDocument.setCreatedOn(new Date());
 
         return clientConnector.insertDocument(myDocument);
     }

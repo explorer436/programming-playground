@@ -1,12 +1,10 @@
 package kafka.examples.reactive.kafka.playground.withspring;
 
-import kafka.examples.reactive.kafka.playground.withspring.model.DummyOrder;
 import kafka.examples.reactive.kafka.playground.withspring.model.OrderEvent;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.reactive.ReactiveKafkaConsumerTemplate;
-import org.springframework.kafka.support.serializer.JsonDeserializer;
 import reactor.kafka.receiver.ReceiverOptions;
 
 import java.util.List;
@@ -25,8 +23,13 @@ public class MyKafkaConsumerConfig {
                 .subscription(List.of("order-events"));
     }
 
-    @Bean
+    // This is not necessary if "orderEventConsumerTemplate" is not used in MyConsumerRunner.java
+    // Question: Why doesn't "dummyOrderConsumerTemplate" need a bean like this?
+
+    /*@Bean
     public ReactiveKafkaConsumerTemplate<String, OrderEvent> consumerTemplateForOrderEvent(ReceiverOptions<String, OrderEvent> options){
         return new ReactiveKafkaConsumerTemplate<>(options);
-    }
+    }*/
+
+
 }
