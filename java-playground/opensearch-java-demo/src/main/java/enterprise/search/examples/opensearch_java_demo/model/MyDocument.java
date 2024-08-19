@@ -1,25 +1,18 @@
 package enterprise.search.examples.opensearch_java_demo.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Data
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class MyDocument<T> {
-    private Long id;
-    private String docName;
-    private String userName;
-    private String status;
+public class MyDocument {
+    private String docId;
+    private String docName, userName, status, s3Objectkey;
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss a")
     private Date createdOn;
+    private byte[] fileBytes;
     private String reqJson;
 }
 

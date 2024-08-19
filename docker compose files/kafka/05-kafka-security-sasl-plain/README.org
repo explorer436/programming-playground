@@ -1,0 +1,83 @@
+* What is the difference in kafka set-up in 05-kafka-security-sasl-plain vs 01-kafka-server-setup?
+
+1. The difference is in props/security.properties -> 
+
+   In this set-up, we are using: ~listeners=SASL_PLAINTEXT://:9092,CONTROLLER://:9093~
+   In the regular set-up, we used to have: ~listeners=PLAINTEXT://:9092,CONTROLLER://:9093~
+   
+   With this, kafka will not allow client applications to connect to it without a username and a password. The communication between the clients and kafka brokers is not encrypted. It is still plain text. But this is adding one layer of security - which is username/password combination.
+
+2. One other difference is in props/security.properties ->
+
+   We have to add this:
+   
+   #+begin_src 
+   # This PLAIN is different from PLAINTEXT above
+   sasl.enabled.mechanisms=PLAIN
+   sasl.mechanism.controller.protocol=PLAIN
+   sasl.mechanism.inter.broker.protocol=PLAIN
+   #+end_src
+   
+   Other options for ~sasl.enabled.mechanisms~ are ~Plain, LDAP, OAuth, etc.~
+
+3. And we need to have a file with the credentials: props/jaas.conf.
+   In jaas.conf, 
+   1. username and password are for broker to broker communication.
+   2. user_admin and user_client are for client to broker communication.
+
+* How to modify the client applications to use SASL security?
+
+With spring, the configuration will go into the application.properties file instead of being in a java class. Other than that, there shouldn't be any other differences.
+
+#+begin_src 
+ import org.apache.kafka.clients.CommonClientConfigs;
+import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.config.SaslConfigs;
+import org.apache.kafka.common.config.SslConfigs;
+import org.apache.kafka.common.serialization.StringSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import reactor.core.publisher.Flux;
+import reactor.kafka.sender.KafkaSender;
+import reactor.kafka.sender.SenderOptions;
+import reactor.kafka.sender.SenderRecord;
+
+import java.nio.file.Paths;
+import java.time.Duration;
+import java.util.Map;
+
+/*
+    goal: to demo a simple kafka producer using SASL PLAINTEXT
+ */
+public class KafkaProducer {
+
+    private static final Logger log = LoggerFactory.getLogger(KafkaProducer.class);
+
+    public static void main(String[] args) {
+
+        var producerConfig = Map.<String, Object>of(
+                ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092",
+                ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class,
+                ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class,
+                CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_PLAINTEXT",
+                SaslConfigs.SASL_MECHANISM, "PLAIN",
+                SaslConfigs.SASL_JAAS_CONFIG, "org.apache.kafka.common.security.plain.PlainLoginModule required serviceName=\"Kafka\" username=\"client\" password=\"client-secret\";"
+        );
+
+        var options = SenderOptions.<String, String>create(producerConfig);
+
+        var flux = Flux.interval(Duration.ofMillis(100))
+                    .take(100)
+                    .map(i -> new ProducerRecord<>("order-events", i.toString(), "order-"+i))
+                    .map(pr -> SenderRecord.create(pr, pr.key()));
+
+        var sender = KafkaSender.create(options);
+        sender.send(flux)
+                .doOnNext(r -> log.info("correlation id: {}", r.correlationMetadata()))
+                .doOnComplete(sender::close)
+                .subscribe();
+    }
+
+} 
+#+end_src
