@@ -43,7 +43,12 @@ public class TransferEventProcessor {
 
         return manager
                 .begin()
-                .then(this.sender.send(senderRecords)
+                .then(
+                        // What does last() mean here?
+                        // If multiple consumers are reading from the topic to which this is writing, all of them will emit acknowledgements.
+                        // We don't want to read all of them - we can if we want to. That is an alternate approach.
+                        // We are only interested in the last emitted event.
+                        this.sender.send(senderRecords)
                         // delaying for demo
                         .concatWith(Mono.delay(Duration.ofSeconds(1)).then(Mono.fromRunnable(event.acknowledge())))
                         .concatWith(manager.commit())
@@ -53,6 +58,11 @@ public class TransferEventProcessor {
     }
 
     private Flux<SenderRecord<String, String, String>> toSenderRecords(TransferEvent event){
+
+        // Two events
+        // The first one to indicate credit from the first account
+        // The second one to indicate debit to the second account
+
         ProducerRecord<String, String> pr1 = new ProducerRecord<>("transaction-events", event.key(), "%s+%s".formatted(event.to(), event.amount()));
         ProducerRecord<String, String> pr2 = new ProducerRecord<>("transaction-events", event.key(), "%s-%s".formatted(event.from(), event.amount()));
          

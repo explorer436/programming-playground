@@ -1,0 +1,12 @@
+* Use case
+
+[[./Screenshot_2024-08-23_15-04-54.png]]
+
+1. ~product-service~
+   1. Users use this service to view products (GET operation).
+   1. Everytime it handles a request, it emits an event to a kafka topic
+1. ~analytics-service~
+   1. Consumes the events emitted by ~product-service~
+   1. Keeps track of the metrics using a table in a database (keeps incrementing the count column in the table)
+   1. Has a GET (streaming) endpoint to show metrics (using data from the table). It will be emitting data every 3 seconds. Gives the top 5 products based on view count from the table.
+   1. Generates analytics reports based on the events

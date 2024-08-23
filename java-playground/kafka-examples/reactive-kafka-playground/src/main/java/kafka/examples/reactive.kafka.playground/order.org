@@ -1,5 +1,5 @@
 1. initial
-2. backpressure
+2. back pressure
 3. messages with headers
 4. fault tolerance
 5. consumer groups
