@@ -8,7 +8,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.reactive.ReactiveKafkaConsumerTemplate;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.publisher.Sinks;
 import reactor.kafka.receiver.ReceiverRecord;
 
 import java.time.Duration;
@@ -25,6 +27,8 @@ public class ProductViewEventConsumer {
 
     private final ReactiveKafkaConsumerTemplate<String, ProductViewEvent> consumerTemplate;
     private final ProductViewRepository productViewRepository;
+    private final Sinks.Many<Integer> sink = Sinks.many().unicast().onBackpressureBuffer();
+    private final Flux<Integer> flux = sink.asFlux();
 
     @PostConstruct
     public void subscribe() {
@@ -38,7 +42,7 @@ public class ProductViewEventConsumer {
                 .subscribe();
     }
 
-    private Mono<Void> process(List<ReceiverRecord<String, ProductViewEvent>> events) {
+    /*private Mono<Void> process(List<ReceiverRecord<String, ProductViewEvent>> events) {
         // This will create a map with event counts based on the incoming events.
         // We have to compare the counts in the map with the values in the table and update the table accordingly.
         Map<Integer, Long> eventsMap = events.stream().map(
@@ -65,10 +69,50 @@ public class ProductViewEventConsumer {
                 .doOnComplete(() -> events.get(events.size() - 1).receiverOffset().acknowledge())
                 .doOnError(ex -> log.error(ex.getMessage()))
                 .then();
+    }*/
+
+    public Flux<Integer> companionFlux() {
+        return this.flux;
     }
 
+    // This is an optional performance improvement - compared to the previous implementation.
+    // With this, whenever the consumer processes events, we will emit a Flux.
+    // The flux is to notify ProductTrendingBroadcastService.init() to look for new events.
+    private Mono<Void> process(List<ReceiverRecord<String, ProductViewEvent>> events) {
+        // This will create a map with event counts based on the incoming events.
+        // We have to compare the counts in the map with the values in the table and update the table accordingly.
+        Map<Integer, Long> eventsMap = events.stream().map(
+                        r -> r.value().getProductId()
+                )
+                .collect(Collectors.groupingBy(
+                        Function.identity(),
+                        Collectors.counting()
+                ));
+
+        Mono<Map<Integer, ProductViewCount>> dbMapMono = productViewRepository.findAllById(eventsMap.keySet())
+                .collectMap(ProductViewCount::getId)
+                // what if there are no records
+                .defaultIfEmpty(Collections.emptyMap());
+
+
+        return dbMapMono
+                .map(dbMap -> eventsMap.keySet().stream().map(
+                                        productId -> updateViewCount(dbMap, eventsMap, productId)
+                                )
+                                .collect(Collectors.toList())
+                )
+                // convert the Mono into Flux and save it
+                .flatMapMany(productViewRepository::saveAll)
+                .doOnComplete(() -> events.get(events.size() - 1).receiverOffset().acknowledge())
+                .doOnComplete(() -> sink.tryEmitNext(1)) // The value that we are emitting does not matter.
+                .doOnError(ex -> log.error(ex.getMessage()))
+                .then();
+    }
+
+
+
     private ProductViewCount updateViewCount(Map<Integer, ProductViewCount> dbMap, Map<Integer, Long> eventMap, int productId) {
-        ProductViewCount pvc = dbMap.getOrDefault(productId, new ProductViewCount(productId, 0L));
+        ProductViewCount pvc = dbMap.getOrDefault(productId, new ProductViewCount(productId, 0L, true));
         pvc.setCount(pvc.getCount() + eventMap.get(productId));
         return pvc;
     }

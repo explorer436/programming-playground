@@ -10,3 +10,11 @@
    1. Keeps track of the metrics using a table in a database (keeps incrementing the count column in the table)
    1. Has a GET (streaming) endpoint to show metrics (using data from the table). It will be emitting data every 3 seconds. Gives the top 5 products based on view count from the table.
    1. Generates analytics reports based on the events
+
+* Testing
+
+1. Start the two applications
+1. Launch http://localhost:7070/ in a browser tab
+1. Launch http://localhost:8080/ in another browser tab (http://localhost:8080/index.html if that doesn't work)
+1. Start selecting products in the ~Product Service~ tab
+1. We should see that the results in the analytics tab are updated real time.

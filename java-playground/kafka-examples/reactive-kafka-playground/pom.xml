@@ -13,6 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>reactive-kafka-playground</name>
 	<description>Demo project for Spring Boot</description>
+	<packaging>pom</packaging>
 	<url/>
 
 	<modules>
