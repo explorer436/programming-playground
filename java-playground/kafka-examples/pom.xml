@@ -13,5 +13,6 @@
   <modules>
     <module>reactive-kafka-playground</module>
     <module>spring-kafka</module>
+    <module>real-world-example</module>
   </modules>
 </project>

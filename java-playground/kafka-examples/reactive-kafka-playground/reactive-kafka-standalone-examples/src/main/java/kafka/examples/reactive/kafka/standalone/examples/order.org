@@ -1,0 +1,13 @@
+1. initial
+2. back pressure
+3. messages with headers
+4. fault tolerance
+5. consumer groups
+6. batch or parallel processing
+7. error handling
+8. dead letter topics
+9. poison pill errors
+10. with spring
+11. transactions
+
+reactive-kafka-standalone-examples

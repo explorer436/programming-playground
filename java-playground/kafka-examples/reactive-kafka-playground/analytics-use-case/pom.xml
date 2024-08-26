@@ -5,7 +5,7 @@
     <artifactId>analytics-use-case</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>apache-camel-poc</name>
+    <name>analytics-use-case</name>
     <url>http://maven.apache.org</url>
 
     <modules>

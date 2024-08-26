@@ -23,7 +23,7 @@ This library prints a lot of logs. In order to reduce them, see logback.xml
 
 Set up the containers accordingly.
 
-Start kafka containers and create the topic.
+Start kafka containers and create the topic. Look at the CLI commands to create topics.
 
 #+begin_src
 kafka-topics.sh --bootstrap-server localhost:9092 --topic order-events --create

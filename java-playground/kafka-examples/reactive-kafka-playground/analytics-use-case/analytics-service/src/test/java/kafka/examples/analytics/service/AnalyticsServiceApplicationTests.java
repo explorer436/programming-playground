@@ -61,7 +61,7 @@ class AnalyticsServiceApplicationTests extends AbstractIntegrationTest {
         // verify via trending endpoint
         Mono<List<ProductTrendingDto>> mono = this.client
                 .get()
-                .uri("trending")
+                .uri("/trending")
                 .accept(MediaType.TEXT_EVENT_STREAM)
                 .exchange()
                 .returnResult(new ParameterizedTypeReference<List<ProductTrendingDto>>() {})
