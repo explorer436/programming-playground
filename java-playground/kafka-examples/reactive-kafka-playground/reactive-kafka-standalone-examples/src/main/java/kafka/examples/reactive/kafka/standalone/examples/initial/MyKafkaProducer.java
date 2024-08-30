@@ -22,18 +22,19 @@ public class MyKafkaProducer {
                 ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class,
                 ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class
         );
-        var senderOptions = SenderOptions.<String, String>create(producerConfig);
+        SenderOptions<String, String> senderOptions = SenderOptions.<String, String>create(producerConfig);
+
+        KafkaSender<String, String> kafkaSender = KafkaSender.create(senderOptions);
 
         // To produce a 100 records
-        var flux = Flux.interval(Duration.ofMillis(100))
+        Flux<SenderRecord<String, String, String>> flux = Flux
+                .interval(Duration.ofMillis(100))
                 .take(100)
                 .map(i -> new ProducerRecord<>("order-events", i.toString(), "order-" + i))
-                                                               // map ProducerRecord to the reactor object - which is SenderRecord
+                // map ProducerRecord to the reactor object - which is SenderRecord
                 .map(pr -> SenderRecord.create(pr, pr.key()));
 
-        var kafkaSender = KafkaSender.create(senderOptions);
-
-        var start = System.currentTimeMillis();
+        long start = System.currentTimeMillis();
         kafkaSender.send(flux)
                 .doOnNext(r -> log.info("correlation id: {}", r.correlationMetadata())) // We are using key as the correlationMetadata
                 /*.doOnComplete(kafkaSender::close)  // If we close the sender on completion, the program will terminate after sending.
