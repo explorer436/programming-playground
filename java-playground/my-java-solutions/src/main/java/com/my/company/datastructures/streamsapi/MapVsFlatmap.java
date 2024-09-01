@@ -1,5 +1,6 @@
 package com.my.company.datastructures.streamsapi;
 
+import com.my.company.datastructures.streamsapi.model.Person;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.Collection;

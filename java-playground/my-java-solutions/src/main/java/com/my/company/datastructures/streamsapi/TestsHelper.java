@@ -1,5 +1,7 @@
 package com.my.company.datastructures.streamsapi;
 
+import com.my.company.datastructures.streamsapi.model.Person;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

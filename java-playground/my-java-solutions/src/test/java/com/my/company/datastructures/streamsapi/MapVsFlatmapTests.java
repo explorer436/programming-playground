@@ -2,6 +2,7 @@ package com.my.company.datastructures.streamsapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.my.company.datastructures.streamsapi.model.Person;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

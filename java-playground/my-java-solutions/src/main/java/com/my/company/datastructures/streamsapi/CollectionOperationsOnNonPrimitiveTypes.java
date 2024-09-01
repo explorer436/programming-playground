@@ -1,5 +1,7 @@
 package com.my.company.datastructures.streamsapi;
 
+import com.my.company.datastructures.streamsapi.model.Person;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -7,7 +9,7 @@ import java.util.function.Function;
 import java.util.function.IntConsumer;
 import java.util.stream.Collectors;
 
-public class StreamCollect {
+public class CollectionOperationsOnNonPrimitiveTypes {
 
   /**
    * The Stream.collect Method

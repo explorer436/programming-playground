@@ -8,23 +8,23 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CollectExamplesPrimitiveTypesTests {
+public class CollectOperationsOnPrimitiveTypesTests {
 
-    private CollectExamples_PrimitiveTypes collectExamplesPrimitiveTypes = new CollectExamples_PrimitiveTypes();
+    private CollectOperationsOnPrimitiveTypes collectOperationsOnPrimitiveTypes = new CollectOperationsOnPrimitiveTypes();
 
     private List<String> numbers = Arrays.asList("1", "2", "3", "4", "5", "6");
     private List<String> strings = Arrays.asList("a", "bb", "ccc", "dd");
 
     @Test
     public void test_mapAndFilterAndCollectToList() throws JsonProcessingException {
-        List<Integer> actual = collectExamplesPrimitiveTypes.map_Filter_Collect_ToList(numbers);
+        List<Integer> actual = collectOperationsOnPrimitiveTypes.map_Filter_Collect_ToList(numbers);
 
         assertEquals("[ 2, 4, 6 ]", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
     }
 
     @Test
     public void test_storeStringLengthGroupingResulsInASet() throws JsonProcessingException {
-        Map<Integer, Set<String>> actual = collectExamplesPrimitiveTypes.collect_groupingByStringLength(strings);
+        Map<Integer, Set<String>> actual = collectOperationsOnPrimitiveTypes.collect_groupingByStringLength(strings);
 
         assertEquals("""
                 {
@@ -36,7 +36,7 @@ public class CollectExamplesPrimitiveTypesTests {
 
     @Test
     public void test_partitionByStringLength() throws JsonProcessingException {
-        Map<Boolean, List<String>> actual = collectExamplesPrimitiveTypes.collect_partitioningByStringLength(strings);
+        Map<Boolean, List<String>> actual = collectOperationsOnPrimitiveTypes.collect_partitioningByStringLength(strings);
 
         assertEquals("""
                 {
@@ -47,7 +47,7 @@ public class CollectExamplesPrimitiveTypesTests {
 
     @Test
     public void test_collectAndSummarize() throws JsonProcessingException {
-        DoubleSummaryStatistics actual = collectExamplesPrimitiveTypes.collect_SummarizingDouble(strings);
+        DoubleSummaryStatistics actual = collectOperationsOnPrimitiveTypes.collect_SummarizingDouble(strings);
 
         assertEquals("""
                 {

@@ -2,6 +2,7 @@ package com.my.company.datastructures.streamsapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.my.company.datastructures.streamsapi.model.Person;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -9,15 +10,15 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class StreamCollectTests {
+public class CollectionOperationsOnNonPrimitiveTypesTests {
 
-    private StreamCollect streamCollect = new StreamCollect();
+    private CollectionOperationsOnNonPrimitiveTypes collectionOperationsOnNonPrimitiveTypes = new CollectionOperationsOnNonPrimitiveTypes();
 
     @Test
     public void test_groupPeopleById_excludeDuplicates() throws JsonProcessingException {
         List<Person> people = TestsHelper.getPeople();
 
-        Map<Integer, Person> actual = streamCollect.groupPeopleById_Collect_ListToMap_excludeDuplicates(people);
+        Map<Integer, Person> actual = collectionOperationsOnNonPrimitiveTypes.groupPeopleById_Collect_ListToMap_excludeDuplicates(people);
 
         assertEquals(actual.size(), 8);
 
@@ -183,7 +184,7 @@ public class StreamCollectTests {
 
         List<Person> people = TestsHelper.getPeople();
 
-        Map<String, List<Person>> actual = streamCollect.groupPeopleByGender_Collect_ListToMap_IncludeDuplicates(people);
+        Map<String, List<Person>> actual = collectionOperationsOnNonPrimitiveTypes.groupPeopleByGender_Collect_ListToMap_IncludeDuplicates(people);
 
         assertEquals(actual.size(), 2);
 
@@ -364,7 +365,7 @@ public class StreamCollectTests {
     public void test_groupPeopleByAddress() throws JsonProcessingException {
         List<Person> people = TestsHelper.getPeople();
 
-        Map<Person.Address, List<Person>> actual = streamCollect.groupPeopleByAddress_Collect_ListToMap_GroupByMultipleFields(people);
+        Map<Person.Address, List<Person>> actual = collectionOperationsOnNonPrimitiveTypes.groupPeopleByAddress_Collect_ListToMap_GroupByMultipleFields(people);
 
         assertEquals("""
                {
@@ -541,7 +542,7 @@ public class StreamCollectTests {
     public void test_getAverageAgeByGender() throws JsonProcessingException {
         List<Person> people = TestsHelper.getPeople();
 
-        Map<String, Double> actual = streamCollect.getAverageAgeByGender_Collect_AveratingInt(people);
+        Map<String, Double> actual = collectionOperationsOnNonPrimitiveTypes.getAverageAgeByGender_Collect_AveratingInt(people);
 
         assertEquals("""
                 {
@@ -554,7 +555,7 @@ public class StreamCollectTests {
     public void test_getAverageAgeOfMen_Collect() {
         List<Person> people = TestsHelper.getPeople();
 
-        double actual = streamCollect.getAverageAgeOfMen_Collect_CustomAverager(people);
+        double actual = collectionOperationsOnNonPrimitiveTypes.getAverageAgeOfMen_Collect_CustomAverager(people);
 
         assertEquals(30.0, actual);
     }
@@ -563,7 +564,7 @@ public class StreamCollectTests {
     public void test_getNamesOfMen_Collect_UsingStandardCollector() throws JsonProcessingException {
         List<Person> people = TestsHelper.getPeople();
 
-        List<String> actual = streamCollect.getNamesOfMen_Collect_Field_To_List_Using_StandardCollector(people);
+        List<String> actual = collectionOperationsOnNonPrimitiveTypes.getNamesOfMen_Collect_Field_To_List_Using_StandardCollector(people);
 
         assertEquals("[ \"John\", \"Rob\", \"Clark\", \"Trevor\" ]", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
     }
@@ -572,7 +573,7 @@ public class StreamCollectTests {
     public void test_getNamesOfMen_Collect_UsingArrayList() throws JsonProcessingException {
         List<Person> people = TestsHelper.getPeople();
 
-        List<String> actual = streamCollect.getNamesOfMen_Collect_Field_To_ArrayList(people);
+        List<String> actual = collectionOperationsOnNonPrimitiveTypes.getNamesOfMen_Collect_Field_To_ArrayList(people);
 
         assertEquals("""
                 [ \"John\", \"Rob\", \"Clark\", \"Trevor\" ]""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
@@ -582,7 +583,7 @@ public class StreamCollectTests {
     public void test_groupPersonNamesByGender() throws JsonProcessingException {
         List<Person> people = TestsHelper.getPeople();
 
-        Map<String, List<String>> actual = streamCollect.groupPersonNamesByGender_Collect_ListToMap_GroupByAField_CollectAnotherField(people);
+        Map<String, List<String>> actual = collectionOperationsOnNonPrimitiveTypes.groupPersonNamesByGender_Collect_ListToMap_GroupByAField_CollectAnotherField(people);
 
         assertEquals("""
                 {
@@ -595,7 +596,7 @@ public class StreamCollectTests {
     public void test_groupTotalAgeByGender() throws JsonProcessingException {
         List<Person> people = TestsHelper.getPeople();
 
-        Map<String, Integer> actual = streamCollect.groupTotalAgeByGender_Collect_ListToMap_Reducing(people);
+        Map<String, Integer> actual = collectionOperationsOnNonPrimitiveTypes.groupTotalAgeByGender_Collect_ListToMap_Reducing(people);
 
         assertEquals("""
                 {

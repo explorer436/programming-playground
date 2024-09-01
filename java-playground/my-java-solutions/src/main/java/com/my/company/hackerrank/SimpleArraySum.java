@@ -1,6 +1,6 @@
 package com.my.company.hackerrank;
 
-import com.my.company.datastructures.streamsapi.StreamReduce;
+import com.my.company.datastructures.streamsapi.ReductionOperations;
 
 import java.util.Arrays;
 
@@ -53,7 +53,7 @@ public class SimpleArraySum {
     // 13
 
     // Using streams
-    System.out.println("using stream API : " + StreamReduce.getSumOfAllElementsOfArray(inputArray));
+    System.out.println("using stream API : " + ReductionOperations.getSumOfAllElementsOfArray(inputArray));
   }
 
   public static int simpleArraySum(int[] ar) {

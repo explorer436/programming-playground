@@ -1,18 +1,29 @@
 package com.my.company.datastructures.streamsapi;
 
-import java.util.Objects;
+import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+@Slf4j
 public class CollectorTeeing {
 
   /** Question : Is this a java-12 only feature and not available in java 8? */
 
-  /*public static void main(String[] args) {
+  public static void main(String[] args) {
 
   	List<Integer> numbers = Arrays.asList(42, 4, 2, 24);
          Range range = numbers.stream()
-             .collect(Collectors.teeing(Collectors.minBy(Integer::compareTo), Collectors.maxBy(Integer::compareTo), (min, max) -> new Range(min.orElse(null), max.orElse(null))));
+             .collect(Collectors.teeing(
+                     Collectors.minBy(Integer::compareTo),
+                     Collectors.maxBy(Integer::compareTo),
+                     (min, max) -> new Range(min.orElse(null), max.orElse(null))));
 
-  }*/
+         log.info("range: {}", range);
+         // range: Range{min=2, max=42}
+  }
 
   /** Represents a closed range of numbers between {@link #min} and {@link #max}, both inclusive. */
   private static class Range {

@@ -1,6 +1,6 @@
 package com.my.company.datastructures.arrays;
 
-import com.my.company.datastructures.streamsapi.StreamReduce;
+import com.my.company.datastructures.streamsapi.ReductionOperations;
 
 /**
  * Problem: You are given an integer m (1 <= m <= 1 000 000) and two non-empty, zero-indexed arrays
@@ -23,9 +23,9 @@ public class SwapElementsToMakeSumEqual {
 
   // O(n power 2)
   public static boolean bruteForceSolution_slow(int[] A, int[] B, int m) {
-    int sum_a = StreamReduce.getSumOfAllElementsOfArray(A);
+    int sum_a = ReductionOperations.getSumOfAllElementsOfArray(A);
 
-    int sum_b = StreamReduce.getSumOfAllElementsOfArray(B);
+    int sum_b = ReductionOperations.getSumOfAllElementsOfArray(B);
 
     // aIndex = bIndex - but they don't have to be of equal length.
     for (int aIndex = 0; aIndex < A.length; aIndex++) {
@@ -50,9 +50,9 @@ public class SwapElementsToMakeSumEqual {
    */
   // O(n + m)
   public static boolean solution_fast(int[] A, int[] B, int m) {
-    int sum_a = StreamReduce.getSumOfAllElementsOfArray(A);
+    int sum_a = ReductionOperations.getSumOfAllElementsOfArray(A);
 
-    int sum_b = StreamReduce.getSumOfAllElementsOfArray(B);
+    int sum_b = ReductionOperations.getSumOfAllElementsOfArray(B);
 
     int difference = sum_b - sum_a;
 
@@ -78,8 +78,8 @@ public class SwapElementsToMakeSumEqual {
    * In our scenario, A = { 1, 8, 9, 10, 13 }. So, the length of count[] should be at least 13.
    */
   private static int[] countingArrayElements(int[] A) {
-    int minElement = StreamReduce.getMinElementInIntArray(A);
-    int maxElement = StreamReduce.getMaxElementInIntArray(A);
+    int minElement = ReductionOperations.getMinElementInIntArray(A);
+    int maxElement = ReductionOperations.getMaxElementInIntArray(A);
 
     int[] count = new int[maxElement - minElement + 1];
 
