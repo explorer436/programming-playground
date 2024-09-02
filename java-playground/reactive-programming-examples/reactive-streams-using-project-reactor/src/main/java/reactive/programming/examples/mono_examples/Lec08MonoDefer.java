@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 @Slf4j
-public class MonoDefer {
+public class Lec08MonoDefer {
 
     public static void main(String[] args) {
 
@@ -22,7 +22,7 @@ public class MonoDefer {
         // What if we don't want to get into the method either?
 
         // Mono.defer(MonoDefer::createPublisher).subscribe(Util.subscriber());
-        Mono.defer(MonoDefer::createPublisher);
+        Mono.defer(Lec08MonoDefer::createPublisher);
         // defer() accepts the Supplier of Mono
         // Using this, we can delay the creation of the Publisher itself - not just the execution of the Publisher.
 

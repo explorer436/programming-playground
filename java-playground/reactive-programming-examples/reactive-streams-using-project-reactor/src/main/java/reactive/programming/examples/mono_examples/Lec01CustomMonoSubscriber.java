@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono;
  * Creating a mono and subscribing to it using our own custom subscriber
  */
 @Slf4j
-public class CustomMonoSubscriber {
+public class Lec01CustomMonoSubscriber {
     public static void main(String[] args) {
         Mono<String> mono = Mono.just("hello");
 

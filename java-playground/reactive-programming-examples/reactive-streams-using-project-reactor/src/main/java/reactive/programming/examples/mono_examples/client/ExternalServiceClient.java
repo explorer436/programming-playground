@@ -1,5 +1,6 @@
-package reactive.programming.examples.client;
+package reactive.programming.examples.mono_examples.client;
 
+import reactive.programming.examples.client.AbstractHttpClient;
 import reactor.core.publisher.Mono;
 
 public class ExternalServiceClient extends AbstractHttpClient {

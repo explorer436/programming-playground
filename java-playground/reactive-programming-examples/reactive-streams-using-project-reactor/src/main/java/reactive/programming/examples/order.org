@@ -1,10 +1,4 @@
 1. custom implementation of the interfaces
 2. mono_examples
-   1. CustomMonoSubscriber
-   2. MonoSubscribe
-   3. EmitItemsBasedOnInput
-   4. MonoFromSupplier
-   5. MonoFromCallable
-   6. MonoFromRunnable
-   7. MonoDefer
-   8. assignment
+3. flux_examples_with_in_memory_data
+4. flux_emitting_items_programmatically

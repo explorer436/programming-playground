@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
  * Emitting empty / error
  */
 @Slf4j
-public class EmitItemsBasedOnInput {
+public class Lec03EmitItemsBasedOnInput {
     public static void main(String[] args) {
 
         /*getUsername(3)

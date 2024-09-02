@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 @Slf4j
-public class MonoSubscribe {
+public class Lec02MonoSubscribe {
 
     public static void main(String[] args) {
         /*subscribe_example1();

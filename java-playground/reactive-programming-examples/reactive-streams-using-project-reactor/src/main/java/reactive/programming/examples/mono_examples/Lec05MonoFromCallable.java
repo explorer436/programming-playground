@@ -10,7 +10,7 @@ import java.util.List;
  *  To delay the execution using supplier / callable / runnable
  */
 @Slf4j
-public class MonoFromSupplier {
+public class Lec05MonoFromCallable {
 
     public static void main(String[] args) {
         List<Integer> list = List.of(1, 2, 3);
@@ -20,12 +20,8 @@ public class MonoFromSupplier {
         Mono<Integer> supplier1 = Mono.just(sum(list));
         supplier1.subscribe(Util.subscriber());
 
-        Mono<Integer> supplier2 = Mono.fromSupplier(() -> sum(list));
+        Mono<Integer> supplier2 = Mono.fromCallable(() -> sum(list));
         supplier2.subscribe(Util.subscriber());
-
-        /*
-           Mono.justSupplier() replaces Mono.just()
-         */
     }
 
     /*

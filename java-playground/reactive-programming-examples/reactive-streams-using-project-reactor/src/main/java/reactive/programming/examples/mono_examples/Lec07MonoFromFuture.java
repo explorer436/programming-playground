@@ -10,7 +10,7 @@ import java.util.concurrent.CompletableFuture;
  * If we have a CompletableFuture already, then we can convert that into a Mono
  */
 @Slf4j
-public class MonoFromFuture {
+public class Lec07MonoFromFuture {
     public static void main(String[] args) {
 
         Mono.fromFuture(getName()).subscribe(Util.subscriber());
@@ -19,7 +19,7 @@ public class MonoFromFuture {
          * By default, CompletableFuture is not lazy.
          * The reactor library lets us make it a Supplier of CompletableFuture.
          */
-        Mono.fromFuture(MonoFromFuture::getName).subscribe(Util.subscriber());
+        Mono.fromFuture(Lec07MonoFromFuture::getName).subscribe(Util.subscriber());
 
         Util.sleepSeconds(1);
     }

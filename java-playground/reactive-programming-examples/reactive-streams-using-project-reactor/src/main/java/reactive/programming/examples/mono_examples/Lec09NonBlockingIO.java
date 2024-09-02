@@ -1,7 +1,7 @@
 package reactive.programming.examples.mono_examples;
 
 import lombok.extern.slf4j.Slf4j;
-import reactive.programming.examples.client.ExternalServiceClient;
+import reactive.programming.examples.mono_examples.client.ExternalServiceClient;
 import reactive.programming.examples.util.Util;
 
 /**
@@ -14,7 +14,7 @@ import reactive.programming.examples.util.Util;
  *  It is very difficult.
  */
 @Slf4j
-public class NonBlockingIO {
+public class Lec09NonBlockingIO {
     public static void main(String[] args) {
 
         ExternalServiceClient client = new ExternalServiceClient();
