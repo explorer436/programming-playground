@@ -9,7 +9,7 @@ import reactor.core.publisher.Flux;
     Flux create does NOT check the downstream demand by default! It is by design!
  */
 @Slf4j
-public class Lec04FluxCreateDownstreamDemand {
+public class Lec04FluxCreateDownstreamOnDemand {
 
     public static void main(String[] args) {
 

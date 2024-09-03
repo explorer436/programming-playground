@@ -1,6 +1,6 @@
 package com.my.company.datastructures.arrays;
 
-import com.my.company.datastructures.streamsapi.ReductionOperations;
+import com.my.company.streamsapi.ReductionOperations;
 
 /**
  * Problem: You are given an integer m (1 <= m <= 1 000 000) and two non-empty, zero-indexed arrays

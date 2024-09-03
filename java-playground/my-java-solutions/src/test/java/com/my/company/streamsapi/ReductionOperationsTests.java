@@ -1,5 +1,7 @@
-package com.my.company.datastructures.streamsapi;
+package com.my.company.streamsapi;
 
+import com.my.company.streamsapi.ReductionOperations;
+import com.my.company.streamsapi.TestsHelper;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -1,6 +1,6 @@
-package com.my.company.datastructures.streamsapi;
+package com.my.company.streamsapi;
 
-import com.my.company.datastructures.streamsapi.model.Person;
+import com.my.company.streamsapi.model.Person;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.my.company.datastructures.streamsapi;
+package com.my.company.streamsapi;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,7 +20,7 @@ public class LazinessAndTerminalOperators {
     }
 
     public static void terminal_operators() {
-        Stream.of(1)
+        Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
                 .peek(i -> log.info("received : {}", i))
                 .toList();
     }

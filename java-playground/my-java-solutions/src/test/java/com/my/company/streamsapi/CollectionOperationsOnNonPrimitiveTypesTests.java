@@ -1,8 +1,10 @@
-package com.my.company.datastructures.streamsapi;
+package com.my.company.streamsapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.my.company.datastructures.streamsapi.model.Person;
+import com.my.company.streamsapi.CollectionOperationsOnNonPrimitiveTypes;
+import com.my.company.streamsapi.TestsHelper;
+import com.my.company.streamsapi.model.Person;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

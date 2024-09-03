@@ -1,0 +1,11 @@
+1. LazinessAndTerminalOperators
+2. AggregateOperations.java
+3. PipelineOperations.java
+4. BoxedStreams
+5. ReductionOperations.java
+6. CollectOperationsOnPrimitiveTypes.java
+7. CollectionOperationsOnNonPrimitiveTypes.java
+8. CollectorTeeing.java
+9. BinaryOperatorSamples.java
+10. MapVsFlatmap.java
+11. LimitAndSkip

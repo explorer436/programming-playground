@@ -1,4 +1,4 @@
-package com.my.company.datastructures.streamsapi;
+package com.my.company.streamsapi;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -1,4 +1,4 @@
-package com.my.company.datastructures.streamsapi;
+package com.my.company.streamsapi;
 
 import java.math.BigDecimal;
 import java.util.Arrays;

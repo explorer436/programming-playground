@@ -1,4 +1,4 @@
-package com.my.company.datastructures.streamsapi.model;
+package com.my.company.streamsapi.model;
 
 import lombok.Builder;
 import lombok.Data;

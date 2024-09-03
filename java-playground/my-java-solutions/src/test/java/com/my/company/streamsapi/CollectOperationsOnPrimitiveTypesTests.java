@@ -1,7 +1,8 @@
-package com.my.company.datastructures.streamsapi;
+package com.my.company.streamsapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.my.company.streamsapi.CollectOperationsOnPrimitiveTypes;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;

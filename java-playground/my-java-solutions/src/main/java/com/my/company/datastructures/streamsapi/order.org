@@ -1,9 +1,0 @@
-1. LazinessAndTerminalOperators
-2. AggregateOperations.java
-3. PipelineOperations.java
-4. ReductionOperations.java
-5. CollectOperationsOnPrimitiveTypes.java
-6. CollectionOperationsOnNonPrimitiveTypes.java
-7. CollectorTeeing.java
-8. BinaryOperatorSamples.java
-9. MapVsFlatmap.java

@@ -1,6 +1,6 @@
 package com.my.company.hackerrank;
 
-import com.my.company.datastructures.streamsapi.ReductionOperations;
+import com.my.company.streamsapi.ReductionOperations;
 
 import java.util.Arrays;
 
