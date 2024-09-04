@@ -18,6 +18,10 @@ public class Lec01Handle {
 
     public static void main(String[] args) {
 
+        Flux.range(1, 10)
+                .cast(Integer.class)
+                .subscribe(Util.subscriber());
+
        Flux.range(1, 10)
                .handle((item, synchronousSink) -> {
                    switch (item){

@@ -14,13 +14,13 @@ public class Lec07FluxGenerateUntil {
 
     private static void demo1() {
         Flux.generate(synchronousSink -> {
-                var country = Util.getFaker().country().name();
-                synchronousSink.next(country);
-                if (country.equalsIgnoreCase("canada")) {
-                    synchronousSink.complete();
-                }
-            })
-            .subscribe(Util.subscriber());
+                    String country = Util.getFaker().country().name();
+                    synchronousSink.next(country);
+                    if (country.equalsIgnoreCase("canada")) {
+                        synchronousSink.complete();
+                    }
+                })
+                .subscribe(Util.subscriber());
     }
 
     private static void demo2() {
