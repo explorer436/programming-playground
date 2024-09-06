@@ -187,10 +187,11 @@ public class ClientConnector {
     }
 
     public String insertDocument(MyDocument myDocument) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+
         IndexRequest<MyDocument> indexRequest = new IndexRequest.Builder<MyDocument>().index(indexName2)
+                // .id() for updates.
                 .document(myDocument)
                 .build();
-
 
         log.info("indexRequest: {}", javaToJson(indexRequest));
 
