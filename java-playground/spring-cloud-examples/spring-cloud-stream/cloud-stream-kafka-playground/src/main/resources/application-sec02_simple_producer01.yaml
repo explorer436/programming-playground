@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    function:
+      definition: consumer5;producer1
+    stream:
+      bindings:
+        consumer5-in-0:
+          destination: input-topic
+          group: some-group
+        producer1-out-0:
+          destination: input-topic

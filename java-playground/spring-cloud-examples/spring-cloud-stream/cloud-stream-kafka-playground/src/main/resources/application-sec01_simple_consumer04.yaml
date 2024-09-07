@@ -1,0 +1,62 @@
+spring:
+  cloud:
+    # 2024-09-07T10:45:09.472-04:00  WARN 48280 --- [cloud-stream-kafka-playground] [           main] c.f.c.c.BeanFactoryAwareFunctionRegistry : Multiple functional beans were found [function, consumer], thus can't determine default function definition. Please use 'spring.cloud.function.definition' property to explicitly define it.
+    # With this, we are telling the application which function to use. The other function is ignored.
+    function:
+      definition: consumer4
+    stream:
+      bindings:
+        consumer4-in-0:
+          destination: input-topic
+          group: some-group
+        function4-in-0:
+          destination: input-topic
+          group: some-group
+      kafka:
+        bindings:
+          function4-in-0:
+            consumer:
+              configuration:
+                "group.instance.id": "567"
+          consumer4-in-0:
+            consumer:
+              configuration:
+                "group.instance.id": "789"
+# With this configuration,
+# when we start the application, we are supposed to see the "group.instance.id" in the logs:
+# 2024-09-07T11:09:03.977-04:00  INFO 53457 --- [cloud-stream-kafka-playground] [           main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values:
+#     allow.auto.create.topics = true
+#     auto.commit.interval.ms = 100
+#     auto.include.jmx.reporter = true
+#     auto.offset.reset = earliest
+#     bootstrap.servers = [localhost:9092]
+#     check.crcs = true
+#     client.dns.lookup = use_all_dns_ips
+#     client.id = consumer-some-group-567
+#     client.rack =
+#     connections.max.idle.ms = 540000
+#     default.api.timeout.ms = 60000
+#     enable.auto.commit = false
+#     enable.metrics.push = true
+#     exclude.internal.topics = true
+#     fetch.max.bytes = 52428800
+#     fetch.max.wait.ms = 500
+#     fetch.min.bytes = 1
+#     group.id = some-group
+#     group.instance.id = 567
+#     group.protocol = classic
+#     ...
+#     2024-09-07T11:09:04.003-04:00  INFO 53457 --- [cloud-stream-kafka-playground] [           main] .c.CloudStreamKafkaPlaygroundApplication : Started CloudStreamKafkaPlaygroundApplication in 2.688 seconds (process running for 3.176)
+#     2024-09-07T11:09:04.004-04:00  INFO 53457 --- [cloud-stream-kafka-playground] [ka-some-group-1] org.apache.kafka.clients.Metadata        : [Consumer instanceId=567, clientId=consumer-some-group-567, groupId=some-group] Cluster ID: OTMwNzFhYTY1ODNiNGE5OQ
+#     2024-09-07T11:09:04.005-04:00  INFO 53457 --- [cloud-stream-kafka-playground] [ka-some-group-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer instanceId=567, clientId=consumer-some-group-567, groupId=some-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+#     2024-09-07T11:09:04.014-04:00  INFO 53457 --- [cloud-stream-kafka-playground] [ka-some-group-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer instanceId=567, clientId=consumer-some-group-567, groupId=some-group] (Re-)joining group
+#     2024-09-07T11:09:04.034-04:00  INFO 53457 --- [cloud-stream-kafka-playground] [ka-some-group-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer instanceId=567, clientId=consumer-some-group-567, groupId=some-group] Successfully joined group with generation Generation{generationId=10, memberId='567-9b2be76d-8944-482d-afd5-3a45513ab672', protocol='range'}
+#     2024-09-07T11:09:04.043-04:00  INFO 53457 --- [cloud-stream-kafka-playground] [ka-some-group-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer instanceId=567, clientId=consumer-some-group-567, groupId=some-group] Finished assignment for group at generation 10: {567-9b2be76d-8944-482d-afd5-3a45513ab672=Assignment(partitions=[input-topic-0])}
+#     2024-09-07T11:09:04.049-04:00  INFO 53457 --- [cloud-stream-kafka-playground] [ka-some-group-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer instanceId=567, clientId=consumer-some-group-567, groupId=some-group] Successfully synced group in generation Generation{generationId=10, memberId='567-9b2be76d-8944-482d-afd5-3a45513ab672', protocol='range'}
+#     2024-09-07T11:09:04.050-04:00  INFO 53457 --- [cloud-stream-kafka-playground] [ka-some-group-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer instanceId=567, clientId=consumer-some-group-567, groupId=some-group] Notifying assignor about the new Assignment(partitions=[input-topic-0])
+#     2024-09-07T11:09:04.053-04:00  INFO 53457 --- [cloud-stream-kafka-playground] [ka-some-group-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer instanceId=567, clientId=consumer-some-group-567, groupId=some-group] Adding newly assigned partitions: input-topic-0
+#     2024-09-07T11:09:04.054-04:00  INFO 53457 --- [cloud-stream-kafka-playground] [ka-some-group-1] o.s.c.s.b.r.ReactorKafkaBinder           : Assigned: [input-topic-0]
+#     2024-09-07T11:09:04.059-04:00  INFO 53457 --- [cloud-stream-kafka-playground] [ka-some-group-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer instanceId=567, clientId=consumer-some-group-567, groupId=some-group] Found no committed offset for partition input-topic-0
+#     2024-09-07T11:09:04.067-04:00  INFO 53457 --- [cloud-stream-kafka-playground] [ka-some-group-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer instanceId=567, clientId=consumer-some-group-567, groupId=some-group] Resetting offset for partition input-topic-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null)], epoch=0}}.
+#     2024-09-07T11:09:04.112-04:00  INFO 53457 --- [cloud-stream-kafka-playground] [ka-some-group-1] c.m.c.c.s.SimpleKafkaConsumer            : function received abcd
+#     2024-09-07T11:09:04.114-04:00  INFO 53457 --- [cloud-stream-kafka-playground] [ka-some-group-1] c.m.c.c.s.SimpleKafkaConsumer            : function received def

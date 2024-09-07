@@ -22,9 +22,11 @@ public class SimpleKafkaConsumer03 {
 
     @Bean
     public ReceiverOptionsCustomizer<String, ReceiverOptions> customizer(){
-        return (s, ro) -> {
-            log.info("******************************** {}", s);
-            return ro.consumerProperty(ConsumerConfig.GROUP_INSTANCE_ID_CONFIG, "234");
+        return (str, receiverOptions) -> {
+            log.info("******************************** {}", str);
+            // ******************************** function3-in-0
+            // str represents the name of the function
+            return receiverOptions.consumerProperty(ConsumerConfig.GROUP_INSTANCE_ID_CONFIG, "234");
         };
     }
 

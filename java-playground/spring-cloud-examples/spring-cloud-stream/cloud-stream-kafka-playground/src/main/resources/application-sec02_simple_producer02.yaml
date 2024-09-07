@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    function:
+      definition: consumer6;producer2
+    stream:
+      bindings:
+        consumer6-in-0:
+          destination: input-topic
+          group: some-group
+        producer2-out-0:
+          destination: input-topic
+      kafka:
+        bindings:
+          producer2-out-0:
+            producer:
+              configuration:
+                "acks": "-1"

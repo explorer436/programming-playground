@@ -1,0 +1,17 @@
+Change dependecy in pom.xml from ~spring-cloud-stream-binder-kafka~ to ~spring-cloud-stream-binder-kafka-reactive~
+
+#+begin_src
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-stream-binder-kafka-reactive</artifactId>
+</dependency>
+#+end_src
+
+For tests, remove this. It is buggy.
+#+begin_src
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-stream-test-binder</artifactId>
+    <scope>test</scope>
+</dependency>
+#+end_src
