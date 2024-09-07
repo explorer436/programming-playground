@@ -2,7 +2,6 @@ package io.spring.dataflow.sample.usagecostloggerkafka;
 
 import java.util.function.Consumer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,7 +17,7 @@ public class UsageCostLogger {
        See application.properties
 	 */
     @Bean
-	public Consumer<UsageCostDetail> process() {
+	public Consumer<UsageCostDetail> logger() {
 		return usageCostDetail -> {
 			log.info("usageCostDetail.toString : " + usageCostDetail.toString());
 		};

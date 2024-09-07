@@ -15,6 +15,7 @@
     <module>usage-cost-processor-rabbit</module>
     <module>usage-detail-sender-kafka</module>
     <module>usage-detail-sender-rabbit</module>
+    <module>cloud-stream-kafka-playground</module>
   </modules>
 
     <properties>

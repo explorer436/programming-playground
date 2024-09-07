@@ -3,7 +3,7 @@ spring:
     stream:
       function:
         bindings:
-          process-in-0: input
+          logger-in-0: input
       bindings:
         input:
           destination: usage-cost

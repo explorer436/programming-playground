@@ -1,0 +1,15 @@
+Order to look at these projects
+
+These are old implementations.
+
+1. usage-cost-logger-kafka
+2. usage-cost-logger-rabbit
+3. usage-cost-processor-kafka
+4. usage-cost-processor-rabbit
+5. usage-detail-sender-kafka
+6. usage-detail-sender-rabbit
+
+This is a more recent example that uses project-reactor.
+It uses <artifactId>spring-cloud-stream-binder-kafka-reactive</artifactId>
+
+1. cloud-stream-kafka-playground
