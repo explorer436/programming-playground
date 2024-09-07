@@ -75,6 +75,8 @@ Take a note of the ~dependencies~ section.
    #+begin_src 
    curl --verbose --request "GET" http://localhost:8080/pickTxtFileFromDirectory?folderName=aws_unzip_test
    #+end_src
+1. To upload a folder
+   curl --location --request POST 'http://localhost:8080/folder/upload'
 
 * References:
 
@@ -84,4 +86,4 @@ Take a note of the ~dependencies~ section.
 
 * unzip library
 
-All the code to unzip a file is from this library: https://github.com/nejckorasa/s3-stream-unzip?tab=readme-ov-file
+All the code from the packages "unzip" and "upload" is from this library: https://github.com/nejckorasa/s3-stream-unzip?tab=readme-ov-file

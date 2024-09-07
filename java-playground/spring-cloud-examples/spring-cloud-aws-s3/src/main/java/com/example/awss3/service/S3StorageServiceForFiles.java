@@ -4,7 +4,6 @@ import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.HttpMethod;
 import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3URI;
 import com.amazonaws.services.s3.model.*;
 import com.example.awss3.service.unzip.S3UnzipManager;
 import com.example.awss3.service.unzip.strategy.NoSplitUnzipStrategy;
@@ -30,7 +29,7 @@ import java.util.zip.ZipOutputStream;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class S3StorageService {
+public class S3StorageServiceForFiles {
 
     private final AmazonS3 amazonS3Client;
 
