@@ -15,3 +15,11 @@ For tests, remove this. It is buggy.
     <scope>test</scope>
 </dependency>
 #+end_src
+Add this:
+#+begin_src
+<dependency>
+	<groupId>io.projectreactor</groupId>
+	<artifactId>reactor-test</artifactId>
+	<scope>test</scope>
+</dependency>
+#+end_src

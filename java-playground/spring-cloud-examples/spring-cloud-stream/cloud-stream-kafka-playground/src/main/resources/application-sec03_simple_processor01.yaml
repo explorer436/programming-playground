@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    # 2024-09-07T10:45:09.472-04:00  WARN 48280 --- [cloud-stream-kafka-playground] [           main] c.f.c.c.BeanFactoryAwareFunctionRegistry : Multiple functional beans were found [function, consumer], thus can't determine default function definition. Please use 'spring.cloud.function.definition' property to explicitly define it.
+    function:
+      definition: consumer8;producer4;processor1
+    stream:
+      bindings:
+        consumer8-in-0:
+          destination: output-topic
+          group: consumer-group
+        processor1-in-0:
+          destination: input-topic
+          group: some-group
+        processor1-out-0:
+          destination: output-topic
+        producer4-out-0:
+          destination: input-topic
