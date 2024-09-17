@@ -1,0 +1,14 @@
+Reference: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Introduction
+
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+python3 manage.py runserver
+
+Admin site endpoint: http://127.0.0.1:8000/admin/
+Slacks3831
+gu3AlL#@7WQfZ3
+b8no1lih@tutanota.com
+
+User endpoint:
+http://127.0.0.1:8000/catalog/
