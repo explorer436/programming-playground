@@ -1,0 +1,2 @@
+Content based routing without using StreamBridge.
+Using explicit routing in the yaml file.

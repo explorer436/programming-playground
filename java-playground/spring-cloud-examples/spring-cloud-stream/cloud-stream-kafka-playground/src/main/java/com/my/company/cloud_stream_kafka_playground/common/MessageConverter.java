@@ -1,4 +1,4 @@
-package com.my.company.cloud_stream_kafka_playground.sec05_acknowledging;
+package com.my.company.cloud_stream_kafka_playground.common;
 
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.Message;

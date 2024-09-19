@@ -1,6 +1,7 @@
-package com.my.company.cloud_stream_kafka_playground.sec05_acknowledging;
+package com.my.company.cloud_stream_kafka_playground.sec04_acknowledging02;
 
 import com.my.company.cloud_stream_kafka_playground.AbstractCloudStreamKafkaPlaygroundApplicationTests;
+import com.my.company.cloud_stream_kafka_playground.common.MessageConverter;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +17,7 @@ import java.util.function.Consumer;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestPropertySource(properties = {
-        "sec=sec05_acknowledging",
+        "sec=sec04_acknowledging02",
         "spring.cloud.function.definition=producer6;testConsumer",
         "spring.cloud.stream.bindings.testConsumer-in-0.destination=input-topic"
 })

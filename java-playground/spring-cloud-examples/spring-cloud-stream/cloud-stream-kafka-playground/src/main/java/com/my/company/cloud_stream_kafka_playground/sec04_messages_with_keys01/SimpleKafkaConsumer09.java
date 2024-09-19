@@ -1,4 +1,4 @@
-package com.my.company.cloud_stream_kafka_playground.sec04_messages_with_keys;
+package com.my.company.cloud_stream_kafka_playground.sec04_messages_with_keys01;
 
 /*
     goal: to demo a simple kafka consumer using java functional interfaces

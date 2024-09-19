@@ -1,0 +1,2 @@
+This is Content based routing - without using a binding at all. We directly use the name of the topic here.
+See the router class.

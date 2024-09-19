@@ -1,4 +1,4 @@
-package com.my.company.cloud_stream_kafka_playground.sec04_messages_with_keys;
+package com.my.company.cloud_stream_kafka_playground.sec04_acknowledging02;
 
 /*
     goal: to demo a simple kafka consumer using java functional interfaces
@@ -17,21 +17,16 @@ import java.util.function.Supplier;
 
 @Configuration
 @Slf4j
-public class SimpleKafkaProducer05 {
+public class SimpleKafkaProducer06 {
 
     @Bean
-    public Supplier<Flux<Message<String>>> producer5() {
+    public Supplier<Flux<Message<String>>> producer6() {
         return () ->
                 Flux.interval(Duration.ofSeconds(1))
                                 .take(5)
                         .map(this::toMessage)
                         .doOnNext(m -> log.info("produced {}", m));
     }
-
-    // https://docs.spring.io/spring-kafka/reference/kafka/sending-messages.html#exchanging-messages
-    // Do we have to produce as "Messages"?
-    // No. Depends upon the requirements.
-    // If there is no need for it, just keep producing Flux<String>
 
     private Message<String> toMessage(long l) {
         return MessageBuilder.withPayload("msg " + l)

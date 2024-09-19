@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.reactive.ReactiveKafkaProducerTemplate;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Sinks;
 import reactor.kafka.sender.SenderOptions;
 
@@ -25,8 +26,8 @@ public class KafkaProducerConfig {
 
     @Bean
     public ProductViewEventProducer productViewEventProducer(ReactiveKafkaProducerTemplate<String, ProductViewEvent> template) {
-        var sink = Sinks.many().unicast().<ProductViewEvent>onBackpressureBuffer();
-        var flux = sink.asFlux();
+        Sinks.Many<ProductViewEvent> sink = Sinks.many().unicast().<ProductViewEvent>onBackpressureBuffer();
+        Flux<ProductViewEvent> flux = sink.asFlux();
 
         // We can also read the name of the topc from properties file using @Value annotation.
         ProductViewEventProducer eventProducer = new ProductViewEventProducer(template, sink, flux, "product-view-events");

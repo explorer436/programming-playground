@@ -1,9 +1,11 @@
-package com.my.company.cloud_stream_kafka_playground.sec05_acknowledging;
+package com.my.company.cloud_stream_kafka_playground.sec04_acknowledging02;
 
 /*
     goal: to demo a simple kafka consumer using java functional interfaces
  */
 
+import com.my.company.cloud_stream_kafka_playground.common.MessageConverter;
+import com.my.company.cloud_stream_kafka_playground.common.Record;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
