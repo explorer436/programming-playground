@@ -1,0 +1,12 @@
+References:
+
+https://github.com/googleworkspace/java-samples/tree/main/calendar
+
+The application was able to read the events successfully but it wasn't able to delete events. 
+It was throwing a 403 error. Maybe, I didn't set up the OAuth credentials right.
+
+Result:
+I did not end up using this application.
+I wrote separate applications for 
+1. converting ics file to json files
+2. update Google Calender using a python script that uses REST calls.
