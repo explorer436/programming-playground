@@ -1,5 +1,0 @@
-1. custom implementation of the interfaces
-2. mono_examples
-3. flux_examples_with_in_memory_data
-4. flux_emitting_items_programmatically
-5. operators

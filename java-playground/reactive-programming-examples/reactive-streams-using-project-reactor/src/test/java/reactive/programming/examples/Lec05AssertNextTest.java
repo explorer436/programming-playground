@@ -2,7 +2,7 @@ package reactive.programming.examples;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import reactive.programming.examples.util.Util;
+import reactive.programming.examples.utilities.Util;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
