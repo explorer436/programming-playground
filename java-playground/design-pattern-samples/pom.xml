@@ -21,18 +21,85 @@
 
   <dependencyManagement>
     <dependencies>
+
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>2.5.5</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
       <dependency>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
-        <version>1.18.26</version>
+        <version>1.18.30</version>
         <scope>provided</scope>
       </dependency>
+
+      <!--
+          [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.1.2:test (default-test) on project design-pattern-examples:
+          [ERROR]
+          [ERROR] Please refer to /home/explorer436/Downloads/GitRepositories/programming-playground/java-playground/design-pattern-samples/design-pattern-examples/target/surefire-reports for the individual test results.
+          [ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+          [ERROR] There was an error in the forked process
+          [ERROR] TestEngine with ID 'junit-jupiter' failed to discover tests
+          [ERROR] org.apache.maven.surefire.booter.SurefireBooterForkException: There was an error in the forked process
+          [ERROR] TestEngine with ID 'junit-jupiter' failed to discover tests
+          [ERROR]         at org.apache.maven.plugin.surefire.booterclient.ForkStarter.fork(ForkStarter.java:628)
+          [ERROR]         at org.apache.maven.plugin.surefire.booterclient.ForkStarter.run(ForkStarter.java:285)
+          [ERROR]         at org.apache.maven.plugin.surefire.booterclient.ForkStarter.run(ForkStarter.java:250)
+          [ERROR]         at org.apache.maven.plugin.surefire.AbstractSurefireMojo.executeProvider(AbstractSurefireMojo.java:1203)
+          [ERROR]         at org.apache.maven.plugin.surefire.AbstractSurefireMojo.executeAfterPreconditionsChecked(AbstractSurefireMojo.java:1055)
+          [ERROR]         at org.apache.maven.plugin.surefire.AbstractSurefireMojo.execute(AbstractSurefireMojo.java:871)
+          [ERROR]         at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:126)
+          [ERROR]         at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2(MojoExecutor.java:328)
+          [ERROR]         at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute(MojoExecutor.java:316)
+          [ERROR]         at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:212)
+          [ERROR]         at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:174)
+          [ERROR]         at org.apache.maven.lifecycle.internal.MojoExecutor.access$000(MojoExecutor.java:75)
+          [ERROR]         at org.apache.maven.lifecycle.internal.MojoExecutor$1.run(MojoExecutor.java:162)
+          [ERROR]         at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute(DefaultMojosExecutionStrategy.java:39)
+          [ERROR]         at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:159)
+          [ERROR]         at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:105)
+          [ERROR]         at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:73)
+          [ERROR]         at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:53)
+          [ERROR]         at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:118)
+          [ERROR]         at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:261)
+          [ERROR]         at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:173)
+          [ERROR]         at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:101)
+          [ERROR]         at org.apache.maven.cli.MavenCli.execute(MavenCli.java:906)
+          [ERROR]         at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:283)
+          [ERROR]         at org.apache.maven.cli.MavenCli.main(MavenCli.java:206)
+          [ERROR]         at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+          [ERROR]         at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+          [ERROR]         at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:283)
+          [ERROR]         at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:226)
+          [ERROR]         at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:407)
+          [ERROR]         at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:348)
+      -->
+
+      <!--
+          Then, you can just add regular dependency wherever you want in scope of dependencyManagement declaration.
+
+          </dependencies>
+              <dependency>
+                  <groupId>org.junit.jupiter</groupId>
+                  <artifactId>junit-jupiter-engine</artifactId>
+                  <scope>test</scope>
+              </dependency>
+          </dependencies>
+
+          It will take all proper versions for all junit modules (also jupiter) from junit-bom declared in dependencyManagement.
+      -->
       <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>3.8.1</version>
-        <scope>test</scope>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>5.10.1</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
+
     </dependencies>
   </dependencyManagement>
 </project>

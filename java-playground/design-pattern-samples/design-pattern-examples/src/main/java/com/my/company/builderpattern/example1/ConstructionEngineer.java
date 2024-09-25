@@ -1,4 +1,4 @@
-package com.my.company.builderpattern;
+package com.my.company.builderpattern.example1;
 
 public class ConstructionEngineer {
     private HouseBuilder houseBuilder;

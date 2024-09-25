@@ -1,4 +1,4 @@
-package com.my.company.builderpattern;
+package com.my.company.builderpattern.example1;
 
 public class House {
     private String foundation;
@@ -6,6 +6,7 @@ public class House {
     private String roof;
     private boolean furnished;
     private boolean painted;
+
     public void setFoundation(String foundation) {
         this. foundation = foundation;
     }
@@ -21,6 +22,7 @@ public class House {
     public void setPainted(boolean painted) {
         this.painted = painted;
     }
+
     @Override
     public String toString() {
         return "Foundation - " + foundation + " Structure - " + structure + " Roof - " + roof +" Is Furnished? "+furnished+" Is Painted? "+painted;
