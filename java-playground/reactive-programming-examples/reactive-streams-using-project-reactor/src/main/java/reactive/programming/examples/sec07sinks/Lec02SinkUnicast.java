@@ -1,4 +1,4 @@
-package reactive.programming.examples.sec06sinks;
+package reactive.programming.examples.sec07sinks;
 
 import reactive.programming.examples.utilities.Util;
 import reactor.core.publisher.Flux;

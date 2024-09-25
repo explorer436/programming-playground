@@ -1,4 +1,4 @@
-package reactive.programming.examples.sec05operators;
+package reactive.programming.examples.sec06operators;
 
 import reactive.programming.examples.utilities.Util;
 import reactor.core.publisher.Flux;

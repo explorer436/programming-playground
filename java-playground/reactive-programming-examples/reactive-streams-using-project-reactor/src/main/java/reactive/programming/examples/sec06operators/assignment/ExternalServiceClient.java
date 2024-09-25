@@ -1,4 +1,4 @@
-package reactive.programming.examples.sec05operators.assignment;
+package reactive.programming.examples.sec06operators.assignment;
 
 import reactive.programming.examples.utilities.client.AbstractHttpClient;
 import reactor.core.publisher.Mono;

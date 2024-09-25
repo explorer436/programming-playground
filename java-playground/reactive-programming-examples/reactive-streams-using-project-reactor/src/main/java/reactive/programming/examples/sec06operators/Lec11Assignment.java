@@ -1,6 +1,6 @@
-package reactive.programming.examples.sec05operators;
+package reactive.programming.examples.sec06operators;
 
-import reactive.programming.examples.sec05operators.assignment.ExternalServiceClient;
+import reactive.programming.examples.sec06operators.assignment.ExternalServiceClient;
 import reactive.programming.examples.utilities.Util;
 
 /*
