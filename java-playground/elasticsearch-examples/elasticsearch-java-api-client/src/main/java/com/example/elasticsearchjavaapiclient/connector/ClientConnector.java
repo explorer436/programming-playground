@@ -1,6 +1,7 @@
 package com.example.elasticsearchjavaapiclient.connector;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
+import co.elastic.clients.elasticsearch._types.Script;
 import co.elastic.clients.elasticsearch._types.query_dsl.Query;
 import co.elastic.clients.elasticsearch.core.*;
 import co.elastic.clients.elasticsearch.core.search.Hit;
@@ -96,11 +97,74 @@ public class ClientConnector {
     }
 
     public String updateEmployee(Employee employee) throws IOException {
-        UpdateRequest<Employee, Employee> updateRequest = UpdateRequest.of(req->
-                req.index(index)
+
+        // Update the entire object.
+        UpdateRequest<Employee, Employee> updateRequest = UpdateRequest.of(builder->
+                builder.index(index)
                         .id(String.valueOf(employee.getId()))
                         .doc(employee));
         UpdateResponse<Employee> response = elasticsearchClient.update(updateRequest, Employee.class);
+
+        /*
+           POST employee-index1/_update_by_query
+           {
+               "script": {
+                   "source": "ctx._source.deleteFlag='Y';",
+                   "lang": "painless"
+               },
+               "query": {
+                   "term": {
+                       "employeeId": {
+                           "value": 1234
+                       }
+                   }
+               }
+           }
+        */
+
+        /*
+            POST test-index1/_update_by_query
+            {
+              "query": {
+                "term": {
+                  "oldValue": 10
+                }
+              },
+              "script" : {
+                "source": "ctx._source.oldValue += params.newValue",
+                "lang": "painless",
+                "params" : {
+                  "newValue" : 20
+                }
+              }
+            }
+         */
+
+        // Based on the use-case, this maybe more appropriate compared to UpdateRequest.
+        UpdateByQueryRequest updateByQueryRequest = UpdateByQueryRequest.of(builder ->
+                builder.index(index)
+                        .script(Script.of(s ->
+                                s.inline(i -> {
+                                            i.lang("painless");
+                                            i.source("ctx._source.deleteFlag='Y';");
+                                            return i;
+                                        }
+
+                                )))
+                        .query(q -> {
+                                    q.term(t -> {
+                                        t.field("employeeId");
+                                        t.value(v -> {
+                                            v.longValue(1234L);
+                                            return v;
+                                        });
+                                        return t;
+                                    });
+                                    return q;
+                                }
+                        ));
+
+
         return response.result().toString();
     }
 
