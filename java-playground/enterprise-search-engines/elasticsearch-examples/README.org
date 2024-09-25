@@ -1,0 +1,10 @@
+* Overview
+
+1. ~elasticsearch-java-api-client~ shows the use of java api client without using spring-data for working with Elasticsearch
+1. ~spring-data-elasticsearch-2.7.8-7.17.3~ and ~spring-data-elasticsearch-3.2.1-7.17.3~ show the use of ~spring-boot-starter-data-elasticsearch~
+
+* Set-up
+
+Start the required docker containers.
+
+https://github.com/explorer436/programming-playground/tree/main/docker%20compose%20files/elasticsearch

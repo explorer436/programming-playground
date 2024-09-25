@@ -8,7 +8,7 @@
 		<version>3.2.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
+	<groupId>enterprise.search.examples</groupId>
 	<artifactId>elasticsearch-java-api-client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>elasticsearch-java-api-client</name>

@@ -8,7 +8,7 @@
 		<version>3.2.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
+	<groupId>enterprise.search.examples</groupId>
 	<artifactId>spring-data-elasticsearch-3.2.1-7.17.3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-data-elasticsearch-3.2.1-7.17.3</name>
