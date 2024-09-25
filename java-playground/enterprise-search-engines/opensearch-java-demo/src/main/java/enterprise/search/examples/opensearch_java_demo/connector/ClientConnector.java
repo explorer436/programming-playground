@@ -24,6 +24,7 @@ import org.opensearch.client.opensearch.core.*;
 import org.opensearch.client.opensearch.indices.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -189,8 +190,19 @@ public class ClientConnector {
 
     public String insertDocument(MyDocument myDocument) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
 
+        IndexResponse indexResponse = getIndexResponse(myDocument);
+
+        if (StringUtils.isEmpty(myDocument.getDocId())) {
+            myDocument.setDocId(indexResponse.id());
+            getIndexResponse(myDocument);
+        }
+
+        return indexResponse.id();
+    }
+
+    private IndexResponse getIndexResponse(MyDocument myDocument) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
         IndexRequest<MyDocument> indexRequest = new IndexRequest.Builder<MyDocument>().index(indexName2)
-                // .id() for updates.
+                .id(myDocument.getDocId())
                 .document(myDocument)
                 .build();
 
@@ -198,7 +210,7 @@ public class ClientConnector {
 
         OpenSearchClient openSearchClient = getOpenSearchClient();
         IndexResponse indexResponse = openSearchClient.index(indexRequest);
-        return indexResponse.id();
+        return indexResponse;
     }
 
     public String insertMovie(Movie movie) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
