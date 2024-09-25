@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.opensearch.client.json.JsonpMapper;
 import org.opensearch.client.opensearch.OpenSearchClient;
 import org.opensearch.client.opensearch._types.Result;
+import org.opensearch.client.opensearch._types.Script;
 import org.opensearch.client.opensearch._types.SortOptions;
 import org.opensearch.client.opensearch._types.Time;
 import org.opensearch.client.opensearch._types.mapping.TypeMapping;
@@ -383,8 +384,83 @@ public class ClientConnector {
         ).collect(Collectors.toUnmodifiableList());
     }
 
-    public String updateDocument(MyDocument myDocument) {
-        return "";
+    public void updateDocument(MyDocument myDocument) throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
+
+        // Update the entire object.
+        /*UpdateRequest<Employee, Employee> updateRequest = UpdateRequest.of(builder->
+                builder.index(index)
+                        .id(String.valueOf(employee.getId()))
+                        .doc(employee));
+        UpdateResponse<Employee> response = elasticsearchClient.update(updateRequest, Employee.class);*/
+
+        /*
+           POST employee-index1/_update_by_query
+           {
+               "script": {
+                   "source": "ctx._source.deleteFlag='Y';",
+                   "lang": "painless"
+               },
+               "query": {
+                   "term": {
+                       "employeeId": {
+                           "value": 1234
+                       }
+                   }
+               }
+           }
+        */
+
+        /*
+            POST test-index1/_update_by_query
+            {
+              "query": {
+                "term": {
+                  "oldValue": 10
+                }
+              },
+              "script" : {
+                "source": "ctx._source.oldValue += params.newValue",
+                "lang": "painless",
+                "params" : {
+                  "newValue" : 20
+                }
+              }
+            }
+         */
+
+        // Based on the use-case, this maybe more appropriate compared to UpdateRequest.
+        UpdateByQueryRequest updateByQueryRequest = UpdateByQueryRequest.of(builder ->
+                builder.index(indexName1)
+                        .script(Script.of(s ->
+                                s.inline(i -> {
+                                            i.lang("painless");
+                                            i.source("ctx._source.deleteFlag='Y';");
+                                            return i;
+                                        }
+
+                                )))
+                        .query(q -> {
+                                    q.term(t -> {
+                                        t.field("employeeId");
+                                        t.value(v -> {
+                                            v.longValue(1234L);
+                                            return v;
+                                        });
+                                        return t;
+                                    });
+                                    return q;
+                                }
+                        ));
+        UpdateByQueryResponse updateByQueryResponse = getOpenSearchClient().updateByQuery(updateByQueryRequest);
+
+        if (updateByQueryResponse.updated() == 0) {
+            log.error("document update failed: {}", updateByQueryResponse.toJsonString());
+        } else {
+            log.info("updated count {} for query {} and response is {}",
+                    updateByQueryResponse.updated(),
+                    updateByQueryRequest.query().toString(),
+                    updateByQueryResponse.toJsonString());
+        }
     }
 
     private OpenSearchClient getOpenSearchClient() throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
