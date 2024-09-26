@@ -1,4 +1,4 @@
-package com.my.company.builderpattern.example1;
+package com.my.company.builderpattern.example2;
 
 public interface HouseBuilder {
     void buildFoundation();

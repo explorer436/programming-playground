@@ -1,4 +1,4 @@
-package com.my.company.builderpattern.without_pattern;
+package com.my.company.builderpattern.example1;
 
 public class Lec01WithoutBuilderPattern3_ChainingConstructors {
 

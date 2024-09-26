@@ -1,4 +1,4 @@
-package com.my.company.builderpattern.example1;
+package com.my.company.builderpattern.example2;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.junit.jupiter.api.Test;
