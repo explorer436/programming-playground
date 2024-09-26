@@ -2,7 +2,7 @@ package com.my.company.builderpattern.example1;
 
 import java.util.function.Consumer;
 
-public class Lec02WithBuilderPattern2_advanced_way {
+public class Lec02WithBuilderPattern2_advanced_way_externalized_builder {
 
     public static void main(String[] args) {
 
