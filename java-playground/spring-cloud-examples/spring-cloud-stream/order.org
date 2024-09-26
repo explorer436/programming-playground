@@ -12,4 +12,8 @@ These are old implementations.
 This is a more recent example that uses project-reactor.
 It uses <artifactId>spring-cloud-stream-binder-kafka-reactive</artifactId>
 
-1. cloud-stream-kafka-playground
+7. cloud-stream-kafka-playground
+
+* Sage pattern
+
+8. saga-choreography
