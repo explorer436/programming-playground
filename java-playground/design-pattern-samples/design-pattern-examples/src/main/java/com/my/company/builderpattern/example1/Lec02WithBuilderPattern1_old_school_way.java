@@ -1,6 +1,6 @@
 package com.my.company.builderpattern.example1;
 
-public class Lec02WithBuilderPattern1 {
+public class Lec02WithBuilderPattern1_old_school_way {
 
     public static void main(String[] args) {
         /*Person person1 = new Person("John", "Doe");
