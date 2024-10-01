@@ -1,0 +1,4 @@
+This package has service layer implementation and repository layer implementation.
+
+The difference between the package in order-service and the rest of the sub-modules is that, for this service, we are adding a Controller as well.
+This is to simulate behavior of a front-end application.

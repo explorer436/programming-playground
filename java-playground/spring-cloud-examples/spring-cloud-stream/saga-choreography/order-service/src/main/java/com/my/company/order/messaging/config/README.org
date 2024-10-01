@@ -1,0 +1,22 @@
+Why are we not using PaymentEventProcessorConfig and InventoryEventProcessorConfig?
+
+1. There is a log of repetitive code
+2. If we use them, we have to create bindings for them in the yaml file. But for all of them, the message is essentially going to the same topic.
+   e.g.
+   #+begin_src 
+   spring:
+     cloud:
+       function:
+         definition: orderEventProducer;paymentProcessor;inventoryProcessor;shippingProcessor
+       stream:
+         bindings:
+           orderEventProducer-out-0:
+             destination: order-events
+           paymentProcessor-out-0:
+             destination: order-events
+           inventoryProcessor-out-0:
+             destination: order-events
+   #+end_src
+
+The approach will work. But we can refactor and minimize the configuration.
+We do that using AbstractOrderEventRouterConfig and ProcessorConfig.

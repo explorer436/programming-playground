@@ -1,0 +1,4 @@
+Why do the method names in OrderSaga and DomainEvent look like that?
+Because, we are using records in InventoryEvent, OrderEvent, PaymentEvent and ShippingEvent.
+With records, a method gets created for every field (without the word "get").
+So, by using the method names createdAt() and orderId() in the parent interface, we are supporting the generated methods in the records.

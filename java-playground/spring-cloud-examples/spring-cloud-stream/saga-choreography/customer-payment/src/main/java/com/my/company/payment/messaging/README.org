@@ -1,0 +1,2 @@
+This package has classes related to kafka.
+OrderEventProcessorImpl picks up messages from the payment-events topic and responds to them by executing business logic.

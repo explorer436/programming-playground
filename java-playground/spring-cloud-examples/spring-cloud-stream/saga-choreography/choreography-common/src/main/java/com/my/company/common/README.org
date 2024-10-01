@@ -1,0 +1,2 @@
+The goal of this package is to create domain models classes, utility classes, validation utilities, exception utilities, processor and publisher interfaces.
+This is to make things easier and consistent in all the sub-modules.
