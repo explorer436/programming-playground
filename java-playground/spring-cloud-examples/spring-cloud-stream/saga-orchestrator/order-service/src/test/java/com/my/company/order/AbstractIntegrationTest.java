@@ -1,9 +1,12 @@
 package com.my.company.order;
 
-import com.my.company.common.events.inventory.InventoryEvent;
-import com.my.company.common.events.order.OrderEvent;
-import com.my.company.common.events.payment.PaymentEvent;
-import com.my.company.common.events.shipping.ShippingEvent;
+import com.my.company.common.messages.Request;
+import com.my.company.common.messages.inventory.InventoryRequest;
+import com.my.company.common.messages.inventory.InventoryResponse;
+import com.my.company.common.messages.payment.PaymentRequest;
+import com.my.company.common.messages.payment.PaymentResponse;
+import com.my.company.common.messages.shipping.ShippingRequest;
+import com.my.company.common.messages.shipping.ShippingResponse;
 import com.my.company.order.common.dto.OrderCreateRequest;
 import com.my.company.order.common.dto.OrderDetails;
 import com.my.company.order.common.dto.PurchaseOrderDto;
@@ -36,19 +39,18 @@ import java.util.function.Consumer;
 		"logging.level.root=ERROR",
 		"logging.level.com.my.company*=INFO",
 		"spring.cloud.stream.kafka.binder.configuration.auto.offset.reset=earliest",
-		"spring.cloud.function.definition=orderEventProducer;paymentProcessor;inventoryProcessor;shippingProcessor;orderEventConsumer",
-		"spring.cloud.stream.bindings.orderEventConsumer-in-0.destination=order-events"
+		"spring.cloud.function.definition=requestConsumer;orderOrchestrator",
+		"spring.cloud.stream.bindings.requestConsumer-in-0.destination=payment-request,inventory-request,shipping-request"
 })
 @EmbeddedKafka(
 		partitions = 1,
 		bootstrapServersProperty = "spring.kafka.bootstrap-servers"
 )
-// Explicitly give access to the test beans to AbstractIntegrationTest
 @Import(AbstractIntegrationTest.TestConfig.class)
 public abstract class AbstractIntegrationTest {
 
-	private static final Sinks.Many<OrderEvent> resSink = Sinks.many().unicast().onBackpressureBuffer();
-	private static final Flux<OrderEvent> resFlux = resSink.asFlux().cache(0);
+	private static final Sinks.Many<Request> resSink = Sinks.many().unicast().onBackpressureBuffer();
+	private static final Flux<Request> resFlux = resSink.asFlux().cache(0);
 
 	@Autowired
 	private WebTestClient client;
@@ -56,24 +58,20 @@ public abstract class AbstractIntegrationTest {
 	@Autowired
 	private StreamBridge streamBridge;
 
-	protected void emitEvent(PaymentEvent event){
-		this.streamBridge.send("payment-events", event);
+	protected void emitResponse(PaymentResponse response){
+		this.streamBridge.send("payment-response", response);
 	}
 
-	protected void emitEvent(InventoryEvent event){
-		this.streamBridge.send("inventory-events", event);
+	protected void emitResponse(InventoryResponse response){
+		this.streamBridge.send("inventory-response", response);
 	}
 
-	protected void emitEvent(ShippingEvent event){
-		this.streamBridge.send("shipping-events", event);
+	protected void emitResponse(ShippingResponse response){
+		this.streamBridge.send("shipping-response", response);
 	}
 
 	protected UUID initiateOrder(OrderCreateRequest request){
-		/*
-		    We get orderId in the response.
-		    We have to extract it from the response on the fly and use it for subsequent operations like emitting events.
-		 */
-		AtomicReference<UUID> orderIdRef = new AtomicReference<UUID>();
+		var orderIdRef = new AtomicReference<UUID>();
 		this.client
 				.post()
 				.uri("/order")
@@ -96,8 +94,7 @@ public abstract class AbstractIntegrationTest {
 				.expectBody(OrderDetails.class)
 				.value(r -> {
 					Assertions.assertEquals(orderId, r.order().orderId());
-					Assertions.assertNotNull(r.inventory());
-					Assertions.assertNotNull(r.payment());
+					Assertions.assertNotNull(r.actions());
 					assertion.accept(r);
 				});
 	}
@@ -115,22 +112,28 @@ public abstract class AbstractIntegrationTest {
 				});
 	}
 
-	protected void verifyOrderCreatedEvent(UUID orderId, int totalAmount){
-		expectEvent(OrderEvent.OrderCreated.class, e -> {
-			Assertions.assertEquals(totalAmount, e.totalAmount());
+	protected void verifyPaymentRequest(UUID orderId, int amount){
+		expectRequest(PaymentRequest.Process.class, e -> {
+			Assertions.assertEquals(amount, e.amount());
 			Assertions.assertEquals(orderId, e.orderId());
 		});
 	}
 
-	protected void verifyOrderCancelledEvent(UUID orderId){
-		expectEvent(OrderEvent.OrderCancelled.class, e -> Assertions.assertEquals(orderId, e.orderId()));
+	protected void verifyInventoryRequest(UUID orderId, int quantity){
+		expectRequest(InventoryRequest.Deduct.class, e -> {
+			Assertions.assertEquals(quantity, e.quantity());
+			Assertions.assertEquals(orderId, e.orderId());
+		});
 	}
 
-	protected void verifyOrderCompletedEvent(UUID orderId){
-		expectEvent(OrderEvent.OrderCompleted.class, e -> Assertions.assertEquals(orderId, e.orderId()));
+	protected void verifyScheduleRequest(UUID orderId, int quantity){
+		expectRequest(ShippingRequest.Schedule.class, e -> {
+			Assertions.assertEquals(quantity, e.quantity());
+			Assertions.assertEquals(orderId, e.orderId());
+		});
 	}
 
-	protected <T> void expectEvent(Class<T> type, Consumer<T> assertion){
+	protected <T> void expectRequest(Class<T> type, Consumer<T> assertion){
 		resFlux
 				//.next()
 				.timeout(Duration.ofSeconds(2), Mono.empty())
@@ -140,7 +143,18 @@ public abstract class AbstractIntegrationTest {
 				.verifyComplete();
 	}
 
-	protected void expectNoEvent(){
+	protected void expectRequests(Consumer<List<Request>> assertion){
+		resFlux
+				//.next()
+				.timeout(Duration.ofSeconds(2), Mono.empty())
+				.cast(Request.class)
+				.collectList()
+				.as(StepVerifier::create)
+				.consumeNextWith(assertion)
+				.verifyComplete();
+	}
+
+	protected void expectNoRequest(){
 		resFlux
 				.next()
 				.timeout(Duration.ofSeconds(2), Mono.empty())
@@ -152,7 +166,7 @@ public abstract class AbstractIntegrationTest {
 	static class TestConfig {
 
 		@Bean
-		public Consumer<Flux<OrderEvent>> orderEventConsumer(){
+		public Consumer<Flux<Request>> requestConsumer(){
 			return f -> f.doOnNext(resSink::tryEmitNext).subscribe();
 		}
 
