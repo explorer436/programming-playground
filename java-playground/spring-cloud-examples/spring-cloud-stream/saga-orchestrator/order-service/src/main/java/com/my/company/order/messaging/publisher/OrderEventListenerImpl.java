@@ -14,6 +14,11 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class OrderEventListenerImpl implements OrderEventListener, EventPublisher<UUID> {
 
+    /*
+       Note that this is not a spring bean.
+       We will have a custom bean definition to initialize this.
+    */
+
     private final Sinks.Many<UUID> sink;
     private final Flux<UUID> flux;
 

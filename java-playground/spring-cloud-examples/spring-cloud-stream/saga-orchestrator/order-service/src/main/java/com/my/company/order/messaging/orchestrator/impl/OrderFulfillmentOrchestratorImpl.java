@@ -44,6 +44,10 @@ public class OrderFulfillmentOrchestratorImpl implements OrderFulfillmentOrchest
 //        this.shippingStep.setNextStep(id -> this.service.complete(id).then(Mono.empty()));
     }
 
+    /*
+       We have to create the initial request.
+       The request from OrderEventListenerImpl.emitOrderCreated() will be sent here by OrderFulfillmentOrchestratorConfig.
+    */
     @Override
     public Publisher<Request> orderInitialRequests() {
         return this.eventPublisher.publish()

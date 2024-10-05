@@ -58,14 +58,23 @@ public abstract class AbstractIntegrationTest {
 	@Autowired
 	private StreamBridge streamBridge;
 
+    /*
+       This is to simulate response from payment service.
+	*/
 	protected void emitResponse(PaymentResponse response){
 		this.streamBridge.send("payment-response", response);
 	}
 
+    /*
+       This is to simulate response from inventory service.
+	*/
 	protected void emitResponse(InventoryResponse response){
 		this.streamBridge.send("inventory-response", response);
 	}
 
+    /*
+       This is to simulate response from shipping service.
+	*/
 	protected void emitResponse(ShippingResponse response){
 		this.streamBridge.send("shipping-response", response);
 	}

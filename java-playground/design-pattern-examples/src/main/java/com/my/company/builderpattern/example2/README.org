@@ -1,0 +1,2 @@
+Sometimes, we may have to build a custom response object before returning it from either the controller layer or the service layer.
+In this case, we can use the builder pattern as shown in this example.

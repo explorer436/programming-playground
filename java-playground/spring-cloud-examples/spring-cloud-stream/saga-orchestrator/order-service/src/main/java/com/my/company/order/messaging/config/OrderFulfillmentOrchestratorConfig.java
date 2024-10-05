@@ -37,6 +37,7 @@ public class OrderFulfillmentOrchestratorConfig {
                            .concatMap(r -> Flux.from(orchestrator.orchestrate(r.message()))
                                                .doAfterTerminate(() -> r.acknowledgement().acknowledge())
                            )
+                           // to handle initial request in the workflow.
                            .mergeWith(orchestrator.orderInitialRequests())
                            .map(this::toMessage);
     }
@@ -49,6 +50,9 @@ public class OrderFulfillmentOrchestratorConfig {
                              .build();
     }
 
+    /*
+       Determine topic name based on the type of the request.
+    */
     private String getDestination(Request request) {
         return switch (request) {
             case PaymentRequest r -> PAYMENT_REQUEST_CHANNEL;

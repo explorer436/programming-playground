@@ -20,6 +20,7 @@ public class OrderServiceTest extends AbstractIntegrationTest {
 
     @Test
     public void orderCompletedWorkflowTest() {
+        
         // order create request
         var request = TestDataUtil.toRequest(1, 1, 2, 3);
 
