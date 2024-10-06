@@ -23,7 +23,3 @@ Add this:
 	<scope>test</scope>
 </dependency>
 #+end_src
-
-* Explanation of package structure in the sub-modules:
-The "application" package and the "messaging" package do not talk to each other directly.
-The messages between these two packages have to go through the "common" package.

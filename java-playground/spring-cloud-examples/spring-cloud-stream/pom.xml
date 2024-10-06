@@ -16,6 +16,9 @@
     <module>usage-detail-sender-kafka</module>
     <module>usage-detail-sender-rabbit</module>
     <module>cloud-stream-kafka-playground</module>
+    <module>saga-choreography</module>
+    <module>saga-orchestrator</module>
+    <module>saga-choreography-outbox</module>
   </modules>
 
     <properties>
