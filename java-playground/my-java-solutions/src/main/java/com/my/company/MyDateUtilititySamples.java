@@ -70,5 +70,11 @@ public class MyDateUtilititySamples {
         SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         Date date2 = formatter2.parse(dateInStringFormat2);
         System.out.println("date2: " + date2);
+
+        OffsetDateTime odt = OffsetDateTime.parse("2024-11-01T11:00:00-04:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+        System.out.println("date3: " + odt.toString());
+        LocalDateTime ldt = odt.toLocalDateTime();
+        Date date3 = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
+        System.out.println("date3: " + date3);
     }
 }
