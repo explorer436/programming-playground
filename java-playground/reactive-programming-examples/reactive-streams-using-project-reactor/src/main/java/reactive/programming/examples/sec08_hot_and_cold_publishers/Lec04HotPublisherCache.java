@@ -1,8 +1,6 @@
 package reactive.programming.examples.sec08_hot_and_cold_publishers;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import reactive.programming.examples.utilities.Util;
 import reactor.core.publisher.Flux;
 
@@ -17,6 +15,7 @@ public class Lec04HotPublisherCache {
 
     public static void main(String[] args) {
 
+        // replay instead of publish
         var stockFlux = stockStream().replay(1).autoConnect(0);
 
         Util.sleepSeconds(4);
@@ -36,7 +35,7 @@ public class Lec04HotPublisherCache {
     }
 
     private static Flux<Integer> stockStream() {
-        return Flux.generate(sink -> sink.next(Util.faker().random().nextInt(10, 100)))
+        return Flux.generate(sink -> sink.next(Util.getFaker().random().nextInt(10, 100)))
                    .delayElements(Duration.ofSeconds(3))
                    .doOnNext(price -> log.info("emitting price: {}", price))
                    .cast(Integer.class);
