@@ -1,0 +1,7 @@
+* How to build
+
+To build the binary, run: ~go build~ in the root folder.
+
+It will put a binary file in the same folder with the name of the module (defined in ~go.mod~).
+
+Run it with ~./hello~

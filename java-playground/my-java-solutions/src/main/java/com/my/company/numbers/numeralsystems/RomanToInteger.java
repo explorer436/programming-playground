@@ -1,4 +1,4 @@
-package com.my.company.numbers;
+package com.my.company.numbers.numeralsystems;
 
 /**
  * Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.

@@ -1,4 +1,4 @@
-package com.my.company.numbers;
+package com.my.company.numbers.numeralsystems;
 
 import java.util.Collections;
 
