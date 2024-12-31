@@ -15,6 +15,7 @@ public class DecimalToRomanTests {
                 () -> assertEquals("VIII", decimalToRoman.intToRoman(8)),
                 () -> assertEquals("IX", decimalToRoman.intToRoman(9)),
                 () -> assertEquals("XIII", decimalToRoman.intToRoman(13)),
+                () -> assertEquals("XIV", decimalToRoman.intToRoman(14)),
                 () -> assertEquals("XXXI", decimalToRoman.intToRoman(31)),
                 () -> assertEquals("XLIII", decimalToRoman.intToRoman(43)),
                 () -> assertEquals("LVIII", decimalToRoman.intToRoman(58)),
