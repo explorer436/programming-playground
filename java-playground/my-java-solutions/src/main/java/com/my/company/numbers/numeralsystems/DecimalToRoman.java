@@ -13,12 +13,12 @@ public class DecimalToRoman {
 
         int remainder = 0;
 
-        if (i > 1000) {
+        if (i >= 1000) {
             int numberOfMs = i / 1000;
             remainder = i % 1000;
 
             result = String.join(result, Collections.nCopies(numberOfMs, "M")) + intToRoman(remainder);
-        } else if (i > 500) {
+        } else if (i >= 500) {
             int numberOfLs = i / 100;
 
             if (numberOfLs == 9) {
@@ -28,7 +28,7 @@ public class DecimalToRoman {
                 remainder = i % 500;
                 result = String.join(result, Collections.nCopies((i / 500), "D")) + intToRoman(remainder);
             }
-        } else if (i > 100) {
+        } else if (i >= 100) {
             int numberOfCs = i / 100;
             remainder = i % 100;
 
@@ -37,7 +37,7 @@ public class DecimalToRoman {
             } else {
                 result = String.join(result, Collections.nCopies(numberOfCs, "C")) + intToRoman(remainder);
             }
-        } else if (i > 50) {
+        } else if (i >= 50) {
             int numberOfXs = i / 10;
 
             if (numberOfXs == 9) {
@@ -47,7 +47,7 @@ public class DecimalToRoman {
                 remainder = i % 50;
                 result = String.join(result, Collections.nCopies((i / 50), "L")) + intToRoman(remainder);
             }
-        } else if (i > 10) {
+        } else if (i >= 10) {
             int numberOfXs = i / 10;
             remainder = i % 10;
 
@@ -56,7 +56,7 @@ public class DecimalToRoman {
             } else {
                 result = String.join(result, Collections.nCopies(numberOfXs, "X")) + intToRoman(remainder);
             }
-        } else if (i > 5) {
+        } else if (i >= 5) {
             int numberOfIs = i / 1;
 
             if (numberOfIs == 9) {
