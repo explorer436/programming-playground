@@ -1,23 +1,25 @@
 package mydatastructures
 
-type tree struct {
-	root node
+type Tree struct {
+	data int
+	next *Tree
 }
 
-func InsertInTree(n int, input_tree tree) tree {
-	var result tree
-
-	// checking if the pointer is null.
-	// If the pointer is null, the struct is null.
-	if &input_tree == nil {
-		// build a new tree
-		a_new_node := node{data: n}
-		result := tree{root: a_new_node}
-		return result
-	} else {
-		// insert in existing tree
-		InsertNode(n, &input_tree.root)
-	}
-
-	return result
+type BinaryTree struct {
+	Value int
+	Left  *BinaryTree
+	Right *BinaryTree
 }
+
+type BinarySearchTree struct {
+	Value int
+	Left  *BinarySearchTree
+	Right *BinarySearchTree
+}
+
+func InsertInBinarySearchTree(x int) BinarySearchTree {
+
+}
+
+// https://go.dev/tour/concurrency/7
+// https://go.dev/tour/concurrency/8

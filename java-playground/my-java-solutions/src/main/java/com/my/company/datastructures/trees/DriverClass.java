@@ -3,19 +3,7 @@ package com.my.company.datastructures.trees;
 public class DriverClass {
 
   public static void main(String[] args) {
-    Tree intTree = new Tree();
-    intTree.insert(25);
-    intTree.insert(20);
-    intTree.insert(15);
-    intTree.insert(27);
-    intTree.insert(30);
-    intTree.insert(29);
-    intTree.insert(26);
-    intTree.insert(22);
-    intTree.insert(32);
-    intTree.insert(17);
-
-    /** 25 / \ / \ / \ 20 27 / \ / \ / \ / \ 15 22 26 30 \ / \ 17 29 32 */
+    Tree intTree = getTree();
 
     /*
     * 	In-order (LNR)
@@ -89,5 +77,23 @@ public class DriverClass {
 
     // intTree.delete(8888);
     // intTree.traverseInOrder();
+  }
+
+  private static Tree getTree() {
+    Tree intTree = new Tree();
+    intTree.insert(25);
+    intTree.insert(20);
+    intTree.insert(15);
+    intTree.insert(27);
+    intTree.insert(30);
+    intTree.insert(29);
+    intTree.insert(26);
+    intTree.insert(22);
+    intTree.insert(32);
+    intTree.insert(17);
+
+    /** 25 / \ / \ / \ 20 27 / \ / \ / \ / \ 15 22 26 30 \ / \ 17 29 32 */
+
+    return intTree;
   }
 }

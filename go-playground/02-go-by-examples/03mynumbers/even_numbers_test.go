@@ -1,7 +1,9 @@
 package mynumbers
 
-import "testing"
-import "reflect"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestEvenNumbersTillN(t *testing.T) {
 
