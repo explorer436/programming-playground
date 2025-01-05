@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	mynumbers "my/go/examples/mynumbers"
-	morestrings "my/go/examples/mystrings"
-	value_types "my/go/examples/myvaluetypes"
+	value_types "my/go/examples/02myvaluetypes"
+	mynumbers "my/go/examples/03mynumbers"
+	mystrings "my/go/examples/04mystrings"
 
 	"github.com/google/go-cmp/cmp"
 )
@@ -14,7 +14,7 @@ func main() {
 
 	// strings
 
-	fmt.Println(morestrings.ReverseRunes("!oG ,ereht olleH"))
+	fmt.Println(mystrings.ReverseRunes("!oG ,ereht olleH"))
 
 	fmt.Println(cmp.Diff("Hello World", "Hello Go"))
 
