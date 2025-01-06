@@ -2,11 +2,14 @@ package mydatastructures
 
 import "testing"
 
-func TestInsert(t *testing.T) {
+func TestCreateBinarySearchTree(t *testing.T) {
 
-	got := InsertInTree(789, tree{root: node{data: 456}})
+	got := CreateBinarySearchTree(789)
 
-	want := tree{root: node{data: 123}}
+	want := BinarySearchTree{
+		Value: 789,
+	}
+
 	if got != want {
 		t.Errorf("Result was incorrect - got %+v, but want %+v", got, want)
 	}
