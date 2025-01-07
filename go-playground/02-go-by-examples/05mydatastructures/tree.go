@@ -18,12 +18,6 @@ type BinaryTree struct {
 	Right *BinaryTree
 }
 
-type BinarySearchNode struct {
-	Value int
-	Left  *BinarySearchTree
-	Right *BinarySearchTree
-}
-
 type BinarySearchTree struct {
 	Value int
 	Left  *BinarySearchTree
