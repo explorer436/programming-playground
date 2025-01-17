@@ -17,6 +17,7 @@ public class TestExceptions {
             String expected = "For input string: \"1a\"";
             String actual = e.getMessage();
             assertEquals(expected, actual);
+            // exit the test
             return;
         }
         // we should not reach this point at all.
