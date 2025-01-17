@@ -1,0 +1,59 @@
+* Components
+
+#+begin_quote
+Everytime you think of a Component, think of a function.
+#+end_quote
+
+* Remove Boilerplate
+
+- remove src folder
+- create src folder
+  - create index.js inside src
+- toggle sidebar CMD + B
+- shortcuts settings/keyboard shortcuts
+
+*  First Component
+
+#+begin_src javascript
+function Greeting() {
+  return <h2>My First Component</h2>;
+}
+
+// arrow function also works
+
+const Greeting = () => {
+  return <h2>My First Component</h2>;
+};
+#+end_src
+
+- starts with capital letter
+- must return JSX (html)
+- always close tag <Greeting/>
+
+* Typical Component
+
+#+begin_src javascript
+// imports or logic
+
+const Greeting = () => {
+  return <h2>My First Component</h2>;
+};
+export default Greeting;
+#+end_src
+
+* Root Component (only one)
+
+index.js
+
+#+begin_src
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+function Greeting() {
+  return <h2>My First Component</h2>;
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(<Greeting/>);
+#+end_src

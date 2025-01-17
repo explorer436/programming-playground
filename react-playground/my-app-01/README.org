@@ -1,0 +1,11 @@
+* How was this created?
+
+Using the commands from https://create-react-app.dev/
+
+* Gotchas
+
+1. npm install wouldn't work and npm start wouldn't work.
+2. I used ~yarn install~ to force install the necessary dependencies.
+3. After that, everything seems to work ok.
+4. The application starts ok.
+5. No other changes were made to it after that.
