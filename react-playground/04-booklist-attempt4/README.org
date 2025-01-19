@@ -5,3 +5,6 @@
 - rename (optional)
 - replace url in the src - './images/imageName.extension'
 - './' because assets are on the same server
+
+Disadvantages with this approach:
+The assets in the public folder don't get optimized.
