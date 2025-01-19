@@ -1,0 +1,7 @@
+- local images (public folder) - less performant
+- save image (Save Image As....)
+- create images folder in public
+- copy/paste image
+- rename (optional)
+- replace url in the src - './images/imageName.extension'
+- './' because assets are on the same server
