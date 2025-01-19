@@ -1,17 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import "./index.css";
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+function BookList() {
+  return (
+    <section className="booklist">
+      <Book />
+      <Book />
+      <Book />
+      <Book />
+    </section>
+  );
+}
+
+const Book = () => {
+  const title = "The Frozen River: A GMA Book Club Pick: A Novel";
+  const author = "Ariel Lawhon";
+  return (
+    <article className="book">
+      <img
+        src="./images/91ulu+khYLL._AC_UL600_SR600,400_.jpg"
+        alt="The Frozen River"
+      />
+      <h2>{title}</h2>
+      <h4>{author.toUpperCase()} </h4>
+    </article>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<BookList />);
