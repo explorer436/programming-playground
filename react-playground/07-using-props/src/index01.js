@@ -26,6 +26,8 @@ const Book = () => {
   );
 }; */
 
+// Introduction to props
+
 function BookList() {
   return (
     <section className="booklist">

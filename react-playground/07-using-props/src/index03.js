@@ -3,8 +3,6 @@ import ReactDOM from "react-dom/client";
 
 import "./index.css";
 
-// Using constants for props - a somewhat dynamic set-up
-
 const firstBook = {
   author: "Ariel Lawhon",
   title: "The Frozen River: A GMA Book Club Pick: A Novel",
@@ -16,6 +14,8 @@ const secondBook = {
   img: "https://images-na.ssl-images-amazon.com/images/I/81wgcld4wxL._AC_UL900_SR900,600_.jpg",
 };
 
+// Introduction to children props
+
 function BookList() {
   return (
     <section className="booklist">
@@ -23,7 +23,13 @@ function BookList() {
         author={firstBook.author}
         title={firstBook.title}
         img={firstBook.img}
-      />
+      >
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque
+          repudiandae inventore eos qui animi sed iusto alias eius ea sapiente.
+        </p>
+        <button>click me</button>
+      </Book>
       <Book
         author={secondBook.author}
         title={secondBook.title}
@@ -33,36 +39,15 @@ function BookList() {
   );
 }
 
-/* const Book = (props) => {
+const Book = (props) => {
+  const { img, title, author, children } = props;
   console.log(props);
   return (
     <article className="book">
-      <img src={props.img} alt={props.title} />
-      <h2>{props.title}</h2>
-      <h4>{props.author} </h4>
-    </article>
-  );
-}; */
-
-// Using destructuring inside component
-/* const Book = (props) => {
-  const { img, title, author } = props;
-  return (
-    <article className="book">
       <img src={img} alt={title} />
       <h2>{title}</h2>
       <h4>{author} </h4>
-    </article>
-  );
-}; */
-
-// Using destructuring in function parameters (in our case props)
-const Book = ({ img, title, author }) => {
-  return (
-    <article className="book">
-      <img src={img} alt={title} />
-      <h2>{title}</h2>
-      <h4>{author} </h4>
+      {children}
     </article>
   );
 };
