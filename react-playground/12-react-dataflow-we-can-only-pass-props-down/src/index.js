@@ -32,12 +32,15 @@ function BookList() {
   );
 }
 
-// To pass anything from BookList to Book component, we have to use props.
-// There are alternatives to this: Context API, redux, other state libraries
-// But, this is the native approach.
-// If the data we are dealing with is large and complex, this will get very ugly and annoying very fast.
-// Prop drilling:
-The practice of 
+/*
+To pass anything from BookList to Book component, we have to use props.
+There are alternatives to this: Context API, redux, other state libraries
+But, this is the native approach.
+If the data we are dealing with is large and complex, this will get very ugly and annoying very fast.
+
+Prop drilling:
+The practice of passing props down lots and lots of Components.  
+*/
 
 const Book = (props) => {
   const { img, title, author, displayValue } = props;
