@@ -1,0 +1,7 @@
+https://github.com/swaggest/rest
+
+go mod init example/go-and-swaggest-rest
+
+To view openapi spec: http://localhost:8080/docs
+
+OpenAPI schema will be available at http://localhost:8080/docs/openapi.json

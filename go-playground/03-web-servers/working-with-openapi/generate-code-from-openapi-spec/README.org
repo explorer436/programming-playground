@@ -1,0 +1,17 @@
+Library used:
+
+https://github.com/oapi-codegen/oapi-codegen
+
+Installation:
+
+go install github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
+
+Verify:
+
+oapi-codegen -version
+
+Generate code:
+
+oapi-codegen --package=main --generate types,client openapi.yaml > openapi.gen.go
+
+oapi-codegen --package=main  --generate types,server openapi.yaml > generatedserver.go
