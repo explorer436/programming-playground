@@ -1,0 +1,7 @@
+* Other options to consider
+
+https://www.reddit.com/r/golang/comments/udfujj/any_good_openapi_3x_spec_generator_for_a_go_rest/
+
+1. Huma
+   1. https://huma.rocks/why/
+   1. https://github.com/danielgtaylor/huma
