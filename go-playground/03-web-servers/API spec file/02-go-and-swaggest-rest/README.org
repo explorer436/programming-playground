@@ -1,3 +1,5 @@
+Re-writing 01-go-and-gin using swaggest-rest
+
 https://github.com/swaggest/rest
 
 go mod init example/go-and-swaggest-rest

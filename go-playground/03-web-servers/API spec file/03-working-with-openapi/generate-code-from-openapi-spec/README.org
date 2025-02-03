@@ -1,3 +1,5 @@
+Generating server code template for the operations in 01-go-and-gin using oapi-codegen
+
 Library used:
 
 https://github.com/oapi-codegen/oapi-codegen
@@ -14,5 +16,5 @@ Generate code:
 
 oapi-codegen --package=main --generate types,client openapi.yaml > openapi.gen.go
 
-oapi-codegen --package=main  --generate types,server openapi-petstore.yaml > generatedserver-petstore.go
 oapi-codegen --package=main  --generate types,server openapi-albums.json > generatedserver-albums.go
+oapi-codegen --package=main  --generate types,server openapi-petstore.yaml > generatedserver-petstore.go
