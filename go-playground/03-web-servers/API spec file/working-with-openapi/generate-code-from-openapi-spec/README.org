@@ -14,4 +14,5 @@ Generate code:
 
 oapi-codegen --package=main --generate types,client openapi.yaml > openapi.gen.go
 
-oapi-codegen --package=main  --generate types,server openapi.yaml > generatedserver.go
+oapi-codegen --package=main  --generate types,server openapi-petstore.yaml > generatedserver-petstore.go
+oapi-codegen --package=main  --generate types,server openapi-albums.json > generatedserver-albums.go
