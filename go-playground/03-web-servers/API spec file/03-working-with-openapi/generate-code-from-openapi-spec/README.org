@@ -1,4 +1,7 @@
-Generating server code template for the operations in 01-go-and-gin using oapi-codegen
+This supports an API spec file.
+1. Spec-first approach.
+1. Code is generated from the spec file.
+1. Generating server code template for the operations in 01-go-and-gin using oapi-codegen
 
 Library used:
 
@@ -18,3 +21,5 @@ oapi-codegen --package=main --generate types,client openapi.yaml > openapi.gen.g
 
 oapi-codegen --package=main  --generate types,server openapi-albums.json > generatedserver-albums.go
 oapi-codegen --package=main  --generate types,server openapi-petstore.yaml > generatedserver-petstore.go
+
+How to generate gin server code using oapi-codegen?

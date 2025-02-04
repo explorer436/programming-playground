@@ -1,9 +1,13 @@
-Re-writing 01-go-and-gin using swaggest-rest
+Re-writing ~01-go-and-gin~ using swaggest-rest
 
 https://github.com/swaggest/rest
 
 go mod init example/go-and-swaggest-rest
 
-To view openapi spec: http://localhost:8080/docs
+This supports an API spec file.
+1. Code-first approach.
+1. The OpenAPI file is generated on the fly based on code.
+1. OpenAPI schema will be available at http://localhost:8080/docs/openapi.json
+1. To view openapi spec: http://localhost:8080/docs
 
-OpenAPI schema will be available at http://localhost:8080/docs/openapi.json
+Reference: https://dev.to/vearutop/tutorial-developing-a-restful-api-with-go-json-schema-validation-and-openapi-docs-2490
