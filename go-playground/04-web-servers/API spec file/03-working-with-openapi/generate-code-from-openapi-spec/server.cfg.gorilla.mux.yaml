@@ -1,0 +1,7 @@
+package: api
+output: generatedserver-ping-gorilla-mux.go
+generate:
+  embedded-spec: true
+  strict-server: true
+  models: true
+  gorilla-server: true

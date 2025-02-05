@@ -2,7 +2,9 @@ Re-writing ~01-go-and-gin~ using swaggest-rest
 
 https://github.com/swaggest/rest
 
+#+begin_src
 go mod init example/go-and-swaggest-rest
+#+end_src
 
 This supports an API spec file.
 1. Code-first approach.

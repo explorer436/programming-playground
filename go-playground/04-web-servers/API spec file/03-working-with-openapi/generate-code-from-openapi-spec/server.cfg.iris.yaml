@@ -1,0 +1,7 @@
+package: api
+output: generatedserver-ping-iris.go
+generate:
+  embedded-spec: true
+  strict-server: true
+  models: true
+  iris-server: true

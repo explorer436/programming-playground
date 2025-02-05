@@ -2,8 +2,13 @@ https://go.dev/doc/tutorial/web-service-gin
 
 This does not support an API spec file.
 
-go mod init example/web-service-gin
+#+begin_src 
+go mod init example/web-service-gin  
+#+end_src
 
+Testing:
+
+#+begin_src 
 curl http://localhost:8080/albums
 
 curl http://localhost:8080/albums \
@@ -13,3 +18,4 @@ curl http://localhost:8080/albums \
     --data '{"id": "4","title": "The Modern Sound of Betty Carter","artist": "Betty Carter","price": 49.99}'
 
 curl http://localhost:8080/albums/2    
+#+end_src

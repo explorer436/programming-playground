@@ -9,17 +9,35 @@ https://github.com/oapi-codegen/oapi-codegen
 
 Installation:
 
+#+begin_src
 go install github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
+#+end_src
 
 Verify:
 
+#+begin_src
 oapi-codegen -version
+#+end_src
 
 Generate code:
 
+#+begin_src
 oapi-codegen --package=main --generate types,client openapi.yaml > openapi.gen.go
 
 oapi-codegen --package=main  --generate types,server openapi-albums.json > generatedserver-albums.go
 oapi-codegen --package=main  --generate types,server openapi-petstore.yaml > generatedserver-petstore.go
+#+end_src
 
-How to generate gin server code using oapi-codegen?
+Generating code for different server types using oapi-codegen:
+#+begin_src
+oapi-codegen -config server.cfg.chi.yaml openapi-ping.yaml
+oapi-codegen -config server.cfg.echo.yaml openapi-ping.yaml
+oapi-codegen -config server.cfg.fiber.yaml openapi-ping.yaml
+oapi-codegen -config server.cfg.gin.yaml openapi-ping.yaml
+oapi-codegen -config server.cfg.gorilla.mux.yaml openapi-ping.yaml
+oapi-codegen -config server.cfg.iris.yaml openapi-ping.yaml
+oapi-codegen -config server.cfg.stdnethttp.yaml openapi-ping.yaml
+#+end_src
+
+* Reading material
+1. https://ldej.nl/post/generating-go-from-openapi-3/

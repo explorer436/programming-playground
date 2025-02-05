@@ -1,0 +1,7 @@
+package: api
+output: generatedserver-ping-fiber.go
+generate:
+  embedded-spec: true
+  strict-server: true
+  models: true
+  fiber-server: true
