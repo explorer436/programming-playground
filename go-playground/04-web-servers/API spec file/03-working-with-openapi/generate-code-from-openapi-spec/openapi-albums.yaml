@@ -1,8 +1,8 @@
-openapi: "3.0.3"
+openapi: 3.0.3
 info:
   title: Albums API
   description: This service provides API to manage albums.
-  version: 1.0.0
+  version: v1.0.0
 paths:
   /albums:
     get:

@@ -40,4 +40,5 @@ oapi-codegen -config server.cfg.stdnethttp.yaml openapi-ping.yaml
 #+end_src
 
 * Reading material
+
 1. https://ldej.nl/post/generating-go-from-openapi-3/
