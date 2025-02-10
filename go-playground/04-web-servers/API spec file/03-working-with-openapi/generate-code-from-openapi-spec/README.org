@@ -37,6 +37,9 @@ oapi-codegen -config server.cfg.gin.yaml openapi-ping.yaml
 oapi-codegen -config server.cfg.gorilla.mux.yaml openapi-ping.yaml
 oapi-codegen -config server.cfg.iris.yaml openapi-ping.yaml
 oapi-codegen -config server.cfg.stdnethttp.yaml openapi-ping.yaml
+
+oapi-codegen -output generatedserver-ping-gin.go -config server.cfg.gin.yaml openapi-ping.yaml
+oapi-codegen -o generatedserver-albums-gin.go -config server.cfg.gin.yaml openapi-albums.yaml
 #+end_src
 
 * Reading material

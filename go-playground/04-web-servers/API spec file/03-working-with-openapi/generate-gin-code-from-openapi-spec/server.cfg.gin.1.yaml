@@ -1,4 +1,5 @@
 package: main
+output: generatedserver-albums-gin.go
 generate:
   embedded-spec: true
   strict-server: true
