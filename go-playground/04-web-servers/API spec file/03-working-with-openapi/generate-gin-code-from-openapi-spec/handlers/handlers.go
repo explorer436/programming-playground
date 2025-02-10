@@ -21,18 +21,21 @@ var albums = []api.Album{
 	{Id: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: &artist3, Price: &price3},
 }
 
-type BlogAPI struct {
+// MyAlbumAPI You can call this struct whatever you want.
+// Just make sure you use the same name in the "New" declaration below.
+// And then, call this from main.go
+type MyAlbumAPI struct {
 }
 
-func NewBlogAPI() *BlogAPI {
-	return &BlogAPI{}
+func NewMyAlbumAPI() *MyAlbumAPI {
+	return &MyAlbumAPI{}
 }
 
-func (b *BlogAPI) GetAlbums(c *gin.Context) {
+func (b *MyAlbumAPI) GetAlbums(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, albums)
 }
 
-func (b *BlogAPI) PostAlbums(c *gin.Context) {
+func (b *MyAlbumAPI) PostAlbums(c *gin.Context) {
 	var newAlbum api.Album
 
 	// Call BindJSON to bind the received JSON to
@@ -46,7 +49,7 @@ func (b *BlogAPI) PostAlbums(c *gin.Context) {
 	c.IndentedJSON(http.StatusCreated, newAlbum)
 }
 
-func (b *BlogAPI) GetAlbumByID(c *gin.Context, id string) {
+func (b *MyAlbumAPI) GetAlbumByID(c *gin.Context, id string) {
 
 	// Loop over the list of albums, looking for
 	// an album whose ID value matches the parameter.

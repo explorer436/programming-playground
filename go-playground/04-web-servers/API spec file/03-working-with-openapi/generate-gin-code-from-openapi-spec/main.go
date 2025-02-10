@@ -9,8 +9,8 @@ import (
 func main() {
 	router := gin.Default()
 
-	// Initialize the BlogAPI handlers
-	blogAPI := handlers.NewBlogAPI()
+	// Initialize the handlers written in NewMyAlbumAPI
+	blogAPI := handlers.NewMyAlbumAPI()
 
 	api.RegisterHandlers(router, blogAPI)
 
