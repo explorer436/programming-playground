@@ -3,14 +3,14 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"myexample.com/generate-gin-server-code-from-openapi-spec/api"
-	"myexample.com/generate-gin-server-code-from-openapi-spec/handlers"
+	"myexample.com/generate-gin-server-code-from-openapi-spec/serverinterface"
 )
 
 func main() {
 	router := gin.Default()
 
-	// Initialize the handlers written in NewMyAlbumAPI
-	blogAPI := handlers.NewMyAlbumAPI()
+	// Initialize the serverinterface written in NewMyAlbumAPI
+	blogAPI := serverinterface.NewMyAPI()
 
 	api.RegisterHandlers(router, blogAPI)
 
