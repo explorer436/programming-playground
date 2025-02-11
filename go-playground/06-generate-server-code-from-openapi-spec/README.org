@@ -10,13 +10,9 @@ https://github.com/oapi-codegen/oapi-codegen
 Installation:
 
 #+begin_src
-go install github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
-#+end_src
-
-Verify:
-
-#+begin_src
-oapi-codegen -version
+$ go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest
+(verify)
+$ oapi-codegen -version
 #+end_src
 
 Generate code:
