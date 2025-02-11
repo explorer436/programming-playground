@@ -1,4 +1,4 @@
-Re-writing ~01-go-and-gin~ using swaggest-rest
+Re-writing ~04-gin-web-server-demo~ using swaggest-rest
 
 https://github.com/swaggest/rest
 
@@ -13,3 +13,5 @@ This supports an API spec file.
 1. To view openapi spec: http://localhost:8080/docs
 
 Reference: https://dev.to/vearutop/tutorial-developing-a-restful-api-with-go-json-schema-validation-and-openapi-docs-2490
+
+05-swaggest-rest-demo

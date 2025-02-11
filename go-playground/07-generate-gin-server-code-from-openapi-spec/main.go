@@ -1,9 +1,9 @@
 package main
 
 import (
-	"example.com/generate-gin-code-from-spec/api"
-	"example.com/generate-gin-code-from-spec/handlers"
 	"github.com/gin-gonic/gin"
+	"myexample.com/generate-gin-server-code-from-openapi-spec/api"
+	"myexample.com/generate-gin-server-code-from-openapi-spec/handlers"
 )
 
 func main() {

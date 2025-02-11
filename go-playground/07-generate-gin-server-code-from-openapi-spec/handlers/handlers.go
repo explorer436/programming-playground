@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"example.com/generate-gin-code-from-spec/api"
 	"github.com/gin-gonic/gin"
+	"myexample.com/generate-gin-server-code-from-openapi-spec/api"
 	"net/http"
 )
 
