@@ -1,0 +1,1 @@
+https://hungaikev.in/web-development/building-blog-api-gin-ferretdb-oapi-codegen/#generating-server-code
