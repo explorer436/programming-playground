@@ -5,11 +5,12 @@
 2. Generating code for gin server using oapi-codegen:
 
    #+begin_src
+   (Don't use this)
     oapi-codegen -config server.cfg.gin.1.yaml openapi-ping.yaml
 
     or
 
-    oapi-codegen -o generatedserver-albums-gin.go -config server.cfg.gin.2.yaml openapi-albums.yaml
+    oapi-codegen -o ./api/generatedserver-albums-gin.go -config server.cfg.gin.2.yaml openapi-albums.yaml
    #+end_src
 
 3. After the server code is generated, write the handlers
@@ -19,7 +20,7 @@
 5. Testing:
 
    #+begin_src
-   curl http://localhost:8080/albums
+   curl http://localhost:8080/my-custom-basepath/albums
 
    curl http://localhost:8080/albums \
        --include \

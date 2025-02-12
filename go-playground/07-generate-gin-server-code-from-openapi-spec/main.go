@@ -23,7 +23,11 @@ func main() {
 	}
 	router.Use(middleware.OapiRequestValidator(swagger))
 
-	api.RegisterHandlers(router, blogAPI)
+	api.RegisterHandlersWithOptions(router, blogAPI, api.GinServerOptions{
+		BaseURL:      "my-custom-basepath",
+		Middlewares:  nil,
+		ErrorHandler: nil,
+	})
 
 	router.Run("localhost:8080")
 }

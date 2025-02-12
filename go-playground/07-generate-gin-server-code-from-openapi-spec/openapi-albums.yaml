@@ -3,6 +3,12 @@ info:
   title: Albums API
   description: This service provides API to manage albums.
   version: v1.0.0
+servers:
+  - url: http://localhost:8080/{basePath}
+    description: The production API server
+    variables:
+      basePath:
+        default: my-custom-basepath
 paths:
   /albums:
     get:
