@@ -18,8 +18,8 @@ This library prints a lot of logs. In order to reduce them, see logback.xml
 
 * Setup
 
-1. docker compose files/kafka/01-kafka-server-setup/compose/docker-compose.yaml uses "localhost:9092"
-1. docker compose files/kafka/03-kafka-cluster-setup/compose/docker-compose.yaml uses ""localhost:8081""
+1. docker-compose-files/kafka/01-kafka-server-setup/compose/docker-compose.yaml uses "localhost:9092"
+1. docker-compose-files/kafka/03-kafka-cluster-setup/compose/docker-compose.yaml uses ""localhost:8081""
 
 Set up the containers accordingly.
 

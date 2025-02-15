@@ -1,0 +1,16 @@
+# $docker-compose --file /home/explorer436/Downloads/GitRepositories/programming-playground/docker-compose-files/mysql/docker-compose-for-mysql.yml up -d
+---
+version: "3.9"
+services:
+  mysql-service:
+    image: mysql:latest
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: MySqlPassword
+      MYSQL_DATABASE: myCustomDatabase
+      MYSQL_USER: dbuser1
+      MYSQL_PASSWORD: dbuser1password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data/mysqldb_data:/mysql-contents

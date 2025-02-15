@@ -1,0 +1,67 @@
+* MySql set-up with docker
+
+https://hub.docker.com/_/mysql
+
+#+begin_src
+docker run -d --name mysql-8 -p 3306:3306 -v ~/mysql_data:/Users/explorer436 \
+-e MYSQL_ROOT_PASSWORD='MySqlPassword'  \
+-e MYSQL_USER=dbuser1  \
+-e MYSQL_PASSWORD='dbuser1password'  \
+-e MYSQL_DATABASE='myCustomDatabase' mysql:8
+
+#+end_src
+
+This command creates a new interactive bash shell in the mysql-docker-container through -it that tells Docker to allot a pseudo-TTY connected to the container’s stdin.
+
+#+begin_src
+sudo docker exec -it mysql-db bash
+#+end_src
+
+In the bash shell, you can run commands as if you are running them in your computer's terminal and perform various operations.
+
+For example, with a MySql container, enter the following command to invoke MySQL with the root user. Enter the password which you had set when running the docker run command.
+#+begin_src
+mysql -u root -p
+
+Enter password: (MySqlPassword)
+
+show databases;
+
+SHOW tables from mysql;
+SHOW tables from myCustomDatabase;
+
+USE myCustomDatabase;
+
+SELECT user FROM mysql.user;
+select * from myCustomDatabase.files;
+
+create database recordings;
+use recordings;
+DROP TABLE IF EXISTS album;
+CREATE TABLE album (
+  id         INT AUTO_INCREMENT NOT NULL,
+  title      VARCHAR(128) NOT NULL,
+  artist     VARCHAR(255) NOT NULL,
+  price      DECIMAL(5,2) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+INSERT INTO album
+  (title, artist, price)
+VALUES
+  ('Blue Train', 'John Coltrane', 56.99),
+  ('Giant Steps', 'John Coltrane', 63.99),
+  ('Jeru', 'Gerry Mulligan', 17.99),
+  ('Sarah Vaughan', 'Sarah Vaughan', 34.98);
+
+select * from recordings.album;
++----+---------------+----------------+-------+
+| id | title         | artist         | price |
++----+---------------+----------------+-------+
+|  1 | Blue Train    | John Coltrane  | 56.99 |
+|  2 | Giant Steps   | John Coltrane  | 63.99 |
+|  3 | Jeru          | Gerry Mulligan | 17.99 |
+|  4 | Sarah Vaughan | Sarah Vaughan  | 34.98 |
++----+---------------+----------------+-------+
+
+#+end_src
