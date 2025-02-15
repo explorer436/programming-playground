@@ -1,0 +1,15 @@
+# $docker-compose --file /home/explorer436/Downloads/GitRepositories/programming-playground/docker-compose-files/mongodb/docker-compose-with-mongo-2.yml up -d
+---
+version: '3.8'
+services:
+  mongodb-community-server:
+    image: mongodb/mongodb-community-server:latest
+    container_name: mongodb
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./data/db:/tmp/mongo-contents
+    ports:
+      - 27017:27017
+    restart: unless-stopped
