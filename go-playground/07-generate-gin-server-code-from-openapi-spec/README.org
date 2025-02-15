@@ -19,7 +19,7 @@
 
 5. Testing:
 
-   #+begin_src
+   #+begin_src shell
    curl http://localhost:8080/my-custom-basepath/albums
 
    curl http://localhost:8080/albums \
