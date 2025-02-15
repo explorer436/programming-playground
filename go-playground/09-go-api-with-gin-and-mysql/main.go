@@ -4,9 +4,10 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"os"
+	// "os"
 
 	"github.com/go-sql-driver/mysql"
+	"github.com/joho/godotenv"
 )
 
 var db *sql.DB
@@ -19,13 +20,18 @@ type Album struct {
 }
 
 func main() {
+
+	envFile, _ := godotenv.Read(".env")
+
 	// Capture connection properties.
 	cfg := mysql.Config{
-		User:   os.Getenv("DBUSER"),
-		Passwd: os.Getenv("DBPASS"),
+		// User:   os.Getenv("DBUSER"),
+		// Passwd: os.Getenv("DBPASS"),
+		User:   envFile["DBUSER"],
+		Passwd: envFile["DBPASS"],
 		Net:    "tcp",
 		Addr:   "127.0.0.1:3306",
-		DBName: "recordings",
+		DBName: "myCustomDatabase",
 	}
 	// Get a database handle.
 	var err error

@@ -35,8 +35,8 @@ USE myCustomDatabase;
 SELECT user FROM mysql.user;
 select * from myCustomDatabase.files;
 
-create database recordings;
-use recordings;
+# create database recordings;
+# use recordings;
 DROP TABLE IF EXISTS album;
 CREATE TABLE album (
   id         INT AUTO_INCREMENT NOT NULL,
@@ -65,3 +65,12 @@ select * from recordings.album;
 +----+---------------+----------------+-------+
 
 #+end_src
+
+* Errors
+
+#+begin_src
+Access denied for user 'dbuser1'@'%' to database 'recordings'
+#+end_src
+
+Option 1: Stop using a separate database called ~recordings~ and use ~myCustomDatabase~ instead.
+Option 2: Use the database name ~recordings~ in the docker compose file.
