@@ -10,15 +10,12 @@ import (
 )
 
 func main() {
-	// Initialize the database connection
-	database, err := db.NewDB("mongodb://localhost:27017")
-	if err != nil {
-		log.Fatalf("Failed to connect to the database: %v", err)
-	}
-	defer database.Close()
 
 	// Create a new Gin router
 	router := gin.Default()
+
+	// Initialize database
+	database := db.InitDb()
 
 	// Initialize the BlogAPI handlers
 	blogAPI := handlers.NewBlogAPI(database)

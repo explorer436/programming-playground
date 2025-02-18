@@ -1,4 +1,0 @@
-References:
-1. https://go.dev/doc/tutorial/database-access
-2. https://github.com/explorer436/programming-playground/tree/main/docker-compose-files/mysql
-
