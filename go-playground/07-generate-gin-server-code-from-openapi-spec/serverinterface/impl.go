@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"myexample.com/generate-gin-server-code-from-openapi-spec/api"
 	"net/http"
+	"strconv"
 )
 
 var artist1 = "John Coltrane"
@@ -39,12 +40,12 @@ func (b *MyAPI) PostAlbums(c *gin.Context) {
 	c.IndentedJSON(http.StatusCreated, newAlbum)
 }
 
-func (b *MyAPI) GetAlbumByID(c *gin.Context, id string) {
+func (b *MyAPI) GetAlbumByID(c *gin.Context, id int) {
 
 	// Loop over the list of albums, looking for
 	// an album whose ID value matches the parameter.
 	for _, a := range albums {
-		if a.Id == id {
+		if a.Id == strconv.Itoa(id) {
 			c.IndentedJSON(http.StatusOK, a)
 			return
 		}

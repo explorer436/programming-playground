@@ -35,6 +35,11 @@
    ```shell
    curl http://localhost:8080/my-custom-basepath/albums/2
    ```
+
+   Invalid type in query param:
+   ```shell
+   curl -v http://localhost:8080/my-custom-basepath/albums/"test"
+   ```
    
    ```shell
    curl -v http://localhost:8080/my-custom-basepath/albums --header "Content-Type: application/json" --request "POST" --data '{"id": "4","artist": "Betty Carter","price": 49.99}'

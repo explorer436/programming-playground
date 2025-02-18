@@ -64,7 +64,7 @@ type ServerInterface interface {
 	PostAlbums(c *gin.Context)
 	// Get Album By ID
 	// (GET /albums/{id})
-	GetAlbumByID(c *gin.Context, id string)
+	GetAlbumByID(c *gin.Context, id int)
 }
 
 // ServerInterfaceWrapper converts contexts to parameters.
@@ -108,7 +108,7 @@ func (siw *ServerInterfaceWrapper) GetAlbumByID(c *gin.Context) {
 	var err error
 
 	// ------------- Path parameter "id" -------------
-	var id string
+	var id int
 
 	err = runtime.BindStyledParameterWithOptions("simple", "id", c.Param("id"), &id, runtime.BindStyledParameterOptions{Explode: false, Required: true})
 	if err != nil {
@@ -201,7 +201,7 @@ func (response PostAlbums409JSONResponse) VisitPostAlbumsResponse(w http.Respons
 }
 
 type GetAlbumByIDRequestObject struct {
-	Id string `json:"id"`
+	Id int `json:"id"`
 }
 
 type GetAlbumByIDResponseObject interface {
@@ -310,7 +310,7 @@ func (sh *strictHandler) PostAlbums(ctx *gin.Context) {
 }
 
 // GetAlbumByID operation middleware
-func (sh *strictHandler) GetAlbumByID(ctx *gin.Context, id string) {
+func (sh *strictHandler) GetAlbumByID(ctx *gin.Context, id int) {
 	var request GetAlbumByIDRequestObject
 
 	request.Id = id
@@ -349,9 +349,9 @@ var swaggerSpec = []string{
 	"qZMyp+PjFhPdTHEicdFCDT8h5fTAVsnCp+jvqipLbghN1unEf/kYuITjXPNJEWaYbz1uoIZvytMGKA/j",
 	"X+bZPzEmvZdDJuwlUb/9nIgNUWvph1yneC6U5Dawn3O6FY+dDVeaW9ow7e4pYqA72w7/qrE39DPmQXvB",
 	"3s37g5yT9INHSdgynx+r798N73wNXEO2ZtOr5PWpSMz36yqNxdGN5V614z9a8m5Y3Ccre6l5EXOyPSjG",
-	"Z3tDAUbqtFZamO458hGLSa/n87r6n07/T1qxoVmmj19Tpl8tiR9tNO1rwyTuBpFIvtCK49Hvjqyfr7G0",
-	"vdrYpGXM+ysHQwHR91BDR+TqsuxtI/vOBqo/VZ+qcr+WAZeSupEXmfRKrvuswfEhr8yNjD1BDXqYNTGQ",
-	"1TN+T6KP47ga/w4AAP//rePDGV4IAAA=",
+	"Z3tDAUbqtFZamO458hGLSa/ny2dc/U+r/yex2NGs08evqdOvlsSPNpr2tWkSd4NILF+IxfHod0faz/dY",
+	"Wl9tbNI25gWWg6GA6HuooSNydVn2tpF9ZwPVn6pPVblfy4BLSd3Im0x6Jdd91uD4kHfmRsaeoAY9zJoY",
+	"yOoZvyfVx3FcjX8HAAD//yjJls9fCAAA",
 }
 
 // GetSwagger returns the content of the embedded swagger specification file
