@@ -4,14 +4,15 @@
 
 2. Generating code for gin server using oapi-codegen:
 
-   #+begin_src
    (Don't use this)
-    oapi-codegen -config server.cfg.gin.1.yaml openapi-ping.yaml
-
-    or
-
-    oapi-codegen -o ./api/generatedserver-albums-gin.go -config server.cfg.gin.2.yaml openapi-albums.yaml
-   #+end_src
+   ```shell
+   oapi-codegen -config server.cfg.gin.1.yaml openapi-ping.yaml
+   ```
+   
+   Use this:
+   ```shell
+   oapi-codegen -o ./api/generatedserver-albums-gin.go -config server.cfg.gin.2.yaml openapi-albums.yaml
+   ```
 
 3. After the server code is generated, write the handlers
 
@@ -19,17 +20,25 @@
 
 5. Testing:
 
-   #+begin_src shell
+   ```shell
    curl http://localhost:8080/my-custom-basepath/albums
+   ```
 
-   curl http://localhost:8080/albums \
+   ```shell
+   curl http://localhost:8080/my-custom-basepath/albums \
        --include \
        --header "Content-Type: application/json" \
        --request "POST" \
        --data '{"id": "4","title": "The Modern Sound of Betty Carter","artist": "Betty Carter","price": 49.99}'
+   ```
 
-   curl http://localhost:8080/albums/2
-   #+end_src
+   ```shell
+   curl http://localhost:8080/my-custom-basepath/albums/2
+   ```
+   
+   ```shell
+   curl -v http://localhost:8080/my-custom-basepath/albums --header "Content-Type: application/json" --request "POST" --data '{"id": "4","artist": "Betty Carter","price": 49.99}'
+   ```
 
 6. Request validation:
 
