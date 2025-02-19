@@ -16,25 +16,36 @@ func main() {
 	// Initialize the serverinterface written in NewMyAlbumAPI
 	blogAPI := serverinterface.NewMyAPI()
 
-	/*swagger, err := api.GetSwagger()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error loading swagger spec\n: %s", err)
-		os.Exit(1)
-	}
-	// Request validation
-	router.Use(middleware.OapiRequestValidator(swagger))*/
+	router.Use(accessControlMiddleware())
+	router.Use(requestValidationMiddleware())
+	router.Use(otelMiddleware())
 
-	middlewares := []api.MiddlewareFunc{requestValidationMiddleware(), middleware1(), middleware2()}
+	// Avoid passing middlewares as options into the api.
+	// Just use router.Use()
+	// I ran into errors where requests with OPTIONS method were returning 404 (instead of 204)
+	// Requests with OPTIONS method but they need to be supported.
+	// See https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS
+	// middlewares := []api.MiddlewareFunc{requestValidationMiddleware(), accessControlMiddleware(), otelMiddleware()}
 	api.RegisterHandlersWithOptions(router, blogAPI, api.GinServerOptions{
-		BaseURL:      "my-custom-basepath",
-		Middlewares:  middlewares,
+		BaseURL: "my-custom-basepath",
+		// Middlewares:  middlewares,
+		Middlewares:  nil,
 		ErrorHandler: nil,
 	})
 
 	router.Run("localhost:8080")
 }
 
-func requestValidationMiddleware() api.MiddlewareFunc {
+func requestValidationMiddleware() gin.HandlerFunc {
+	swagger, err := api.GetSwagger()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error loading swagger spec\n: %s", err)
+		os.Exit(1)
+	}
+	return middleware.OapiRequestValidator(swagger)
+}
+
+/*func requestValidationMiddleware() api.MiddlewareFunc {
 	// Request validation
 	swagger, err := api.GetSwagger()
 	if err != nil {
@@ -43,9 +54,9 @@ func requestValidationMiddleware() api.MiddlewareFunc {
 	}
 
 	return api.MiddlewareFunc(middleware.OapiRequestValidator(swagger))
-}
+}*/
 
-func middleware1() api.MiddlewareFunc {
+func accessControlMiddleware() func(c *gin.Context) {
 	return func(c *gin.Context) {
 		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
 		c.Writer.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
@@ -58,7 +69,13 @@ func middleware1() api.MiddlewareFunc {
 	}
 }
 
-func middleware2() api.MiddlewareFunc {
+/*func otelMiddleware() api.MiddlewareFunc {
+	return func(c *gin.Context) {
+		otelgin.Middleware("generate-gin-server-code-from-openapi-spec") // Name of the service
+	}
+}*/
+
+func otelMiddleware() func(c *gin.Context) {
 	return func(c *gin.Context) {
 		otelgin.Middleware("generate-gin-server-code-from-openapi-spec") // Name of the service
 	}
