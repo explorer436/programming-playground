@@ -56,6 +56,10 @@ func requestValidationMiddleware() gin.HandlerFunc {
 	return api.MiddlewareFunc(middleware.OapiRequestValidator(swagger))
 }*/
 
+/*
+Why do we need this?
+If these headers are not on the response, the React application will not be able to use the response returned from the backend.
+*/
 func accessControlMiddleware() func(c *gin.Context) {
 	return func(c *gin.Context) {
 		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
