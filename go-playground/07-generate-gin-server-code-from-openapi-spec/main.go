@@ -16,6 +16,9 @@ func main() {
 	// Initialize the serverinterface written in NewMyAlbumAPI
 	blogAPI := serverinterface.NewMyAPI()
 
+    // The middleware calls have to be before we register the Handlers.
+    // If not, the front end apps are not receiving CORS headers in the response.
+    // So the UI apps will not work.
 	router.Use(accessControlMiddleware())
 	router.Use(requestValidationMiddleware())
 	router.Use(otelMiddleware())
