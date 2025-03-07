@@ -1,4 +1,4 @@
-package com.my.company.datastructures.hashmaps;
+package com.my.company.datastructures.maps;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -7,7 +7,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class IteratingAHashMap {
+
   public static void main(String[] args) {
+
     Map<String, String> sampleMap = new HashMap<String, String>();
     sampleMap.put("John Smith", "521-1234");
     sampleMap.put("Sam Doe", "521-5030");
