@@ -2,8 +2,6 @@ package com.my.company.streamsapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.my.company.streamsapi.CollectionOperationsOnNonPrimitiveTypes;
-import com.my.company.streamsapi.TestsHelper;
 import com.my.company.streamsapi.model.Person;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CollectionOperationsOnNonPrimitiveTypesTests {
 
-    private CollectionOperationsOnNonPrimitiveTypes collectionOperationsOnNonPrimitiveTypes = new CollectionOperationsOnNonPrimitiveTypes();
+    private final CollectionOperationsOnNonPrimitiveTypes collectionOperationsOnNonPrimitiveTypes = new CollectionOperationsOnNonPrimitiveTypes();
 
     @Test
     public void test_groupPeopleByGender_GetFullNamesGrammatically() throws JsonProcessingException {
@@ -262,7 +260,7 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
 
         Map<Integer, Person> actual = collectionOperationsOnNonPrimitiveTypes.groupPeopleById_Collect_ListToMap_excludeDuplicates(people);
 
-        assertEquals(actual.size(), 8);
+        assertEquals(8, actual.size());
 
         assertEquals("""
                 {
@@ -444,10 +442,10 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
 
         Map<String, List<Person>> actual = collectionOperationsOnNonPrimitiveTypes.groupPeopleByGender_Collect_ListToMap_IncludeDuplicates(people);
 
-        assertEquals(actual.size(), 2);
+        assertEquals(2, actual.size());
 
-        assertEquals(actual.get("male").size(), 4);
-        assertEquals(actual.get("female").size(), 5);
+        assertEquals(4, actual.get("male").size());
+        assertEquals(5, actual.get("female").size());
 
         assertEquals("""
                 {

@@ -30,7 +30,7 @@ public class CollectionOperationsOnNonPrimitiveTypes {
      * single elements instead of Lists. 4. In scenarios like that, we have to handle duplicates. 5.
      * Look at groupPeopleById_excludeDuplicates
      */
-    public static double getAverageAgeOfMen_Collect_CustomAverager(List<Person> people) {
+    public double getAverageAgeOfMen_Collect_CustomAverager(List<Person> people) {
         /**
          * The collect operation in this example takes three arguments:
          *
@@ -97,14 +97,12 @@ public class CollectionOperationsOnNonPrimitiveTypes {
     /**
      * The following example retrieves the average age of members of each gender.
      */
-    public static Map<String, Double> getAverageAgeByGender_Collect_AveratingInt(
+    public Map<String, Double> getAverageAgeByGender_Collect_AveratingInt(
             List<Person> people) {
-        Map<String, Double> averageAgeByGender =
-                people.stream()
-                        .collect(
-                                Collectors.groupingBy(Person::getGender, Collectors.averagingInt(Person::getAge)));
 
-        return averageAgeByGender;
+        return people.stream()
+                .collect(
+                        Collectors.groupingBy(Person::getGender, Collectors.averagingInt(Person::getAge)));
     }
 
     /**
@@ -114,19 +112,17 @@ public class CollectionOperationsOnNonPrimitiveTypes {
      * <p><R> R collect(Supplier<R> supplier, BiConsumer<R, ? super T> accumulator, BiConsumer<R, R>
      * combiner);
      */
-    public static List<String> getNamesOfMen_Collect_Field_To_ArrayList(List<Person> people) {
+    public List<String> getNamesOfMen_Collect_Field_To_ArrayList(List<Person> people) {
         /**
          * Here, our supplier is just the ArrayList constructor, the accumulator adds the stringified
          * element (name) to an ArrayList, and the combiner simply uses addAll to copy the strings from
          * one container into the other.
          */
-        List<String> namesOfMaleMembersCollect =
-                people.stream()
-                        .filter(p -> p.getGender().equals("male"))
-                        .map(Person::getFirstname)
-                        .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
 
-        return namesOfMaleMembersCollect;
+        return people.stream()
+                .filter(p -> p.getGender().equals("male"))
+                .map(Person::getFirstname)
+                .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
     }
 
     /**
@@ -138,7 +134,7 @@ public class CollectionOperationsOnNonPrimitiveTypes {
      * (getNamesOfMen_Collect_UsingArrayList) for collecting strings into a List can be rewritten
      * using a standard Collector as shown here.
      */
-    public static List<String> getNamesOfMen_Collect_Field_To_List_Using_StandardCollector(
+    public List<String> getNamesOfMen_Collect_Field_To_List_Using_StandardCollector(
             List<Person> people) {
         /**
          * This version of the collect operation takes one parameter of type Collector. This class
@@ -154,13 +150,11 @@ public class CollectionOperationsOnNonPrimitiveTypes {
          * into a new instance of List. As with most operations in the Collectors class, the toList
          * operator returns an instance of Collector, not a collection.
          */
-        List<String> namesOfMaleMembersCollect =
-                people.stream()
-                        .filter(p -> p.getGender().equals("male"))
-                        .map(Person::getFirstname)
-                        .collect(Collectors.toList());
 
-        return namesOfMaleMembersCollect;
+        return people.stream()
+                .filter(p -> p.getGender().equals("male"))
+                .map(Person::getFirstname)
+                .collect(Collectors.toList());
     }
 
     /**
@@ -177,10 +171,7 @@ public class CollectionOperationsOnNonPrimitiveTypes {
     public Map<String, List<Person>> groupPeopleByGender_Collect_ListToMap_IncludeDuplicates(
             List<Person> people) {
 
-        Map<String, List<Person>> byGender =
-                people.stream().collect(Collectors.groupingBy(Person::getGender));
-
-        return byGender;
+        return people.stream().collect(Collectors.groupingBy(Person::getGender));
     }
 
     public Map<String, String> groupPeopleByGender_GetFullNamesGrammatically(
@@ -258,8 +249,7 @@ public class CollectionOperationsOnNonPrimitiveTypes {
      * The following example retrieves the names of each member in the collection people and groups
      * them by gender.
      */
-    public static Map<String, List<String>>
-    groupPersonNamesByGender_Collect_ListToMap_GroupByAField_CollectAnotherField(
+    public Map<String, List<String>> groupPersonNamesByGender_Collect_ListToMap_GroupByAField_CollectAnotherField(
             List<Person> people) {
 
         /**
@@ -272,13 +262,11 @@ public class CollectionOperationsOnNonPrimitiveTypes {
          * stream consists of only the names of members. A pipeline that contains one or more downstream
          * collectors, like this example, is called a multilevel reduction.
          */
-        Map<String, List<String>> namesByGender =
-                people.stream()
-                        .collect(
-                                Collectors.groupingBy(
-                                        Person::getGender, Collectors.mapping(Person::getFirstname, Collectors.toList())));
 
-        return namesByGender;
+        return people.stream()
+                .collect(
+                        Collectors.groupingBy(
+                                Person::getGender, Collectors.mapping(Person::getFirstname, Collectors.toList())));
     }
 
     /**
@@ -303,13 +291,11 @@ public class CollectionOperationsOnNonPrimitiveTypes {
 
         // NOTE : This is not the same is simple reducing.
         // We want to collect the sum of ages of all the genders from the list.
-        Map<String, Integer> totalAgeByGender =
-                people.stream()
-                        .collect(
-                                Collectors.groupingBy(
-                                        Person::getGender, Collectors.reducing(0, Person::getAge, Integer::sum)));
 
-        return totalAgeByGender;
+        return people.stream()
+                .collect(
+                        Collectors.groupingBy(
+                                Person::getGender, Collectors.reducing(0, Person::getAge, Integer::sum)));
     }
 
     private static class Averager implements IntConsumer {
