@@ -17,10 +17,40 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
     private CollectionOperationsOnNonPrimitiveTypes collectionOperationsOnNonPrimitiveTypes = new CollectionOperationsOnNonPrimitiveTypes();
 
     @Test
+    public void test_groupPeopleByGender_GetFullNamesGrammatically() throws JsonProcessingException {
+        List<Person> people = TestsHelper.getPeople();
+
+        Map<String, String> actual = collectionOperationsOnNonPrimitiveTypes.groupPeopleByGender_GetFullNamesGrammatically(people);
+
+        assertEquals(2, actual.size());
+
+        assertEquals("""
+                {
+                  "female" : "Jane Wayne, Gayle Wayne, Mary Wayne, Sophie Wayne and Sophie Wayne",
+                  "male" : "John Wayne, Rob Wayne, Clark Wayne and Trevor Wayne"
+                }""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
+    }
+
+    @Test
+    public void test_groupPeopleByGender_GetFullNames() throws JsonProcessingException {
+        List<Person> people = TestsHelper.getPeople();
+
+        Map<String, List<String>> actual = collectionOperationsOnNonPrimitiveTypes.groupPeopleByGender_GetFullNames(people);
+
+        assertEquals(2, actual.size());
+
+        assertEquals("""
+                {
+                  "female" : [ "Jane Wayne", "Gayle Wayne", "Mary Wayne", "Sophie Wayne", "Sophie Wayne" ],
+                  "male" : [ "John Wayne", "Rob Wayne", "Clark Wayne", "Trevor Wayne" ]
+                }""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
+    }
+
+    @Test
     public void test_groupPeopleByGender_GetNames() throws JsonProcessingException {
         List<Person> people = TestsHelper.getPeople();
 
-        Map<String, String> actual = collectionOperationsOnNonPrimitiveTypes.groupPeopleByGender_GetNames(people);
+        Map<String, String> actual = collectionOperationsOnNonPrimitiveTypes.groupPeopleByGender_GetFirstNames(people);
 
         assertEquals(2, actual.size());
 
@@ -44,6 +74,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   "female" : [ {
                     "id" : 5,
                     "firstname" : "Jane",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 15,
                     "gender" : "female",
                     "addressLine1" : "123 JohnJane Ln",
@@ -62,6 +94,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   }, {
                     "id" : 6,
                     "firstname" : "Gayle",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 25,
                     "gender" : "female",
                     "addressLine1" : "123 RobGayle Ln",
@@ -80,6 +114,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   }, {
                     "id" : 7,
                     "firstname" : "Mary",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 35,
                     "gender" : "female",
                     "addressLine1" : "123 ClarkMary Ln",
@@ -98,6 +134,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   }, {
                     "id" : 8,
                     "firstname" : "Sophie",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 45,
                     "gender" : "female",
                     "addressLine1" : "123 TrevorSophie Ln",
@@ -116,6 +154,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   }, {
                     "id" : 8,
                     "firstname" : "Sophie",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 45,
                     "gender" : "female",
                     "addressLine1" : "123 TrevorSophie Ln",
@@ -135,6 +175,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   "male" : [ {
                     "id" : 1,
                     "firstname" : "John",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 15,
                     "gender" : "male",
                     "addressLine1" : "123 JohnJane Ln",
@@ -153,6 +195,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   }, {
                     "id" : 2,
                     "firstname" : "Rob",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 25,
                     "gender" : "male",
                     "addressLine1" : "123 RobGayle Ln",
@@ -171,6 +215,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   }, {
                     "id" : 3,
                     "firstname" : "Clark",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 35,
                     "gender" : "male",
                     "addressLine1" : "123 ClarkMary Ln",
@@ -189,6 +235,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   }, {
                     "id" : 4,
                     "firstname" : "Trevor",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 45,
                     "gender" : "male",
                     "addressLine1" : "123 TrevorSophie Ln",
@@ -221,6 +269,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   "1" : {
                     "id" : 1,
                     "firstname" : "John",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 15,
                     "gender" : "male",
                     "addressLine1" : "123 JohnJane Ln",
@@ -240,6 +290,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   "2" : {
                     "id" : 2,
                     "firstname" : "Rob",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 25,
                     "gender" : "male",
                     "addressLine1" : "123 RobGayle Ln",
@@ -259,6 +311,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   "3" : {
                     "id" : 3,
                     "firstname" : "Clark",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 35,
                     "gender" : "male",
                     "addressLine1" : "123 ClarkMary Ln",
@@ -278,6 +332,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   "4" : {
                     "id" : 4,
                     "firstname" : "Trevor",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 45,
                     "gender" : "male",
                     "addressLine1" : "123 TrevorSophie Ln",
@@ -297,6 +353,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   "5" : {
                     "id" : 5,
                     "firstname" : "Jane",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 15,
                     "gender" : "female",
                     "addressLine1" : "123 JohnJane Ln",
@@ -316,6 +374,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   "6" : {
                     "id" : 6,
                     "firstname" : "Gayle",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 25,
                     "gender" : "female",
                     "addressLine1" : "123 RobGayle Ln",
@@ -335,6 +395,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   "7" : {
                     "id" : 7,
                     "firstname" : "Mary",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 35,
                     "gender" : "female",
                     "addressLine1" : "123 ClarkMary Ln",
@@ -354,6 +416,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   "8" : {
                     "id" : 8,
                     "firstname" : "Sophie",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 45,
                     "gender" : "female",
                     "addressLine1" : "123 TrevorSophie Ln",
@@ -390,6 +454,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   "female" : [ {
                     "id" : 5,
                     "firstname" : "Jane",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 15,
                     "gender" : "female",
                     "addressLine1" : "123 JohnJane Ln",
@@ -408,6 +474,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   }, {
                     "id" : 6,
                     "firstname" : "Gayle",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 25,
                     "gender" : "female",
                     "addressLine1" : "123 RobGayle Ln",
@@ -426,6 +494,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   }, {
                     "id" : 7,
                     "firstname" : "Mary",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 35,
                     "gender" : "female",
                     "addressLine1" : "123 ClarkMary Ln",
@@ -444,6 +514,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   }, {
                     "id" : 8,
                     "firstname" : "Sophie",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 45,
                     "gender" : "female",
                     "addressLine1" : "123 TrevorSophie Ln",
@@ -462,6 +534,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   }, {
                     "id" : 8,
                     "firstname" : "Sophie",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 45,
                     "gender" : "female",
                     "addressLine1" : "123 TrevorSophie Ln",
@@ -481,6 +555,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   "male" : [ {
                     "id" : 1,
                     "firstname" : "John",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 15,
                     "gender" : "male",
                     "addressLine1" : "123 JohnJane Ln",
@@ -499,6 +575,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   }, {
                     "id" : 2,
                     "firstname" : "Rob",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 25,
                     "gender" : "male",
                     "addressLine1" : "123 RobGayle Ln",
@@ -517,6 +595,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   }, {
                     "id" : 3,
                     "firstname" : "Clark",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 35,
                     "gender" : "male",
                     "addressLine1" : "123 ClarkMary Ln",
@@ -535,6 +615,8 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
                   }, {
                     "id" : 4,
                     "firstname" : "Trevor",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
                     "age" : 45,
                     "gender" : "male",
                     "addressLine1" : "123 TrevorSophie Ln",
@@ -562,174 +644,192 @@ public class CollectionOperationsOnNonPrimitiveTypesTests {
         Map<Person.Address, List<Person>> actual = collectionOperationsOnNonPrimitiveTypes.groupPeopleByAddress_Collect_ListToMap_GroupByMultipleFields(people);
 
         assertEquals("""
-               {
-                 "Address[addressLine1=123 ClarkMary Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
-                   "id" : 3,
-                   "firstname" : "Clark",
-                   "age" : 35,
-                   "gender" : "male",
-                   "addressLine1" : "123 ClarkMary Ln",
-                   "addressLine2" : null,
-                   "city" : "Dover",
-                   "state" : "NH",
-                   "zip" : "03820",
-                   "phones" : [ "555-6654", "555-3242" ],
-                   "address" : {
-                     "addressLine1" : "123 ClarkMary Ln",
-                     "addressLine2" : null,
-                     "city" : "Dover",
-                     "state" : "NH",
-                     "zip" : "03820"
-                   }
-                 }, {
-                   "id" : 7,
-                   "firstname" : "Mary",
-                   "age" : 35,
-                   "gender" : "female",
-                   "addressLine1" : "123 ClarkMary Ln",
-                   "addressLine2" : null,
-                   "city" : "Dover",
-                   "state" : "NH",
-                   "zip" : "03820",
-                   "phones" : null,
-                   "address" : {
-                     "addressLine1" : "123 ClarkMary Ln",
-                     "addressLine2" : null,
-                     "city" : "Dover",
-                     "state" : "NH",
-                     "zip" : "03820"
-                   }
-                 } ],
-                 "Address[addressLine1=123 RobGayle Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
-                   "id" : 2,
-                   "firstname" : "Rob",
-                   "age" : 25,
-                   "gender" : "male",
-                   "addressLine1" : "123 RobGayle Ln",
-                   "addressLine2" : null,
-                   "city" : "Dover",
-                   "state" : "NH",
-                   "zip" : "03820",
-                   "phones" : [ "555-2243", "555-5264" ],
-                   "address" : {
-                     "addressLine1" : "123 RobGayle Ln",
-                     "addressLine2" : null,
-                     "city" : "Dover",
-                     "state" : "NH",
-                     "zip" : "03820"
-                   }
-                 }, {
-                   "id" : 6,
-                   "firstname" : "Gayle",
-                   "age" : 25,
-                   "gender" : "female",
-                   "addressLine1" : "123 RobGayle Ln",
-                   "addressLine2" : null,
-                   "city" : "Dover",
-                   "state" : "NH",
-                   "zip" : "03820",
-                   "phones" : null,
-                   "address" : {
-                     "addressLine1" : "123 RobGayle Ln",
-                     "addressLine2" : null,
-                     "city" : "Dover",
-                     "state" : "NH",
-                     "zip" : "03820"
-                   }
-                 } ],
-                 "Address[addressLine1=123 JohnJane Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
-                   "id" : 1,
-                   "firstname" : "John",
-                   "age" : 15,
-                   "gender" : "male",
-                   "addressLine1" : "123 JohnJane Ln",
-                   "addressLine2" : null,
-                   "city" : "Dover",
-                   "state" : "NH",
-                   "zip" : "03820",
-                   "phones" : [ "555-1123", "555-3389" ],
-                   "address" : {
-                     "addressLine1" : "123 JohnJane Ln",
-                     "addressLine2" : null,
-                     "city" : "Dover",
-                     "state" : "NH",
-                     "zip" : "03820"
-                   }
-                 }, {
-                   "id" : 5,
-                   "firstname" : "Jane",
-                   "age" : 15,
-                   "gender" : "female",
-                   "addressLine1" : "123 JohnJane Ln",
-                   "addressLine2" : null,
-                   "city" : "Dover",
-                   "state" : "NH",
-                   "zip" : "03820",
-                   "phones" : null,
-                   "address" : {
-                     "addressLine1" : "123 JohnJane Ln",
-                     "addressLine2" : null,
-                     "city" : "Dover",
-                     "state" : "NH",
-                     "zip" : "03820"
-                   }
-                 } ],
-                 "Address[addressLine1=123 TrevorSophie Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
-                   "id" : 4,
-                   "firstname" : "Trevor",
-                   "age" : 45,
-                   "gender" : "male",
-                   "addressLine1" : "123 TrevorSophie Ln",
-                   "addressLine2" : null,
-                   "city" : "Dover",
-                   "state" : "NH",
-                   "zip" : "03820",
-                   "phones" : null,
-                   "address" : {
-                     "addressLine1" : "123 TrevorSophie Ln",
-                     "addressLine2" : null,
-                     "city" : "Dover",
-                     "state" : "NH",
-                     "zip" : "03820"
-                   }
-                 }, {
-                   "id" : 8,
-                   "firstname" : "Sophie",
-                   "age" : 45,
-                   "gender" : "female",
-                   "addressLine1" : "123 TrevorSophie Ln",
-                   "addressLine2" : null,
-                   "city" : "Dover",
-                   "state" : "NH",
-                   "zip" : "03820",
-                   "phones" : null,
-                   "address" : {
-                     "addressLine1" : "123 TrevorSophie Ln",
-                     "addressLine2" : null,
-                     "city" : "Dover",
-                     "state" : "NH",
-                     "zip" : "03820"
-                   }
-                 }, {
-                   "id" : 8,
-                   "firstname" : "Sophie",
-                   "age" : 45,
-                   "gender" : "female",
-                   "addressLine1" : "123 TrevorSophie Ln",
-                   "addressLine2" : null,
-                   "city" : "Dover",
-                   "state" : "NH",
-                   "zip" : "03820",
-                   "phones" : null,
-                   "address" : {
-                     "addressLine1" : "123 TrevorSophie Ln",
-                     "addressLine2" : null,
-                     "city" : "Dover",
-                     "state" : "NH",
-                     "zip" : "03820"
-                   }
-                 } ]
-               }""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
+                {
+                  "Address[addressLine1=123 ClarkMary Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
+                    "id" : 3,
+                    "firstname" : "Clark",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
+                    "age" : 35,
+                    "gender" : "male",
+                    "addressLine1" : "123 ClarkMary Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "phones" : [ "555-6654", "555-3242" ],
+                    "address" : {
+                      "addressLine1" : "123 ClarkMary Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
+                  }, {
+                    "id" : 7,
+                    "firstname" : "Mary",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
+                    "age" : 35,
+                    "gender" : "female",
+                    "addressLine1" : "123 ClarkMary Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "phones" : null,
+                    "address" : {
+                      "addressLine1" : "123 ClarkMary Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
+                  } ],
+                  "Address[addressLine1=123 RobGayle Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
+                    "id" : 2,
+                    "firstname" : "Rob",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
+                    "age" : 25,
+                    "gender" : "male",
+                    "addressLine1" : "123 RobGayle Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "phones" : [ "555-2243", "555-5264" ],
+                    "address" : {
+                      "addressLine1" : "123 RobGayle Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
+                  }, {
+                    "id" : 6,
+                    "firstname" : "Gayle",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
+                    "age" : 25,
+                    "gender" : "female",
+                    "addressLine1" : "123 RobGayle Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "phones" : null,
+                    "address" : {
+                      "addressLine1" : "123 RobGayle Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
+                  } ],
+                  "Address[addressLine1=123 JohnJane Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
+                    "id" : 1,
+                    "firstname" : "John",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
+                    "age" : 15,
+                    "gender" : "male",
+                    "addressLine1" : "123 JohnJane Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "phones" : [ "555-1123", "555-3389" ],
+                    "address" : {
+                      "addressLine1" : "123 JohnJane Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
+                  }, {
+                    "id" : 5,
+                    "firstname" : "Jane",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
+                    "age" : 15,
+                    "gender" : "female",
+                    "addressLine1" : "123 JohnJane Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "phones" : null,
+                    "address" : {
+                      "addressLine1" : "123 JohnJane Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
+                  } ],
+                  "Address[addressLine1=123 TrevorSophie Ln, addressLine2=null, city=Dover, state=NH, zip=03820]" : [ {
+                    "id" : 4,
+                    "firstname" : "Trevor",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
+                    "age" : 45,
+                    "gender" : "male",
+                    "addressLine1" : "123 TrevorSophie Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "phones" : null,
+                    "address" : {
+                      "addressLine1" : "123 TrevorSophie Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
+                  }, {
+                    "id" : 8,
+                    "firstname" : "Sophie",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
+                    "age" : 45,
+                    "gender" : "female",
+                    "addressLine1" : "123 TrevorSophie Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "phones" : null,
+                    "address" : {
+                      "addressLine1" : "123 TrevorSophie Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
+                  }, {
+                    "id" : 8,
+                    "firstname" : "Sophie",
+                    "lastname" : "Wayne",
+                    "fullname" : null,
+                    "age" : 45,
+                    "gender" : "female",
+                    "addressLine1" : "123 TrevorSophie Ln",
+                    "addressLine2" : null,
+                    "city" : "Dover",
+                    "state" : "NH",
+                    "zip" : "03820",
+                    "phones" : null,
+                    "address" : {
+                      "addressLine1" : "123 TrevorSophie Ln",
+                      "addressLine2" : null,
+                      "city" : "Dover",
+                      "state" : "NH",
+                      "zip" : "03820"
+                    }
+                  } ]
+                }""", (new ObjectMapper()).writerWithDefaultPrettyPrinter().writeValueAsString(actual));
     }
 
     @Test

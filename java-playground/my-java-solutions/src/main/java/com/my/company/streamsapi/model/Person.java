@@ -10,6 +10,8 @@ import java.util.List;
 public class Person {
   private int id;
   private String firstname;
+  private String lastname;
+  private String fullname;
   private int age;
   private String gender;
   private String addressLine1;
