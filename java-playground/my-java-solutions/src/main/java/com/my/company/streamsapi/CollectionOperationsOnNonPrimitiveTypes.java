@@ -111,7 +111,23 @@ public class CollectionOperationsOnNonPrimitiveTypes {
    * <p><R> R collect(Supplier<R> supplier, BiConsumer<R, ? super T> accumulator, BiConsumer<R, R>
    * combiner);
    */
-  public static List<String> getNamesOfMen_Collect_Field_To_ArrayList(List<Person> people) {
+  public static List<String>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  getNamesOfMen_Collect_Field_To_ArrayList(List<Person> people) {
     /**
      * Here, our supplier is just the ArrayList constructor, the accumulator adds the stringified
      * element (name) to an ArrayList, and the combiner simply uses addAll to copy the strings from
