@@ -15,6 +15,7 @@ public class TransformAListIntoAMap {
 
         List<Person> people = TestsHelper.getPeople();
 
+        // See the implementation for examples to transform one map into another.
         CollectionOperationsOnNonPrimitiveTypes collectionOperationsOnNonPrimitiveTypes = new CollectionOperationsOnNonPrimitiveTypes();
 
         Map<String, String> actual = collectionOperationsOnNonPrimitiveTypes.groupPeopleByGender_GetFullNamesGrammatically(people);
