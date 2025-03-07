@@ -15,7 +15,7 @@ public class PipelineOperations {
     public static void printNamesOfMen_Pipelines(List<Person> people) {
         people.stream()
                 .filter(e -> e.getGender().equals("male"))
-                .forEach(e -> log.info(e.getName()));
+                .forEach(e -> log.info(e.getFirstname()));
     }
 
 }

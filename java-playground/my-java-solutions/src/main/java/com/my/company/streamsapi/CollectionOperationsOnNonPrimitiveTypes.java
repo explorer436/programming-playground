@@ -136,7 +136,7 @@ public class CollectionOperationsOnNonPrimitiveTypes {
     List<String> namesOfMaleMembersCollect =
         people.stream()
             .filter(p -> p.getGender().equals("male"))
-            .map(p -> p.getName())
+            .map(Person::getFirstname)
             .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
 
     return namesOfMaleMembersCollect;
@@ -170,7 +170,7 @@ public class CollectionOperationsOnNonPrimitiveTypes {
     List<String> namesOfMaleMembersCollect =
         people.stream()
             .filter(p -> p.getGender().equals("male"))
-            .map(p -> p.getName())
+            .map(Person::getFirstname)
             .collect(Collectors.toList());
 
     return namesOfMaleMembersCollect;
@@ -199,6 +199,22 @@ public class CollectionOperationsOnNonPrimitiveTypes {
         people.stream().collect(Collectors.groupingBy(Person::getGender));
 
     return byGender;
+  }
+
+  public Map<String, String> groupPeopleByGender_GetNames(
+          List<Person> people) {
+
+    /**
+     * In this example, the returned map contains two keys, Person.Sex.MALE and Person.Sex.FEMALE.
+     * The keys' corresponding values are instances of List that contain the stream elements that,
+     * when processed by the classification function, correspond to the key value. For example, the
+     * value that corresponds to key Person.Sex.MALE is an instance of List that contains all male
+     * members.
+     */
+
+      return people.stream()
+              .collect(
+                      Collectors.toMap(Person::getGender, Person::getFirstname, (first, second) -> first + ";" + second));
   }
 
   public Map<Integer, Person> groupPeopleById_Collect_ListToMap_excludeDuplicates(
@@ -249,7 +265,7 @@ public class CollectionOperationsOnNonPrimitiveTypes {
         people.stream()
             .collect(
                 Collectors.groupingBy(
-                    Person::getGender, Collectors.mapping(Person::getName, Collectors.toList())));
+                    Person::getGender, Collectors.mapping(Person::getFirstname, Collectors.toList())));
 
     return namesByGender;
   }

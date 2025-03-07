@@ -15,11 +15,11 @@ public class AggregateOperations {
   public static void printTheNameOfEachPerson_AggregateOperations(List<Person> people) {
     log.info("using a for each loop");
     for (Person p : people) {
-      log.info(p.getName());
+      log.info(p.getFirstname());
     }
 
     log.info("using the aggregate operation forEach");
     people.stream()
-            .forEach(e -> log.info(e.getName()));
+            .forEach(e -> log.info(e.getFirstname()));
   }
 }

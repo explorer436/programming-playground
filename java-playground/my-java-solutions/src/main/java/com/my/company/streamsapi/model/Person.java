@@ -9,7 +9,7 @@ import java.util.List;
 @Builder
 public class Person {
   private int id;
-  private String name;
+  private String firstname;
   private int age;
   private String gender;
   private String addressLine1;
