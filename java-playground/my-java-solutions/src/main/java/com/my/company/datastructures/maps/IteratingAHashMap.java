@@ -11,12 +11,14 @@ public class IteratingAHashMap {
   public static void main(String[] args) {
 
     Map<String, String> sampleMap = new HashMap<String, String>();
+
     sampleMap.put("John Smith", "521-1234");
     sampleMap.put("Sam Doe", "521-5030");
     sampleMap.put("Sandra Dee", "521-9655");
 
     /**
-     * Iterate through a HashMap using EntrySet. entrySet() is used to return a set view of mapped
+     * Use enhanced for loop on the HashMap's EntrySet.
+     * entrySet() is used to return a set view of mapped
      * elements. Use set.getKey() to get key from the set. Use set.getValue() to get value from the
      * set.
      */
@@ -26,16 +28,11 @@ public class IteratingAHashMap {
       System.out.println(set.getKey() + " = " + set.getValue());
     }
 
-    /**
-     * Iterate through a HashMap using KeySet. keySet() returns a set of keys. Use each of the keys
-     * in the set to get values from the map.
-     */
+    // Using Stream API on the map's entrySet()
     System.out.println("");
-    System.out.println("using KeySet");
-    Set<String> abc = sampleMap.keySet();
-    for (String key : sampleMap.keySet()) {
-      System.out.println(key + " = " + sampleMap.get(key));
-    }
+    System.out.println("Using Stream API on the map's entrySet()");
+    sampleMap.entrySet().stream()
+            .forEach(input -> System.out.println(input.getKey() + " : " + input.getValue()));
 
     // using a lambda expression
     System.out.println("");
@@ -47,14 +44,18 @@ public class IteratingAHashMap {
     System.out.println("using Iterator on EntrySet");
     Iterator<Entry<String, String>> entrySet_Iterator = sampleMap.entrySet().iterator();
     while (entrySet_Iterator.hasNext()) {
-      Map.Entry<String, String> new_Map = (Map.Entry<String, String>) entrySet_Iterator.next();
+      Map.Entry<String, String> new_Map = entrySet_Iterator.next();
       System.out.println(new_Map.getKey() + " = " + new_Map.getValue());
     }
 
-    // Using Stream API on the map's entrySet()
+    /**
+     * Iterate through a HashMap using KeySet. keySet() returns a set of keys. Use each of the keys
+     * in the set to get values from the map.
+     */
     System.out.println("");
-    System.out.println("Using Stream API on the map's entrySet()");
-    sampleMap.entrySet().stream()
-        .forEach(input -> System.out.println(input.getKey() + " : " + input.getValue()));
+    System.out.println("using KeySet");
+    for (String key : sampleMap.keySet()) {
+      System.out.println(key + " = " + sampleMap.get(key));
+    }
   }
 }

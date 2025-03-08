@@ -237,8 +237,7 @@ public class CollectionOperationsOnNonPrimitiveTypes {
         return byId;
     }
 
-    public Map<Person.Address, List<Person>>
-    groupPeopleByAddress_Collect_ListToMap_GroupByMultipleFields(List<Person> people) {
+    public Map<Person.Address, List<Person>> groupPeopleByAddress_Collect_ListToMap_GroupByMultipleFields(List<Person> people) {
         Map<Person.Address, List<Person>> byAddress =
                 people.stream().collect(Collectors.groupingBy(Person::getAddress));
 
