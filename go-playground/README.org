@@ -1,0 +1,4 @@
+Create sub-directories and create modules inside them:
+
+mkdir 10working-with-objects
+go mod init myexample.com/working-with-objects
