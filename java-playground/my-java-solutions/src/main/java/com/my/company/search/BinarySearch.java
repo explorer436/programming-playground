@@ -2,8 +2,8 @@ package com.my.company.search;
 
 public class BinarySearch {
 
-    // A prerequisite is, the array has to be ordered.
     public int binarySearchUsingRecursion(int key, int[] numbers, int lo, int hi) {
+
         if (lo > hi) {
             return -1;
         }
@@ -22,10 +22,11 @@ public class BinarySearch {
         }
     }
 
-    // A prerequisite is, the array has to be ordered.
     public int binarySearchUsingIteration(int key, int[] numbers) {
+
         int lo = 0;
         int hi = numbers.length - 1;
+
         while (lo <= hi) {
             int mid = lo + (hi - lo) / 2;
 

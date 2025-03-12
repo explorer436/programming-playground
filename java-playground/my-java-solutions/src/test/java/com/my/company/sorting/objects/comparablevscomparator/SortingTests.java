@@ -1,4 +1,4 @@
-package com.my.company.sorting.objects;
+package com.my.company.sorting.objects.comparablevscomparator;
 
 import org.junit.jupiter.api.Test;
 

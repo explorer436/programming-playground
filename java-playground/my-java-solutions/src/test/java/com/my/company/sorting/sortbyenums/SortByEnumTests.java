@@ -1,6 +1,5 @@
 package com.my.company.sorting.sortbyenums;
 
-import com.my.company.sorting.objects.Fruit;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

@@ -1,16 +1,2 @@
 The examples from "com.my.company.sorting.usingcomparatordefaultmethods" make use of the newly introduced default methods to implement Comparator interface on the fly.
 So, the older examples that we see in "com.my.company.sorting.objects" are not necessary anymore.
-
-* Comparator interface vs Comparable interface
-
-In Java, the Comparable and Comparator interfaces are used to sort collections of objects based on certain criteria. The Comparable interface is used to define the natural ordering of an object, whereas the Comparator interface is used to define custom ordering criteria for an object.
-
-Here are some reasons why you might want to use the Comparator interface over the Comparable interface in Java:
-
-1. Sorting based on different criteria: When using the Comparable interface, the natural ordering of an object is defined in the class itself. This means that you can only sort objects based on a single criterion. On the other hand, when using the Comparator interface, you can define multiple sorting criteria by creating different instances of the comparator interface. This provides more flexibility when sorting objects.
-1. Sorting objects that do not implement the Comparable interface: If you need to sort objects that do not implement the Comparable interface, you cannot use the Collections.sort() method, which requires objects to implement the Comparable interface. In this case, you can use the Collections.sort() method that takes a Comparator object as a parameter to sort the objects.
-1. Modifying sorting criteria at runtime: When using the Comparator interface, you can modify the sorting criteria at runtime by creating a new instance of the Comparator interface with different sorting logic. This provides more dynamic sorting behavior.
-1. Sorting objects in a different order: When using the Comparable interface, the objects are sorted in natural order, which is not always the desired behavior. When using the Comparator interface, you can define custom sorting criteria to sort objects in a different order.
-1. Separation of concerns: The Comparable interface defines the natural ordering of an object, which may not always be the desired behavior when sorting. When using the Comparator interface, the sorting behavior is separated from the object itself, which provides better encapsulation and separation of concerns.
-
-In summary, the Comparator interface is more flexible and provides more control over the sorting behavior of objects. If you need to sort objects based on different criteria or if the objects do not implement the Comparable interface, you should use the Comparator interface. On the other hand, if you want to define the natural ordering of an object, you should use the Comparable interface.

@@ -1,4 +1,4 @@
-package com.my.company.sorting.objects;
+package com.my.company.sorting.objects.comparablevscomparator;
 
 import java.util.Comparator;
 
@@ -8,6 +8,7 @@ import java.util.Comparator;
 public class RatingAndNameComparator implements Comparator<Fruit> {
 
   public int compare(Fruit f1, Fruit f2) {
+
     // sort the fruits by rating first.
     int ratingComparisonResult = 0;
     if (f1.getRating() < f2.getRating()) {
@@ -15,6 +16,9 @@ public class RatingAndNameComparator implements Comparator<Fruit> {
     } else if (f1.getRating() > f2.getRating()) {
       ratingComparisonResult = 1;
     } else {
+
+      // Name comparison kicks on only if two Fruits have the same Rating.
+
       // sort the fruits by name.
       String fruitName1 = f1.getFruitName().toUpperCase();
       String fruitName2 = f2.getFruitName().toUpperCase();
@@ -27,7 +31,9 @@ public class RatingAndNameComparator implements Comparator<Fruit> {
       } else {
         ratingComparisonResult = 0;
       }
+
     }
     return ratingComparisonResult;
+
   }
 }

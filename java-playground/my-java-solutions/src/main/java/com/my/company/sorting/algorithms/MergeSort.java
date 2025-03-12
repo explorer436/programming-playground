@@ -2,10 +2,6 @@ package com.my.company.sorting.algorithms;
 
 import com.my.company.utility.PrintUtils;
 
-/**
- * Mergesort guarantees to sort an array of N items in time proportional to N log N, no matter what
- * the input. Its prime disadvantage is that it uses extra space proportional to N.
- */
 public class MergeSort {
 
     public static void main(String[] args) {
@@ -119,8 +115,10 @@ public class MergeSort {
     }
 
     public static void merge_ascending(Comparable[] a, int beginning, int mid, int ending) {
+
         // if the last element from the left array is lower than the first element from the right array,
         // there is no need to do anything.
+
         if (a[mid - 1].compareTo(a[mid]) < 0) {
             return;
         } else {

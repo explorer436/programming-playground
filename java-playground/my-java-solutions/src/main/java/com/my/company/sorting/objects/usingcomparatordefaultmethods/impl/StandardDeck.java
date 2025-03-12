@@ -1,7 +1,7 @@
-package com.my.company.sorting.usingcomparatordefaultmethods.impl;
+package com.my.company.sorting.objects.usingcomparatordefaultmethods.impl;
 
-import com.my.company.sorting.usingcomparatordefaultmethods.Card;
-import com.my.company.sorting.usingcomparatordefaultmethods.Deck;
+import com.my.company.sorting.objects.usingcomparatordefaultmethods.Card;
+import com.my.company.sorting.objects.usingcomparatordefaultmethods.Deck;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

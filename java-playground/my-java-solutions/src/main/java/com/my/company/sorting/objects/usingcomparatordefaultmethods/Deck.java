@@ -1,4 +1,4 @@
-package com.my.company.sorting.usingcomparatordefaultmethods;
+package com.my.company.sorting.objects.usingcomparatordefaultmethods;
 
 import java.util.*;
 import java.lang.*;

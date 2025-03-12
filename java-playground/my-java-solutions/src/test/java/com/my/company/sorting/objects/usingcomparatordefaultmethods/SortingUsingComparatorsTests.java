@@ -1,8 +1,8 @@
-package com.my.company.sorting.usingcomparatordefaultmethods;
+package com.my.company.sorting.objects.usingcomparatordefaultmethods;
 
-import com.my.company.sorting.usingcomparatordefaultmethods.comparators.SortByRankThenSuit;
-import com.my.company.sorting.usingcomparatordefaultmethods.impl.PlayingCard;
-import com.my.company.sorting.usingcomparatordefaultmethods.impl.StandardDeck;
+import com.my.company.sorting.objects.usingcomparatordefaultmethods.comparators.SortByRankThenSuit;
+import com.my.company.sorting.objects.usingcomparatordefaultmethods.impl.PlayingCard;
+import com.my.company.sorting.objects.usingcomparatordefaultmethods.impl.StandardDeck;
 import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
