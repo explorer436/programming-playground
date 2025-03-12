@@ -58,14 +58,14 @@ public class BubbleSort {
     if (null != a && a.length > 1) {
       // a variable to keep track of the upper limit until which the bigger number of the array will
       // be moved.
-      for (int xyz = a.length; xyz > 0; xyz--) {
+      for (int i = a.length; i > 0; i--) {
         /*
-         * a variable that is used to compare each pair starting with [0, 1] until the variable xyz.
+         * a variable that is used to compare each pair starting with [0, 1] until the variable i.
          * with each comparison, the highest element is moved to the right.
          * so, with each iteration of j, the highest number of the element is moved to the far right.
-         * this is for sorting from smallet to larger numbers.
+         * this is for sorting from smallest to larger numbers.
          */
-        for (int j = 1; j < xyz; j++) {
+        for (int j = 1; j < i; j++) {
           Comparable first = a[j];
           Comparable second = a[j - 1];
 
