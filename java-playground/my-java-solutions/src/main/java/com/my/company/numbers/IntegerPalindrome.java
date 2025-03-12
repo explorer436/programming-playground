@@ -84,7 +84,7 @@ public class IntegerPalindrome {
 
     if (x >= 0) {
       result =
-          x == new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(x) ? true : false;
+              x == new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(x);
     }
 
     return result;
