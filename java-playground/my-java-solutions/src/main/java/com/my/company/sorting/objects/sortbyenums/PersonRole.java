@@ -1,4 +1,4 @@
-package com.my.company.sorting.sortbyenums;
+package com.my.company.sorting.objects.sortbyenums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

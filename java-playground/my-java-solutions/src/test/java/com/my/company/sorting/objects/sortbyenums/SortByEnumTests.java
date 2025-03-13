@@ -1,4 +1,4 @@
-package com.my.company.sorting.sortbyenums;
+package com.my.company.sorting.objects.sortbyenums;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SortByEnumTests {
 
     @Test
-    public void test_Comparable_compareTo_on_arrays() throws Exception {
+    public void test_Comparable_compareTo_on_arrays() {
 
         Person parent = Person.builder().name("A B").personRole(PersonRole.PARENT).build();
         Person grandparent = Person.builder().name("C D").personRole(PersonRole.GRANDPARENT).build();
