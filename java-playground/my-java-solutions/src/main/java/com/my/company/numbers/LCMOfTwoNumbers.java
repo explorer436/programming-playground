@@ -79,7 +79,7 @@ public class LCMOfTwoNumbers {
     if (number1 == 0 || number2 == 0) {
       return 0;
     } else {
-      int gcd = GCDOfTwoNumbersUsingEuclideanAlgorithm.gcd(number1, number2);
+      int gcd = new GCDOfTwoNumbersUsingEuclideanAlgorithm().gcd(number1, number2);
       return Math.abs(number1 * number2) / gcd;
     }
   }

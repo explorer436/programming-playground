@@ -23,6 +23,21 @@ public class ReductionOperations {
                         + Arrays.toString(A)
                         + " is : "
                         + getProductOfAllElementsOfArray(A));
+
+        System.out.println(
+                "Sum of all elements of the array "
+                        + Arrays.toString(A)
+                        + " calculated using stream reduce is "
+                        + getSum(A));
+    }
+
+    /**
+     * Sum of all elements of an array
+     */
+    public static int getSum(int[] A) {
+
+        return Arrays.stream(A).reduce(0, Integer::sum);
+
     }
 
 
@@ -30,13 +45,11 @@ public class ReductionOperations {
      * Reduction Operations
      */
     public static double getAverageAgeOfMen_TerminalOperator(List<Person> people) {
-        double average =
-                people.stream()
-                        .filter(p -> p.getGender().equals("male"))
-                        .mapToInt(Person::getAge)
-                        .average()
-                        .getAsDouble();
-        return average;
+        return people.stream()
+                .filter(p -> p.getGender().equals("male"))
+                .mapToInt(Person::getAge)
+                .average()
+                .getAsDouble();
     }
 
     /**
@@ -77,13 +90,11 @@ public class ReductionOperations {
         Integer totalAgeCalculatedUsingSum = people.stream().mapToInt(Person::getAge).sum();
 
         // This uses reduce.
-        Integer totalAgeCalculatedUsingReduce =
-                people.stream()
-                        .filter(p -> p.getGender().equals("male"))
-                        .map(Person::getAge)
-                        .reduce(0, (a, b) -> a + b);
 
-        return totalAgeCalculatedUsingReduce;
+        return people.stream()
+                .filter(p -> p.getGender().equals("male"))
+                .map(Person::getAge)
+                .reduce(0, (a, b) -> a + b);
     }
 
     public static int getSumOfAllElementsOfArray(int[] A) {
@@ -92,9 +103,8 @@ public class ReductionOperations {
          * Returns a Stream consisting of the elements of this stream, each boxed to an Integer.
          * This is an intermediate operation.
          */
-        Integer sumOfAllElementsOfArray = Arrays.stream(A).boxed().reduce(0, (a, b) -> a + b);
 
-        return sumOfAllElementsOfArray;
+        return Arrays.stream(A).boxed().reduce(0, (a, b) -> a + b);
     }
 
     public static int getMaxElementInIntArray(int[] A) {
@@ -106,9 +116,8 @@ public class ReductionOperations {
     }
 
     public static int getProductOfAllElementsOfArray(int[] A) {
-        Integer sumOfAllElementsOfArray = Arrays.stream(A).boxed().reduce(1, (a, b) -> a * b);
 
-        return sumOfAllElementsOfArray;
+        return Arrays.stream(A).boxed().reduce(1, (a, b) -> a * b);
     }
 
     /** Note : Look at GCDOfNumbersInAnArray.getGcd() Note : Look at LCMOfNumbersInAnArray.getLcm() */
