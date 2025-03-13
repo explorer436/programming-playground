@@ -44,5 +44,13 @@ public class TextEditorTests {
         textEditor.cursorRight(6);
         assertEquals("practice", textEditor.getText());
         assertEquals(6, textEditor.getCursorPosition());
+
+        textEditor.cursorLeft(6);
+        assertEquals("practice", textEditor.getText());
+        assertEquals(0, textEditor.getCursorPosition());
+
+        textEditor.append("leetcode");
+        assertEquals("leetcodepractice", textEditor.getText());
+        assertEquals(8, textEditor.getCursorPosition());
     }
 }

@@ -9,7 +9,13 @@ public class TextEditor {
     private int cursorPosition = 0;
 
     public void append(String inputText) {
-        text += inputText;
+        if (text.length() == cursorPosition) {
+            text += inputText;
+            cursorPosition += inputText.length();
+            return;
+        }
+
+        text = text.substring(0, cursorPosition) + inputText + text.substring(cursorPosition);
         cursorPosition += inputText.length();
     }
 
@@ -26,22 +32,27 @@ public class TextEditor {
         }
 
         int initialCursorPosition = cursorPosition;
-
         text = text.substring(0, text.length() - i);
-
         decrementCursorPosition(initialCursorPosition, i);
+
     }
 
     private void decrementCursorPosition(int initialCursorPosition, int i) {
+
         if (initialCursorPosition > i) {
             cursorPosition -= i;
+            return;
         }
+
         if (cursorPosition <= 0) {
             cursorPosition = 0;
+            return;
         }
+
     }
 
     public void cursorRight(int i) {
+
         if (cursorPosition == text.length()) {
             return;
         }
@@ -52,9 +63,11 @@ public class TextEditor {
         }
 
         cursorPosition += i;
+
     }
 
     public void cursorLeft(int i) {
+
         if (0 == cursorPosition) {
             return;
         }
@@ -62,5 +75,6 @@ public class TextEditor {
             cursorPosition = 0;
         }
         cursorPosition -= i;
+
     }
 }

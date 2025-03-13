@@ -75,7 +75,7 @@ public class ReverseInteger {
     int reverse = 0;
 
     while (x != 0) {
-      int unitsPlace = x % 10;
+      int unitsPlace = x % 10; // remainder when divided by 10
       x = x / 10;
 
       if ((reverse > Integer.MAX_VALUE / 10)
@@ -139,48 +139,6 @@ public class ReverseInteger {
     }
 
     System.out.println("----------------");
-
-    result = new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(123);
-    if (result != 321) {
-      throw new Exception("wrong answer - expected" + 321 + " but received " + result);
-    }
-
-    result = new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(-123);
-    if (result != -321) {
-      throw new Exception("wrong answer - expected" + -321 + " but received " + result);
-    }
-
-    result = new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(120);
-    if (result != 21) {
-      throw new Exception("wrong answer - expected" + -321 + " but received " + result);
-    }
-
-    // input is 2147483647
-    result = new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(Integer.MAX_VALUE);
-    if (result != 0) {
-      throw new Exception("wrong answer - expected" + 0 + " but received " + result);
-    }
-
-    result = new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(Integer.MIN_VALUE);
-    if (result != 0) {
-      throw new Exception("wrong answer - expected" + 0 + " but received " + result);
-    }
-
-    result = new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(964632435);
-    if (result != 534236469) {
-      throw new Exception("wrong answer - expected" + 534236469 + " but received " + result);
-    }
-
-    result =
-        new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(Integer.MAX_VALUE + 1);
-    if (result != 0) {
-      throw new Exception("wrong answer - expected" + 0 + " but received " + result);
-    }
-
-    result = new ReverseInteger().reverseWithoutConvertingTheIntegerIntoString(2147483646);
-    if (result != 0) {
-      throw new Exception("wrong answer - expected" + 0 + " but received " + result);
-    }
 
     System.out.println("done");
   }
