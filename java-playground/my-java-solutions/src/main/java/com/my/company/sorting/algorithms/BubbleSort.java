@@ -54,10 +54,10 @@ public class BubbleSort {
     PrintUtils.printArray(strArray);
   }
 
+  // Why do we need two for loops?
   public static void sort(Comparable[] a) {
     if (null != a && a.length > 1) {
-      // a variable to keep track of the upper limit until which the bigger number of the array will
-      // be moved.
+      // a variable to keep track of the upper limit until which the bigger number of the array will be moved.
       for (int i = a.length; i > 0; i--) {
         /*
          * a variable that is used to compare each pair starting with [0, 1] until the variable i.
@@ -77,4 +77,26 @@ public class BubbleSort {
       }
     }
   }
+
+
+  // TODO
+  /*
+  function bubbleSort(array) {
+    var done = false;
+    while (!done) {
+      done = true;
+      for (var i = 1; i < array.length; i += 1) {
+        if (array[i - 1] > array[i]) {
+          done = false;
+          var tmp = array[i - 1];
+          array[i - 1] = array[i];
+          array[i] = tmp;
+        }
+      }
+    }
+
+    return array;
+  }
+   */
+
 }

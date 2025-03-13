@@ -2,22 +2,19 @@ package com.my.company.numbers;
 
 import java.util.Arrays;
 
-public class NextSmallestNumber {
-    public int findNextSmallestNumber(int[] numbers, int number) {
+public class NextSmallerNumber {
 
-        if (numbers == null) {
-            return -1;
-        }
+    public int findNextSmallerNumber(int[] numbers, int number) {
 
-        int len = numbers.length;
-
-        if (len <= 0) {
+        if (numbers == null || numbers.length == 0) {
             return -1;
         }
 
         if (number <= numbers[0]) {
             return -1;
         }
+
+        int len = numbers.length;
 
         if (number == numbers[len - 1]) {
             return numbers[len - 2];
@@ -42,13 +39,13 @@ public class NextSmallestNumber {
                 return numbers[mid];
             }
             lower = mid;
-            return findNextSmallestNumber(Arrays.copyOfRange(numbers, lower, len), number);
+            return findNextSmallerNumber(Arrays.copyOfRange(numbers, lower, len), number);
         } else {
             if (number > numbers[mid + 1]) {
                 return number;
             }
             lower = mid + 1;
-            return findNextSmallestNumber(Arrays.copyOfRange(numbers, 0, lower), number);
+            return findNextSmallerNumber(Arrays.copyOfRange(numbers, 0, lower), number);
         }
 
 

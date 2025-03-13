@@ -36,15 +36,7 @@ public class SwapIntegersWithoutUsingATempVariable {
     return new ImmutablePair(a, b);
   }
 
-  /**
-   * REMEMBER : wherever possible, always prefer bit manipulation to other techniques.
-   *
-   * <p>The beauty of this method is, we do not have to worry about the datatype of the input
-   * variables. Or, their limits. We don't have to worry about overflows. This will work in any
-   * language, including the ones that do not support overflows.
-   *
-   * <p>"^" - bitwise exclusive OR - bitwise XOR
-   */
+  // See bitwise operations in programming-notes
   public static ImmutablePair swapUsingBitwiseManipulation(ImmutablePair pair) {
     int a = (int) pair.left;
     int b = (int) pair.right;
