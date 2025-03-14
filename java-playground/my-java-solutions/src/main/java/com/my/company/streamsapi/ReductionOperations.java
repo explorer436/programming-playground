@@ -40,7 +40,6 @@ public class ReductionOperations {
 
     }
 
-
     /**
      * Reduction Operations
      */
