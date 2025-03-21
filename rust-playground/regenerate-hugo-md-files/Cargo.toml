@@ -1,0 +1,6 @@
+[package]
+name = "regenerate-hugo-md-files"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

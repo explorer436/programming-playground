@@ -4,6 +4,8 @@ use std::process::Command;
 use std::time::Instant;
 
 fn main() {
+
+    println!("Hello, world!");
     let start = Instant::now();
 
     cleanup();
@@ -14,10 +16,9 @@ fn main() {
 
     let duration = start.elapsed();
 
-    println!("Time elapsed is: {:?}", duration.as_secs());
+    println!("Time elapsed is: {:?} seconds", duration.as_secs());
 }
 
-#[warn(dead_code)]
 fn cleanup() {
 
     Command::new("sh")
@@ -57,7 +58,7 @@ fn regenerate() {
     for path in paths {
         // println!("File Name: {}", path.unwrap().path().display());
 
-        let mut owned_string: String = "emacs --batch -l /home/explorer436/Downloads/GitRepositories/health-notes/init.el -l /home/explorer436/Downloads/GitRepositories/health-notes/jethrow-publish.el --eval '(jethro/publish \"".to_owned();
+        let mut owned_string: String = "emacs --batch -l /home/explorer436/Downloads/GitRepositories/health-notes/org-to-markdown/init.el -l /home/explorer436/Downloads/GitRepositories/health-notes/org-to-markdown/jethrow-publish.el --eval '(jethro/publish \"".to_owned();
         owned_string.push_str("/home/explorer436/Downloads/GitRepositories/health-notes/org/");
         owned_string.push_str(path.unwrap().file_name().to_str().unwrap());
         let borrowed_string: &str = "\")'";
