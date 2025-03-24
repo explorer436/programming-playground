@@ -1,9 +1,12 @@
 package main
 
 import (
+	"cmp"
 	"encoding/json"
 	"fmt"
 	"os"
+	"slices"
+	"sort"
 	"strings"
 )
 
@@ -72,19 +75,18 @@ func main() {
 	str1 := strs[0].(string)
 	fmt.Println(str1)
 
-	// Convert raw json into a struct
-	var car Car
-	byt2 := []byte(`{"make":"Honda","model":"accord", "year": 2025, "color": "white", "EngineSize": 8}`)
-	if err := json.Unmarshal(byt2, &car); err != nil {
-		panic(err)
-	}
-	// Print raw struct
-	fmt.Println(car)
+	structToAndFromJson()
 
-	// Pretty print
-	// https://stackoverflow.com/questions/19038598/how-can-i-pretty-print-json-using-go
-	carStr, _ := json.MarshalIndent(car, "", "  ")
-	fmt.Println(string(carStr))
+	funcName()
+
+	sortingObjects1()
+
+	sortingObjects2()
+}
+
+func funcName() {
+
+	fmt.Println(">>> funcName()")
 
 	str := `{"page": 1, "fruits": ["apple", "peach"]}`
 	res := response2{}
@@ -100,4 +102,86 @@ func main() {
 	res1 := response2{}
 	dec.Decode(&res1)
 	fmt.Println(res1)
+
+	fmt.Println("<<< funcName()")
+}
+
+func structToAndFromJson() {
+
+	fmt.Println(">>> structToAndFromJson()")
+
+	// Convert raw json into a struct
+	var car Car
+	byt2 := []byte(`{"make":"Honda","model":"accord", "year": 2025, "color": "white", "EngineSize": 8}`)
+	if err := json.Unmarshal(byt2, &car); err != nil {
+		panic(err)
+	}
+	// Print raw struct
+	fmt.Println(car)
+
+	// Pretty print
+	// https://stackoverflow.com/questions/19038598/how-can-i-pretty-print-json-using-go
+	carStr, _ := json.MarshalIndent(car, "", "  ")
+	fmt.Println(string(carStr))
+
+	fmt.Println("<<< structToAndFromJson()")
+}
+
+type Person struct {
+	Name string
+	Age  int
+}
+
+func CmpPerson(a, b Person) int {
+	if a.Name == b.Name {
+		return cmp.Compare(a.Age, b.Age)
+	}
+	return cmp.Compare(a.Name, b.Name)
+}
+
+func sortingObjects1() {
+
+	fmt.Println(">>> sortingObjects1()")
+
+	people := []Person{
+		{"Gopher", 13},
+		{"Alice", 55},
+		{"Bob", 24},
+		{"Alice", 20},
+	}
+
+	slices.SortFunc(people, CmpPerson)
+
+	// Expected Output: [{Alice 20} {Alice 55} {Bob 24} {Gopher 13}]
+	fmt.Println(people)
+
+	fmt.Println("<<< sortingObjects1()")
+
+}
+
+func sortingObjects2() {
+
+	fmt.Println(">>> sortingObjects2()")
+
+	people := []Person{
+		{"Gopher", 13},
+		{"Alice", 55},
+		{"Bob", 24},
+		{"Alice", 20},
+	}
+
+	sort.Slice(people, func(i, j int) bool {
+
+		a := people[i].Name < people[j].Name
+		b := people[i].Age < people[j].Age
+
+		return a && b
+	})
+
+	// Expected Output: [{Alice 20} {Alice 55} {Bob 24} {Gopher 13}]
+	// FIXME Doesn't seem to be doing it
+	fmt.Println(people)
+
+	fmt.Println("<<< sortingObjects2()")
+
 }
