@@ -1,0 +1,80 @@
+services:
+  db:
+    container_name: postgres_db1
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: johnny
+      POSTGRES_PASSWORD: utah
+      POSTGRES_DB: bank
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d postgres" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  vault_local_db:
+    container_name: postgres_db2
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: michael
+      POSTGRES_PASSWORD: corleone
+      POSTGRES_DB: vault_local
+    volumes:
+      - vault_service_data:/var/lib/postgresql/data
+    ports:
+      - "15432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d postgres" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  vault_local_db_setup:
+    container_name: postgres_db2_setup
+    image: postgres:latest
+    depends_on:
+      - another_db_for_a_service
+    restart: no
+    configs:
+      - source: vault_service.sql
+        target: /vault_service.sql
+    entrypoint: ["bash", "-c", "sleep 50 && PGPASSWORD=corleone psql -X -U michael -h another_db_for_a_service -p 5432 -f /vault_service.sql vault_local"]
+
+  # setting up a springboot (or some other) dependent service in our local environment
+  dependent_vault_service_setup:
+    container_name: dependent_service_name
+    image: postgres:latest
+    # This should be the image of the dependent service - coming from your company's jfrog artifactory. e.g. company.jfrog.io/environment-abc/namespace-def/dependent_service:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - another_db_for_a_service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://another_db_for_a_service:5432/vault_local
+      - SPRING_DATASOURCE_USERNAME=michael
+      - SPRING_DATASOURCE_PASSWORD=corleone
+      # And whatever parameters the dependent service needs
+
+volumes:
+  postgres_data:
+  vault_service_data:
+
+# Dummy data for the dependent service
+configs:
+  vault_service.sql:
+    content: |
+      INSERT INTO public.vault(
+      id, vault_name, description, created, updated, created_by, updated_by, created_with_version, updated_with_version)
+      VALUES
+      (1, 'vault1', 'description1', now(), now(), 'me', 'me', '1.0.0', '1.0.1'),
+      (2, 'vault2', 'description2', now(), now(), 'me', 'me', '1.0.0', '1.0.1'),
+      (3, 'vault3', 'description3', now(), now(), 'me', 'me', '1.0.0', '1.0.1'),
+      (4, 'vault4', 'description4', now(), now(), 'me', 'me', '1.0.0', '1.0.1'),
+      (5, 'vault5', 'description5', now(), now(), 'me', 'me', '1.0.0', '1.0.1'),
+      ON CONFLICT DO NOTHING;

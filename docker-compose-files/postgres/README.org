@@ -1,0 +1,9 @@
+1. Sometimes, our service may have a dependency on other services.
+1. Our service can try to hit the other service in lower environments.
+1. If that is not possible, we can grab the docker image for that service from the company's artifactory and set it up as a container in our local machine.
+   1. See dependent_vault_service_setup
+1. For that service to run, it may need a database.
+   1. See vault_local_db
+1. So we need to set-up another container that acts as a database for that service - and we have to fill up the necessary table/tables with dummy data.
+   1. See vault_local_db_setup
+1. This compose file shows how to do that.
