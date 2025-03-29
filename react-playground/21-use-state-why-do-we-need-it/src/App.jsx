@@ -1,9 +1,9 @@
-import ErrorExample from "./components/error-example";
+import WithoutUseState from "./components/without-use-state.jsx";
 
 function App() {
   return (
     <div className="container">
-      <ErrorExample />
+      <WithoutUseState />
     </div>
   );
 }

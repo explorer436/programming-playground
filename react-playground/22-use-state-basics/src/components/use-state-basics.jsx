@@ -13,9 +13,9 @@ const UseStateBasics = () => {
   const [count, setCount] = useState(0);
 
   const handleClick = () => {
-    // console.log(count)
     setCount(count + 1);
-    // be careful, we can set any value
+    // Be careful, we can set any value.
+    // Don't set invalid values.
     // setCount('pants');
   };
 
