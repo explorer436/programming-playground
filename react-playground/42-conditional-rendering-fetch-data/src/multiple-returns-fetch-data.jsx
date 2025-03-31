@@ -24,6 +24,7 @@ const MultipleReturnsFetchData = () => {
             setIsError(true);
             // console.log(error);
         }
+
         // hide loading
         setIsLoading(false);
     };
@@ -32,7 +33,8 @@ const MultipleReturnsFetchData = () => {
         fetchUser();
     }, []);
     // order matters
-    // don't place user JSX before loading or error
+    // Always write useEffect code before any rendering happens.
+    // If not, the code in useEffect function may not run at all.
 
     if (isLoading) {
         return <h2>Loading...</h2>;
@@ -42,6 +44,9 @@ const MultipleReturnsFetchData = () => {
         return <h2>There was an error...</h2>;
     }
 
+    // order matters
+    // This destructuring cannot happen before the conditional if statements.
+    // If something goes wrong, those conditional if statements are supposed to handle them.
     const { avatar_url, name, company, bio } = user;
 
     return (

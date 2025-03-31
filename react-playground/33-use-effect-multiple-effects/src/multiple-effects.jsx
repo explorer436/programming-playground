@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react';
 const MultipleEffects = () => {
 
     const [value, setValue] = useState(0);
+    const [secondValue, setSecondValue] = useState(0);
+
     useEffect(() => {
         console.log('hello from first useEffect');
     }, [value]);
 
-    const [secondValue, setSecondValue] = useState(0);
     useEffect(() => {
         console.log('hello from second useEffect');
     }, [secondValue]);
