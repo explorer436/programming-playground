@@ -38,6 +38,19 @@ func filterByUserName(fu []FullUser, su []SimpleUser) (usersInBothSlices []FullU
 		simpleUsersMap[u.UserName] = struct{}{}
 	}
 	for _, u := range fu {
+
+		// How to check if a map contains a key in Go?
+		/*val, ok := myMap["foo"]
+		// If the key exists
+		if ok {
+			// Do something
+		}*/
+
+		// Doing it in one line
+		/*if val, ok := myMap["foo"]; ok {
+			//do something here
+		}*/
+
 		if _, ok := simpleUsersMap[u.UserName]; ok {
 			usersInBothSlices = append(usersInBothSlices, u)
 		} else {

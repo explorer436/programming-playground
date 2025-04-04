@@ -1,13 +1,9 @@
 package main
 
 import (
-	"cmp"
 	"encoding/json"
 	"fmt"
-	"log"
 	"os"
-	"slices"
-	"sort"
 	"strings"
 )
 
@@ -79,16 +75,6 @@ func main() {
 	structToAndFromJson()
 
 	funcName()
-
-	sortingObjects1()
-
-	sortingObjects2()
-
-	a := []int{4, 5, 6}
-	b := []int{4, 5, 6}
-	c := []int{4, 5, 6, 7}
-	log.Print(areSlicesEqual(a, b))
-	log.Print(areSlicesEqual(b, c))
 }
 
 func funcName() {
@@ -132,75 +118,4 @@ func structToAndFromJson() {
 	fmt.Println(string(carStr))
 
 	fmt.Println("<<< structToAndFromJson()")
-}
-
-type Person struct {
-	Name string
-	Age  int
-}
-
-func CmpPerson(a, b Person) int {
-	if a.Name == b.Name {
-		return cmp.Compare(a.Age, b.Age)
-	}
-	return cmp.Compare(a.Name, b.Name)
-}
-
-func sortingObjects1() {
-
-	fmt.Println(">>> sortingObjects1()")
-
-	people := []Person{
-		{"Gopher", 13},
-		{"Alice", 55},
-		{"Bob", 24},
-		{"Alice", 20},
-	}
-
-	slices.SortFunc(people, CmpPerson)
-
-	// Expected Output: [{Alice 20} {Alice 55} {Bob 24} {Gopher 13}]
-	fmt.Println(people)
-
-	fmt.Println("<<< sortingObjects1()")
-
-}
-
-func sortingObjects2() {
-
-	fmt.Println(">>> sortingObjects2()")
-
-	people := []Person{
-		{"Gopher", 13},
-		{"Alice", 55},
-		{"Bob", 24},
-		{"Alice", 20},
-	}
-
-	sort.Slice(people, func(i, j int) bool {
-
-		a := people[i].Name < people[j].Name
-		b := people[i].Age < people[j].Age
-
-		return a && b
-	})
-
-	// Expected Output: [{Alice 20} {Alice 55} {Bob 24} {Gopher 13}]
-	// FIXME Doesn't seem to be doing it
-	fmt.Println(people)
-
-	fmt.Println("<<< sortingObjects2()")
-
-}
-
-func areSlicesEqual(a, b []int) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i := range a {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
 }
