@@ -12,6 +12,7 @@ type SimpleUser struct {
 }
 
 // We have some users in manySimpleUsers that we would like to remove from manyFullUsers based on the Username.
+// https://stackoverflow.com/questions/32867780/filtering-a-slice-of-structs-based-on-a-different-slice-in-golang
 
 func main() {
 	fmt.Println("Hello, playground")
