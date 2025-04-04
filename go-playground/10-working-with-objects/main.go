@@ -4,6 +4,7 @@ import (
 	"cmp"
 	"encoding/json"
 	"fmt"
+	"log"
 	"os"
 	"slices"
 	"sort"
@@ -82,6 +83,12 @@ func main() {
 	sortingObjects1()
 
 	sortingObjects2()
+
+	a := []int{4, 5, 6}
+	b := []int{4, 5, 6}
+	c := []int{4, 5, 6, 7}
+	log.Print(areSlicesEqual(a, b))
+	log.Print(areSlicesEqual(b, c))
 }
 
 func funcName() {
@@ -184,4 +191,16 @@ func sortingObjects2() {
 
 	fmt.Println("<<< sortingObjects2()")
 
+}
+
+func areSlicesEqual(a, b []int) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i := range a {
+		if a[i] != b[i] {
+			return false
+		}
+	}
+	return true
 }
