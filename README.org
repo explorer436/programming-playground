@@ -1,33 +1,10 @@
-* Developer set-up                                                    :TOC_9:
-  - [[#jdk][jdk]]
-  - [[#maven][maven]]
-  - [[#aws-cli][aws-cli]]
-  - [[#docker-and-docker-compose][docker and docker-compose]]
-  - [[#go][go]]
-  - [[#haskell][haskell]]
-  - [[#node-js-with-npm][node js (with npm)]]
-  - [[#rust][rust]]
+* Developer set-up
 
-** jdk
-
-https://programming-notes.explorer436.com/posts/20230728173003-java_installation/
-
-** maven
-
-https://programming-notes.explorer436.com/posts/20230802123449-maven_installation_details/
-
-** aws-cli
-
-https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
-
-** docker and docker-compose
-
-** go
-
-** haskell
-
-https://programming-notes.explorer436.com/posts/20240610151312-haskell_installation/
-
-** node js (with npm)
-
-** rust
+  - jdk
+  - maven
+  - aws-cli
+  - docker and docker-compose
+  - go
+  - haskell
+  - node js (with npm)
+  - rust
