@@ -1,5 +1,5 @@
 {
-  "name": "102-react-drap-and-drop-react-dnd-01",
+  "name": "101-react-drag-and-drop-native-html5",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "react": "^19.0.0",
-    "react-dnd": "^16.0.1",
-    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
