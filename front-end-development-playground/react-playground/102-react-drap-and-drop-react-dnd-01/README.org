@@ -1,0 +1,3 @@
+Look at the separate examples in the next few applications.
+In this one, I tried to combine two different apps into this one.
+While it is technically possible, I don't see a scenario where this would be helpful.

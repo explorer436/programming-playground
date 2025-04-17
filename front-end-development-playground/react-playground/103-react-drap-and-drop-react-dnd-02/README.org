@@ -33,13 +33,3 @@
    3. It receives the fruitName, the sourceGroupKey (where the fruit came from), and the targetGroupKey (where it was dropped to).
    4. It uses setGroups with a callback function to update the state immutably: it filters the fruit out of the source array and adds it to the target array.
    5. useCallback is used to memoize the handleDrop function, preventing unnecessary re-renders of Group components if App were to re-render for other reasons.
-8. Fruit.js (useDrag):
-   1. The item object in useDrag now includes { name, sourceGroupKey: currentGroupKey }. This tells react-dnd which fruit is being dragged and where it currently resides. This sourceGroupKey is essential for the handleDrop logic.
-9. Group.js (useDrop):
-   1. The drop handler now calls the onDropItem prop (which is handleDrop from App), passing the necessary information (item.name, item.sourceGroupKey, id (the target group's ID)).
-   2. It prevents dropping an item back into the same group it came from (item.sourceGroupKey !== id).
-   3. It renders the Fruit components based on the items prop it receives from App. Crucially, it passes its own id as the currentGroupKey to the Fruit components it renders.
-10. Rendering in App.js:
-    1. It maps over the groups state object's keys.
-    2. For each key, it renders a Group component, passing the necessary props: key, id, title, the array of items for that group, and the handleDrop callback.
-    3. The "Available Fruits" section is now also treated as a Group (with id='available') so you can drag fruits back into it.

@@ -1,0 +1,11 @@
+1. For explanation about dnd functions, look at the README.org file in the previous example
+2. Fruit.js (useDrag):
+   1. The item object in useDrag now includes { name, sourceGroupKey: currentGroupKey }. This tells react-dnd which fruit is being dragged and where it currently resides. This sourceGroupKey is essential for the handleDrop logic.
+3. Group.js (useDrop):
+   1. The drop handler now calls the onDropItem prop (which is handleDrop from App), passing the necessary information (item.name, item.sourceGroupKey, id (the target group's ID)).
+   2. It prevents dropping an item back into the same group it came from (item.sourceGroupKey !== id).
+   3. It renders the Fruit components based on the items prop it receives from App. Crucially, it passes its own id as the currentGroupKey to the Fruit components it renders.
+4. Rendering in App.js:
+   1. It maps over the groups state object's keys.
+   2. For each key, it renders a Group component, passing the necessary props: key, id, title, the array of items for that group, and the handleDrop callback.
+   3. The "Available Fruits" section is now also treated as a Group (with id='available') so you can drag fruits back into it.
