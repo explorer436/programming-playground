@@ -1,0 +1,33 @@
+Explanation:
+
+1. State:
+   1. We use useState to manage two arrays: availableItems and droppedItems.
+2. draggable="true":
+   1. This HTML attribute is essential to make an element draggable.
+3. onDragStart:
+   1. Fires when the user starts dragging an element.
+   2. e.dataTransfer.setData('text/plain', itemId):
+      1. This is crucial. It stores data (here, the item's ID) that will be available when the item is dropped.
+      2. The first argument is the data format (often 'text/plain' or a custom mime type), and the second is the data itself.
+   3. We also add a visual cue by reducing the opacity.
+4. onDragEnd:
+   1. Fires when the drag operation finishes (regardless of success). Used here to reset the item's opacity.
+5. onDragOver:
+   1. Fires continuously as a dragged item is moved over a potential drop target.
+   2. e.preventDefault(): This is critical.
+      1. By default, dropping is disallowed on most elements.
+      2. Calling preventDefault() signals that this element is a valid drop target.
+   3. We add a CSS class (drag-over) for visual feedback.
+6. onDragLeave:
+   1. Fires when a dragged item leaves a potential drop target. Used here to remove the visual feedback class.
+7. onDrop:
+   1. Fires when a dragged item is dropped onto a valid drop target.
+   2. e.preventDefault():
+      1. Also needed here to prevent the browser's default drop behavior (like trying to open the data as a URL if it looks like one).
+   3. e.dataTransfer.getData('text/plain'):
+      1. Retrieves the data that was stored during onDragStart.
+   4. State Update Logic:
+      1. It finds the draggedItem based on the retrieved itemId.
+      2. It determines the sourceListName (where the item came from).
+      3. If the item is found and it's being dropped onto a different list (sourceListName !== targetListName), it removes the item from its original list state and adds it to the target list state using the set... functions.
+8. CSS: Basic styling is added for layout and visual feedback (like changing the drop zone background/border when dragging over it).
