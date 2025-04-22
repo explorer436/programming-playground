@@ -1,2 +1,4 @@
+See the test classes.
+
 The examples from "com.my.company.sorting.usingcomparatordefaultmethods" make use of the newly introduced default methods to implement Comparator interface on the fly.
 So, the older examples that we see in "com.my.company.sorting.objects" are not necessary anymore.
