@@ -2,6 +2,13 @@ Run ~cargo build~ to download the dependencies and then compile the application 
 
 Run ~cargo run~ to run the application and verify it by 
 
+In browser:
+
+1. http://localhost:8080
+2. http://localhost:8080/compliment
+
+In terminal:
+
 #+begin_src 
 curl --verbose http://localhost:8080
 

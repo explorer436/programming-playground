@@ -32,7 +32,7 @@ fn random_animal(random_number: f64) -> Box<dyn Animal> {
 }
 
 fn main() {
-    let random_number: f64 = rand::thread_rng().gen();
+    let random_number: f64 = rand::rng().random();
     println!("The random_number is: {}", random_number);
 
 
