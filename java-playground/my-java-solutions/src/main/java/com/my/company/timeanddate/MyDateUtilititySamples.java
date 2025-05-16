@@ -1,4 +1,4 @@
-package com.my.company;
+package com.my.company.timeanddate;
 
 import org.apache.commons.lang3.time.DateUtils;
 
@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class MyDateUtilititySamples {
+
     public static void main(String[] args) throws ParseException {
 
         add_or_subtract_number_of_days_from_current_date();
