@@ -1,6 +1,6 @@
 [package]
 name = "openapi_client"
-version = "v1.0.0"
+version = "1.0.0"
 authors = ["OpenAPI Generator team and contributors"]
 description = "This service provides API to manage albums."
 # Override this license by providing a License Object in the OpenAPI.
