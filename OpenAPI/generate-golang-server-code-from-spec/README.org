@@ -1,0 +1,8 @@
+* Generate server code from OpenAPI specification file
+
+docker run --rm --volume "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/<path_to_your_openapi_spec> -g rust-server -o /local/<output_directory>
+
+src
+[explorer436@explorer436-lenovo-legion-82b1 generate-golang-server-code-from-spec]$ docker run --rm --mount type=bind,source=/home/explorer436/Downloads/GitRepositories/programming-playground/OpenAPI/generate-golang-server-code-from-spec,target=/home/explorer436/Downloads/GitRepositories/programming-playground/OpenAPI/generate-golang-server-code-from-spec openapitools/openapi-generator-cli generate -i /home/explorer436/Downloads/GitRepositories/programming-playground/OpenAPI/generate-golang-server-code-from-spec/openapi-albums.yaml -g go-server -o /home/explorer436/Downloads/GitRepositories/programming-playground/OpenAPI/generate-golang-server-code-from-spec
+#+end_src
+

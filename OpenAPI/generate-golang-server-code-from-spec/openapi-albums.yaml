@@ -1,0 +1,114 @@
+openapi: 3.0.3
+info:
+  title: Albums API
+  description: This service provides API to manage albums.
+  version: v1.0.0
+servers:
+  - url: http://localhost:8080/{basePath}
+    description: The production API server
+    variables:
+      basePath:
+        default: my-custom-basepath
+paths:
+  /albums:
+    get:
+      tags:
+        - Album
+      summary: Get Albums
+      operationId: getAlbums
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Album'
+    post:
+      tags:
+        - Album
+      summary: Post Albums
+      operationId: postAlbums
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Album'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Album'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestErrResponse'
+  /albums/{id}:
+    get:
+      tags:
+        - Album
+      summary: Get Album By ID
+      operationId: getAlbumByID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Album'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestErrResponse'
+components:
+  schemas:
+    Album:
+      required:
+        - id
+        - title
+      type: object
+      properties:
+        artist:
+          type: string
+          description: Album author, can be empty for multi-artist compilations.
+        id:
+          minLength: 1
+          type: string
+          description: ID is a unique string that determines album.
+        price:
+          minimum: 0
+          type: number
+          description: Price in USD.
+        title:
+          minLength: 1
+          type: string
+          description: Title of the album.
+    RestErrResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Application-specific error code.
+        context:
+          type: object
+          additionalProperties: {}
+          description: Application context.
+        error:
+          type: string
+          description: Error message.
+        status:
+          type: string
+          description: Status text.
