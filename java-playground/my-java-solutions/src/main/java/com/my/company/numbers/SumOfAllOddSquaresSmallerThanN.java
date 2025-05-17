@@ -1,6 +1,5 @@
 package com.my.company.numbers;
 
-/** find the sum of all odd squares that are smaller than 10,000 expected : 166650 */
 public class SumOfAllOddSquaresSmallerThanN {
 
   public static void main(String[] args) {

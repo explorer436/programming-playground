@@ -11,6 +11,14 @@ class UsingHashmapForTransformations {
                 "Canada", new String[]{"canada-address-line-1", "canada-city", "canada-state", "canada-zip-code"});
     }
 
+    public static void main(String[] args) {
+        System.out.println(transformation_using_if_else("USA"));
+        System.out.println(transformation_using_if_else("Canada"));
+
+        System.out.println(transformation_using_map("USA"));
+        System.out.println(transformation_using_map("Canada"));
+    }
+
     private static MyAddress transformation_using_if_else(String countryName){
 
         MyAddress myAddress = new MyAddress();
@@ -43,11 +51,6 @@ class UsingHashmapForTransformations {
         myAddress.zipCode = stringArray[3];
 
         return myAddress;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(transformation_using_if_else("USA"));
-        System.out.println(transformation_using_map("Canada"));
     }
 
     static class MyAddress {

@@ -6,67 +6,6 @@ import java.util.List;
 
 import javax.lang.model.util.ElementScanner6;
 
-/**
- * Finding the k th Smallest Value of an Array.
- *
- * <p>You could solve this problem by sorting the array. Then the k th smallest value would be
- * anArray[k-1] . Although this approach is a legitimate solution, it does more than the problem
- * requires; a more efficient solution is possible. The solution outlined here finds the k th
- * smallest value without completely sorting the array.
- *
- * <p>Usually, using recursion, by knowing only the size of the original problem, you can determine
- * the number of recursive calls that are necessary before you reach the base case.
- *
- * <p>The solution that you are about to see for finding the k th smallest value departs from these
- * techniques. Although you solve the problem in terms of a smaller problem, just how much smaller
- * this problem is depends on the values in the array and cannot be predicted in advance. Also, the
- * size of the base case depends on the values in the array, as it did for the binary search.
- *
- * <p>The unpredictable nature of this solution is caused by the problem itself: The relationship
- * between the rankings of the values in any predetermined parts of the array and the ranking of the
- * val- ues in the entire array is not strong enough to determine the k th smallest value.
- *
- * <p>The recursive solution proceeds by 1. Selecting a pivot value in the array 2. Cleverly
- * arranging, or partitioning , the values in the array about this pivot value 3. Recursively
- * applying the strategy to one of the partitions
- *
- * <p>Suppose that you want to find the kth smallest value in the array segment
- * anArray[first..last]. Let the pivot p be any value of the array segment. You can partition the
- * values of anArray[first..last] into three regions: 1. S1, which contains the values less than or
- * equal to p ; 2. the pivot p itself; 3. and S2, which contains the values greater than or equal to
- * p . j
- *
- * <p>S1 S2 _______________________________ |______<= p____|p|____>= p______| first pivot last
- *
- * <p>This partition implies that all of the values in S1 are no larger than all of the values in S2
- * .
- *
- * <p>All values in anArray[first..pivotIndex-1] are less than or equal to p, and all values in
- * anArray[pivotIndex+1..last] are greater than or equal to p .
- *
- * <p>This partition induces three smaller problems, such that the solution to one of the problems
- * will solve the original problem: 1. If S1 contains k or more values, S1 contains the k smallest
- * values of the array segment anArray[first..last] . In this case, the kth smallest value must be
- * in S1 . Since S1 is the array segment anArray[first..pivotIndex-1] , this case occurs if k <
- * pivotIndex – first + 1. 2. If S1 contains k – 1 values, the kth smallest value must be the pivot
- * p . This is the base case; it occurs if k = pivotIndex – first + 1. 3. If S1 contains fewer than
- * k – 1 values, the kth smallest value in anArray[first..last] must be in S2 . Because S1 contains
- * pivotIndex – first values, the kth smallest value in anArray[first..last] is the ( k – (
- * pivotIndex – first + 1))st smallest value in S2 . This case occurs if k > pivotIndex – first + 1.
- *
- * <p>A recursive definition can summarize this discussion. Let kSmall(k, anArray, first, last) = k
- * th smallest value in anArray[first..last]
- *
- * <p>After you select the pivot value p and partition anArray[first..last] into S 1 and S 2 , you
- * have that kSmall(k, anArray, first, last) equals kSmall(k, anArray, first, pivotIndex – 1) if k <
- * pivotIndex – first + 1 p if k = pivotIndex – first + 1 kSmall(k – (pivotIndex – first + 1),
- * anArray, pivotIndex + 1, last) if k > pivotIndex – first + 1
- *
- * <p>There is always a pivot, and because it is not part of either S 1 or S 2 , the size of the
- * array segment to be searched decreases by at least 1 at each step. Thus, you will eventually
- * reach the base case: The desired value is a pivot. A high-level pseudocode solution is as
- * follows.
- */
 public class FindTheKthSmallestValueOfAnArray {
   public static void main(String[] args) {
 

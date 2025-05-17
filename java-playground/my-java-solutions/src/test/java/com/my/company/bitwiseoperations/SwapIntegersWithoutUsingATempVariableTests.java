@@ -1,6 +1,5 @@
-package com.my.company.numbers;
+package com.my.company.bitwiseoperations;
 
-import com.my.company.strings.ChangeSubstringInAString;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.junit.jupiter.api.Test;
 

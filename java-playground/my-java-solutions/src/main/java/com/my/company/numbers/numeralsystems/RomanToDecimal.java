@@ -1,8 +1,51 @@
 package com.my.company.numbers.numeralsystems;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RomanToDecimal {
 
-    public static int romanToDecimal(String str) {
+    private static final Map<Character, Integer> romanMap = new HashMap<>();
+    static {
+        romanMap.put('I', 1);
+        romanMap.put('V', 5);
+        romanMap.put('X', 10);
+        romanMap.put('L', 50);
+        romanMap.put('C', 100);
+        romanMap.put('D', 500);
+        romanMap.put('M', 1000);
+    }
+
+    public int romanToDecimal(String s) {
+        if (s == null || s.isEmpty()) {
+            return 0;
+        }
+
+        s = s.toUpperCase();
+        int result = 0;
+        int previousValue = 0; // Stores the value of the numeral to the right
+
+        // Iterate from right to left
+        for (int i = s.length() - 1; i >= 0; i--) {
+            char currentChar = s.charAt(i);
+            if (!romanMap.containsKey(currentChar)) {
+                throw new IllegalArgumentException("Invalid Roman numeral character: " + currentChar);
+            }
+            int currentValue = romanMap.get(currentChar);
+
+            if (currentValue < previousValue) {
+                // If current value is less than the one on its right, subtract it (e.g., 'I' in "IV")
+                result -= currentValue;
+            } else {
+                // Otherwise, add it (e.g., 'V' in "IV", 'X' in "XI")
+                result += currentValue;
+            }
+            previousValue = currentValue; // Update previousValue for the next iteration
+        }
+        return result;
+    }
+
+    public int romanToDecimal2(String str) {
         int result = 0;
 
         // handle special cases first
@@ -32,6 +75,7 @@ public class RomanToDecimal {
         }
 
         // after handling all special cases
+
         if (str.length() == 1) {
             result = result + getIntegerValueForRomanCharacter(str);
         }
@@ -41,7 +85,7 @@ public class RomanToDecimal {
             result =
                     result
                             + getIntegerValueForRomanCharacter(lastElementOnTheRight)
-                            + romanToDecimal(str.substring(0, str.length() - 1));
+                            + romanToDecimal2(str.substring(0, str.length() - 1));
 
         }
 

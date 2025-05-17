@@ -8,7 +8,7 @@ public class DecimalToRomanTests {
     DecimalToRoman decimalToRoman = new DecimalToRoman();
 
     @Test
-    public void test_swapUsingBitwiseManipulation_01() throws Exception {
+    public void test_swapUsingBitwiseManipulation_01() {
         assertAll(
                 () -> assertEquals("I", decimalToRoman.intToRoman(1)),
                 () -> assertEquals("III", decimalToRoman.intToRoman(3)),

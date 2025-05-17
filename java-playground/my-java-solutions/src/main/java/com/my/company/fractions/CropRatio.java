@@ -8,40 +8,41 @@ import com.my.company.utility.PrintUtils;
  * Calculate the ratio of each crop - based on the values being added in the main method.
  */
 public class CropRatio {
-  private int totalWeight;
 
-  private HashMap<String, Integer> crops = new HashMap<String, Integer>();
+    private int totalWeight;
 
-  public void addToHashMap(String name, int cropWeight) {
-    Integer currentCropWeight = (Integer) crops.get(name);
+    private HashMap<String, Integer> crops = new HashMap<String, Integer>();
 
-    if (currentCropWeight == null) {
-      crops.put(name, (Integer) cropWeight);
-    } else {
-      currentCropWeight = currentCropWeight + cropWeight;
-      crops.put(name, (Integer) currentCropWeight);
+    public void addToHashMap(String name, int cropWeight) {
+
+        crops.merge(name, cropWeight, Integer::sum);
+        /*if (currentCropWeight == null) {
+          crops.put(name, (Integer) cropWeight);
+        } else {
+          currentCropWeight = currentCropWeight + cropWeight;
+          crops.put(name, (Integer) currentCropWeight);
+        }*/
+
+        PrintUtils.printMap(crops);
+
+        totalWeight = totalWeight + cropWeight;
     }
 
-    PrintUtils.printMap(crops);
+    public double proportion(String name) {
+        // System.out.println(">>> proportion - name : " + name);
+        // System.out.println("crops.get(name) : " + (Integer) crops.get(name));
+        // System.out.println("totalWeight : " + totalWeight);
+        return ((double) crops.get(name)) / totalWeight;
+    }
 
-    totalWeight = totalWeight + cropWeight;
-  }
+    public static void main(String[] args) {
+        CropRatio cropRatio = new CropRatio();
 
-  public double proportion(String name) {
-    // System.out.println(">>> proportion - name : " + name);
-    // System.out.println("crops.get(name) : " + (Integer) crops.get(name));
-    // System.out.println("totalWeight : " + totalWeight);
-    return ((double) crops.get(name)) / totalWeight;
-  }
+        cropRatio.addToHashMap("Wheat", 4);
+        cropRatio.addToHashMap("Wheat", 5);
+        cropRatio.addToHashMap("Rice", 1);
 
-  public static void main(String[] args) {
-    CropRatio cropRatio = new CropRatio();
-
-    cropRatio.addToHashMap("Wheat", 4);
-    cropRatio.addToHashMap("Wheat", 5);
-    cropRatio.addToHashMap("Rice", 1);
-
-    System.out.println("Fraction of wheat: " + cropRatio.proportion("Wheat"));
-    System.out.println("Fraction of rice: " + cropRatio.proportion("Rice"));
-  }
+        System.out.println("Fraction of wheat: " + cropRatio.proportion("Wheat"));
+        System.out.println("Fraction of rice: " + cropRatio.proportion("Rice"));
+    }
 }

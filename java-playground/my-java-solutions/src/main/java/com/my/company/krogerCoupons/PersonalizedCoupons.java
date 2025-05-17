@@ -48,7 +48,7 @@ public class PersonalizedCoupons {
     coupons.add(getCoupon13());
     List<Map<String, Object>> personalizedCoupons =
         personalizeCoupons(coupons, preferredCategories);
-    personalizedCoupons.stream().forEach(PersonalizedCoupons::printCoupon);
+    personalizedCoupons.forEach(PersonalizedCoupons::printCoupon);
   }
 
   public static Map<String, Object> getCoupon1() {

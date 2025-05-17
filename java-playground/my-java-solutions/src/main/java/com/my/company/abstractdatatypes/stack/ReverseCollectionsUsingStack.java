@@ -2,7 +2,7 @@ package com.my.company.abstractdatatypes.stack;
 
 import java.util.Stack;
 
-public class ReverseUsingStack {
+public class ReverseCollectionsUsingStack {
 
   public static void main(String[] args) throws Exception {
 

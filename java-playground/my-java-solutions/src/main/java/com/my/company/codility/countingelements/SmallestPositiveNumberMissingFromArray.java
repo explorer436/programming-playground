@@ -5,45 +5,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Level : Respectable
- *
- * <p>Find the smallest positive integer that does not occur in a given sequence.
- *
- * <p>Write a function:
- *
- * <p>class Solution { public int solution(int[] A); }
- *
- * <p>that, given an array A of N integers, returns the smallest positive integer (greater than 0)
- * that does not occur in A.
- *
- * <p>For example, given A = [1, 3, 6, 4, 1, 2], the function should return 5.
- *
- * <p>Given A = [1, 2, 3], the function should return 4.
- *
- * <p>Given A = [−1, −3], the function should return 1.
- *
- * <p>Write an efficient algorithm for the following assumptions:
- *
- * <p>N is an integer within the range [1..100,000]; each element of array A is an integer within
- * the range [−1,000,000..1,000,000].
- *
- * <p>---------------------------------------------------------------------------
- *
- * <p>Find the smallest positive number missing from an unsorted array | Set 1
- *
- * <p>You are given an unsorted array with both positive and negative elements. You have to find the
- * smallest positive number missing from the array in O(n) time using constant extra space. You can
- * modify the original array.
- *
- * <p>Examples
- *
- * <p>Input: {2, 3, 7, 6, 8, -1, -10, 15} Output: 1
- *
- * <p>Input: { 2, 3, -7, 6, 8, 1, -10, 15 } Output: 4
- *
- * <p>Input: {1, 1, 0, -1, -2} Output: 2
- */
 public class SmallestPositiveNumberMissingFromArray {
 
   public static void main(String[] args) {
@@ -94,23 +55,7 @@ public class SmallestPositiveNumberMissingFromArray {
     System.out.println();
   }
 
-  // Approach 1 : start a for loop with 1 and search the array for each number. O(n^2) in worst
-  // case.
 
-  // Approach 2 : Sort the array first - O(nLogn) . Then, do a linear scan - O(n) - overall, O(nLogn
-  // + n) ~ O(nLogn).
-
-  // Approach 3 : Build a hashtable with the positive numbers in the array as keys.
-  // 				This may take O(n) time on average, but it requires O(n) extra space.
-
-  // Approach 4 : linear time and constant space solution (You can modify the input array in-place.)
-  // 				First : move all the negative elements of the array to the left of it. See
-  // MoveNegativeElementsToTheLeft.java
-  //				Second : drop the negative numbers from the array. See DropFirstNElementsOfAnArray.java
-  //				Third : at this point, all the elements left in the array are positive numbers.
-  // 						start a for loop with 1 and match the index to the number. If there is a no-match, it
-  // means that index is not in the array.
-  // 				Note : we would have to handle 0 in this case carefully.
 
   public static void solution(int[] A) {}
 

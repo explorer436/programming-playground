@@ -2,7 +2,7 @@ package com.my.company.sorting.algorithms;
 
 public class Quicksort {
 
-    public Comparable[] quickSort(Comparable[] a, int beginning, int ending) {
+    public Comparable[] sort(Comparable[] a, int beginning, int ending) {
 
         // one element arrays.
         if (ending - beginning < 2) {
@@ -11,8 +11,8 @@ public class Quicksort {
 
         int pivotIndex = partition(a, beginning, ending);
 
-        quickSort(a, beginning, pivotIndex);
-        quickSort(a, pivotIndex + 1, ending);
+        sort(a, beginning, pivotIndex);
+        sort(a, pivotIndex + 1, ending);
 
         return a;
     }

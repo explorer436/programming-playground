@@ -14,7 +14,7 @@ public class QuicksortTests {
 
     @Test
     public void test_01() {
-        Comparable[] actual = quicksort.quickSort(intArray, 0, intArray.length);
+        Comparable[] actual = quicksort.sort(intArray, 0, intArray.length);
         Integer[] expected = new Integer[]{0, 1, 2, 3, 4, 5, 6, 7};
 
         assertEquals(expected.length, actual.length);
@@ -26,7 +26,7 @@ public class QuicksortTests {
 
     @Test
     public void test_02() {
-        Comparable[] actual = quicksort.quickSort(strArray, 0, strArray.length);
+        Comparable[] actual = quicksort.sort(strArray, 0, strArray.length);
         String[] expected = new String[]{"abc", "def", "ghi"};
 
         assertEquals(expected.length, actual.length);
@@ -35,4 +35,5 @@ public class QuicksortTests {
             assertEquals(expected[i], actual[i]);
         }
     }
+
 }

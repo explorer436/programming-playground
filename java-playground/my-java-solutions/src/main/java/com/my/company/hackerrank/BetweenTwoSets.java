@@ -6,59 +6,6 @@ import java.util.List;
 import com.my.company.numbers.GCDOfNumbersInAnArray;
 import com.my.company.numbers.LCMOfNumbersInAnArray;
 
-/**
- * You will be given two arrays of integers and asked to determine all integers that satisfy the
- * following two conditions: 1. The elements of the first array are all factors of the integer being
- * considered 2. The integer being considered is a factor of all elements of the second array
- *
- * <p>These numbers are referred to as being between the two arrays. You must determine how many
- * such numbers exist.
- *
- * <p>For example, given the arrays a = [2, 6] and b = [24, 36], there are two numbers between them:
- * 6 and 12. 6 % 2 = 0, 6 % 6 = 0, 24 % 6 = 0 and 36 % 6 = 0 for the first value.
- *
- * <p>Similarly, 12 % 2 = 0, 12 % 6 = 0 and 24 % 12 = 0, 36 % 12 = 0.
- *
- * <p>Function Description
- *
- * <p>Complete the getTotalX function in the editor below. It should return the number of integers
- * that are betwen the sets. getTotalX has the following parameter(s): a: an array of integers b: an
- * array of integers
- *
- * <p>Input Format
- *
- * <p>The first line contains two space-separated integers, n and m, the number of elements in array
- * a and the number of elements in array b.
- *
- * <p>The second line contains n distinct space-separated integers describing a[i] where 0 <= i < n.
- * The third line contains m distinct space-separated integers describing b[j] where 0 <= j < m.
- *
- * <p>Constraints 1 <= n, m <= 10 1 <= a[i] <= 100 1 <= b[j] <= 100
- *
- * <p>Output Format
- *
- * <p>Print the number of integers that are considered to be between a and b.
- *
- * <p>Sample Input
- *
- * <p>2 3 2 4 16 32 96
- *
- * <p>Sample Output 3
- *
- * <p>Explanation 2 and 4 divide evenly into 4, 8, 12 and 16. 4, 8 and 16 divide evenly into 16, 32,
- * 96. 4, 8 and 16 are the only three numbers for which each element of a is a factor and each is a
- * factor of all elements of b.
- *
- * <p>This is an interesting problem that introduces us to many concepts like LCM, GCD, calculating
- * LCM of two numbers, calculating LCM of an array or numbers, calculating GCD of two numbers,
- * calculating GCD of an array or numbers, (using Stream API in java).
- */
-
-/**
- * This is an interesting problem that introduces us to many concepts like LCM, GCD, calculating LCM
- * of two numbers, calculating LCM of an array or numbers, calculating GCD of two numbers,
- * calculating GCD of an array or numbers, (using Stream API in java).
- */
 public class BetweenTwoSets {
 
   public static void main(String[] args) {
