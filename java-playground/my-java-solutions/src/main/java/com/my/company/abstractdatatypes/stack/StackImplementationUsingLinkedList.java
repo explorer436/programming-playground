@@ -1,41 +1,5 @@
 package com.my.company.abstractdatatypes.stack;
 
-/**
- * See LinkedList.md
- *
- * <p>The implementation below maintains the stack as a linked list, with the top of the stack at
- * the beginning, referenced by an instance variable first.
- *
- * <p>To push() an item, we add it to the beginning of the list, using the code discussed in
- * LinkedList.md - "Insert at the beginning".
- *
- * <p>To pop() an item, we remove it from the beginning of the list, using the code discussed in
- * LinkedList.md - "Remove from the beginning".
- *
- * <p>To implement size() , we keep track of the number of items in an instance variable N,
- * incrementing N when we push and decrementing N when we pop.
- *
- * <p>To implement isEmpty() we check whether first is null (alternatively, we could check whether N
- * is 0 ).
- *
- * <p>The implementation uses the generic type Item —you can think of the code <Item> after the
- * class name as meaning that any occurrence of Item in the implementation will be replaced by a
- * client-supplied data-type name (see FixedCapacityStack.java - Generics). We omit the code to
- * support iteration.
- *
- * <p>This implementation is a prototype for many algorithm implementations that we consider. It
- * defines the linked-list data structure and implements the client methods push() and pop() that
- * achieve the specified effect with just a few lines of code. The algorithms and data structure go
- * hand in hand. In this case, the code for the algorithm implemen- tations is quite simple, but the
- * properties of the data structure are not at all elemen- tary, requiring explanations on several
- * pages. This interaction between data structure definition and algorithm implementation is typical
- * and is our focus in ADT implementations.
- */
-
-/**
- * This generic Stack implementation is based on a linked-list data structure. It can be used to
- * create stacks containing any type of data.
- */
 public class StackImplementationUsingLinkedList<Item> {
 
     private Node firstNodeInTheStack; // Sometimes, this is named head.

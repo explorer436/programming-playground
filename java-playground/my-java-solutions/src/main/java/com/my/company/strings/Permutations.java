@@ -2,11 +2,6 @@ package com.my.company.strings;
 
 import com.my.company.utility.ArrayUtils;
 
-/**
- * https://introcs.cs.princeton.edu/java/23recursion/Permutations.java.html
- *
- * <p>TODO - write your own implementation for this.
- */
 public class Permutations {
 
   /**

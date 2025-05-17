@@ -8,29 +8,6 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-/**
- * Problem Statement for StringDup
- *
- * <p>Create a class called StringDup. Given a string made up of ONLY letters and digits, determine
- * which character is repeated the most in the string ('A' is different than 'a'). If there is a
- * tie, the character which appears first in the string (from left to right) should be returned.
- *
- * <p>Examples :
- *
- * <p>aaiicccnn = c aabbccdd = a ab2sbf2dj2skl = 2
- *
- * <p>Here is the method signature :
- *
- * <p>public char getMax(String input);
- *
- * <p>We will check to make sure that the input contains only letters and digits (no punctuation
- * marks or spaces).
- *
- * <p>Definition
- *
- * <p>Class: StringDup Method: getMax Parameters: String Returns: char Method signature: char
- * getMax(String param0) (be sure your method is public)
- */
 public class MostCommonCharacterInString {
 
   public static void main(String[] args) {

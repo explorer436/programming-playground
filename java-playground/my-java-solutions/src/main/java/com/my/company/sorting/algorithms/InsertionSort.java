@@ -6,7 +6,7 @@ public class InsertionSort {
 
     // See the test class
 
-    public Comparable[] insertionSort_iterative(Comparable[] a) {
+    public Comparable[] sort_iterative(Comparable[] a) {
         int length = a.length;
 
         // We want to start the loop at index 1 - not at index 0
@@ -29,14 +29,14 @@ public class InsertionSort {
         return a;
     }
 
-    public Comparable[] insertionSort_recursive(Comparable[] a, int numberOfElementsToBeSorted) {
+    public Comparable[] sort_recursive(Comparable[] a, int numberOfElementsToBeSorted) {
 
-        if (numberOfElementsToBeSorted == 1) {
+        if (numberOfElementsToBeSorted <= 1) {
             return a;
         }
 
         // we are replacing the outer for loop with a recursive call.
-        insertionSort_recursive(a, numberOfElementsToBeSorted - 1);
+        sort_recursive(a, numberOfElementsToBeSorted - 1);
 
         for (int j = numberOfElementsToBeSorted - 1; j > 0; j--) {
             boolean isTheFirstGreaterThanTheSecond = a[j - 1].compareTo(a[j]) > 0;

@@ -2,22 +2,6 @@ package com.my.company.abstractdatatypes.stack;
 
 import java.util.Stack;
 
-// http://faculty.cs.niu.edu/~hutchins/csci241/eval.htm
-
-// https://www.cis.upenn.edu/~matuszek/cit594-2002/Assignments/5-expressions.html
-
-// https://en.wikipedia.org/wiki/Shunting-yard_algorithm
-
-/**
- * This is the equivalent of two algorithms put together. 1.
- * TransformAnInfixExpressionToPostfixNotation.java 2. EvaluatePostfixExpression
- */
-
-/**
- * A Java program to evaluate a given expression where tokens are separated by space. Test Cases:
- * "10 + 2 * 6" ---> 22 "100 * 2 + 12" ---> 212 "100 * ( 2 + 12 )" ---> 1400 "100 * ( 2 + 12 ) / 14"
- * ---> 100
- */
 public class ExpressionEvaluation {
   public static void main(String[] args) throws Exception {
     int result;

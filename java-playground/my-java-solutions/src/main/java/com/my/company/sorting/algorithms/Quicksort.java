@@ -2,35 +2,36 @@ package com.my.company.sorting.algorithms;
 
 public class Quicksort {
 
-    public Comparable[] sort(Comparable[] a, int beginning, int ending) {
+    public Comparable[] sort(Comparable[] a, int beginningIndex, int endingIndex) {
 
         // one element arrays.
-        if (ending - beginning < 2) {
+        if (endingIndex - beginningIndex < 2) {
             return a;
         }
 
-        int pivotIndex = partition(a, beginning, ending);
+        int pivotIndex = partition(a, beginningIndex, endingIndex);
 
-        sort(a, beginning, pivotIndex);
-        sort(a, pivotIndex + 1, ending);
+        sort(a, beginningIndex, pivotIndex);
+        sort(a, pivotIndex + 1, endingIndex);
 
         return a;
     }
 
-    public static int partition(Comparable[] a, int beginning, int ending) {
+    public static int partition(Comparable[] a, int beginningIndex, int endingIndex) {
 
         // Use the first element of a as the pivot.
-        Comparable pivot = a[beginning];
+        Comparable pivot = a[beginningIndex];
 
         // i will be traversing from left to right.
         // j will be traversing from right to left.
-        int i = beginning;
-        int j = ending;
-
         // When i and j cross each other, the traversal should stop.
+
+        int i = beginningIndex;
+        int j = endingIndex;
+
         while (i < j) {
 
-            // Use j to look for elements that are less than the pivot (starting from the ending of the array).
+            // Use j to look for elements that are less than the pivot (starting from the endingIndex of the array).
             // Empty loop body - we are not doing anything in the body of the loop.
             // It's purpose is to keep decrementing j until we find an element that is lesser than the pivot.
             // Pre-decrement j because, we don't want to consider the last element of the array.
@@ -46,7 +47,7 @@ public class Quicksort {
                 a[i] = a[j];
             }
 
-            // Now, we are going to use i to look for elements that are greater than the pivot (starting from the beginning of the array).
+            // Now, we are going to use i to look for elements that are greater than the pivot (starting from the beginningIndex of the array).
             // Empty loop body - we are not doing anything in the body of the loop.
             // It's purpose is to keep incrementing i until we find an element that is greater than the pivot.
             // Pre-increment i because, we don't want to consider the index i - which we already used in the previous step.

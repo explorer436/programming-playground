@@ -1,11 +1,5 @@
 package com.my.company.strings;
 
-/**
- * Write a function that compares two version strings.
- * Strings are in the format [major].[minor].[patch], e.g. 3.5.18
- * It should return -1 if version1 < version2, 1 if version1 > version2, and 0 if they are equal.
- * Note: you can assume all versions will follow the [major].[minor].[patch] format
- */
 public class SemanticVersionComparator {
     // "3.5.18" = "3.5.18" = equality condition
 
