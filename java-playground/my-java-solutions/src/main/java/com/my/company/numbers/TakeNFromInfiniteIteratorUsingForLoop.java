@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class TakeNFromInfiniteIterator {
+public class TakeNFromInfiniteIteratorUsingForLoop {
 
     public static <T> List<T> takeN(int n, Iterator<T> infiniteIterator) {
         if (n < 0) {
