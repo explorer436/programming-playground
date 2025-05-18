@@ -28,23 +28,23 @@ public class TakeNFromInfiniteIteratorUsingForLoop {
     public static void main(String[] args) {
         Iterator<Integer> naturalNumbersIterator = naturalNumberIterator();
         List<Integer> first10Naturals = takeN(10, naturalNumbersIterator);
-        System.out.println("First 10 natural numbers (iterator): " + first10Naturals);
+        System.out.println("First 10 natural numbers (iterator): " + first10Naturals); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
         System.out.println("Taking 0 elements (iterator): " + takeN(0, naturalNumberIterator())); // []
 
-        // The same iterator instance will continue from where it left off
+        // If we use the same iterator instance, it will continue from where it left off
         List<Integer> next5Naturals = takeN(5, naturalNumbersIterator);
-        System.out.println("Next 5 natural numbers (iterator): " + next5Naturals); // [10, 11, 12, 13, 14]
+        System.out.println("Next 5 natural numbers (iterator): " + next5Naturals); // [11, 12, 13, 14, 15]
 
         // When we get a new iterator, the new iterator will start from 0 again.
-        System.out.println("Taking 5 elements (iterator): " + takeN(5, naturalNumberIterator())); // [0, 1, 2, 3, 4]
+        System.out.println("Taking 5 elements (iterator): " + takeN(5, naturalNumberIterator())); // [1, 2, 3, 4, 5]
     }
 
     private static Iterator<Integer> naturalNumberIterator() {
 
-        return new Iterator<Integer>() {
+        return new Iterator<>() {
 
-            private int current = 0;
+            private int current = 1;
 
             @Override
             public boolean hasNext() {

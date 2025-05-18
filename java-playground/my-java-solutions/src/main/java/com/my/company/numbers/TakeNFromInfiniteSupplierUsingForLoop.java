@@ -24,10 +24,16 @@ public class TakeNFromInfiniteSupplierUsingForLoop {
 
     public static void main(String[] args) {
 
-        List<Integer> first10Naturals = takeN(10, naturalNumberSupplier());
-        System.out.println("First 10 natural numbers: " + first10Naturals); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        Supplier<Integer> supplier1 = naturalNumberSupplier();
+        List<Integer> first10Naturals = takeN(10, supplier1);
+        System.out.println("First 10 natural numbers: " + first10Naturals); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         System.out.println("Taking 0 elements: " + takeN(0, naturalNumberSupplier())); // []
 
+        // If we use the same supplier instance, it will continue from where it left off
+        System.out.println("Next 5 natural numbers: " + takeN(5, supplier1)); // [11, 12, 13, 14, 15]
+
+        // When we get a new iterator, the new iterator will start from 0 again.
+        System.out.println("Taking 5 elements: " + takeN(5, naturalNumberSupplier())); // [1, 2, 3, 4, 5]
 
         List<Integer> first5Randoms = takeN(5, randomNumberSupplier());
         System.out.println("First 5 random numbers: " + first5Randoms);
@@ -51,7 +57,7 @@ public class TakeNFromInfiniteSupplierUsingForLoop {
     public static Supplier<Integer> naturalNumberSupplier() {
         // Infinite sequence of natural numbers (0, 1, 2, ...)
         return new Supplier<>() {
-            private int current = 0;
+            private int current = 1;
             @Override
             public Integer get() {
                 return current++;

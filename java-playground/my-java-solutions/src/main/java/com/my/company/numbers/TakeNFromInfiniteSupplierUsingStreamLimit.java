@@ -39,14 +39,14 @@ public class TakeNFromInfiniteSupplierUsingStreamLimit {
     public static void main(String[] args) {
         // Example 1 (Stream.generate): Infinite sequence of natural numbers
         Supplier<Integer> naturalNumbersSupplier = new Supplier<>() {
-            private int current = 0;
+            private int current = 1;
             @Override
             public Integer get() {
                 return current++;
             }
         };
         List<Integer> first10Naturals = takeNGenerate(10, naturalNumbersSupplier);
-        System.out.println("First 10 natural numbers (generate): " + first10Naturals);
+        System.out.println("First 10 natural numbers (generate): " + first10Naturals); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
         // Example 2 (Stream.generate): Infinite sequence of random numbers
         Random random = new Random();
