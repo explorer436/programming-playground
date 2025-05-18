@@ -8,6 +8,10 @@ public class GenerateAListOfAllEvenNumbersTillN {
 
     public List<Integer> generateAListOfAllEvenNumbersTillN(int n) {
 
+        // To generate a range that is exclusive of higher limit
+        // List<Integer> l = IntStream.range(0, n).boxed().toList();
+
+        // To generate a range that is inclusive of higher limit
         List<Integer> l = IntStream.rangeClosed(0, n).boxed().toList();
 
         return l.stream()
