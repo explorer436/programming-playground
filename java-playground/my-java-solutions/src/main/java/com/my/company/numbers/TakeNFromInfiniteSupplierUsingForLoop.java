@@ -32,7 +32,7 @@ public class TakeNFromInfiniteSupplierUsingForLoop {
         // If we use the same supplier instance, it will continue from where it left off
         System.out.println("Next 5 natural numbers: " + takeN(5, supplier1)); // [11, 12, 13, 14, 15]
 
-        // When we get a new iterator, the new iterator will start from 0 again.
+        // When we get a new supplier, the new supplier will start from 0 again.
         System.out.println("Taking 5 elements: " + takeN(5, naturalNumberSupplier())); // [1, 2, 3, 4, 5]
 
         List<Integer> first5Randoms = takeN(5, randomNumberSupplier());

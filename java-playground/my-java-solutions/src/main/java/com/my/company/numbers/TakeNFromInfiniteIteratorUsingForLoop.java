@@ -36,7 +36,7 @@ public class TakeNFromInfiniteIteratorUsingForLoop {
         List<Integer> next5Naturals = takeN(5, naturalNumbersIterator);
         System.out.println("Next 5 natural numbers (iterator): " + next5Naturals); // [11, 12, 13, 14, 15]
 
-        // When we get a new iterator, the new iterator will start from 0 again.
+        // When we get a new iterator, the new iterator will start from 1 again.
         System.out.println("Taking 5 elements (iterator): " + takeN(5, naturalNumberIterator())); // [1, 2, 3, 4, 5]
     }
 

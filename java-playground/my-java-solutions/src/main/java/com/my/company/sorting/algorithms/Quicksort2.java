@@ -1,6 +1,6 @@
 package com.my.company.sorting.algorithms;
 
-public class Quicksort {
+public class Quicksort2 {
 
     public Comparable[] sort(Comparable[] a, int beginningIndex, int endingIndex) {
 

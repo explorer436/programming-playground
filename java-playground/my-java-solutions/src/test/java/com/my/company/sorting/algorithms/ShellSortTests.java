@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class QuicksortTests {
+public class ShellSortTests {
 
-    QuickSort sortingClassUnderTest = new QuickSort();
+    ShellSort sortingClassUnderTest = new ShellSort();
 
     Integer[] intArray1 = new Integer[]{5, 7, 0, 3, 4, 2, 6, 1};
     Integer[] intArray2 = new Integer[]{-1, 0, -2};

@@ -17,11 +17,4 @@ public class GenerateAListOfFirstNEvenNumbersTests {
         assertEquals(expected, actual);
     }
 
-    @Test
-    public void test_02() {
-        List<Integer> actual = generateAListOfFirstNEvenNumbers.generateListOfNEvenNumbersFromAGivenNumber(10, 6);
-        List<Integer> expected = List.of(6, 8, 10, 12, 14, 16, 18, 20, 22, 24);
-        assertEquals(expected, actual);
-    }
-
 }

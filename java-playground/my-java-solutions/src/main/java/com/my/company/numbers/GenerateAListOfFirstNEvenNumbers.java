@@ -11,7 +11,5 @@ public class GenerateAListOfFirstNEvenNumbers {
         return takeNIterate(n, 0, x -> x + 2);
     }
 
-    public List<Integer> generateListOfNEvenNumbersFromAGivenNumber(int n, int seed) {
-        return takeNIterate(n, seed, x -> x + 2);
-    }
+
 }

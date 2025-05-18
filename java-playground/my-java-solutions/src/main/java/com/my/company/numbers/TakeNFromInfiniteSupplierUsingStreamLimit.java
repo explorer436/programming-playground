@@ -35,18 +35,18 @@ public class TakeNFromInfiniteSupplierUsingStreamLimit {
                 .collect(Collectors.toList());
     }
 
-
     public static void main(String[] args) {
-        // Example 1 (Stream.generate): Infinite sequence of natural numbers
-        Supplier<Integer> naturalNumbersSupplier = new Supplier<>() {
-            private int current = 1;
-            @Override
-            public Integer get() {
-                return current++;
-            }
-        };
+        Supplier<Integer> naturalNumbersSupplier = naturalNumbersSupplier();
         List<Integer> first10Naturals = takeNGenerate(10, naturalNumbersSupplier);
         System.out.println("First 10 natural numbers (generate): " + first10Naturals); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+        System.out.println("Taking 0 elements (generate): " + takeNGenerate(0, naturalNumbersSupplier)); // []
+
+        // If we use the same supplier instance, it will continue from where it left off
+        System.out.println("Taking 5 elements (generate): " + takeNGenerate(5, naturalNumbersSupplier)); // [11, 12, 13, 14, 15]
+
+        // When we get a new supplier, the new supplier will start from 1 again.
+        System.out.println("Taking 5 elements: " + takeNGenerate(5, naturalNumbersSupplier())); // [1, 2, 3, 4, 5]
 
         // Example 2 (Stream.generate): Infinite sequence of random numbers
         Random random = new Random();
@@ -62,6 +62,16 @@ public class TakeNFromInfiniteSupplierUsingStreamLimit {
         List<Integer> first5PowersOf2 = takeNIterate(5, 1, x -> x * 2);
         System.out.println("First 5 powers of 2 (iterate): " + first5PowersOf2); // [1, 2, 4, 8, 16]
 
-        System.out.println("Taking 0 elements (generate): " + takeNGenerate(0, naturalNumbersSupplier)); // []
+    }
+
+    private static Supplier<Integer> naturalNumbersSupplier() {
+        // Example 1 (Stream.generate): Infinite sequence of natural numbers
+        return new Supplier<>() {
+            private int current = 1;
+            @Override
+            public Integer get() {
+                return current++;
+            }
+        };
     }
 }
