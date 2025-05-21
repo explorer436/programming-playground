@@ -8,3 +8,4 @@
 8. UseRef
 9. CustomHooks
 10. ContextAPI
+11. UseReducer
