@@ -6,3 +6,5 @@
 6. DragAndDrop
 7. Forms
 8. UseRef
+9. CustomHooks
+10. ContextAPI
