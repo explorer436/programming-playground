@@ -8,7 +8,7 @@ module MySolutions.CharAndWordCount.WordCount (wordCount, charCount) where
 -- main = interact wordCount
 --    where wordCount input = show (length (lines input)) ++ "\n"
 
--- The words function counts the number of words in a string. 
+-- The words function counts the number of words in a string.
 -- Modify the WordCount.hs example to count the number of words in a file
 -- main = interact wordCount
 --    where wordCount input = show (length (words input)) ++ "\n"
@@ -16,7 +16,7 @@ module MySolutions.CharAndWordCount.WordCount (wordCount, charCount) where
 -- This shows the number of characters in a file
 -- main :: IO ()
 -- main = interact characterCount
---     where characterCount input = show (length input) ++ "\n"    
+--     where characterCount input = show (length input) ++ "\n"
 
 wordCount input = length (lines input)
 
