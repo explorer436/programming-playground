@@ -14,7 +14,6 @@ package com.my.company.mycustomclasses;
 // import java.io.FileOutputStream;
 // import java.io.FileReader;
 
-/** @author harshavardhane */
 public class ConvertTextfilesInAFolderToPDF {
 
   /** @param args the command line arguments */

@@ -19,7 +19,6 @@ import org.artofsolving.jodconverter.office.DefaultOfficeManagerConfiguration;
 import org.artofsolving.jodconverter.OfficeDocumentConverter;
 import org.artofsolving.jodconverter.office.OfficeManager;*/
 
-/** @author harshavardhane */
 public class RtfToPdf {
 
   /* public static void main(String[] args) throws FileNotFoundException, IOException, NoSuchAlgorithmException
