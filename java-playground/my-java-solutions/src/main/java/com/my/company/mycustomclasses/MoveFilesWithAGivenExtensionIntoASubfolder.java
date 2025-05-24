@@ -15,7 +15,37 @@ public class MoveFilesWithAGivenExtensionIntoASubfolder {
 
     public static void main(String[] args) {
 
-        List<String> folderLocations = Stream.of("/home/explorer436/Downloads/here/DevEnglishSongs").toList();;
+        List<String> folderLocations = Stream.of("/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/Devotional/DevEnglishSongs",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/Diwali/2021",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/Info@all/IDBI BankDetails/Teju@IDBI",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/Info@all/Miscellaneous",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/Info@all/Teju PolamPassbook",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/Manasvi pics",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/MeMomNimmyMunnyDad@kanuru/All Pics",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/Mounica/Documents",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/Our Cooking",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/Sweet HOME/HouseWarming-23rd Oct",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/Sweet HOME/TegaCay_Underconstruction_House pics",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/TejuMiscellaneous/TejuPicsAfterMarriage",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/YASHWIN BABY/21stDayCradleCermony",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/YASHWIN BABY/Feb2024",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/2019/2019 April Spring",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/2019/2019 Aug OdiornePointBeach",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/2019/2019 Bangalore Trip",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/2019/2019 BoatRidePortsmouth",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/2019/2019 Dec FloridaTrip/2019-12-23 FL KeyWest",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/2019/2019 Dec FloridaTrip/2019-12-24 FL EvergladesPark",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/2019/2019 Dec FloridaTrip/2019-12-24 FL MiamiBoatRide",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/2019/2019 Dec FloridaTrip/2019-12-25 MiamiBeachSunrise",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/2019/2019 Dec FloridaTrip/MiamiApartment",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/2019/2019 Dec FloridaTrip/SandeepsHome",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/2019/2019 December NewJackets",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/2019/2019 Dover Bowling",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/2019/2019 DoverCommunityTrail",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/2019/2019 HarshaBday",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/2019/2019 HiltonPark",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/2019/2019 Jan Aadvika",
+                "/home/explorer436/pCloudDrive/FromSync/Personal_stuff/Photos After Marriage/2019/2019 Jan Hanuman Junction").toList();;
 
         folderLocations.forEach(MoveFilesWithAGivenExtensionIntoASubfolder::helper);
     }
