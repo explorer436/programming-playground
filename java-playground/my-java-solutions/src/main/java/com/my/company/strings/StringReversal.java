@@ -6,141 +6,157 @@ import java.util.*;
 
 import java.nio.charset.StandardCharsets;
 
-/** Reverse the characters in a String */
+/**
+ * Reverse the characters in a String
+ */
 public class StringReversal {
 
-  // Note : Apache Commons has a helper method for this as well. StringUtils.reverse()
+    /**
+     * Using String.toCharArray()
+     */
+    public String reverseStringUsingCharArray1(String input) {
+        if (StringUtils.isNotEmpty(input)) {
 
-  // recursion
-  public static String reverseStringUsingRecursion(String str) {
-    if (StringUtils.isNotEmpty(str)) {
-      return str.substring(str.length() - 1, str.length()) + reverseStringUsingRecursion(str.substring(0, str.length() - 1));
-    }
-    return str;
-  }
+            char[] charArray = input.toCharArray();
+            int length = input.length(), last = length - 1;
 
-  public String reverseStringUsingWhileLoop(String input) {
+            for ( int i = 0; i < length/2; i++ ) {
 
-    if (StringUtils.isNotEmpty(input)) {
-      StringBuffer sb = new StringBuffer();
-      int length = input.length();
-      while (length > 0) {
-        sb.append(input.substring(length - 1, length));
-        length = length - 1;
-      }
-      return sb.toString();
-    }
-    return input;
-  }
+                char c = charArray[i];
 
-  /** Using a for loop */
-  public String reverseStringUsingForLoop(String input) {
+                charArray[i] = charArray[last - i];
 
-    if (StringUtils.isNotEmpty(input)) {
-      String output = "";
+                charArray[last - i] = c;
+            }
 
-      for (int i = input.length() - 1; i >= 0; i--) {
-        output = output + input.charAt(i);
-      }
-      return output;
+            return new String(charArray);
+        }
+        return input;
     }
 
-    return input;
-  }
+    /**
+     * Using String.toCharArray()
+     */
+    public String reverseStringUsingCharArray2(String input) {
+        if (StringUtils.isNotEmpty(input)) {
+            char[] charArray = input.toCharArray();
+            int left, right = 0;
+            right = charArray.length - 1;
 
-  /**
-   * Using String.getBytes()
-   */
-  public String reverseStringUsingByteArray(String input) {
-    if (StringUtils.isNotEmpty(input)) {
+            for (left = 0; left < right; left++, right--) {
+                // Swap values of left and right
+                // ArrayUtils.swap()
+                char temp = charArray[left];
+                charArray[left] = charArray[right];
+                charArray[right] = temp;
+            }
 
-      byte[] strAsByteArray = input.getBytes();
-
-      byte[] result = new byte[strAsByteArray.length];
-
-      // Store result in reverse order into result byte[]
-      for (int i = 0; i < strAsByteArray.length; i++) {
-        result[i] = strAsByteArray[strAsByteArray.length - i - 1];
-      }
-
-      return new String(result, StandardCharsets.UTF_8);
+            return new String(charArray);
+        }
+        return input;
     }
-    return input;
-  }
 
-  /**
-   * Using StringBuilder.reverse()
-   */
-  public String reverseStringUsingStringBuilder(String input) {
-    if (StringUtils.isNotEmpty(input)) {
-      StringBuilder output = new StringBuilder(input).reverse();
-
-      return output.toString();
+    // recursion
+    public String reverseStringUsingRecursion(String str) {
+        if (StringUtils.isNotEmpty(str)) {
+            return str.substring(str.length() - 1) + reverseStringUsingRecursion(str.substring(0, str.length() - 1));
+        }
+        return str;
     }
-    return input;
-  }
 
-  /** Using String.toCharArray() */
-  public String reverseStringUsingCharArray1(String input) {
-    if (StringUtils.isNotEmpty(input)) {
-      char[] try1 = input.toCharArray();
+    public String reverseStringUsingWhileLoop(String input) {
 
-      StringBuffer sb = new StringBuffer();
-
-      for (int i = try1.length - 1; i >= 0; i--) {
-        sb.append(try1[i]);
-      }
-
-      return sb.toString();
+        if (StringUtils.isNotEmpty(input)) {
+            StringBuffer sb = new StringBuffer();
+            int length = input.length();
+            while (length > 0) {
+                sb.append(input.substring(length - 1, length));
+                length = length - 1;
+            }
+            return sb.toString();
+        }
+        return input;
     }
-      return input;
-  }
 
-  /**
-   * Using String.toCharArray()
-   */
-  public String reverseStringUsingCharArray2(String input) {
-    if (StringUtils.isNotEmpty(input)) {
-      char[] charArray = input.toCharArray();
-      int left, right = 0;
-      right = charArray.length - 1;
+    /**
+     * Using a for loop
+     */
+    public String reverseStringUsingForLoop(String input) {
 
-      for (left = 0; left < right; left++, right--) {
-        // Swap values of left and right
-        char temp = charArray[left];
-        charArray[left] = charArray[right];
-        charArray[right] = temp;
-      }
+        if (StringUtils.isNotEmpty(input)) {
+            String output = "";
 
-      StringBuffer sb = new StringBuffer();
-      for (char c : charArray) {
-        sb.append(c);
-      }
-      return sb.toString();
+            for (int i = input.length() - 1; i >= 0; i--) {
+                output = output + input.charAt(i);
+            }
+            return output;
+        }
+
+        return input;
     }
-    return input;
-  }
 
-  /** Using Collections.reverse() */
-  public String reverseStringUsingCollections(String input) {
-    if (StringUtils.isNotEmpty(input)) {
+    /**
+     * Using String.getBytes()
+     */
+    public String reverseStringUsingByteArray(String input) {
+        if (StringUtils.isNotEmpty(input)) {
 
-      char[] hello = input.toCharArray();
-      List<Character> trial1 = new ArrayList<>();
+            byte[] strAsByteArray = input.getBytes();
 
-      for (char c : hello) {
-        trial1.add(c);
-      }
+            byte[] result = new byte[strAsByteArray.length];
 
-      Collections.reverse(trial1);
+            // Store result in reverse order into result byte[]
+            for (int i = 0; i < strAsByteArray.length; i++) {
+                result[i] = strAsByteArray[strAsByteArray.length - i - 1];
+            }
 
-      StringBuffer sb = new StringBuffer();
-      ListIterator li = trial1.listIterator();
-      while (li.hasNext()) {
-        sb.append(li.next());
-      }
-      return sb.toString();
+            return new String(result, StandardCharsets.UTF_8);
+        }
+        return input;
     }
-    return input;
-  }
+
+    /**
+     * Using StringBuilder.reverse()
+     */
+    public String reverseStringUsingStringBuilder(String input) {
+        if (StringUtils.isNotEmpty(input)) {
+            StringBuilder output = new StringBuilder(input).reverse();
+
+            return output.toString();
+        }
+        return input;
+    }
+
+    /**
+     * Using Collections.reverse()
+     */
+    public String reverseStringUsingCollections(String input) {
+        if (StringUtils.isNotEmpty(input)) {
+
+            char[] hello = input.toCharArray();
+            List<Character> trial1 = new ArrayList<>();
+
+            for (char c : hello) {
+                trial1.add(c);
+            }
+
+            Collections.reverse(trial1);
+
+            StringBuffer sb = new StringBuffer();
+            ListIterator li = trial1.listIterator();
+            while (li.hasNext()) {
+                sb.append(li.next());
+            }
+            return sb.toString();
+        }
+        return input;
+    }
+
+    // Note : Apache Commons has a helper method for this as well. StringUtils.reverse()
+    public String reverseStringUsingApacheCommonsLibrary(String str) {
+        if (StringUtils.isNotEmpty(str)) {
+            return StringUtils.reverse(str);
+        }
+        return str;
+    }
 }
