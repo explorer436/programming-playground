@@ -13,7 +13,7 @@ public class MyCustomFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         // initialized only once.
-        log.info(">>> int");
+        log.info(">>> initialize MyCustomFilter");
     }
 
     @Override
@@ -34,6 +34,6 @@ public class MyCustomFilter implements Filter {
     @Override
     public void destroy() {
         // destroyed when the application is shut down.
-        log.info(">>> destroy");
+        log.info(">>> destroy MyCustomFilter");
     }
 }

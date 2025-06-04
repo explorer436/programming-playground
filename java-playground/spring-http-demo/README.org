@@ -1,4 +1,4 @@
-How to test:
+* Testing
 
 #+begin_src
 curl --request "POST" -H "Content-Type: application/json" -H "token: mySecretToken" -d '{"name": "linuxize", "email": "linuxize@example.com"}'  http://localhost:8080/greeting
