@@ -1,0 +1,13 @@
+* Testing
+
+1. Use the test class to send requests to controller
+
+<src
+
+curl --request POST \
+  --url http://localhost:8080/taxifare/calculate/ \
+  --header 'Content-Type: ' \
+  --data '{
+  "isNightSurcharge": true,
+  "distanceInMile": 15
+}'
