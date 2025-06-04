@@ -1,0 +1,45 @@
+* Testing
+
+1. Use the test class to send requests to controller
+2. Or use the curl command
+
+   #+begin_src
+   curl --request POST \
+     --url http://localhost:8080/taxifare/calculate/ \
+     --header 'Content-Type: application/json' \
+     --data '{
+	    "isNightSurcharge" : true,
+	    "distanceInMile" : 10
+	  }'
+   #+end_src
+
+* Logs
+
+#+begin_src
+1640 [main] INFO  c.e.s.SpringCommonsRequestLoggingFilterApplication -- Started SpringCommonsRequestLoggingFilterApplication in 1.356 seconds (process running for 2.02)
+1640 [main] DEBUG o.s.b.a.ApplicationAvailabilityBean -- Application availability state LivenessState changed to CORRECT
+1642 [main] DEBUG o.s.b.a.ApplicationAvailabilityBean -- Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+11171 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -- Initializing Spring DispatcherServlet 'dispatcherServlet'
+11171 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet -- Initializing Servlet 'dispatcherServlet'
+11171 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet -- Detected StandardServletMultipartResolver
+11171 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet -- Detected AcceptHeaderLocaleResolver
+11171 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet -- Detected FixedThemeResolver
+11171 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet -- Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@652ecf71
+11171 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet -- Detected org.springframework.web.servlet.support.SessionFlashMapManager@717b5999
+11172 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet -- enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+11172 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet -- Completed initialization in 1 ms
+11177 [http-nio-8080-exec-1] DEBUG o.s.w.f.CommonsRequestLoggingFilter -- Before request [POST /taxifare/calculate/]
+11179 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet -- POST "/taxifare/calculate/", parameters={}
+11185 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping -- Mapped to com.example.spring_CommonsRequestLoggingFilter.controller.TaxiFareController#calculateTaxiFare(TaxiRide)
+11231 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor -- Read "application/json;charset=UTF-8" to [com.example.spring_CommonsRequestLoggingFilter.model.TaxiRide@558a4e74]
+11235 [http-nio-8080-exec-1] DEBUG c.e.s.controller.TaxiFareController -- calculateTaxiFare() - START
+11235 [http-nio-8080-exec-1] DEBUG c.e.s.controller.TaxiFareController -- calculateTaxiFare() - Total Fare : 200
+11235 [http-nio-8080-exec-1] DEBUG c.e.s.controller.TaxiFareController -- calculateTaxiFare() - END
+11239 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor -- Using 'text/plain', given [*/*] and supported [text/plain, */*, application/json, application/*+json]
+11239 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor -- Writing ["200"]
+11243 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet -- Completed 200 OK
+11244 [http-nio-8080-exec-1] DEBUG o.s.w.f.CommonsRequestLoggingFilter -- REQUEST DATA: POST /taxifare/calculate/, payload={
+	    "isNightSurcharge" : true,
+	    "distanceInMile" : 10
+	  }]
+#+end_src
