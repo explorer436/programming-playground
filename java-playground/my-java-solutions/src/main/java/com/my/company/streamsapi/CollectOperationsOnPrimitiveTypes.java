@@ -235,16 +235,14 @@ public class CollectOperationsOnPrimitiveTypes {
          * The fourth parameter, the mapSupplier is a function that returns a new, empty Map with the
          * results.
          */
-        Map<String, Integer> result =
-                givenList.stream()
-                        .collect(
-                                Collectors.toMap(
-                                        Function.identity(),
-                                        String::length,
-                                        (item, identicalItem) -> item,
-                                        ConcurrentHashMap::new));
 
-        return result;
+        return givenList.stream()
+                .collect(
+                        Collectors.toMap(
+                                Function.identity(),
+                                String::length,
+                                (item, identicalItem) -> item,
+                                ConcurrentHashMap::new));
     }
 
     public static Map<String, Integer> collect_ToMap_sortedMap(List<String> givenList) {
