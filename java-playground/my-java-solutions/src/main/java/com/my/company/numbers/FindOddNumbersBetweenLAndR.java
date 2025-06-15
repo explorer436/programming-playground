@@ -5,9 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /*
- *
  * Print all the odd numbers between a lower limit and an upper limit
- *
  */
 public class FindOddNumbersBetweenLAndR {
 

@@ -30,20 +30,17 @@ public class LCMOfNumbersInAnArray {
   }
 
   public static int getLcm(List<Integer> inputList) {
-    Integer lcmOfAllElementsOfAnArrayCalculatedUsingStreamReduce =
-        inputList.stream()
-            // .boxed()
-            .reduce(1, (a, b) -> LCMOfTwoNumbers.lcmUsingEuclideanAlgorithm(a, b));
+      // .boxed()
 
-    return lcmOfAllElementsOfAnArrayCalculatedUsingStreamReduce;
+      return inputList.stream()
+          // .boxed()
+          .reduce(1, (a, b) -> LCMOfTwoNumbers.lcmUsingEuclideanAlgorithm(a, b));
   }
 
   public static int getLcm(int[] A) {
-    Integer lcmOfAllElementsOfAnArrayCalculatedUsingStreamReduce =
-        Arrays.stream(A)
-            .boxed()
-            .reduce(1, (a, b) -> LCMOfTwoNumbers.lcmUsingEuclideanAlgorithm(a, b));
 
-    return lcmOfAllElementsOfAnArrayCalculatedUsingStreamReduce;
+      return Arrays.stream(A)
+          .boxed()
+          .reduce(1, (a, b) -> LCMOfTwoNumbers.lcmUsingEuclideanAlgorithm(a, b));
   }
 }
