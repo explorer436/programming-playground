@@ -1,40 +1,5 @@
 package com.my.company.numbers;
 
-/**
- * Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same
- * backward as forward.
- *
- * <p>Example 1:
- *
- * <p>Input: 121 Output: true
- *
- * <p>Example 2:
- *
- * <p>Input: -121 Output: false Explanation: From left to right, it reads -121. From right to left,
- * it becomes 121-. Therefore it is not a palindrome.
- *
- * <p>Example 3:
- *
- * <p>Input: 10 Output: false Explanation: Reads 01 from right to left. Therefore it is not a
- * palindrome.
- *
- * <p>Follow up:
- *
- * <p>Coud you solve it without converting the integer to a string?
- */
-
-/**
- * Hi, here's your problem today. This problem was recently asked by Twitter:
- *
- * <p>Given an integer, check if that integer is a palindrome. For this problem do not convert the
- * integer to a string to check if it is a palindrome.
- *
- * <p>import math
- *
- * <p>def is_palindrome(n): # Fill this in.
- *
- * <p>print is_palindrome(1234321) # True print is_palindrome(1234322) # False
- */
 public class IntegerPalindrome {
 
   public static void main(String[] args) throws Exception {

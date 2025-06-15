@@ -34,13 +34,13 @@ public class LCMOfNumbersInAnArray {
 
       return inputList.stream()
           // .boxed()
-          .reduce(1, (a, b) -> LCMOfTwoNumbers.lcmUsingEuclideanAlgorithm(a, b));
+          .reduce(1, LCMUsingEuclideanAlgorithm::lcmUsingEuclideanAlgorithm);
   }
 
   public static int getLcm(int[] A) {
 
       return Arrays.stream(A)
           .boxed()
-          .reduce(1, (a, b) -> LCMOfTwoNumbers.lcmUsingEuclideanAlgorithm(a, b));
+          .reduce(1, LCMUsingEuclideanAlgorithm::lcmUsingEuclideanAlgorithm);
   }
 }

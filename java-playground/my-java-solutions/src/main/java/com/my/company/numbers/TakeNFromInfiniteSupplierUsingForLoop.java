@@ -55,9 +55,20 @@ public class TakeNFromInfiniteSupplierUsingForLoop {
     }
 
     public static Supplier<Integer> naturalNumberSupplier() {
-        // Infinite sequence of natural numbers (0, 1, 2, ...)
+        // Infinite sequence of natural numbers (1, 2, ...)
         return new Supplier<>() {
             private int current = 1;
+            @Override
+            public Integer get() {
+                return current++;
+            }
+        };
+    }
+
+    public static Supplier<Integer> wholeNumberSupplier() {
+        // Infinite sequence of natural numbers (0, 1, 2, ...)
+        return new Supplier<>() {
+            private int current = 0;
             @Override
             public Integer get() {
                 return current++;

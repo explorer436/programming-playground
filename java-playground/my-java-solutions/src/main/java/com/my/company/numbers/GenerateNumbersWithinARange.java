@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 public class GenerateNumbersWithinARange {
 
-    public List<Integer> getNumbersInRange(int start, int end) {
+    public List<Integer> getNumbersInRangeExclusive(int start, int end) {
         List<Integer> result = new ArrayList<>();
         for (int i = start; i < end; i++) {
             result.add(i);
@@ -16,7 +16,15 @@ public class GenerateNumbersWithinARange {
         return result;
     }
 
-    public List<Integer> getNumbersUsingSupplier(int start, int end, Supplier<Integer> supplier) {
+    public List<Integer> getNumbersInRangeInclusive(int start, int end) {
+        List<Integer> result = new ArrayList<>();
+        for (int i = start; i <= end; i++) {
+            result.add(i);
+        }
+        return result;
+    }
+
+    public List<Integer> getNumbersUsingSupplier(int end, Supplier<Integer> supplier) {
         return TakeNFromInfiniteSupplierUsingForLoop.takeN(end, supplier);
     }
 

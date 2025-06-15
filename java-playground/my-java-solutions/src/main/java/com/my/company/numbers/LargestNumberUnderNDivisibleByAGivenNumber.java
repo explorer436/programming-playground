@@ -1,15 +1,19 @@
 package com.my.company.numbers;
 
-/** Find the largest number under 100,000 that's divisible by 3829. */
 public class LargestNumberUnderNDivisibleByAGivenNumber {
 
-  public static void main(String[] args) {
+    public int getLargestNumberUnderNDivisibleByD(int N, int divisor) {
 
-    for (int i = 99999; i > 0; i--) {
-      if (i % 3829 == 0) {
-        System.out.println("the answer is " + i);
-        break;
-      }
+        if (N <= 0 || divisor <= 0) {
+            return 0;
+        }
+
+        for (int i = N - 1; i > 0; i--) {
+            if (i % divisor == 0) {
+                return i;
+            }
+        }
+
+        return 0;
     }
-  }
 }
