@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Getter
 public enum PersonRole {
+
   CHILD(0),
   PARENT(1),
   GRANDPARENT(2);

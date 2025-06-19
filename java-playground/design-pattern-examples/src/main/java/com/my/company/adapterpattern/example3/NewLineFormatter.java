@@ -3,7 +3,6 @@ package com.my.company.adapterpattern.example3;
 public class NewLineFormatter implements TextFormattable {
     @Override
     public String formatText(String text) {
-        String formattedText = text.replace(".", "\n");
-        return formattedText;
+        return text.replace(".", "\n");
     }
 }

@@ -1,6 +1,7 @@
 package com.example.awss3.service;
 
 public enum S3SubDirectory {
+
     ATEMPORARYDIRECTORY1("a-temporary-directory-1"),
     ATEMPORARYDIRECTORY2("a-temporary-directory-2");;
 

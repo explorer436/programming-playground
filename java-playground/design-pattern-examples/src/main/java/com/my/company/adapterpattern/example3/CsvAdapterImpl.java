@@ -9,8 +9,7 @@ public class CsvAdapterImpl implements TextFormattable {
 
     @Override
     public String formatText(String text) {
-        String formattedText = csvFormatter.formatCsvText(text);
-        return formattedText;
+        return csvFormatter.formatCsvText(text);
     }
 }
 

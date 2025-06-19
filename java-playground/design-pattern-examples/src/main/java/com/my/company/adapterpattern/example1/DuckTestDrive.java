@@ -15,10 +15,10 @@ public class DuckTestDrive {
         turkey.gobble();
         turkey.fly();
 
-        System.out.println("\nThe Duck says...");
+        System.out.println("The Duck says...");
         testDuck(duck);
 
-        System.out.println("\nThe TurkeyAdapter says...");
+        System.out.println("The TurkeyAdapter says...");
         testDuck(turkeyAdapter);
     }
 
