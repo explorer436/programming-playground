@@ -67,7 +67,7 @@ public class StringPalindrome {
       reversedString.append(stack.pop());
     }
 
-    return reversedString.toString().equals(stringNoPunctuation.toString());
+    return reversedString.toString().contentEquals(stringNoPunctuation);
   }
 
   public boolean isPalindrome_usingStackAndQueue(String string) {

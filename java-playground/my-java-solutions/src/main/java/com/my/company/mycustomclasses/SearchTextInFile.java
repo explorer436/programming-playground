@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class SearchTextInFile {
 
   private static final String fileLocation =
-      "/Users/harshavardhanedupuganti/Desktop/temp/subscribers_files.txt";
+      "~/Desktop/temp/subscribers_files.txt";
 
   public static void main(String[] args) throws IOException {
     // First write a file, with large number of entries
@@ -29,7 +29,7 @@ public class SearchTextInFile {
 
     // Now search random strings five times, and see the time taken
     for (int i = 0; i < iterations; i++) {
-      String msisdn = String.valueOf(923000000000l + ((long) (Math.random() * 40000000)));
+      String msisdn = String.valueOf(923000000000L + ((long) (Math.random() * 40000000)));
 
       System.out.println("ITERATION " + i);
       System.out.print("Search " + msisdn + " using scanner");
