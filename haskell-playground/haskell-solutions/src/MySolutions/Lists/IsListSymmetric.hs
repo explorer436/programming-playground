@@ -1,6 +1,6 @@
 module MySolutions.Lists.IsListSymmetric (isListSymmetric) where
 
-import MySolutions.Strings.Palindrome (caseSensitivePalindrome, caseInsensitivePalindrome)
+import MySolutions.Strings.StringPalindrome (caseSensitivePalindrome, caseInsensitivePalindrome)
 
 -- Same logic as that of Palindrome.hs
 -- Strings are lists in Haskell. 

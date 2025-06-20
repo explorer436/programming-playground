@@ -1,6 +1,6 @@
-module MySolutions.Strings.PalindromeSpec where
+module MySolutions.Strings.StringPalindromeSpec where
 
-import MySolutions.Strings.Palindrome (caseSensitivePalindrome, caseInsensitivePalindrome)
+import MySolutions.Strings.StringPalindrome (caseSensitivePalindrome, caseInsensitivePalindrome)
 
 import Test.Hspec
 

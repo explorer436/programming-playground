@@ -100,7 +100,7 @@ library
       MySolutions.Strings.ISBNVerifier
       MySolutions.Strings.LongestCommonSubsequenceBetweenTwoStrings
       MySolutions.Strings.Pagination
-      MySolutions.Strings.Palindrome
+      MySolutions.Strings.StringPalindrome
       MySolutions.Strings.Pangram
       MySolutions.Strings.RailFenceCipher
       MySolutions.Strings.RemoveSubstringFromAString
@@ -209,7 +209,7 @@ test-suite haskell-solutions-test
       MySolutions.Strings.GroupNamesByAlphabetsSpec
       MySolutions.Strings.ISBNVerifierSpec
       MySolutions.Strings.LongestCommonSubsequenceBetweenTwoStringsSpec
-      MySolutions.Strings.PalindromeSpec
+      MySolutions.Strings.StringPalindromeSpec
       MySolutions.Strings.PangramSpec
       MySolutions.Strings.RemoveSubstringFromAStringSpec
       MySolutions.Trees.AppendOneTreeToAnotherTreeSpec

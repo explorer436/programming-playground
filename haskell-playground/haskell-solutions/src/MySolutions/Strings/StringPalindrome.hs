@@ -1,4 +1,4 @@
-module MySolutions.Strings.Palindrome (caseSensitivePalindrome, caseInsensitivePalindrome) where
+module MySolutions.Strings.StringPalindrome (caseSensitivePalindrome, caseInsensitivePalindrome) where
 
 import Data.Char (toLower)
 
