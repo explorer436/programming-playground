@@ -7,6 +7,7 @@ public class Lec01WithoutBuilderPattern1 {
     }
 
     static class Person {
+
         private final String firstName;
         private final String lastName;
 

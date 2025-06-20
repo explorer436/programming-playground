@@ -9,6 +9,7 @@ public class Lec01WithoutBuilderPattern4 {
     }
 
     static class Person {
+
         private final String salutation;
         private final String firstName;
         private final String middleName;
@@ -18,7 +19,6 @@ public class Lec01WithoutBuilderPattern4 {
         private final boolean isFemale;
         private final boolean isEmployed;
         private final boolean isHomewOwner;
-
 
         public Person(String salutation, String firstName, String middleName, String lastName, String suffix, Address address, boolean isFemale, boolean isEmployed, boolean isHomewOwner) {
             this.salutation = salutation;

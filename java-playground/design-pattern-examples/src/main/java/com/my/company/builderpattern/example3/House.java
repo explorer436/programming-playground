@@ -1,6 +1,7 @@
 package com.my.company.builderpattern.example3;
 
 public class House {
+
     private String foundation;
     private String structure;
     private String roof;

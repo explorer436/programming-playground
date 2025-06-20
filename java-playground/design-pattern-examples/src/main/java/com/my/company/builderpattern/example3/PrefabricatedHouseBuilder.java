@@ -1,6 +1,7 @@
 package com.my.company.builderpattern.example3;
 
 public class PrefabricatedHouseBuilder implements HouseBuilder {
+
     private House house;
 
     public PrefabricatedHouseBuilder() {
