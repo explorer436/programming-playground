@@ -1,6 +1,6 @@
 package com.my.company.abstractdatatypes.queues;
 
-public class QueueImplementationUsingLinkedList<Item> {
+public class ImplementQueueUsingLinkedList<Item> {
 
   private class Node {
     Item item;
@@ -57,7 +57,7 @@ public class QueueImplementationUsingLinkedList<Item> {
   // Test client for QueueImplementationUsingLinkedList for item type "String"
   public static void main(String[] args) {
     // Create a stack and push/pop strings as directed on StdIn.
-    QueueImplementationUsingLinkedList<String> q = new QueueImplementationUsingLinkedList<String>();
+    ImplementQueueUsingLinkedList<String> q = new ImplementQueueUsingLinkedList<String>();
 
     String[] inputStrList = new String[] {"to", "be", "or", "not", "to", "be"};
 

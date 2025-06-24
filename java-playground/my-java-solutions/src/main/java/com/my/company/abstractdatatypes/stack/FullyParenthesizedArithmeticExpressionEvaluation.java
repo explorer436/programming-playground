@@ -54,10 +54,10 @@ public class FullyParenthesizedArithmeticExpressionEvaluation {
    * Scanner - which takes care of reading numbers with more than one digits.
    */
   public static int evaluateExpression(String str) {
-    StackImplementationUsingLinkedList<Character> operators =
-        new StackImplementationUsingLinkedList<Character>();
-    StackImplementationUsingLinkedList<Integer> values =
-        new StackImplementationUsingLinkedList<Integer>();
+    ImplementStackUsingLinkedList<Character> operators =
+        new ImplementStackUsingLinkedList<Character>();
+    ImplementStackUsingLinkedList<Integer> values =
+        new ImplementStackUsingLinkedList<Integer>();
 
     char[] charArray = str.toCharArray();
 

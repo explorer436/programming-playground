@@ -1,6 +1,6 @@
 package com.my.company.abstractdatatypes.stack;
 
-public class StackImplementationUsingDoubleLinkedList<Item> {
+public class ImplementStackUsingDoubleLinkedList<Item> {
 
   private Node topNodeInTheStack; // Sometimes, this is named head.
   private Node bottomNodeInTheStack; // Sometimes, this is named tail.
@@ -160,8 +160,8 @@ public class StackImplementationUsingDoubleLinkedList<Item> {
   // Test client for StackImplementationUsingLinkedList for item type "String"
   public static void main(String[] args) {
     // Create a stack and push/pop strings as directed on StdIn.
-    StackImplementationUsingDoubleLinkedList<String> stack =
-        new StackImplementationUsingDoubleLinkedList<String>();
+    ImplementStackUsingDoubleLinkedList<String> stack =
+        new ImplementStackUsingDoubleLinkedList<String>();
 
     String[] inputStrList = new String[] {"my", "name", "is", "bruce", "wayne"};
 

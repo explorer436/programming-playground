@@ -2,7 +2,7 @@ package com.my.company.abstractdatatypes.bags;
 
 import java.util.Iterator;
 
-public class BagImplementationUsingLinkedList<Item> {
+public class ImplementBagUsingLinkedList<Item> {
 
   private class Node {
     Item item;

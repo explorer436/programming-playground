@@ -1,7 +1,7 @@
 package com.my.company.strings;
 
-import com.my.company.abstractdatatypes.stack.StackImplementationUsingDoubleLinkedList;
-import com.my.company.abstractdatatypes.stack.StackImplementationUsingLinkedList;
+import com.my.company.abstractdatatypes.stack.ImplementStackUsingDoubleLinkedList;
+import com.my.company.abstractdatatypes.stack.ImplementStackUsingLinkedList;
 
 public class BalancedParanthesis {
 
@@ -14,7 +14,7 @@ public class BalancedParanthesis {
         boolean result = false;
 
         if (null != str && !str.isEmpty() && (str.length() % 2 == 0)) {
-            StackImplementationUsingLinkedList<Character> stack = new StackImplementationUsingLinkedList<>();
+            ImplementStackUsingLinkedList<Character> stack = new ImplementStackUsingLinkedList<>();
 
             for (int i = 0; i < str.length(); i++) {
                 if (str.charAt(i) == '(' || str.charAt(i) == '{' || str.charAt(i) == '[') {
@@ -87,8 +87,8 @@ public class BalancedParanthesis {
 
         if (null != str && !str.isEmpty() && (str.length() % 2 == 0)) {
             // using double linked list for this.
-            StackImplementationUsingDoubleLinkedList<Character> stack =
-                    new StackImplementationUsingDoubleLinkedList<>();
+            ImplementStackUsingDoubleLinkedList<Character> stack =
+                    new ImplementStackUsingDoubleLinkedList<>();
 
             for (int i = 0; i < str.length(); i++) {
                 stack.pushToTheTop((char) str.charAt(i));
@@ -140,7 +140,7 @@ public class BalancedParanthesis {
 
         if (null != str && !str.isEmpty() && (str.length() % 2 == 0)) {
             // using single linked list for this.
-            StackImplementationUsingLinkedList<Character> stack = new StackImplementationUsingLinkedList<>();
+            ImplementStackUsingLinkedList<Character> stack = new ImplementStackUsingLinkedList<>();
 
             for (int i = 0; i < str.length(); i++) {
                 stack.push((char) str.charAt(i));
