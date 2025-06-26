@@ -24,7 +24,7 @@ public class StringPalindrome {
     return result;
   }
 
-  public boolean isPalindrome_caseInsensitive(String word) {
+  public boolean isPalindrome_caseInsensitive_doNotIgnorePunctuation(String word) {
 
     boolean result = true;
 
@@ -38,6 +38,40 @@ public class StringPalindrome {
       b = Character.toLowerCase(b);
 
       if (a != b) {
+        result = false;
+        break;
+      }
+    }
+
+    return result;
+  }
+
+  public boolean isPalindrome_caseInsensitive_ignorePunctuation(String word) {
+
+    boolean result = true;
+
+    for (int i = 0, j = word.length() - 1; i <= j; i++, j--) {
+
+      char charAtI = word.charAt(i);
+      char charAtJ = word.charAt(j);
+
+      charAtI = Character.toLowerCase(charAtI);
+      charAtJ = Character.toLowerCase(charAtJ);
+
+      boolean charAtIIsPunctuation = !(charAtI >= 'a' && charAtI <= 'z');
+      boolean charAtJIsPunctuation = !(charAtJ >= 'a' && charAtJ <= 'z');
+
+      if (charAtIIsPunctuation || charAtJIsPunctuation) {
+          if (charAtJIsPunctuation) {
+              i--;
+          }
+          if (charAtIIsPunctuation) {
+              j--;
+          }
+          continue;
+      }
+
+      if (charAtI != charAtJ) {
         result = false;
         break;
       }

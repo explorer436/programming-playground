@@ -1,4 +1,4 @@
-package com.my.company.datastructures.linkedlist.singlyLinkedIntegerList;
+package com.my.company.datastructures.linkedlist.sortedIntegerLinkedList;
 
 public class SortedIntegerLinkedList {
 
@@ -15,6 +15,7 @@ public class SortedIntegerLinkedList {
       node.setNext(head);
       head = node;
     } else {
+
       // head.getNumber() is less than i.
       Node current = head.getNext();
       Node previous = head;
@@ -23,8 +24,9 @@ public class SortedIntegerLinkedList {
         current = current.getNext();
       }
 
-      // This will cover both current = null scenario and current != null (insert between two
-      // existing nodes) scenarios.
+      // This will cover both current = null scenario and current != null
+      // (insert between two existing nodes) scenarios.
+
       Node node = new Node(i);
       node.setNext(current);
       previous.setNext(node);
@@ -32,7 +34,7 @@ public class SortedIntegerLinkedList {
   }
 
   public boolean isEmpty() {
-    return head == null ? true : false;
+    return head == null;
   }
 
   public void printList() {

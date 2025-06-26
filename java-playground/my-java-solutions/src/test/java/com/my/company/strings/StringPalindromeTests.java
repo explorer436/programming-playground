@@ -15,11 +15,25 @@ public class StringPalindromeTests {
     }
 
     @Test
-    public void test_isPalindrome_caseInsensitive_01() throws Exception {
-        assertTrue(stringPalindrome.isPalindrome_caseInsensitive("Deleveled"));
-        assertTrue(stringPalindrome.isPalindrome_caseInsensitive("Dele eled"));
-        assertTrue(stringPalindrome.isPalindrome_caseInsensitive("Dele ele eled"));
-        assertFalse(stringPalindrome.isPalindrome_caseInsensitive("I did, did I?"));
+    public void test_isPalindrome_caseInsensitive_doNotIgnorePunctuation() throws Exception {
+        assertTrue(stringPalindrome.isPalindrome_caseInsensitive_doNotIgnorePunctuation("Deleveled"));
+        assertTrue(stringPalindrome.isPalindrome_caseInsensitive_doNotIgnorePunctuation("Dele eled"));
+        assertTrue(stringPalindrome.isPalindrome_caseInsensitive_doNotIgnorePunctuation("Dele ele eled"));
+        assertFalse(stringPalindrome.isPalindrome_caseInsensitive_doNotIgnorePunctuation("I did, did I?"));
+    }
+
+    @Test
+    public void test_isPalindrome_caseInsensitive_ignorePunctuation() throws Exception {
+        assertFalse(stringPalindrome.isPalindrome_caseInsensitive_ignorePunctuation("hello"));
+        assertFalse(stringPalindrome.isPalindrome_caseInsensitive_ignorePunctuation("Was it a car or a cat I saw?"));
+
+        assertTrue(stringPalindrome.isPalindrome_caseInsensitive_ignorePunctuation("I did, did I?"));
+        assertTrue(stringPalindrome.isPalindrome_caseInsensitive_ignorePunctuation("Deleveled"));
+        assertTrue(stringPalindrome.isPalindrome_caseInsensitive_ignorePunctuation("Dele eled"));
+        assertTrue(stringPalindrome.isPalindrome_caseInsensitive_ignorePunctuation("Dele ele eled"));
+        assertTrue(stringPalindrome.isPalindrome_caseInsensitive_ignorePunctuation("Don't nod"));
+        assertTrue(stringPalindrome.isPalindrome_caseInsensitive_ignorePunctuation("I did, did I?"));
+        assertTrue(stringPalindrome.isPalindrome_caseInsensitive_ignorePunctuation("abccba"));
     }
 
     @Test
