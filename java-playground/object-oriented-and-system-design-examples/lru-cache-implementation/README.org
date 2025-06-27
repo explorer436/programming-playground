@@ -1,3 +1,0 @@
-* LRU Cache Implementation
-
-[[../lru-cache-implementation/LRU2.png]]
