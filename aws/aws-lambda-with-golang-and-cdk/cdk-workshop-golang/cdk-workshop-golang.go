@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/aws/aws-cdk-go/awscdk/v2"
+	"github.com/aws/aws-cdk-go/awscdk/v2/awsapigateway"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awslambda"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awssns"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awssnssubscriptions"
@@ -28,10 +29,14 @@ func NewCdkWorkshopGolangStack(scope constructs.Construct, id string, props *Cdk
 	topic := awssns.NewTopic(stack, jsii.String("CdkWorkshopGolangTopic"), &awssns.TopicProps{})
 	topic.AddSubscription(awssnssubscriptions.NewSqsSubscription(queue, &awssnssubscriptions.SqsSubscriptionProps{}))
 
-	awslambda.NewFunction(stack, jsii.String("HelloWorldHandler"), &awslambda.FunctionProps{
+	handler1 := awslambda.NewFunction(stack, jsii.String("HelloWorldHandler"), &awslambda.FunctionProps{
 		Runtime: awslambda.Runtime_PROVIDED_AL2023(),
 		Code:    awslambda.Code_FromAsset(jsii.String("../src/main.zip"), nil),
 		Handler: jsii.String("helloWorldHandler"),
+	})
+
+	awsapigateway.NewLambdaRestApi(stack, jsii.String("MyEndpoint"), &awsapigateway.LambdaRestApiProps{
+		Handler: handler1,
 	})
 
 	return stack
