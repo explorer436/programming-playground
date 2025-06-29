@@ -54,7 +54,7 @@ Resources:
   Person:
     Type: "AWS::Serverless::Function"
     Properties:
-      Runtime: python3.6
+      Runtime: python3.13
       Handler: Person.lambda_handler
       CodeUri: ./src
       MemorySize: 128

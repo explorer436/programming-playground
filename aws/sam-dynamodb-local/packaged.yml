@@ -61,7 +61,7 @@ Resources:
       Handler: Person.lambda_handler
       MemorySize: 128
       Policies: AmazonDynamoDBFullAccess
-      Runtime: python3.6
+      Runtime: python3.13
       Timeout: 300
     Type: AWS::Serverless::Function
   PersonTable:

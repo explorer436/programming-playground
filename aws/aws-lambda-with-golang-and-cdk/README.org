@@ -2,22 +2,4 @@ Status: Test this and it should work ok.
 
 Reference: https://github.com/laaraujo/aws-serverless-go-with-cdk/blob/main/Makefile
 
-* Things to note
-
-1. The code in the cdk folder can be written in any language I want.
-1. The code in the src folder can be written in any language I want.
-1. The only important thing is to refer to the handlers in src code from the cdk functions.
-
-* Questions
-
-1. How to set-up more than one handler using cdk? (See previous projects)
-1. See https://github.com/explorer436/programming-playground/blob/main/aws/employee-aws-cdk-stack-repo/lib/employee-cdk-stack.ts
 1. How to do this using SAM?
-
-* Runtimes to use
-
-The go1.x runtime is deprecated, but it doesn't mean that golang executing in a lambda is deprecated.
-You just need to
- 1. specify that you're going to use a custom runtime like provided.al2 (See https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html#golang-al1) and
- 1. name your compiled binary "bootstrap" in the root of the zip that gets deployed
- 1. or you can deploy using containers stored in ECR and specify any given entrypoint in the Dockerfile if you need more flexibility.

@@ -14,13 +14,14 @@ This repository contains an AWS Lambda function that puts and gets a Person reco
 - [Docker](https://runnable.com/docker/getting-started/) installed 
 - [SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
 - Python [3.6/3.7](https://www.python.org/downloads/) with [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html) package
+  - See https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html for a list of supported runtimes 
 - An AWS Account with permissions to IAM, CloudFormation, S3, Lambda, and DynamoDB (to deploy and test in a AWS region).  
 
 ### Steps to deploy this application
+
 Please note:   
 a. I will be using the us-east-1 region (Virginia) for deploying this application, but you may deploy to any region where Lambda and DynamoDB are available.  
 b. User-specified input parameters will be marked with curly braces in the following instructions. For e.g., {s3-bucket-name} will need to be replaced with a bucket name of your choice, such as mybucketname etc.  
-
 
 #### Steps
 1. Clone this repo and change to the directory 'sam-dynamodb-local'.  
