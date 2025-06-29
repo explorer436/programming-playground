@@ -1,4 +1,0 @@
-** Outstanding questions
-
-Can the schema of a NoSQL table be updated later? If so, can the data be migrated into the new table?
-
