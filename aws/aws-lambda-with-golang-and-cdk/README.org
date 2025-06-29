@@ -1,0 +1,7 @@
+Reference: https://github.com/laaraujo/aws-serverless-go-with-cdk/blob/main/Makefile
+
+The go1.x runtime is deprecated, but it doesn't mean that golang executing in a lambda is deprecated.
+You just need to
+ 1. specify that you're going to use a custom runtime like provided.al2 (See https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html#golang-al1) and
+ 1. name your compiled binary "bootstrap" in the root of the zip that gets deployed
+ 1. or you can deploy using containers stored in ECR and specify any given entrypoint in the Dockerfile if you need more flexibility.
