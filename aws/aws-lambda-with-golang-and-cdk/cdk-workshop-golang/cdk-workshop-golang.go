@@ -10,6 +10,7 @@ import (
 	"github.com/aws/aws-cdk-go/awscdk/v2/awssqs"
 	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/aws/jsii-runtime-go"
+	"github.com/cdklabs/cdk-dynamo-table-viewer-go/dynamotableviewer"
 )
 
 type CdkWorkshopGolangStackProps struct {
@@ -47,6 +48,12 @@ func NewCdkWorkshopGolangStack(scope constructs.Construct, id string, props *Cdk
 	/*awsapigateway.NewLambdaRestApi(stack, jsii.String("MyEndpoint"), &awsapigateway.LambdaRestApiProps{
 		Handler: handler1,
 	})*/
+
+	// See https://pkg.go.dev/github.com/cdklabs/cdk-dynamo-table-viewer-go/dynamotableviewer
+	dynamotableviewer.NewTableViewer(stack, jsii.String("ViewHitCounter"), &dynamotableviewer.TableViewerProps{
+		Title: jsii.String("Hello Hits"),
+		Table: hitCounter.Table(),
+	})
 
 	return stack
 }
@@ -100,11 +107,17 @@ type HitCounterProps struct {
 type hitCounter struct {
 	constructs.Construct
 	handler awslambda.IFunction
+	table   awsdynamodb.Table
+}
+
+func (h *hitCounter) Table() awsdynamodb.Table {
+	return h.table
 }
 
 type HitCounter interface {
 	constructs.Construct
 	Handler() awslambda.IFunction
+	Table() awsdynamodb.Table
 }
 
 func NewHitCounter(scope constructs.Construct, id string, props *HitCounterProps) HitCounter {
@@ -124,11 +137,13 @@ func NewHitCounter(scope constructs.Construct, id string, props *HitCounterProps
 		},
 	})
 
+	// The lambda needs access to work with the DynamoDB table
 	table.GrantReadWriteData(handler)
 
+	// The lambda needs access to invoke the downstream services
 	props.Downstream.GrantInvoke(handler)
 
-	return &hitCounter{this, handler}
+	return &hitCounter{this, handler, table}
 }
 
 func (h *hitCounter) Handler() awslambda.IFunction {

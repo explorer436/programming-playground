@@ -19,6 +19,29 @@ func main() {
 	lambda.Start(hitCounterHandler)
 }
 
+/*
+   Testing:
+    Let’s issue a few requests and see if our hit counter works. You can also use your web browser to do that:
+
+curl https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod/
+curl https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod/
+curl https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod/hello
+curl https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod/hello/world
+curl https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod/hello/world
+
+Open DynamoDB console
+
+    Go to the DynamoDB console
+
+Make sure you are in the region where you created the table.
+
+Select Tables in the navigation pane and select the table that starts with CdkWorkShopStack-HelloHitCounterHits.
+
+Open the table and select “Items”.
+
+You should see how many hits you got for each path.
+*/
+
 func hitCounterHandler(ctx context.Context, req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	log.Println("Function invoked")
 
