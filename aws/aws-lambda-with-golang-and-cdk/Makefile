@@ -1,5 +1,6 @@
 cdk_dir = cdk-workshop-golang
-app_dir = src
+app_dir1 = hello-world-lambda
+app_dir2 = hit-counter-lambda
 
 export GOOS=linux
 export CGO_ENABLED=0
@@ -13,13 +14,16 @@ help:
 
 setup:
 	cd $(cdk_dir); go mod download
-	cd $(app_dir); go mod download
+	cd $(app_dir1); go mod download
+	cd $(app_dir2); go mod download
 
 build:
-	go build -C $(app_dir)/ -tags lambda.norpc -o bootstrap main.go
+	go build -C $(app_dir1)/ -tags lambda.norpc -o bootstrap main.go
+	go build -C $(app_dir2)/ -tags lambda.norpc -o bootstrap main.go
 
 zip: build
-	cd $(app_dir); zip main.zip bootstrap
+	cd $(app_dir1); zip main.zip bootstrap
+	cd $(app_dir2); zip main.zip bootstrap
 
 cdk-deploy: zip
 	cd $(cdk_dir); cdk deploy

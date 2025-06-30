@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/aws/aws-cdk-go/awscdk/v2"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awsapigateway"
+	"github.com/aws/aws-cdk-go/awscdk/v2/awsdynamodb"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awslambda"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awssns"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awssnssubscriptions"
@@ -31,13 +32,21 @@ func NewCdkWorkshopGolangStack(scope constructs.Construct, id string, props *Cdk
 
 	handler1 := awslambda.NewFunction(stack, jsii.String("HelloWorldHandler"), &awslambda.FunctionProps{
 		Runtime: awslambda.Runtime_PROVIDED_AL2023(),
-		Code:    awslambda.Code_FromAsset(jsii.String("../src/main.zip"), nil),
+		Code:    awslambda.Code_FromAsset(jsii.String("../hello-world-lambda/main.zip"), nil),
 		Handler: jsii.String("helloWorldHandler"),
 	})
 
-	awsapigateway.NewLambdaRestApi(stack, jsii.String("MyEndpoint"), &awsapigateway.LambdaRestApiProps{
-		Handler: handler1,
+	hitCounter := NewHitCounter(stack, "HelloHitCounter", &HitCounterProps{
+		Downstream: handler1,
 	})
+
+	awsapigateway.NewLambdaRestApi(stack, jsii.String("MyEndpoint"), &awsapigateway.LambdaRestApiProps{
+		Handler: hitCounter.Handler(),
+	})
+
+	/*awsapigateway.NewLambdaRestApi(stack, jsii.String("MyEndpoint"), &awsapigateway.LambdaRestApiProps{
+		Handler: handler1,
+	})*/
 
 	return stack
 }
@@ -81,4 +90,47 @@ func env() *awscdk.Environment {
 	//  Account: jsii.String(os.Getenv("CDK_DEFAULT_ACCOUNT")),
 	//  Region:  jsii.String(os.Getenv("CDK_DEFAULT_REGION")),
 	// }
+}
+
+type HitCounterProps struct {
+	// Downstream is the function for which we want to count hits
+	Downstream awslambda.IFunction
+}
+
+type hitCounter struct {
+	constructs.Construct
+	handler awslambda.IFunction
+}
+
+type HitCounter interface {
+	constructs.Construct
+	Handler() awslambda.IFunction
+}
+
+func NewHitCounter(scope constructs.Construct, id string, props *HitCounterProps) HitCounter {
+	this := constructs.NewConstruct(scope, &id)
+
+	table := awsdynamodb.NewTable(this, jsii.String("Hits"), &awsdynamodb.TableProps{
+		PartitionKey: &awsdynamodb.Attribute{Name: jsii.String("path"), Type: awsdynamodb.AttributeType_STRING},
+	})
+
+	handler := awslambda.NewFunction(this, jsii.String("HitCounterHandler"), &awslambda.FunctionProps{
+		Runtime: awslambda.Runtime_PROVIDED_AL2023(),
+		Code:    awslambda.Code_FromAsset(jsii.String("../hit-counter-lambda/main.zip"), nil),
+		Handler: jsii.String("hitCounterHandler"),
+		Environment: &map[string]*string{
+			"DOWNSTREAM_FUNCTION_NAME": props.Downstream.FunctionName(),
+			"HITS_TABLE_NAME":          table.TableName(),
+		},
+	})
+
+	table.GrantReadWriteData(handler)
+
+	props.Downstream.GrantInvoke(handler)
+
+	return &hitCounter{this, handler}
+}
+
+func (h *hitCounter) Handler() awslambda.IFunction {
+	return h.handler
 }
