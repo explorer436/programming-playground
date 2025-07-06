@@ -21,7 +21,7 @@ public class TestLRUCache {
                 hitCount++;
             } else {
                 faultCount++;
-                lruCache.set(key, key);
+                lruCache.put(key, key);
             }
         }
 

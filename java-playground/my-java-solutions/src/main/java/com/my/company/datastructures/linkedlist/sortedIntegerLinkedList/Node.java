@@ -9,7 +9,6 @@ public class Node {
   }
 
   public Node(int number) {
-    super();
     this.number = number;
   }
 

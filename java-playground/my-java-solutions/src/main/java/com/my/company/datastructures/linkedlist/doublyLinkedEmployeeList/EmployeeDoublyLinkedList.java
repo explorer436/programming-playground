@@ -1,128 +1,127 @@
 package com.my.company.datastructures.linkedlist.doublyLinkedEmployeeList;
 
-import com.my.company.datastructures.linkedlist.doublyLinkedEmployeeList.EmployeeNode.Employee;
-
 public class EmployeeDoublyLinkedList {
 
-  private EmployeeNode head;
-  private EmployeeNode tail;
-  private int size;
+    private EmployeeNode head;
+    private EmployeeNode tail;
 
-  public void addToFront(Employee employee) {
-    EmployeeNode node = new EmployeeNode(employee);
-    node.setNext(head);
+    private int size;
 
-    if (head == null) {
-      tail = node;
-    } else {
-      head.setPrevious(node);
-      node.setNext(head);
-    }
+    public void addToFront(Employee employee) {
+        EmployeeNode node = new EmployeeNode(employee);
+        node.setNext(head);
 
-    head = node;
-    size++;
-  }
-
-  public void addToEnd(Employee employee) {
-    EmployeeNode node = new EmployeeNode(employee);
-
-    if (tail == null) {
-      head = node;
-    } else {
-      tail.setNext(node);
-      node.setPrevious(tail);
-    }
-
-    tail = node;
-    size++;
-  }
-
-  public boolean addBefore(Employee newEmployee, Employee existingEmployee) {
-    if (head == null) {
-      return false;
-    } else {
-      EmployeeNode current = head;
-      while (current != null && !current.getEmployee().equals(existingEmployee)) {
-        current = current.getNext();
-      }
-
-      if (current == null) {
-        return false;
-      } else {
-        EmployeeNode newNode = new EmployeeNode(newEmployee);
-        newNode.setPrevious(current.getPrevious());
-        newNode.setNext(current);
-
-        current.setPrevious(newNode);
-        if (head == current) {
-          head = newNode;
+        if (head == null) {
+            tail = node;
         } else {
-          newNode.getPrevious().setNext(newNode);
+            head.setPrevious(node);
+            node.setNext(head);
         }
 
+        head = node;
         size++;
-        return true;
-      }
     }
-  }
 
-  public EmployeeNode removeFromFront() {
-    if (isEmpty()) {
-      return null;
-    } else {
-      EmployeeNode removedNode = head;
+    public void addToEnd(Employee employee) {
+        EmployeeNode node = new EmployeeNode(employee);
 
-      if (head.getNext() == null) {
-        tail = null;
-      } else {
-        head.getNext().setPrevious(null);
-      }
+        if (tail == null) {
+            head = node;
+        } else {
+            tail.setNext(node);
+            node.setPrevious(tail);
+        }
 
-      head = head.getNext();
-      size--;
-      removedNode.setNext(null);
-
-      return removedNode;
+        tail = node;
+        size++;
     }
-  }
 
-  public EmployeeNode removeFromEnd() {
-    if (isEmpty()) {
-      return null;
-    } else {
-      EmployeeNode removedNode = tail;
+    public boolean addBefore(Employee newEmployee, Employee existingEmployee) {
+        if (head == null) {
+            return false;
+        } else {
+            EmployeeNode current = head;
+            while (current != null && !current.getEmployee().equals(existingEmployee)) {
+                current = current.getNext();
+            }
 
-      if (tail.getPrevious() == null) {
-        head = null;
-      } else {
-        tail.getPrevious().setNext(null);
-      }
+            if (current == null) {
+                return false;
+            } else {
+                EmployeeNode newNode = new EmployeeNode(newEmployee);
+                newNode.setPrevious(current.getPrevious());
+                newNode.setNext(current);
 
-      tail = tail.getPrevious();
-      size--;
-      removedNode.setPrevious(null);
+                current.setPrevious(newNode);
+                if (head == current) {
+                    head = newNode;
+                } else {
+                    newNode.getPrevious().setNext(newNode);
+                }
 
-      return removedNode;
+                size++;
+                return true;
+            }
+        }
     }
-  }
 
-  public boolean isEmpty() {
-    return head == null ? true : false;
-  }
+    public EmployeeNode removeFromFront() {
+        if (isEmpty()) {
+            return null;
+        } else {
+            EmployeeNode removedNode = head;
 
-  public int getSize() {
-    return size;
-  }
+            if (head.getNext() == null) {
+                tail = null;
+            } else {
+                head.getNext().setPrevious(null);
+            }
 
-  public void printList() {
-    EmployeeNode current = head;
-    System.out.print("HEAD -> ");
-    System.out.println("");
-    while (current != null) {
-      System.out.print(current);
-      System.out.println(" <-> ");
-      current = current.getNext();
+            head = head.getNext();
+            size--;
+            removedNode.setNext(null);
+
+            return removedNode;
+        }
     }
-    System.out.println("null");
-  }
+
+    public EmployeeNode removeFromEnd() {
+        if (isEmpty()) {
+            return null;
+        } else {
+            EmployeeNode removedNode = tail;
+
+            if (tail.getPrevious() == null) {
+                head = null;
+            } else {
+                tail.getPrevious().setNext(null);
+            }
+
+            tail = tail.getPrevious();
+            size--;
+            removedNode.setPrevious(null);
+
+            return removedNode;
+        }
+    }
+
+    public boolean isEmpty() {
+        return head == null ? true : false;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void printList() {
+        EmployeeNode current = head;
+        System.out.print("HEAD -> ");
+        System.out.println("");
+        while (current != null) {
+            System.out.print(current);
+            System.out.println(" <-> ");
+            current = current.getNext();
+        }
+        System.out.println("null");
+    }
 }

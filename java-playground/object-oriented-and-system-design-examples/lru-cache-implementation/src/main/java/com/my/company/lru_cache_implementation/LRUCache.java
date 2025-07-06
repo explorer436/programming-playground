@@ -4,21 +4,6 @@ import java.util.HashMap;
 
 public class LRUCache {
 
-    /*
-     * There is only a few details to make it better.
-     *
-     * 1) When the cache is reaches its max capacity you only remove the end of the
-     * list. You should also remove the entry from the hash table.
-     *
-     * if(map.size()>=capacity) {
-     * map.remove(end.key);
-     * remove(end);
-     * setHead(newnode);
-     * }
-     *
-     * 2) Don't forget to update capacity every time you add a new node.
-     */
-
     int capacity;
     HashMap<Integer, Node> map = new HashMap<Integer, Node>();
 
@@ -58,16 +43,23 @@ public class LRUCache {
 
     }
 
-    public void set(int key, int value) {
+    public void put(int key, int value) {
         if (map.containsKey(key)) {
-            Node old = map.get(key);
-            old.value = value;
-            // move the old node to index 0 of the data structure
-            remove(old);
-            setHead(old);
+            Node existingNode = map.get(key);
+            existingNode.value = value;
+            if (existingNode != head) {
+                // move the existingNode node to index 0 of the data structure
+                remove(existingNode);
+                setHead(existingNode);
+            }
         } else {
             Node created = new Node(key, value);
 
+            /*
+             * 1) When the cache is reaches its max capacity,
+             *    1. remove the end of the list.
+             *    2. remove the entry from the hash table.
+             */
             if (map.size() >= capacity) {
                 map.remove(end.key);
                 remove(end);
@@ -80,16 +72,20 @@ public class LRUCache {
         }
     }
 
-    private void setHead(Node n) {
-        n.next = head;
-        n.pre = null;
+    private void setHead(Node newNode) {
 
+        newNode.pre = null;
+
+        // previous head is now the second node
         if (head != null) {
-            head.pre = n;
+            head.pre = newNode;
+            newNode.next = head;
         }
 
-        head = n;
+        // newNode is now the current head
+        head = newNode;
 
+        // if this is the only node in the Cache
         if (end == null) {
             end = head;
         }
