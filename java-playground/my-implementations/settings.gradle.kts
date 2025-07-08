@@ -23,6 +23,7 @@ include (":exception-handling")
 include (":static-demo")
 include (":dynamic-dispatch-demo")
 include (":code-aesthetics")
+include (":functional-interface-lambda-expressions-demo")
 
 /*project(":lru-cache-implementation").projectDir = file("object-oriented-and-system-design-examples/lru-cache-implementation")
 project(":lfu-cache-implementation").projectDir = file("object-oriented-and-system-design-examples/lfu-cache-implementation")
