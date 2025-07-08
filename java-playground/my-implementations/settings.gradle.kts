@@ -4,30 +4,25 @@
 
 rootProject.name = "my-implementations"
 
-/*include(":object-oriented-and-system-design-examples")
-include(":lru-cache-implementation")
-include(":lfu-cache-implementation")
-include(":vending-machine-design")*/
 include(":object-oriented-and-system-design-examples:lru-cache-implementation")
 include(":object-oriented-and-system-design-examples:lfu-cache-implementation")
 include(":object-oriented-and-system-design-examples:vending-machine-design")
-/*include(":java-multithreading-and-concurrency-demo")
-include(":01-creating-threads")
-include(":02-executor-service")
-include(":04-java-concurrency-api")
-include(":05-daemon-threads")
-include(":06-java-thread-synchronization")*/
 include(":java-multithreading-and-concurrency-demo:01-creating-threads")
 include(":java-multithreading-and-concurrency-demo:02-executor-service")
 include(":java-multithreading-and-concurrency-demo:04-java-concurrency-api")
 include(":java-multithreading-and-concurrency-demo:05-daemon-threads")
 include(":java-multithreading-and-concurrency-demo:06-java-thread-synchronization")
-include(":download-images-from-urls")
-include(":my-java-solutions")
 include(":json-processing")
 include (":design-pattern-examples")
 include (":searching-and-sorting")
 include (":process-api-demo")
+include (":my-utilities")
+include (":algorithms-and-datastructures")
+include (":streams-api-demo")
+include (":exception-handling")
+include (":static-demo")
+include (":dynamic-dispatch-demo")
+include (":code-aesthetics")
 
 /*project(":lru-cache-implementation").projectDir = file("object-oriented-and-system-design-examples/lru-cache-implementation")
 project(":lfu-cache-implementation").projectDir = file("object-oriented-and-system-design-examples/lfu-cache-implementation")

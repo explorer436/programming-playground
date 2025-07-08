@@ -6,7 +6,8 @@ plugins {
 dependencies {
     // https://mvnrepository.com/artifact/org.apache.commons/commons-collections4
 
-    implementation(project(":my-java-solutions"))
+    implementation(project(":my-utilities"))
+    implementation(project(":algorithms-and-datastructures"))
     implementation("org.apache.commons:commons-collections4:4.5.0")
 
     // JUnit Jupiter API for writing tests

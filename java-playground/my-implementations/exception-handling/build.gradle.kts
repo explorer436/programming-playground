@@ -8,8 +8,6 @@ plugins {
 
 dependencies {
 
-    implementation(libs.org.apache.commons.commons.lang3)
-
     // JUnit Jupiter API for writing tests
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.11.0")
     // JUnit Jupiter Engine for running tests
@@ -24,4 +22,4 @@ tasks.test {
     }
 }
 
-description = "my-utilities"
+description = "exception-handling"

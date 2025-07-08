@@ -4,11 +4,16 @@
 
 plugins {
     id("buildlogic.java-conventions")
+    id("io.freefair.lombok") version "8.14"
 }
 
 dependencies {
 
+    implementation(project(":my-utilities"))
+    implementation(project(":streams-api-demo"))
+
     implementation(libs.org.apache.commons.commons.lang3)
+    implementation(libs.org.slf4j.slf4j.simple)
 
     // JUnit Jupiter API for writing tests
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.11.0")
@@ -24,4 +29,4 @@ tasks.test {
     }
 }
 
-description = "my-utilities"
+description = "algorithms-and-datastructures"

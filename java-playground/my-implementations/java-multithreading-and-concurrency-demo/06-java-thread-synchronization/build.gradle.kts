@@ -7,7 +7,6 @@ plugins {
 }
 
 dependencies {
-    testImplementation(libs.junit.junit)
 }
 
 description = "06-java-thread-synchronization"

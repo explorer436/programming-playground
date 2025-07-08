@@ -9,4 +9,4 @@ plugins {
 dependencies {
 }
 
-description = "04-java-concurrency-api"
+description = "dynamic-dispatch-demo"

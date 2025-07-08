@@ -1,9 +1,0 @@
-Running the classes from terminal in Linux : 
-
-e.g. from "strings" package
-
-java -classpath ../ strings.FizzBuzz
-
-TODO
-
-Delete the two files ArrayUtils.java and PrintUtils.java and find better ways to do it in the rest of the classes.
