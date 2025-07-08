@@ -57,7 +57,8 @@ public class Loops {
         }
 
         watch.stop();
-        System.out.println(adultNames + (watch.getNanoTime() + " nano seconds."));
+        System.out.println(adultNames);
+        System.out.println("Printing names using for loop took " + watch.getNanoTime() + " nano seconds.");
     }
 
     private static void printAdultNames_filter_map(List<User> users) {
@@ -67,7 +68,8 @@ public class Loops {
         List<String> adultNames = users.stream().filter(u -> Integer.parseInt(u.age) >= 18).map(u -> u.name).toList();
 
         watch.stop();
-        System.out.println(adultNames + (watch.getNanoTime() + " nano seconds."));
+        System.out.println(adultNames);
+        System.out.println("Printing names using filter map took " + watch.getNanoTime() + " nano seconds.");
     }
 
     private static void printAdultNames_list_comprehension_pure_java(List<User> users) {
@@ -85,7 +87,8 @@ public class Loops {
         });
 
         watch.stop();
-        System.out.println(adultNames + (watch.getNanoTime() + " nano seconds."));
+        System.out.println(adultNames);
+        System.out.println("Printing names using java list comprehension took " + watch.getNanoTime() + " nano seconds.");
     }
 
     // Custom interface
@@ -112,7 +115,8 @@ public class Loops {
         Iterable<String> adultNames = Iterables.transform(Iterables.filter(users, u -> Integer.parseInt(u.age) >= 18), u -> u.name);
 
         watch.stop();
-        System.out.println(adultNames + (watch.getNanoTime() + " nano seconds."));
+        System.out.println(adultNames);
+        System.out.println("Printing names using guava filter took " + watch.getNanoTime() + " nano seconds.");
     }
 
     private static void printAdultNames_guava_filter_using_predicates(List<User> users) {
@@ -129,7 +133,8 @@ public class Loops {
         Iterable<String> adultNames = Iterables.transform(Iterables.filter(users, predicate), u -> u.name);
 
         watch.stop();
-        System.out.println(adultNames + (watch.getNanoTime() + " nano seconds."));
+        System.out.println(adultNames);
+        System.out.println("Printing names using guava filter and predicates took " + watch.getNanoTime() + " nano seconds.");
     }
 
     private static void printAdultNames_guava_filter_transform(List<User> users) {
@@ -157,6 +162,7 @@ public class Loops {
                 .toList();
 
         watch.stop();
-        System.out.println(adultNames + (watch.getNanoTime() + " nano seconds."));
+        System.out.println(adultNames);
+        System.out.println("Printing names using guava filter transform took " + watch.getNanoTime() + " nano seconds.");
     }
 }

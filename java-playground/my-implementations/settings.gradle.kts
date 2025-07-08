@@ -24,12 +24,3 @@ include (":static-demo")
 include (":dynamic-dispatch-demo")
 include (":code-aesthetics")
 include (":functional-interface-lambda-expressions-demo")
-
-/*project(":lru-cache-implementation").projectDir = file("object-oriented-and-system-design-examples/lru-cache-implementation")
-project(":lfu-cache-implementation").projectDir = file("object-oriented-and-system-design-examples/lfu-cache-implementation")
-project(":vending-machine-design").projectDir = file("object-oriented-and-system-design-examples/vending-machine-design")
-project(":01-creating-threads").projectDir = file("java-multithreading-and-concurrency-demo/01-creating-threads")
-project(":02-executor-service").projectDir = file("java-multithreading-and-concurrency-demo/02-executor-service")
-project(":04-java-concurrency-api").projectDir = file("java-multithreading-and-concurrency-demo/04-java-concurrency-api")
-project(":05-daemon-threads").projectDir = file("java-multithreading-and-concurrency-demo/05-daemon-threads")
-project(":06-java-thread-synchronization").projectDir = file("java-multithreading-and-concurrency-demo/06-java-thread-synchronization")*/
