@@ -4,6 +4,7 @@
 
 plugins {
     id("buildlogic.java-conventions")
+    id("io.freefair.lombok") version "8.14"
 }
 
 dependencies {
@@ -15,7 +16,6 @@ dependencies {
     api(libs.com.github.javafaker.javafaker)
     testImplementation(libs.org.junit.jupiter.junit.jupiter.api)
     testImplementation(libs.com.fasterxml.jackson.core.jackson.databind)
-    compileOnly(libs.org.projectlombok.lombok)
 }
 
 description = "my-java-solutions"

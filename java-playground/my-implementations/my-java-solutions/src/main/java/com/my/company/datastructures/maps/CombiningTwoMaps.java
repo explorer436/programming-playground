@@ -23,7 +23,6 @@ public class CombiningTwoMaps {
 
         List<Person> peopleFromAnotherCountry = getPeopleFromAnotherCountry();
 
-
         // Approach 1
         // Build a new map
         Map<String, List<Person>> peopleByGenderMap2 = peopleFromAnotherCountry.stream().collect(Collectors.groupingBy(Person::getGender));

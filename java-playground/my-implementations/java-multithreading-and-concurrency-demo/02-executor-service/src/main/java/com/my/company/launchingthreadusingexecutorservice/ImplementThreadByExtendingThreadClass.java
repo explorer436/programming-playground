@@ -1,7 +1,5 @@
 package com.my.company.launchingthreadusingexecutorservice;
 
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ExecutionException;
@@ -9,7 +7,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Service
-@Setter
 public class ImplementThreadByExtendingThreadClass extends Thread {
 
 	String message;
@@ -19,6 +16,9 @@ public class ImplementThreadByExtendingThreadClass extends Thread {
 		System.out.println("message: " + message);
 	}
 
+	public void setMessage(String message) {
+		this.message = message;
+	}
 }
 
 // Output:

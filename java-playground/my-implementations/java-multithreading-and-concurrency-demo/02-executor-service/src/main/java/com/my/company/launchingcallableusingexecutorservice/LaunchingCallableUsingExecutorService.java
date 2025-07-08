@@ -1,7 +1,5 @@
 package com.my.company.launchingcallableusingexecutorservice;
 
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.Callable;
@@ -11,7 +9,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 @Service
-@Setter
 public class LaunchingCallableUsingExecutorService implements Callable<Integer> {
 
     int number;
@@ -33,6 +30,10 @@ public class LaunchingCallableUsingExecutorService implements Callable<Integer> 
         
         System.out.println("<<< LaunchingCallableUsingExecutorService.call()");
         return fact;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 }
 

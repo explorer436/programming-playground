@@ -9,8 +9,6 @@ plugins {
 dependencies {
     api(libs.org.springframework.spring.core)
     api(libs.org.springframework.spring.context)
-    compileOnly(libs.org.projectlombok.lombok)
 }
 
-group = "com.example"
 description = "02-executor-service"
