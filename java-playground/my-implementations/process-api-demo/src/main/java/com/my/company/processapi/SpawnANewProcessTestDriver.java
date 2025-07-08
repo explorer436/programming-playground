@@ -43,7 +43,7 @@ public class SpawnANewProcessTestDriver {
         cmd.addArgument("-c");
         // cmd.addArgument("echo test 1", false);
         // cmd.addArgument("ls /home/explorer436/Downloads", false);
-        cmd.addArgument("sh /home/explorer436/PullFromGitRepositories.sh", false);
+        cmd.addArgument("sh /home/explorer436/PullFromGitRepositories1.sh", false);
         System.out.println("Command: " + cmd);
 
         var executor = new DefaultExecutor();

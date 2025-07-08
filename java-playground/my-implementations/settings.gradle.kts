@@ -27,6 +27,7 @@ include(":my-java-solutions")
 include(":json-processing")
 include (":design-pattern-examples")
 include (":searching-and-sorting")
+include (":process-api-demo")
 
 /*project(":lru-cache-implementation").projectDir = file("object-oriented-and-system-design-examples/lru-cache-implementation")
 project(":lfu-cache-implementation").projectDir = file("object-oriented-and-system-design-examples/lfu-cache-implementation")
