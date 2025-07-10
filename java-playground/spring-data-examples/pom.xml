@@ -12,7 +12,7 @@
         <module>spring-data-jpa-file-io-with-mysql</module>
         <module>spring-data-jpa-multi-datasource-with-h2</module>
         <module>spring-data-jpa-with-dynamodb</module>
-        <module>spring-data-jpa-with-h2</module>
+        <module>spring-data-jpa-jpqa-native-queries-and-generated-queries-demo</module>
         <module>spring-data-rest-with-mongodb</module>
     </modules>
 

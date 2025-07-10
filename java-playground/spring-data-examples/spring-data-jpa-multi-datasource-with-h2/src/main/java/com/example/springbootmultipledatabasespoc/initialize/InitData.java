@@ -4,13 +4,10 @@ import com.example.springbootmultipledatabasespoc.entities.user.User;
 import com.example.springbootmultipledatabasespoc.entities.product.Product;
 import com.example.springbootmultipledatabasespoc.repositories.user.UserRepository;
 import com.example.springbootmultipledatabasespoc.repositories.product.ProductRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.util.Arrays;
 
 @Component
 @RequiredArgsConstructor

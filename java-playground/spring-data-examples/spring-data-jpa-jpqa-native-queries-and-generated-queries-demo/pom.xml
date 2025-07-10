@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.mycompany</groupId>
-    <artifactId>spring-data-jpa-with-h2</artifactId>
+    <artifactId>spring-data-jpa-jpqa-native-queries-and-generated-queries-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-data-jpa-with-h2</name>
+    <name>spring-data-jpa-jpqa-native-queries-and-generated-queries-demo</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
