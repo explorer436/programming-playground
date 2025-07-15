@@ -1,9 +1,9 @@
-package com.my.company.datastructures.linkedlist.doublylinked.EmployeeList;
+package com.my.company.datastructures.linkedlist.doublylinked.employeelist;
 
 public class EmployeeDoublyLinkedList {
 
-    private Node head;
-    private Node tail;
+    protected Node head;
+    protected Node tail;
 
     private int size;
 
@@ -15,7 +15,6 @@ public class EmployeeDoublyLinkedList {
             tail = node;
         } else {
             head.setPrevious(node);
-            node.setNext(head);
         }
 
         head = node;
@@ -36,7 +35,7 @@ public class EmployeeDoublyLinkedList {
         size++;
     }
 
-    public boolean prepend(Employee newEmployee, Employee existingEmployee) {
+    public boolean insertBeforeAnExistingNode(Employee newEmployee, Employee existingEmployee) {
         if (head == null) {
             return false;
         } else {
@@ -123,5 +122,31 @@ public class EmployeeDoublyLinkedList {
             current = current.getNext();
         }
         System.out.println("null");
+    }
+
+    public String traverseForward()
+    {
+        StringBuffer sb = new StringBuffer();
+
+        Node current = head;
+        while (current != null) {
+            sb.append(current.getEmployee());
+            current = current.getNext();
+        }
+
+        return sb.toString();
+    }
+
+    public String traverseBackward()
+    {
+        StringBuffer sb = new StringBuffer();
+
+        Node current = tail;
+        while (current != null) {
+            sb.append(current.getEmployee());
+            current = current.getPrevious();
+        }
+
+        return sb.toString();
     }
 }

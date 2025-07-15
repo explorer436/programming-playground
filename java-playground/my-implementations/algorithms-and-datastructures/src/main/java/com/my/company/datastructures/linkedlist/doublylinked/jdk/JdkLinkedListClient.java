@@ -3,7 +3,7 @@ package com.my.company.datastructures.linkedlist.doublylinked.jdk;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import com.my.company.datastructures.linkedlist.doublylinked.EmployeeList.Employee;
+import com.my.company.datastructures.linkedlist.doublylinked.employeelist.Employee;
 
 public class JdkLinkedListClient {
 
