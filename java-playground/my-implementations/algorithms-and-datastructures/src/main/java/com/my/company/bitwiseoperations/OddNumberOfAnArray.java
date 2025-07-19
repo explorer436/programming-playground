@@ -1,4 +1,4 @@
-package com.my.company.codility.arrays;
+package com.my.company.bitwiseoperations;
 
 public class OddNumberOfAnArray {
 
@@ -8,7 +8,7 @@ public class OddNumberOfAnArray {
   public int findOddNumberInTheArray(int[] A) {
     int result = 0;
     for (int x : A) {
-      result ^= x;
+      result = result ^ x;
     }
     return result;
   }
@@ -19,7 +19,7 @@ public class OddNumberOfAnArray {
   public boolean isThereAnOddNumberInTheArray(int[] A) {
     int xorResult = 0;
     for (int x : A) {
-      xorResult ^= x;
+      xorResult = xorResult ^ x;
     }
 
     return xorResult != 0;

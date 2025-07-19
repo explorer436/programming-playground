@@ -1,4 +1,4 @@
-package com.my.company.codility.arrays;
+package com.my.company.bitwiseoperations;
 
 import org.junit.jupiter.api.Test;
 
