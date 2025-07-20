@@ -11,14 +11,14 @@ public class EmployeeDoublyLinkedListTest {
         Employee mikeWilson = new Employee("Mike", "Wilson", 3245);
 
         EmployeeDoublyLinkedList list = new EmployeeDoublyLinkedList();
-        list.addToFront(janeJones);
+        list.prepend(janeJones);
         assertEquals(list.getSize(), 1);
         assertEquals(list.head.getEmployee(), janeJones);
         assertEquals(list.tail.getEmployee(), janeJones);
         assertEquals(list.head.getNext(), null);
         assertEquals(list.traverseForward(), janeJones.toString());
 
-        list.addToFront(johnDoe);
+        list.prepend(johnDoe);
         assertEquals(list.getSize(), 2);
         assertEquals(list.head.getEmployee(), johnDoe);
         assertEquals(list.tail.getEmployee(), janeJones);
@@ -30,7 +30,7 @@ public class EmployeeDoublyLinkedListTest {
         assertEquals(list.traverseForward(), johnDoe.toString() + janeJones.toString());
         assertEquals(list.traverseBackward(), janeJones.toString() + johnDoe.toString());
 
-        list.addToFront(marySmith);
+        list.prepend(marySmith);
         assertEquals(list.getSize(), 3);
         assertEquals(list.head.getEmployee(), marySmith);
         assertEquals(list.tail.getEmployee(), janeJones);
@@ -45,7 +45,7 @@ public class EmployeeDoublyLinkedListTest {
         assertEquals(list.traverseForward(), marySmith.toString() + johnDoe.toString() + janeJones.toString());
         assertEquals(list.traverseBackward(), janeJones.toString() + johnDoe.toString() + marySmith.toString());
 
-        list.addToFront(mikeWilson);
+        list.prepend(mikeWilson);
         assertEquals(list.getSize(), 4);
         assertEquals(list.head.getEmployee(), mikeWilson);
         assertEquals(list.tail.getEmployee(), janeJones);

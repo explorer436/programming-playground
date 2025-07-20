@@ -7,7 +7,7 @@ public class EmployeeDoublyLinkedList {
 
     private int size;
 
-    public void addToFront(Employee employee) {
+    public void prepend(Employee employee) {
         Node node = new Node(employee);
         node.setNext(head);
 
