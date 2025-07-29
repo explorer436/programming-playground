@@ -1,6 +1,6 @@
 * How to Set Classpath for Java on Windows and Linux
 
-** What is CLASSPATH in Java 
+** What is CLASSPATH in Java
 
 Classpath in Java is the path to directory or list of the directory which is used by Cl
 
@@ -9,11 +9,11 @@ Classpath in Java is the path to directory or list of the directory which is use
 
 Java CLASSPATH is one of the most important concepts in Java,  but,  I must say mostly overlooked. This should be the first thing you should learn while writing Java programs because without the correct understanding of Classpath in Java you can't understand how Java locates your class files.
 
-Also don't confuse Classpath with PATH in Java, which is another environment variable used to find java binaries located in JDK installation directory, also known as JAVA_HOME. 
+Also don't confuse Classpath with PATH in Java, which is another environment variable used to find java binaries located in JDK installation directory, also known as JAVA_HOME.
 
 Unfortunately, books like Head First Java doesn't teach you much about subtleties of PATH and CLASSPATH. If you really want to test your Java skill, the one book I would suggest reading is Java Puzzlers, whose puzzles and explanation will help more to understand this kind of not so easy concepts. (Java Puzzlers: Traps, Pitfalls, and Corner Cases 1st Edition by Joshua Bloch / Neal Gafter Bloch / Gafter)
 
-The main difference between PATH and CLASSPATH is that former is used to locate Java commands while later is used to locate Java class files. So let’s start with basic and then we will see some example and improvisation of Classpath in Java. In fact, CLASSPATH is an environment variable which is used by Java Virtual Machine to locate user defined classes. 
+The main difference between PATH and CLASSPATH is that former is used to locate Java commands while later is used to locate Java class files. So let’s start with basic and then we will see some example and improvisation of Classpath in Java. In fact, CLASSPATH is an environment variable which is used by Java Virtual Machine to locate user defined classes.
 
 As I said In this tutorial we will see How to setup classpath for java in windows and Linux, java -classpath example in different scenario and use of java -classpath or java -cp. If you have just started learning Java, then I also suggest you follow a good book to learn Java e.g.Core Java Volume 1 9th Edition by Cay S. Horstmann. That will help you to grasp most of the fundamental concept in Java in a systematic manner.
 
@@ -85,7 +85,7 @@ Here is the reason of these Java classpath errors:
 ClassNotFoundException is an Exception and will be thrown when Java program dynamically tries to load a Java class at Runtime and don’t find the corresponding class file on the classpath. Two keywords here “dynamically” and “runtime”. A classic example of these errors is whey you try to load JDBC driver by using Class.forname(“driver name”) and greeted with java.lang.ClassNotFoundException: com.mysql.jdbc.Driver. So this error essentially comes when Java try to load a class using forName() or by loadClass() method of ClassLoader. The key thing to note is that presence of that class on Java classpath is not checked on compile time. So even if those classes are not present on Java classpath your program will compile successfully and only fail when you try to run.
 
 
-On the other hand, NoClassDefFoundError is an Error and more critical than ClassNotFoundException which is an exception and recoverable. NoClassDefFoundError comes when a particular class was present in Java Classpath during compile time but not available during run-time. A classic example of this error is using log4j.jar for logging purpose and forgot to include log4j.jar on the classpath in java during run-time. to read more about logging in Java see. The keyword here is,  the class was present at compile time but not available at run-time.  This is normally occurring due to any method invocation on a particular class which is part of the library and not available on the classpath in Java. This is also asked as common interview questions as  
+On the other hand, NoClassDefFoundError is an Error and more critical than ClassNotFoundException which is an exception and recoverable. NoClassDefFoundError comes when a particular class was present in Java Classpath during compile time but not available during run-time. A classic example of this error is using log4j.jar for logging purpose and forgot to include log4j.jar on the classpath in java during run-time. to read more about logging in Java see. The keyword here is,  the class was present at compile time but not available at run-time.  This is normally occurring due to any method invocation on a particular class which is part of the library and not available on the classpath in Java. This is also asked as common interview questions as
 
 “What is difference between NoClassDefFoundError and ClassNotFoundException Exception in Java”   or
 “When do you see NoClassDefFoundError and ClassNotFoundException Exception in Java”. By the way, NoClassDefFoundError can also come due to various other reason like static initializer failure or class not visible to Classloaders in the J2EE environment. Read 3 ways to resolve NoClassDefFoundError in Java for complete details.
@@ -120,14 +120,10 @@ Class-Path: lib/tibco.jar lib/log4j.jar
 I hope you find this Java Classpath tutorial useful, please let me know if you have any doubt or any question related to "How to set the classpath for java" and I would be happy to answer :) keep learning. Your suggestions and comments are always welcome.  If you like to read UNIX command tips you may find  10 tips for using find command in Linux,  10 tips to increase speed on Unix command and  10 basic networking Commands in Unix useful. That's all on What is Classpath in Java, How Classpath works in Java, How to set Classpath in Java on Windows and Linux and how to deal with Classpath issues in Java.
 
 Other Java tutorials you may like:
-Complete Java Masterclass
-Java Fundamentals: The Java Language
-Java In-Depth: Become a Complete Java Engineer!
 How does HashMap work in Java? (https://javarevisited.blogspot.com/2011/02/how-hashmap-works-in-java.html)
 How does Garbage Collection work in Java? (https://javarevisited.blogspot.com/2011/04/garbage-collection-in-java.html)
 Why is String immutable in Java? (https://javarevisited.blogspot.com/2010/10/why-string-is-immutable-or-final-in-java.html)
 Why wait and notify method must be called in synchronized context? (https://javarevisited.blogspot.com/2011/05/wait-notify-and-notifyall-in-java.html)
-10 practical tips on Java debugging with eclipse (https://javarevisited.blogspot.com/2011/07/java-debugging-tutorial-example-tips.html)
 How does Synchronization work in Java? (https://javarevisited.blogspot.com/2011/04/synchronization-in-java-synchronized.html)
 
 ** External references
