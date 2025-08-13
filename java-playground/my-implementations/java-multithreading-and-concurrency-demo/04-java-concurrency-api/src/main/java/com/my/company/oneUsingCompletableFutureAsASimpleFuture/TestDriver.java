@@ -1,4 +1,4 @@
-package com.my.company.usingCompletableFutureAsASimpleFuture;
+package com.my.company.oneUsingCompletableFutureAsASimpleFuture;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;

@@ -1,7 +1,6 @@
-package com.my.company.usingCompletableFutureAsASimpleFuture;
+package com.my.company.oneUsingCompletableFutureAsASimpleFuture;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
@@ -28,8 +27,8 @@ public class UsingCompletableFutureAsASimpleFuture {
 	    });
 	
 	    return completableFuture;
-	}	
-	
+	}
+
 	/**
 		First of all, the CompletableFuture class implements the Future interface. So, we can use it as a Future implementation, but with additional completion logic.	
 
@@ -45,7 +44,6 @@ public class UsingCompletableFutureAsASimpleFuture {
 
 	    If we already know the result of a computation, we can use the static completedFuture method with an argument that represents a result of this computation. 
 	    Consequently, the get method of the Future will never block, immediately returning this result instead:
-
 	 *
 	 */
 	public CompletableFuture<String> returnCompletedFuture() throws InterruptedException {
