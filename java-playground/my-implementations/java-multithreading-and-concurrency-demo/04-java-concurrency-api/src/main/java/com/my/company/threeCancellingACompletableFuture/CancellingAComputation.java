@@ -1,14 +1,11 @@
-package com.my.company.handlingErrors;
+package com.my.company.threeCancellingACompletableFuture;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 public class CancellingAComputation {
-	public static void main(String[] args) {
 
-		// We can cancel a computation via the cancel(boolean mayInterruptIfRunning) method from the Future interface. 
-		// For CompletableFuture, the boolean parameter is not used because the implementation does not employ interrupts to do the cancellation. 
-        // Instead, cancel() is equivalent to completeExceptionally(new CancellationException()).
+	public static void main(String[] args) {
 
 	    CompletableFuture<String> cf = CompletableFuture.completedFuture("message").thenApplyAsync(String::toUpperCase,
 	            CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS));
@@ -19,4 +16,5 @@ public class CancellingAComputation {
 	    System.out.println(cf.isCompletedExceptionally()); // true
 	    System.out.println(cf2.join()); // cancelled message
 	}
+
 }

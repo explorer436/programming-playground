@@ -1,8 +1,7 @@
-package com.my.company.oneUsingCompletableFutureAsASimpleFuture;
+package com.my.company.oneUsingCompletableFutureWithPredefinedResults;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 
 public class TestDriver {
 
@@ -15,15 +14,7 @@ public class TestDriver {
 
         System.out.println("starting main with thread.. " + Thread.currentThread().getName());
 
-        UsingCompletableFutureAsASimpleFuture classUnderTest = new UsingCompletableFutureAsASimpleFuture();
-
-        // Call the calculateHelloAsync() method, receive the Future instance.
-        Future<String> completableFuture = classUnderTest.calculateHelloAsync();
-
-        // Call the get method on the future instance when we're ready to block for the result.
-        // The CompletableFuture.get() method is blocking. It waits until the Future is completed and returns the result after its completion.
-        String result = completableFuture.get();
-        System.out.println("result: " + result); // Hello
+        UsingCompletableFutureWithAPredefinedResult classUnderTest = new UsingCompletableFutureWithAPredefinedResult();
 
         CompletableFuture<String> completedFuture = classUnderTest.returnCompletedFuture();
         System.out.println(completedFuture.getNow(null)); // Already completed!

@@ -7,6 +7,7 @@ plugins {
 }
 
 dependencies {
+    implementation(libs.org.apache.commons.commons.lang3)
 }
 
 description = "04-java-concurrency-api"
