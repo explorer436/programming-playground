@@ -16,7 +16,7 @@ public class ThrowingErrors {
         CompletableFuture<Object> completableFuture04;
         try {
             completableFuture04 = classUnderTest.calculateNameAsync_throwException(null);
-            completableFuture04.get(); // java.lang.RuntimeException
+            completableFuture04.get(); // java.util.concurrent.ExecutionException
         } catch (Exception e) {
             System.out.println("exception occurred. Here are the details:");
             e.printStackTrace();

@@ -1,4 +1,4 @@
-package com.my.company.runningMultipleFuturesInParallel;
+package com.my.company.nineRunningMultipleFuturesInParallel;
 
 import java.util.Arrays;
 import java.util.List;
