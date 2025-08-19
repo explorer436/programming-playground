@@ -84,8 +84,7 @@ public class RunningMultipleFuturesInParallel {
 		
 		System.out.println("Number of Web Pages having CompletableFuture keyword - " + countFuture.get());
 	}
-	
-	
+
 	public CompletableFuture<String> calculateHelloAsync() throws InterruptedException {
 		CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> "Hello");
 	    return completableFuture;

@@ -1,9 +1,12 @@
 package com.my.company.sixRunAsync;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 public class WrappingTasksInCompletableFutureUsingRunAsync {
 
 	public Future<Void> getCompletableFuture_WithAnonymousClass_usingRunAsync() {
@@ -16,7 +19,7 @@ public class WrappingTasksInCompletableFutureUsingRunAsync {
 		        } catch (InterruptedException e) {
 		            throw new IllegalStateException(e);
 		        }
-		        System.out.println("I'll run in a separate thread than the main thread.");
+                log.info("I'll run in a separate thread than the main thread.");
 		    }
 		});
 		return future;
@@ -31,7 +34,7 @@ public class WrappingTasksInCompletableFutureUsingRunAsync {
 		    } catch (InterruptedException e) {
 		        throw new IllegalStateException(e);
 		    }
-		    System.out.println("I'll run in a separate thread than the main thread.");
+            log.info("I'll run in a separate thread than the main thread.");
 		});
 		return future;
 	}

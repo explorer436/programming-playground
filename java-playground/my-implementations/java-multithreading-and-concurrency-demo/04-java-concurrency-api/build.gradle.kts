@@ -4,10 +4,12 @@
 
 plugins {
     id("buildlogic.java-conventions")
+    id("io.freefair.lombok") version "8.14"
 }
 
 dependencies {
     implementation(libs.org.apache.commons.commons.lang3)
+    implementation(libs.org.slf4j.slf4j.simple)
 }
 
 description = "04-java-concurrency-api"
