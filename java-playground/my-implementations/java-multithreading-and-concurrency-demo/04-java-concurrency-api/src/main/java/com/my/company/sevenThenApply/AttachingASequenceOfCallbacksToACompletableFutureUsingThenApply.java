@@ -6,29 +6,19 @@ import java.util.function.Function;
 
 public class AttachingASequenceOfCallbacksToACompletableFutureUsingThenApply {
 
-	public CompletableFuture<String> calculateHelloAsync() throws InterruptedException {
-		return CompletableFuture.supplyAsync(() -> "Hello");
-	}	
-
-	public CompletableFuture<String> calculateBeautifulAsync() throws InterruptedException {
-		return CompletableFuture.supplyAsync(() -> "Beautiful");
-	}	
-
-	public CompletableFuture<String> calculateWorldAsync() throws InterruptedException {
-		return CompletableFuture.supplyAsync(() -> "World");
-	}
+    public CompletableFuture<String> calculateHelloAsync() throws InterruptedException {
+        return CompletableFuture.supplyAsync(() -> "Hello");
+    }
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         AttachingASequenceOfCallbacksToACompletableFutureUsingThenApply classUnderTest = new AttachingASequenceOfCallbacksToACompletableFutureUsingThenApply();
 
 
-        CompletableFuture<String> welcomeText = classUnderTest.calculateHelloAsync().thenApply(appendStringWith(" World")).thenApply(appendStringWith(", !!!!!!!!!!!"));
+        CompletableFuture<String> welcomeText = classUnderTest.calculateHelloAsync().thenApply(appendXToString(" Beautiful")).thenApply(appendXToString(" World")).thenApply(appendXToString(", !!!!!!!!!!!"));
         System.out.println(welcomeText.get()); // Hello World, !!!!!!!!!!!
     }
 
-    private static Function<String, String> appendStringWith(String x) {
-        return wishes -> {
-            return wishes + x;
-        };
+    private static Function<String, String> appendXToString(String x) {
+        return wishes -> wishes + x;
     }
 }

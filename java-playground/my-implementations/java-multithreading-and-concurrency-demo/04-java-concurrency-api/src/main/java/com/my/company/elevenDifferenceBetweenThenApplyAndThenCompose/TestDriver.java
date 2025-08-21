@@ -1,4 +1,4 @@
-package com.my.company.differenceBetweenThenApplyAndThenCompose;
+package com.my.company.elevenDifferenceBetweenThenApplyAndThenCompose;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;

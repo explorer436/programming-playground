@@ -1,4 +1,4 @@
-package com.my.company.nineRunningMultipleFuturesInParallel;
+package com.my.company.tenRunningMultipleFuturesInParallel;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -6,12 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  *
-    CompletableFuture.anyOf() as the name suggests, returns a new CompletableFuture which is completed when any of the given CompletableFutures complete, with the same result.
-
-    In the example below, the anyOfFuture is completed when any of the three CompletableFutures complete. Since future2 has the least amount of sleep time, it will complete first, and the final result will be - Result of Future 2.
-
-    CompletableFuture.anyOf() takes a var-args of Futures and returns CompletableFuture<Object>. 
-    The problem with CompletableFuture.anyOf() is that if you have CompletableFutures that return results of different types, then you won’t know the type of your final CompletableFuture.
+    In the example below, the anyOfFuture is completed when any of the three CompletableFutures complete.
+    Since future2 has the least amount of sleep time, it will complete first, and the final result will be - Result of Future 2.
  *
  */
 public class CompletableFutureAnyOf {
