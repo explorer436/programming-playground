@@ -9,4 +9,4 @@ plugins {
 dependencies {
 }
 
-description = "06-java-thread-synchronization"
+description = "04-java-thread-synchronization"

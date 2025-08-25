@@ -12,4 +12,4 @@ dependencies {
     implementation(libs.org.slf4j.slf4j.simple)
 }
 
-description = "04-java-concurrency-api"
+description = "03-java-concurrency-api"
