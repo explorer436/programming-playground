@@ -6,4 +6,4 @@ plugins {
     id("buildlogic.java-conventions")
 }
 
-description = "05-daemon-threads"
+description = "06-daemon-threads"

@@ -24,19 +24,19 @@ public class TestDriver {
         ExecutorService executorService_ThreadPool = Executors.newFixedThreadPool(5);
 
         // Create EdPresso instance
-        Callable<String> callableInstances = edPressoCallable;
+        Callable<String> callableInstance = edPressoCallable;
 
         // create a list to hold the Future objects associated with Callables
-        List<Future<String>> mylistOfFutures = new ArrayList<Future<String>>();
+        List<Future<String>> myListOfFutures = new ArrayList<Future<String>>();
 
         for (int i = 0; i < 50; i++) {
             // submit 50 Callable tasks to be executed by thread pool
-            Future<String> futures = executorService_ThreadPool.submit(callableInstances);
+            Future<String> futures = executorService_ThreadPool.submit(callableInstance);
             // add Future to the list, we can get return value using Future
-            mylistOfFutures.add(futures);
+            myListOfFutures.add(futures);
         }
 
-        for (Future<String> f : mylistOfFutures) {
+        for (Future<String> f : myListOfFutures) {
             try {
                 // because Future.get() waits for task to get completed
                 System.out.println("Hello from a thread! - date: " + new Date() + ":: Thread name is " + f.get());
@@ -63,10 +63,10 @@ public class TestDriver {
         // the exceptions are collected in the Future object.
         // We can check this by making a call to the Future.get() method.
 
-        LaunchingCallableUsingExecutorService task2 = ctx.getBean(LaunchingCallableUsingExecutorService.class);
+        /*LaunchingCallableUsingExecutorService task2 = ctx.getBean(LaunchingCallableUsingExecutorService.class);
         task2.setNumber(-5);
         Future<Integer> future2 = executorService_SingleThread.submit(task2);
-        System.out.println("future2.get() : " + future2.get());
+        System.out.println("future2.get() : " + future2.get());*/
 
         System.out.println("<<< main");
     }
