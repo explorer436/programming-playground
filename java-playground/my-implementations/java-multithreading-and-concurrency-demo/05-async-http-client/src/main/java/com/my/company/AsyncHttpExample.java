@@ -46,7 +46,6 @@ public class AsyncHttpExample {
                     } else {
                         System.out.println("Request failed or timed out");
                     }
-
                 })).join();
     }
 }
