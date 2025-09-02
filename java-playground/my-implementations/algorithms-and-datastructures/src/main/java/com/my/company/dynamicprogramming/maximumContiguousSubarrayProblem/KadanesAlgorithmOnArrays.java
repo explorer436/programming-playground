@@ -1,34 +1,36 @@
-package com.my.company.dynamicprogramming.maximumSubarrayProblem;
+package com.my.company.dynamicprogramming.maximumContiguousSubarrayProblem;
 
 import org.apache.commons.lang3.tuple.ImmutableTriple;
 
-public class Kadanes {
+public class KadanesAlgorithmOnArrays {
     public static void main(String[] args) {
         int[] A = new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4};
 
         ImmutableTriple result = findMaxSubarray(A);
-        System.out.println(result);
+        System.out.println("maxSubSum:" + result.left);
+        System.out.println("left index:" + result.middle);
+        System.out.println("right index:" + result.right);
     }
 
-    public static ImmutableTriple findMaxSubarray(int[] nums) {
-        if (nums == null || nums.length == 0) {
+    public static ImmutableTriple findMaxSubarray(int[] A) {
+        if (A == null || A.length == 0) {
             return new ImmutableTriple(0, -1, 0); // Returns {sum, start_index, end_index}
         }
 
-        int globalMaxSum = nums[0];
-        int currentMaxSum = nums[0];
+        int globalMaxSum = A[0];
+        int currentMaxSum = A[0];
         int globalStart = 0;
         int globalEnd = 0;
         int currentStart = 0;
 
-        for (int i = 1; i < nums.length; i++) {
+        for (int i = 1; i < A.length; i++) {
             // Option 1: Start a new subarray with the current element
             // Option 2: Extend the previous subarray with the current element
-            if (nums[i] > currentMaxSum + nums[i]) {
-                currentMaxSum = nums[i];
+            if (A[i] > currentMaxSum + A[i]) {
+                currentMaxSum = A[i];
                 currentStart = i;
             } else {
-                currentMaxSum = currentMaxSum + nums[i];
+                currentMaxSum = currentMaxSum + A[i];
             }
 
             // Update the overall maximum sum and its indices

@@ -1,8 +1,8 @@
-package com.my.company.dynamicprogramming.maximumSubarrayProblem;
+package com.my.company.dynamicprogramming.maximumContiguousSubarrayProblem;
 
 public class BruteForce1 {
     public static void main(String[] args) {
-        int[] A = new int[] {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        int[] A = new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4};
 
         int maxSum = 0;
         int beginIndex = 0;
@@ -12,7 +12,7 @@ public class BruteForce1 {
                 int tempSum = 0;
                 for (int k = i; k <= j; k++) {
                     tempSum = tempSum + A[k];
-                    if  (tempSum > maxSum) {
+                    if (tempSum > maxSum) {
                         maxSum = tempSum;
                         beginIndex = i;
                         endIndex = j;

@@ -1,4 +1,4 @@
-package com.my.company.dynamicprogramming.maximumSubarrayProblem;
+package com.my.company.dynamicprogramming.maximumContiguousSubarrayProblem;
 
 public class BruteForce2 {
     public static void main(String[] args) {
