@@ -70,8 +70,4 @@ public class DivideAndConquer {
         return new ImmutableTriple<>(maxLeft, maxRight, leftSum + rightSum);
     }
 
-    static int max(int a, int b, int c) {
-        return Math.max(Math.max(a, b), c);
-    }
-
 }
