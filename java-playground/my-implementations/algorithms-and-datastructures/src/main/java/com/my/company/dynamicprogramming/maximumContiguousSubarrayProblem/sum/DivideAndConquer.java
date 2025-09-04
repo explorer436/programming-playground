@@ -1,4 +1,4 @@
-package com.my.company.dynamicprogramming.maximumContiguousSubarrayProblem;
+package com.my.company.dynamicprogramming.maximumContiguousSubarrayProblem.sum;
 
 import org.apache.commons.lang3.tuple.ImmutableTriple;
 

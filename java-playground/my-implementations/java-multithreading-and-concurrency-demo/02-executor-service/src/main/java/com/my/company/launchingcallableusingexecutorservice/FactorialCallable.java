@@ -9,14 +9,14 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 @Service
-public class LaunchingCallableUsingExecutorService implements Callable<Integer> {
+public class FactorialCallable implements Callable<Integer> {
 
     int number;
 
     // factorial method
     @Override
     public Integer call() throws Exception {
-    	System.out.println(">>> LaunchingCallableUsingExecutorService.call()");
+    	// System.out.println(">>> FactorialCallable.call()");
     	
     	if(number < 0) {
             throw new Exception("Number should be positive");
@@ -29,7 +29,7 @@ public class LaunchingCallableUsingExecutorService implements Callable<Integer> 
         }
 
         
-        System.out.println("<<< LaunchingCallableUsingExecutorService.call()");
+        // System.out.println("<<< FactorialCallable.call()");
         return fact;
     }
 
@@ -48,10 +48,10 @@ public class LaunchingCallableUsingExecutorService implements Callable<Integer> 
 // Exception in thread "main" java.util.concurrent.ExecutionException: java.lang.Exception: Number should be positive
 // 	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
 // 	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
-// 	at com.example.launchingcallableusingexecutorservice.LaunchingCallableUsingExecutorService.main(LaunchingCallableUsingExecutorService.java:50)
+// 	at com.example.launchingcallableusingexecutorservice.FactorialCallable.main(FactorialCallable.java:50)
 // Caused by: java.lang.Exception: Number should be positive
-// 	at com.example.launchingcallableusingexecutorservice.LaunchingCallableUsingExecutorService.call(LaunchingCallableUsingExecutorService.java:24)
-// 	at com.example.launchingcallableusingexecutorservice.LaunchingCallableUsingExecutorService.call(LaunchingCallableUsingExecutorService.java:1)
+// 	at com.example.launchingcallableusingexecutorservice.FactorialCallable.call(FactorialCallable.java:24)
+// 	at com.example.launchingcallableusingexecutorservice.FactorialCallable.call(FactorialCallable.java:1)
 // 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
 // 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 // 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)

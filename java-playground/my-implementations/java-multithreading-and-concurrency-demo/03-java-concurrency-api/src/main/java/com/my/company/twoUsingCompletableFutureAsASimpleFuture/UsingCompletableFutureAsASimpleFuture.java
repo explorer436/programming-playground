@@ -7,7 +7,7 @@ import java.util.concurrent.Future;
 public class UsingCompletableFutureAsASimpleFuture {
 
 
-    public Future<String> calculateHelloAsync() throws InterruptedException {
+    public Future<String> calculateHelloAsync() {
 
         CompletableFuture<String> completableFuture = new CompletableFuture<>();
 
