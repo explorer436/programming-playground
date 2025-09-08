@@ -298,6 +298,8 @@ class IntegerSinglyLinkedListTest {
         list.prepend(3);
         list.prepend(4);
 
+        assertEquals(list.findLength(), 4);
+
         int[] actual = list.traverseForward();
         int[] expected = new int[]{4,3,2,1};
         assertTrue(EqualsBuilder.reflectionEquals(expected,actual));

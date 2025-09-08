@@ -2,82 +2,82 @@ package com.my.company.abstractdatatypes.queues;
 
 public class ImplementQueueUsingLinkedList<Item> {
 
-  private class Node {
-    Item item;
-    Node next;
-  }
-
-  private Node currentFirstNodeInTheQueue; // Sometimes, this is named head.
-  private Node currentLastNodeInTheQueue;
-  private int n;
-
-  public boolean isEmpty() {
-    // alternatively, check if first == null
-    return (n == 0);
-  }
-
-  public int size() {
-    return n;
-  }
-
-  public void enqueue(Item item) {
-    // When a new person joins a queue, the person that is currently last in the queue now becomes
-    // last but one.
-    Node oldLast = currentLastNodeInTheQueue;
-
-    currentLastNodeInTheQueue = new Node();
-    currentLastNodeInTheQueue.item = item;
-    currentLastNodeInTheQueue.next = null;
-
-    if (isEmpty()) {
-      currentFirstNodeInTheQueue = currentLastNodeInTheQueue;
-    } else {
-      oldLast.next = currentLastNodeInTheQueue;
+    private class Node {
+        Item item;
+        Node next;
     }
 
-    // This is because we have to keep track of size ourselves.
-    n = n + 1;
-  }
+    private Node firstNodeInTheQueue; // Sometimes, this is named head.
+    private Node lastNodeInTheQueue;
+    private int n;
 
-  public Item dequeue() {
-    Item item = currentFirstNodeInTheQueue.item;
-
-    currentFirstNodeInTheQueue = currentFirstNodeInTheQueue.next;
-
-    if (isEmpty()) {
-      currentLastNodeInTheQueue = null;
+    public boolean isEmpty() {
+        // alternatively, check if first == null
+        return (n == 0);
     }
 
-    // This is because we have to keep track of size ourselves.
-    n = n - 1;
-
-    return item;
-  }
-
-  // Test client for QueueImplementationUsingLinkedList for item type "String"
-  public static void main(String[] args) {
-    // Create a stack and push/pop strings as directed on StdIn.
-    ImplementQueueUsingLinkedList<String> q = new ImplementQueueUsingLinkedList<String>();
-
-    String[] inputStrList = new String[] {"to", "be", "or", "not", "to", "be"};
-
-    System.out.println("number of items on the queue at the beginning : " + q.size());
-
-    for (String item : inputStrList) {
-      if (!item.equals("-")) {
-        q.enqueue(item);
-      }
+    public int size() {
+        return n;
     }
 
-    System.out.println("number of items on the queue with all items in it : " + q.size());
+    public void enqueue(Item item) {
+        // When a new person joins a queue, the person that is currently last in the queue now becomes
+        // last but one.
+        Node oldLast = lastNodeInTheQueue;
 
-    for (int i = q.size(); i > 0; i--) {
-      System.out.println("string popped from the stack : " + q.dequeue());
+        lastNodeInTheQueue = new Node();
+        lastNodeInTheQueue.item = item;
+        lastNodeInTheQueue.next = null;
+
+        if (isEmpty()) {
+            firstNodeInTheQueue = lastNodeInTheQueue;
+        } else {
+            oldLast.next = lastNodeInTheQueue;
+        }
+
+        // This is because we have to keep track of size ourselves.
+        n = n + 1;
     }
 
-    System.out.println(
-        "number of items on the queue after popping all items from it : " + q.size());
-  }
+    public Item dequeue() {
+        Item item = firstNodeInTheQueue.item;
+
+        firstNodeInTheQueue = firstNodeInTheQueue.next;
+
+        if (isEmpty()) {
+            lastNodeInTheQueue = null;
+        }
+
+        // This is because we have to keep track of size ourselves.
+        n = n - 1;
+
+        return item;
+    }
+
+    // Test client for QueueImplementationUsingLinkedList for item type "String"
+    public static void main(String[] args) {
+        // Create a stack and push/pop strings as directed on StdIn.
+        ImplementQueueUsingLinkedList<String> q = new ImplementQueueUsingLinkedList<String>();
+
+        String[] inputStrList = new String[]{"to", "be", "or", "not", "to", "be"};
+
+        System.out.println("number of items on the queue at the beginning : " + q.size());
+
+        for (String item : inputStrList) {
+            if (!item.equals("-")) {
+                q.enqueue(item);
+            }
+        }
+
+        System.out.println("number of items on the queue with all items in it : " + q.size());
+
+        for (int i = q.size(); i > 0; i--) {
+            System.out.println("string popped from the stack : " + q.dequeue());
+        }
+
+        System.out.println(
+                "number of items on the queue after popping all items from it : " + q.size());
+    }
 
   /*
    *

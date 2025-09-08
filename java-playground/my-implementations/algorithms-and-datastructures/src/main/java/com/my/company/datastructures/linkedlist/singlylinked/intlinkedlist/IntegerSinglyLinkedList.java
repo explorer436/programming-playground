@@ -1,8 +1,17 @@
 package com.my.company.datastructures.linkedlist.singlylinked.intlinkedlist;
 
+import com.my.company.datastructures.linkedlist.doublylinked.employeelist.Employee;
+
+import java.util.Iterator;
+
 public class IntegerSinglyLinkedList {
 
     protected Node head;
+
+    public Node getHead() {
+        return head;
+    }
+
     protected int size;
 
     public void prepend(int i) {
@@ -130,6 +139,17 @@ public class IntegerSinglyLinkedList {
         return size;
     }
 
+    public int findLength() {
+        int count = 0;
+        Node currentNode = head;
+
+        while (currentNode != null) {
+            count++;
+            currentNode = currentNode.getNext();
+        }
+        return count;
+    }
+
     public int getValueAtIndex(int index) {
         if (isEmpty()) {
             return 0;
@@ -202,5 +222,17 @@ public class IntegerSinglyLinkedList {
         node.setNext(null);
 
         return newHead;
+    }
+
+    public void printList() {
+
+        Node currentNode = head;
+
+        System.out.println();
+        while (currentNode != null) {
+            System.out.println(currentNode.getValue());
+            currentNode = currentNode.getNext();
+        }
+        System.out.println();
     }
 }
