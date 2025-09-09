@@ -1,8 +1,7 @@
-package com.my.company.datastructures.linkedlist;
+package com.my.company.datastructures.linkedlist.singlylinked;
 
 import com.my.company.datastructures.linkedlist.singlylinked.intlinkedlist.IntegerSinglyLinkedList;
 import com.my.company.datastructures.linkedlist.singlylinked.intlinkedlist.Node;
-import org.apache.commons.lang3.tuple.ImmutablePair;
 
 public class RemoveNthNodeFromTheEndOfALinkedList {
 

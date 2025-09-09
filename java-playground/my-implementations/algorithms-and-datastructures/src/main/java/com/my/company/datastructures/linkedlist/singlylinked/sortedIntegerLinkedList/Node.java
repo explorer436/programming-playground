@@ -2,23 +2,23 @@ package com.my.company.datastructures.linkedlist.singlylinked.sortedIntegerLinke
 
 public class Node {
 
-    private int number;
+    private int value;
     private Node next;
 
-    public Node(int number) {
-        this.number = number;
+    public Node(int value) {
+        this.value = value;
     }
 
     public Node getNext() {
         return next;
     }
 
-    public int getNumber() {
-        return number;
+    public int getValue() {
+        return value;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setValue(int number) {
+        this.value = number;
     }
 
     public void setNext(Node next) {

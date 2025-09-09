@@ -11,31 +11,31 @@ public class SortedIntegerLinkedListTests {
         SortedIntegerLinkedList list = new SortedIntegerLinkedList();
 
         list.insertSorted(3);
-        assertEquals(list.head.getNumber(), 3);
+        assertEquals(list.head.getValue(), 3);
         assertEquals(list.head.getNext(), null);
 
         list.insertSorted(6);
-        assertEquals(list.head.getNumber(), 3);
+        assertEquals(list.head.getValue(), 3);
         Node nextNode = list.head.getNext();
-        assertEquals(nextNode.getNumber(), 6);
+        assertEquals(nextNode.getValue(), 6);
         assertEquals(nextNode.getNext(), null);
 
         list.insertSorted(9);
-        assertEquals(list.head.getNumber(), 3);
+        assertEquals(list.head.getValue(), 3);
         nextNode = list.head.getNext();
-        assertEquals(nextNode.getNumber(), 6);
+        assertEquals(nextNode.getValue(), 6);
         nextNode = nextNode.getNext();
-        assertEquals(nextNode.getNumber(), 9);
+        assertEquals(nextNode.getValue(), 9);
         assertEquals(nextNode.getNext(), null);
 
         list.insertSorted(7);
-        assertEquals(list.head.getNumber(), 3);
+        assertEquals(list.head.getValue(), 3);
         nextNode = list.head.getNext();
-        assertEquals(nextNode.getNumber(), 6);
+        assertEquals(nextNode.getValue(), 6);
         nextNode = nextNode.getNext();
-        assertEquals(nextNode.getNumber(), 7);
+        assertEquals(nextNode.getValue(), 7);
         nextNode = nextNode.getNext();
-        assertEquals(nextNode.getNumber(), 9);
+        assertEquals(nextNode.getValue(), 9);
         assertEquals(nextNode.getNext(), null);
     }
 }

@@ -24,18 +24,22 @@ public class FindTheMiddleNodeOfALinkedList {
         System.out.println("data at middleIndex: " + abc.getRight().getValue());
     }
 
-    private static ImmutablePair<Integer, Node> findMiddleNode(Node head) {
-        Node fast = head;
-        Node slow = head;
+    public static ImmutablePair<Integer, Node> findMiddleNode(Node head) {
+        Node fastPointer = head;
+        Node slowPointer = head;
         int slowIndex = 0;
 
-        while (fast != null && fast.getNext() != null) {
+        // If we do not use fastPointer.getNext().getNext(),
+        // in cases where the list has even number of elements,
+        // the method will return the left-most element in the right half of the list - which is not what we expect.
+        // We want the right-most element in the left half of the list.
+        while (fastPointer != null && fastPointer.getNext().getNext() != null) {
             slowIndex++;
-            slow = slow.getNext();
-            fast =  fast.getNext().getNext();
+            slowPointer = slowPointer.getNext();
+            fastPointer =  fastPointer.getNext().getNext();
         }
 
-        return new ImmutablePair<>(slowIndex, slow);
+        return new ImmutablePair<>(slowIndex, slowPointer);
     }
 
 }

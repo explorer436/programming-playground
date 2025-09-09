@@ -10,17 +10,17 @@ public class SortedIntegerLinkedList {
         if (head == null) {
             Node node = new Node(i);
             head = node;
-        } else if (head.getNumber() >= i) {
+        } else if (head.getValue() >= i) {
             Node node = new Node(i);
             node.setNext(head);
             head = node;
         } else {
 
-            // head.getNumber() is less than i.
+            // head.getValue() is less than i.
             Node next = head.getNext();
             Node previous = head;
 
-            while (next != null && next.getNumber() < i) {
+            while (next != null && next.getValue() < i) {
                 previous = next;
                 next = next.getNext();
             }
