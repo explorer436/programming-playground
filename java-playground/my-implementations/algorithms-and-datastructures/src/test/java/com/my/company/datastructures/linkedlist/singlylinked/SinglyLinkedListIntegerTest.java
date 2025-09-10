@@ -1,15 +1,15 @@
-package com.my.company.datastructures.linkedlist.singlylinked.intlinkedlist;
+package com.my.company.datastructures.linkedlist.singlylinked;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class IntegerSinglyLinkedListTest {
+class SinglyLinkedListIntegerTest {
     @Test
     public void test_prepend_and_remove_from_front() {
 
-        IntegerSinglyLinkedList list = new IntegerSinglyLinkedList();
+        SinglyLinkedList_Integer list = new SinglyLinkedList_Integer();
 
         list.prepend(1);
         assertEquals(list.size, 1);
@@ -19,7 +19,7 @@ class IntegerSinglyLinkedListTest {
         list.prepend(2);
         assertEquals(list.size, 2);
         assertEquals(list.head.getValue(), 2);
-        com.my.company.datastructures.linkedlist.singlylinked.intlinkedlist.Node nextNode = list.head.getNext();
+        Node_Integer nextNode = list.head.getNext();
         assertEquals(nextNode.getValue(), 1);
         assertEquals(nextNode.getNext(), null);
 
@@ -71,7 +71,7 @@ class IntegerSinglyLinkedListTest {
     @Test
     public void test_append_and_remove_from_last() {
 
-        IntegerSinglyLinkedList list = new IntegerSinglyLinkedList();
+        SinglyLinkedList_Integer list = new SinglyLinkedList_Integer();
 
         list.append(1);
         assertEquals(list.size, 1);
@@ -81,7 +81,7 @@ class IntegerSinglyLinkedListTest {
         list.append(2);
         assertEquals(list.size, 2);
         assertEquals(list.head.getValue(), 1);
-        com.my.company.datastructures.linkedlist.singlylinked.intlinkedlist.Node nextNode = list.head.getNext();
+        Node_Integer nextNode = list.head.getNext();
         assertEquals(nextNode.getValue(), 2);
         assertEquals(nextNode.getNext(), null);
 
@@ -133,7 +133,7 @@ class IntegerSinglyLinkedListTest {
     @Test
     public void test_reverse_iterative() {
 
-        IntegerSinglyLinkedList list = new IntegerSinglyLinkedList();
+        SinglyLinkedList_Integer list = new SinglyLinkedList_Integer();
 
         list.prepend(1);
         list.prepend(2);
@@ -142,7 +142,7 @@ class IntegerSinglyLinkedListTest {
 
         assertEquals(list.size, 4);
         assertEquals(list.head.getValue(), 4);
-        com.my.company.datastructures.linkedlist.singlylinked.intlinkedlist.Node nextNode = list.head.getNext();
+        Node_Integer nextNode = list.head.getNext();
         assertEquals(nextNode.getValue(), 3);
         nextNode = nextNode.getNext();
         assertEquals(nextNode.getValue(), 2);
@@ -150,7 +150,7 @@ class IntegerSinglyLinkedListTest {
         assertEquals(nextNode.getValue(), 1);
         assertEquals(nextNode.getNext(), null);
 
-        com.my.company.datastructures.linkedlist.singlylinked.intlinkedlist.Node headAfterReversal = list.reverse_iterative(list.head);
+        Node_Integer headAfterReversal = list.reverse_iterative(list.head);
 
         assertEquals(list.size, 4);
         assertEquals(headAfterReversal.getValue(), 1);
@@ -166,7 +166,7 @@ class IntegerSinglyLinkedListTest {
     @Test
     public void test_reverse_recursive() {
 
-        IntegerSinglyLinkedList list = new IntegerSinglyLinkedList();
+        SinglyLinkedList_Integer list = new SinglyLinkedList_Integer();
 
         list.prepend(1);
         list.prepend(2);
@@ -175,7 +175,7 @@ class IntegerSinglyLinkedListTest {
 
         assertEquals(list.size, 4);
         assertEquals(list.head.getValue(), 4);
-        com.my.company.datastructures.linkedlist.singlylinked.intlinkedlist.Node nextNode = list.head.getNext();
+        Node_Integer nextNode = list.head.getNext();
         assertEquals(nextNode.getValue(), 3);
         nextNode = nextNode.getNext();
         assertEquals(nextNode.getValue(), 2);
@@ -183,7 +183,7 @@ class IntegerSinglyLinkedListTest {
         assertEquals(nextNode.getValue(), 1);
         assertEquals(nextNode.getNext(), null);
 
-        Node headAfterReversal = list.reverse_recursive(list.head);
+        Node_Integer headAfterReversal = list.reverse_recursive(list.head);
 
         assertEquals(list.size, 4);
         assertEquals(headAfterReversal.getValue(), 1);
@@ -198,7 +198,7 @@ class IntegerSinglyLinkedListTest {
 
     @Test
     void test_traverseForward() {
-        IntegerSinglyLinkedList list = new IntegerSinglyLinkedList();
+        SinglyLinkedList_Integer list = new SinglyLinkedList_Integer();
 
         list.prepend(1);
         list.prepend(2);
@@ -212,7 +212,7 @@ class IntegerSinglyLinkedListTest {
 
     @Test
     void test_getNodeAtIndex() {
-        IntegerSinglyLinkedList list = new IntegerSinglyLinkedList();
+        SinglyLinkedList_Integer list = new SinglyLinkedList_Integer();
 
         list.prepend(1);
 
@@ -233,7 +233,7 @@ class IntegerSinglyLinkedListTest {
 
     @Test
     void test_setNodeAtIndex() {
-        IntegerSinglyLinkedList list = new IntegerSinglyLinkedList();
+        SinglyLinkedList_Integer list = new SinglyLinkedList_Integer();
 
         list.prepend(1);
 
@@ -262,7 +262,7 @@ class IntegerSinglyLinkedListTest {
 
     @Test
     void test_removeNodeAtIndex() {
-        IntegerSinglyLinkedList list = new IntegerSinglyLinkedList();
+        SinglyLinkedList_Integer list = new SinglyLinkedList_Integer();
 
         list.prepend(1);
         list.prepend(2);
@@ -291,7 +291,7 @@ class IntegerSinglyLinkedListTest {
 
     @Test
     void test_insertNodeAtIndex() {
-        IntegerSinglyLinkedList list = new IntegerSinglyLinkedList();
+        SinglyLinkedList_Integer list = new SinglyLinkedList_Integer();
 
         list.prepend(1);
         list.prepend(2);

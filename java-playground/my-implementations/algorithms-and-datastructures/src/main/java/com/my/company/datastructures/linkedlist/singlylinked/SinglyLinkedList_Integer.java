@@ -1,28 +1,24 @@
-package com.my.company.datastructures.linkedlist.singlylinked.intlinkedlist;
+package com.my.company.datastructures.linkedlist.singlylinked;
 
-import com.my.company.datastructures.linkedlist.doublylinked.employeelist.Employee;
+public class SinglyLinkedList_Integer {
 
-import java.util.Iterator;
+    protected Node_Integer head;
 
-public class IntegerSinglyLinkedList {
-
-    protected Node head;
-
-    public Node getHead() {
+    public Node_Integer getHead() {
         return head;
     }
 
     protected int size;
 
     public void prepend(int i) {
-        Node node = new Node(i);
+        Node_Integer node = new Node_Integer(i);
         node.setNext(head);
         head = node;
         size++;
     }
 
     public void append(int i) {
-        Node node = new Node(i);
+        Node_Integer node = new Node_Integer(i);
 
         if (isEmpty()) {
             head = node;
@@ -30,7 +26,7 @@ public class IntegerSinglyLinkedList {
             return;
         }
 
-        Node current = head;
+        Node_Integer current = head;
         while (current.getNext() != null) {
             current = current.getNext();
         }
@@ -47,10 +43,10 @@ public class IntegerSinglyLinkedList {
             return;
         }
 
-        Node current = head;
+        Node_Integer current = head;
         for (int counter = 1; counter <= index; counter++) {
             if (counter == index) {
-                Node newNode = new Node(value);
+                Node_Integer newNode = new Node_Integer(value);
                 newNode.setNext(current.getNext());
 
                 current.setNext(newNode);
@@ -65,7 +61,7 @@ public class IntegerSinglyLinkedList {
     public int[] traverseForward() {
         int[] arr = new int[size];
 
-        Node current = head;
+        Node_Integer current = head;
         int counter = 0;
         while (current != null) {
             arr[counter] = current.getValue();
@@ -80,7 +76,7 @@ public class IntegerSinglyLinkedList {
         if (isEmpty()) {
             return;
         } else {
-            Node removedNode = head;
+            Node_Integer removedNode = head;
             head = head.getNext();
             size--;
             removedNode.setNext(null);
@@ -98,7 +94,7 @@ public class IntegerSinglyLinkedList {
             return;
         }
 
-        Node current = head;
+        Node_Integer current = head;
         while (current.getNext().getNext() != null) {
             current = current.getNext();
         }
@@ -120,7 +116,7 @@ public class IntegerSinglyLinkedList {
             return;
         }
 
-        Node current = head;
+        Node_Integer current = head;
         for (int counter = 1; counter <= index - 1; counter++) {
             current = current.getNext();
             if (counter == index - 1) {
@@ -141,7 +137,7 @@ public class IntegerSinglyLinkedList {
 
     public int findLength() {
         int count = 0;
-        Node currentNode = head;
+        Node_Integer currentNode = head;
 
         while (currentNode != null) {
             count++;
@@ -159,7 +155,7 @@ public class IntegerSinglyLinkedList {
             return 0;
         }
 
-        Node current = head;
+        Node_Integer current = head;
         for (int counter = 1; counter <= index; counter++) {
             if (counter == index) {
                 return current.getValue();
@@ -179,7 +175,7 @@ public class IntegerSinglyLinkedList {
             return;
         }
 
-        Node current = head;
+        Node_Integer current = head;
         for (int counter = 0; counter <= index; counter++) {
             if (counter == index) {
                 current.setValue(value);
@@ -189,14 +185,14 @@ public class IntegerSinglyLinkedList {
         }
     }
 
-    public Node reverse_iterative(Node head) {
+    public Node_Integer reverse_iterative(Node_Integer head) {
 
         // Initialize pointers for traversal.
-        Node current = head;
-        Node previous = null;
+        Node_Integer current = head;
+        Node_Integer previous = null;
 
         while (current != null) {
-            Node nextNode = current.getNext();
+            Node_Integer nextNode = current.getNext();
 
             // Reverse the current node's pointer
             current.setNext(previous);
@@ -209,14 +205,14 @@ public class IntegerSinglyLinkedList {
         return previous;
     }
 
-    public Node reverse_recursive(Node node) {
+    public Node_Integer reverse_recursive(Node_Integer node) {
 
         // The base case for recursion is an empty list or a list with a single node
         if (node == null || node.getNext() == null) {
             return node;
         }
 
-        Node newHead = reverse_recursive(node.getNext());
+        Node_Integer newHead = reverse_recursive(node.getNext());
         // Reverse the next node's pointer
         node.getNext().setNext(node);
         node.setNext(null);
@@ -226,7 +222,7 @@ public class IntegerSinglyLinkedList {
 
     public void printList() {
 
-        Node currentNode = head;
+        Node_Integer currentNode = head;
 
         System.out.println();
         while (currentNode != null) {

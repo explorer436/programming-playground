@@ -1,13 +1,10 @@
 package com.my.company.datastructures.linkedlist.singlylinked;
 
-import com.my.company.datastructures.linkedlist.singlylinked.intlinkedlist.IntegerSinglyLinkedList;
-import com.my.company.datastructures.linkedlist.singlylinked.intlinkedlist.Node;
-
 public class RemoveNthNodeFromTheEndOfALinkedList {
 
     public static void main(String args[]) {
 
-        IntegerSinglyLinkedList linkedList = new IntegerSinglyLinkedList();
+        SinglyLinkedList_Integer linkedList = new SinglyLinkedList_Integer();
         linkedList.append(0);
         linkedList.append(1);
         linkedList.append(2);
@@ -24,13 +21,13 @@ public class RemoveNthNodeFromTheEndOfALinkedList {
         linkedList.printList();
     }
 
-    private static void removeNthNodeFromTheEnd(Node head, int N) {
+    private static void removeNthNodeFromTheEnd(Node_Integer head, int N) {
         if (head == null) {
             return;
         }
 
-        Node firstPointer = head;
-        Node secondPointer = head;
+        Node_Integer firstPointer = head;
+        Node_Integer secondPointer = head;
 
         // Move the first pointer forward by N positions
         for (int i = 0; i < N; i++) {
@@ -47,7 +44,7 @@ public class RemoveNthNodeFromTheEndOfALinkedList {
         }
 
         // Remove the node at second pointer
-        Node temp = secondPointer.getNext();
+        Node_Integer temp = secondPointer.getNext();
         secondPointer.setNext(temp.getNext());
         temp.setNext(null);
     }

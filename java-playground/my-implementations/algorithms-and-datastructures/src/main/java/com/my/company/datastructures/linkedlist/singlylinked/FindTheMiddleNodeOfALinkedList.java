@@ -1,14 +1,12 @@
 package com.my.company.datastructures.linkedlist.singlylinked;
 
-import com.my.company.datastructures.linkedlist.singlylinked.intlinkedlist.IntegerSinglyLinkedList;
-import com.my.company.datastructures.linkedlist.singlylinked.intlinkedlist.Node;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 
 public class FindTheMiddleNodeOfALinkedList {
 
     public static void main(String args[]) {
 
-        IntegerSinglyLinkedList linkedList = new IntegerSinglyLinkedList();
+        SinglyLinkedList_Integer linkedList = new SinglyLinkedList_Integer();
         linkedList.append(0);
         linkedList.append(1);
         linkedList.append(2);
@@ -18,15 +16,15 @@ public class FindTheMiddleNodeOfALinkedList {
         linkedList.append(6);
         linkedList.append(7);
 
-        ImmutablePair<Integer, Node> abc = findMiddleNode(linkedList.getHead());
+        ImmutablePair<Integer, Node_Integer> abc = findMiddleNode(linkedList.getHead());
 
         System.out.println("middleIndex: " + abc.getLeft() );
         System.out.println("data at middleIndex: " + abc.getRight().getValue());
     }
 
-    public static ImmutablePair<Integer, Node> findMiddleNode(Node head) {
-        Node fastPointer = head;
-        Node slowPointer = head;
+    public static ImmutablePair<Integer, Node_Integer> findMiddleNode(Node_Integer head) {
+        Node_Integer fastPointer = head;
+        Node_Integer slowPointer = head;
         int slowIndex = 0;
 
         // If we do not use fastPointer.getNext().getNext(),

@@ -1,11 +1,10 @@
-package com.my.company.datastructures.linkedlist.singlylinked.sortedIntegerLinkedList;
+package com.my.company.datastructures.linkedlist.singlylinked.sorting;
 
 public class SortedIntegerLinkedList {
 
     protected Node head;
 
     public void insertSorted(int i) {
-        // assumption is the list is sorted.
 
         if (head == null) {
             Node node = new Node(i);
@@ -32,5 +31,17 @@ public class SortedIntegerLinkedList {
             node.setNext(next);
             previous.setNext(node);
         }
+    }
+
+    public void printList() {
+
+        Node currentNode = head;
+
+        System.out.println();
+        while (currentNode != null) {
+            System.out.println(currentNode.getValue());
+            currentNode = currentNode.getNext();
+        }
+        System.out.println();
     }
 }

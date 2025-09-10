@@ -1,13 +1,14 @@
-package com.my.company.datastructures.linkedlist.singlylinked;
+package com.my.company.datastructures.linkedlist.singlylinked.sorting;
 
-import com.my.company.datastructures.linkedlist.singlylinked.intlinkedlist.IntegerSinglyLinkedList;
-import com.my.company.datastructures.linkedlist.singlylinked.intlinkedlist.Node;
+import com.my.company.datastructures.linkedlist.singlylinked.FindTheMiddleNodeOfALinkedList;
+import com.my.company.datastructures.linkedlist.singlylinked.SinglyLinkedList_Integer;
+import com.my.company.datastructures.linkedlist.singlylinked.Node_Integer;
 
-public class SortALinkedList {
+public class MergeSortForALinkedList {
 
     public static void main(String args[]) {
 
-        IntegerSinglyLinkedList linkedList = new IntegerSinglyLinkedList();
+        SinglyLinkedList_Integer linkedList = new SinglyLinkedList_Integer();
         linkedList.append(0);
         linkedList.append(2);
         linkedList.append(4);
@@ -24,23 +25,23 @@ public class SortALinkedList {
         linkedList.printList();
     }
 
-    public static Node mergeSort(Node head) {
+    public static Node_Integer mergeSort(Node_Integer head) {
         if (head == null || head.getNext() == null) {
             return head;
         }
 
-        Node middleNode = FindTheMiddleNodeOfALinkedList.findMiddleNode(head).getRight();
-        Node nextOfMiddle = middleNode.getNext();
+        Node_Integer middleNode = FindTheMiddleNodeOfALinkedList.findMiddleNode(head).getRight();
+        Node_Integer nextOfMiddle = middleNode.getNext();
         middleNode.setNext(null);
 
-        Node left = mergeSort(head);
-        Node right = mergeSort(nextOfMiddle);
+        Node_Integer left = mergeSort(head);
+        Node_Integer right = mergeSort(nextOfMiddle);
 
-        Node sortedList = sortedMerge(left, right);
+        Node_Integer sortedList = sortedMerge(left, right);
         return sortedList;
     }
 
-    public static Node sortedMerge(Node a, Node b) {
+    public static Node_Integer sortedMerge(Node_Integer a, Node_Integer b) {
         if (a == null) {
             return b;
         }
@@ -48,7 +49,7 @@ public class SortALinkedList {
             return a;
         }
 
-        Node result;
+        Node_Integer result;
         // Should we put "a" on the left, or "b" on the left?
         if (a.getValue() <= b.getValue()) {
             result = a;

@@ -1,4 +1,4 @@
-package com.my.company.datastructures.linkedlist.singlylinked.sortedIntegerLinkedList;
+package com.my.company.datastructures.linkedlist.singlylinked.sorting;
 
 import org.junit.jupiter.api.Test;
 
@@ -37,5 +37,7 @@ public class SortedIntegerLinkedListTests {
         nextNode = nextNode.getNext();
         assertEquals(nextNode.getValue(), 9);
         assertEquals(nextNode.getNext(), null);
+
+        list.printList();
     }
 }

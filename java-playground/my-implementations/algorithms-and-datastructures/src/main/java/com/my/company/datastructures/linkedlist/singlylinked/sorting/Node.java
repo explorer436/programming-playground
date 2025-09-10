@@ -1,4 +1,4 @@
-package com.my.company.datastructures.linkedlist.singlylinked.sortedIntegerLinkedList;
+package com.my.company.datastructures.linkedlist.singlylinked.sorting;
 
 public class Node {
 
