@@ -3,117 +3,67 @@ package com.my.company.sorting.algorithms;
 public class MergeSort {
 
     public Comparable[] sort(Comparable[] intArray1) {
-        return sort_ascending(intArray1, 0, intArray1.length);
+        return mergeSort(intArray1, 0, intArray1.length);
     }
 
-    /**
-     * the partitioning part is logical partitioning - meaning, we will not be creating any new
-     * arrays. instead, we will just be using the arrays to keep track of the sub arrays.
-     */
-    public static Comparable[] sort_ascending(Comparable[] a, int beginning, int ending) {
-
-        if (ending - beginning <= 1) {
-            return a;
+    // Main mergeSort function to divide the array
+    public Comparable[] mergeSort(Comparable[] arr, int left, int right) {
+        if (left < right) {
+            int mid = left + (right - left) / 2; // Avoid overflow
+            mergeSort(arr, left, mid);        // Sort left half
+            mergeSort(arr, mid + 1, right);   // Sort right half
+            return merge(arr, left, mid, right);     // Merge sorted halves
         }
-
-        // this is the partitioning part of the recursion.
-        // the array is divided into two parts until the size of each of the parts is 1.
-        // int midIndex = (ending + beginning) / 2;
-        int midIndex = beginning + (ending - beginning) / 2;
-        // mid = (0 + 5) / 2 = 2
-
-        sort_ascending(a, 0, midIndex);
-        sort_ascending(a, midIndex, ending);
-
-        merge_ascending(a, beginning, midIndex, ending);
-
-        return a;
+        return arr;
     }
 
-    public static void merge_ascending(Comparable[] a, int beginning, int mid, int ending) {
+    // Merge function to combine two sorted subarrays
+    public Comparable[] merge(Comparable[] arr, int left, int mid, int right) {
+        int n1 = mid - left + 1;    // Size of left subarray
+        int n2 = right - mid;       // Size of right subarray
 
-        // if the last element from the left array is lower than the first element from the right array, there is no need to do anything.
+        // Create temporary arrays
+        Comparable[] L = new Comparable[n1];
+        Comparable[] R = new Comparable[n2];
 
-        if (a[mid - 1].compareTo(a[mid]) < 0) {
-            return;
+        // Copy data to temporary arrays
+        for (int i = 0; i < n1; i++) {
+            L[i] = arr[left + i];
+        }
+        for (int j = 0; j < n2; j++) {
+            R[j] = arr[mid + 1 + j];
         }
 
-        int i = beginning;
-        int j = mid;
-        int tempIndex = 0;
+        // Merge the temporary arrays back into arr
+        int i = 0;    // Index for left subarray
+        int j = 0;    // Index for right subarray
+        int k = left; // Index for merged array
 
-        Comparable[] temp = new Comparable[ending - beginning];
-
-        // drop out as soon as we finish traversing the left array or the right array.
-        while (i < mid && j < ending) {
-            temp[tempIndex++] = (a[i].compareTo(a[j]) <= 0) ? a[i++] : a[j++];
-        }
-
-        // after we drop out of the while loop, we need to handle the leftover elements that are
-        // either in left array or in the right array.
-
-        // TODO write detailed explanations for this.
-
-        // if we have elements left over in the left array, we need to copy them over.
-        // but if we have elements left over in the right array, we don't have to do anything.
-        // that is because, they are already in the correct positions.
-        System.arraycopy(a, i, a, beginning + tempIndex, mid - i);
-
-        System.arraycopy(temp, 0, a, beginning, tempIndex);
-
-    }
-
-    public static void sort_descending(Comparable[] a, int beginning, int ending) {
-        if (null != a) {
-            // breaking condition for the recursion
-            // in our case, we need to break out on one element arrays - one element arrays are already
-            // sorted.
-            if (ending - beginning < 2) {
-                return;
+        while (i < n1 && j < n2) {
+            if (L[i].compareTo(R[j]) <= 0) {
+                arr[k] = L[i];
+                i++;
             } else {
-                // this is the partitioning part of the recursion. the array is divided into two parts until
-                // the size of each of the parts is 1.
-                int mid = (ending + beginning) / 2;
-                // mid = (0 + 5) / 2 = 2
-
-                // TODO this part is confusing. why is this not mid and mid -1 or mid + 1?
-                sort_descending(a, 0, mid);
-                sort_descending(a, mid, ending);
-
-                merge_descending(a, beginning, mid, ending);
+                arr[k] = R[j];
+                j++;
             }
+            k++;
         }
-    }
 
-    public static void merge_descending(Comparable[] a, int beginning, int mid, int ending) {
-        // if the last element from the left array is lower than the first element from the right array,
-        // there is no need to do anything.
-        if (a[mid - 1].compareTo(a[mid]) > 0) {
-            return;
-        } else {
-            int i = beginning;
-            int j = mid;
-            int tempIndex = 0;
-
-            Comparable[] temp = new Comparable[ending - beginning];
-
-            // drop out as soon as we finish traversing the left array or the right array.
-            while (i < mid && j < ending) {
-                temp[tempIndex++] = (a[i].compareTo(a[j]) >= 0) ? a[i++] : a[j++];
-            }
-
-            // after we drop out of the while loop, we need to handle the leftover elements that are
-            // either in left array or in the right array.
-
-            // TODO write detailed explanations for this.
-
-            // if we have elements left over in the left array, we need to copy them over.
-            // but if we have elements left over in the right array, we don't have to do anything.
-            // that is because, they are already in the correct positions.
-            System.arraycopy(a, i, a, beginning + tempIndex, mid - i);
-
-            System.arraycopy(temp, 0, a, beginning, tempIndex);
+        // Copy remaining elements of L, if any
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
         }
-    }
 
+        // Copy remaining elements of R, if any
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+
+        return arr;
+    }
 }

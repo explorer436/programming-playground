@@ -52,19 +52,21 @@ public class QuickSort {
      */
     private static int partition(Comparable[] arr, int low, int high) {
         Comparable pivot = arr[high]; // Choose the last element as the pivot
-        int i = low - 1;    // Index of the smaller element
 
+        // We start with -1 and then start moving all elements smaller than the pivot element to an array starting with this index.
+        // And then, after moving all elements smaller than the pivot to the left, we move the pivot element here.
+        int indexOfSmallestElement = low - 1;    // Index of the smaller element
         for (int j = low; j <= high - 1; j++) {
             // If current element is smaller than or equal to the pivot
             if (arr[j].compareTo(pivot) <= 0) {
-                i++; // Increment index of smaller element
-                ArrayUtils.swap(arr, i, j); // Swap arr[i] and arr[j]
+                indexOfSmallestElement++; // Increment index of smaller element
+                ArrayUtils.swap(arr, indexOfSmallestElement, j); // Swap arr[i] and arr[j]
             }
         }
-        // After the loop, all elements arr[low...i] are <= pivot.
-        // Place the pivot element (arr[high]) at its correct position
-        ArrayUtils.swap(arr, i + 1, high);
-        return i + 1; // Return the partitioning index
+        // After the loop, all elements arr[low...i] are <= pivot,
+        // place the pivot element (arr[high]) at its correct position
+        ArrayUtils.swap(arr, indexOfSmallestElement + 1, high);
+        return indexOfSmallestElement + 1; // Return the partitioning index
     }
 
     // --- Main method for testing ---
