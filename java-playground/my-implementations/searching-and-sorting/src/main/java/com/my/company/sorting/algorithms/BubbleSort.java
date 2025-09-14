@@ -7,21 +7,12 @@ public class BubbleSort {
     // Why do we need two for loops?
     public Comparable[] sort(Comparable[] a) {
         if (null != a && a.length > 1) {
-            // a variable to keep track of the upper limit until which the bigger number of the array will be moved.
-            for (int i = a.length; i > 0; i--) {
-                /*
-                 * a variable that is used to compare each pair starting with [0, 1] until the variable i.
-                 * with each comparison, the highest element is moved to the right.
-                 * so, with each iteration of j, the highest number of the element is moved to the far right.
-                 * this is for sorting from smallest to larger numbers.
-                 */
-                for (int j = 1; j < i; j++) {
-                    Comparable first = a[j];
-                    Comparable second = a[j - 1];
-
-                    // second is lesser than first
-                    if (first.compareTo(second) < 0) {
-                        ArrayUtils.exch(a, j, j - 1);
+            int n = a.length;
+            for (int i = 0; i <= n - 1 ; i++) {
+                for (int j = 0; j <= n - i - 2; j++) {
+                    // first is lesser than the second
+                    if (a[j].compareTo(a[j + 1]) > 0) {
+                        ArrayUtils.swap(a, j, j + 1);
                     }
                 }
             }

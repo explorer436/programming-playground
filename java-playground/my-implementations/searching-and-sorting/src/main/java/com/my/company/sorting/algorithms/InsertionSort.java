@@ -16,14 +16,13 @@ public class InsertionSort {
             // Find the correct place for a[i] in the sorted part.
             for (int j = i; j > 0; j--) {
                 Comparable aj_1 = a[j - 1];
-                boolean isTheFirstGreaterThanTheSecond = aj_1.compareTo(a[j]) > 0; // Using compareTo to support multiple primitive types.
-                if (isTheFirstGreaterThanTheSecond) {
-                    ArrayUtils.exch(a, j - 1, j);
+                boolean isElementAtJMinusOneGreaterThanElementAtJ = aj_1.compareTo(a[j]) > 0; // Using compareTo to support multiple primitive types.
+                if (isElementAtJMinusOneGreaterThanElementAtJ) {
+                    ArrayUtils.swap(a, j - 1, j);
                 } else {
                     break;
                 }
             }
-
         }
 
         return a;
@@ -41,7 +40,7 @@ public class InsertionSort {
         for (int j = numberOfElementsToBeSorted - 1; j > 0; j--) {
             boolean isTheFirstGreaterThanTheSecond = a[j - 1].compareTo(a[j]) > 0;
             if (isTheFirstGreaterThanTheSecond) {
-                ArrayUtils.exch(a, j - 1, j);
+                ArrayUtils.swap(a, j - 1, j);
             } else {
                 break;
             }

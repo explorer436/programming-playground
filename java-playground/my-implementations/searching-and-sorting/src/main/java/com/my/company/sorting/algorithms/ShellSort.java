@@ -33,7 +33,7 @@ public class ShellSort {
                 for (int j = i; j > 0; j--) {
                     boolean isTheFirstGreaterThanTheSecond = a[j - 1].compareTo(a[j]) > 0;
                     if (isTheFirstGreaterThanTheSecond) {
-                        ArrayUtils.exch(a, j - 1, j);
+                        ArrayUtils.swap(a, j - 1, j);
                     } else {
                         break;
                     }

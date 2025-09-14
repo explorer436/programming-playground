@@ -1,5 +1,7 @@
 package com.my.company.sorting.algorithms;
 
+import com.my.company.utility.ArrayUtils;
+
 import java.util.Arrays;
 
 public class QuickSort {
@@ -50,32 +52,19 @@ public class QuickSort {
      */
     private static int partition(Comparable[] arr, int low, int high) {
         Comparable pivot = arr[high]; // Choose the last element as the pivot
-        int i = (low - 1);    // Index of the smaller element
+        int i = low - 1;    // Index of the smaller element
 
-        for (int j = low; j < high; j++) {
+        for (int j = low; j <= high - 1; j++) {
             // If current element is smaller than or equal to the pivot
             if (arr[j].compareTo(pivot) <= 0) {
                 i++; // Increment index of smaller element
-                swap(arr, i, j); // Swap arr[i] and arr[j]
+                ArrayUtils.swap(arr, i, j); // Swap arr[i] and arr[j]
             }
         }
         // After the loop, all elements arr[low...i] are <= pivot.
         // Place the pivot element (arr[high]) at its correct position
-        swap(arr, i + 1, high);
-        return (i + 1); // Return the partitioning index
-    }
-
-    /**
-     * Utility function to swap two elements in an array.
-     *
-     * @param arr The array.
-     * @param i   Index of the first element.
-     * @param j   Index of the second element.
-     */
-    private static void swap(Comparable[] arr, int i, int j) {
-        Comparable temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+        ArrayUtils.swap(arr, i + 1, high);
+        return i + 1; // Return the partitioning index
     }
 
     // --- Main method for testing ---
@@ -96,18 +85,6 @@ public class QuickSort {
         System.out.println("Original array: " + Arrays.toString(arr3));
         QuickSort.sort(arr3);
         System.out.println("Sorted array: " + Arrays.toString(arr3));
-        System.out.println("---");
-
-        Integer[] arr4 = {};
-        System.out.println("Original array: " + Arrays.toString(arr4));
-        QuickSort.sort(arr4);
-        System.out.println("Sorted array: " + Arrays.toString(arr4));
-        System.out.println("---");
-
-        Integer[] arr5 = {7};
-        System.out.println("Original array: " + Arrays.toString(arr5));
-        QuickSort.sort(arr5);
-        System.out.println("Sorted array: " + Arrays.toString(arr5));
         System.out.println("---");
     }
 }
