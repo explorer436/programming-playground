@@ -18,73 +18,73 @@ public class MergeSortTests {
 
     @Test
     public void test_01() {
-        Comparable[] actual = sortingClassUnderTest.sort(intArray1);
+        sortingClassUnderTest.sort(intArray1);
         Integer[] expected = new Integer[]{0, 1, 2, 3, 4, 5, 6, 7};
 
-        assertEquals(expected.length, actual.length);
+        assertEquals(expected.length, intArray1.length);
 
         for (int i = 0; i < expected.length; i++) {
-            assertEquals(expected[i], actual[i]);
+            assertEquals(expected[i], intArray1[i]);
         }
     }
 
     @Test
     public void test_02() {
-        Comparable[] actual = sortingClassUnderTest.sort(intArray2);
+        sortingClassUnderTest.sort(intArray2);
         Integer[] expected = new Integer[]{-2, -1, 0};
 
-        assertEquals(expected.length, actual.length);
+        assertEquals(expected.length, intArray2.length);
 
         for (int i = 0; i < expected.length; i++) {
-            assertEquals(expected[i], actual[i]);
+            assertEquals(expected[i], intArray2[i]);
         }
     }
 
     @Test
     public void test_03() {
-        Comparable[] actual = sortingClassUnderTest.sort(intArray3);
+        sortingClassUnderTest.sort(intArray3);
         Integer[] expected = new Integer[]{1, 2, 3, 5, 7};
 
-        assertEquals(expected.length, actual.length);
+        assertEquals(expected.length, intArray3.length);
 
         for (int i = 0; i < expected.length; i++) {
-            assertEquals(expected[i], actual[i]);
+            assertEquals(expected[i], intArray3[i]);
         }
     }
 
     @Test
     public void test_04() {
-        Comparable[] actual = sortingClassUnderTest.sort(intArray4);
+        sortingClassUnderTest.sort(intArray4);
         Integer[] expected = new Integer[]{};
 
-        assertEquals(expected.length, actual.length);
+        assertEquals(expected.length, intArray4.length);
 
         for (int i = 0; i < expected.length; i++) {
-            assertEquals(expected[i], actual[i]);
+            assertEquals(expected[i], intArray4[i]);
         }
     }
 
     @Test
     public void test_05() {
-        Comparable[] actual = sortingClassUnderTest.sort(intArray5);
+        sortingClassUnderTest.sort(intArray5);
         Integer[] expected = new Integer[]{5};
 
-        assertEquals(expected.length, actual.length);
+        assertEquals(expected.length, intArray5.length);
 
         for (int i = 0; i < expected.length; i++) {
-            assertEquals(expected[i], actual[i]);
+            assertEquals(expected[i], intArray5[i]);
         }
     }
 
     @Test
     public void test_06() {
-        Comparable[] actual = sortingClassUnderTest.sort(strArray);
+        sortingClassUnderTest.sort(strArray);
         String[] expected = new String[]{"abc", "def", "ghi"};
 
-        assertEquals(expected.length, actual.length);
+        assertEquals(expected.length, strArray.length);
 
         for (int i = 0; i < expected.length; i++) {
-            assertEquals(expected[i], actual[i]);
+            assertEquals(expected[i], strArray[i]);
         }
     }
 
