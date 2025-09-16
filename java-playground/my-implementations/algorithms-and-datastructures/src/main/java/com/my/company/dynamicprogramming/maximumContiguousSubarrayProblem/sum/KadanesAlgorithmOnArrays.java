@@ -3,6 +3,7 @@ package com.my.company.dynamicprogramming.maximumContiguousSubarrayProblem.sum;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
 
 public class KadanesAlgorithmOnArrays {
+
     public static void main(String[] args) {
         int[] A = new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4};
 
