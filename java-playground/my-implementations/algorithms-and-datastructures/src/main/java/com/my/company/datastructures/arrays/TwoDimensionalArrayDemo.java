@@ -1,6 +1,6 @@
 package com.my.company.datastructures.arrays;
 
-public class TwoDimArrayDemo {
+public class TwoDimensionalArrayDemo {
 
     public static void main(String[] args) {
         String[][] names = {
