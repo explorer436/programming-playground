@@ -44,8 +44,8 @@ public class ReverseCollectionsUsingStack {
    */
   public static void reverseIntegerArrayUsingStack(int[] a) {
     // Java's native stack implementation can also be used.
-    ImplementStackUsingLinkedList<Integer> integerStack =
-        new ImplementStackUsingLinkedList<>();
+    ImplementStackUsingSingleLinkedList<Integer> integerStack =
+        new ImplementStackUsingSingleLinkedList<>();
 
     for (int i : a) {
       integerStack.push(i);

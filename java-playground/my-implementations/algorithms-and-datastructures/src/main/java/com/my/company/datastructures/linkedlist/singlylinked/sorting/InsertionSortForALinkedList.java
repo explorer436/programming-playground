@@ -1,6 +1,6 @@
 package com.my.company.datastructures.linkedlist.singlylinked.sorting;
 
-public class SortedIntegerLinkedList {
+public class InsertionSortForALinkedList {
 
     protected Node head;
 

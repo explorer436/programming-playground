@@ -1,6 +1,6 @@
 package com.my.company.datastructures.linkedlist.singlylinked;
 
-public class DetermineNthNodeFromTheEndOfALinkedList {
+public class FindNthNodeFromTheEndOfALinkedList {
 
     public static void main(String args[]) {
 
@@ -14,14 +14,14 @@ public class DetermineNthNodeFromTheEndOfALinkedList {
         linkedList.append(6);
         linkedList.append(7);
 
-        linkedList.printList();
+        SinglyLinkedList_Integer.printList(linkedList.getHead());
 
         System.out.println("value at nthNodeFromTheEnd = " + determineNthNodeFromTheEnd(linkedList.getHead(), 3).getValue());
 
         System.out.println("value at nthNodeFromTheEnd = " + determineNthNodeFromTheEnd(linkedList.getHead(), 2).getValue());
     }
 
-    private static Node_Integer determineNthNodeFromTheEnd(Node_Integer head, int N) {
+    public static Node_Integer determineNthNodeFromTheEnd(Node_Integer head, int N) {
         if (head == null) {
             return null;
         }

@@ -1,7 +1,7 @@
 package com.my.company.strings;
 
 import com.my.company.abstractdatatypes.stack.ImplementStackUsingDoubleLinkedList;
-import com.my.company.abstractdatatypes.stack.ImplementStackUsingLinkedList;
+import com.my.company.abstractdatatypes.stack.ImplementStackUsingSingleLinkedList;
 
 public class BalancedParanthesis {
 
@@ -14,7 +14,7 @@ public class BalancedParanthesis {
         boolean result = false;
 
         if (null != str && !str.isEmpty() && (str.length() % 2 == 0)) {
-            ImplementStackUsingLinkedList<Character> stack = new ImplementStackUsingLinkedList<>();
+            ImplementStackUsingSingleLinkedList<Character> stack = new ImplementStackUsingSingleLinkedList<>();
 
             for (int i = 0; i < str.length(); i++) {
                 if (str.charAt(i) == '(' || str.charAt(i) == '{' || str.charAt(i) == '[') {
@@ -140,7 +140,7 @@ public class BalancedParanthesis {
 
         if (null != str && !str.isEmpty() && (str.length() % 2 == 0)) {
             // using single linked list for this.
-            ImplementStackUsingLinkedList<Character> stack = new ImplementStackUsingLinkedList<>();
+            ImplementStackUsingSingleLinkedList<Character> stack = new ImplementStackUsingSingleLinkedList<>();
 
             for (int i = 0; i < str.length(); i++) {
                 stack.push((char) str.charAt(i));

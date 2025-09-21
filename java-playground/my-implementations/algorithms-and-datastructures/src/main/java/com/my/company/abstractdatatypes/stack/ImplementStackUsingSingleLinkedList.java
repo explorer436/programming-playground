@@ -1,6 +1,6 @@
 package com.my.company.abstractdatatypes.stack;
 
-public class ImplementStackUsingLinkedList<Item> {
+public class ImplementStackUsingSingleLinkedList<Item> {
 
     private Node firstNodeInTheStack; // Sometimes, this is named head.
     private int n;
@@ -84,7 +84,7 @@ public class ImplementStackUsingLinkedList<Item> {
     // Test client for StackImplementationUsingLinkedList for item type "String"
     public static void main(String[] args) {
         // Create a stack and push/pop strings as directed on StdIn.
-        ImplementStackUsingLinkedList<String> s = new ImplementStackUsingLinkedList<String>();
+        ImplementStackUsingSingleLinkedList<String> s = new ImplementStackUsingSingleLinkedList<String>();
 
         String[] inputStrList = new String[]{"to", "be", "or", "not", "to", "be"};
 

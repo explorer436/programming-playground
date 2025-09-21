@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SortedIntegerLinkedListTests {
+public class InsertionSortForALinkedListTests {
 
     @Test
     public void test() {
-        SortedIntegerLinkedList list = new SortedIntegerLinkedList();
+        InsertionSortForALinkedList list = new InsertionSortForALinkedList();
 
         list.insertSorted(3);
         assertEquals(list.head.getValue(), 3);

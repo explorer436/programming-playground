@@ -1,6 +1,5 @@
 package com.my.company.datastructures.linkedlist.singlylinked.sorting;
 
-import com.my.company.datastructures.linkedlist.singlylinked.FindTheMiddleNodeOfALinkedList;
 import com.my.company.datastructures.linkedlist.singlylinked.SinglyLinkedList_Integer;
 import com.my.company.datastructures.linkedlist.singlylinked.Node_Integer;
 
@@ -18,11 +17,11 @@ public class MergeSortForALinkedList {
         linkedList.append(3);
         linkedList.append(1);
 
-        linkedList.printList();
+        SinglyLinkedList_Integer.printList(linkedList.getHead());
 
         mergeSort(linkedList.getHead());
 
-        linkedList.printList();
+        SinglyLinkedList_Integer.printList(linkedList.getHead());
     }
 
     public static Node_Integer mergeSort(Node_Integer head) {
@@ -30,7 +29,9 @@ public class MergeSortForALinkedList {
             return head;
         }
 
-        Node_Integer middleNode = FindTheMiddleNodeOfALinkedList.findMiddleNode(head).getRight();
+        SinglyLinkedList_Integer linkedList = new SinglyLinkedList_Integer();
+
+        Node_Integer middleNode = linkedList.findMiddleNode(head).getRight();
         Node_Integer nextOfMiddle = middleNode.getNext();
         middleNode.setNext(null);
 

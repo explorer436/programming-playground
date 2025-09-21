@@ -1,5 +1,7 @@
 package com.my.company.datastructures.linkedlist.singlylinked;
 
+import org.apache.commons.lang3.tuple.ImmutablePair;
+
 public class SinglyLinkedList_Integer {
 
     protected Node_Integer head;
@@ -9,6 +11,10 @@ public class SinglyLinkedList_Integer {
     }
 
     protected int size;
+
+    public boolean isEmpty() {
+        return head == null ? true : false;
+    }
 
     public void prepend(int i) {
         Node_Integer node = new Node_Integer(i);
@@ -32,6 +38,47 @@ public class SinglyLinkedList_Integer {
         }
         current.setNext(node);
         size++;
+    }
+
+    public void addInMiddle(int data) {
+        // If list is empty, make new node the head
+        if (head == null) {
+            head = new Node_Integer(data);
+            return;
+        }
+
+        // Create new node
+        Node_Integer newNode = new Node_Integer(data);
+
+        if (head.getNext() == null) {
+            head.setNext(new Node_Integer(data));
+        }
+
+        ImmutablePair<Integer, Node_Integer> abc = findMiddleNode(head);
+        Node_Integer middleNode = abc.getRight();
+
+        Node_Integer previousNext = middleNode.getNext();
+            // Insert new node between prev and slow
+            middleNode.setNext(newNode);
+            newNode.setNext(previousNext);
+    }
+
+    public static ImmutablePair<Integer, Node_Integer> findMiddleNode(Node_Integer head) {
+        Node_Integer fastPointer = head;
+        Node_Integer slowPointer = head;
+        int slowIndex = 0;
+
+        // If we do not use fastPointer.getNext().getNext(),
+        // in cases where the list has even number of elements,
+        // the method will return the left-most element in the right half of the list - which is not what we expect.
+        // We want the right-most element in the left half of the list.
+        while (fastPointer != null && fastPointer.getNext() != null && fastPointer.getNext().getNext() != null) {
+            slowIndex++;
+            slowPointer = slowPointer.getNext();
+            fastPointer =  fastPointer.getNext().getNext();
+        }
+
+        return new ImmutablePair<>(slowIndex, slowPointer);
     }
 
     public void insertNodeAtIndex(int index, int value) {
@@ -127,15 +174,11 @@ public class SinglyLinkedList_Integer {
         }
     }
 
-    public boolean isEmpty() {
-        return head == null ? true : false;
-    }
-
     public int getSize() {
         return size;
     }
 
-    public int findLength() {
+    public int findLength(Node_Integer head) {
         int count = 0;
         Node_Integer currentNode = head;
 
@@ -220,7 +263,15 @@ public class SinglyLinkedList_Integer {
         return newHead;
     }
 
-    public void printList() {
+    public Node_Integer getTail(Node_Integer head) {
+        Node_Integer tail = head;
+        while (tail.getNext() != null) {
+            tail = tail.getNext();
+        }
+        return tail;
+    }
+
+    public static void printList(Node_Integer head) {
 
         Node_Integer currentNode = head;
 
@@ -230,5 +281,33 @@ public class SinglyLinkedList_Integer {
             currentNode = currentNode.getNext();
         }
         System.out.println();
+    }
+
+    public Node_Integer removeElementsWithMatchingValue(Node_Integer head, int val) {
+
+        // Base case: If the list is empty, return null
+        if (head == null) {
+            return null;
+        }
+
+        if (head.getValue() == val) {
+            head = head.getNext();
+            return head;
+        }
+
+        // Use a current pointer to traverse the list
+        Node_Integer current = head;
+
+        while (current.getNext() != null) {
+            // If the next node's value matches the target
+            if (current.getNext().getValue() == val) {
+                // Skip the next node
+                current.setNext(current.getNext().getNext());
+            } else {
+                // Otherwise, move to the next node
+                current = current.getNext();
+            }
+        }
+        return head;
     }
 }

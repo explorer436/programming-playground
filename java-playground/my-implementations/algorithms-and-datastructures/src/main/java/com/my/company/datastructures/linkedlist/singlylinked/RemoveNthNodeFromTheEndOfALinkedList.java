@@ -14,11 +14,11 @@ public class RemoveNthNodeFromTheEndOfALinkedList {
         linkedList.append(6);
         linkedList.append(7);
 
-        linkedList.printList();
+        SinglyLinkedList_Integer.printList(linkedList.getHead());
 
         removeNthNodeFromTheEnd(linkedList.getHead(), 3);
 
-        linkedList.printList();
+        SinglyLinkedList_Integer.printList(linkedList.getHead());
     }
 
     private static void removeNthNodeFromTheEnd(Node_Integer head, int N) {
