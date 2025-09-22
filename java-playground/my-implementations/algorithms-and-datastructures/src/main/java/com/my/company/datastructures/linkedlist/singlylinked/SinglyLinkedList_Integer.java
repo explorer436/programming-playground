@@ -2,6 +2,9 @@ package com.my.company.datastructures.linkedlist.singlylinked;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SinglyLinkedList_Integer {
 
     protected Node_Integer head;
@@ -105,18 +108,16 @@ public class SinglyLinkedList_Integer {
         }
     }
 
-    public int[] traverseForward() {
-        int[] arr = new int[size];
+    public int[] traverseForward(Node_Integer head) {
+        List<Integer> list = new ArrayList<>();
 
         Node_Integer current = head;
-        int counter = 0;
         while (current != null) {
-            arr[counter] = current.getValue();
-            counter++;
+            list.add(current.getValue());
             current = current.getNext();
         }
 
-        return arr;
+        return list.stream().mapToInt(Integer::intValue).toArray();
     }
 
     public void removeFromFront() {
@@ -149,18 +150,18 @@ public class SinglyLinkedList_Integer {
         size--;
     }
 
-    public void removeNodeAtIndex(int index) {
+    public Node_Integer removeNodeAtIndex(Node_Integer head, int index) {
         if (isEmpty()) {
-            return;
+            return null;
         }
         if (size <= index) {
-            return;
+            return head;
         }
 
         if (size == 1 & index == 1) {
             head = null;
             size--;
-            return;
+            return head;
         }
 
         Node_Integer current = head;
@@ -168,10 +169,9 @@ public class SinglyLinkedList_Integer {
             current = current.getNext();
             if (counter == index - 1) {
                 current.setNext(current.getNext().getNext());
-                size--;
-                return;
             }
         }
+        return head;
     }
 
     public int getSize() {
@@ -310,4 +310,26 @@ public class SinglyLinkedList_Integer {
         }
         return head;
     }
+
+    public Node_Integer deleteDuplicates(Node_Integer head) {
+        if (head == null || head.getNext() == null) {
+            return head;
+        }
+
+        Node_Integer current = head;
+
+        while (current != null && current.getNext() != null) {
+            if (current.getValue() == current.getNext().getValue()) {
+                // Duplicate found, skip the next node
+                current.setNext(current.getNext().getNext());
+            } else {
+                size++;
+                // No duplicate, move to the next node
+                current = current.getNext();
+            }
+        }
+
+        return head;
+    }
+
 }

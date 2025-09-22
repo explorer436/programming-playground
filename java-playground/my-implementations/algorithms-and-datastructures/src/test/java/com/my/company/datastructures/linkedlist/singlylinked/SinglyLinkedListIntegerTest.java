@@ -208,7 +208,7 @@ class SinglyLinkedListIntegerTest {
         singlyLinkedList_Integer.prepend(3);
         singlyLinkedList_Integer.prepend(4);
 
-        int[] actual = singlyLinkedList_Integer.traverseForward();
+        int[] actual = singlyLinkedList_Integer.traverseForward(singlyLinkedList_Integer.getHead());
         int[] expected = new int[]{4,3,2,1};
         assertTrue(EqualsBuilder.reflectionEquals(expected,actual));
     }
@@ -242,7 +242,7 @@ class SinglyLinkedListIntegerTest {
 
         singlyLinkedList_Integer.setValueAtIndex(2, 36);
 
-        int[] actual = singlyLinkedList_Integer.traverseForward();
+        int[] actual = singlyLinkedList_Integer.traverseForward(singlyLinkedList_Integer.getHead());
         int[] expected = new int[]{1};
         assertTrue(EqualsBuilder.reflectionEquals(expected,actual));
 
@@ -252,13 +252,13 @@ class SinglyLinkedListIntegerTest {
 
         singlyLinkedList_Integer.setValueAtIndex(2, 36);
 
-        actual = singlyLinkedList_Integer.traverseForward();
+        actual = singlyLinkedList_Integer.traverseForward(singlyLinkedList_Integer.getHead());
         expected = new int[]{4,3,36,1};
         assertTrue(EqualsBuilder.reflectionEquals(expected,actual));
 
         singlyLinkedList_Integer.setValueAtIndex(10, 36);
 
-        actual = singlyLinkedList_Integer.traverseForward();
+        actual = singlyLinkedList_Integer.traverseForward(singlyLinkedList_Integer.getHead());
         expected = new int[]{4,3,36,1};
         assertTrue(EqualsBuilder.reflectionEquals(expected,actual));
     }
@@ -272,22 +272,22 @@ class SinglyLinkedListIntegerTest {
         singlyLinkedList_Integer.prepend(3);
         singlyLinkedList_Integer.prepend(4);
 
-        int[] actual = singlyLinkedList_Integer.traverseForward();
+        int[] actual = singlyLinkedList_Integer.traverseForward(singlyLinkedList_Integer.getHead());
         int[] expected = new int[]{4,3,2,1};
         assertTrue(EqualsBuilder.reflectionEquals(expected,actual));
 
-        singlyLinkedList_Integer.removeNodeAtIndex(2);
-        actual = singlyLinkedList_Integer.traverseForward();
+        singlyLinkedList_Integer.removeNodeAtIndex(singlyLinkedList_Integer.getHead(), 2);
+        actual = singlyLinkedList_Integer.traverseForward(singlyLinkedList_Integer.getHead());
         expected = new int[]{4,3,1};
         assertTrue(EqualsBuilder.reflectionEquals(expected,actual));
 
-        singlyLinkedList_Integer.removeNodeAtIndex(2);
-        actual = singlyLinkedList_Integer.traverseForward();
+        singlyLinkedList_Integer.removeNodeAtIndex(singlyLinkedList_Integer.getHead(), 2);
+        actual = singlyLinkedList_Integer.traverseForward(singlyLinkedList_Integer.getHead());
         expected = new int[]{4,3};
         assertTrue(EqualsBuilder.reflectionEquals(expected,actual));
 
-        singlyLinkedList_Integer.removeNodeAtIndex(2);
-        actual = singlyLinkedList_Integer.traverseForward();
+        singlyLinkedList_Integer.removeNodeAtIndex(singlyLinkedList_Integer.getHead(), 2);
+        actual = singlyLinkedList_Integer.traverseForward(singlyLinkedList_Integer.getHead());
         expected = new int[]{4,3};
         assertTrue(EqualsBuilder.reflectionEquals(expected,actual));
     }
@@ -303,13 +303,13 @@ class SinglyLinkedListIntegerTest {
 
         assertEquals(singlyLinkedList_Integer.findLength(singlyLinkedList_Integer.head), 4);
 
-        int[] actual = singlyLinkedList_Integer.traverseForward();
+        int[] actual = singlyLinkedList_Integer.traverseForward(singlyLinkedList_Integer.getHead());
         int[] expected = new int[]{4,3,2,1};
         assertTrue(EqualsBuilder.reflectionEquals(expected,actual));
 
         singlyLinkedList_Integer.insertNodeAtIndex(2, 22);
 
-        actual = singlyLinkedList_Integer.traverseForward();
+        actual = singlyLinkedList_Integer.traverseForward(singlyLinkedList_Integer.getHead());
         expected = new int[]{4,3,22, 2,1};
         assertTrue(EqualsBuilder.reflectionEquals(expected,actual));
     }
@@ -413,4 +413,6 @@ class SinglyLinkedListIntegerTest {
 
         SinglyLinkedList_Integer.printList(head);
     }
+
+
 }
