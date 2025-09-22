@@ -23,6 +23,7 @@ public class RemoveZeroSumSublists {
             currentSum += current.getValue();
 
             if (map.containsKey(currentSum)) {
+
                 // If the currentSum has been seen before, it means the nodes between
                 // the previous occurrence of this sum and the current node sum to zero.
 
@@ -32,6 +33,7 @@ public class RemoveZeroSumSublists {
 
                 // Remove entries from the map for the nodes that are being removed
                 // This is crucial for handling multiple zero-sum sublists
+
                 while (toRemove != current) {
                     sum += toRemove.getValue();
                     map.remove(sum);
@@ -39,7 +41,9 @@ public class RemoveZeroSumSublists {
                 }
                 prev.setNext(current.getNext()); // Link the node before the zero-sum sublist to the node after it
             } else {
+
                 // If the currentSum is new, add it to the map
+
                 map.put(currentSum, current);
             }
             current = current.getNext();
