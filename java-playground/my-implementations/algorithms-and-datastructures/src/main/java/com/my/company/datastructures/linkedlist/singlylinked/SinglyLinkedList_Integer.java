@@ -3,7 +3,9 @@ package com.my.company.datastructures.linkedlist.singlylinked;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SinglyLinkedList_Integer {
 
@@ -177,14 +179,6 @@ public class SinglyLinkedList_Integer {
             current = current.getNext();
             counter++;
         }
-        /*for (int counter = 0; counter < index; counter++) {
-
-            if (counter == index - 1) {
-                current.setNext(current.getNext().getNext());
-                size--;
-            }
-            current = current.getNext();
-        }*/
         return head;
     }
 
@@ -325,7 +319,7 @@ public class SinglyLinkedList_Integer {
         return head;
     }
 
-    public Node_Integer deleteDuplicates(Node_Integer head) {
+    public Node_Integer deleteDuplicatesFromASortedList(Node_Integer head) {
         if (head == null || head.getNext() == null) {
             return head;
         }
@@ -338,10 +332,33 @@ public class SinglyLinkedList_Integer {
                 current.setNext(current.getNext().getNext());
                 size--;
             } else {
-                size++;
+                // size++;
                 // No duplicate, move to the next node
                 current = current.getNext();
             }
+        }
+
+        return head;
+    }
+
+    public Node_Integer deleteDuplicatesFromAnUnsortedList(Node_Integer head) {
+        if (head == null || head.getNext() == null) {
+            return head;
+        }
+
+        Set<Integer> mySet = new HashSet<>();
+
+        Node_Integer current = head;
+        Node_Integer previous = null;
+        while (current != null) {
+            if (mySet.contains(current.getValue())) {
+                previous.setNext(current.getNext());
+                size--;
+            } else {
+                mySet.add(current.getValue());
+                previous = current;
+            }
+            current = current.getNext();
         }
 
         return head;

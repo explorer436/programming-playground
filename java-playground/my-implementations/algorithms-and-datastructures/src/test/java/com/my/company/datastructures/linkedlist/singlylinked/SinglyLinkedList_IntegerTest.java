@@ -189,14 +189,39 @@ class SinglyLinkedList_IntegerTest {
     }
 
     @Test
-    void deleteDuplicates() {
+    void deleteDuplicatesFromASortedList1() {
         list.append(1);
         list.append(1);
         list.append(2);
         list.append(3);
         list.append(3);
-        Node_Integer newHead = list.deleteDuplicates(list.getHead());
+        Node_Integer newHead = list.deleteDuplicatesFromASortedList(list.getHead());
         list.head = newHead;
         assertArrayEquals(new int[]{1, 2, 3}, list.traverseForward(list.head));
+    }
+
+    @Test
+    void deleteDuplicatesFromASortedList2() {
+        list.append(3);
+        list.append(3);
+        list.append(2);
+        list.append(1);
+        list.append(1);
+        Node_Integer newHead = list.deleteDuplicatesFromASortedList(list.getHead());
+        list.head = newHead;
+        assertArrayEquals(new int[]{3, 2, 1}, list.traverseForward(list.head));
+    }
+
+    @Test
+    void deleteDuplicatesFromAnUnsortedList1() {
+        list.append(1);
+        list.append(2);
+        list.append(4);
+        list.append(3);
+        list.append(2);
+        list.append(9);
+        Node_Integer newHead = list.deleteDuplicatesFromAnUnsortedList(list.getHead());
+        list.head = newHead;
+        assertArrayEquals(new int[]{1, 2, 4, 3, 9}, list.traverseForward(list.head));
     }
 }
