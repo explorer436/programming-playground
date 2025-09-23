@@ -164,14 +164,27 @@ public class SinglyLinkedList_Integer {
             return head;
         }
 
+        // Node_Integer dummy = new Node_Integer(0);
+        // dummy.setNext(head);
+
         Node_Integer current = head;
-        for (int counter = 0; counter <= index - 1; counter++) {
-            current = current.getNext();
+        int counter = 0;
+        while (counter < index) {
             if (counter == index - 1) {
                 current.setNext(current.getNext().getNext());
                 size--;
             }
+            current = current.getNext();
+            counter++;
         }
+        /*for (int counter = 0; counter < index; counter++) {
+
+            if (counter == index - 1) {
+                current.setNext(current.getNext().getNext());
+                size--;
+            }
+            current = current.getNext();
+        }*/
         return head;
     }
 

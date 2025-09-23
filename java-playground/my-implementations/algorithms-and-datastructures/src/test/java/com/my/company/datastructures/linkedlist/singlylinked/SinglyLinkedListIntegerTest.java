@@ -274,22 +274,22 @@ class SinglyLinkedListIntegerTest {
 
         int[] actual = singlyLinkedList_Integer.traverseForward(singlyLinkedList_Integer.getHead());
         int[] expected = new int[]{4,3,2,1};
-        assertTrue(EqualsBuilder.reflectionEquals(expected,actual));
+        assertArrayEquals(expected,actual);
 
         singlyLinkedList_Integer.removeNodeAtIndex(singlyLinkedList_Integer.getHead(), 2);
         actual = singlyLinkedList_Integer.traverseForward(singlyLinkedList_Integer.getHead());
         expected = new int[]{4,3,1};
-        assertTrue(EqualsBuilder.reflectionEquals(expected,actual));
+        assertArrayEquals(expected,actual);
 
         singlyLinkedList_Integer.removeNodeAtIndex(singlyLinkedList_Integer.getHead(), 2);
         actual = singlyLinkedList_Integer.traverseForward(singlyLinkedList_Integer.getHead());
         expected = new int[]{4,3};
-        assertTrue(EqualsBuilder.reflectionEquals(expected,actual));
+        assertArrayEquals(expected,actual);
 
         singlyLinkedList_Integer.removeNodeAtIndex(singlyLinkedList_Integer.getHead(), 2);
         actual = singlyLinkedList_Integer.traverseForward(singlyLinkedList_Integer.getHead());
         expected = new int[]{4,3};
-        assertTrue(EqualsBuilder.reflectionEquals(expected,actual));
+        assertArrayEquals(expected,actual);
     }
 
     @Test
