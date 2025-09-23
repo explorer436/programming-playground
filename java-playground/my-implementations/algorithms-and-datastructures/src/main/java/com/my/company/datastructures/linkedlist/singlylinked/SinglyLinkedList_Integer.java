@@ -165,10 +165,11 @@ public class SinglyLinkedList_Integer {
         }
 
         Node_Integer current = head;
-        for (int counter = 1; counter <= index - 1; counter++) {
+        for (int counter = 0; counter <= index - 1; counter++) {
             current = current.getNext();
             if (counter == index - 1) {
                 current.setNext(current.getNext().getNext());
+                size--;
             }
         }
         return head;
@@ -322,6 +323,7 @@ public class SinglyLinkedList_Integer {
             if (current.getValue() == current.getNext().getValue()) {
                 // Duplicate found, skip the next node
                 current.setNext(current.getNext().getNext());
+                size--;
             } else {
                 size++;
                 // No duplicate, move to the next node

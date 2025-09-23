@@ -119,7 +119,7 @@ class SinglyLinkedList_IntegerTest {
         list.append(1);
         list.append(2);
         list.append(3);
-        list.head = list.removeNodeAtIndex(list.getHead(), 1);
+        Node_Integer newHead = list.removeNodeAtIndex(list.getHead(), 1);
         assertArrayEquals(new int[]{1, 3}, list.traverseForward(list.getHead()));
         assertEquals(2, list.getSize());
     }
