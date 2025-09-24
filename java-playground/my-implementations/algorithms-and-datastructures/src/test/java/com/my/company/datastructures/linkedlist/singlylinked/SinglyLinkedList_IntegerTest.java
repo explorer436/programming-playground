@@ -11,7 +11,7 @@ class SinglyLinkedList_IntegerTest {
 
     @BeforeEach
     void setUp() {
-        list = new SinglyLinkedList_Integer();
+        list = new SinglyLinkedList_Integer(null);
     }
 
     @Test
@@ -52,8 +52,7 @@ class SinglyLinkedList_IntegerTest {
         list.addInMiddle(2);
         assertArrayEquals(new int[]{1, 2, 3}, list.traverseForward(list.getHead()));
 
-        list = new SinglyLinkedList_Integer();
-        list.append(1);
+        list = new SinglyLinkedList_Integer(1);
         list.append(2);
         list.append(4);
         list.append(5);

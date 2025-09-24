@@ -7,8 +7,7 @@ public class MergeSortForALinkedList {
 
     public static void main(String args[]) {
 
-        SinglyLinkedList_Integer linkedList = new SinglyLinkedList_Integer();
-        linkedList.append(0);
+        SinglyLinkedList_Integer linkedList = new SinglyLinkedList_Integer(0);
         linkedList.append(2);
         linkedList.append(4);
         linkedList.append(6);
@@ -29,9 +28,7 @@ public class MergeSortForALinkedList {
             return head;
         }
 
-        SinglyLinkedList_Integer linkedList = new SinglyLinkedList_Integer();
-
-        Node_Integer middleNode = linkedList.findMiddleNode(head).getRight();
+        Node_Integer middleNode = SinglyLinkedList_Integer.findMiddleNode(head).getRight();
         Node_Integer nextOfMiddle = middleNode.getNext();
         middleNode.setNext(null);
 

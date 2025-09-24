@@ -4,8 +4,7 @@ public class FindNthNodeFromTheEndOfALinkedList {
 
     public static void main(String args[]) {
 
-        SinglyLinkedList_Integer linkedList = new SinglyLinkedList_Integer();
-        linkedList.append(0);
+        SinglyLinkedList_Integer linkedList = new SinglyLinkedList_Integer(0);
         linkedList.append(1);
         linkedList.append(2);
         linkedList.append(3);

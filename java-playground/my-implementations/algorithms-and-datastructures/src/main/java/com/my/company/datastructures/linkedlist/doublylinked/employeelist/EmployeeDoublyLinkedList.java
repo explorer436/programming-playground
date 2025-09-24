@@ -2,10 +2,25 @@ package com.my.company.datastructures.linkedlist.doublylinked.employeelist;
 
 public class EmployeeDoublyLinkedList {
 
-    protected Node head;
-    protected Node tail;
-
+    private Node head;
+    private Node tail;
     private int size;
+
+    public Node getHead() {
+        return head;
+    }
+
+    public void setHead(Node head) {
+        this.head = head;
+    }
+
+    public Node getTail() {
+        return tail;
+    }
+
+    public void setTail(Node tail) {
+        this.tail = tail;
+    }
 
     public void prepend(Employee employee) {
         Node node = new Node(employee);
@@ -124,8 +139,7 @@ public class EmployeeDoublyLinkedList {
         System.out.println("null");
     }
 
-    public String traverseForward()
-    {
+    public String traverseForward() {
         StringBuffer sb = new StringBuffer();
 
         Node current = head;
@@ -137,8 +151,7 @@ public class EmployeeDoublyLinkedList {
         return sb.toString();
     }
 
-    public String traverseBackward()
-    {
+    public String traverseBackward() {
         StringBuffer sb = new StringBuffer();
 
         Node current = tail;

@@ -2,7 +2,7 @@ package com.my.company.datastructures.linkedlist.singlylinked;
 
 public class RotateALinkedList {
 
-    SinglyLinkedList_Integer  singlyLinkedList = new SinglyLinkedList_Integer();
+    // SinglyLinkedList_Integer  singlyLinkedList = new SinglyLinkedList_Integer();
     FindNthNodeFromTheEndOfALinkedList findNthNodeFromTheEndOfALinkedList = new FindNthNodeFromTheEndOfALinkedList();
 
     public Node_Integer rotateRight(Node_Integer head, int k) {
@@ -12,8 +12,8 @@ public class RotateALinkedList {
             return head;
         }
 
-        int n = singlyLinkedList.findLength(head);
-        Node_Integer tail = singlyLinkedList.getTail(head);
+        int n = SinglyLinkedList_Integer.calculateSize(head);
+        Node_Integer tail = SinglyLinkedList_Integer.getTail(head);
 
         // 2. Adjust k: k can be greater than n
         k = k % n;
@@ -79,11 +79,9 @@ public class RotateALinkedList {
     }*/
 
     public static void main(String[] args) {
-        SinglyLinkedList_Integer singlyLinkedList_Integer = new SinglyLinkedList_Integer();
+        SinglyLinkedList_Integer singlyLinkedList_Integer = new SinglyLinkedList_Integer(1);
         RotateALinkedList  rotateALinkedList = new RotateALinkedList();
 
-        Node_Integer n = new Node_Integer(1);
-        singlyLinkedList_Integer.head = n;
         singlyLinkedList_Integer.append(2);
         singlyLinkedList_Integer.append(3);
         singlyLinkedList_Integer.append(4);
@@ -93,7 +91,7 @@ public class RotateALinkedList {
 
         SinglyLinkedList_Integer.printList(singlyLinkedList_Integer.head);
 
-        Node_Integer result = rotateALinkedList.rotateRight(n, 3);
+        Node_Integer result = rotateALinkedList.rotateRight(singlyLinkedList_Integer.head, 3);
 
         SinglyLinkedList_Integer.printList(result);
     }

@@ -30,7 +30,7 @@ public class AddTwoNumbers {
 
     public Node_Integer addTwoNumbersRepresentedInExactOrder(Node_Integer node1, Node_Integer node2) {
 
-        SinglyLinkedList_Integer list = new SinglyLinkedList_Integer();
+        SinglyLinkedList_Integer list = new SinglyLinkedList_Integer(null);
         node1 = list.reverse_iterative(node1);
         node2 = list.reverse_iterative(node2);
 

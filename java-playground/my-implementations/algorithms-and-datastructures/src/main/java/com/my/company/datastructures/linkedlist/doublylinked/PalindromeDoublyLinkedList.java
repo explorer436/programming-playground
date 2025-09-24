@@ -17,12 +17,12 @@ public class PalindromeDoublyLinkedList {
         DoublyListNode_Integer right = tail;
 
         // Move pointers inwards and compare values
-        while (left != right && left.prev != right) { // Stop when they meet or cross
-            if (left.val != right.val) {
+        while (left != right && left.getPrevious() != right) { // Stop when they meet or cross
+            if (left.getValue() != right.getValue()) {
                 return false; // Not a palindrome
             }
             left = left.next;
-            right = right.prev;
+            right = right.getPrevious();
         }
 
         return true; // All elements matched, it's a palindrome
@@ -39,11 +39,11 @@ public class PalindromeDoublyLinkedList {
         DoublyListNode_Integer node1_4 = new DoublyListNode_Integer(1);
 
         head1.next = node1_2;
-        node1_2.prev = head1;
+        node1_2.setPrevious(head1);
         node1_2.next = node1_3;
-        node1_3.prev = node1_2;
+        node1_3.setPrevious(node1_2);
         node1_3.next = node1_4;
-        node1_4.prev = node1_3;
+        node1_4.setPrevious(node1_3);
 
         PalindromeDoublyLinkedList sol = new PalindromeDoublyLinkedList();
         System.out.println("Is 1<->2<->2<->1 a palindrome? " + sol.isPalindrome(head1)); // Output: true
@@ -55,11 +55,11 @@ public class PalindromeDoublyLinkedList {
         DoublyListNode_Integer node2_4 = new DoublyListNode_Integer(1);
 
         head2.next = node2_2;
-        node2_2.prev = head2;
+        node2_2.setPrevious(head2);
         node2_2.next = node2_3;
-        node2_3.prev = node2_2;
+        node2_3.setPrevious(node2_2);
         node2_3.next = node2_4;
-        node2_4.prev = node2_3;
+        node2_4.setPrevious(node2_3);
 
         System.out.println("Is 1<->2<->3<->1 a palindrome? " + sol.isPalindrome(head2)); // Output: false
 
@@ -69,9 +69,9 @@ public class PalindromeDoublyLinkedList {
         DoublyListNode_Integer node3_3 = new DoublyListNode_Integer(1);
 
         head3.next = node3_2;
-        node3_2.prev = head3;
+        node3_2.setPrevious(head3);
         node3_2.next = node3_3;
-        node3_3.prev = node3_2;
+        node3_3.setPrevious(node3_2);
 
         System.out.println("Is 1<->2<->1 a palindrome? " + sol.isPalindrome(head3)); // Output: true
 

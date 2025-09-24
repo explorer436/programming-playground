@@ -13,16 +13,16 @@ public class EmployeeDoublyLinkedListTest {
         EmployeeDoublyLinkedList list = new EmployeeDoublyLinkedList();
         list.prepend(janeJones);
         assertEquals(list.getSize(), 1);
-        assertEquals(list.head.getEmployee(), janeJones);
-        assertEquals(list.tail.getEmployee(), janeJones);
-        assertEquals(list.head.getNext(), null);
+        assertEquals(list.getHead().getEmployee(), janeJones);
+        assertEquals(list.getTail().getEmployee(), janeJones);
+        assertEquals(list.getHead().getNext(), null);
         assertEquals(list.traverseForward(), janeJones.toString());
 
         list.prepend(johnDoe);
         assertEquals(list.getSize(), 2);
-        assertEquals(list.head.getEmployee(), johnDoe);
-        assertEquals(list.tail.getEmployee(), janeJones);
-        Node next = list.head.getNext();
+        assertEquals(list.getHead().getEmployee(), johnDoe);
+        assertEquals(list.getTail().getEmployee(), janeJones);
+        Node next = list.getHead().getNext();
         assertEquals(next.getEmployee(), janeJones);
         assertEquals(next.getPrevious().getEmployee(), johnDoe);
         next = next.getNext();
@@ -32,9 +32,9 @@ public class EmployeeDoublyLinkedListTest {
 
         list.prepend(marySmith);
         assertEquals(list.getSize(), 3);
-        assertEquals(list.head.getEmployee(), marySmith);
-        assertEquals(list.tail.getEmployee(), janeJones);
-        next = list.head.getNext();
+        assertEquals(list.getHead().getEmployee(), marySmith);
+        assertEquals(list.getTail().getEmployee(), janeJones);
+        next = list.getHead().getNext();
         assertEquals(next.getEmployee(), johnDoe);
         assertEquals(next.getPrevious().getEmployee(), marySmith);
         next = next.getNext();
@@ -47,9 +47,9 @@ public class EmployeeDoublyLinkedListTest {
 
         list.prepend(mikeWilson);
         assertEquals(list.getSize(), 4);
-        assertEquals(list.head.getEmployee(), mikeWilson);
-        assertEquals(list.tail.getEmployee(), janeJones);
-        next = list.head.getNext();
+        assertEquals(list.getHead().getEmployee(), mikeWilson);
+        assertEquals(list.getTail().getEmployee(), janeJones);
+        next = list.getHead().getNext();
         assertEquals(next.getEmployee(), marySmith);
         assertEquals(next.getPrevious().getEmployee(), mikeWilson);
         next = next.getNext();
@@ -66,9 +66,9 @@ public class EmployeeDoublyLinkedListTest {
         Employee billEnd = new Employee("Bill", "End", 78);
         list.append(billEnd);
         assertEquals(list.getSize(), 5);
-        assertEquals(list.head.getEmployee(), mikeWilson);
-        assertEquals(list.tail.getEmployee(), billEnd);
-        next = list.head.getNext();
+        assertEquals(list.getHead().getEmployee(), mikeWilson);
+        assertEquals(list.getTail().getEmployee(), billEnd);
+        next = list.getHead().getNext();
         assertEquals(next.getEmployee(), marySmith);
         assertEquals(next.getPrevious().getEmployee(), mikeWilson);
         next = next.getNext();
@@ -87,9 +87,9 @@ public class EmployeeDoublyLinkedListTest {
 
         list.removeFromFront();
         assertEquals(list.getSize(), 4);
-        assertEquals(list.head.getEmployee(), marySmith);
-        assertEquals(list.tail.getEmployee(), billEnd);
-        next = list.head.getNext();
+        assertEquals(list.getHead().getEmployee(), marySmith);
+        assertEquals(list.getTail().getEmployee(), billEnd);
+        next = list.getHead().getNext();
         assertEquals(next.getEmployee(), johnDoe);
         assertEquals(next.getPrevious().getEmployee(), marySmith);
         next = next.getNext();
@@ -105,9 +105,9 @@ public class EmployeeDoublyLinkedListTest {
 
         list.removeFromEnd();
         assertEquals(list.getSize(), 3);
-        assertEquals(list.head.getEmployee(), marySmith);
-        assertEquals(list.tail.getEmployee(), janeJones);
-        next = list.head.getNext();
+        assertEquals(list.getHead().getEmployee(), marySmith);
+        assertEquals(list.getTail().getEmployee(), janeJones);
+        next = list.getHead().getNext();
         assertEquals(next.getEmployee(), johnDoe);
         assertEquals(next.getPrevious().getEmployee(), marySmith);
         next = next.getNext();
@@ -121,9 +121,9 @@ public class EmployeeDoublyLinkedListTest {
         Employee jamesBond = new Employee("James", "Bond", 007);
         list.insertBeforeAnExistingNode(jamesBond, johnDoe);
         assertEquals(list.getSize(), 4);
-        assertEquals(list.head.getEmployee(), marySmith);
-        assertEquals(list.tail.getEmployee(), janeJones);
-        next = list.head.getNext();
+        assertEquals(list.getHead().getEmployee(), marySmith);
+        assertEquals(list.getTail().getEmployee(), janeJones);
+        next = list.getHead().getNext();
         assertEquals(next.getEmployee(), jamesBond);
         assertEquals(next.getPrevious().getEmployee(), marySmith);
         next = next.getNext();

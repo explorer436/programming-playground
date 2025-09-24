@@ -8,13 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SinglyLinkedListIntegerTest {
 
-    SinglyLinkedList_Integer singlyLinkedList_Integer = new SinglyLinkedList_Integer();
+    // SinglyLinkedList_Integer singlyLinkedList_Integer = new SinglyLinkedList_Integer();
+    SinglyLinkedList_Integer singlyLinkedList_Integer;
+
     @Test
     public void test_prepend_and_remove_from_front() {
 
-        singlyLinkedList_Integer = new SinglyLinkedList_Integer();
-
-        singlyLinkedList_Integer.prepend(1);
+        singlyLinkedList_Integer = new SinglyLinkedList_Integer(1);
         assertEquals(singlyLinkedList_Integer.size, 1);
         assertEquals(singlyLinkedList_Integer.head.getValue(), 1);
         assertEquals(singlyLinkedList_Integer.head.getNext(), null);
@@ -74,9 +74,7 @@ class SinglyLinkedListIntegerTest {
     @Test
     public void test_append_and_remove_from_last() {
 
-        singlyLinkedList_Integer = new SinglyLinkedList_Integer();
-
-        singlyLinkedList_Integer.append(1);
+        singlyLinkedList_Integer = new SinglyLinkedList_Integer(1);
         assertEquals(singlyLinkedList_Integer.size, 1);
         assertEquals(singlyLinkedList_Integer.head.getValue(), 1);
         assertEquals(singlyLinkedList_Integer.head.getNext(), null);
@@ -136,9 +134,7 @@ class SinglyLinkedListIntegerTest {
     @Test
     public void test_reverse_iterative() {
 
-        singlyLinkedList_Integer = new SinglyLinkedList_Integer();
-
-        singlyLinkedList_Integer.prepend(1);
+        singlyLinkedList_Integer = new SinglyLinkedList_Integer(1);
         singlyLinkedList_Integer.prepend(2);
         singlyLinkedList_Integer.prepend(3);
         singlyLinkedList_Integer.prepend(4);
@@ -169,9 +165,7 @@ class SinglyLinkedListIntegerTest {
     @Test
     public void test_reverse_recursive() {
 
-        singlyLinkedList_Integer = new SinglyLinkedList_Integer();
-
-        singlyLinkedList_Integer.prepend(1);
+        singlyLinkedList_Integer = new SinglyLinkedList_Integer(1);
         singlyLinkedList_Integer.prepend(2);
         singlyLinkedList_Integer.prepend(3);
         singlyLinkedList_Integer.prepend(4);
@@ -201,9 +195,7 @@ class SinglyLinkedListIntegerTest {
 
     @Test
     void test_traverseForward() {
-        singlyLinkedList_Integer = new SinglyLinkedList_Integer();
-
-        singlyLinkedList_Integer.prepend(1);
+        singlyLinkedList_Integer = new SinglyLinkedList_Integer(1);
         singlyLinkedList_Integer.prepend(2);
         singlyLinkedList_Integer.prepend(3);
         singlyLinkedList_Integer.prepend(4);
@@ -215,9 +207,7 @@ class SinglyLinkedListIntegerTest {
 
     @Test
     void test_getNodeAtIndex() {
-        singlyLinkedList_Integer = new SinglyLinkedList_Integer();
-
-        singlyLinkedList_Integer.prepend(1);
+        singlyLinkedList_Integer = new SinglyLinkedList_Integer(1);
 
         int actual = singlyLinkedList_Integer.getValueAtIndex(2);
         assertEquals(0,actual);
@@ -236,9 +226,7 @@ class SinglyLinkedListIntegerTest {
 
     @Test
     void test_setNodeAtIndex() {
-        singlyLinkedList_Integer = new SinglyLinkedList_Integer();
-
-        singlyLinkedList_Integer.prepend(1);
+        singlyLinkedList_Integer = new SinglyLinkedList_Integer(1);
 
         singlyLinkedList_Integer.setValueAtIndex(2, 36);
 
@@ -265,9 +253,7 @@ class SinglyLinkedListIntegerTest {
 
     @Test
     void test_removeNodeAtIndex() {
-        singlyLinkedList_Integer = new SinglyLinkedList_Integer();
-
-        singlyLinkedList_Integer.prepend(1);
+        singlyLinkedList_Integer = new SinglyLinkedList_Integer(1);
         singlyLinkedList_Integer.prepend(2);
         singlyLinkedList_Integer.prepend(3);
         singlyLinkedList_Integer.prepend(4);
@@ -294,14 +280,12 @@ class SinglyLinkedListIntegerTest {
 
     @Test
     void test_insertNodeAtIndex() {
-        singlyLinkedList_Integer = new SinglyLinkedList_Integer();
-
-        singlyLinkedList_Integer.prepend(1);
+        singlyLinkedList_Integer = new SinglyLinkedList_Integer(1);
         singlyLinkedList_Integer.prepend(2);
         singlyLinkedList_Integer.prepend(3);
         singlyLinkedList_Integer.prepend(4);
 
-        assertEquals(singlyLinkedList_Integer.findLength(singlyLinkedList_Integer.head), 4);
+        assertEquals(singlyLinkedList_Integer.calculateSize(singlyLinkedList_Integer.head), 4);
 
         int[] actual = singlyLinkedList_Integer.traverseForward(singlyLinkedList_Integer.getHead());
         int[] expected = new int[]{4,3,2,1};
@@ -317,8 +301,7 @@ class SinglyLinkedListIntegerTest {
     @Test
     public void test_findTheMiddleNodeOfALinkedList_1() {
 
-        singlyLinkedList_Integer = new SinglyLinkedList_Integer();
-        singlyLinkedList_Integer.append(0);
+        singlyLinkedList_Integer = new SinglyLinkedList_Integer(0);
         singlyLinkedList_Integer.append(1);
         singlyLinkedList_Integer.append(2);
         singlyLinkedList_Integer.append(3);
@@ -339,8 +322,7 @@ class SinglyLinkedListIntegerTest {
     @Test
     public void test_findTheMiddleNodeOfALinkedList_2() {
 
-        singlyLinkedList_Integer = new SinglyLinkedList_Integer();
-        singlyLinkedList_Integer.append(1);
+        singlyLinkedList_Integer = new SinglyLinkedList_Integer(1);
         singlyLinkedList_Integer.append(2);
         singlyLinkedList_Integer.append(1);
 
@@ -356,10 +338,7 @@ class SinglyLinkedListIntegerTest {
     @Test
     public void test_addInMiddle() {
 
-        singlyLinkedList_Integer = new SinglyLinkedList_Integer();
-
-        // Add some elements to the list
-        singlyLinkedList_Integer.append(1);
+        singlyLinkedList_Integer = new SinglyLinkedList_Integer(1);
         singlyLinkedList_Integer.append(2);
         singlyLinkedList_Integer.append(3);
         singlyLinkedList_Integer.append(4);
@@ -381,9 +360,7 @@ class SinglyLinkedListIntegerTest {
     @Test
     public void test_removeElementsWithMatchingValue_01() {
 
-        singlyLinkedList_Integer = new SinglyLinkedList_Integer();
-
-        singlyLinkedList_Integer.append(1);
+        singlyLinkedList_Integer = new SinglyLinkedList_Integer(1);
         singlyLinkedList_Integer.append(2);
         singlyLinkedList_Integer.append(3);
         singlyLinkedList_Integer.append(4);
@@ -399,9 +376,7 @@ class SinglyLinkedListIntegerTest {
     @Test
     public void test_removeElementsWithMatchingValue_02() {
 
-        singlyLinkedList_Integer = new SinglyLinkedList_Integer();
-
-        singlyLinkedList_Integer.append(1);
+        singlyLinkedList_Integer = new SinglyLinkedList_Integer(1);
         singlyLinkedList_Integer.append(2);
         singlyLinkedList_Integer.append(3);
         singlyLinkedList_Integer.append(4);

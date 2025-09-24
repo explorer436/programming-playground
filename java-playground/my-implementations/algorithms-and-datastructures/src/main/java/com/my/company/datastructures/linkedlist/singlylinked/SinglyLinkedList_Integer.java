@@ -9,6 +9,13 @@ import java.util.Set;
 
 public class SinglyLinkedList_Integer {
 
+    public SinglyLinkedList_Integer(Integer value) {
+        if (value != null) {
+            head = new Node_Integer(value);
+            size = 1;
+        }
+    }
+
     protected Node_Integer head;
 
     public Node_Integer getHead() {
@@ -110,6 +117,9 @@ public class SinglyLinkedList_Integer {
         }
     }
 
+    // TODO
+    // removeNodeAtIndex
+
     public int[] traverseForward(Node_Integer head) {
         List<Integer> list = new ArrayList<>();
 
@@ -186,7 +196,7 @@ public class SinglyLinkedList_Integer {
         return size;
     }
 
-    public int findLength(Node_Integer head) {
+    public static int calculateSize(Node_Integer head) {
         int count = 0;
         Node_Integer currentNode = head;
 
@@ -236,7 +246,7 @@ public class SinglyLinkedList_Integer {
         }
     }
 
-    public Node_Integer reverse_iterative(Node_Integer head) {
+    public static Node_Integer reverse_iterative(Node_Integer head) {
 
         // Initialize pointers for traversal.
         Node_Integer current = head;
@@ -271,7 +281,7 @@ public class SinglyLinkedList_Integer {
         return newHead;
     }
 
-    public Node_Integer getTail(Node_Integer head) {
+    public static Node_Integer getTail(Node_Integer head) {
         Node_Integer tail = head;
         while (tail.getNext() != null) {
             tail = tail.getNext();
