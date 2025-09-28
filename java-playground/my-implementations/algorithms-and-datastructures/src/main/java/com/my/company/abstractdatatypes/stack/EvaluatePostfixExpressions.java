@@ -12,7 +12,7 @@ public class EvaluatePostfixExpressions {
 
         for (int i = 0; i < charArray.length; i++) {
             if (' ' == charArray[i]) {
-                continue;
+                // do nothing
             } else if (charArray[i] >= '0' && charArray[i] <= '9') {
                 StringBuffer sb = new StringBuffer();
 
