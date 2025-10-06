@@ -1,24 +1,89 @@
 package com.my.company.datastructures.heap;
 
-public class Heap {
+import java.util.ArrayList;
+import java.util.List;
 
-    private int[] heap;
+public class MaxHeap {
 
-    private int size;
+    private List<Integer> heapArrayList;
 
-    public Heap(int capacity) {
-        heap = new int[capacity];
+    public MaxHeap(List<Integer> heapArrayList) {
+        this.heapArrayList = heapArrayList;
     }
 
-    private boolean isFull() {
-        return size == heap.length;
+    public List<Integer> getHeapArrayList() {
+        // return a copy of the heap
+        return new ArrayList<>(heapArrayList);
+    }
+
+    private int leftChild(int index) {
+        return 2 * index + 1;
+    }
+
+    private int rightChild(int index) {
+        return 2 * index + 2;
     }
 
     public int getParentNode(int index) {
         return (index - 1) / 2;
     }
 
+    private void swap(int index1, int index2) {
+        int temp = heapArrayList.get(index1);
+        heapArrayList.set(index1, heapArrayList.get(index2));
+        heapArrayList.set(index2, temp);
+    }
+
     public void insert(int value) {
+        heapArrayList.add(value);
+        int current = heapArrayList.size() - 1;
+
+        while (current > 0 && heapArrayList.get(current) > heapArrayList.get(getParentNode(current))) {
+            swap(current, getParentNode(current));
+            current = getParentNode(current);
+        }
+    }
+
+    public Integer remove() {
+        if (heapArrayList.size() == 0) {
+            return null;
+        }
+
+        if (heapArrayList.size() == 1) {
+            return heapArrayList.remove(0);
+        }
+
+        int maxValue = heapArrayList.get(0);
+        heapArrayList.set(0, heapArrayList.remove(heapArrayList.size() - 1));
+        sinkDown(0);
+
+        return maxValue;
+    }
+
+    private void sinkDown(int index) {
+        int maxIndex = index;
+        while (true) {
+            int leftIndex = leftChild(index);
+            int rightIndex = rightChild(index);
+
+            if (leftIndex < heapArrayList.size() && heapArrayList.get(leftIndex) > heapArrayList.get(maxIndex)) {
+                maxIndex = leftIndex;
+            }
+
+            if (rightIndex < heapArrayList.size() && heapArrayList.get(rightIndex) > heapArrayList.get(maxIndex)) {
+                maxIndex = rightIndex;
+            }
+
+            if (maxIndex != index) {
+                swap(index, maxIndex);
+                index = maxIndex;
+            } else  {
+                return;
+            }
+        }
+    }
+
+    /*public void insert(int value) {
         if (isFull()) {
             throw new IndexOutOfBoundsException("Heap is full");
         }
@@ -120,11 +185,11 @@ public class Heap {
 
     public int getChild(int index, boolean left) {
         return (2 * index) + (left ? 1 : 2);
-    }
+    }*/
 
     public void printHeap() {
-        for (int i = 0; i < size; i++) {
-            System.out.print(heap[i]);
+        for (int i = 0; i < heapArrayList.size(); i++) {
+            System.out.print(heapArrayList.get(i));
             System.out.print(", ");
         }
         System.out.println(" ");

@@ -1,30 +1,51 @@
 package com.my.company.datastructures.heap;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HeapClient {
 
-  public static void main(String[] args) {
-    Heap heap = new Heap(10);
+    public static void main(String[] args) {
 
-    heap.insert(80);
-    heap.insert(75);
-    heap.insert(60);
-    heap.insert(68);
-    heap.insert(55);
-    heap.insert(40);
-    heap.insert(52);
-    heap.insert(67);
+        List<Integer> list = new ArrayList<>();
+        list.add(80);
+        list.add(75);
+        list.add(60);
+        list.add(68);
+        list.add(55);
+        list.add(40);
+        list.add(52);
+        list.add(67);
 
-    heap.printHeap();
+        MaxHeap maxHeap = new MaxHeap(list);
 
-    // heap.delete(1);
-    // heap.printHeap();
+        maxHeap.printHeap();
 
-    // heap.delete(5);
-    // heap.printHeap();
+        maxHeap.insert(100);
 
-    // heap.delete(0);
-    // heap.printHeap();
+        maxHeap.printHeap();
 
-    System.out.println(heap.peek());
-  }
+        maxHeap.insert(70);
+
+        maxHeap.printHeap();
+
+        // heap.delete(1);
+        // heap.printHeap();
+
+        // heap.delete(5);
+        // heap.printHeap();
+
+        // heap.delete(0);
+        // heap.printHeap();
+
+        // System.out.println(heap.peek());
+
+        maxHeap.remove();
+
+        maxHeap.printHeap();
+
+        maxHeap.remove();
+
+        maxHeap.printHeap();
+    }
 }
