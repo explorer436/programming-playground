@@ -44,7 +44,8 @@ public class MaxHeap {
         }
     }
 
-    public Integer remove() {
+    // remove the element at index = 0
+    public Integer removeRoot() {
         if (heapArrayList.size() == 0) {
             return null;
         }
@@ -53,13 +54,29 @@ public class MaxHeap {
             return heapArrayList.remove(0);
         }
 
-        int maxValue = heapArrayList.get(0);
+        int root = heapArrayList.get(0);
         heapArrayList.set(0, heapArrayList.remove(heapArrayList.size() - 1));
         sinkDown(0);
 
-        return maxValue;
+        return root;
     }
 
+    public boolean isEmpty() {
+        return heapArrayList.size() == 0;
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            throw new IndexOutOfBoundsException("Heap is empty");
+        }
+
+        return heapArrayList.get(0);
+    }
+
+    /*
+        Starting with index, compare each node's value to the value at it's left and right. Move it appropriately.
+        You may see this method called with the name "Heapify".
+     */
     private void sinkDown(int index) {
         int maxIndex = index;
         while (true) {
@@ -83,59 +100,7 @@ public class MaxHeap {
         }
     }
 
-    /*public void insert(int value) {
-        if (isFull()) {
-            throw new IndexOutOfBoundsException("Heap is full");
-        }
-
-        heap[size] = value;
-
-        fixHeapAbove(size);
-
-        size++;
-    }
-
-    private void fixHeapAbove(int currentIndex) {
-        int newValue = heap[currentIndex];
-
-        while (currentIndex > 0 && newValue > heap[getParentNode(currentIndex)]) {
-            heap[currentIndex] = heap[getParentNode(currentIndex)];
-            currentIndex = getParentNode(currentIndex);
-        }
-
-        heap[currentIndex] = newValue;
-    }
-
-    private void fixHeapBelow(int index, int lastHeapIndex) {
-        int childToSwap;
-
-        while (index <= lastHeapIndex) {
-            int leftChild = getChild(index, true);
-            int rightChild = getChild(index, false);
-
-            if (leftChild <= lastHeapIndex) {
-                if (rightChild > lastHeapIndex) {
-                    childToSwap = leftChild;
-                } else {
-                    childToSwap = heap[leftChild] > heap[rightChild] ? leftChild : rightChild;
-                }
-
-                if (heap[index] < heap[childToSwap]) {
-                    int temp = heap[index];
-                    heap[index] = heap[childToSwap];
-                    heap[childToSwap] = temp;
-                } else {
-                    break;
-                }
-
-                index = childToSwap;
-            } else {
-                break;
-            }
-        }
-    }
-
-    public int delete(int index) {
+    /*public int delete(int index) {
         if (isEmpty()) {
             throw new IndexOutOfBoundsException("Heap is empty");
         }
@@ -157,14 +122,6 @@ public class MaxHeap {
         return deletedValue;
     }
 
-    public int peek() {
-        if (isEmpty()) {
-            throw new IndexOutOfBoundsException("Heap is empty");
-        }
-
-        return heap[0];
-    }
-
     public void sort() {
         int lastHeapIndex = size - 1;
 
@@ -177,10 +134,6 @@ public class MaxHeap {
 
             fixHeapBelow(0, lastHeapIndex - i - 1);
         }
-    }
-
-    public boolean isEmpty() {
-        return size == 0;
     }
 
     public int getChild(int index, boolean left) {

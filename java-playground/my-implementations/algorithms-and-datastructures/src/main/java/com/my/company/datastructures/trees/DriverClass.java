@@ -92,7 +92,7 @@ public class DriverClass {
     intTree.insert(32);
     intTree.insert(17);
 
-    /** 25 / \ / \ / \ 20 27 / \ / \ / \ / \ 15 22 26 30 \ / \ 17 29 32 */
+    /* 25 / \ / \ / \ 20 27 / \ / \ / \ / \ 15 22 26 30 \ / \ 17 29 32 */
 
     return intTree;
   }

@@ -1,11 +1,14 @@
 package com.my.company.datastructures.heap;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class HeapClient {
+public class MaxHeapTests {
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
 
         List<Integer> list = new ArrayList<>();
         list.add(80);
@@ -18,15 +21,12 @@ public class HeapClient {
         list.add(67);
 
         MaxHeap maxHeap = new MaxHeap(list);
-
         maxHeap.printHeap();
 
         maxHeap.insert(100);
-
         maxHeap.printHeap();
 
         maxHeap.insert(70);
-
         maxHeap.printHeap();
 
         // heap.delete(1);
@@ -40,11 +40,11 @@ public class HeapClient {
 
         // System.out.println(heap.peek());
 
-        maxHeap.remove();
+        maxHeap.removeRoot();
 
         maxHeap.printHeap();
 
-        maxHeap.remove();
+        maxHeap.removeRoot();
 
         maxHeap.printHeap();
     }
