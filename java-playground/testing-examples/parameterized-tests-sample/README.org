@@ -1,3 +1,19 @@
 * Reference
 
 https://www.baeldung.com/parameterized-tests-junit-5
+
+All of these seem unnecessary if we can use "records".
+We can build our own objects on the fly and run a loop on it.
+
+e.g.
+
+record Testcase (String testcaseDescription, String[] line, String expected) {}
+
+Testcase[] testcases = new Testcase[] {
+   new Testcase("first test case", new String[]{"a", "b"}, "expected output"),
+   new Testcase("second test case", new String[]{"c", "d"}, "expected output"),
+}
+
+for (Testcast t : testcases) {
+    // call the method that needs to be tested and run assertions
+}
