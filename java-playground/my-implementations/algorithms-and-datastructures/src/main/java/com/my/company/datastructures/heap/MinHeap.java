@@ -34,14 +34,14 @@ class MinHeap {
         return 2 * index + 2;
     }
 
-    public boolean insert(int key) {
+    public boolean insert(int value) {
         if (current_heap_size == capacity) {
             return false;
         }
 
-        // First insert the new key at the end
+        // First insert the new value at the end
         int i = current_heap_size;
-        heapArray[i] = key;
+        heapArray[i] = value;
         current_heap_size++;
 
         // Fix the min heap property if it is violated
@@ -52,7 +52,7 @@ class MinHeap {
         return true;
     }
 
-    // Returns the minimum key (key at root) from min heap
+    // Returns the minimum value (value at root) from min heap
     public int peek() {
         System.out.println(heapArray[0]);
         return heapArray[0];
@@ -75,7 +75,6 @@ class MinHeap {
         int root = heapArray[0];
 
         heapArray[0] = heapArray[current_heap_size - 1];
-        heapArray[current_heap_size - 1] = 0;
         current_heap_size--;
         sinkDown(0);
 
@@ -119,8 +118,8 @@ class MinHeap {
         }
     }
 
-    // Changes value on a key
-    public void changeValueOnAKey(int index, int new_val) {
+    // Changes value at an index
+    public void changeValueAtIndex(int index, int new_val) {
         if (heapArray[index] == new_val) {
             return;
         }
@@ -139,10 +138,25 @@ class MinHeap {
     }
 
     public void printHeap() {
-        for (int i = 0; i < heapArray.length; i++) {
+        for (int i = 0; i < current_heap_size; i++) {
             System.out.print(heapArray[i]);
             System.out.print(", ");
         }
         System.out.println(" ");
+    }
+
+    public void sort() {
+
+        int lastHeapIndex = current_heap_size - 1;
+
+        for (int i = 0; i < current_heap_size; i++) {
+            // swap first root with the last element of the heap.
+            // and do the same thing by reducing the size of the heap by 1.
+            int tmp = heapArray[0];
+            heapArray[0] = heapArray[lastHeapIndex - i];
+            heapArray[lastHeapIndex - i] = tmp;
+
+            sinkDown(0);
+        }
     }
 }

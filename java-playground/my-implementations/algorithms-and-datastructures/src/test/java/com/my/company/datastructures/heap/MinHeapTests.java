@@ -20,12 +20,15 @@ public class MinHeapTests {
         h.insert(45);
         h.printHeap();
 
+        h.sort();
+        h.printHeap();
+
         h.removeRoot();
         h.printHeap();
 
         h.peek();
 
-        h.changeValueOnAKey(2, 1);
+        h.changeValueAtIndex(2, 1);
         h.printHeap();
 
         h.peek();
