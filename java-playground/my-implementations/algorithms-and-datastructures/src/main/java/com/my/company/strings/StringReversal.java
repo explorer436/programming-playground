@@ -21,11 +21,8 @@ public class StringReversal {
             int length = input.length(), last = length - 1;
 
             for ( int i = 0; i < length/2; i++ ) {
-
                 char c = charArray[i];
-
                 charArray[i] = charArray[last - i];
-
                 charArray[last - i] = c;
             }
 
