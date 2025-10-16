@@ -3,8 +3,8 @@ package com.my.company.javatojson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import com.my.company.javatojson.adapters.LocalDateTimeTypeAdapter;
-import com.my.company.javatojson.adapters.OffsetDateTimeTypeAdapter;
+import com.my.company.javatojson.gsonbuilderadapters.LocalDateTimeTypeAdapter;
+import com.my.company.javatojson.gsonbuilderadapters.OffsetDateTimeTypeAdapter;
 import com.my.company.model.Employee;
 
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package com.my.company.javatojson.adapters;
+package com.my.company.javatojson.gsonbuilderadapters;
 
 import com.google.gson.*;
 

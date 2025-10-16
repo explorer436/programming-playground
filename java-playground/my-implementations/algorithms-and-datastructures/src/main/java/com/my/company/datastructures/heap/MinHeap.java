@@ -1,7 +1,9 @@
 package com.my.company.datastructures.heap;
 
 
-class MinHeap {
+import java.util.Collections;
+
+public class MinHeap {
 
     private int[] heapArray;
 
@@ -9,11 +11,13 @@ class MinHeap {
 
     private int current_heap_size;
 
-    public MinHeap(int n) {
-        capacity = n;
+    public MinHeap(int capacity) {
+        this.capacity = capacity;
         heapArray = new int[capacity];
         current_heap_size = 0;
     }
+
+    // TODO Create a constructor that takes an array as input parameter
 
     private void swap(int[] arr, int a, int b) {
         int temp = arr[a];
@@ -76,7 +80,7 @@ class MinHeap {
 
         heapArray[0] = heapArray[current_heap_size - 1];
         current_heap_size--;
-        sinkDown(0);
+        sinkDownFromIndex(0, current_heap_size);
 
         return root;
     }
@@ -100,21 +104,21 @@ class MinHeap {
     // with the root at given index
     // This method assumes that the subtrees
     // are already heapified
-    private void sinkDown(int index) {
+    private void sinkDownFromIndex(int index, int n) {
         int l = left(index);
         int r = right(index);
 
-        int smallest = index;
-        if (l < current_heap_size && heapArray[l] < heapArray[smallest]) {
-            smallest = l;
+        int smallestIndex = index;
+        if (l < n && heapArray[l] < heapArray[smallestIndex]) {
+            smallestIndex = l;
         }
-        if (r < current_heap_size && heapArray[r] < heapArray[smallest]) {
-            smallest = r;
+        if (r < n && heapArray[r] < heapArray[smallestIndex]) {
+            smallestIndex = r;
         }
 
-        if (smallest != index) {
-            swap(heapArray, index, smallest);
-            sinkDown(smallest);
+        if (smallestIndex != index) {
+            swap(heapArray, index, smallestIndex);
+            sinkDownFromIndex(smallestIndex, n);
         }
     }
 
@@ -128,7 +132,7 @@ class MinHeap {
         heapArray[index] = new_val;
 
         if (original < new_val) {
-            sinkDown(index);
+            sinkDownFromIndex(index, current_heap_size);
         } else {
             while (index != 0 && heapArray[index] < heapArray[parent(index)]) {
                 swap(heapArray, index, parent(index));
@@ -156,7 +160,18 @@ class MinHeap {
             heapArray[0] = heapArray[lastHeapIndex - i];
             heapArray[lastHeapIndex - i] = tmp;
 
-            sinkDown(0);
+            sinkDownFromIndex(0, lastHeapIndex - i);
+        }
+        // When this is done, the array is sorted but it will be a max-heap (the largest element is at the root)
+
+        // If we want to avoid reversing the array, we have to start with a MaxHeap - not a MinHeap
+        // Classic array reversal
+        int mid = current_heap_size / 2;
+        int length = current_heap_size - 1;
+        for ( int i = 0; i < mid; i++ ) {
+            int temp = heapArray[i];
+            heapArray[i] = heapArray[length - i];
+            heapArray[length - i] = temp;
         }
     }
 }
