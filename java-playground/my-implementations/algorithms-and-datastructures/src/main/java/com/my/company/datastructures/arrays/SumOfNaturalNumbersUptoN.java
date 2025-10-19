@@ -1,10 +1,5 @@
 package com.my.company.datastructures.arrays;
 
-/**
- * You are given an integer n. Count the total of 1 + 2 + . . . + n.
- *
- * <p>This is an illustration of time complexity. Read TimeComplexity.pdf
- */
 public class SumOfNaturalNumbersUptoN {
 
   public static void main(String[] args) throws Exception {

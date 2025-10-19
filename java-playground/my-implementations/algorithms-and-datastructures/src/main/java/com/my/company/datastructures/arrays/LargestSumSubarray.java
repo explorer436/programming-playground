@@ -1,11 +1,5 @@
 package com.my.company.datastructures.arrays;
 
-/**
- * Largest Sum Contiguous Subarray
- *
- * <p>Write an efficient program to find the sum of contiguous subarray within a one-dimensional
- * array of numbers which has the largest sum.
- */
 public class LargestSumSubarray {
 
   public static void main(String[] args) {

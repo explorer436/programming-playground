@@ -5,14 +5,13 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Arrays;
 
-/*
- * Find the unique numbers in an array
- */
 public class UniqueNumbersInAnArray {
 
     public static void main(String[] args) {
         Collection<Integer> numbers = Arrays.asList(1, 2, 1, 3);
-        for (int number : findUniqueNumbers(numbers)) {
+
+        Collection<Integer> uniqueNumbers = findUniqueNumbers(numbers);
+        for (int number : uniqueNumbers) {
             System.out.println(number); // expected 2, 3
         }
     }

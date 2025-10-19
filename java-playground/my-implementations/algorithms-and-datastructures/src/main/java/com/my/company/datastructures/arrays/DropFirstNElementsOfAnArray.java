@@ -4,16 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Given an array containing positive and negative integers,
- *
- * <p>how to move all the negative integers to the left side of the array?
- *
- * <p>how to get a count of the total number or negative integers in the array?
- *
- * <p>how to get a count of the total number or positive integers in the array? (length - total
- * number of negative integers)
- */
 public class DropFirstNElementsOfAnArray {
 
   public static void main(String[] args) {

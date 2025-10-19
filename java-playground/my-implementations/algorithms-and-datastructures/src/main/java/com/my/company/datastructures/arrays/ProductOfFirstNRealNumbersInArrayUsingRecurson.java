@@ -2,10 +2,6 @@ package com.my.company.datastructures.arrays;
 
 import java.util.Arrays;
 
-/**
- * Write a recursive function that computes and returns the product of the ﬁrst n ≥ 1 real numbers
- * in an array.
- */
 public class ProductOfFirstNRealNumbersInArrayUsingRecurson {
   public static void main(String[] args) {
 

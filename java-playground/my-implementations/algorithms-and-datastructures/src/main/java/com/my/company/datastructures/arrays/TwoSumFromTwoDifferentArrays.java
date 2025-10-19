@@ -6,16 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Given two arrays of integers, return a pair of indexes, the first index from the first array and
- * the second index from the second array. Two numbers from the two different arrays should add up
- * to a specific target.
- *
- * <p>Each input may have more than one solution.
- *
- * <p>Example: Given ar1 = [1, 2, 3], ar1 = [5, 4, 5, 6], target = 7, Because ar1[1] + ar2[0] = 2 +
- * 5 = 7, return [1, 0]. Because ar1[1] + ar2[2] = 2 + 5 = 7, return [1, 2].
- */
 public class TwoSumFromTwoDifferentArrays {
   /**
    * The elements of the input arrays are not sorted. If they are sorted, we can start at the middle
