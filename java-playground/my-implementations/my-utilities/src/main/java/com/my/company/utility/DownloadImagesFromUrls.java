@@ -66,7 +66,7 @@ public class DownloadImagesFromUrls {
         List<String> urlList = new ArrayList<>();
 
         urlList.add(
-                "https://i0.wp.com/post.healthline.com/wp-content/uploads/2021/02/400x400_Bodyweight_Back_Exercises_Wide_Grip_Pullup-1.gif?h=840");
+                "https://elitejumps.co/cdn/shop/articles/EliteJumps-June2024-DillonVibes-190.jpg");
 
         /*
          * urlList.add(
