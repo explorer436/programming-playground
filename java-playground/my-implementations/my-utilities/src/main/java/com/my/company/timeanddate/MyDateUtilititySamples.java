@@ -15,17 +15,20 @@ public class MyDateUtilititySamples {
 
         gettingCurrentTime();
 
-        // add_or_subtract_number_of_days_from_current_date();
+        add_or_subtract_number_of_days_from_current_date();
 
-        // currentDateToString();
+        currentDateToString();
 
-        // stringToJavaUtilDate();
+        stringToJavaUtilDate();
     }
 
     private static void gettingCurrentTime() {
         LocalDateTime now = LocalDateTime.now();
         System.out.println(now);
 
+        // See https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html
+        // Always use ZoneId to specify what timezone to use.
+        // If not, if the app is running in a different timezone, we will see mixed results.
         now = LocalDateTime.now(ZoneId.of("America/New_York"));
         System.out.println(now);
     }
