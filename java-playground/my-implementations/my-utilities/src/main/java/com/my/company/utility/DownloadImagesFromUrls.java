@@ -66,7 +66,7 @@ public class DownloadImagesFromUrls {
         List<String> urlList = new ArrayList<>();
 
         urlList.add(
-                "https://elitejumps.co/cdn/shop/articles/EliteJumps-June2024-DillonVibes-190.jpg");
+                "https://coveteur.com/media-library/image.gif?id=25277768&width=728&quality=90");
 
         /*
          * urlList.add(
