@@ -66,7 +66,7 @@ public class DownloadImagesFromUrls {
         List<String> urlList = new ArrayList<>();
 
         urlList.add(
-                "https://coveteur.com/media-library/image.gif?id=25277768&width=728&quality=90");
+                "https://www.nerdfitness.com/wp-content/uploads/2020/05/jump-rope-one-figure-8.gif");
 
         /*
          * urlList.add(
