@@ -3,7 +3,7 @@ package com.my.company.recursion;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FindTheKthSmallestValueOfAnArray {
+public class KthSmallestValueOfAnArrayUsingRecursion {
 
     public static int kthSmall(int k, List<Integer> anArray) {
 
