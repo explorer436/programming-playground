@@ -8,7 +8,7 @@ import com.my.company.utility.PrintUtils;
 
 public class FrogRiverOne {
 
-  public static void main(String[] args) throws Exception {
+  (String[] args) throws Exception {
     int result;
 
     int[] A = {1, 3, 1, 4, 2, 3, 5, 4};

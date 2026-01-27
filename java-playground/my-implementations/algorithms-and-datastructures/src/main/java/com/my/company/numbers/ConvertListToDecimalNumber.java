@@ -18,7 +18,7 @@ public class ConvertListToDecimalNumber {
 
             // Optional: Check for potential overflow if the number can get very large
             // This check is a bit simplified. For true large number handling, use BigInteger.
-            if (number < 0 && digits.length > String.valueOf(Integer.MAX_VALUE).length() -1 ) { // Heuristic for overflow
+            if (number < 0 && digits.length > String.valueOf(Integer.MAX_VALUE).length() - 1) { // Heuristic for overflow
                 // Or if ( (Integer.MAX_VALUE - digit) / 10 < previous_number_value_before_multiplication )
                 System.err.println("Warning: Potential integer overflow for result: " + number + ". Consider using long or BigInteger.");
                 // throw new ArithmeticException("Integer overflow"); // Or handle as needed
@@ -40,7 +40,7 @@ public class ConvertListToDecimalNumber {
             }
             number = number * 10L + digit;
             // Similar overflow check for long if needed, though less likely for typical inputs
-            if (number < 0 && digits.length > String.valueOf(Long.MAX_VALUE).length() -1 ) {
+            if (number < 0 && digits.length > String.valueOf(Long.MAX_VALUE).length() - 1) {
                 System.err.println("Warning: Potential long overflow for result: " + number + ". Consider using BigInteger.");
             }
         }

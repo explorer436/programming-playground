@@ -46,7 +46,7 @@ import java.util.Arrays;
  */
 public class MaxCounters {
 
-  public static void main(String[] args) {
+  (String[] args) {
     int[] A = {3, 4, 4, 6, 1, 4, 4};
     System.out.println(
         "bruteForceSolution_slow : " + Arrays.toString(bruteForceSolution_slow(5, A)));
