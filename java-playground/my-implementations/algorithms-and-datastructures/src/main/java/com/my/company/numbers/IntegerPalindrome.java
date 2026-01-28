@@ -2,49 +2,11 @@ package com.my.company.numbers;
 
 public class IntegerPalindrome {
 
-  public static void main(String[] args) throws Exception {
-    boolean result;
-
-    result = isPalindrome(121);
-    if (!result) {
-      throw new Exception("wrong answer - expected true but received " + result);
-    }
-
-    result = isPalindrome(-121);
-    if (result) {
-      throw new Exception("wrong answer - expected false but received " + result);
-    }
-
-    result = isPalindrome(10);
-    if (result) {
-      throw new Exception("wrong answer - expected false but received " + result);
-    }
-
-    // ----------------------------------------------------------
-
-    result = isPalindrome_UsingStringConversion(121);
-    if (!result) {
-      throw new Exception("wrong answer - expected true but received " + result);
-    }
-
-    result = isPalindrome_UsingStringConversion(-121);
-    if (result) {
-      throw new Exception("wrong answer - expected false but received " + result);
-    }
-
-    result = isPalindrome_UsingStringConversion(10);
-    if (result) {
-      throw new Exception("wrong answer - expected false but received " + result);
-    }
-
-    System.out.println("done");
-  }
-
   /**
    * REMEMBER : do not try to do it all in one method. Break it down into smaller methods wherever
    * necessary.
    */
-  public static boolean isPalindrome(int x) {
+  public boolean isPalindrome(int x) {
     boolean result = false;
 
     if (x >= 0) {
@@ -60,7 +22,7 @@ public class IntegerPalindrome {
    * StringBuffer.reverse() for reversing the string. But, it would be nice to do it without
    * converting the integer into a String in the first place.
    */
-  public static boolean isPalindrome_UsingStringConversion(int x) {
+  public boolean isPalindrome_UsingStringConversion(int x) {
 
     if (x < 0) {
       return false;
@@ -76,7 +38,7 @@ public class IntegerPalindrome {
   }
 
   /** Take a look at StringReversal.java */
-  public static String reverseStringUsingByteArray(String input) {
+  public String reverseStringUsingByteArray(String input) {
     String reversedString = null;
 
     if (input != null) {

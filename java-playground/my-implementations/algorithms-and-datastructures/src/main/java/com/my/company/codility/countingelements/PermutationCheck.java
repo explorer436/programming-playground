@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class PermutationCheck {
 
-  (String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
     int[] A = {4, 1, 3, 2};
 
     int result;
