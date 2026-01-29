@@ -2,11 +2,7 @@ package com.my.company.numbers;
 
 public class LCMUsingDivision {
 
-    public static void main(String[] args) {
-        System.out.println("LCM of 12 and 18 is : " + lcm_MultiplicationIsAddition(12, 18));
-    }
-
-    public static int lcm_MultiplicationIsAddition(int number1, int number2) {
+    public int lcm_MultiplicationIsAddition(int number1, int number2) {
         if (number1 == 0 || number2 == 0) {
             return 0;
         }
