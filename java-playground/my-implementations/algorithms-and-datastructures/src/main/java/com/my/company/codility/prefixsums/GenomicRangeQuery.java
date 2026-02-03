@@ -4,31 +4,7 @@ import com.my.company.utility.PrintUtils;
 
 public class GenomicRangeQuery {
 
-  public static void main(String[] args) {
-    for (int i : solution("CAGCCTA", new int[] {2, 5, 0}, new int[] {4, 5, 6})) {
-      System.out.println("result i : " + i);
-    }
-
-    // System.out.println("result : " + solution(6, 11, 3));
-
-    // System.out.println("result : " + solution(11, 345, 17));//answer should be 20
-
-    /*
-     * A = 11, B = 345, K = 17 WRONG ANSWER got 19 expected 20
-     */
-
-    /*
-     * System.out.println("result : " + solution(2, A3));
-     *
-     * System.out.println("result : " + solution(3, A4));
-     *
-     * System.out.println("result : " + solution(1, A5));
-     *
-     * System.out.println("result : " + solution(2, A5));
-     */
-  }
-
-  public static int[] solution(String S, int[] P, int[] Q) {
+  public int[] solution(String S, int[] P, int[] Q) {
 
     char[] chars_from_s_array = S.toCharArray();
     System.out.println("chars_from_s_array.length : " + chars_from_s_array.length);
@@ -68,7 +44,7 @@ public class GenomicRangeQuery {
     return extractFinalAnswer(P, Q, cumulativeAnswers);
   }
 
-  private static int[] extractFinalAnswer(int[] P, int[] Q, int[][] cumulativeAnswers) {
+  private int[] extractFinalAnswer(int[] P, int[] Q, int[][] cumulativeAnswers) {
     // P.length = Q.length and this will be the length of the final answer array
     int[] answerArray = new int[P.length];
 
@@ -87,7 +63,7 @@ public class GenomicRangeQuery {
     return answerArray;
   }
 
-  private static void incrementCountBasedOnLetterAtCurrentPostition(
+  private void incrementCountBasedOnLetterAtCurrentPostition(
       char[] chars_from_s_array, int[][] cumulativeAnswers, int location_in_s_array) {
     switch (chars_from_s_array[location_in_s_array]) {
       case 'A':
@@ -110,7 +86,7 @@ public class GenomicRangeQuery {
   }
 
   // just copy the previous row into the current row to preserve count
-  private static void copyRowToNextRow(int[][] cumulativeAnswers, int location_in_s_array) {
+  private void copyRowToNextRow(int[][] cumulativeAnswers, int location_in_s_array) {
     for (int eachLettersInDnaSequence = 0;
         eachLettersInDnaSequence < 4;
         eachLettersInDnaSequence++) {
