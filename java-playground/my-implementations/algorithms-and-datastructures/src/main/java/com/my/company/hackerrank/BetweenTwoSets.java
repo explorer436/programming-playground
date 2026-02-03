@@ -3,7 +3,7 @@ package com.my.company.hackerrank;
 import java.util.List;
 
 import com.my.company.numbers.GCDOfNumbersInAnArray;
-import com.my.company.numbers.LCMOfNumbersInAnArray;
+import com.my.company.numbers.LCMOfNumbersInACollection;
 
 public class BetweenTwoSets {
 
@@ -15,7 +15,7 @@ public class BetweenTwoSets {
             return 0;
         }
 
-        int lcmOfA = LCMOfNumbersInAnArray.getLcm(a);
+        int lcmOfA = LCMOfNumbersInACollection.getLcmOfNumbersInAList(a);
         System.out.println("lcmOfA : " + lcmOfA);
 
         int gcdOfB = gcd.getGcdOfNumbersInAList(b);

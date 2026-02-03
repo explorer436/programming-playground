@@ -8,13 +8,7 @@ import static com.my.company.numbers.PrimeFactorsOfANumber.getPrimeFactors;
 
 public class LCMUsingPrimeFactorization {
 
-    public static void main(String[] args) {
-        System.out.println(
-                "LCM of 12 and 18 using PrimeFactorizationApproach is : "
-                        + lcmUsingPrimeFactorizationApproach(12, 18));
-    }
-
-    public static int lcmUsingPrimeFactorizationApproach(int number1, int number2) {
+    public int lcmUsingPrimeFactorizationApproach(int number1, int number2) {
         if (number1 == 0 || number2 == 0) {
             return 0;
         }
