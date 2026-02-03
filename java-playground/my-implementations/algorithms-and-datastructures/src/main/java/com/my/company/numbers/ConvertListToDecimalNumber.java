@@ -2,7 +2,7 @@ package com.my.company.numbers;
 
 public class ConvertListToDecimalNumber {
 
-    public static int convertArrayToDecimalMath(int[] digits) {
+    public int convertArrayToDecimalMath(int[] digits) {
         if (digits == null || digits.length == 0) {
             // Or throw new IllegalArgumentException("Array cannot be null or empty");
             return 0; // Default for empty or null array
@@ -28,7 +28,7 @@ public class ConvertListToDecimalNumber {
     }
 
     // Version using long to handle larger numbers
-    public static long convertArrayToDecimalMathLong(int[] digits) {
+    public long convertArrayToDecimalMathLong(int[] digits) {
         if (digits == null || digits.length == 0) {
             return 0L;
         }
@@ -45,34 +45,5 @@ public class ConvertListToDecimalNumber {
             }
         }
         return number;
-    }
-
-
-    public static void main(String[] args) {
-        int[] arr1 = {1, 3, 4};
-        System.out.println("Array: [1, 3, 4] -> Decimal (math): " + convertArrayToDecimalMath(arr1)); // Output: 134
-
-        int[] arr2 = {9, 0, 2, 1, 0};
-        System.out.println("Array: [9, 0, 2, 1, 0] -> Decimal (math): " + convertArrayToDecimalMath(arr2)); // Output: 90210
-
-        int[] arr3 = {0, 0, 5};
-        System.out.println("Array: [0, 0, 5] -> Decimal (math): " + convertArrayToDecimalMath(arr3)); // Output: 5
-
-        int[] arr4 = {};
-        System.out.println("Array: [] -> Decimal (math): " + convertArrayToDecimalMath(arr4)); // Output: 0
-
-        int[] arrLarge = {2, 1, 4, 7, 4, 8, 3, 6, 4, 7}; // This is Integer.MAX_VALUE
-        System.out.println("Array for Integer.MAX_VALUE -> Decimal (math long): " + convertArrayToDecimalMathLong(arrLarge));
-
-        int[] arrTooLargeForInt = {2, 1, 4, 7, 4, 8, 3, 6, 4, 8}; // Integer.MAX_VALUE + 1
-        // System.out.println("Array too large for int -> Decimal (math int): " + convertArrayToDecimalMath(arrTooLargeForInt)); // Will overflow
-        System.out.println("Array too large for int -> Decimal (math long): " + convertArrayToDecimalMathLong(arrTooLargeForInt));
-
-        try {
-            int[] arrInvalid = {1, 10, 2};
-            System.out.println(convertArrayToDecimalMath(arrInvalid));
-        } catch (IllegalArgumentException e) {
-            System.err.println("Error for [1, 10, 2]: " + e.getMessage());
-        }
     }
 }

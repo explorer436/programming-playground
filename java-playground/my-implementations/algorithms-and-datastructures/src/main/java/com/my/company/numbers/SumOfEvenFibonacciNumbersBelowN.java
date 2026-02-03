@@ -1,15 +1,8 @@
 package com.my.company.numbers;
 
-class EvenFibonacciNumbers {
+class SumOfEvenFibonacciNumbersBelowN {
 
-    public static void main(String[] args) {
-        int limit = 4 * 1000000;
-        System.out.println(evenFibSum(limit));
-        // 4613732
-    }
-
-    static int evenFibSum(int limit)
-    {
+    static int sumOfEvenFibonacciNumbersBelowN(int limit) {
         if (limit < 2)
             return 0;
 
@@ -19,8 +12,7 @@ class EvenFibonacciNumbers {
         long sum = ef1 + ef2;
 
         // calculating sum of even Fibonacci value
-        while (ef2 <= limit)
-        {
+        while (ef2 <= limit) {
             // get next even value of Fibonacci sequence
             long ef3 = 4 * ef2 + ef1;
 
@@ -34,6 +26,6 @@ class EvenFibonacciNumbers {
             sum += ef2;
         }
 
-        return(int) sum;
+        return (int) sum;
     }
 }
