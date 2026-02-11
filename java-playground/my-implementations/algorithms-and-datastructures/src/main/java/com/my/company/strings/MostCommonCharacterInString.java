@@ -33,12 +33,10 @@ public class MostCommonCharacterInString {
     public String mostCommonCharacters1(String str) {
         HashMap<Character, Integer> letterCountMap = getMapOfLetters(str);
 
-        List<Character> mostCommonCharactersList = List.of();
-
-        // PrintUtils.printMap(letterCountMap);
-
         // The first step is to find the highest value at all.
         if (!letterCountMap.isEmpty()) {
+
+            List<Character> mostCommonCharactersList = List.of();
             int maxValue = Collections.max(letterCountMap.values());
 
             // Now iterate through all the entries of the map and add to the list keys associated with the
@@ -49,15 +47,18 @@ public class MostCommonCharacterInString {
                     mostCommonCharactersList.add(entry.getKey());
                 }
             }
+
+            return mostCommonCharactersList.stream()
+                    .map(String::valueOf)
+                    .collect(Collectors.joining());
         }
 
-        return mostCommonCharactersList;
+
+        return null;
     }
 
     public String mostCommonCharacters2(String str) {
         HashMap<Character, Integer> letterCountMap = getMapOfLetters(str);
-
-        // PrintUtils.printMap(letterCountMap);
 
         // The first step is to find the highest value at all.
         if (!letterCountMap.isEmpty()) {
@@ -70,16 +71,15 @@ public class MostCommonCharacterInString {
                             .map(entry -> entry.getKey())
                             .collect(Collectors.toList());
 
-            System.out.println(
-                    "MostCommonCharacterInString : " + Arrays.toString(listRetrievedUsingStreams.toArray()));
+            return listRetrievedUsingStreams.stream()
+                    .map(String::valueOf)
+                    .collect(Collectors.joining());
         }
         return null;
     }
 
     public char firstMostCommonCharacter(String str) {
         HashMap<Character, Integer> letterCountMap = getMapOfLetters(str);
-
-        // PrintUtils.printMap(letterCountMap);
 
         // The first step is to find the highest value at all.
         if (!letterCountMap.isEmpty()) {
