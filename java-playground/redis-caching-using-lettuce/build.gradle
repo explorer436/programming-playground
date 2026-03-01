@@ -1,9 +1,10 @@
 buildscript {
     repositories {
         mavenLocal()
-        maven { url 'https://pi-artifactory.lmig.com/artifactory/maven' }
+        /*
         maven { url 'https://repo.forge.lmig.com/content/repositories/piit-releases/' }
         maven { url "https://repo.forge.lmig.com/content/groups/ets" }
+        */
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
