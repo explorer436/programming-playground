@@ -1,4 +1,4 @@
-package com.my.company.mycustomclasses;
+package com.my.company.checksum;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ public class CreditCardValidation {
 
     public List<Map<String, Object>> validateCards(
             String[] bannedPrefixes, String[] cardsToValidate) {
-        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+        List<Map<String, Object>> result = new ArrayList<>();
 
         Map<String, Object> map;
         if (null != cardsToValidate) {
@@ -40,6 +40,9 @@ public class CreditCardValidation {
     }
 
     public boolean isValid(String ccNumber) {
+
+        // Note: For the correct logic for Luhn Validation, see java/com/my/company/checksum/LuhnValidator.java
+
         int sum = 0;
 
         for (int i = 0; i < ccNumber.length() - 1; i++) {

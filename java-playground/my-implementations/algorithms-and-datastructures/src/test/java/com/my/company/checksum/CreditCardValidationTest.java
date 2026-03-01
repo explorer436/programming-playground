@@ -1,8 +1,10 @@
-package com.my.company.mycustomclasses;
+package com.my.company.checksum;
 
-import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Map;
+
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CreditCardValidationTest {
@@ -12,10 +14,10 @@ public class CreditCardValidationTest {
     @Test
     public void testIsValid() {
         // Based on the implementation: sum of (2 * digit) for all digits except last, then % 10 == last digit
-        
+
         // Example: "123" -> (1*2 + 2*2) = 6. 6 % 10 = 6. Last digit 3. 6 != 3. Should be false.
         assertFalse(creditCardValidation.isValid("123"));
-        
+
         // Example: "126" -> (1*2 + 2*2) = 6. 6 % 10 = 6. Last digit 6. 6 == 6. Should be true.
         assertTrue(creditCardValidation.isValid("126"));
     }
@@ -50,11 +52,29 @@ public class CreditCardValidationTest {
     public void testValidateCardsWithNulls() {
         assertNotNull(creditCardValidation.validateCards(null, null));
         assertTrue(creditCardValidation.validateCards(null, null).isEmpty());
-        
+
         String[] cards = {"126"};
         List<Map<String, Object>> results = creditCardValidation.validateCards(null, cards);
         assertEquals(1, results.size());
         assertEquals(true, results.get(0).get("isAllowed"));
         assertEquals(true, results.get(0).get("isValid"));
+    }
+
+    @Test
+    void testValidateCards_2() {
+        String[] swipedCreditCards = {"6724843711060148", "6745343711060149"};
+        String[] invalidPrefixes = {"11", "3434", "67453", "9"};
+
+        List<Map<String, Object>> processedCards = creditCardValidation.validateCards(invalidPrefixes, swipedCreditCards);
+
+        assertEquals(2, processedCards.size());
+
+        assertEquals("6724843711060148", processedCards.get(0).get("card"));
+        assertEquals(true, processedCards.get(0).get("isValid"));
+        assertEquals(true, processedCards.get(0).get("isAllowed"));
+
+        assertEquals("6745343711060149", processedCards.get(1).get("card"));
+        assertEquals(false, processedCards.get(1).get("isValid"));
+        assertEquals(false, processedCards.get(1).get("isAllowed"));
     }
 }
