@@ -1,0 +1,14 @@
+services:
+  gcp-code-assist-container:
+    build: .
+    container_name: gcp-code-assist
+    cap_add:
+      - CHOWN
+      - FOWNER    
+    volumes:
+      # - .:/home/developer/workspace
+      - "/home/explorer436/Downloads/GitRepositories/programming-playground/java-playground/:/home/developer/workspace"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    ports:
+      - "2222:22"

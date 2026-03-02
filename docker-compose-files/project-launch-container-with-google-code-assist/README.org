@@ -1,0 +1,13 @@
+To pass the value for GEMINI_API_KEY on the fly, use this:
+
+Now you can pass the key when running docker-compose like this:
+
+#+begin_src
+GEMINI_API_KEY="your_api_key_here" docker-compose up
+#+end_src
+
+Or you can create a .env file in the same directory as docker-compose.yml with the content:
+
+#+begin_src
+GEMINI_API_KEY=your_api_key_here
+#+end_src
