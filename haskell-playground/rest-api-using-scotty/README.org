@@ -1,11 +1,7 @@
-------------------------
+* Scope for building up on the functionality:
 
-Scope for building up on the functionality:
-
-https://adit.io/posts/2013-04-15-making-a-website-with-haskell.html
-http://taylor.fausak.me/2014/10/21/building-a-json-rest-api-in-haskell/
-https://github.com/eckyputrady/haskell-scotty-realworld-example-app
-https://vadosware.io/post/rest-ish-services-in-haskell-part-1/ (and part-2 and part-3)
-https://github.com/scotty-web/scotty/wiki/Scotty-Tutorials-&-Examples
-
-------------------------
+1. https://adit.io/posts/2013-04-15-making-a-website-with-haskell.html
+1. http://taylor.fausak.me/2014/10/21/building-a-json-rest-api-in-haskell/
+1. https://github.com/eckyputrady/haskell-scotty-realworld-example-app
+1. https://vadosware.io/post/rest-ish-services-in-haskell-part-1/ (and part-2 and part-3)
+1. https://github.com/scotty-web/scotty/wiki/Scotty-Tutorials-&-Examples
