@@ -9,6 +9,7 @@ public class CreditCardValidation {
 
     public List<Map<String, Object>> validateCards(
             String[] bannedPrefixes, String[] cardsToValidate) {
+
         List<Map<String, Object>> result = new ArrayList<>();
 
         Map<String, Object> map;
