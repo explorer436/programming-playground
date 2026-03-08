@@ -8,48 +8,6 @@ import com.my.company.utility.PrintUtils;
 
 public class FrogRiverOne {
 
-    public static void main(String[] args) throws Exception {
-        int result;
-
-        int[] A = {1, 3, 1, 4, 2, 3, 5, 4};
-        result = solution(5, A);
-        if (result != 6) {
-            throw new Exception("wrong answer - expected " + 6 + " but received " + result);
-        }
-
-        int[] A2 = {3};
-        result = solution(5, A2);
-        if (result != -1) {
-            throw new Exception("wrong answer - expected " + -1 + " but received " + result);
-        }
-
-        int[] A3 = {3};
-        result = solution(2, A3);
-        if (result != -1) {
-            throw new Exception("wrong answer - expected " + -1 + " but received " + result);
-        }
-
-        int[] A4 = {3};
-        result = solution(3, A4);
-        if (result != -1) {
-            throw new Exception("wrong answer - expected " + -1 + " but received " + result);
-        }
-
-        int[] A5 = {1};
-        result = solution(1, A5);
-        if (result != 0) {
-            throw new Exception("wrong answer - expected " + 0 + " but received " + result);
-        }
-
-        int[] A6 = {2, 2, 2, 2, 2};
-        result = solution(2, A6);
-        if (result != -1) {
-            throw new Exception("wrong answer - expected " + -1 + " but received " + result);
-        }
-
-        System.out.println("done");
-    }
-
     /**
      * | 1 2 3 4 5 | |---------------------------------------| | A[0] | | A[1] | | A[2] | | A[3] | |
      * A[4] | | A[5] | | A[6] | | A[7] |
