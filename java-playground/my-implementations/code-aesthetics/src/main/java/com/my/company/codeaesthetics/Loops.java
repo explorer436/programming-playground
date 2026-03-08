@@ -24,6 +24,7 @@ public class Loops {
 
     static Random random = new Random();
 
+    // We are generating the names and ages using "faker" in main. So, we cannot move this logic into a test case.
     public static void main(String[] args) {
         List<User> users = new ArrayList<>(List.of());
 
