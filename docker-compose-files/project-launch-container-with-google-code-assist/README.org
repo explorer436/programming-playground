@@ -13,3 +13,15 @@ Or we can create a ~.env~ file in the same directory as the ~docker-compose.yml~
 #+begin_src
 GEMINI_API_KEY=your_api_key_here
 #+end_src
+
+* Stepping into the container
+
+1. Option 1
+   #+begin_src
+   docker exec -it -u developer gcp-code-assist bash
+   #+end_src
+2. Option 2
+   #+begin_src
+   ssh developer@localhost -p 2222
+   #+end_src
+   The setup includes an SSH server that exposes port 2222. You can SSH directly into the container as the developer user. Any files created during this SSH session will be owned by the developer user, achieving the same result as Option 1.
