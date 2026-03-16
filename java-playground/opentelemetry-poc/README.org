@@ -1,0 +1,96 @@
+*  If we want to do this using springboot, what do we have to do?
+
+To build the same POC using Spring Boot 3.x, the approach is slightly different because Spring Boot uses Micrometer Observation as its primary facade for telemetry, which then plugs into OpenTelemetry.
+
+Here is what you would need to do:
+
+1. Add Dependencies
+   Instead of Quarkus extensions, you would use Spring Boot Starters and the Micrometer-to-OpenTelemetry bridge in your pom.xml:
+   #+begin_src
+    <dependencies>
+	<!-- Web and Actuator are essential for telemetry -->
+	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-actuator</artifactId>
+       </dependency>
+
+       <!-- Tracing Bridge: Micrometer to OTel -->
+       <dependency>
+	   <groupId>io.micrometer</groupId>
+	   <artifactId>micrometer-tracing-bridge-otel</artifactId>
+       </dependency>
+
+       <!-- Exporter: To print to console -->
+       <dependency>
+	   <groupId>io.opentelemetry</groupId>
+	   <artifactId>opentelemetry-exporter-logging</artifactId>
+       </dependency>
+   #+end_src
+
+2. Configure Exporters (The "Hybrid" Part)
+
+   In Spring Boot, you define the exporters as standard @Beans. This is where you tell OTel to print to the console instead of a backend.
+   #+begin_src
+   @Configuration
+   public class OtelConfig {
+
+       @Bean
+       SpanExporter loggingSpanExporter() {
+	   return LoggingSpanExporter.create();
+       }
+
+       @Bean
+       LoggingMeterExporter loggingMeterExporter() {
+	   return new LoggingMeterExporter();
+       }
+   }
+   #+end_src
+
+3. Manual Instrumentation
+
+   While Spring Boot auto-instruments RestTemplate and WebClient (if created via their respective Builders), you can add manual spans and attributes using either the Micrometer Observation API (recommended) or the OpenTelemetry API directly.
+
+   Using Micrometer Observation (Spring Native Way):
+
+   #+begin_src
+   @RestController
+   public class MyController {
+       private final ObservationRegistry registry;
+
+       public MyController(ObservationRegistry registry) {
+	   this.registry = registry;
+       }
+
+       @GetMapping("/hello")
+       public String hello() {
+	   return Observation.createNotStarted("manual.span", registry)
+	       .lowCardinalityKeyValue("custom.attribute", "value")
+	       .observe(() -> {
+		   // Your business logic here
+		   return "Hello World";
+	       });
+       }
+   }
+   #+end_src
+
+4. Configuration (application.properties)
+
+   You need to enable the collection of traces and metrics:
+
+   #+begin_src
+   management.endpoints.web.exposure.include=health,info,metrics,prometheus
+   # Sample 100% of traces for the POC (don't do this in prod!)
+   management.tracing.sampling.probability=1.0
+   # Include trace and span IDs in logs automatically
+   logging.pattern.level=%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]
+   #+end_src
+
+5. Summary of Differences
+
+   1. Quarkus: Telemetry is very "extension-centric" and often zero-config.
+   1. Spring Boot: More explicit via Actuator and Micrometer. You must use RestTemplateBuilder or WebClient.Builder to ensure context propagation works; simply doing new RestTemplate() will break the trace chain.
+   1. Log Correlation: Spring Boot 3 handles this out of the box via Logback if the tracing bridge is present.

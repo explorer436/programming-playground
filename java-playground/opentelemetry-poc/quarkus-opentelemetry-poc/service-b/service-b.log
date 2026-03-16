@@ -1,0 +1,31 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< org.acme:service-b >-------------------------
+[INFO] Building service-b 1.0.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The artifact io.quarkus:quarkus-junit5:jar:3.32.3 has been relocated to io.quarkus:quarkus-junit:jar:3.32.3: Update the artifactId in your project build file. Refer to https://github.com/quarkusio/quarkus/wiki/Migration-Guide-3.31 for more information.
+[INFO] 
+[INFO] --- quarkus:3.32.3:dev (default-cli) @ service-b ---
+[INFO] Invoking resources:3.3.1:resources (default-resources) @ service-b
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] Invoking quarkus:3.32.3:generate-code (default) @ service-b
+[INFO] Invoking compiler:3.15.0:compile (default-compile) @ service-b
+[INFO] Recompiling the module because of added or removed source files.
+[INFO] Compiling 2 source files with javac [debug release 21] to target/classes
+[INFO] Invoking resources:3.3.1:testResources (default-testResources) @ service-b
+[INFO] skip non existing resourceDirectory /home/developer/workspace/quarkus-opentelemetry-poc/service-b/src/test/resources
+[INFO] Invoking quarkus:3.32.3:generate-code-tests (default) @ service-b
+[INFO] Invoking compiler:3.15.0:testCompile (default-testCompile) @ service-b
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug release 21] to target/test-classes
+
+----------------------------
+--- Help improve Quarkus ---
+----------------------------
+* Learn more: https://quarkus.io/usage/
+* Do you agree to contribute anonymous build time data to the Quarkus community? (y/n and enter) 
+[info] [Quarkus build analytics] Didn't receive the user's answer after 10 seconds. The question will be asked again next time.
+
+Listening for transport dt_socket at address: 5005
+Debugger failed to attach: handshake failed - connection prematurally closed
