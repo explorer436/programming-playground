@@ -1,0 +1,910 @@
+:PROPERTIES:
+:ID:       9450b994-bd0f-4926-bf7e-37c29ba43be2
+:END:
+#+title: Different types of locks in Java
+
+* [[id:ea18e3ee-a26b-436c-b6bb-357a554033b2][Difference between synchronization and locks]]
+
+* Locking Mechanisms in Java
+
+https://medium.com/hprog99/locking-mechanism-in-java-c23142d4707b
+
+Locking is a mechanism in Java that allows a thread to exclusively acquire a lock on an object or a class, preventing other threads from accessing the locked object or class until the lock is released. In this blog, we will discuss the different types of locks in Java and provide examples to demonstrate how they can be used in a multi-threaded environment.
+
+** Object Locks
+
+Object locks are used to synchronize access to an object’s methods and fields. When a thread acquires a lock on an object, no other thread can execute any of the object’s synchronized methods until the lock is released. To acquire a lock on an object, a thread can use the synchronized keyword when declaring a method or use the synchronized block.
+
+#+begin_src
+class MyClass {
+    public synchronized void method1() {
+	// code here
+    }
+
+    public void method2() {
+	synchronized(this) {
+	    // code here
+	}
+    }
+}
+#+end_src
+
+In the above example, method1 is declared as synchronized, which means that only one thread can execute this method at a time. method2 uses a synchronized block to acquire a lock on the current object, which prevents other threads from executing this block of code until the lock is released.
+
+** Class Locks
+
+Class locks are used to synchronize access to a class’s static methods and fields. When a thread acquires a lock on a class, no other thread can execute any of the class’s synchronized static methods until the lock is released. To acquire a lock on a class, a thread can use the synchronized keyword when declaring a static method or use the synchronized block.
+
+#+begin_src
+class MyClass {
+    public static synchronized void method1() {
+	// code here
+    }
+
+    public static void method2() {
+	synchronized(MyClass.class) {
+	    // code here
+	}
+    }
+}
+#+end_src
+
+In the above example, method1 is declared as synchronized, which means that only one thread can execute this method at a time. method2 uses a synchronized block to acquire a lock on the class, which prevents other threads from executing this block of code until the lock is released.
+
+** Reentrant Locks
+
+Reentrant locks are a more advanced form of locks that provide more flexibility and control over the locking mechanism. A reentrant lock allows a thread to acquire a lock multiple times and release it multiple times, while a regular lock can only be acquired and released once.
+
+#+begin_src
+class MyClass {
+    private final ReentrantLock lock = new ReentrantLock();
+
+    public void method1() {
+	lock.lock();
+	try {
+	    // code here
+	} finally {
+	    lock.unlock();
+	}
+    }
+
+    public void method2() {
+	if (lock.tryLock()) {
+	    try {
+		// code here
+	    } finally {
+		lock.unlock();
+	    }
+	} else {
+	    // code here
+	}
+    }
+}
+#+end_src
+
+In the above example, method1 uses the lock() method to acquire a lock and the unlock() method to release it. method2 uses the tryLock() method to try to acquire a lock and returns a boolean indicating whether the lock was acquired or not.
+
+** Read-Write Locks
+
+Read-write locks are a specialized form of locks that are used to control access to a shared resource. They allow multiple threads to read the shared resource simultaneously, but only one thread can write to it at a time. This can greatly improve the performance of a multi-threaded application when the shared resource is read more frequently than it is written.
+
+#+begin_src
+class MyClass {
+    private final ReadWriteLock lock = new ReentrantReadWriteLock();
+
+    public void method1() {
+	lock.readLock().lock();
+	try {
+	    // code here
+	} finally {
+	    lock.readLock().unlock();
+	}
+    }
+
+    public void method2() {
+	lock.writeLock().lock();
+	try {
+	    // code here
+	} finally {
+	    lock.writeLock().unlock();
+	}
+    }
+}
+#+end_src
+
+In the above example, method1 uses the readLock() method to acquire a read lock and the unlock() method to release it. method2 uses the writeLock() method to acquire a write lock and the unlock() method to release it.
+
+** Stamped Locks
+
+Stamped locks were introduced in Java 8 as an alternative to read-write locks, they offer more fine-grained control over read and write operations, as well as a try-optimistic-locking mechanism.
+
+A stamped lock works by associating a stamp with a lock state, the stamp serves as a token that verifies the lock state when performing operations. The stamped lock provides three modes of operation:
+
+*** Optimistic Read
+
+This mode allows multiple threads to read the shared resource simultaneously without acquiring a lock. The stamp returned by the tryOptimisticRead() method is used to validate the lock state before reading the shared resource. If the stamp is valid, the thread can proceed with reading the shared resource. If the stamp is invalid, it means that the lock state has been changed and the thread must acquire a read lock to access the shared resource.
+
+#+begin_src
+StampedLock lock = new StampedLock();
+long stamp = lock.tryOptimisticRead();
+
+if (lock.validate(stamp)) {
+    // read shared resource
+} else {
+    stamp = lock.readLock();
+    try {
+	// read shared resource
+    } finally {
+	lock.unlockRead(stamp);
+    }
+}
+#+end_src
+
+*** Read
+
+This mode allows only one thread to read the shared resource at a time. The readLock() method is used to acquire a read lock and the stamp returned by the method is used to release the lock.
+
+#+begin_src
+StampedLock lock = new StampedLock();
+long stamp = lock.readLock();
+try {
+    // read shared resource
+} finally {
+    lock.unlockRead(stamp);
+}
+#+end_src
+
+*** Write
+
+This mode allows only one thread to write to the shared resource at a time. The writeLock() method is used to acquire a write lock and the stamp returned by the method is used to release the lock.
+
+#+begin_src
+StampedLock lock = new StampedLock();
+long stamp = lock.writeLock();
+try {
+    // write to shared resource
+} finally {
+    lock.unlockWrite(stamp);
+}
+#+end_src
+
+In addition to these basic modes, stamped locks also provide other methods such as tryWriteLock() and tryConvertToWriteLock() that can be used to perform more advanced operations such as upgrading a read lock to a write lock and more.
+
+** Semaphores
+
+Semaphores are a more advanced form of locks that can be used to control access to a shared resource. They allow multiple threads to acquire the lock simultaneously, but limit the number of threads that can acquire the lock at any given time. This is useful in scenarios where there are limited resources available, such as a pool of connections or a cache.
+
+#+begin_src
+class MyClass {
+    private final Semaphore semaphore = new Semaphore(5);
+
+    public void method1() {
+	semaphore.acquire();
+	try {
+	    // code here
+	} finally {
+	    semaphore.release();
+	}
+    }
+}
+#+end_src
+
+In the above example, method1 uses the acquire() method to acquire a permit from the semaphore and the release() method to release it. The semaphore is initialized with a maximum of 5 permits, which means that at most 5 threads can acquire the lock at the same time.
+
+** CountDownLatch
+
+A CountDownLatch is a synchronization aid that allows one or more threads to wait for a set of operations to complete. It is initialized with a count, and the count is decremented each time a thread completes an operation. When the count reaches zero, all threads waiting on the latch are released.
+
+#+begin_src
+class MyClass {
+    private final CountDownLatch latch = new CountDownLatch(3);
+
+    public void method1() {
+	// code here
+	latch.countDown();
+    }
+
+    public void method2() {
+	latch.await();
+	// code here
+    }
+}
+#+end_src
+
+In the above example, method1 decrements the count of the latch and method2 uses the await() method to wait for the count to reach zero before executing the code.
+
+In conclusion, Locking is a fundamental mechanism in multi-threaded programming and Java provides a rich set of tools for controlling access to shared resources. The different types of locks such as object locks, class locks, reentrant locks, read-write locks, stamped locks, semaphores, and countdownlatch provide different levels of control and flexibility over the locking mechanism, allowing developers to choose the appropriate lock for their specific use case. It’s important to choose the right lock type and use it properly to avoid synchronization issues such as deadlocks and livelocks.
+
+* Java distributed locks
+
+https://redisson.pro/glossary/java-distributed-lock.html
+
+** What is a Java distributed lock?
+
+Distributed systems are highly focused on efficiency, speed, and performance. When building a distributed system in the Java programming language, it's a good idea to use Java distributed locks that can stop different machines from stepping on the others' toes. But what is a Java distributed lock exactly, and how do Java distributed locks work?
+
+** What are Java distributed locks?
+
+In computer science, locks are mechanisms in a multithreaded environment to prevent different threads from operating on the same resource. When using locking, a resource is "locked" for access by a specific thread, and can only be accessed by a different thread once the resource has been released. Locks have several benefits: they stop two threads from doing the same work, and they prevent errors and data corruption when two threads try to use the same resource simultaneously.
+
+Distributed locks in Java are locks that can work with not only multiple threads running on the same machine, but also threads running on clients on different machines in a distributed system. The threads on these separate machines must communicate and coordinate to make sure that none of them try to access a resource that has been locked up by another.
+
+** How do Java distributed locks work?
+
+As you might imagine, implementing and using distributed locking in Java (or any other programming language) is more complicated than locking on a single machine. Distributed locks need to decide whether to use an optimistic or a pessimistic locking policy:
+
+1. Optimistic locking policies assume that the resource being read will not change while reading it, and therefore do not lock the resource during read operations.
+1. Pessimistic locking policies assume that the resource being read will change while reading it, and therefore lock the resource during read operations.
+
+Java includes several different lock interfaces that can be used for distributed locking. The list of distributed locks in Java includes:
+
+1. ~Lock~: The Lock interface is the most basic implementation of distributed locking in Java. This interface is only implemented by the ReentrantLock class, which as its name suggests is a reentrant lock (i.e. it allows readers and writers to lock the same resource multiple times).
+1. ~Fair lock~: When you implement a distributed lock in Java (or another programming language), you need to decide how you will assign locks if you have multiple threads waiting for it. Fair locks use a fairness policy in which access is first given to the thread that has been waiting the longest. You can implement a fair lock in Java by setting the optional fairness parameter when creating a ReentrantLock object.
+1. ~Read-write lock~: A read-write lock is a lock that allows multiple threads to read from the same resource simultaneously, but only one thread to write to it. The ReadWriteLock class in Java uses a pair of associated locks, one for readers and one for writers.
+
+These Java distributed locks are available in the ~java.util.concurrent.locks~ package. In addition to these three locks, there are a couple more distributed locks that you should know about:
+
+1. ~Redlock~: The Redlock algorithm provides fault-tolerant distributed locking built on top of Redis, an open-source, in-memory data structure store used for NoSQL key-value databases, caches, and message brokers.
+1. ~Multi-lock~: In some cases, you may want to manage several distributed locks as a single "multi-lock" entity.
+
+* Java ReadWriteLock
+
+https://redisson.pro/glossary/java-readwritelock.html
+
+Locks are an essential feature for multithreaded programming, allowing different threads to operate on the same resources without causing bugs and race conditions. The Java programming language implements several diffferent version of locks, including ReadWriteLocks. But what is a Java ReadWriteLock exactly, and how do Java ReadWriteLocks work?
+
+** What are Java ReadWriteLocks?
+
+In computer science, a "lock" controls access to a limited resource in a multithreaded environment. You can think of locks as akin to the physical lock on a door. If multiple people try to pass through a doorway at the same time, they might accidentally crash into each other and cause a injury. Similarly, if two threads try to access the same file or resource at the same time, it could cause crashes or unexpected behavior.
+
+Putting a lock on the door, however, ensures that people can only enter the doorway one at a time, preventing accidents. In the same vein, using locks in computer science ensures that only a limited number of threads can access the same resource simultaneously.
+
+However, notice that errors may only occur if two threads are writing to the same resource, not if they're reading from it. A read-write lock is a type of lock that takes advantage of this fact: multiple threads can read from the same resource at the same time, but only one can be writing. Perhaps the best analogy for a read-write lock is a book on a desk: multiple people can read the text, but only one of them should be writing at one time (or else they might overwrite each other's work).
+
+ReadWriteLock is a Java interface that implements the concept of a read-write lock. By using ReadWriteLocks in Java, developers can theoretically achieve better performance than mutual exclusion locks, which only permit one thread access at a time. In the next section, we'll go into the details of how Java ReadWriteLocks work.
+
+** How do Java ReadWriteLocks work?
+
+In Java, ReadWriteLocks are implemented in the java.util.concurrent.locks.ReadWriteLock interface. The ReadWriteLock interface actually holds two locks under the hood. Multiple threads are allowed to hold the reading lock at the same time, but only one can hold the writing lock.
+
+Every class that implements the ReadWriteLock interface must specifically implement the following two Java methods:
+
+1. readLock(): Returns the lock used for reading.
+1. writeLock(): Returns the lock used for writing.
+
+According to the Java documentation, ReadWriteLock implementations are generally straightforward, but need to make decisions about questions such as:
+
+1. Are the locks reentrant (i.e. can a thread with the write lock reacquire it, or can it acquire a read lock as well)?
+1. If a writer is waiting for a read lock and a reader requests one as well, who should get priority? If the reader gets priority, the writer may be waiting forever. If the writer gets priority, this may lower the performance benefits of using a read-write lock in the first place.
+
+In the Java standard library, there is only one class implementing the ReadWriteLock interface: ReentrantReadWriteLock. As the name suggests, this class is a reentrant lock: both readers and writers can reacquire read and write locks. In addition, ReentrantReadWriteLocks allow users to (optionally) use a fairness policy, in which threads are given access to locks in roughly the same order that they requested access.
+
+* Java FencedLock
+
+https://redisson.pro/glossary/java-fencedlock.html
+
+In computer science, a lock is a synchronization mechanism that only allows a single thread access to a shared resource simultaneously. This prevents multiple threads from accessing the same resource simultaneously, which can cause race conditions and other issues and errors.
+
+The Java programming language helps software developers perform locking via concepts such as the FencedLock. The FencedLock data structure is a distributed lock that implements the java.util.concurrent.locks.Lock interface with well-defined behavior during execution and failure.
+
+Distributed locking is even more complicated than standard locking, which is typically concerned only with threads on a single machine. In distributed locking, different clients on separate machines may attempt to access the same resource, such as a file or database. Distributed systems need to handle problems such as partial failure, in which some system components are down while others continue operating.
+
+The FencedLock works by using a fencing token: a number that is increased each time a client acquires the lock. The client needs to pass this token to any external services and include the token in every request. If a service has received requests with two different tokens, it accepts the request with the highest token number and rejects all other requests. This ensures that even if two clients have the lock simultaneously, the external service can only interact with one client simultaneously.
+
+Any critical section in the code protected by a FencedLock is guaranteed to be executed by only one thread in the cluster. However, the FencedLock does not provide fairness. I.e., it cannot ensure that different threads or processes can equitably share access to the resource. The FencedLock provides consistency and partition tolerance but does not provide availability, which makes it a CP concept according to the CAP theorem.
+
+* Java CountDownLatch
+
+https://redisson.pro/glossary/java-countdownlatch.html
+
+Synchronization is essential when you’re working with concurrency in the Java programming language. Java CountDownLatches are an effective tool to help you synchronize the operations of multiple threads. But what is a Java CountDownLatch exactly, and how do Java CountDownLatches work?
+
+** What are Java CountDownLatches?
+
+When using parallel computing, it often makes sense to divide the work between multiple threads that each perform part of the computation. For example, if we want to compute the sum of all the numbers in an array, we could assign part of the array to each thread, which sums up only the numbers in the given subarray. We can then combine these individual sums to get our final answer.
+
+But this approach has a major issue: if we perform the final sum with one of these threads, how can we be sure that the other threads have already finished their computations? Because multithreaded programs are generally non-deterministic, we cannot be sure in what order the threads will execute. Thus, it’s entirely possible that the final sum will be calculated before all the computations are complete, which will almost certainly give us an incorrect answer.
+
+To fix this issue, we need to introduce synchronization: a concept in parallel computing that requires multiple threads to meet up at a given point or points during computation. This prevents one or more of the threads from racing ahead into critical sections, which are parts of the program that must only be executed by a single thread.
+
+Java CountDownLatches are a type of synchronization primitive that are used to force threads to wait until the other threads have finished their given task. CountDownLatches are initialized with a count, i.e. an integer value that describes how many threads must synchronize with each other before computation can proceed. If a thread reaches this barrier before all other threads are finished, the CountDownLatch blocks the thread until all threads are waiting at the barrier.
+
+** How do Java CountDownLatches work?
+
+Java CountDownLatches are implemented in the java.util.concurrent.CountDownLatch class. Here’s what you need to know about how Java CountDownLatches work:
+
+1. When initializing a CountDownLatch in Java, we need to specify how many threads it should wait for, e.g. CountDownLatch latch = new CountDownLatch(10);
+1. The await() method is used to force a thread to wait for any other threads that have yet to catch up when working with CountDownLatches in Java.
+1. Threads need to call the CountDownLatch’s countDown() method to signal that they have finished their work. You can get the latch’s current count (i.e. the number of threads that have yet to complete) with the getCount() method.
+
+CountDownLatches are sometimes contrasted with CyclicBarriers, another synchronization primitive in Java. Unlike the CyclicBarrier, the CountDownLatch is not able to reset the count once you start calling the countDown() method. In addition, there’s a bit of subtlety in the difference between CountDownLatches and CyclicBarriers:
+
+1. With the CountDownLatch, some threads have completed their work and are waiting for others to finish.
+1. With the CyclicBarrier, on the other hand, threads are waiting for each other before all of the threads arrive, at which point an action can optionally be taken.
+
+* Walmart code base uses locks in java applications. Why or How do they use them?
+
+Given the scale at which Walmart operates, their Java applications likely handle massive concurrency. In a distributed retail environment, **Locks** are essential for maintaining "thread safety"—ensuring that two different processes don't try to change the same piece of data at the exact same millisecond, which would lead to chaos.
+
+Here are the most probable use cases for locks in a high-volume retail codebase:
+
+** 1. Inventory Management (The "Oversell" Problem)
+
+This is the most critical use case. Imagine there is only **1** television left in stock. Two customers click "Buy" at the exact same time. Without locking, both threads might check the database, see ~count = 1~, and proceed to process both orders.
+
+**The Lock Solution:** A lock ensures that the first thread "claims" the inventory update process, forcing the second thread to wait until the count is updated to ~0~, preventing an oversell.
+
+** 2. High-Frequency Price Updates
+
+Walmart adjusts prices dynamically across millions of items. If a background process is updating the price of an item while a checkout service is trying to read it, you could end up with a **"dirty read"** (charging the customer a partial or incorrect price).
+
+**ReadWriteLocks:** They likely use ~java.util.concurrent.locks.ReentrantReadWriteLock~. This allows many people to *read* the price simultaneously, but if a *write* (update) occurs, it locks everyone else out until the new price is finalized.
+
+** 3. Distributed Task Scheduling
+
+Walmart uses massive server clusters. If a "Generate Daily Revenue Report" task is scheduled for midnight, you don't want 500 different servers all running that same heavy report at once.
+
+**The Lock Solution:** They likely use a distributed lock (often via **Redis** or **Zookeeper**, but managed through Java) to ensure only one "leader" node performs the task.
+
+** 4. Cache Warming and Consistency
+
+To keep the website fast, Walmart heavily utilizes caching. When a cache expires, you don't want 10,000 incoming requests to all hit the database at once to refresh it (a "cache stampede").
+
+**The Lock Solution:** The first thread to notice the expired cache grabs a lock to go fetch the data, while other threads wait for the result rather than hammering the database.
+
+** Comparison of Locking Strategies
+
+In a Java environment like Walmart's, they likely choose between these two depending on the level of contention:
+
+| Strategy                | When to Use                                                   | Performance Impact                                 |
+|-------------------------+---------------------------------------------------------------+----------------------------------------------------|
+| **Pessimistic Locking** | High chance of conflict (e.g., hot Black Friday deals).       | Slower; holds resources longer.                    |
+| **Optimistic Locking**  | Low chance of conflict (e.g., updating a user's profile bio). | Faster; uses version numbers to check for changes. |
+
+> **Note:** At Walmart's scale, they often move away from standard Java ~synchronized~ blocks toward more sophisticated ~Lock~ objects or distributed locking mechanisms to handle traffic across multiple data centers.
+
+* A Java code snippet comparing how a standard lock vs. a ReadWriteLock would look in an inventory scenario?
+
+To illustrate how this works in a high-traffic environment, let's look at the two most common ways Walmart likely handles these concurrency issues.
+
+** 1. Standard ReentrantLock (Inventory Update)
+
+A ~ReentrantLock~ is like a physical "talking stick." Only the person holding it can update the inventory. This is used for "Critical Sections" where data integrity is the absolute priority.
+
+#+begin_src
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class InventoryService {
+    private final Lock lock = new ReentrantLock();
+    private int stockCount = 10;
+
+    public void purchaseItem(int quantity) {
+	lock.lock(); // Thread waits here if another thread has the lock
+	try {
+	    if (stockCount >= quantity) {
+		// Simulate processing time
+		stockCount -= quantity;
+		System.out.println("Purchase successful! Remaining: " + stockCount);
+	    } else {
+		System.out.println("Out of stock!");
+	    }
+	} finally {
+	    lock.unlock(); // Always unlock in 'finally' to avoid deadlocks
+	}
+    }
+}
+#+end_src
+
+** 2. ReadWriteLock (Product Pricing)
+
+In a retail app, people look at prices **millions** of times a second, but prices only change **occasionally**. Using a standard lock would slow down the customers. A ~ReadWriteLock~ allows multiple "readers" at once, but only one "writer."
+
+#+begin_src
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
+public class PriceService {
+    private final ReadWriteLock rwLock = new ReentrantReadWriteLock();
+    private double currentPrice = 19.99;
+
+    // Multiple customers can call this simultaneously
+    public double getPrice() {
+	rwLock.readLock().lock();
+	try {
+	    return currentPrice;
+	} finally {
+	    rwLock.readLock().unlock();
+	}
+    }
+
+    // This will block all readers until the update is finished
+    public void updatePrice(double newPrice) {
+	rwLock.writeLock().lock();
+	try {
+	    this.currentPrice = newPrice;
+	} finally {
+	    rwLock.writeLock().unlock();
+	}
+    }
+}
+#+end_src
+
+** Why Walmart scales beyond this
+
+While the code above works perfectly on a **single server**, Walmart runs on thousands of servers. When a customer in California and a customer in New York buy the last item, a Java lock in one server won't know about the other.
+
+To solve this, they likely use **Distributed Locks**:
+
+1. **Redis (Redisson):** A Java library that implements the ~Lock~
+ interface but stores the "lock" status in a shared Redis database.
+1. **Optimistic Locking (@Version):** Using database version numbers (standard in Spring Data/JPA) to ensure that if the data changed between the time you "read" it and "write" it, the transaction fails and retries.
+
+** How might they implement an "Optimistic Lock" using Spring/JPA, which is very common in their microservices?
+
+In a massive microservices architecture like Walmart’s, "Optimistic Locking" is often the preferred strategy because it doesn't actually "lock" the database row while a user is thinking or while a service is processing. Instead, it uses a **Version Number**.
+
+This is perfect for the "Order Placement" or "User Profile" use cases where conflicts are possible but not constant.
+
+*** How it Works: The @Version Pattern
+
+In Spring Data JPA (which Walmart heavily uses), you simply add an ~@Version~ field to your Java Entity.
+
+1. **Read:** Service A reads a product with ~version = 1~.
+2. **Process:** Service A spends 500ms calculating taxes or shipping.
+3. **Write:** Service A tries to save. The SQL generated looks like this:
+~UPDATE products SET stock = 5, version = 2 WHERE id = 123 AND version = 1;~
+4. **Conflict:** If Service B updated the stock while Service A was "processing," the version in the DB would already be ~2~. Service A’s update will affect **0 rows**, and Spring will throw an ~OptimisticLockingFailureException~.
+
+*** Example Code: The "Safe Update"
+
+Here is how you would implement this in a typical Walmart-style microservice:
+
+#+begin_src
+@Entity
+public class Product {
+    @Id
+    private Long id;
+
+    private String name;
+    private Integer stockCount;
+
+    @Version // This is the magic "Lock"
+    private Integer version;
+}
+
+@Service
+public class InventoryService {
+    @Autowired
+    private ProductRepository repository;
+
+    @Transactional
+    @Retryable(value = ObjectOptimisticLockingFailureException.class, maxAttempts = 3)
+    public void updateStock(Long productId, int quantity) {
+	Product product = repository.findById(productId)
+	    .orElseThrow(() -> new RuntimeException("Product not found"));
+
+	product.setStockCount(product.getStockCount() - quantity);
+
+	// No explicit lock call needed!
+	// Hibernate checks the version automatically on save.
+	repository.save(product);
+    }
+}
+#+end_src
+
+*** Why Walmart Loves This
+
+1. **Scalability:** Since there are no real database locks held during the "think time," the database can handle thousands more concurrent connections.
+1. **The "Retry" Culture:** In a distributed system, it's often cheaper to "fail and retry" a fast operation than to "wait" for a slow lock. Notice the ~@Retryable~ annotation above—it automatically tries again if a collision happens.
+1. **User Experience:** If a price changes while a customer is looking at their cart, the system can detect the version mismatch and ask the user to "Refresh for the latest price" rather than just crashing or overcharging.
+
+*** Summary of Locking Choices
+
+| Scenario                   | Recommended Lock                                                      |
+|----------------------------+-----------------------------------------------------------------------|
+| **Flash Sales (PS5/Xbox)** | **Pessimistic/Distributed Lock** (Stop everyone, process one by one). |
+| **Standard Checkout**      | **Optimistic Locking** (Assume success, check version at the end).    |
+| **Price Feeds/Analytics**  | **ReadWriteLock** (Let everyone read, block only for the update).     |
+
+* Explain how "Distributed Locking" works with Redis for those high-intensity Flash Sale scenarios?
+
+When we move from a single Java application to a global infrastructure like Walmart's, a standard Java ~ReentrantLock~ becomes useless. If "Customer A" hits a server in Virginia and "Customer B" hits a server in California, their local Java Virtual Machines (JVMs) can't "talk" to each other to coordinate a lock.
+
+To solve this for high-intensity events (like a Black Friday TV deal), Walmart likely uses **Distributed Locking** via **Redis** (specifically using a library called **Redisson**).
+
+** How Distributed Locking Works
+
+Instead of a lock living in the server's memory, the lock lives in a central, lightning-fast "source of truth" (Redis) that all servers check before proceeding.
+
+** The Code: Redisson (Redis-based Lock)
+
+Redisson is the industry standard for Java because it implements the ~java.util.concurrent.locks.Lock~ interface, making it feel like a local Java lock even though it’s communicating over the network.
+
+#+begin_src
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
+
+@Service
+public class FlashSaleService {
+    @Autowired
+    private RedissonClient redisson; // Connected to a global Redis cluster
+
+    public void buyLimitedEditionItem(String itemId) {
+	// This lock name is global across ALL Walmart servers
+	RLock lock = redisson.getLock("lock:item:" + itemId);
+
+	try {
+	    // Wait up to 10s to get the lock; hold it for 5s max (lease time)
+	    if (lock.tryLock(10, 5, TimeUnit.SECONDS)) {
+		// CRITICAL SECTION: Only 1 server in the world is here right now
+		processHighPriorityOrder(itemId);
+	    } else {
+		throw new RuntimeException("System busy, please try again!");
+	    }
+	} catch (InterruptedException e) {
+	    Thread.currentThread().interrupt();
+	} finally {
+	    // Only unlock if we actually hold it (safety first!)
+	    if (lock.isHeldByCurrentThread()) {
+		lock.unlock();
+	    }
+	}
+    }
+}
+#+end_src
+
+** Why this is "The Walmart Way"
+
+1. **The Watchdog (Heartbeat):** If a Walmart server crashes while holding a lock, you don't want that item locked forever. Redisson has a "Watchdog" that automatically releases the lock if the server stops sending a "heartbeat."
+2. **Performance:** Redis operates entirely in RAM. Checking a lock takes **< 1ms**, which is necessary when 50,000 people are clicking "Add to Cart" at the same time.
+3. **Fairness:** You can configure these locks to be "Fair," meaning the customers who clicked first get the lock first, preventing "thread starvation" where a lucky late-comer grabs the item.
+
+** The "Locking" Spectrum at Scale
+
+| Level        | Technology                       | Best For...                                                       |
+|--------------+----------------------------------+-------------------------------------------------------------------|
+| **Local**    | ~synchronized~ / ~ReentrantLock~ | Background tasks inside a single microservice.                    |
+| **Database** | ~@Version~ (Optimistic)          | 90% of standard e-commerce transactions.                          |
+| **Global**   | **Redis / Zookeeper**            | Limited-stock drops, Black Friday, and preventing double-refunds. |
+
+* Dive into "Deadlocks"—the scary situation where two locks get stuck forever—and how a big codebase prevents them?
+
+In a massive codebase like Walmart's, a **Deadlock** is the ultimate nightmare. It occurs when two threads are stuck in a circular dependency, each waiting for a resource the other one holds.
+
+Imagine Customer A is trying to move an item from their **Wishlist** to their **Cart**, while a Background System is simultaneously syncing the **Cart** to the **Wishlist**. If both processes lock the "Cart" and "Wishlist" in a different order, the system freezes.
+
+** The Deadlock Scenario
+
+1. **Thread 1** locks the ~Cart~ and waits for the ~Wishlist~.
+2. **Thread 2** locks the ~Wishlist~ and waits for the ~Cart~.
+3. Both wait forever. The CPU sits idle, but the "Add to Cart" button spins indefinitely for the customer.
+
+** How a Professional Codebase Prevents This
+
+Walmart's engineers likely use three primary strategies to ensure their Java applications never "freeze" under pressure:
+
+*** 1. Global Lock Ordering
+
+The simplest but most effective rule: **Always lock resources in the same alphabetical or numerical order.**
+If every developer agrees to always lock ~Cart~ first and ~Wishlist~ second, a circular wait is mathematically impossible. Thread 2 would simply wait for the ~Cart~ lock *before* it ever touched the ~Wishlist~.
+
+*** 2. The ~tryLock()~ with a Timeout
+
+In high-scale systems, you **never** use a "dumb" lock that waits forever. You use ~tryLock()~ with a strict timeout. If a thread can't get the second lock within 500ms, it gives up, releases its own locks, and tries again (or tells the user "System busy").
+
+#+begin_src
+// The "Safe" way to handle multiple locks
+public void transferItem(Lock lockA, Lock lockB) {
+    while (true) {
+	boolean gotA = lockA.tryLock();
+	boolean gotB = lockB.tryLock();
+
+	if (gotA && gotB) {
+	    try {
+		// Perform the secure transfer
+		return;
+	    } finally {
+		lockA.unlock();
+		lockB.unlock();
+	    }
+	}
+
+	// If we didn't get both, release whatever we DID get and sleep/retry
+	if (gotA) lockA.unlock();
+	if (gotB) lockB.unlock();
+
+	// Add a small random "backoff" time to avoid livelock
+	Thread.sleep(new Random().nextInt(10));
+    }
+}
+#+end_src
+
+*** 3. Lock Stripping (The "Aisle" Approach)
+
+If Walmart locked the entire "Electronics Inventory" every time someone bought a pair of headphones, the site would crawl. Instead, they use **Lock Stripping**.
+They break a big resource into 16 or 32 smaller "buckets" (strips). You only lock the specific bucket you are using. This is how ~ConcurrentHashMap~ works internally in Java.
+
+** Monitoring and Detection
+
+At Walmart's scale, they likely use **JVM Thread Dumps** and APM tools (like New Relic or Dynatrace) to monitor for "Blocked Threads." If a deadlock happens in production, these tools can instantly point to the exact line of Java code causing the circular wait.
+
+** Recap of the "Walmart Lock Stack"
+
+1. **Preventing Oversells:** Distributed Locks (Redis/Redisson).
+1. **Performance Reads:** ~ReadWriteLock~.
+1. **Data Consistency:** Optimistic Locking (~@Version~).
+1. **Safety:** ~tryLock()~ with timeouts and strict locking orders.
+
+* Since we've covered how they lock data, would you like to see how they handle "Concurrency" without locks using "Atomic" variables (the fastest way to count clicks/views)?
+
+In a massive system like Walmart’s, even the fastest locks have a cost. When a thread "waits" for a lock, the Operating System has to "park" it and then "wake it up" later. This is called a **Context Switch**, and it takes time.
+
+To handle metrics that change millions of times a second—like "Total Page Views" or "Active Shoppers on Site"—Walmart likely uses **Atomic Variables** (~AtomicLong~, ~AtomicInteger~). These are "Lock-Free."
+
+** The Magic of CAS (Compare-and-Swap)
+
+Atomic variables don't use locks. Instead, they use a hardware-level trick called **CAS**.
+
+1. **Read:** The thread reads the current value (e.g., ~100~).
+2. **Calculate:** It calculates the new value (~101~).
+3. **The CAS Step:** It asks the CPU: *"Update this to 101, but ONLY if the value is still 100."*
+4. **Success/Fail:**
+   1. If it's still ~100~, the CPU updates it in **one single clock cycle**.
+   1. If someone else changed it to ~102~ first, the update fails, and the thread simply loops back and tries again immediately (this is called "spinning").
+
+** Why Use Atomics Instead of Locks?
+
+| Feature          | Traditional Lock (~ReentrantLock~)         | Atomic Variable (~AtomicLong~)                     |
+|------------------+--------------------------------------------+----------------------------------------------------|
+| **Strategy**     | **Pessimistic:** "Stay back while I work." | **Optimistic:** "I'll try; if I fail, I'll retry." |
+| **Thread State** | Threads are "Blocked" (sleeping).          | Threads are "Running" (spinning).                  |
+| **Overhead**     | High (Context switching).                  | Extremely Low (Hardware level).                    |
+| **Use Case**     | Complex logic (updating 5 variables).      | Simple logic (incrementing 1 counter).             |
+
+** Real-World Use Case: Global Request Counter
+
+Imagine Walmart's search service. They need to track exactly how many searches happen per second to trigger auto-scaling.
+
+#+begin_src
+import java.util.concurrent.atomic.AtomicLong;
+
+public class MetricsService {
+    // A standard 'long' would suffer from race conditions.
+    // A 'lock' would be too slow for millions of hits.
+    private final AtomicLong totalSearches = new AtomicLong(0);
+
+    public void recordSearch() {
+	// This is lock-free and extremely fast
+	totalSearches.incrementAndGet();
+    }
+
+    public long getTotal() {
+	return totalSearches.get();
+    }
+}
+#+end_src
+
+** The "Walmart Level" Pro-Tip: ~LongAdder~
+
+If Walmart has a *really* hot counter (like the global "Items Sold" counter on Black Friday), even ~AtomicLong~ can slow down because hundreds of threads are fighting over that one single memory address.
+
+For that, they use **~LongAdder~**.
+
+1. Instead of one counter, ~LongAdder~ maintains a **cell array** (multiple sub-counters).
+1. Threads randomly pick a cell to increment, reducing "contention."
+1. When you ask for the total, it sums up all the cells. It is the fastest way to count things in Java today.
+
+** Final Summary of the Walmart Concurrency Toolkit:
+
+1. **Simple Counters:** ~LongAdder~ / ~AtomicLong~ (Lock-Free).
+1. **Single Machine Data:** ~ReentrantLock~ (Explicit control).
+1. **Read-Heavy Data:** ~ReadWriteLock~ (Catalog/Prices).
+1. **Multi-Server Integrity:** **Redis/Redisson** (Distributed Locks).
+1. **Microservice State:** ~@Version~ (Optimistic Locking).
+
+* Create a "Decision Tree" for you that shows exactly which locking strategy to pick for a given coding problem?
+
+Choosing the right concurrency tool at a scale like Walmart's is all about balancing **data integrity** (don't lose money) with **performance** (don't slow down the site).
+
+Here is the "Walmart Architect" decision tree for picking the right Java lock or concurrency utility:
+
+** The Concurrency Decision Tree
+
+1. **Is it a simple counter or a single value?**
+   1. **Yes:** Use **~LongAdder~** (high contention) or **~AtomicLong~** (low contention). No locks needed!
+   1. **No:** Go to step 2.
+2. **Does the operation span multiple microservices or servers?**
+   1. **Yes:** Use a **Distributed Lock** (e.g., **Redisson** with Redis).
+   1. **No:** Go to step 3.
+3. **Is it "Read-Heavy" (99% reads, 1% writes)?**
+   1. **Yes:** Use **~ReentrantReadWriteLock~** or **~StampedLock~**.
+   1. **No:** Go to step 4.
+4. **Is the chance of a collision low (e.g., updating a user's address)?**
+   1. **Yes:** Use **Optimistic Locking** (~@Version~ in JPA/Spring).
+   1. **No:** Go to step 5.
+5. **Is the operation high-risk (e.g., processing a payment or a flash sale)?**
+   1. **Yes:** Use **Pessimistic Locking** (~ReentrantLock~ or ~SELECT FOR UPDATE~ in SQL).
+
+** Strategy Comparison at a Glance
+
+| If you are building...    | Use this...     | Because...                                                              |
+|---------------------------+-----------------+-------------------------------------------------------------------------|
+| **Search Result Counter** | ~LongAdder~     | Thousands of threads can increment without waiting.                     |
+| **Product Catalog**       | ~ReadWriteLock~ | Everyone can browse prices simultaneously; only the update blocks.      |
+| **Shopping Cart**         | ~@Version~      | It's rare for two people to edit the same cart at the same millisecond. |
+| **The "Last PS5" Sale**   | ~Redisson Lock~ | You need a global "source of truth" across all 500 servers.             |
+| **Refund Processing**     | ~tryLock()~     | You never want to wait "forever" for a lock; fail fast and retry.       |
+
+*** A Final "Pro-Tip" from the Field
+
+In a codebase as large as Walmart's, you'll often see **Lock Monitoring**. Engineers use "Interceptors" or "Aspects" (AOP) to measure how long a lock is held. If a lock is held for more than **100ms**, it triggers an alert. At high scale, a "slow lock" is just as bad as a "deadlock" because it creates a massive traffic jam behind it.
+
+* A simple "Summary Table" of all these Java locking terms so you have a quick cheat sheet for your next interview or project?
+
+In a high-stakes environment like Walmart's, these terms are often used interchangeably, but choosing the wrong one can lead to a "Black Friday" outage. Here is your definitive Java Concurrency Cheat Sheet.
+
+** The Java Concurrency Cheat Sheet
+
+| Strategy        | Java Implementation        | Performance          | Best Use Case                                 |
+|-----------------+----------------------------+----------------------+-----------------------------------------------|
+| **Atomic**      | ~AtomicLong~, ~LongAdder~  | **Ultra-Fast**       | Global counters, search result hits, "Likes." |
+| **Optimistic**  | ~@Version~ (JPA/Hibernate) | **Very Fast**        | Most CRUD operations (Orders, User Profiles). |
+| **Read-Write**  | ~ReentrantReadWriteLock~   | **Fast** (for reads) | Product Catalog, Pricing, Store Locations.    |
+| **Pessimistic** | ~ReentrantLock~            | **Moderate**         | Local complex logic, payment processing.      |
+| **Distributed** | **Redisson** (Redis)       | **Slower** (network) | Inventory "Drops," Flash sales, Global state. |
+
+** Red Flags to Watch Out For
+
+In a professional codebase, if you see these "Anti-Patterns," it usually means a bug is waiting to happen:
+
+1. **Nested Locks:** Locking ~Resource A~ then ~Resource B~ inside it. This is the *1 cause of deadlocks.
+1. **The "Naked" ~synchronized~ Keyword:** Modern Java prefers ~java.util.concurrent.locks~ because they offer ~tryLock()~ and "Fairness" settings.
+1. **Long-Running Transactions:** Holding a lock while calling a slow external API (like a shipping carrier). This will tie up all your server's threads.
+1. **Missing ~finally~ block:** If you don't ~unlock()~ in a ~finally~ block and an error occurs, that resource is locked until the server restarts.
+
+*** Summary of Walmart's Intent
+
+Walmart uses locks to ensure that when **100 million people** shop at once, the data remains consistent. They move from **Atomics** (for speed) to **Distributed Locks** (for accuracy) depending on how much "money" is at stake in that specific line of code.
+
+* [[id:692b2985-b4a0-4887-8d17-28976e0d9922][Using locks to manage cache]]
+
+* Building a POC
+
+I want to build a POC to understand how different types of locks work in a java application.
+Ask me some questions about this requirements to help me design the architecture.
+What kind of an application would be good for this?
+Simple Java application? Or springboot application?
+
+For a POC specifically focused on **locking mechanisms**, I recommend a **Simple Java Application (Console-based)**.
+
+While Spring Boot is great, it adds layers of abstraction (like `@Transactional` or AOP proxies) that can "hide" the raw behavior of the locks. Using a plain `public static void main` with manual `Thread` management allows you to see the immediate impact of `synchronized`, `ReentrantLock`, and `ReadWriteLock` without framework overhead.
+
+### Key Questions to Shape Your Architecture
+
+To help you design this, let's narrow down the scope:
+
+1. **Which Lock Types are you targeting?**
+
+   1. Are you looking at **Intrinsic Locks** (`synchronized` blocks/methods)?
+   2. **Explicit Locks** (`java.util.concurrent.locks.ReentrantLock`)?
+   3. **Optimistic Locking** (`AtomicInteger` or `StampedLock`)?
+   4. **Distributed Locks** (This would actually require Spring Boot + Redis/Zookeeper)?
+
+2. **How do you want to visualize the "Contention"?**
+
+   1. Do you want to print logs to the console showing which thread is "Waiting" vs "Holding"?
+   2. Or are you planning to measure performance (throughput) differences between the locks?
+
+3. **What is the "Critical Section" (The shared resource)?**
+
+   1. A simple Counter? A shared List/Map? A simulated Bank Account transfer?
+
+4. **Do you want to simulate a Deadlock?**
+
+   1. Designing the POC to intentionally hang is the best way to learn how to use tools like `jstack` or VisualVM to debug locking issues.
+
+### Recommended Application Idea: The "High-Traffic Warehouse"
+
+Instead of a boring counter, simulate a **Warehouse Inventory System**. It provides natural use cases for different locks:
+
+1. **Synchronized/ReentrantLock:** When two threads try to "Pick" the last item in stock simultaneously.
+1. **ReadWriteLock:** When 10 threads are checking the price (Read) but only 1 thread is updating the stock count (Write).
+1. **Condition Variables:** When a "Restock" thread needs to signal a "Waiting Customer" thread that items are back in stock.
+
+### Suggested Architecture Structure
+
+1. **`Resource` Interface:** Define methods like `withdraw(int amount)` and `getBalance()`.
+2. **Multiple Implementations:** * `SyncWarehouse` (using `synchronized`)
+   1. `LockWarehouse` (using `ReentrantLock`)
+   2. `OptimisticWarehouse` (using `AtomicInteger`)
+1. **`SimulationRunner`:** A class that uses an `ExecutorService` to fire off 50 threads at these implementations and tracks how long they take or if the final balance is correct.
+
+
+Answers
+
+1. Which Lock Types are you targeting?
+   Object Locks
+   Class Locks
+   Reentrant Locks
+   Read-Write Locks
+   Stamped Locks
+   Java distributed locks
+   What are Java ReadWriteLocks
+   Java FencedLock
+   Pessimistic Locking
+   Optimistic Locking
+
+2. How do you want to visualize the "Contention"?
+
+   1. print logs to the console showing which thread is "Waiting" vs "Holding"
+   2. measure performance (throughput) differences between the locks?
+
+3. What is the "Critical Section" (The shared resource)?
+
+   1. Use a real-world example like A simulated Bank Account transfer or high-traffic warehouse
+
+4. Do you want to simulate a Deadlock?
+
+   Yes
+
+This is an ambitious and well-structured list. Covering everything from basic **Object Locks** to **FencedLocks** and **Distributed Locks** will give you a complete picture of the Java concurrency landscape.
+
+Since you want to measure both **visibility (logs)** and **performance (throughput)**, a "Simulation Runner" architecture is best.
+
+---
+
+### Proposed POC Architecture: The "Multi-Strategy Bank"
+
+I suggest building a **Bank Account Simulator**. You can implement a standard `Account` interface using different locking strategies. This allows you to swap them out and compare results easily.
+
+#### 1. The Strategy Pattern for Locks
+
+Create an interface, e.g., `BalanceManager`. Each lock type you mentioned becomes an implementation:
+
+* `SynchronizedManager` (Object/Class locks)
+* `ReentrantManager` (Pessimistic)
+* `OptimisticStampedManager` (Optimistic/Stamped)
+* `HazelcastManager` (For Distributed/FencedLock simulation)
+
+#### 2. Performance & Logging Wrapper
+
+To satisfy your "visualization" requirement:
+
+* **Logging:** Use a `ThreadLocal` or a simple `System.out.printf` with `Thread.currentThread().getName()` to show who is holding the lock.
+* **Metrics:** Use `System.nanoTime()` before and after a batch of 1,000 transactions to calculate throughput (transactions per second).
+
+---
+
+### Clarifying the Advanced Lock Types
+
+Before you dive into the code, here are two specific items from your list that operate a bit differently:
+
+* **Java ReadWriteLocks:** This is a pair of locks. Multiple threads can hold the **Read** lock simultaneously as long as the **Write** lock is free. However, if one thread wants to Write, it must wait for all Readers to finish. This is perfect for a "Check Balance" (Read) vs. "Deposit" (Write) scenario.
+* **FencedLock:** This isn't part of the standard JDK; it is typically found in distributed systems like **Hazelcast**. It provides a "fencing token" (a monotonically increasing number). If a thread/process becomes "zombie" (due to a long GC pause), the system uses the token to reject its late, stale writes.
+
+---
+
+### The Deadlock Simulation
+
+Since you want to simulate a **Deadlock**, your POC should include a `DeadlockDemonstration` class.
+
+1. **Thread A** locks `Account 1` and tries to lock `Account 2`.
+2. **Thread B** locks `Account 2` and tries to lock `Account 1`.
+3. **The Result:** Both threads wait forever. You can then use `jvisualvm` or `jstack` to "see" the deadlock in the JVM.
+
+### Next Steps for Implementation
+
+To get started, we need to handle the **Distributed Lock** requirement. Since a simple Java app doesn't have a network by default, we would usually pull in a library like **Hazelcast** or **Redisson**.
+
+* Tags
+
+1. Java Concurrent Locks
+   1. Interface Lock https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/locks/Lock.html
+   2. Java Locks https://jenkov.com/tutorials/java-util-concurrent/lock.html
+   3. Guide to java.util.concurrent.Locks https://www.baeldung.com/java-concurrent-locks
+2. How to Use Locks in Multi-Threaded Java Program? https://www.geeksforgeeks.org/java/how-to-use-locks-in-multi-threaded-java-program/
+3. Synchronization vs Lock https://stackoverflow.com/questions/4201713/synchroniz<>ation-vs-lock
+4. https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/locks/ReentrantReadWriteLock.html
+5. https://www.geeksforgeeks.org/reentrantreadwritelock-class-in-java/
+6. https://www.geeksforgeeks.org/difference-between-readwritelock-interface-and-reentrantreadwritelock-class-in-java/

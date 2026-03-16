@@ -2,10 +2,12 @@
 set -e  # Exit on error
 
 # 1. FIX PERMISSIONS IMMEDIATELY
-# This ensures that root (who is running this script) has full control 
-# over the developer's home, regardless of how volumes were mounted.
-chown root:root /home/developer
-chown developer:developer /home/developer/.bashrc || true
+# This ensures that the developer user has full control 
+# over their home directory, regardless of how volumes were mounted.
+# If we do not have this, we will see errors like the one described below.
+# Tool output cleanup failed: EACCES: permission denied, mkdir '/home/developer/.gemini'
+# An unexpected critical error occurred:Error: EACCES: permission denied, mkdir '/home/developer/.gemini'
+chown -R developer:developer /home/developer
 chmod 644 /home/developer/.bashrc
 
 # 1. Load SDKMAN (Since we are root, we point to the developer's path)
