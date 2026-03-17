@@ -19,10 +19,17 @@ public class SimulationRunner {
         managers.add(new ReentrantLockManager());
         managers.add(new ReadWriteLockManager());
         managers.add(new OptimisticLockManager());
+        managers.add(new AtomicManager());
+        managers.add(new SemaphoreManager());
+        
+        DistributedLockManager distributedManager = new DistributedLockManager();
+        managers.add(distributedManager);
 
         for (BalanceManager manager : managers) {
             runSimulation(manager);
         }
+        
+        distributedManager.shutdown();
     }
 
     private static void runSimulation(BalanceManager manager) throws InterruptedException {
