@@ -7,8 +7,8 @@ services:
       - CHOWN
       - FOWNER    
     volumes:
-      # - .:/home/developer/workspace
-      - "/home/explorer436/Downloads/GitRepositories/programming-playground/:/home/developer/workspace"
+      # - "/home/explorer436/Downloads/GitRepositories/programming-playground/:/home/developer/workspace"
+      - "/home/explorer436/Downloads/GitRepositories/soft-skills/:/home/developer/workspace"
     environment:
       - GEMINI_API_KEY=${GEMINI_API_KEY}
     ports:
