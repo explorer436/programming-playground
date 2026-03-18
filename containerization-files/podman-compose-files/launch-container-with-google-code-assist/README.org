@@ -1,0 +1,27 @@
+* How to pass the value for GEMINI_API_KEY on the fly?
+
+See https://programming-notes.explorer436.com/posts/20260301233256-how_to_run_docker_compose_file_by_passing_an_environment_variable_on_the_fly/
+
+We can pass the key when running podman-compose like this:
+
+#+begin_src
+GEMINI_API_KEY="your_api_key_here" podman-compose up
+#+end_src
+
+Or we can create a ~.env~ file in the same directory as the ~podman-compose.yml~ with the content
+
+#+begin_src
+GEMINI_API_KEY=your_api_key_here
+#+end_src
+
+* Stepping into the container
+
+1. Option 1
+   #+begin_src
+   podman exec -it -u developer gcp-code-assist bash
+   #+end_src
+2. Option 2
+   #+begin_src
+   ssh developer@localhost -p 2222
+   #+end_src
+   The setup includes an SSH server that exposes port 2222. You can SSH directly into the container as the developer user. Any files created during this SSH session will be owned by the developer user, achieving the same result as Option 1.
